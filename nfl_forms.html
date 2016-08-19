@@ -1,0 +1,704 @@
+<html>
+
+<head>
+   <title>2016 Football Pool - Forms</title>
+</head>
+
+<body    text="#000000"
+      bgcolor="#FFFFFF"
+         link="#3333FF"
+        vlink="#3333FF"
+        alink="#000099"
+   background="background.gif"
+        style="font-family: Times New Roman, Times"
+       onLoad="build_forms_page(); return true;">
+
+<script language="JavaScript">
+
+function check_for_global_variables()
+{
+   if (top.current_input_week == null)
+   {
+      alert("This page cannot be displayed in a separate window.");
+
+      top.location.href = "nfl_empty.html";
+      top.close();
+
+      return false;
+   }
+
+   return true;
+}
+
+function build_forms_page()
+{
+   if (check_for_global_variables() == false)
+   {
+      return false;
+   }
+
+   var current_input_week = top.current_input_week;
+
+   document.open();
+
+   var d = document;
+
+   d.writeln('<html>');
+   d.writeln('');
+
+   d.writeln('<head>');
+   d.writeln('   <title>2016 Football Pool - Forms</title>');
+   d.writeln('   <link href="button.css" rel="stylesheet" type="text/css">');
+   d.writeln('</head>');
+   d.writeln('');
+
+   d.writeln('<body    text="#000000"');
+   d.writeln('      bgcolor="#FFFFFF"');
+   d.writeln('         link="#3333FF"');
+   d.writeln('        vlink="#3333FF"');
+   d.writeln('        alink="#000099"');
+   d.writeln('   background="background.gif"');
+   d.writeln('       onLoad="set_right_click_trap(); return true;">');
+   d.writeln('');
+   d.writeln('');
+
+   d.writeln('<script language="JavaScript">');
+   d.writeln('');
+   d.writeln('   function set_right_click_trap()');
+   d.writeln('   {');
+   d.writeln('      for (var i = 0; i < document.anchors.length; i++)');
+   d.writeln('      {');
+   d.writeln('         if (document.anchors[i].name=="no_right_click")');
+   d.writeln('         {');
+   d.writeln('            document.anchors[i].onmousedown = rightclick;');
+   d.writeln('         }');
+   d.writeln('      }');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('   function rightclick(e)');
+   d.writeln('   {');
+   d.writeln('      var message = "";');
+   d.writeln('');
+   d.writeln('');
+   d.writeln('      message = "This link will not work if you click the Right Mouse Button.";');
+   d.writeln('      message = message + "\\n\\nTry clicking the Left Mouse Button.";');
+   d.writeln('');
+   d.writeln('      if ( (navigator.appName.substring(0,8) == "Netscape") && ');
+   d.writeln('           (parseInt(navigator.appVersion) < 5) && (e.which == 3) )');
+   d.writeln('      {');
+   d.writeln('         alert(message);');
+   d.writeln('         return false;');
+   d.writeln('      }');
+   d.writeln('');
+   d.writeln('      if ( (navigator.appName.substring(0,9)=="Microsoft") && (event.button==2) )');
+   d.writeln('      {');
+   d.writeln('         alert(message);');
+   d.writeln('         return false;');
+   d.writeln('      }');
+   d.writeln('');
+   d.writeln('      return true;');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('   function open_regular_season_form(received_mode)');
+   d.writeln('   {');
+   d.writeln('      w = window.open("","regular_"+received_mode,"status=no,scrollbars=yes,resizable=yes",true);');
+   d.writeln('');
+   d.writeln('      w.resizeTo(screen.width,screen.height);');
+   d.writeln('      w.moveTo(0,0);');
+   d.writeln('');
+   d.writeln('      wd = w.document.open();');
+   d.writeln('');
+   d.writeln("      wd.writeln('<html>');");
+   d.writeln("      wd.writeln('');");
+   d.writeln("      wd.writeln('<head>');");
+   d.writeln("      wd.writeln('   <title>NFL Football Pool - 2016 Regular Season Weekly Results</title>');");
+   d.writeln("      wd.writeln('</head>');");
+   d.writeln("      wd.writeln('');");
+   d.writeln("      wd.writeln('<frameset rows=\"0,*\" border=\"0\" frameborder=\"0\" framespacing=\"0\">');");
+   d.writeln("      wd.writeln('   <frame noresize src=\"nfl_empty.html\" name=\"gv\" scrolling=\"no\">');");
+   d.writeln("      wd.writeln('   <frame noresize src=\"nfl_empty.html\" name=\"form\" marginheight=\"5px\" marginwidth=\"5px\">');");
+   d.writeln("      wd.writeln('</frameset>');");
+   d.writeln("      wd.writeln('');");
+   d.writeln("      wd.writeln('</html>');");
+   d.writeln('');
+   d.writeln('      wd.close();');
+   d.writeln('');
+   d.writeln('      // Define global variables for this new window.');
+   d.writeln('');
+   d.writeln("      w.gv.document.writeln('<script>');");
+   d.writeln('');
+   d.writeln("      w.gv.document.writeln('var current_input_week;');");
+   d.writeln("      w.gv.document.writeln('var form_view;');");
+   d.writeln("      w.gv.document.writeln('var games_over;');");
+   d.writeln("      w.gv.document.writeln('var get_winners_state;');");
+   d.writeln("      w.gv.document.writeln('var get_winners_timer;');");
+   d.writeln("      w.gv.document.writeln('var home_scores;');");
+   d.writeln("      w.gv.document.writeln('var mn_points_entered;');");
+   d.writeln("      w.gv.document.writeln('var mode;');");
+   d.writeln("      w.gv.document.writeln('var opponent_index;');");
+   d.writeln("      w.gv.document.writeln('var order_by;');");
+   d.writeln("      w.gv.document.writeln('var player_index;');");
+   d.writeln("      w.gv.document.writeln('var prelim_possession_teams;');");
+   d.writeln("      w.gv.document.writeln('var prelim_red_zone_flags;');");
+   d.writeln("      w.gv.document.writeln('var prelim_victors;');");
+   d.writeln("      w.gv.document.writeln('var prelim_winners;');");
+   d.writeln("      w.gv.document.writeln('var rs_players;');");
+   d.writeln("      w.gv.document.writeln('var rs_players_description;');");
+   d.writeln("      w.gv.document.writeln('var selected_week;');");
+   d.writeln("      w.gv.document.writeln('var visiting_scores;');");
+   d.writeln('');
+   d.writeln("      w.gv.document.writeln('var visiting_teams_1;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_2;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_3;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_4;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_5;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_6;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_7;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_8;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_9;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_10;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_11;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_12;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_13;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_14;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_15;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_16;');");
+   d.writeln("      w.gv.document.writeln('var visiting_teams_17;');");
+   d.writeln('');
+   d.writeln("      w.gv.document.writeln('var home_teams_1;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_2;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_3;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_4;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_5;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_6;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_7;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_8;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_9;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_10;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_11;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_12;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_13;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_14;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_15;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_16;');");
+   d.writeln("      w.gv.document.writeln('var home_teams_17;');");
+   d.writeln('');
+   d.writeln("      w.gv.document.writeln('var open_date_1;');");
+   d.writeln("      w.gv.document.writeln('var open_date_2;');");
+   d.writeln("      w.gv.document.writeln('var open_date_3;');");
+   d.writeln("      w.gv.document.writeln('var open_date_4;');");
+   d.writeln("      w.gv.document.writeln('var open_date_5;');");
+   d.writeln("      w.gv.document.writeln('var open_date_6;');");
+   d.writeln("      w.gv.document.writeln('var open_date_7;');");
+   d.writeln("      w.gv.document.writeln('var open_date_8;');");
+   d.writeln("      w.gv.document.writeln('var open_date_9;');");
+   d.writeln("      w.gv.document.writeln('var open_date_10;');");
+   d.writeln("      w.gv.document.writeln('var open_date_11;');");
+   d.writeln("      w.gv.document.writeln('var open_date_12;');");
+   d.writeln("      w.gv.document.writeln('var open_date_13;');");
+   d.writeln("      w.gv.document.writeln('var open_date_14;');");
+   d.writeln("      w.gv.document.writeln('var open_date_15;');");
+   d.writeln("      w.gv.document.writeln('var open_date_16;');");
+   d.writeln("      w.gv.document.writeln('var open_date_17;');");
+   d.writeln('');
+   d.writeln("      w.gv.document.writeln('var all_visiting_teams;');");
+   d.writeln("      w.gv.document.writeln('var all_home_teams;');");
+   d.writeln("      w.gv.document.writeln('var all_open_dates;');");
+   d.writeln('');
+   d.writeln("      w.gv.document.writeln('</'+'script>');");
+   d.writeln('');
+   d.writeln('      // Assign values to global variables for this new window.');
+   d.writeln('');
+   d.writeln('      w.gv.current_input_week      = top.current_input_week;');
+   d.writeln('      w.gv.form_view               = "expanded";');
+   d.writeln('      w.gv.games_over              = top.games_over;');
+   d.writeln('      w.gv.get_winners_state       = "off";');
+   d.writeln('      w.gv.get_winners_timer       = null;');
+   d.writeln('      w.gv.home_scores             = ["","","","","","","","","","","","","","","",""];');
+   d.writeln('      w.gv.mn_points_entered       = 0;');
+   d.writeln('      w.gv.mode                    = received_mode;');
+   d.writeln('      w.gv.opponent_index          = 0;');
+   d.writeln('      w.gv.order_by                = "players";');
+   d.writeln('      w.gv.player_index            = top.player_index;');
+   d.writeln('      w.gv.prelim_possession_teams = ["","","","","","","","","","","","","","","",""];');
+   d.writeln('      w.gv.prelim_red_zone_flags   = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];');
+   d.writeln('      w.gv.prelim_victors          = ["","","","","","","","","","","","","","","",""];');
+   d.writeln('      w.gv.prelim_winners          = ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"];');
+   d.writeln('      w.gv.rs_players              = top.rs_players;');
+   d.writeln('      w.gv.rs_players_description  = top.rs_players_description;');
+   d.writeln('      w.gv.selected_week           = 0;');
+   d.writeln('      w.gv.visiting_scores         = ["","","","","","","","","","","","","","","",""];');
+   d.writeln('');
+   d.writeln('      w.gv.visiting_teams_1  = top.visiting_teams_1;');
+   d.writeln('      w.gv.visiting_teams_2  = top.visiting_teams_2;');
+   d.writeln('      w.gv.visiting_teams_3  = top.visiting_teams_3;');
+   d.writeln('      w.gv.visiting_teams_4  = top.visiting_teams_4;');
+   d.writeln('      w.gv.visiting_teams_5  = top.visiting_teams_5;');
+   d.writeln('      w.gv.visiting_teams_6  = top.visiting_teams_6;');
+   d.writeln('      w.gv.visiting_teams_7  = top.visiting_teams_7;');
+   d.writeln('      w.gv.visiting_teams_8  = top.visiting_teams_8;');
+   d.writeln('      w.gv.visiting_teams_9  = top.visiting_teams_9;');
+   d.writeln('      w.gv.visiting_teams_10 = top.visiting_teams_10;');
+   d.writeln('      w.gv.visiting_teams_11 = top.visiting_teams_11;');
+   d.writeln('      w.gv.visiting_teams_12 = top.visiting_teams_12;');
+   d.writeln('      w.gv.visiting_teams_13 = top.visiting_teams_13;');
+   d.writeln('      w.gv.visiting_teams_14 = top.visiting_teams_14;');
+   d.writeln('      w.gv.visiting_teams_15 = top.visiting_teams_15;');
+   d.writeln('      w.gv.visiting_teams_16 = top.visiting_teams_16;');
+   d.writeln('      w.gv.visiting_teams_17 = top.visiting_teams_17;');
+   d.writeln('');
+   d.writeln('      w.gv.home_teams_1  = top.home_teams_1;');
+   d.writeln('      w.gv.home_teams_2  = top.home_teams_2;');
+   d.writeln('      w.gv.home_teams_3  = top.home_teams_3;');
+   d.writeln('      w.gv.home_teams_4  = top.home_teams_4;');
+   d.writeln('      w.gv.home_teams_5  = top.home_teams_5;');
+   d.writeln('      w.gv.home_teams_6  = top.home_teams_6;');
+   d.writeln('      w.gv.home_teams_7  = top.home_teams_7;');
+   d.writeln('      w.gv.home_teams_8  = top.home_teams_8;');
+   d.writeln('      w.gv.home_teams_9  = top.home_teams_9;');
+   d.writeln('      w.gv.home_teams_10 = top.home_teams_10;');
+   d.writeln('      w.gv.home_teams_11 = top.home_teams_11;');
+   d.writeln('      w.gv.home_teams_12 = top.home_teams_12;');
+   d.writeln('      w.gv.home_teams_13 = top.home_teams_13;');
+   d.writeln('      w.gv.home_teams_14 = top.home_teams_14;');
+   d.writeln('      w.gv.home_teams_15 = top.home_teams_15;');
+   d.writeln('      w.gv.home_teams_16 = top.home_teams_16;');
+   d.writeln('      w.gv.home_teams_17 = top.home_teams_17;');
+   d.writeln('');
+   d.writeln('      w.gv.open_date_1  = top.open_date_1;');
+   d.writeln('      w.gv.open_date_2  = top.open_date_2;');
+   d.writeln('      w.gv.open_date_3  = top.open_date_3;');
+   d.writeln('      w.gv.open_date_4  = top.open_date_4;');
+   d.writeln('      w.gv.open_date_5  = top.open_date_5;');
+   d.writeln('      w.gv.open_date_6  = top.open_date_6;');
+   d.writeln('      w.gv.open_date_7  = top.open_date_7;');
+   d.writeln('      w.gv.open_date_8  = top.open_date_8;');
+   d.writeln('      w.gv.open_date_9  = top.open_date_9;');
+   d.writeln('      w.gv.open_date_10 = top.open_date_10;');
+   d.writeln('      w.gv.open_date_11 = top.open_date_11;');
+   d.writeln('      w.gv.open_date_12 = top.open_date_12;');
+   d.writeln('      w.gv.open_date_13 = top.open_date_13;');
+   d.writeln('      w.gv.open_date_14 = top.open_date_14;');
+   d.writeln('      w.gv.open_date_15 = top.open_date_15;');
+   d.writeln('      w.gv.open_date_16 = top.open_date_16;');
+   d.writeln('      w.gv.open_date_17 = top.open_date_17;');
+   d.writeln('');
+   d.writeln('      w.gv.all_visiting_teams = [w.gv.visiting_teams_1,');
+   d.writeln('                                 w.gv.visiting_teams_2,');
+   d.writeln('                                 w.gv.visiting_teams_3,');
+   d.writeln('                                 w.gv.visiting_teams_4,');
+   d.writeln('                                 w.gv.visiting_teams_5,');
+   d.writeln('                                 w.gv.visiting_teams_6,');
+   d.writeln('                                 w.gv.visiting_teams_7,');
+   d.writeln('                                 w.gv.visiting_teams_8,');
+   d.writeln('                                 w.gv.visiting_teams_9,');
+   d.writeln('                                 w.gv.visiting_teams_10,');
+   d.writeln('                                 w.gv.visiting_teams_11,');
+   d.writeln('                                 w.gv.visiting_teams_12,');
+   d.writeln('                                 w.gv.visiting_teams_13,');
+   d.writeln('                                 w.gv.visiting_teams_14,');
+   d.writeln('                                 w.gv.visiting_teams_15,');
+   d.writeln('                                 w.gv.visiting_teams_16,');
+   d.writeln('                                 w.gv.visiting_teams_17];');
+   d.writeln('');
+   d.writeln('      w.gv.all_home_teams = [w.gv.home_teams_1,');
+   d.writeln('                             w.gv.home_teams_2,');
+   d.writeln('                             w.gv.home_teams_3,');
+   d.writeln('                             w.gv.home_teams_4,');
+   d.writeln('                             w.gv.home_teams_5,');
+   d.writeln('                             w.gv.home_teams_6,');
+   d.writeln('                             w.gv.home_teams_7,');
+   d.writeln('                             w.gv.home_teams_8,');
+   d.writeln('                             w.gv.home_teams_9,');
+   d.writeln('                             w.gv.home_teams_10,');
+   d.writeln('                             w.gv.home_teams_11,');
+   d.writeln('                             w.gv.home_teams_12,');
+   d.writeln('                             w.gv.home_teams_13,');
+   d.writeln('                             w.gv.home_teams_14,');
+   d.writeln('                             w.gv.home_teams_15,');
+   d.writeln('                             w.gv.home_teams_16,');
+   d.writeln('                             w.gv.home_teams_17];');
+   d.writeln('');
+   d.writeln('      w.gv.all_open_dates = [w.gv.open_date_1,');
+   d.writeln('                             w.gv.open_date_2,');
+   d.writeln('                             w.gv.open_date_3,');
+   d.writeln('                             w.gv.open_date_4,');
+   d.writeln('                             w.gv.open_date_5,');
+   d.writeln('                             w.gv.open_date_6,');
+   d.writeln('                             w.gv.open_date_7,');
+   d.writeln('                             w.gv.open_date_8,');
+   d.writeln('                             w.gv.open_date_9,');
+   d.writeln('                             w.gv.open_date_10,');
+   d.writeln('                             w.gv.open_date_11,');
+   d.writeln('                             w.gv.open_date_12,');
+   d.writeln('                             w.gv.open_date_13,');
+   d.writeln('                             w.gv.open_date_14,');
+   d.writeln('                             w.gv.open_date_15,');
+   d.writeln('                             w.gv.open_date_16,');
+   d.writeln('                             w.gv.open_date_17];');
+   d.writeln('');
+   d.writeln('      w.form.location.href="nfl_regular_season_form.html";');
+   d.writeln('');
+   d.writeln('      return;');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('   function open_post_season_form(received_mode)');
+   d.writeln('   {');
+   d.writeln('      w = window.open("","post_season_"+received_mode,"status=no,scrollbars=yes,resizable=yes",true);');
+   d.writeln('');
+   d.writeln('      w.resizeTo(screen.width,screen.height);');
+   d.writeln('      w.moveTo(0,0);');
+   d.writeln('');
+   d.writeln('      wd = w.document.open();');
+   d.writeln('');
+   d.writeln("      wd.writeln('<html>');");
+   d.writeln("      wd.writeln('');");
+   d.writeln("      wd.writeln('<head>');");
+   d.writeln("      wd.writeln('   <title>NFL Football Pool - 2016 Post Season Summary</title>');");
+   d.writeln("      wd.writeln('</head>');");
+   d.writeln("      wd.writeln('');");
+   d.writeln("      wd.writeln('<frameset rows=\"0,*\" border=\"0\" frameborder=\"0\" framespacing=\"0\">');");
+   d.writeln("      wd.writeln('   <frame noresize src=\"nfl_empty.html\" name=\"gv\" scrolling=\"no\">');");
+   d.writeln("      wd.writeln('   <frame noresize src=\"nfl_empty.html\" name=\"form\" marginheight=\"5px\" marginwidth=\"5px\">');");
+   d.writeln("      wd.writeln('</frameset>');");
+   d.writeln("      wd.writeln('');");
+   d.writeln("      wd.writeln('</html>');");
+   d.writeln('');
+   d.writeln('      wd.close();');
+   d.writeln('');
+   d.writeln('      // Define global variables for this new window.');
+   d.writeln('');
+   d.writeln("      w.gv.document.writeln('<script>');");
+   d.writeln("      w.gv.document.writeln('var current_input_week;');");
+   d.writeln("      w.gv.document.writeln('var form_view;');");
+   d.writeln("      w.gv.document.writeln('var games_over;');");
+   d.writeln("      w.gv.document.writeln('var get_scores_state;');");
+   d.writeln("      w.gv.document.writeln('var get_scores_timer;');");
+   d.writeln("      w.gv.document.writeln('var home_scores;');");
+   d.writeln("      w.gv.document.writeln('var mode;');");
+   d.writeln("      w.gv.document.writeln('var order_by;');");
+   d.writeln("      w.gv.document.writeln('var player_index;');");
+   d.writeln("      w.gv.document.writeln('var post_season_possession_teams;');");
+   d.writeln("      w.gv.document.writeln('var post_season_red_zone_flags;');");
+   d.writeln("      w.gv.document.writeln('var post_season_victors;');");
+   d.writeln("      w.gv.document.writeln('var ps_players;');");
+   d.writeln("      w.gv.document.writeln('var ps_players_description;');");
+   d.writeln("      w.gv.document.writeln('var scores_already_assigned;');");
+   d.writeln("      w.gv.document.writeln('var visitor_scores;');");
+   d.writeln("      w.gv.document.writeln('</'+'script>');");
+   d.writeln('');
+   d.writeln('      // Assign values to global variables for this new window.');
+   d.writeln('');
+   d.writeln('      w.gv.current_input_week           = top.current_input_week;');
+   d.writeln('      w.gv.form_view                    = "expanded";');
+   d.writeln('      w.gv.games_over                   = top.games_over;');
+   d.writeln('      w.gv.get_scores_state             = "off";');
+   d.writeln('      w.gv.get_scores_timer             = null;');
+   d.writeln('      w.gv.home_scores                  = ["0","0","0","0","0","0","0","0","0","0","0"];');
+   d.writeln('      w.gv.mode                         = received_mode;');
+   d.writeln('      w.gv.order_by                     = "players";');
+   d.writeln('      w.gv.player_index                 = top.player_index;');
+   d.writeln('      w.gv.post_season_possession_teams = ["","","","","","","","","","","","","","","",""];');
+   d.writeln('      w.gv.post_season_red_zone_flags   = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];');
+   d.writeln('      w.gv.post_season_victors          = ["","","","","","","","","","",""];');
+   d.writeln('      w.gv.ps_players                   = top.ps_players;');
+   d.writeln('      w.gv.ps_players_description       = top.ps_players_description;');
+   d.writeln('      w.gv.scores_already_assigned      = false;');
+   d.writeln('      w.gv.visitor_scores               = ["0","0","0","0","0","0","0","0","0","0","0"];');
+   d.writeln('');
+   d.writeln('      w.form.location.href="nfl_post_season_form.html";');
+   d.writeln('');
+   d.writeln('      return;');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('</' + 'script>');
+   d.writeln('');
+   d.writeln('');
+
+   d.writeln('<h2 ALIGN=CENTER><font face="Comic Sans MS" color="#006600">');
+   d.writeln('Forms');
+   d.writeln('</font></h2>');
+   d.writeln('');
+   d.writeln('<table align=center COLS=4 WIDTH="100%">');
+   d.writeln('<tr align=center valign=center>');
+   d.writeln('');
+   d.writeln('<td width=25%>');
+   d.writeln('<img SRC="nfc.gif" ALT="National Football Conference"');
+   d.writeln('  height=50 width=100 align=absmiddle>');
+   d.writeln('</td>');
+   d.writeln('');
+   d.writeln('<td width=25%>');
+   d.writeln('<input class="button" type=button value="Home" onmouseover=this.style.cursor="hand"; onClick=javacript:top.location.href="NFL.html";>');
+   d.writeln('</td>');
+   d.writeln('');
+   d.writeln('<td width=25%>');
+   d.writeln('<input class="button" type=button value="Help" onmouseover=this.style.cursor="hand"; onClick=javacript:document.location.href="nfl_help.html";>');
+   d.writeln('</td>');
+   d.writeln('');
+   d.writeln('<td width=25%>');
+   d.writeln('<img SRC="afc.gif" ALT="American Football Conference"');
+   d.writeln('  height=50 width=100 align=absmiddle>');
+   d.writeln('</td>');
+   d.writeln('');
+   d.writeln('</tr>');
+   d.writeln('</table>');
+   d.writeln('');
+   d.writeln('');
+
+   if (current_input_week > 17)
+   {
+      if (current_input_week > 18 || top.games_over == true)
+      {
+         // Display post season information.
+
+         var post_season_input_week  = current_input_week - 17;
+         var post_season_prelim_week = post_season_input_week - 1;
+         var post_season_final_week  = post_season_prelim_week - 1;
+
+         if (top.games_over == true) post_season_final_week++;
+
+         if (post_season_input_week  < 1) post_season_input_week  = 1;
+         if (post_season_prelim_week < 1) post_season_prelim_week = 1;
+         if (post_season_final_week  < 1) post_season_final_week  = 1;
+
+         if (post_season_input_week  > 4) post_season_input_week  = 4;
+         if (post_season_prelim_week > 4) post_season_prelim_week = 4;
+         if (post_season_final_week  > 4) post_season_final_week  = 4;
+
+         d.writeln('<table align=center CELLSPACING=3 CELLPADDING=3>');
+         d.writeln('');
+         d.writeln('<tr><td align=center colspan=2><b><u><font color="#990000">');
+         d.writeln('Post Season</font></u></b></td></tr>');
+         d.writeln('');
+
+         if (top.games_over == true && top.season_over == false)
+         {
+            top.post_season = true;
+
+            d.writeln('<tr align=center valign=top>');
+            d.writeln('');
+            d.writeln('<td align=right width="50%" nowrap><b><font color="#006600">');
+            d.writeln('Week ' + post_season_input_week + ':&nbsp;&nbsp;');
+            d.writeln('</font></b></td>');
+            d.writeln('');
+            d.writeln('<td align=left width="50%" nowrap><b><font color="#000000">');
+            d.writeln('<a name=no_right_click href="nfl_input_form.html">');
+            d.writeln('');
+            d.writeln('Input Form');
+            d.writeln('');
+            d.writeln('</a>');
+            d.writeln('<br>');
+            d.writeln('<a href="post_season_inputs.xls">');
+            d.writeln('');
+            d.writeln('Input Form (Excel)');
+            d.writeln('');
+            d.writeln('</a>');
+            d.writeln('</font></b></td>');
+            d.writeln('');
+            d.writeln('</tr>');
+            d.writeln('');
+         }
+
+         if (top.games_over == false && top.season_over == false)
+         {
+            d.writeln('<tr align=center valign=top>');
+            d.writeln('');
+            d.writeln('<td align=right width="50%" nowrap><b><font color="#006600">');
+            d.writeln('Week ' + post_season_prelim_week + ':&nbsp;&nbsp;');
+            d.writeln('</font></b></td>');
+            d.writeln('');
+            d.writeln('<td align=left width="50%" nowrap><b><font color="#000000">');
+            d.writeln('<a name=no_right_click href=javascript:open_post_season_form("prelim");>');
+            d.writeln('');
+            d.writeln('Preliminary');
+            d.writeln('');
+            d.writeln('</a>');
+            d.writeln('<br>');
+            d.writeln('<a href="post_season_prelim.xls">');
+            d.writeln('');
+            d.writeln('Preliminary (Excel)');
+            d.writeln('');
+            d.writeln('</a>');
+            d.writeln('</font></b></td>');
+            d.writeln('');
+            d.writeln('</tr>');
+            d.writeln('');
+         }
+
+         if ( (current_input_week > 19) || (current_input_week == 19 && top.games_over == true) )
+         {
+            d.writeln('<tr align=center valign=top>');
+            d.writeln('');
+            d.writeln('<td align=right width="50%" nowrap><b><font color="#006600">');
+            d.writeln('Week ' + post_season_final_week + ':&nbsp;&nbsp;');
+            d.writeln('</font></b></td>');
+            d.writeln('');
+            d.writeln('<td align=left width="50%" nowrap><b><font color="#000000">');
+            d.writeln('<a name=no_right_click href=javascript:open_post_season_form("final");>');
+            d.writeln('');
+            d.writeln('Final');
+            d.writeln('');
+            d.writeln('</a>');
+            d.writeln('<br>');
+            d.writeln('<a href="post_season_final.xls">');
+            d.writeln('');
+            d.writeln('Final (Excel)');
+            d.writeln('');
+            d.writeln('</a>');
+            d.writeln('');
+            d.writeln('</font></b></td>');
+            d.writeln('');
+            d.writeln('</tr>');
+            d.writeln('');
+         }
+
+         d.writeln('</table>');
+         d.writeln('');
+         d.writeln('<p>');
+         d.writeln('');
+      }
+   }
+
+   // Display regular season information.
+
+   var regular_input_week  = current_input_week;
+   var regular_prelim_week = regular_input_week - 1;
+   var regular_final_week  = regular_prelim_week - 1;
+
+   if (top.games_over == true) regular_final_week++;
+
+   if (regular_input_week  < 1)  regular_input_week  = 1;
+   if (regular_prelim_week < 1)  regular_prelim_week = 1;
+   if (regular_final_week  < 1)  regular_final_week  = 1;
+
+   if (regular_input_week  > 17) regular_input_week  = 17;
+   if (regular_prelim_week > 17) regular_prelim_week = 17;
+   if (regular_final_week  > 17) regular_final_week  = 17;
+
+   d.writeln('<table align=center CELLSPACING=3 CELLPADDING=3>');
+   d.writeln('');
+   d.writeln('<tr><td align=center colspan=2><b><u><font color="#990000">');
+   d.writeln('Regular Season</font></u></b></td></tr>');
+   d.writeln('');
+
+   if (current_input_week <= 17)
+   {
+      d.writeln('<tr align=center valign=top>');
+      d.writeln('');
+      d.writeln('<td align=right width="50%" nowrap><b><font color="#006600">');
+      d.writeln('Week ' + regular_input_week + ':&nbsp;&nbsp;');
+      d.writeln('</font></b></td>');
+      d.writeln('');
+      d.writeln('<td align=left width="50%" nowrap><b><font color="#000000">');
+      d.writeln('<a name=no_right_click href="nfl_input_form.html">');
+      d.writeln('');
+      d.writeln('Input Form');
+      d.writeln('');
+      d.writeln('</a>');
+      d.writeln('<br>');
+      d.writeln('<a href="regular_season_inputs.xls">');
+      d.writeln('');
+      d.writeln('Input Form (Excel)');
+      d.writeln('');
+      d.writeln('</a>');
+      d.writeln('</font></b></td>');
+      d.writeln('');
+      d.writeln('</tr>');
+      d.writeln('');
+   }
+
+   if (current_input_week > 1 && current_input_week <= 18 && top.games_over == false)
+   {
+      d.writeln('<tr align=center valign=top>');
+      d.writeln('');
+      d.writeln('<td align=right width="50%" nowrap><b><font color="#006600">');
+      d.writeln('Week ' + regular_prelim_week + ':&nbsp;&nbsp;');
+      d.writeln('</font></b></td>');
+      d.writeln('');
+      d.writeln('<td align=left width="50%" nowrap><b><font color="#000000">');
+      d.writeln('<a name=no_right_click href=javascript:open_regular_season_form("prelim");>');
+      d.writeln('');
+      d.writeln('Preliminary');
+      d.writeln('');
+      d.writeln('</a>');
+      d.writeln('<br>');
+      d.writeln('<a href="regular_season_prelim.xls">');
+      d.writeln('');
+      d.writeln('Preliminary (Excel)');
+      d.writeln('');
+      d.writeln('</a>');
+      d.writeln('</font></b></td>');
+      d.writeln('');
+      d.writeln('</tr>');
+      d.writeln('');
+   }
+
+   if ( (current_input_week > 2) || (current_input_week == 2 && top.games_over == true) )
+   {
+      d.writeln('<tr align=center valign=top>');
+      d.writeln('');
+      d.writeln('<td align=right width="50%" nowrap><b><font color="#006600">');
+      d.writeln('Week ' + regular_final_week + ':&nbsp;&nbsp;');
+      d.writeln('</font></b></td>');
+      d.writeln('');
+      d.writeln('<td align=left width="50%" nowrap><b><font color="#000000">');
+      d.writeln('<a name=no_right_click href=javascript:open_regular_season_form("final");>');
+      d.writeln('');
+      d.writeln('Final');
+      d.writeln('');
+      d.writeln('</a>');
+      d.writeln('<br>');
+      d.writeln('<a href="regular_season_final.xls">');
+      d.writeln('');
+      d.writeln('Final (Excel)');
+      d.writeln('');
+      d.writeln('</a>');
+      d.writeln('</font></b></td>');
+      d.writeln('');
+      d.writeln('</tr>');
+      d.writeln('');
+
+      d.writeln('<tr align=center valign=top>');
+      d.writeln('');
+      d.writeln('<td align=right width="50%" nowrap><b><font color="#006600">');
+      d.writeln('Season Summary:&nbsp;&nbsp;');
+      d.writeln('</font></b></td>');
+      d.writeln('');
+      d.writeln('<td align=left width="50%" nowrap><b><font color="#000000">');
+      d.writeln('<a name=no_right_click href=javascript:open_regular_season_form("summary");>');
+      d.writeln('');
+      if (regular_final_week == 1)
+      {
+         d.writeln('Through Week ' + regular_final_week);
+      }
+      else
+      {
+         d.writeln('Weeks 1 through ' + regular_final_week);
+      }
+      d.writeln('');
+      d.writeln('</a>');
+      d.writeln('</font></b></td>');
+      d.writeln('');
+      d.writeln('</tr>');
+      d.writeln('');
+   }
+
+   d.writeln('</table>');
+   d.writeln('');
+   d.writeln('');
+
+   d.writeln('</body>');
+   d.writeln('');
+
+   d.writeln('</html>');
+
+   d.close();
+
+   return true;
+}
+
+</script>
+
+
+</body>
+</html>
