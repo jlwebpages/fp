@@ -1,0 +1,55 @@
+<html>
+
+<head>
+   <title>NFL Football Pool</title>
+   <link href="fp.css" rel="stylesheet" type="text/css">
+   <script language="JavaScript" src=fp_input_form_scripts.js></script>
+</head>
+
+<body onLoad="input_form_global_variables(); return true;">
+
+<table class="table">
+
+<tr>
+<td class="dark_gray_cell">FORMS</td>
+<td class="dark_gray_cell" style="border-right: solid 1px black"><a class="red_link" href="fp.html" target="_top">HOME</a></td>
+</tr>
+
+<tr>
+<td class="light_gray_cell" style="font-size: 28px; vertical-align: top; height:100%; border-right: solid 1px black; border-bottom: solid 1px black; white-space: normal" colspan=2>
+
+Enter Input Form Password:<br><br>
+
+<form name="password_input" onSubmit="return validate_password();" action="javascript:build_input_form();">
+
+<table align=center>
+  <tr align=center><td><input type="password" name=password size=10 maxlength=10 style="font-size:14pt; height:25px; width:120px; border: 1px solid black"></td></tr>
+  <tr align=center><td>&nbsp;<br></td></tr>
+  <tr align=center><td><br><input type="submit" value="Enter" style="font-size: 12pt; border: 1px solid black; height: 25px; width: 65px"></td></tr>
+  <tr align=center><td>&nbsp;<br></td></tr>
+</table>
+
+</form>
+
+<font class="dark_blue_color" style="font-size: 12pt">
+
+<h4 ALIGN=CENTER><u>DISCLAIMER</u></h4>
+
+The On-Line Input Form may not work for you.  Its behavior varies depending on which browser you are using, the version of the browser, and the mail application that your browser uses to send e-mail.  Confused? Not a problem.  Just give it a try and see if it works.  If it doesn't work, then use the Excel Input Form to submit your picks.
+
+<br><br>
+
+The intent of the On-Line Input Form is to make it easy for you to submit your picks and easy for me to process them.  If it works, I'll receive an e-mail message containing your picks.  The body of the message will be specially formatted such that I can easily cut and paste your picks into my master spreadsheet.
+
+</font>
+
+</td>
+</tr>
+
+</table>
+
+<script language="JavaScript">document.password_input.password.focus();</script>
+
+</body>
+
+</html>

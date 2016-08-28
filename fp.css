@@ -1,0 +1,116 @@
+A.blue_link          {color:#002060}
+A.blue_link:active   {text-decoration: none; color: #002060;}
+A.blue_link:hover    {text-decoration: none; color: #002060;}
+A.blue_link:link     {text-decoration: none; color: #002060;}
+A.blue_link:visited  {text-decoration: none; color: #002060;}
+
+A.green_link         {color:#283E1A;}
+A.green_link:active  {text-decoration: none; color: #283E1A;}
+A.green_link:hover   {text-decoration: none; color: #283E1A;}
+A.green_link:link    {text-decoration: none; color: #283E1A;}
+A.green_link:visited {text-decoration: none; color: #283E1A;}
+
+A.red_link:          {color:maroon;}
+A.red_link:active    {text-decoration: none; color:  maroon;}
+A.red_link:hover     {text-decoration: none; color:  maroon;}
+A.red_link:link      {text-decoration: none; color:  maroon;}
+A.red_link:visited   {text-decoration: none; color:  maroon;}
+
+A.white_link         {color:white;}
+A.white_link:active  {text-decoration: none; color: white;}
+A.white_link:hover   {text-decoration: none; color: white;}
+A.white_link:link    {text-decoration: none; color: white;}
+A.white_link:visited {text-decoration: none; color: white;}
+
+.black_color           {color: black             }
+.blue_color            {color: blue              }
+.dark_blue_color       {color: #002060           }
+.dark_gray_color       {color: #8497B0           }
+.green_color           {color: #283E1A           }
+.light_gray_background {background-color: #ACB9CA}
+.light_gray_color      {color: #ACB9CA           }
+.red_color             {color: maroon            }
+.white_color           {color: white             }
+
+.dark_blue_cell
+{
+   background-color: #002060;
+   border-left: solid 1px black;
+   border-top: solid 1px black;
+   height: 28px;
+   padding-bottom: 4px;
+   padding-left: 10px;
+   padding-right: 15px;
+   padding-top: 4px;
+}
+
+.dark_gray_cell
+{
+   background-color: #8497B0;
+   border-bottom: solid 1px black;
+   border-left: solid 1px black;
+   border-top: solid 1px black;
+   color: maroon;
+   font-size: 18pt;
+   font-weight: bold;
+   height: 30px;
+   padding-bottom: 10px;
+   padding-left: 10px;
+   padding-right: 10px;
+   padding-top: 10px;
+   text-align: center;
+   width: 20%;
+}
+
+.green_cell
+{
+   background-color: #283E1A;
+   border-left: solid 1px black;
+   border-top: solid 1px black;
+   height: 30px;
+   padding-bottom: 4px;
+   padding-left: 10px;
+   padding-right: 15px;
+   padding-top: 4px;
+   text-indent: 10px;
+}
+
+.light_gray_cell
+{
+   background-color: #ACB9CA;
+   border-left: solid 1px black;
+   border-right: solid 1px black;
+   color: maroon;
+   font-size: 18pt;
+   font-weight: bold;
+   height: 30px;
+   padding-bottom: 10px;
+   padding-left: 10px;
+   padding-right: 10px;
+   padding-top: 10px;
+   text-align: center;
+}
+
+.red_cell {
+   background-color: maroon;
+   border-left: solid 1px black;
+   border-top: solid 1px black;
+   height: 30px;
+   padding-bottom: 4px;
+   padding-left: 10px;
+   padding-right: 15px;
+   padding-top: 4px;
+   text-indent: 10px;
+}
+
+.table
+{
+   background-color: black;
+   border-spacing: 0px;
+   color: white;
+   font-family: Calibri;
+   height: 100%;
+   text-align: left;
+   white-space: nowrap;       
+   width: 100%;
+}

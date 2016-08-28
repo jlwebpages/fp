@@ -94,8 +94,7 @@ function display_last_modified (last_modified_document, display_document)
          break;
    }
 
-   display_document.write(Day," - ",Month," ",Last_Modified.getDate(),", ",
-                          Last_Modified.getFullYear()," - ",Hour,":",Minute," ",AM_PM);
+   display_document.write(Day," - ",Month," ",Last_Modified.getDate(),", ",Last_Modified.getFullYear()," - ",Hour,":",Minute," ",AM_PM);
 
    return true;
 }
