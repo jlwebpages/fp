@@ -1,8 +1,11 @@
+<!DOCTYPE html>
 <html>
 
 <head>
 
    <title>NFL Football Pool</title>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1">
 
    <link href="fp.css" rel="stylesheet" type="text/css">
 
@@ -13,7 +16,7 @@
 
       // Define mobile device flag.
 
-      var mobile = f;
+      var mobile = t;
 
       // Manually set the Football Pool year at the beginning of the season.
 
@@ -799,7 +802,7 @@
    {
       if (frame_name == "fp_main")
       {
-         document.getElementById("fp_frameset").cols="155px,*,0";
+         document.getElementById("fp_frameset").cols="*,0";
 
          if (fp_main.input_form_element_to_focus_on != null)
          {
@@ -808,7 +811,7 @@
       }
       else if (frame_name == "fp_picks")
       {
-         document.getElementById("fp_frameset").cols="155px,0,*";
+         document.getElementById("fp_frameset").cols="0,*";
       }
    }
 
@@ -816,15 +819,14 @@
 
 </head>
 
-<frameset rows="70px,*" border="0">
+<frameset rows="60px,*" border="0">
 
-   <frame src="fp_header.html" name="fp_header" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
+   <frame src="fp_header_mobile.html" name="fp_header" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
 
-   <frameset id="fp_frameset" cols="155px,*,0" border="0">
+   <frameset id="fp_frameset" cols="*,0" border="0">
 
-      <frame src="fp_content.html"            name="fp_content" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
-      <frame src="fp_main.html"               name="fp_main"    frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
-      <frame src="fp_display_main_frame.html" name="fp_picks"   frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
+      <frame src="fp_main_mobile.html"        name="fp_main"  frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
+      <frame src="fp_display_main_frame.html" name="fp_picks" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
 
    </frameset>
 

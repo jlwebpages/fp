@@ -1822,35 +1822,52 @@ xmlns="http://www.w3.org/TR/REC-html40">
    width: 100%;
 ">
 
-<tr>
-<td style="
-   background-color: #8497B0;
-   border-left: solid 1px black;
-   border-top: solid 1px black;
-   height: 30px;
-   padding-bottom: 10px;
-   padding-left: 10px;
-   padding-right: 10px;
-   padding-top: 10px;
-   width: 20%;
-">
-<a href="" onClick=top.display_frame("fp_main");>RETURN</a>
-</td>
-<td style="
-   background-color: #8497B0;
-   border-left: solid 1px black;
-   border-right: solid 1px black;
-   border-top: solid 1px black;
-   height: 30px;
-   padding-bottom: 10px;
-   padding-left: 10px;
-   padding-right: 10px;
-   padding-top: 10px;
-   width: 20%;
-">
-<a href="fp.html" target="_top">HOME</a>
-</td>
-</tr>
+<script>
+
+if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )
+{
+   // Do nothing.
+
+   ;
+}
+else
+{
+   //  Write table row to document.
+
+   document.writeln('<tr>');
+   document.writeln('<td style="');
+   document.writeln('   background-color: #8497B0;');
+   document.writeln('   border-left: solid 1px black;');
+   document.writeln('   border-top: solid 1px black;');
+   document.writeln('   height: 30px;');
+   document.writeln('   padding-bottom: 10px;');
+   document.writeln('   padding-left: 10px;');
+   document.writeln('   padding-right: 10px;');
+   document.writeln('   padding-top: 10px;');
+   document.writeln('   width: 20%;');
+   document.writeln('">');
+   document.writeln('RESULTS');
+   document.writeln('</td>');
+   document.writeln('');
+   document.writeln('<td style="');
+   document.writeln('   background-color: #8497B0;');
+   document.writeln('   border-left: solid 1px black;');
+   document.writeln('   border-right: solid 1px black;');
+   document.writeln('   border-top: solid 1px black;');
+   document.writeln('   height: 30px;');
+   document.writeln('   padding-bottom: 10px;');
+   document.writeln('   padding-left: 10px;');
+   document.writeln('   padding-right: 10px;');
+   document.writeln('   padding-top: 10px;');
+   document.writeln('   width: 20%;');
+   document.writeln('">');
+   document.writeln('<a href="fp.html" target="_top">HOME</a>');
+   document.writeln('</td>');
+   document.writeln('</tr>');
+   document.writeln('');
+}
+
+</script>
 
 <tr><td colspan=2 style="
    background-color: #ACB9CA;

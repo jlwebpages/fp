@@ -30,6 +30,24 @@ function build_forms_page()
    {
       return false;
    }
+   else
+   {
+      // If browser is IE or Edge, don't redisplay this page when the back button is hit.
+
+      if ( (window.navigator.userAgent.indexOf("MSID") > 0)    ||
+           (window.navigator.userAgent.indexOf("Trident") > 0) ||
+           (window.navigator.userAgent.indexOf("Edge") > 0)       )
+      {
+         if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )
+         {
+            window.history.pushState("","","fp_main_mobile.html");
+         }
+         else
+         {
+            window.history.pushState("","","fp_main.html");
+         }
+      }
+   }
 
    var current_input_week = top.current_input_week;
 
@@ -369,10 +387,25 @@ function build_forms_page()
    d.writeln('');
    d.writeln('<table class="table">');
    d.writeln('');
-   d.writeln('<tr>');
-   d.writeln('<td class="dark_gray_cell">FORMS</td>');
-   d.writeln('<td class="dark_gray_cell" style="border-right: solid 1px black"><a class="red_link" href="fp.html" target="_top">HOME</a></td>');
-   d.writeln('</tr>');
+   d.writeln('<script>');
+   d.writeln('');
+   d.writeln('if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )');
+   d.writeln('{');
+   d.writeln('   // Do nothing.');
+   d.writeln('');
+   d.writeln('   ;');
+   d.writeln('}');
+   d.writeln('else');
+   d.writeln('{');
+   d.writeln('   //  Write table row to document.');
+   d.writeln('');
+   d.writeln('   document.writeln("<tr>");');
+   d.writeln('   document.writeln("<td class=\\"dark_gray_cell\\">FORMS</td>");');
+   d.writeln('   document.writeln("<td class=\\"dark_gray_cell\\" style=\\"border-right: solid 1px black\\"><a class=\\"red_link\\" href=\\"fp.html\\" target=\\"_top\\">HOME</a></td>");');
+   d.writeln('   document.writeln("</tr>");');
+   d.writeln('}');
+   d.writeln('');
+   d.writeln('</'+'script>');
    d.writeln('');
    d.writeln('<tr><td class="light_gray_cell" style="vertical-align: top; height:100%; border-right: solid 1px black; border-bottom: solid 1px black" colspan=2>');
    d.writeln('');

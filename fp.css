@@ -1,26 +1,26 @@
 A.blue_link          {color:#002060}
-A.blue_link:active   {text-decoration: none; color: #002060;}
-A.blue_link:hover    {text-decoration: none; color: #002060;}
 A.blue_link:link     {text-decoration: none; color: #002060;}
 A.blue_link:visited  {text-decoration: none; color: #002060;}
+A.blue_link:hover    {text-decoration: none; color: #002060;}
+A.blue_link:active   {text-decoration: none; color: #002060;}
 
 A.green_link         {color:#283E1A;}
-A.green_link:active  {text-decoration: none; color: #283E1A;}
-A.green_link:hover   {text-decoration: none; color: #283E1A;}
 A.green_link:link    {text-decoration: none; color: #283E1A;}
 A.green_link:visited {text-decoration: none; color: #283E1A;}
+A.green_link:hover   {text-decoration: none; color: #283E1A;}
+A.green_link:active  {text-decoration: none; color: #283E1A;}
 
 A.red_link:          {color:maroon;}
-A.red_link:active    {text-decoration: none; color:  maroon;}
-A.red_link:hover     {text-decoration: none; color:  maroon;}
 A.red_link:link      {text-decoration: none; color:  maroon;}
 A.red_link:visited   {text-decoration: none; color:  maroon;}
+A.red_link:hover     {text-decoration: none; color:  maroon;}
+A.red_link:active    {text-decoration: none; color:  maroon;}
 
 A.white_link         {color:white;}
-A.white_link:active  {text-decoration: none; color: white;}
-A.white_link:hover   {text-decoration: none; color: white;}
 A.white_link:link    {text-decoration: none; color: white;}
 A.white_link:visited {text-decoration: none; color: white;}
+A.white_link:hover   {text-decoration: none; color: white;}
+A.white_link:active  {text-decoration: none; color: white;}
 
 .black_color           {color: black             }
 .blue_color            {color: blue              }

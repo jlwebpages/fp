@@ -9,10 +9,25 @@
 
 <table class="table">
 
-<tr>
-<td class="dark_gray_cell">HELP</td>
-<td class="dark_gray_cell" style="border-right: solid 1px black"><a class="red_link" href="fp.html" target="_top">HOME</a></td>
-</tr>
+<script>
+
+if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )
+{
+   // Do nothing.
+
+   ;
+}
+else
+{
+   //  Write table row to document.
+
+   document.writeln('<tr>');
+   document.writeln('<td class="dark_gray_cell">HELP</td>');
+   document.writeln('<td class="dark_gray_cell" style="border-right: solid 1px black"><a class="red_link" href="fp.html" target="_top">HOME</a></td>');
+   document.writeln('</tr>');
+}
+
+</script>
 
 <tr>
 <td class="light_gray_cell" style="text-align: left; font-size: 14pt; font-weight: normal; height:100%; white-space: normal; border-right: solid 1px black; border-bottom: solid 1px black" colspan=2>
