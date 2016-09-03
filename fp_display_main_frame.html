@@ -6,9 +6,25 @@
 
 <body>
 
-<!-- Make "fp_main" frame visible and "fp_pics" frame invisible -->
+<script>
 
-<script>top.display_frame("fp_main");</script>
+// Make "fp_main" frame visible and "fp_pics" frame invisible.
+
+if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )
+{
+   top.document.getElementById("fp_frameset").cols="*,0";
+}
+else
+{
+   top.document.getElementById("fp_frameset").cols="155px,*,0";
+}
+
+if (top.fp_main.input_form_element_to_focus_on != null)
+{
+   top.fp_main.input_form_element_to_focus_on.focus();
+}
+
+</script>
 
 </body>
 
