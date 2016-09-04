@@ -735,7 +735,7 @@ function build_post_season_form()
    d.writeln('   <style type="text/css">');
    d.writeln('   <!--');
    d.writeln('      TD              {border-style:        solid;');
-   d.writeln('                       border-color:      gray;');
+   d.writeln('                       border-color:    lightgray;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    0px;');
    d.writeln('                       border-bottom-width:   0px;');
@@ -772,37 +772,37 @@ function build_post_season_form()
    d.writeln('                       border-bottom-width:   2px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .br2_gb1_border {border-style:        solid;');
-   d.writeln('                       border-color: white black gray white;');
+   d.writeln('                       border-color: white black lightgray white;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    2px;');
    d.writeln('                       border-bottom-width:   1px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .gb1_border     {border-style:        solid;');
-   d.writeln('                       border-color:      gray;');
+   d.writeln('                       border-color:    lightgray;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    0px;');
    d.writeln('                       border-bottom-width:   1px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .gr1_border     {border-style:        solid;');
-   d.writeln('                       border-color:      gray;');
+   d.writeln('                       border-color:    lightgray;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    1px;');
    d.writeln('                       border-bottom-width:   0px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .gr1_bb1_border {border-style:        solid;');
-   d.writeln('                       border-color: white gray black white;');
+   d.writeln('                       border-color: white lightgray black white;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    1px;');
    d.writeln('                       border-bottom-width:   1px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .gr1_bb2_border {border-style:        solid;');
-   d.writeln('                       border-color: white gray black white;');
+   d.writeln('                       border-color: white lightgray black white;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    1px;');
    d.writeln('                       border-bottom-width:   2px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .gr1_gb1_border {border-style:        solid;');
-   d.writeln('                       border-color: white gray gray white;');
+   d.writeln('                       border-color: white lightgray lightgray white;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    1px;');
    d.writeln('                       border-bottom-width:   1px;');
@@ -1526,13 +1526,13 @@ function build_post_season_form()
       {
          for (var j = 1; j <= number_of_games; j++)
          {
-            input_tag_style = "text-align:center; font-size: 10pt; font-family: Calibri; color: blue; border: 1px solid gray";
+            input_tag_style = "text-align:center; font-size: 10pt; font-family: Calibri; border: 1px solid lightgray; color: blue";
 
             if ( (visiting_teams[gi-1] == victors[j-1]) || (home_teams[gi-1] == victors[j-1]) )
             {
                // Highlight the background of the scores to signify that the game has concluded.
 
-               input_tag_style = "text-align:center; font-size: 10pt; font-family: Calibri; color: blue; background-color: #CCFFFF; border: 1px solid gray";
+               input_tag_style = "text-align:center; font-size: 10pt; font-family: Calibri; border: 1px solid lightgray; color: blue; background-color: #CCFFFF";
 
                break;
             }
@@ -2607,7 +2607,7 @@ function build_regular_season_form()
    d.writeln('   <style type="text/css">');
    d.writeln('   <!--');
    d.writeln('      TD              {border-style:        solid;');
-   d.writeln('                       border-color:      gray;');
+   d.writeln('                       border-color:    lightgray;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    1px;');
    d.writeln('                       border-bottom-width:   1px;');
@@ -2649,7 +2649,7 @@ function build_regular_season_form()
    d.writeln('                       border-bottom-width:   2px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .br2_gb1_border {border-style:        solid;');
-   d.writeln('                       border-color: white black gray white;');
+   d.writeln('                       border-color: white black lightgray white;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    2px;');
    d.writeln('                       border-bottom-width:   1px;');
@@ -2667,31 +2667,31 @@ function build_regular_season_form()
    d.writeln('                       border-bottom-width:   0px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .bt2_gr1_border {border-style:        solid;');
-   d.writeln('                       border-color: black gray white white;');
+   d.writeln('                       border-color: black lightgray white white;');
    d.writeln('                       border-top-width:      2px;');
    d.writeln('                       border-right-width:    1px;');
    d.writeln('                       border-bottom-width:   0px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .gb1_border     {border-style:        solid;');
-   d.writeln('                       border-color:      gray;');
+   d.writeln('                       border-color:    lightgray;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    0px;');
    d.writeln('                       border-bottom-width:   1px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .gr1_border     {border-style:        solid;');
-   d.writeln('                       border-color:      gray;');
+   d.writeln('                       border-color:    lightgray;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    1px;');
    d.writeln('                       border-bottom-width:   0px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .gr1_bb1_border {border-style:        solid;');
-   d.writeln('                       border-color: white gray black white;');
+   d.writeln('                       border-color: white lightgray black white;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    1px;');
    d.writeln('                       border-bottom-width:   1px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .gr1_bb2_border {border-style:        solid;');
-   d.writeln('                       border-color: white gray black white;');
+   d.writeln('                       border-color: white lightgray black white;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    1px;');
    d.writeln('                       border-bottom-width:   2px;');
@@ -3674,7 +3674,7 @@ function build_regular_season_form()
    }
    else
    {
-      d.writeln('<select style="font-family: Calibri; font-size: 13pt; font-weight: bold; background-color: #CCFFCC; border: 1px solid black" name="selected_week_menu" size=1');
+      d.writeln('<select style="font-family: Calibri; font-size: 13pt; font-weight: bold; background-color: #CCFFCC; border: 1px solid gray" name="selected_week_menu" size=1');
       d.writeln('  onChange="change_week(document); return true;">');
       for (var i = 1; i <= unaltered_week; i++)
       {
@@ -3734,13 +3734,13 @@ function build_regular_season_form()
       {
          for (var j = 1; j <= number_of_games; j++)
          {
-            input_tag_style = "font-size:11pt; font-family: Calibri";
+            input_tag_style = "font-size:11pt; font-family: Calibri; border: 1px solid lightgray";
 
             if ( (visiting_teams[i-1] == victors[j-1]) || (home_teams[i-1] == victors[j-1]) )
             {
                // Highlight the background of the pick to signify that the game has concluded.
 
-               input_tag_style = "font-size:11pt; font-family: Calibri; background-color:#CCFFFF;";
+               input_tag_style = "font-size:11pt; font-family: Calibri; border: 1px solid lightgray; background-color:#CCFFFF;";
 
                // Check for a game ending in a tie.
 
@@ -4841,7 +4841,7 @@ function build_season_summary()
    d.writeln('   <style type="text/css">');
    d.writeln('   <!--');
    d.writeln('      TD              {border-style:        solid;');
-   d.writeln('                       border-color:      gray;');
+   d.writeln('                       border-color:    lightgray;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    1px;');
    d.writeln('                       border-bottom-width:   1px;');
@@ -4883,7 +4883,7 @@ function build_season_summary()
    d.writeln('                       border-bottom-width:   2px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .br2_gb1_border {border-style:        solid;');
-   d.writeln('                       border-color: white black gray white;');
+   d.writeln('                       border-color: white black lightgray white;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    2px;');
    d.writeln('                       border-bottom-width:   1px;');
@@ -4901,37 +4901,37 @@ function build_season_summary()
    d.writeln('                       border-bottom-width:   0px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .bt2_gr1_border {border-style:        solid;');
-   d.writeln('                       border-color: black gray white white;');
+   d.writeln('                       border-color: black lightgray white white;');
    d.writeln('                       border-top-width:      2px;');
    d.writeln('                       border-right-width:    1px;');
    d.writeln('                       border-bottom-width:   0px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .gb1_border     {border-style:        solid;');
-   d.writeln('                       border-color:      gray;');
+   d.writeln('                       border-color:    lightgray;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    0px;');
    d.writeln('                       border-bottom-width:   1px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .gr1_border     {border-style:        solid;');
-   d.writeln('                       border-color:      gray;');
+   d.writeln('                       border-color:    lightgray;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    1px;');
    d.writeln('                       border-bottom-width:   0px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .gr1_bb1_border {border-style:        solid;');
-   d.writeln('                       border-color: white gray black white;');
+   d.writeln('                       border-color: white lightgray black white;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    1px;');
    d.writeln('                       border-bottom-width:   1px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .gr1_bb2_border {border-style:        solid;');
-   d.writeln('                       border-color: white gray black white;');
+   d.writeln('                       border-color: white lightgray black white;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    1px;');
    d.writeln('                       border-bottom-width:   2px;');
    d.writeln('                       border-left-width:     0px}');
    d.writeln('      .gr1_gb1_border {border-style:        solid;');
-   d.writeln('                       border-color: white gray gray white;');
+   d.writeln('                       border-color: white lightgray lightgray white;');
    d.writeln('                       border-top-width:      0px;');
    d.writeln('                       border-right-width:    1px;');
    d.writeln('                       border-bottom-width:   1px;');
