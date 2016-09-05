@@ -1,3 +1,4 @@
+
 function display_last_modified (last_modified_document, display_document)
 {
    if (last_modified_document.lastModified == 0)

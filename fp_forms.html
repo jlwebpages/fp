@@ -30,28 +30,10 @@ function build_forms_page()
    {
       return false;
    }
-   else
-   {
-      // If browser is IE or Edge, don't redisplay this page when the back button is hit.
-
-      if ( (window.navigator.userAgent.indexOf("MSID") > 0)    ||
-           (window.navigator.userAgent.indexOf("Trident") > 0) ||
-           (window.navigator.userAgent.indexOf("Edge") > 0)       )
-      {
-         if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )
-         {
-            window.history.pushState("","","fp_main_mobile.html");
-         }
-         else
-         {
-            window.history.pushState("","","fp_main.html");
-         }
-      }
-   }
 
    var current_input_week = top.current_input_week;
 
-   document.open();
+   document.open("text/html","replace");
 
    var d = document;
 
