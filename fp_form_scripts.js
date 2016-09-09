@@ -1552,7 +1552,7 @@ function build_post_season_form()
 
                if (post_season_red_zone_flags[j-1] == true) bullet_color = color_red;
 
-               visiting_team_possession_flag = "<span style='font-weight:bold; font-size:125%; color:"+bullet_color+"'>\u2022&nbsp;</span>";
+               visiting_team_possession_flag = "<span style='font-weight:bold; color:"+bullet_color+"'>\u2022&nbsp;</span>";
 
                // Reset possession team and red zone flag
 
@@ -1567,7 +1567,7 @@ function build_post_season_form()
 
                if (post_season_red_zone_flags[j-1] == true) bullet_color = color_red;
 
-               home_team_possession_flag = "<span style='font-weight:bold; font-size:125%; color:"+bullet_color+"'>\u2022&nbsp;</span>";
+               home_team_possession_flag = "<span style='font-weight:bold; color:"+bullet_color+"'>\u2022&nbsp;</span>";
 
                // Reset possession team and red zone flag
 
@@ -3764,7 +3764,7 @@ function build_regular_season_form()
 
                if (prelim_red_zone_flags[j-1] == true) bullet_color = color_red;
 
-               visiting_team_possession_flag = "<span style='font-weight:bold; font-size:125%; color:"+bullet_color+"'>\u2022&nbsp;</span>";
+               visiting_team_possession_flag = "<span style='font-weight:bold; color:"+bullet_color+"'>\u2022&nbsp;</span>";
 
                // Reset possession team and red zone flag
 
@@ -3779,7 +3779,7 @@ function build_regular_season_form()
 
                if (prelim_red_zone_flags[j-1] == true) bullet_color = color_red;
 
-               home_team_possession_flag = "<span style='font-weight:bold; font-size:125%; color:"+bullet_color+"'>\u2022&nbsp;</span>";
+               home_team_possession_flag = "<span style='font-weight:bold; color:"+bullet_color+"'>\u2022&nbsp;</span>";
 
                // Reset possession team and red zone flag
 
