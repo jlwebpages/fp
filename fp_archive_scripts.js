@@ -1,8 +1,11 @@
 
 function display_archive_page(archive_year)
 {
-   var min_archive_year = 1997;
-   var max_archive_year = 2015;
+   var local_mobile_flag = false;
+   var min_archive_year  = 1997;
+   var max_archive_year  = 2015;
+
+   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) ) local_mobile_flag = true;
 
    if ( (archive_year < min_archive_year) || (archive_year > max_archive_year) )
    {
@@ -211,25 +214,15 @@ function display_archive_page(archive_year)
    d.writeln('');
    d.writeln('<table class="table">');
    d.writeln('');
-   d.writeln('<script>');
-   d.writeln('');
-   d.writeln('if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )');
-   d.writeln('{');
-   d.writeln('   // Do nothing.');
-   d.writeln('');
-   d.writeln('   ;');
-   d.writeln('}');
-   d.writeln('else');
-   d.writeln('{');
-   d.writeln('   //  Write table row to document.');
-   d.writeln('');
-   d.writeln('   document.writeln("<tr>");');
-   d.writeln('   document.writeln("<td class=\\"dark_gray_cell\\">ARCHIVE</td>");');
-   d.writeln('   document.writeln("<td class=\\"dark_gray_cell\\" style=\\"border-right: solid 1px black\\"><a class=\\"red_link\\" href=\\"fp.html\\" target=\\"_top\\">HOME</a></td>");');
-   d.writeln('   document.writeln("</tr>");');
-   d.writeln('}');
-   d.writeln('');
-   d.writeln('</'+'script>');
+   if (local_mobile_flag == false)
+   {
+      // Write table row to document.
+
+      d.writeln('<tr>');
+      d.writeln('<td class="dark_gray_cell">ARCHIVE</td>');
+      d.writeln('<td class="dark_gray_cell" style="border-right: solid 1px black"><a class="red_link" href="fp.html" target="_top">HOME</a></td>');
+      d.writeln('</tr>');
+   }
    d.writeln('');
    d.writeln('<tr><td class="light_gray_cell" style="font-size: 16pt; vertical-align: top; height:100%; border-right: solid 1px black; border-bottom: solid 1px black" colspan=2>');
    d.writeln('');
