@@ -87,6 +87,7 @@ function build_forms_page()
    d.writeln("      w.gv.document.writeln('var get_winners_timer;');");
    d.writeln("      w.gv.document.writeln('var home_scores;');");
    d.writeln("      w.gv.document.writeln('var mn_points_entered;');");
+   d.writeln("      w.gv.document.writeln('var mobile;');");
    d.writeln("      w.gv.document.writeln('var mode;');");
    d.writeln("      w.gv.document.writeln('var opponent_index;');");
    d.writeln("      w.gv.document.writeln('var order_by;');");
@@ -169,6 +170,7 @@ function build_forms_page()
    d.writeln('      w.gv.get_winners_timer       = null;');
    d.writeln('      w.gv.home_scores             = ["","","","","","","","","","","","","","","",""];');
    d.writeln('      w.gv.mn_points_entered       = 0;');
+   d.writeln('      w.gv.mobile                  = top.mobile;');
    d.writeln('      w.gv.mode                    = received_mode;');
    d.writeln('      w.gv.opponent_index          = 0;');
    d.writeln('      w.gv.order_by                = "players";');
@@ -328,6 +330,7 @@ function build_forms_page()
    d.writeln("      w.gv.document.writeln('var get_scores_state;');");
    d.writeln("      w.gv.document.writeln('var get_scores_timer;');");
    d.writeln("      w.gv.document.writeln('var home_scores;');");
+   d.writeln("      w.gv.document.writeln('var mobile;');");
    d.writeln("      w.gv.document.writeln('var mode;');");
    d.writeln("      w.gv.document.writeln('var order_by;');");
    d.writeln("      w.gv.document.writeln('var player_index;');");
@@ -348,6 +351,7 @@ function build_forms_page()
    d.writeln('      w.gv.get_scores_state             = "off";');
    d.writeln('      w.gv.get_scores_timer             = null;');
    d.writeln('      w.gv.home_scores                  = ["0","0","0","0","0","0","0","0","0","0","0"];');
+   d.writeln('      w.gv.mobile                       = top.mobile;');
    d.writeln('      w.gv.mode                         = received_mode;');
    d.writeln('      w.gv.order_by                     = "players";');
    d.writeln('      w.gv.player_index                 = top.player_index;');

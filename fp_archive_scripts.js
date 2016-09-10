@@ -86,6 +86,7 @@ function display_archive_page(archive_year)
    d.writeln("      w.gv.document.writeln('var form_view;');");
    d.writeln("      w.gv.document.writeln('var games_over;');");
    d.writeln("      w.gv.document.writeln('var home_scores;');");
+   d.writeln("      w.gv.document.writeln('var mobile;');");
    d.writeln("      w.gv.document.writeln('var mode;');");
    d.writeln("      w.gv.document.writeln('var order_by;');");
    d.writeln("      w.gv.document.writeln('var player_index;');");
@@ -102,6 +103,7 @@ function display_archive_page(archive_year)
    d.writeln('      w.gv.form_view               = "expanded";');
    d.writeln('      w.gv.games_over              = true;');
    d.writeln('      w.gv.home_scores             = ["0","0","0","0","0","0","0","0","0","0","0"];');
+   d.writeln('      w.gv.mobile                  = top.mobile;');
    d.writeln('      w.gv.mode                    = "summary_archive";');
    d.writeln('      w.gv.order_by                = "players";');
    d.writeln('      w.gv.player_index            = 0;');
@@ -164,6 +166,7 @@ function display_archive_page(archive_year)
    d.writeln("      w.gv.document.writeln('var games_over;');");
    d.writeln("      w.gv.document.writeln('var home_scores;');");
    d.writeln("      w.gv.document.writeln('var mn_points_entered;');");
+   d.writeln("      w.gv.document.writeln('var mobile;');");
    d.writeln("      w.gv.document.writeln('var mode;');");
    d.writeln("      w.gv.document.writeln('var opponent_index;');");
    d.writeln("      w.gv.document.writeln('var order_by;');");
@@ -186,6 +189,7 @@ function display_archive_page(archive_year)
    d.writeln('      w.gv.games_over          = true;');
    d.writeln('      w.gv.home_scores         = ["","","","","","","","","","","","","","","",""];');
    d.writeln('      w.gv.mn_points_entered   = 0;');
+   d.writeln('      w.gv.mobile              = top.mobile;');
    d.writeln('      w.gv.mode                = received_mode;');
    d.writeln('      w.gv.opponent_index      = 0;');
    d.writeln('      w.gv.order_by            = "players";');

@@ -1410,8 +1410,11 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('<center>');
    d.writeln('');
-   d.writeln('<font style="font-family: Calibri; font-size: 16pt; font-weight: bold; color: maroon; padding: 10px">'+document_heading+'</font><p>');
-   d.writeln('');
+   if (top.gv.mobile == false)
+   {
+      d.writeln('<font style="font-family: Calibri; font-size: 16pt; font-weight: bold; color: maroon; padding: 10px">'+document_heading+'</font><p>');
+      d.writeln('');
+   }
 
    d.writeln('<form name="fp_scores">');
    d.writeln('');
@@ -3645,8 +3648,11 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('<center>');
    d.writeln('');
-   d.writeln('<font style="font-family: Calibri; font-size: 16pt; font-weight: bold; color: maroon; padding: 10px">'+document_heading+'</font><p>');
-   d.writeln('');
+   if (top.gv.mobile == false)
+   {
+      d.writeln('<font style="font-family: Calibri; font-size: 16pt; font-weight: bold; color: maroon; padding: 10px">'+document_heading+'</font><p>');
+      d.writeln('');
+   }
 
    d.writeln('<form name="fp_results">');
    d.writeln('');
@@ -5013,8 +5019,11 @@ function build_season_summary()
    d.writeln('');
    d.writeln('<center>');
    d.writeln('');
-   d.writeln('<font style="font-family: Calibri; font-size: 16pt; font-weight: bold; color: maroon; padding: 10px">'+document_heading+'</font><p>');
-   d.writeln('');
+   if (top.gv.mobile == false)
+   {
+      d.writeln('<font style="font-family: Calibri; font-size: 16pt; font-weight: bold; color: maroon; padding: 10px">'+document_heading+'</font><p>');
+      d.writeln('');
+   }
 
    d.writeln('<form name="fp_results">');
    d.writeln('');
