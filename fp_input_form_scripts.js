@@ -293,12 +293,11 @@ function build_regular_season_form()
    d.writeln('function display_picks_message(picks_message,message_mode)');
    d.writeln('{');
    d.writeln('   var background_color     = "";');
-   d.writeln('   var blue_color           = "#CCFFFF";');
    d.writeln('   var button_1             = "Go Back";');
    d.writeln('   var button_2             = "";');
    d.writeln('   var button_3             = "";');
    d.writeln('   var dialog_frame         = null;');
-   d.writeln('   var green_color          = "#CCFFCC";');
+   d.writeln('   var green_color          = "#C4D79B";');
    d.writeln('   var random_picks_message = "";');
    d.writeln('   var red_color            = "#FFCCCC";');
    d.writeln('   var white_color          = "white";');
@@ -313,7 +312,7 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('   else if (message_mode == "confirm_picks")');
    d.writeln('   {');
-   d.writeln('      background_color = blue_color;');
+   d.writeln('      background_color = green_color;');
    d.writeln('      button_2         = "Submit";');
    d.writeln('      button_3         = "Copy";');
    d.writeln('   }');
@@ -1846,17 +1845,17 @@ function build_regular_season_form()
    {
       d.writeln('        border=0');
    }
-   d.writeln('       bgcolor=#FFFFFA');
+   d.writeln('       bgcolor=white');
    d.writeln('   cellspacing=0');
    d.writeln('   cellpadding=3>');
    d.writeln('');
 
-   d.writeln('<tr VALIGN=CENTER bgcolor=#CCFFCC>');
+   d.writeln('<tr VALIGN=CENTER bgcolor=#C4D79B>');
    d.writeln('<td ALIGN=RIGHT class="bb2_border" colspan=2>');
    d.writeln('<b>NAME:</b>');
    d.writeln('</td>');
    d.writeln('<td VALIGN=LEFT class="bb2_border" colspan=4>');
-   d.writeln('<select style="font-size: 12pt; font-family: Calibri; background-color:#CCFFCC; border: 1px solid gray" name="player_name_menu" size=1>');
+   d.writeln('<select style="font-size: 12pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1>');
    for (var i = 0; i <= top.number_of_rs_players; i++)
    {
       switch (i)
@@ -1874,7 +1873,7 @@ function build_regular_season_form()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr ALIGN=CENTER bgcolor=#CCFFFF>');
+   d.writeln('<tr ALIGN=CENTER bgcolor=#DCE6F1>');
    d.writeln('<td class="br2_bb2_border"><b>GAME</b></td>');
    d.writeln('<td class="bb2_border"><b>VISITOR</b></td>');
    d.writeln('<td class="bb2_border"><br></td>');
@@ -1936,7 +1935,7 @@ function build_regular_season_form()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=center bgcolor=#CCFFFF>');
+   d.writeln('<tr align=center bgcolor=#DCE6F1>');
    d.writeln('<td class="bt2_border" colspan="6">');
    d.writeln('<b>Open Date:</b>&nbsp;&nbsp;'+open_date);
    d.writeln('</td>');
@@ -2232,15 +2231,15 @@ function build_post_season_form()
    d.writeln('function display_picks_message(picks_message,message_mode)');
    d.writeln('{');
    d.writeln('   var background_color = "";');
-   d.writeln('   var blue_color       = "#CCFFFF";');
    d.writeln('   var button_1         = "Go Back";');
    d.writeln('   var button_2         = "Submit";');
    d.writeln('   var button_3         = "Copy";');
    d.writeln('   var dialog_frame     = null;');
+   d.writeln('   var green_color      = "#C4D79B";');
    d.writeln('   var white_color      = "white";');
    d.writeln('');
    d.writeln('');
-   d.writeln('   background_color = blue_color;');
+   d.writeln('   background_color = green_color;');
    d.writeln('');
    d.writeln('   if (message_mode == "copy")');
    d.writeln('   {');
@@ -2987,17 +2986,17 @@ function build_post_season_form()
    {
       d.writeln('        border=0');
    }
-   d.writeln('       bgcolor=#FFFFFA');
+   d.writeln('       bgcolor=white');
    d.writeln('   cellspacing=0');
    d.writeln('   cellpadding=5>');
    d.writeln('');
 
-   d.writeln('<tr VALIGN=CENTER bgcolor=#CCFFCC>');
+   d.writeln('<tr VALIGN=CENTER bgcolor=#C4D79B>');
    d.writeln('<td ALIGN=RIGHT class="bb2_border" colspan=2>');
    d.writeln('<b><font size=+1>NAME:</font></b>');
    d.writeln('</td>');
    d.writeln('<td VALIGN=LEFT class="bb2_border" colspan=5>');
-   d.writeln('<select style="font-size: 13pt; font-family: Calibri; background-color:#CCFFCC; border: 1px solid gray" name="player_name_menu" size=1>');
+   d.writeln('<select style="font-size: 13pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1>');
    for (var i = 0; i <= top.number_of_ps_players; i++)
    {
       switch (i)
@@ -3015,7 +3014,7 @@ function build_post_season_form()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr ALIGN=CENTER bgcolor=#CCFFFF>');
+   d.writeln('<tr ALIGN=CENTER bgcolor=#DCE6F1>');
    d.writeln('<td class="br2_bb2_border"><font size=+1><b>GAME</b></font></td>');
    d.writeln('<td class="bb2_border"><font size=+1><b>VISITOR</b></font></td>');
    d.writeln('<td class="bb2_border"><font size=+1><br></font></td>');

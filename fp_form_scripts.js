@@ -1429,7 +1429,7 @@ function build_post_season_form()
    {
       d.writeln('        border=0');
    }
-   d.writeln('       bgcolor=#FFFFFA');
+   d.writeln('       bgcolor=white');
    d.writeln('   cellpadding=2');
    d.writeln('   cellspacing=0>');
    d.writeln('');
@@ -3667,12 +3667,12 @@ function build_regular_season_form()
    {
       d.writeln('       border=0');
    }
-   d.writeln('       bgcolor=#FFFFFA');
+   d.writeln('       bgcolor=white');
    d.writeln('       cellpadding=2');
    d.writeln('       cellspacing=0>');
    d.writeln('');
 
-   d.writeln('<tr align=center bgcolor=#CCFFCC>');
+   d.writeln('<tr align=center bgcolor=#C4D79B>');
    d.writeln('<td class="br2_bb2_border" colspan=4>');
    if (mode == "prelim")
    {
@@ -3680,7 +3680,7 @@ function build_regular_season_form()
    }
    else
    {
-      d.writeln('<select style="font-family: Calibri; font-size: 13pt; font-weight: bold; background-color: #CCFFCC; border: 1px solid gray" name="selected_week_menu" size=1');
+      d.writeln('<select style="font-family: Calibri; font-size: 13pt; font-weight: bold; background-color: #C4D79B; border: 1px solid gray" name="selected_week_menu" size=1');
       d.writeln('  onChange="change_week(document); return true;">');
       for (var i = 1; i <= unaltered_week; i++)
       {
@@ -3710,7 +3710,7 @@ function build_regular_season_form()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=center bgcolor=#CCFFFF>');
+   d.writeln('<tr align=center bgcolor=#DCE6F1>');
    d.writeln('<td class="bb2_border"><font size=+0><b>VISITOR</b></font></td>');
    d.writeln('<td class="bb2_border"><font size=+0><br></font></td>');
    d.writeln('<td class="gr1_bb2_border"><font size=+0><b>HOME</b></font></td>');
@@ -3746,7 +3746,7 @@ function build_regular_season_form()
             {
                // Highlight the background of the pick to signify that the game has concluded.
 
-               input_tag_style = "font-size:11pt; font-family: Calibri; border: 1px solid lightgray; background-color:#CCFFFF;";
+               input_tag_style = "font-size:11pt; font-family: Calibri; border: 1px solid lightgray; background-color:#DCE6F1;";
 
                // Check for a game ending in a tie.
 
@@ -4090,11 +4090,11 @@ function build_regular_season_form()
          {
             if (i == number_of_rs_players)
             {
-               d.writeln('<td class="bt2_border" bgcolor=#CCFFFF><font size=+0 color=blue>'+scores[player_index[i-1]]+'</font></td>');
+               d.writeln('<td class="bt2_border" bgcolor=#DCE6F1><font size=+0 color=blue>'+scores[player_index[i-1]]+'</font></td>');
             }
             else
             {
-               d.writeln('<td class="bt2_br2_border" bgcolor=#CCFFFF><font size=+0 color=blue>'+scores[player_index[i-1]]+'</font></td>');
+               d.writeln('<td class="bt2_br2_border" bgcolor=#DCE6F1><font size=+0 color=blue>'+scores[player_index[i-1]]+'</font></td>');
             }
          }
          else
@@ -4454,11 +4454,11 @@ function build_season_summary()
    var border_class_3            = "";
    var color_blue                = "blue";
    var color_green               = "#008800";
-   var color_light_blue          = "#CCFFFF";
-   var color_light_green         = "#CCFFCC";
-   var color_light_yellow        = "#FFFFCC";
+   var color_light_blue          = "#DCE6F1";
+   var color_light_green         = "#C4D79B";
+   var color_light_yellow        = "#FFFFE1";
    var color_red                 = "red";
-   var color_teal                = "#4BACC6";
+   var color_teal                = "#B7DEE8";
    var column_span               = 3;
    var document_heading          = "Regular Season Summary";
    var font_color                = "";
@@ -5038,7 +5038,7 @@ function build_season_summary()
    {
       d.writeln('       border=0');
    }
-   d.writeln('       bgcolor=#FFFFFA');
+   d.writeln('       bgcolor=white');
    d.writeln('       cellpadding=2');
    d.writeln('       cellspacing=0>');
    d.writeln('');
