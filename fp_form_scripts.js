@@ -5184,8 +5184,8 @@ function build_season_summary()
 
                if (all_games_won[week_index][sort_index[player_index]] == weekly_max_games_won)
                {
-                  bold_end      = "</B>";
-                  bold_start    = "<B>";
+                  bold_end      = "";
+                  bold_start    = "";
                   td_background = "bgcolor=" + color_light_blue;
 
                   // Make the background color teal if the player had a perfect week and picked all games correctly.
@@ -5207,8 +5207,8 @@ function build_season_summary()
 
             if (all_scores[week_index][sort_index[player_index]] == weekly_max_score)
             {
-               bold_end      = "</B>";
-               bold_start    = "<B>";
+               bold_end      = "";
+               bold_start    = "";
                td_background = "bgcolor=" + color_light_blue;
             }
             else if (all_scores[week_index][sort_index[player_index]] == player_low_scores[sort_index[player_index]])
@@ -5264,14 +5264,15 @@ function build_season_summary()
 
       if (form_view == "expanded")
       {
+         font_color    = "black";
          td_background = "";
 
          if (total_ranks[sort_index[player_index]] == 1)
          {
+            font_color    = "color=" + color_blue;
             td_background = "bgcolor=" + color_light_blue;
          }
 
-         d.writeln('<td '+td_background+' class="gr1_bb1_border"><font size=-1><b>'+total_ranks[sort_index[player_index]]+'</b></font></td>');
 
          td_background = "";
 
