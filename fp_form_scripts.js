@@ -5273,6 +5273,7 @@ function build_season_summary()
             td_background = "bgcolor=" + color_light_blue;
          }
 
+         d.writeln('<td '+td_background+' class="gr1_bb1_border"><font size=-1 '+font_color+'><b>'+total_ranks[sort_index[player_index]]+'</b></font></td>');
 
          td_background = "";
 
