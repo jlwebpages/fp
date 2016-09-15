@@ -25,17 +25,7 @@ function build_regular_season_form()
 
    var current_input_week = top.current_input_week;
    var max_no_of_games    = 16;
-   var old_netscape       = false;
    var week               = current_input_week;
-
-   if ( (navigator.appName.substring(0,8) == "Netscape") && (parseInt(navigator.appVersion) < 5) )
-   {
-      old_netscape = true;
-   }
-   else
-   {
-      old_netscape = false;
-   }
 
    if (current_input_week > 17) current_input_week = 17;
    if (week > 17)                             week = 17;
@@ -1837,14 +1827,7 @@ function build_regular_season_form()
 
    d.writeln('<table   align=center');
    d.writeln('         class="b3_border"');
-   if (old_netscape == true)
-   {
-      d.writeln('        border=3');
-   }
-   else
-   {
-      d.writeln('        border=0');
-   }
+   d.writeln('        border=0');
    d.writeln('       bgcolor=white');
    d.writeln('   cellspacing=0');
    d.writeln('   cellpadding=3>');
@@ -1995,21 +1978,11 @@ function build_post_season_form()
 {
    var home_teams      = top.post_season_home_teams;
    var number_of_games = home_teams.length;
-   var old_netscape    = false;
    var visiting_teams  = top.post_season_visiting_teams;
    var week            = top.current_input_week - 17;   
 
 
    if (week < 1) week = 1;
-
-   if ( (navigator.appName.substring(0,8) == "Netscape") && (parseInt(navigator.appVersion) < 5) )
-   {
-      old_netscape = true;
-   }
-   else
-   {
-      old_netscape = false;
-   }
 
    document.open();
 
@@ -2978,14 +2951,7 @@ function build_post_season_form()
 
    d.writeln('<table align=center');
    d.writeln('         class="b3_border"');
-   if (old_netscape == true)
-   {
-      d.writeln('        border=3');
-   }
-   else
-   {
-      d.writeln('        border=0');
-   }
+   d.writeln('        border=0');
    d.writeln('       bgcolor=white');
    d.writeln('   cellspacing=0');
    d.writeln('   cellpadding=5>');
