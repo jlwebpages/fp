@@ -21,15 +21,6 @@ function build_post_season_form()
    var visiting_team_possession_flag = "";
    var week                          = window.top.gv.current_input_week - 17;
 
-   if (is_old_netscape() == true)
-   {
-      input_field_size = 3;
-   }
-   else
-   {
-      input_field_size = 1;
-   }
-
    if (mode == "prelim")
    {
       mode_string                  = "Preliminary";
@@ -1421,102 +1412,77 @@ function build_post_season_form()
 
    d.writeln('<table   align=center');
    d.writeln('         class="b3_border"');
-   if (is_old_netscape() == true)
-   {
-      d.writeln('        border=3');
-   }
-   else
-   {
-      d.writeln('        border=0');
-   }
+   d.writeln('        border=0');
    d.writeln('       bgcolor=white');
    d.writeln('   cellpadding=2');
    d.writeln('   cellspacing=0>');
    d.writeln('');
 
-   d.writeln('<tr align=center bgcolor=#CCFFCC>');
-   d.writeln('<td nowrap class="br2_border" colspan=5>');
-   d.writeln('<font size=+1 color=#000099><b>NFL POST SEASON</b></font>');
+   d.writeln('<tr align=center bgcolor=#C4D79B height=21px>');
+   d.writeln('<td nowrap class="br2_bb2_border" colspan=5>');
+   d.writeln('<font style="font-size: 14pt"><b>Week '+week+' '+mode_string+'</b></font>');
    d.writeln('</td>');
    for (var pi = 1; pi <= number_of_ps_players; pi++)
    {
       if (pi == number_of_ps_players)
       {
-         d.writeln('<td class="bb2_border" colspan='+player_colspan+'><font size=+0 color=#000099><b>'+ps_players[player_index[pi-1]]+'</b></font></td>');
+         d.writeln('<td class="bb2_border" colspan='+player_colspan+'><font style="font-size: 12pt"><b>'+ps_players[player_index[pi-1]]+'</b></font></td>');
       }
       else
       {
-         d.writeln('<td class="br2_bb2_border" colspan='+player_colspan+'><font size=+0 color=#000099><b>'+ps_players[player_index[pi-1]]+'</b></font></td>');
+         d.writeln('<td class="br2_bb2_border" colspan='+player_colspan+'><font style="font-size: 12pt"><b>'+ps_players[player_index[pi-1]]+'</b></font></td>');
       }
    }
    d.writeln('</tr>');
-   d.writeln('');
-
-   d.writeln('<tr align=center bgcolor=#CCFFFF>');
-   d.writeln('<td nowrap class="br2_bb2_border" colspan=5 bgcolor=#CCFFCC>');
-   d.writeln('<font size=+0 color=#000099><b>Week '+week+' '+mode_string+'</b></font>');
-   d.writeln('</td>');
-   for (var pi = 1; pi <= number_of_ps_players; pi++)
-   {
-      if (form_view == "expanded")
-      {
-         d.writeln('<td class="gr1_bb2_border" colspan=3><font size=-1 color=#993366>Prediction</font></td>');
-      }
-      if (pi == number_of_ps_players)
-      {
-         d.writeln('<td class="bb2_border"><font size=-1 color=blue>Score</font></td>');
-      }
-      else
-      {
-         d.writeln('<td class="br2_bb2_border"><font size=-1 color=blue>Score</font></td>');
-      }
-   }
-   d.writeln('</tr>');
-   d.writeln('');
 
    for (var gi = 1; gi <= number_of_games; gi++)
    {
       if ( (gi == 1) || (gi == 5) || (gi == 9) || (gi == 11) )
       {
-         d.writeln('<td style="padding: 1px" nowrap class="bb2_border" colspan='+heading_colspan+'>');
+         d.writeln('');
+         d.writeln('<tr height=8px>');
+         d.writeln('<td class="bb2_border" colspan='+(5+player_colspan*12)+'></td>');
+         d.writeln('</tr>');
+         d.writeln('');
+         d.writeln('<tr align=center bgcolor=#DCE6F1 height=18px>');
+
          if (gi == 1)
          {
-            d.writeln('<font size=-1 color=#000099><b>&nbsp;&nbsp;Week 1 - Wild Card Weekend</b></font>');
-            if (week_1_score_multiplier != 1)
-            {
-               d.writeln('&nbsp;<font size=-1 color=#000099>(combined scores are multiplied by '+week_1_score_multiplier+')</font>');
-            }
+            d.writeln('<td nowrap class="br2_bb2_border" colspan=5><font style="font-size: 11pt"><b>Wild Card Weekend</b></font></td>');
          }
          else if (gi == 5)
          {
-            d.writeln('<font size=-1 color=#000099><b>&nbsp;&nbsp;Week 2 - Divisional Playoffs</b></font>');
-            if (week_2_score_multiplier != 1)
-            {
-               d.writeln('&nbsp;<font size=-1 color=#000099>(combined scores are multiplied by '+week_2_score_multiplier+')</font>');
-            }
+            d.writeln('<td nowrap class="br2_bb2_border" colspan=5><font style="font-size: 11pt"><b>Divisional Playoffs</b></font></td>');
          }
          else if (gi == 9)
          {
-            d.writeln('<font size=-1 color=#000099><b>&nbsp;&nbsp;Week 3 - Conference Championships</b></font>');
-            if (week_3_score_multiplier != 1)
-            {
-               d.writeln('&nbsp;<font size=-1 color=#000099>(combined scores are multiplied by '+week_3_score_multiplier+')</font>');
-            }
+            d.writeln('<td nowrap class="br2_bb2_border" colspan=5><font style="font-size: 11pt"><b>Conference Championships</b></font></td>');
          }
          else if (gi == 11)
          {
-            d.writeln('<font size=-1 color=#000099><b>&nbsp;&nbsp;Week 4 - Super Bowl</b></font>');
-            if (week_4_score_multiplier != 1)
+            d.writeln('<td nowrap class="br2_bb2_border" colspan=5><font style="font-size: 11pt"><b>Super Bowl</b></font></td>');
+         }
+
+         for (var pi = 1; pi <= number_of_ps_players; pi++)
+         {
+            if (form_view == "expanded")
             {
-               d.writeln('&nbsp;<font size=-1 color=#000099>(combined scores are multiplied by '+week_4_score_multiplier+')</font>');
+               d.writeln('<td class="gr1_bb2_border" colspan=3><font style="font-size: 10pt"><b>Prediction</b></font></td>');
+            }
+            if (pi == number_of_ps_players)
+            {
+               d.writeln('<td class="bb2_border"><font style="font-size: 10pt" color=blue><b>Score</b></font></td>');
+            }
+            else
+            {
+               d.writeln('<td class="br2_bb2_border"><font style="font-size: 10pt" color=blue><b>Score</b></font></td>');
             }
          }
-         d.writeln('</td>');
          d.writeln('</tr>');
-         d.writeln('');
       }
 
-      d.writeln('<tr align=center>');
+      d.writeln('');
+      d.writeln('<tr align=center height=15px>');
 
       border_style = "gr1_gb1_border";
 
@@ -1525,17 +1491,17 @@ function build_post_season_form()
       if ( ( (mode == "prelim") && (week == 1) && (gi>=1  && gi<=4 ) ) ||
            ( (mode == "prelim") && (week == 2) && (gi>=5  && gi<=8 ) ) ||
            ( (mode == "prelim") && (week == 3) && (gi>=9  && gi<=10) ) ||
-           ( (mode == "prelim") && (week == 4) && (gi>=11 && gi<=11) )    )  
+           ( (mode == "prelim") && (week == 4) && (gi>=11 && gi<=11) )    )
       {
          for (var j = 1; j <= number_of_games; j++)
          {
-            input_tag_style = "text-align:center; font-size: 10pt; font-family: Calibri; border: 1px solid lightgray; color: blue";
+            input_tag_style = "text-align:center; font-size: 10pt; font-family: Calibri; border: 1px solid lightgray";
 
             if ( (visiting_teams[gi-1] == victors[j-1]) || (home_teams[gi-1] == victors[j-1]) )
             {
                // Highlight the background of the scores to signify that the game has concluded.
 
-               input_tag_style = "text-align:center; font-size: 10pt; font-family: Calibri; border: 1px solid lightgray; color: blue; background-color: #CCFFFF";
+               input_tag_style = "text-align:center; font-size: 10pt; font-family: Calibri; border: 1px solid lightgray; background-color: #DCE6F1";
 
                break;
             }
@@ -1583,15 +1549,15 @@ function build_post_season_form()
 
          if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
          {
-            d.writeln('<td style="padding: 1px 2px 1px 2px" class="'+border_style+'"><font size=-1 color=blue>');
+            d.writeln('<td style="padding: 0px" class="'+border_style+'">');
          }
          else
          {
-            d.writeln('<td style="padding: 1px 2px 1px 2px" class="gr1_border"><font size=-1 color=blue>');
+            d.writeln('<td style="padding: 0px" class="gr1_border">');
          }
 
          d.writeln('<input type=text style="'+input_tag_style+'" value='+visitor_scores[gi-1]+' size="'+input_field_size+'" maxlength="2" name="visitor'+gi+'_score">');
-         d.writeln('</font></td>');
+         d.writeln('</td>');
       }
       else
       {
@@ -1602,11 +1568,11 @@ function build_post_season_form()
 
          if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
          {
-            d.writeln('<td style="padding:2px 4px 2px 4px" class="'+border_style+'"><font size=-1 color=blue>'+visitor_scores[gi-1]+'</font></td>');
+            d.writeln('<td style="padding:2px 4px 2px 4px" class="'+border_style+'"><font style="font-size: 10pt">'+visitor_scores[gi-1]+'</font></td>');
          }
          else
          {
-            d.writeln('<td style="padding:2px 4px 2px 4px" class="gr1_border"><font size=-1 color=blue>'+visitor_scores[gi-1]+'</font></td>');
+            d.writeln('<td style="padding:2px 4px 2px 4px" class="gr1_border"><font style="font-size: 10pt" >'+visitor_scores[gi-1]+'</font></td>');
          }
       }
 
@@ -1618,22 +1584,22 @@ function build_post_season_form()
       {
          if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
          {
-            d.writeln('<td class="'+border_style+'"><font size=-1 color=blue><b>'+visiting_team_possession_flag+visiting_teams[gi-1]+'</b></font></td>');
+            d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt; color: blue">'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
          }
          else
          {
-            d.writeln('<td><font size=-1 color=blue><b>'+visiting_team_possession_flag+visiting_teams[gi-1]+'</b></font></td>');
+            d.writeln('<td><font style="font-size: 10pt; color: blue" >'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
          }
       }
       else
       {
          if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
          {
-            d.writeln('<td class="'+border_style+'"><font size=-1 color=#000099>'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
+            d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
          }
          else
          {
-            d.writeln('<td><font size=-1 color=#000099>'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
+            d.writeln('<td><font style="font-size: 10pt">'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
          }
       }
 
@@ -1643,11 +1609,11 @@ function build_post_season_form()
 
          if (use_player_points == false) border_style = "bb1_border";
 
-         d.writeln('<td class="'+border_style+'"><font size=-1 color=#000099>at</font></td>');
+         d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">at</font></td>');
       }
       else
       {
-         d.writeln('<td><font size=-1 color=#000099>at</font></td>');
+         d.writeln('<td><font style="font-size: 10pt">at</font></td>');
       }
 
       border_style = "gr1_gb1_border";
@@ -1658,22 +1624,22 @@ function build_post_season_form()
       {
          if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
          {
-            d.writeln('<td class="'+border_style+'"><font size=-1 color=blue><b>'+home_team_possession_flag+home_teams[gi-1]+'</b></font></td>');
+            d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt; color: blue">'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
          }
          else
          {
-            d.writeln('<td class="gr1_border"><font size=-1 color=blue><b>'+home_team_possession_flag+home_teams[gi-1]+'</b></font></td>');
+            d.writeln('<td class="gr1_border"><font style="font-size: 10pt; color: blue">'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
          }
       }
       else
       {
          if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
          {
-            d.writeln('<td class="'+border_style+'"><font size=-1 color=#000099>'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
+            d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
          }
          else
          {
-            d.writeln('<td class="gr1_border"><font size=-1 color=#000099>'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
+            d.writeln('<td class="gr1_border"><font style="font-size: 10pt">'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
          }
       }
 
@@ -1684,28 +1650,28 @@ function build_post_season_form()
       if ( ( (mode == "prelim") && (week == 1) && (gi>=1  && gi<=4 ) ) ||
            ( (mode == "prelim") && (week == 2) && (gi>=5  && gi<=8 ) ) ||
            ( (mode == "prelim") && (week == 3) && (gi>=9  && gi<=10) ) ||
-           ( (mode == "prelim") && (week == 4) && (gi>=11 && gi<=11) )    )  
+           ( (mode == "prelim") && (week == 4) && (gi>=11 && gi<=11) )    )
       {
          if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
          {
-            d.writeln('<td style="padding:1px 2px 1px 2px" class="'+border_style+'"><font size=-1 color=blue>');
+            d.writeln('<td style="padding: 0px" class="'+border_style+'">');
          }
          else
          {
-            d.writeln('<td style="padding:1px 2px 1px 2px" class="br2_border"><font size=-1 color=blue>');
+            d.writeln('<td style="padding: 0px" class="br2_border">');
          }
          d.writeln('<input type=text style="'+input_tag_style+'" value='+home_scores[gi-1]+' size="'+input_field_size+'" maxlength="2" name="home'+gi+'_score">');
-         d.writeln('</font></td>');
+         d.writeln('</td>');
       }
       else
       {
          if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
          {
-            d.writeln('<td style="padding:2px 4px 2px 4px" class="'+border_style+'"><font size=-1 color=blue>'+home_scores[gi-1]+'</font></td>');
+            d.writeln('<td style="padding:2px 4px 2px 4px" class="'+border_style+'"><font style="font-size: 10pt">'+home_scores[gi-1]+'</font></td>');
          }
          else
          {
-            d.writeln('<td style="padding:2px 4px 2px 4px" class="br2_border"><font size=-1 color=blue>'+home_scores[gi-1]+'</font></td>');
+            d.writeln('<td style="padding:2px 4px 2px 4px" class="br2_border"><font style="font-size: 10pt">'+home_scores[gi-1]+'</font></td>');
          }
       }
 
@@ -1716,8 +1682,8 @@ function build_post_season_form()
 
          if (player_picks[player_index[pi-1]][gi-1] == post_season_winners[gi-1])
          {
-            start_bold = "<b>";
-            end_bold   = "</b>";
+            start_bold = "";
+            end_bold   = "";
          }
          if (form_view == "expanded")
          {
@@ -1727,20 +1693,20 @@ function build_post_season_form()
 
                if (use_player_points == false) border_style = "bb1_border";
 
-               d.writeln('<td class="'+border_style+'"><font size=-1 color=#993366>'+start_bold+player_picks[player_index[pi-1]][gi-1]+end_bold+'</font></td>');
-               d.writeln('<td class="'+border_style+'"><font size=-1 color=#993366>by</font></td>');
+               d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">'+start_bold+player_picks[player_index[pi-1]][gi-1]+end_bold+'</font></td>');
+               d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">by</font></td>');
 
                border_style = "gr1_gb1_border";
 
                if (use_player_points == false) border_style = "gr1_bb1_border";
 
-               d.writeln('<td class="'+border_style+'"><font size=-1 color=#993366>'+player_spreads[player_index[pi-1]][gi-1]+'</font></td>');
+               d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">'+player_spreads[player_index[pi-1]][gi-1]+'</font></td>');
             }
             else
             {
-               d.writeln('<td><font size=-1 color=#993366>'+start_bold+player_picks[player_index[pi-1]][gi-1]+end_bold+'</font></td>');
-               d.writeln('<td><font size=-1 color=#993366>by</font></td>');  
-               d.writeln('<td class="gr1_border"><font size=-1 color=#993366>'+player_spreads[player_index[pi-1]][gi-1]+'</font></td>');
+               d.writeln('<td><font style="font-size: 10pt">'+start_bold+player_picks[player_index[pi-1]][gi-1]+end_bold+'</font></td>');
+               d.writeln('<td><font style="font-size: 10pt">by</font></td>');  
+               d.writeln('<td class="gr1_border"><font style="font-size: 10pt">'+player_spreads[player_index[pi-1]][gi-1]+'</font></td>');
             } 
          }
 
@@ -1752,11 +1718,11 @@ function build_post_season_form()
 
                if (use_player_points == false) border_style = "bb1_border";
 
-               d.writeln('<td class="'+border_style+'"><font size=-1 color=blue>'+player_scores[player_index[pi-1]][gi-1]+'</font></td>');
+               d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt" color=blue>'+player_scores[player_index[pi-1]][gi-1]+'</font></td>');
             }
             else
             {
-               d.writeln('<td><font size=-1 color=blue>'+player_scores[player_index[pi-1]][gi-1]+'</font></td>');
+               d.writeln('<td><font style="font-size: 10pt" color=blue>'+player_scores[player_index[pi-1]][gi-1]+'</font></td>');
             }
          }
          else
@@ -1767,17 +1733,16 @@ function build_post_season_form()
 
                if (use_player_points == false) border_style = "br2_bb1_border";
 
-               d.writeln('<td class="'+border_style+'"><font size=-1 color=blue>'+player_scores[player_index[pi-1]][gi-1]+'</font></td>');
+               d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt" color=blue>'+player_scores[player_index[pi-1]][gi-1]+'</font></td>');
             }
             else
             {
-               d.writeln('<td class="br2_border"><font size=-1 color=blue>'+player_scores[player_index[pi-1]][gi-1]+'</font></td>');
+               d.writeln('<td class="br2_border"><font style="font-size: 10pt" color=blue>'+player_scores[player_index[pi-1]][gi-1]+'</font></td>');
             }
          }
       }
 
       d.writeln('</tr>');  
-      d.writeln('');
 
       if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
       {
@@ -1793,13 +1758,11 @@ function build_post_season_form()
                high_score_count   = week_2_high_score_count;
                high_score_players = week_2_high_score_players;
             }
-
             if (gi == 10)
             {
                high_score_count   = week_3_high_score_count;
                high_score_players = week_3_high_score_players;
             }
-
             if (gi == 11)
             {
                high_score_count   = week_4_high_score_count;
@@ -1810,10 +1773,11 @@ function build_post_season_form()
 
             if (isNaN(total_points) == true) total_points = "<br>";
 
-            d.writeln('<tr align=center>');
+            d.writeln('');
+            d.writeln('<tr align=center height=12px>');
 
-            d.writeln('<td align=right class="bb1_border" colspan=4 style="padding:0px" ><font size=-2 color=#000099>Actual Total Points:&nbsp</font></td>');
-            d.writeln('<td class="br2_bb1_border" style="padding:0px"><font size=-2 color=#000099>'+total_points+'</font></td>');
+            d.writeln('<td align=right class="bb1_border" colspan=4 style="padding:0px"><font style="font-size: 8pt">Actual Total Points:&nbsp</font></td>');
+            d.writeln('<td class="br2_bb1_border" style="padding:0px"><font style="font-size: 8pt">'+total_points+'</font></td>');
 
             for (var pi = 1; pi <= number_of_ps_players; pi++)
             {
@@ -1823,8 +1787,8 @@ function build_post_season_form()
 
                   if (points == 0) points = "<br>";
 
-                  d.writeln('<td class="bb1_border"     colspan=2 style="padding:0px"><font size=-2 color=#993366>Points:</font></td>');
-                  d.writeln('<td class="gr1_bb1_border" colspan=1 style="padding:0px"><font size=-2 color=#993366>'+points+'</font></td>');
+                  d.writeln('<td class="bb1_border"     colspan=2 style="padding:0px"><font style="font-size: 8pt">Points:</font></td>');
+                  d.writeln('<td class="gr1_bb1_border" colspan=1 style="padding:0px"><font style="font-size: 8pt">'+points+'</font></td>');
                }
 
                total_points_score = "<br>";
@@ -1845,36 +1809,36 @@ function build_post_season_form()
 
                if (pi == number_of_ps_players)
                {
-                  d.writeln('<td class="bb1_border" colspan=1 style="padding:0px"><font size=-2 color=blue>'+total_points_score+'</font></td>');
+                  d.writeln('<td class="bb1_border" colspan=1 style="padding:0px"><font style="font-size: 8pt" color=blue>'+total_points_score+'</font></td>');
                }
                else
                {
-                  d.writeln('<td class="br2_bb1_border" colspan=1 style="padding:0px"><font size=-2 color=blue>'+total_points_score+'</font></td>');
+                  d.writeln('<td class="br2_bb1_border" colspan=1 style="padding:0px"><font style="font-size: 8pt" color=blue>'+total_points_score+'</font></td>');
                }
             }
 
             d.writeln('</tr>');
          }
 
-         d.writeln('<tr align=center>');
-         d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font size=-1 color=#000099>');
+         d.writeln('');
+         d.writeln('<tr align=center height=18px>');
+
          if (gi == 4)
          {
-            d.writeln('Week 1 Combined Score: ');
+            d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 1 Scores:&nbsp</b></font></td>');
          }
-         else if (gi == 8)
+         if (gi == 8)
          {
-            d.writeln('Week 2 Combined Score: ');
+            d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 2 Scores:&nbsp</b></font></td>');
          }
-         else if (gi == 10)
+         if (gi == 10)
          {
-            d.writeln('Week 3 Combined Score: ');
+            d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 3 Scores:&nbsp</b></font></td>');
          }
-         else if (gi == 11)
+         if (gi == 11)
          {
-            d.writeln('Week 4 Combined Score: ');
+            d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 4 Scores:&nbsp</b></font></td>');
          }
-         d.writeln('</font></td>');
 
          for (var pi = 1; pi <= number_of_ps_players; pi++)
          {
@@ -1906,24 +1870,24 @@ function build_post_season_form()
 
             if ( (gi == 4) && (week_1_valid_game_cnt > 0) )
             {
-               if (week_1_ranks[player_index[pi-1]] == 1) td_background = "bgcolor=#CCFFFF";
+               if (week_1_ranks[player_index[pi-1]] == 1) td_background = "bgcolor=#DCE6F1";
             }
             if ( (gi == 8) && (week_2_valid_game_cnt > 0) )
             {
-               if (week_2_ranks[player_index[pi-1]] == 1) td_background = "bgcolor=#CCFFFF";
+               if (week_2_ranks[player_index[pi-1]] == 1) td_background = "bgcolor=#DCE6F1";
             }
             if ( (gi == 10) && (week_3_valid_game_cnt > 0) )
             {
-               if (week_3_ranks[player_index[pi-1]] == 1) td_background = "bgcolor=#CCFFFF";
+               if (week_3_ranks[player_index[pi-1]] == 1) td_background = "bgcolor=#DCE6F1";
             }
             if ( (gi == 11) && (week_4_valid_game_cnt > 0) )
             {
-               if (week_4_ranks[player_index[pi-1]] == 1) td_background = "bgcolor=#CCFFFF";
+               if (week_4_ranks[player_index[pi-1]] == 1) td_background = "bgcolor=#DCE6F1";
             }
 
             if (form_view == "expanded")
             {
-               d.writeln('<td nowrap '+td_background+' class="gr1_bb2_border" colspan=3><font size=-1 color=#000099>Rank = ');
+               d.writeln('<td nowrap '+td_background+' class="gr1_bb2_border" colspan=3><font style="font-size: 9pt" color=blue>Rank = ');
                if (gi == 4)
                {
                   if (week_1_valid_game_cnt > 0)
@@ -1972,11 +1936,11 @@ function build_post_season_form()
             }
             if (pi == number_of_ps_players)
             {
-               d.writeln('<td '+td_background+' class="bb2_border"><font size=-1 color=blue><b>');
+               d.writeln('<td '+td_background+' class="bb2_border"><font style="font-size: 11pt" color=blue><b>');
             }
             else
             {
-               d.writeln('<td '+td_background+' class="br2_bb2_border"><font size=-1 color=blue><b>');
+               d.writeln('<td '+td_background+' class="br2_bb2_border"><font style="font-size:11pt" color=blue><b>');
             }
             if (gi == 4)
             {
@@ -2025,26 +1989,36 @@ function build_post_season_form()
             d.writeln('</b></font></td>');
          }
          d.writeln('</tr>');
-         d.writeln('');
       }
    }
 
-   d.writeln('<tr align=left>');
-   d.writeln('<td style="padding:0px" class="bb2_border" colspan='+heading_colspan+'>');
-   if (form_view == "expanded")
-   {
-      d.writeln('&nbsp;&nbsp;<font size=-1 color=#993366>(bold <b>H</b> or <b>V</b> for prediction indicates winning team; losing team adds penalty of&nbsp;&nbsp;'+wrong_pick_penalty+' points)</font>');
-   }
-   else
-   {
-      d.writeln('<font size=-1 color=#993366><br></font>');
-   }
-   d.writeln('</td>');
+   d.writeln('');
+   d.writeln('<tr height=8px>');
+   d.writeln('<td class="bb2_border" colspan='+(5+player_colspan*12)+'></td>');
    d.writeln('</tr>');
    d.writeln('');
+   d.writeln('<tr align=center bgcolor=#DCE6F1 height=18px>');
+   d.writeln('<td nowrap class="br2_bb2_border" colspan=5><font style="font-size: 11pt"><b>Cumulative Results</b></font></td>');
+   for (var pi = 1; pi <= number_of_ps_players; pi++)
+   {
+      if (form_view == "expanded")
+      {
+         d.writeln('<td class="gr1_bb2_border" colspan=3><font style="font-size: 10pt"><b>Rank</b></font></td>');
+      }
+      if (pi == number_of_ps_players)
+      {
+         d.writeln('<td class="bb2_border"><font style="font-size: 10pt" color=blue><b>Score</b></font></td>');
+      }
+      else
+      {
+         d.writeln('<td class="br2_bb2_border"><font style="font-size: 10pt" color=blue><b>Score</b></font></td>');
+      }
+   }
+   d.writeln('</tr>');
 
-   d.writeln('<tr align=center>');
-   d.writeln('<td nowrap class="br2_bb1_border" align=right colspan=5><font size=-1 color=#000099>Overall Combined Score: </font></td>');
+   d.writeln('');
+   d.writeln('<tr align=center height=21px>');
+   d.writeln('<td nowrap class="br2_bb1_border" align=right colspan=5><font style="font-size: 11pt"><b>Scores:&nbsp;</b></font></td>');
    for (var pi = 1; pi <= number_of_ps_players; pi++)
    {
       if (overall_scores[player_index[pi-1]] == null_score)
@@ -2055,27 +2029,26 @@ function build_post_season_form()
 
       td_background = "";
 
-      if (overall_ranks[player_index[pi-1]] == 1) td_background = "bgcolor=#CCFFFF";
+      if (overall_ranks[player_index[pi-1]] == 1) td_background = "bgcolor=#DCE6F1";
 
       if (form_view == "expanded")
       {
-         d.writeln('<td nowrap '+td_background+' class="gr1_bb1_border" colspan=3><font size=-1 color=#000099>Rank = '+overall_ranks[player_index[pi-1]]+'</font></td>');
+         d.writeln('<td nowrap '+td_background+' class="gr1_bb1_border" colspan=3><font style="font-size: 9pt" color=blue>Rank = '+overall_ranks[player_index[pi-1]]+'</font></td>');
       }
       if (pi == number_of_ps_players)
       {
-         d.writeln('<td '+td_background+' class="bb1_border"><font size=-1 color=blue><b>'+overall_scores[player_index[pi-1]]+'</b></font></td>');
-
+         d.writeln('<td '+td_background+' class="bb1_border"><font style="font-size: 11pt" color=blue><b>'+overall_scores[player_index[pi-1]]+'</b></font></td>');
       }
       else
       {
-         d.writeln('<td '+td_background+' class="br2_bb1_border"><font size=-1 color=blue><b>'+overall_scores[player_index[pi-1]]+'</b></font></td>');
+         d.writeln('<td '+td_background+' class="br2_bb1_border"><font style="font-size: 11pt" color=blue><b>'+overall_scores[player_index[pi-1]]+'</b></font></td>');
       }
    }
    d.writeln('</tr>');
-   d.writeln('');
 
-   d.writeln('<tr align=center>');
-   d.writeln('<td nowrap class="br2_border" align=right colspan=5><font size=-1 color=#000099>Number of winners picked: </font></td>');
+   d.writeln('');
+   d.writeln('<tr align=center height=21px>');
+   d.writeln('<td nowrap class="br2_border" align=right colspan=5><font style="font-size: 11pt"><b>Wins:&nbsp;</b></font></td>');
    for (var pi = 1; pi <= number_of_ps_players; pi++)
    {
       if ( (overall_scores[player_index[pi-1]] == null_score) || (overall_scores[player_index[pi-1]] == "<br>") )
@@ -2095,11 +2068,11 @@ function build_post_season_form()
 
       td_background = "";
 
-      if (player_win_count[player_index[pi-1]] == best_player_win_count) td_background = "bgcolor=#CCFFFF";
+      if (player_win_count[player_index[pi-1]] == best_player_win_count) td_background = "bgcolor=#DCE6F1";
 
       if (form_view == "expanded")
       {
-         d.writeln('<td nowrap '+td_background+' class="gr1_border" colspan=3><font size=-1 color=#000099>Wins = '+player_win_count[player_index[pi-1]]+'</font></td>');
+         d.writeln('<td nowrap '+td_background+' class="gr1_border" colspan=3><font style="font-size: 9pt" color=blue>Wins = '+player_win_count[player_index[pi-1]]+'</font></td>');
       }
       else
       {
@@ -2108,22 +2081,23 @@ function build_post_season_form()
 
       if (pi == number_of_ps_players)
       {
-         d.writeln('<td '+td_background+'><font size=-1 color=#000099>'+percent_wins+'</font></td>');
+         d.writeln('<td '+td_background+'><font style="font-size: 9pt" color=blue>'+percent_wins+'</font></td>');
       }
       else
       {
-         d.writeln('<td '+td_background+' class="br2_border"><font size=-1 color=#000099>'+percent_wins+'</font></td>');
+         d.writeln('<td '+td_background+' class="br2_border"><font style="font-size: 9pt" color=blue>'+percent_wins+'</font></td>');
       }
    }
    d.writeln('</tr>');
+
    d.writeln('');
    d.writeln('</table>');
-   d.writeln('');
 
+   d.writeln('');
    d.writeln('<table cols=1 align=center>');
    d.writeln('');
 
-   d.writeln('<tr><td class="no_border" style="font-size: 2pt" color=#000099><br></td></tr>');
+   d.writeln('<tr><td class="no_border" style="font-size: 2pt"><br></td></tr>');
    d.writeln('');
    if (mode == "prelim")
    {
@@ -2132,7 +2106,7 @@ function build_post_season_form()
       d.writeln('<input style="font-size: 11pt; font-family: Calibri; border: 1px solid black" type=button name="get_scores_button" value="Get Scores"');
       d.writeln('    onClick=get_nfl_scores(document,"manual","");>');
       d.writeln('&nbsp;');
-      d.writeln('<font face="Calibri" color=black size=+0>Auto Refresh:</font>&nbsp;');
+      d.writeln('<font face="Calibri" color=black style="font-size: 12pt">Auto Refresh:</font>&nbsp;');
       if (window.top.gv.get_scores_state == "off")
       {
          d.writeln('<input style="font-size: 11pt; font-family: Calibri; border: 1px solid black" type=button name="get_scores_start_button" value="Start"');
@@ -2145,7 +2119,7 @@ function build_post_season_form()
       }
       d.writeln('</td>');
       d.writeln('</tr>');
-      d.writeln('<tr><td class="no_border" style="font-size: 2pt" color=#000099><br></td></tr>');
+      d.writeln('<tr><td class="no_border" style="font-size: 2pt"><br></td></tr>');
    }
    d.writeln('<tr align=center>');
    d.writeln('<td nowrap class="no_border">');
@@ -3039,8 +3013,6 @@ function build_regular_season_form()
    d.writeln('         extended_string         = " against " + build_player_name((selected_opponent_index+1),true) + " ";');
    d.writeln('      }');
    d.writeln('');
-   d.writeln('      if (is_netscape() == true) warning = "\\n";');
-   d.writeln('');
    d.writeln('      if (confirm("The best outcome for "+build_player_name((selected_player_index+1),true)+extended_string+"will be determined based on the following:\\n\\n\\n"+');
    d.writeln('                  "Games that have winners specified already (\\"H\\", \\"V\\", or \\"Tie\\") will remain unchanged.\\n\\n"+');
    d.writeln('                  "Each of the remaining games will be set to \\"H\\" or \\"V\\" depending on what combination yields the best outcome.  \\"Tie\\"s are not taken into account.\\n\\n"+');
@@ -3659,14 +3631,7 @@ function build_regular_season_form()
 
    d.writeln('<table align=center');
    d.writeln('       class="b3_border"');
-   if (is_old_netscape() == true)
-   {
-      d.writeln('       border=3');
-   }
-   else
-   {
-      d.writeln('       border=0');
-   }
+   d.writeln('       border=0');
    d.writeln('       bgcolor=white');
    d.writeln('       cellpadding=2');
    d.writeln('       cellspacing=0>');
@@ -5030,14 +4995,7 @@ function build_season_summary()
 
    d.writeln('<table align=center');
    d.writeln('       class="b3_border"');
-   if (is_old_netscape() == true)
-   {
-      d.writeln('       border=3');
-   }
-   else
-   {
-      d.writeln('       border=0');
-   }
+   d.writeln('       border=0');
    d.writeln('       bgcolor=white');
    d.writeln('       cellpadding=2');
    d.writeln('       cellspacing=0>');
@@ -5742,45 +5700,6 @@ function create_progress_window()
 }
 
 
-function is_netscape()
-{
-   if (navigator.appName.substring(0,8) == "Netscape")
-   {
-      return true;
-   }
-   else
-   {
-      return false;
-   }
-}
-
-
-function is_new_netscape()
-{
-   if ( (navigator.appName.substring(0,8) == "Netscape") && (parseInt(navigator.appVersion) >= 5) )
-   {
-      return true;
-   }
-   else
-   {
-      return false;
-   }
-}
-
-
-function is_old_netscape()
-{
-   if ( (navigator.appName.substring(0,8) == "Netscape") && (parseInt(navigator.appVersion) < 5) )
-   {
-      return true;
-   }
-   else
-   {
-      return false;
-   }
-}
-
-
 function normalize_float_value(received_float_value)
 {
    var float_value         = received_float_value;
@@ -5879,11 +5798,6 @@ function update_progress_window(progress_window,progress_percent)
    wd.writeln('</body>');
    wd.writeln('');
    wd.writeln('</html>');
-
-   if (is_new_netscape() == true)
-   {
-      wd.title = progress_percent + " %";
-   }
 
    wd.close();
 
