@@ -3,7 +3,7 @@ function display_archive_page(archive_year)
 {
    var local_mobile_flag = false;
    var min_archive_year  = 1997;
-   var max_archive_year  = 2015;
+   var max_archive_year  = top.fp_year - 1;
 
    if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) ) local_mobile_flag = true;
 
