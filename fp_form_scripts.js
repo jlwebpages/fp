@@ -4148,7 +4148,7 @@ function build_regular_season_form()
          {
             d.writeln('<table align=center>');
             d.writeln('<tr><td class="no_border" style="font-size: 2pt">&nbsp;</td></tr>');
-            d.writeln('<tr><td class="no_border"><font size=+1 color=red>'+tie_breaker_message+'</font>');
+            d.writeln('<tr><td class="no_border"><font size=+1 color=maroon>'+tie_breaker_message+'</font>');
 
             if (unable_to_break_tie == false)
             {
