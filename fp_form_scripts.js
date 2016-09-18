@@ -1776,7 +1776,7 @@ function build_post_season_form()
             d.writeln('');
             d.writeln('<tr align=center height=12px>');
 
-            d.writeln('<td align=right class="bb1_border" colspan=4 style="padding:0px"><font style="font-size: 8pt">Actual Total Points:&nbsp</font></td>');
+            d.writeln('<td align=right class="bb1_border" colspan=4 style="padding:0px"><font style="font-size: 8pt">Actual Total Points:&nbsp;</font></td>');
             d.writeln('<td class="br2_bb1_border" style="padding:0px"><font style="font-size: 8pt">'+total_points+'</font></td>');
 
             for (var pi = 1; pi <= number_of_ps_players; pi++)
@@ -1825,19 +1825,19 @@ function build_post_season_form()
 
          if (gi == 4)
          {
-            d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 1 Scores:&nbsp</b></font></td>');
+            d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 1 Scores:&nbsp;</b></font></td>');
          }
          if (gi == 8)
          {
-            d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 2 Scores:&nbsp</b></font></td>');
+            d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 2 Scores:&nbsp;</b></font></td>');
          }
          if (gi == 10)
          {
-            d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 3 Scores:&nbsp</b></font></td>');
+            d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 3 Scores:&nbsp;</b></font></td>');
          }
          if (gi == 11)
          {
-            d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 4 Scores:&nbsp</b></font></td>');
+            d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 4 Scores:&nbsp;</b></font></td>');
          }
 
          for (var pi = 1; pi <= number_of_ps_players; pi++)
@@ -2459,7 +2459,7 @@ function build_regular_season_form()
          {
             // Build the string for dislaying the actual Monday Night Total Points on the webpage.
 
-            mn_points_string = " (Actual is " + actual_mn_points + ") ";
+            mn_points_string = " (Actual is " + actual_mn_points + ")";
 
             // Determine the best Monday Night Total Points delta.
             // (difference between best prediction and actual)
@@ -3987,7 +3987,7 @@ function build_regular_season_form()
 
    d.writeln('<tr align=center height=15px>');
    d.writeln('<td class="br2_border" align=right colspan=4 nowrap>');
-   d.writeln('<font style="font-size: 10pt">Monday Night Total Points'+mn_points_string+'=&nbsp</font>');
+   d.writeln('<font style="font-size: 10pt">Monday Night Total Points'+mn_points_string+':&nbsp;</font>');
    d.writeln('</td>');
    for (var i = 1; i <= number_of_rs_players; i++)
    {
@@ -4041,7 +4041,7 @@ function build_regular_season_form()
 
    d.writeln('<tr align=center height=21px>');
    d.writeln('<td class="bt2_br2_border" align=right colspan=4>');
-   d.writeln('<font style="font-size: 12pt"><b>Scores =&nbsp</b></font>');
+   d.writeln('<font style="font-size: 12pt"><b>Scores:&nbsp;</b></font>');
    d.writeln('</td>');
    for (var i = 1; i <= number_of_rs_players; i++)
    {
@@ -5206,7 +5206,7 @@ function build_season_summary()
 
    d.writeln('<tr align=center>');
    d.writeln('<td class="bb1_border" align=center nowrap><font size=-1><b><br></b></font></td>');
-   d.writeln('<td class="gr1_bb1_border" align=right  nowrap><font size=-1><b>Totals:&nbsp;&nbsp</b></font></td>');
+   d.writeln('<td class="gr1_bb1_border" align=right  nowrap><font size=-1><b>Totals:&nbsp;&nbsp;</b></font></td>');
    d.writeln('<td class="br2_bb1_border" align=center nowrap><font size=-1><b>'+total_games_played+'</b></font></td>');
 
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
@@ -5261,7 +5261,7 @@ function build_season_summary()
 
    d.writeln('<tr align=center>');
    d.writeln('<td class="bb2_border" align=center nowrap><font size=-1><b><br></b></font></td>');
-   d.writeln('<td class="br2_bb2_border" align=right colspan=2 nowrap><font size=-1><b>Averages:&nbsp;&nbsp</b></font></td>');
+   d.writeln('<td class="br2_bb2_border" align=right colspan=2 nowrap><font size=-1><b>Averages:&nbsp;&nbsp;</b></font></td>');
 
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
