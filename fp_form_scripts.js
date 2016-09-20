@@ -5456,7 +5456,7 @@ function build_season_summary()
    d.writeln('');
 
    d.writeln('<tr align=right height=15px>');
-   d.writeln('<td class="br2_gb1_border" colspan=3><font sstyle="font-size: 10pt">3rd place count =&nbsp;</font></td>');
+   d.writeln('<td class="br2_gb1_border" colspan=3><font style="font-size: 10pt">3rd place count =&nbsp;</font></td>');
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
       if ((player_index + 1) == number_of_rs_players)
