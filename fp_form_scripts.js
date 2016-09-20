@@ -4418,9 +4418,9 @@ function build_season_summary()
    var border_class_2            = "";
    var border_class_3            = "";
    var color_blue                = "blue";
+   var color_column_header_1     = "#C4D79B";
    var color_green               = "#008800";
    var color_light_blue          = "#DCE6F1";
-   var color_light_green         = "#C4D79B";
    var color_light_yellow        = "#FFFFE1";
    var color_red                 = "red";
    var color_teal                = "#B7DEE8";
@@ -5001,9 +5001,9 @@ function build_season_summary()
    d.writeln('       cellspacing=0>');
    d.writeln('');
 
-   d.writeln('<tr align=center bgcolor='+color_light_green+'>');
+   d.writeln('<tr align=center bgcolor='+color_column_header_1+' height=27px>');
    d.writeln('<td class="br2_bb2_border" colspan=3>');
-   d.writeln('<font size=+0><b>'+summary_title+'</b></font>');
+   d.writeln('<font style="font-size: 13pt"><b>'+summary_title+'</b></font>');
    d.writeln('</td>');
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
@@ -5016,22 +5016,22 @@ function build_season_summary()
          border_class_1 = "br2_bb2_border";
       }
 
-      d.writeln('<td class='+border_class_1+' colspan='+column_span+'><font size=+0><b>'+rs_players[sort_index[player_index]]+'</b></font></td>');
+      d.writeln('<td class='+border_class_1+' colspan='+column_span+'><font style="font-size: 12pt"><b>'+rs_players[sort_index[player_index]]+'</b></font></td>');
    }
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=center bgcolor='+color_light_blue+'>');
-   d.writeln('<td class="gr1_bb2_border"><font size=-1><b>Week</b></font></td>');
-   d.writeln('<td class="gr1_bb2_border"><font size=-1><b>Games<br>Scheduled</b></font></td>');
-   d.writeln('<td class="br2_bb2_border"><font size=-1><b>Games<br>Played</b></font></td>');
+   d.writeln('<tr align=center bgcolor='+color_light_blue+' height=27px>');
+   d.writeln('<td class="gr1_bb2_border"><font style="font-size: 10pt"><b>Week</b></font></td>');
+   d.writeln('<td class="gr1_bb2_border"><font style="font-size: 10pt"><b>Games<br>Scheduled</b></font></td>');
+   d.writeln('<td class="br2_bb2_border"><font style="font-size: 10pt"><b>Games<br>Played</b></font></td>');
 
    for (var i = 1; i <= number_of_rs_players; i++)
    {
       if (form_view == "expanded")
       {
-         d.writeln('<td class="gr1_bb2_border"><font size=-1><b>Rank</b></font></td>');
-         d.writeln('<td class="gr1_bb2_border"><font size=-1><b>Games<br>Won</b></font></td>');
+         d.writeln('<td class="gr1_bb2_border"><font style="font-size: 10pt"><b>Rank</b></font></td>');
+         d.writeln('<td class="gr1_bb2_border"><font style="font-size: 10pt"><b>Games<br>Won</b></font></td>');
       }
       if (i == number_of_rs_players)
       {
@@ -5042,7 +5042,7 @@ function build_season_summary()
          border_class_1 = "br2_bb2_border";
       }
 
-      d.writeln('<td class='+border_class_1+'><font size=-1><b>Score</b></font></td>');
+      d.writeln('<td class='+border_class_1+'><font style="font-size: 10pt"><b>Score</b></font></td>');
    }
    d.writeln('</tr>');
    d.writeln('');
@@ -5062,19 +5062,19 @@ function build_season_summary()
          border_class_2 = "br2_gb1_border";
       }
 
-      d.writeln('<tr align=center>');
-      d.writeln('<td class='+border_class_1+'><font size=-1><b>'+(week_index+1)+'</b></font></td>');
-      d.writeln('<td class='+border_class_1+'><font size=-1>'+window.top.gv.all_home_teams[week_index].length+'</font></td>');
+      d.writeln('<tr align=center height=18px>');
+      d.writeln('<td class='+border_class_1+'><font style="font-size: 11pt"><b>'+(week_index+1)+'</b></font></td>');
+      d.writeln('<td class='+border_class_1+'><font style="font-size: 11pt">'+window.top.gv.all_home_teams[week_index].length+'</font></td>');
 
       if (week_index < week)
       {
-         d.writeln('<td class='+border_class_2+'><font size=-1>'+window.top.gv.all_home_teams[week_index].length+'</font></td>');
+         d.writeln('<td class='+border_class_2+'><font style="font-size: 11pt">'+window.top.gv.all_home_teams[week_index].length+'</font></td>');
 
          total_games_played = total_games_played + window.top.gv.all_home_teams[week_index].length;
       }
       else
       {
-         d.writeln('<td class='+border_class_2+'><font size=-1><br></font></td>');
+         d.writeln('<td class='+border_class_2+'><font style="font-size: 11pt"><br></font></td>');
       }
 
       for (var player_index = 0; player_index < number_of_rs_players; player_index++)
@@ -5133,11 +5133,11 @@ function build_season_summary()
 
                if (weekly_picks[sort_index[player_index]].length > 0)
                {
-                  d.writeln('<td '+td_background+' class='+border_class_1+'><font size=-1 '+font_color+'>'+bold_start+all_ranks[week_index][sort_index[player_index]]+bold_end+'</font></td>');
+                  d.writeln('<td '+td_background+' class='+border_class_1+'><font style="font-size: 11pt" '+font_color+'>'+bold_start+all_ranks[week_index][sort_index[player_index]]+bold_end+'</font></td>');
                }
                else
                {
-                  d.writeln('<td class='+border_class_1+'><font size=-1><br></font></td>');
+                  d.writeln('<td class='+border_class_1+'><font style="font-size: 11pt"><br></font></td>');
                }
 
                if (all_games_won[week_index][sort_index[player_index]] == weekly_max_games_won)
@@ -5160,7 +5160,7 @@ function build_season_summary()
                   td_background = "";
                }
 
-               d.writeln('<td '+td_background+' class='+border_class_1+'><font size=-1>'+bold_start+all_games_won[week_index][sort_index[player_index]]+bold_end+'</font></td>');
+               d.writeln('<td '+td_background+' class='+border_class_1+'><font style="font-size: 11pt">'+bold_start+all_games_won[week_index][sort_index[player_index]]+bold_end+'</font></td>');
             }
 
             if (all_scores[week_index][sort_index[player_index]] == weekly_max_score)
@@ -5186,17 +5186,17 @@ function build_season_summary()
                td_background = "";
             }
 
-            d.writeln('<td '+td_background+' class='+border_class_3+'><font size=-1>'+bold_start+all_scores[week_index][sort_index[player_index]]+bold_end+'</font></td>');  
+            d.writeln('<td '+td_background+' class='+border_class_3+'><font style="font-size: 11pt">'+bold_start+all_scores[week_index][sort_index[player_index]]+bold_end+'</font></td>');  
          }
          else
          {
             if (form_view == "expanded")
             {
-               d.writeln('<td class='+border_class_1+'><font size=-1><br></font></td>');
-               d.writeln('<td class='+border_class_1+'><font size=-1><br></font></td>');
+               d.writeln('<td class='+border_class_1+'><font style="font-size: 11pt"><br></font></td>');
+               d.writeln('<td class='+border_class_1+'><font style="font-size: 11pt"><br></font></td>');
             }
 
-            d.writeln('<td class='+border_class_3+'><font size=-1><br></font></td>');
+            d.writeln('<td class='+border_class_3+'><font style="font-size: 11pt"><br></font></td>');
          }
       }
 
@@ -5204,64 +5204,76 @@ function build_season_summary()
       d.writeln('');    
    }
 
-   d.writeln('<tr align=center>');
-   d.writeln('<td class="bb1_border" align=center nowrap><font size=-1><b><br></b></font></td>');
-   d.writeln('<td class="gr1_bb1_border" align=right  nowrap><font size=-1><b>Totals:&nbsp;&nbsp;</b></font></td>');
-   d.writeln('<td class="br2_bb1_border" align=center nowrap><font size=-1><b>'+total_games_played+'</b></font></td>');
+   d.writeln('<tr align=center height=18px>');
+   d.writeln('<td class="gb1_border" align=center nowrap><font style="font-size: 11pt"><b><br></b></font></td>');
+   d.writeln('<td class="gr1_gb1_border" align=right  nowrap><font style="font-size: 11pt"><b>Totals:&nbsp;&nbsp;</b></font></td>');
+   d.writeln('<td class="br2_gb1_border" align=center nowrap><font style="font-size: 11pt">'+total_games_played+'</font></td>');
 
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
       if ((player_index + 1) == number_of_rs_players)
       {
-         border_class_1 = "bb1_border";
+         border_class_1 = "gb1_border";
       }
       else
       {
-         border_class_1 = "br2_bb1_border";
+         border_class_1 = "br2_gb1_border";
       }
 
       if (form_view == "expanded")
       {
+         bold_end      = "";
+         bold_start    = "";
          font_color    = "black";
          td_background = "";
 
          if (total_ranks[sort_index[player_index]] == 1)
          {
+            bold_end      = "</b>";
+            bold_start    = "<b>";
             font_color    = "color=" + color_blue;
             td_background = "bgcolor=" + color_light_blue;
          }
 
-         d.writeln('<td '+td_background+' class="gr1_bb1_border"><font size=-1 '+font_color+'><b>'+total_ranks[sort_index[player_index]]+'</b></font></td>');
+         d.writeln('<td '+td_background+' class="gr1_gb1_border"><font style="font-size: 11pt" '+font_color+'>'+bold_start+total_ranks[sort_index[player_index]]+bold_end+'</font></td>');
 
+         bold_end      = "";
+         bold_start    = "";
          td_background = "";
 
          player_total_games_won = total_games_won[sort_index[player_index]];
 
          if (player_total_games_won == best_total_games_won)
          {
+            bold_end      = "</b>";
+            bold_start    = "<b>";
             td_background = "bgcolor=" + color_light_blue;
          }
 
-         d.writeln('<td '+td_background+' class="gr1_bb1_border"><font size=-1><b>'+player_total_games_won+'</b></font></td>');
+         d.writeln('<td '+td_background+' class="gr1_gb1_border"><font style="font-size: 11pt">'+bold_start+player_total_games_won+bold_end+'</font></td>');
       }
 
+      bold_end      = "";
+      bold_start    = "";
       td_background = "";
 
       player_total_score = total_scores[sort_index[player_index]];
 
       if (player_total_score == best_total_scores)
       {
+         bold_end      = "</b>";
+         bold_start    = "<b>";
          td_background = "bgcolor=" + color_light_blue;
       }
 
-      d.writeln('<td '+td_background+' class='+border_class_1+'><font size=-1><b>'+player_total_score+'</b></font></td>');
+      d.writeln('<td '+td_background+' class='+border_class_1+'><font style="font-size: 11pt">'+bold_start+player_total_score+bold_end+'</font></td>');
    }
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=center>');
-   d.writeln('<td class="bb2_border" align=center nowrap><font size=-1><b><br></b></font></td>');
-   d.writeln('<td class="br2_bb2_border" align=right colspan=2 nowrap><font size=-1><b>Averages:&nbsp;&nbsp;</b></font></td>');
+   d.writeln('<tr align=center height=18px>');
+   d.writeln('<td class="bb2_border" align=center nowrap><font style="font-size: 11pt"><b><br></b></font></td>');
+   d.writeln('<td class="br2_bb2_border" align=right colspan=2 nowrap><font style="font-size: 11pt"><b>Averages:&nbsp;&nbsp;</b></font></td>');
 
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
@@ -5276,12 +5288,16 @@ function build_season_summary()
 
       if (form_view == "expanded")
       {
+         bold_end      = "";
+         bold_start    = "";
          td_background = "";
 
          player_total_average_rank = total_average_ranks[sort_index[player_index]];
 
          if (player_total_average_rank == best_total_average_ranks)
          {
+            bold_end      = "</b>";
+            bold_start    = "<b>";
             td_background = "bgcolor=" + color_light_blue;
          }
 
@@ -5290,14 +5306,18 @@ function build_season_summary()
             player_total_average_rank = normalize_float_value(player_total_average_rank);
          }
 
-         d.writeln('<td '+td_background+' class="gr1_bb2_border"><font size=-1><b>'+player_total_average_rank+'</b></font></td>');
+         d.writeln('<td '+td_background+' class="gr1_bb2_border"><font style="font-size: 11pt">'+bold_start+player_total_average_rank+bold_end+'</font></td>');
 
+         bold_end      = "";
+         bold_start    = "";
          td_background = "";
 
          player_total_games_won = total_games_won[sort_index[player_index]];
 
          if (player_total_games_won == best_total_games_won)
          {
+            bold_end      = "</b>";
+            bold_start    = "<b>";
             td_background = "bgcolor=" + color_light_blue;
          }
 
@@ -5305,15 +5325,19 @@ function build_season_summary()
 
          table_data = normalize_float_value(table_data);
 
-         d.writeln('<td '+td_background+' class="gr1_bb2_border"><font size=-1><b>'+table_data+'</b></font></td>');
+         d.writeln('<td '+td_background+' class="gr1_bb2_border"><font style="font-size: 11pt">'+bold_start+table_data+bold_end+'</font></td>');
       }
 
+      bold_end      = "";
+      bold_start    = "";
       td_background = "";
 
       player_total_score = total_scores[sort_index[player_index]];
 
       if (player_total_score == best_total_scores)
       {
+         bold_end      = "</b>";
+         bold_start    = "<b>";
          td_background = "bgcolor=" + color_light_blue;
       }
 
@@ -5330,13 +5354,13 @@ function build_season_summary()
 
       table_data = normalize_float_value(table_data);
 
-      d.writeln('<td '+td_background+' class='+border_class_1+'><font size=-1><b>'+table_data+'</b></font></td>');
+      d.writeln('<td '+td_background+' class='+border_class_1+'><font style="font-size: 11pt">'+bold_start+table_data+bold_end+'</b></font></td>');
    }
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=right>');
-   d.writeln('<td class="br2_gb1_border" colspan=3><font size=-1><b>1st place count = </b></font></td>');
+   d.writeln('<tr align=right height=15px>');
+   d.writeln('<td class="br2_gb1_border" colspan=3><font style="font-size: 10pt">1st place count =&nbsp;</font></td>');
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
       if ((player_index + 1) == number_of_rs_players)
@@ -5361,26 +5385,30 @@ function build_season_summary()
 
       if (table_data == max_1st_places)
       {
+         bold_end   = "</b>";
+         bold_start = "<b>";
          font_color = "color=" + color_green;
       }
       else
       {
+         bold_end   = "";
+         bold_start = "";
          font_color = "";
       }
 
-      d.writeln('<td align=center class='+border_class_1+'><font size=-1 '+font_color+'><b>'+table_data+'</b></font></td>');
+      d.writeln('<td align=center class='+border_class_1+'><font style="font-size: 10pt" '+font_color+'>'+bold_start+table_data+bold_end+'</font></td>');
 
       if (form_view == "expanded")
       {
-         d.writeln('<td><font size=-1><br></font></td>');
-         d.writeln('<td class='+border_class_2+'><font size=-1><br></font></td>');
+         d.writeln('<td><font style="font-size: 10pt"><br></font></td>');
+         d.writeln('<td class='+border_class_2+'><font style="font-size: 10pt"><br></font></td>');
       }
    }
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=right>');
-   d.writeln('<td class="br2_gb1_border" colspan=3><font size=-1><b>2nd place count = </b></font></td>');
+   d.writeln('<tr align=right height=15px>');
+   d.writeln('<td class="br2_gb1_border" colspan=3><font style="font-size: 10pt">2nd place count =&nbsp;</font></td>');
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
       if ((player_index + 1) == number_of_rs_players)
@@ -5405,26 +5433,30 @@ function build_season_summary()
 
       if (table_data == max_2nd_places)
       {
+         bold_end   = "</b>";
+         bold_start = "<b>";
          font_color = "color=" + color_green;
       }
       else
       {
+         bold_end   = "";
+         bold_start = "";
          font_color = "";
       }
 
-      d.writeln('<td align=center class='+border_class_1+'><font size=-1 '+font_color+'><b>'+table_data+'</b></font></td>');
+      d.writeln('<td align=center class='+border_class_1+'><font style="font-size: 10pt" '+font_color+'>'+bold_start+table_data+bold_end+'</font></td>');
 
       if (form_view == "expanded")
       {
-         d.writeln('<td><font size=-1><br></font></td>');
-         d.writeln('<td class='+border_class_2+'><font size=-1><br></font></td>');
+         d.writeln('<td><font style="font-size: 10pt"><br></font></td>');
+         d.writeln('<td class='+border_class_2+'><font style="font-size: 10pt"><br></font></td>');
       }
    }
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=right>');
-   d.writeln('<td class="br2_gb1_border" colspan=3><font size=-1><b>3rd place count = </b></font></td>');
+   d.writeln('<tr align=right height=15px>');
+   d.writeln('<td class="br2_gb1_border" colspan=3><font sstyle="font-size: 10pt">3rd place count =&nbsp;</font></td>');
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
       if ((player_index + 1) == number_of_rs_players)
@@ -5449,26 +5481,30 @@ function build_season_summary()
 
       if (table_data == max_3rd_places)
       {
+         bold_end   = "</b>";
+         bold_start = "<b>";
          font_color = "color=" + color_green;
       }
       else
       {
+         bold_end   = "";
+         bold_start = "";
          font_color = "";
       }
 
-      d.writeln('<td align=center class='+border_class_1+'><font size=-1 '+font_color+'><b>'+table_data+'</b></font></td>');
+      d.writeln('<td align=center class='+border_class_1+'><font style="font-size: 10pt" '+font_color+'>'+bold_start+table_data+bold_end+'</font></td>');
 
       if (form_view == "expanded")
       {
-         d.writeln('<td><font size=-1><br></font></td>');
-         d.writeln('<td class='+border_class_2+'><font size=-1><br></font></td>');
+         d.writeln('<td><font style="font-size: 10pt"><br></font></td>');
+         d.writeln('<td class='+border_class_2+'><font style="font-size: 10pt"><br></font></td>');
       }
    }
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=right>');
-   d.writeln('<td class="br2_gb1_border" colspan=3><font size=-1><b>Last place count = </b></font></td>');
+   d.writeln('<tr align=right height=15px>');
+   d.writeln('<td class="br2_gb1_border" colspan=3><font style="font-size: 10pt">Last place count =&nbsp;</font></td>');
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
       if ((player_index + 1) == number_of_rs_players)
@@ -5493,26 +5529,30 @@ function build_season_summary()
 
       if (table_data == max_last_places)
       {
+         bold_end   = "</b>";
+         bold_start = "<b>";
          font_color = "color=" + color_red;
       }
       else
       {
+         bold_end   = "";
+         bold_start = "";
          font_color = "";
       }
 
-      d.writeln('<td align=center class='+border_class_1+'><font size=-1 '+font_color+'><b>'+table_data+'</b></font></td>');
+      d.writeln('<td align=center class='+border_class_1+'><font style="font-size: 10pt" '+font_color+'>'+bold_start+table_data+bold_end+'</font></td>');
 
       if (form_view == "expanded")
       {
-         d.writeln('<td><font size=-1><br></font></td>');
-         d.writeln('<td class='+border_class_2+'><font size=-1><br></font></td>');
+         d.writeln('<td><font style="font-size: 10pt"><br></font></td>');
+         d.writeln('<td class='+border_class_2+'><font style="font-size: 10pt"><br></font></td>');
       }
    }
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=right>');
-   d.writeln('<td class="br2_border" colspan=3><font size=-1><b>Missed week count = </b></font></td>');
+   d.writeln('<tr align=right height=15px>');
+   d.writeln('<td class="br2_border" colspan=3><font style="font-size: 10pt">Missed week count =&nbsp;</font></td>');
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
       if ((player_index + 1) == number_of_rs_players)
@@ -5537,19 +5577,23 @@ function build_season_summary()
 
       if (table_data == max_missed_weeks)
       {
+         bold_end   = "</b>";
+         bold_start = "<b>";
          font_color = "color=" + color_red;
       }
       else
       {
+         bold_end   = "";
+         bold_start = "";
          font_color = "";
       }
 
-      d.writeln('<td align=center class='+border_class_1+'><font size=-1 '+font_color+'><b>'+table_data+'</b></font></td>');
+      d.writeln('<td align=center class='+border_class_1+'><font style="font-size: 10pt" '+font_color+'>'+bold_start+table_data+bold_end+'</font></td>');
 
       if (form_view == "expanded")
       {
-         d.writeln('<td class="gr1_border"><font size=-1><br></font></td>');
-         d.writeln('<td class='+border_class_2+'><font size=-1><br></font></td>');
+         d.writeln('<td class="gr1_border"><font style="font-size: 10pt"><br></font></td>');
+         d.writeln('<td class='+border_class_2+'><font style="font-size: 10pt"><br></font></td>');
       }
    }
    d.writeln('</tr>');
