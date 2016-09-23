@@ -2959,6 +2959,7 @@ function build_post_season_form()
 
    d.writeln('<tr VALIGN=CENTER bgcolor=#C4D79B>');
    d.writeln('<td ALIGN=RIGHT class="bb2_border" colspan=2>');
+   d.writeln('<b><font style="font-size: 13pt">NAME:</font></b>');
    d.writeln('</td>');
    d.writeln('<td VALIGN=LEFT class="bb2_border" colspan=5>');
    d.writeln('<select style="font-size: 13pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1>');
