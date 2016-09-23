@@ -37,7 +37,8 @@ A.white_link:active  {text-decoration: none; color: white;}
    background-color: #002060;
    border-left: solid 1px black;
    border-top: solid 1px black;
-   height: 28px;
+   font-size: 13pt;
+   height: 35px;
    padding-bottom: 4px;
    padding-left: 10px;
    padding-right: 15px;
@@ -67,6 +68,7 @@ A.white_link:active  {text-decoration: none; color: white;}
    background-color: #283E1A;
    border-left: solid 1px black;
    border-top: solid 1px black;
+   font-size: 12pt;
    height: 30px;
    padding-bottom: 4px;
    padding-left: 10px;
@@ -95,6 +97,7 @@ A.white_link:active  {text-decoration: none; color: white;}
    background-color: maroon;
    border-left: solid 1px black;
    border-top: solid 1px black;
+   font-size: 12pt;
    height: 30px;
    padding-bottom: 4px;
    padding-left: 10px;
