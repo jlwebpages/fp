@@ -1806,7 +1806,7 @@ function build_regular_season_form()
 
    d.writeln('<table border=0 cellspacing=0 cellpadding=0>');
    d.writeln('<tr align=center valign=center>');
-   d.writeln('<td nowrap class="no_border"><font size=+2>Input Form - Week&nbsp;</font>');
+   d.writeln('<td nowrap class="no_border"><font style="font-size: 18pt">Input Form - Week&nbsp;</font>');
    d.writeln('   <select class="light_gray_background" style="vertical-align: center; font-family: Calibri; font-size: 14pt; border: 1px solid gray" name="selected_week_menu" size=1 onChange="change_week(document); return true;">');
    for (var i = current_input_week; i <= 17; i++)
    {
@@ -2943,7 +2943,7 @@ function build_post_season_form()
    d.writeln('<center>');
    d.writeln('');
 
-   d.writeln('<br><font size=+2>Input Form - Post Season Week '+ week +'</font><br><br>');
+   d.writeln('<br><font style="font-size: 18pt">Input Form - Post Season Week '+ week +'</font><br><br>');
    d.writeln('');
 
    d.writeln('<form name="fp_inputs">');
@@ -2959,7 +2959,6 @@ function build_post_season_form()
 
    d.writeln('<tr VALIGN=CENTER bgcolor=#C4D79B>');
    d.writeln('<td ALIGN=RIGHT class="bb2_border" colspan=2>');
-   d.writeln('<b><font size=+1>NAME:</font></b>');
    d.writeln('</td>');
    d.writeln('<td VALIGN=LEFT class="bb2_border" colspan=5>');
    d.writeln('<select style="font-size: 13pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1>');
@@ -2981,11 +2980,11 @@ function build_post_season_form()
    d.writeln('');
 
    d.writeln('<tr ALIGN=CENTER bgcolor=#DCE6F1>');
-   d.writeln('<td class="br2_bb2_border"><font size=+1><b>GAME</b></font></td>');
-   d.writeln('<td class="bb2_border"><font size=+1><b>VISITOR</b></font></td>');
-   d.writeln('<td class="bb2_border"><font size=+1><br></font></td>');
-   d.writeln('<td class="br2_bb2_border"><font size=+1><b>HOME</b></font></td>');
-   d.writeln('<td class="bb2_border" colspan=3><font size=+1><b>PREDICTION</b></font></td>');
+   d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt"><b>GAME</b></font></td>');
+   d.writeln('<td class="bb2_border"><font style="font-size: 13pt"><b>VISITOR</b></font></td>');
+   d.writeln('<td class="bb2_border"><font style="font-size: 13pt"><br></font></td>');
+   d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt"><b>HOME</b></font></td>');
+   d.writeln('<td class="bb2_border" colspan=3><font style="font-size: 13pt"><b>PREDICTION</b></font></td>');
    d.writeln('</tr>');
    d.writeln('');
 
@@ -2994,18 +2993,18 @@ function build_post_season_form()
       d.writeln('<tr align=center>');
       if (i == number_of_games)
       {
-         d.writeln('<td class="br2_bb2_border"><font size=+1><b>' + i + '</b></font></td>');
-         d.writeln('<td class="gr1_bb2_border"><font size=+1>' + visiting_teams[i-1] + '</font></td>');
-         d.writeln('<td class="gr1_bb2_border"><font size=+1>at</font></td>');
-         d.writeln('<td class="br2_bb2_border"><font size=+1>' + home_teams[i-1] + '</font></td>');
+         d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt"><b>' + i + '</b></font></td>');
+         d.writeln('<td class="gr1_bb2_border"><font style="font-size: 13pt">' + visiting_teams[i-1] + '</font></td>');
+         d.writeln('<td class="gr1_bb2_border"><font style="font-size: 13pt">at</font></td>');
+         d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt">' + home_teams[i-1] + '</font></td>');
          d.writeln('<td class="gr1_bb2_border"><select style="font-size: 12pt; font-family: Calibri; border: 1px solid lightgray" name="pick'+i+'" size=1>');
       }
       else
       {
-         d.writeln('<td class="br2_gb1_border"><font size=+1><b>' + i + '</b></font></td>');
-         d.writeln('<td><font size=+1>' + visiting_teams[i-1] + '</font></td>');
-         d.writeln('<td><font size=+1>at</font></td>');
-         d.writeln('<td class="br2_gb1_border"><font size=+1>' + home_teams[i-1] + '</font></td>');
+         d.writeln('<td class="br2_gb1_border"><font style="font-size: 13pt"><b>' + i + '</b></font></td>');
+         d.writeln('<td><font style="font-size: 13pt">' + visiting_teams[i-1] + '</font></td>');
+         d.writeln('<td><font style="font-size: 13pt">at</font></td>');
+         d.writeln('<td class="br2_gb1_border"><font style="font-size: 13pt">' + home_teams[i-1] + '</font></td>');
          d.writeln('<td><select style="font-size: 12pt; font-family: Calibri; border: 1px solid lightgray" name="pick'+i+'" size=1>');
       }
       d.writeln('       <option selected value="0">');
@@ -3014,13 +3013,13 @@ function build_post_season_form()
       d.writeln('    </select></td>');
       if (i == number_of_games)
       {
-         d.writeln('<td class="gr1_bb2_border"><font size=+1>by</font></td>');
-         d.writeln('<td class="bb2_border"><font size=+1>');
+         d.writeln('<td class="gr1_bb2_border"><font style="font-size: 13pt">by</font></td>');
+         d.writeln('<td class="bb2_border"><font style="font-size: 13pt">');
       }
       else
       {
-         d.writeln('<td><font size=+1>by</font></td>');
-         d.writeln('<td><font size=+1>');
+         d.writeln('<td><font style="font-size: 13pt">by</font></td>');
+         d.writeln('<td><font style="font-size: 13pt">');
       }
       d.writeln('    <input type=text style="text-align:center; font-size:12pt; font-family: Calibri; border: 1px solid lightgray" name="spread'+i+'" size="2" maxlength="2">');
       d.writeln('</font></td>'); 
@@ -3030,8 +3029,8 @@ function build_post_season_form()
 
    d.writeln('<tr align=center>');
    d.writeln('<td class="no_border" colspan=1><font>&nbsp;</font></td>');
-   d.writeln('<td class="no_border" colspan=5 align=right><font size=+1>Game '+number_of_games+' Total Points:</font></td>');
-   d.writeln('<td class="no_border"  colspan=1><font size=+1>');
+   d.writeln('<td class="no_border" colspan=5 align=right><font style="font-size: 13pt">Game '+number_of_games+' Total Points:</font></td>');
+   d.writeln('<td class="no_border"  colspan=1><font style="font-size: 13pt">');
    d.writeln('    <input type=text style="text-align:center; font-size:12pt; font-family: Calibri; border: 1px solid gray" name="points" size="2" maxlength="2">');
    d.writeln('</font></td>'); 
    d.writeln('</tr>');
