@@ -1834,9 +1834,7 @@ function build_regular_season_form()
    d.writeln('');
 
    d.writeln('<tr VALIGN=CENTER bgcolor=#C4D79B>');
-   d.writeln('<td ALIGN=RIGHT class="bb2_border" colspan=2>');
-   d.writeln('<b>NAME:</b>');
-   d.writeln('</td>');
+   d.writeln('<td ALIGN=RIGHT class="bb2_border" colspan=2><font style="font-size: 12pt"><b>NAME:</b></font></td>');
    d.writeln('<td VALIGN=LEFT class="bb2_border" colspan=4>');
    d.writeln('<select style="font-size: 12pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1>');
    for (var i = 0; i <= top.number_of_rs_players; i++)
@@ -1857,12 +1855,12 @@ function build_regular_season_form()
    d.writeln('');
 
    d.writeln('<tr ALIGN=CENTER bgcolor=#DCE6F1>');
-   d.writeln('<td class="br2_bb2_border"><b>GAME</b></td>');
-   d.writeln('<td class="bb2_border"><b>VISITOR</b></td>');
-   d.writeln('<td class="bb2_border"><br></td>');
-   d.writeln('<td class="br2_bb2_border"><b>HOME</b></td>');
-   d.writeln('<td class="bb2_gr1_border"><b>PICK</b></td>');
-   d.writeln('<td class="bb2_border"><b>WEIGHT</b></td>');
+   d.writeln('<td class="br2_bb2_border"><font style="font-size: 12pt"><b>GAME</b></font></td>');
+   d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><b>VISITOR</b></font></td>');
+   d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><br></font></td>');
+   d.writeln('<td class="br2_bb2_border"><font style="font-size: 12pt"><b>HOME</b></font></td>');
+   d.writeln('<td class="bb2_gr1_border"><font style="font-size: 12pt"><b>PICK</b></font></td>');
+   d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><b>WEIGHT</b></font></td>');
    d.writeln('</tr>');
    d.writeln('');
 
@@ -1871,18 +1869,18 @@ function build_regular_season_form()
       d.writeln('<tr align=center>');
       if (i == number_of_games)
       {
-         d.writeln('<td class="br2_border"><b>' + i + '</b></td>');
-         d.writeln('<td class="gr1_border">' + visiting_teams[i-1] + '</td>');
-         d.writeln('<td class="gr1_border">at</td>');
-         d.writeln('<td class="br2_border">' + home_teams[i-1] + '</td>');
+         d.writeln('<td class="br2_border"><font style="font-size: 12pt"><b>' + i + '</b></font></td>');
+         d.writeln('<td class="gr1_border"><font style="font-size: 12pt">' + visiting_teams[i-1] + '</font></td>');
+         d.writeln('<td class="gr1_border"><font style="font-size: 12pt">at</font></td>');
+         d.writeln('<td class="br2_border"><font style="font-size: 12pt">' + home_teams[i-1] + '</font></td>');
          d.writeln('<td class="gr1_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="pick'+i+'" size=1>');
       }
       else
       {
-         d.writeln('<td class="br2_gb1_border"><b>' + i + '</b></td>');
-         d.writeln('<td>' + visiting_teams[i-1] + '</td>');
-         d.writeln('<td>at</td>');
-         d.writeln('<td class="br2_gb1_border">' + home_teams[i-1] + '</td>');
+         d.writeln('<td class="br2_gb1_border"><font style="font-size: 12pt"><b>' + i + '</b></font></td>');
+         d.writeln('<td><font style="font-size: 12pt">' + visiting_teams[i-1] + '</font></td>');
+         d.writeln('<td><font style="font-size: 12pt">at</font></td>');
+         d.writeln('<td class="br2_gb1_border"><font style="font-size: 12pt">' + home_teams[i-1] + '</font></td>');
          d.writeln('<td><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="pick'+i+'" size=1>');
       }
       d.writeln('       <option selected value="0">');
@@ -1910,8 +1908,7 @@ function build_regular_season_form()
    }
 
    d.writeln('<tr align=center>');
-   d.writeln('<td class="bt2_border" align=right colspan="5">');
-   d.writeln('    Monday Night Total Points:</td>');
+   d.writeln('<td class="bt2_border" align=right colspan="5"><font style="font-size: 12pt">Monday Night Total Points:</font></td>');
    d.writeln('<td class="bt2_border" colspan="1">');
    d.writeln('<input type=text size="2" style="text-align:center; font-size: 11pt; font-family: Calibri; border: 1px solid gray" maxlength="2" name="mn_points">');
    d.writeln('</td>');
@@ -1919,9 +1916,7 @@ function build_regular_season_form()
    d.writeln('');
 
    d.writeln('<tr align=center bgcolor=#DCE6F1>');
-   d.writeln('<td class="bt2_border" colspan="6">');
-   d.writeln('<b>Open Date:</b>&nbsp;&nbsp;'+open_date);
-   d.writeln('</td>');
+   d.writeln('<td class="bt2_border" colspan="6"><font style="font-size: 12pt"><b>Open Date:</b>&nbsp;&nbsp;'+open_date+'</font></td>');
    d.writeln('</tr>');
    d.writeln('');
 
@@ -2958,9 +2953,7 @@ function build_post_season_form()
    d.writeln('');
 
    d.writeln('<tr VALIGN=CENTER bgcolor=#C4D79B>');
-   d.writeln('<td ALIGN=RIGHT class="bb2_border" colspan=2>');
-   d.writeln('<b><font style="font-size: 13pt">NAME:</font></b>');
-   d.writeln('</td>');
+   d.writeln('<td ALIGN=RIGHT class="bb2_border" colspan=2><b><font style="font-size: 13pt">NAME:</font></b></td>');
    d.writeln('<td VALIGN=LEFT class="bb2_border" colspan=5>');
    d.writeln('<select style="font-size: 13pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1>');
    for (var i = 0; i <= top.number_of_ps_players; i++)
