@@ -809,6 +809,18 @@ function build_regular_season_form()
    d.writeln('      }');
    d.writeln('      else');
    d.writeln('      {');
+   d.writeln('         if (i == nfl_odds_url.length-1)');
+   d.writeln('         {');
+   d.writeln('            index = nfl_odds.indexOf("NFLLinesAreNotYetPosted");');
+   d.writeln('');
+   d.writeln('            if (index != -1)');
+   d.writeln('            {');
+   d.writeln('               alert("NFL Odds for Week '+week+' are not available.")');
+   d.writeln('');
+   d.writeln('               return;');
+   d.writeln('            }');
+   d.writeln('         }');
+   d.writeln('');
    d.writeln('         break;  // Break out of this loop and continue since we found the NFL Odds.');
    d.writeln('      }');
    d.writeln('   }');
