@@ -811,9 +811,9 @@ function build_regular_season_form()
    d.writeln('      {');
    d.writeln('         if (i == nfl_odds_url.length-1)');
    d.writeln('         {');
-   d.writeln('            index = nfl_odds.indexOf("NFLLinesAreNotYetPosted");');
+   d.writeln('            index1 = nfl_odds.indexOf("EarlyWeek'+week+',2016NFLLinesAreNotYetPosted");');
    d.writeln('');
-   d.writeln('            if (index != -1)');
+   d.writeln('            if (index1 != -1)');
    d.writeln('            {');
    d.writeln('               alert("NFL Odds for Week '+week+' are not available.")');
    d.writeln('');
