@@ -3641,11 +3641,11 @@ function build_regular_season_form()
    d.writeln('<td class="br2_bb2_border" colspan=4>');
    if (mode == "prelim")
    {
-      d.writeln('<font style="font-size: 14pt"><b>Week&nbsp;&nbsp;'+week+'&nbsp;&nbsp;'+mode_string+'</b></font>');
+      d.writeln('<font style="font-size: 13pt"><b>Week&nbsp;&nbsp;'+week+'&nbsp;&nbsp;'+mode_string+'</b></font>');
    }
    else
    {
-      d.writeln('<select style="font-family: Calibri; font-size: 14pt; font-weight: bold; background-color: #C4D79B; border: 1px solid gray" name="selected_week_menu" size=1');
+      d.writeln('<select style="font-family: Calibri; font-size: 13pt; font-weight: bold; background-color: #C4D79B; border: 1px solid gray" name="selected_week_menu" size=1');
       d.writeln('  onChange="change_week(document); return true;">');
       for (var i = 1; i <= unaltered_week; i++)
       {
