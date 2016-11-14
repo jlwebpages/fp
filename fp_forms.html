@@ -92,6 +92,7 @@ function build_forms_page()
    d.writeln("      w.gv.document.writeln('var opponent_index;');");
    d.writeln("      w.gv.document.writeln('var order_by;');");
    d.writeln("      w.gv.document.writeln('var player_index;');");
+   d.writeln("      w.gv.document.writeln('var prelim_game_states;');");
    d.writeln("      w.gv.document.writeln('var prelim_possession_teams;');");
    d.writeln("      w.gv.document.writeln('var prelim_red_zone_flags;');");
    d.writeln("      w.gv.document.writeln('var prelim_victors;');");
@@ -175,6 +176,7 @@ function build_forms_page()
    d.writeln('      w.gv.opponent_index          = 0;');
    d.writeln('      w.gv.order_by                = "players";');
    d.writeln('      w.gv.player_index            = top.player_index;');
+   d.writeln('      w.gv.prelim_game_states      = ["at","at","at","at","at","at","at","at","at","at","at","at","at","at","at","at"];');
    d.writeln('      w.gv.prelim_possession_teams = ["","","","","","","","","","","","","","","",""];');
    d.writeln('      w.gv.prelim_red_zone_flags   = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];');
    d.writeln('      w.gv.prelim_victors          = ["","","","","","","","","","","","","","","",""];');

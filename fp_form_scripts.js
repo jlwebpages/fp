@@ -831,7 +831,7 @@ function build_post_season_form()
    d.writeln('   var team           = "";');
    d.writeln('');
    d.writeln('');
-   d.writeln('   clear_victors();  // Clear any teams previously identified as victors via "Get Scores".');
+   d.writeln('   clear_get_scores_data();  // Clear any teams previously identified as victors via "Get Scores".');
    d.writeln('');
    d.writeln('   for (var ei = 0; ei < scores.elements.length; ei++)');
    d.writeln('   {');
@@ -973,7 +973,7 @@ function build_post_season_form()
    d.writeln('}');
    d.writeln('');
    d.writeln('');
-   d.writeln('function clear_victors()');
+   d.writeln('function clear_get_scores_data()');
    d.writeln('{');
    d.writeln('   if (check_for_opener() == false)');
    d.writeln('   {');
@@ -1056,7 +1056,7 @@ function build_post_season_form()
    d.writeln('      scores_index_stop  = 10;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   clear_victors();');
+   d.writeln('   clear_get_scores_data();');
    d.writeln('');
    d.writeln('   // Attempt to get the NFL scores from the internet.');
    d.writeln('');
@@ -1387,7 +1387,7 @@ function build_post_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   clear_victors();  // Clear any teams previously identified as victors via "Get Scores".');
+   d.writeln('   clear_get_scores_data();  // Clear any teams previously identified as victors via "Get Scores".');
    d.writeln('');
    d.writeln('   window.top.gv.scores_already_assigned = false;');
    d.writeln('');
@@ -2250,6 +2250,7 @@ function build_regular_season_form()
    var document_heading              = "";
    var duplicates                    = 0;
    var form_view                     = window.top.gv.form_view;
+   var game_state                    = "at";
    var input_tag_style               = "";
    var home_team_possession_flag     = "";
    var mn_points_delta_string        = "";
@@ -2720,7 +2721,7 @@ function build_regular_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   clear_victors_and_scores();  // Clear information set by "Get Winners".');
+   d.writeln('   clear_get_winners_data();  // Clear information set by "Get Winners".');
    d.writeln('');
    d.writeln('   get_selected_winners(document);');
    d.writeln('');
@@ -2829,7 +2830,7 @@ function build_regular_season_form()
    d.writeln('}');
    d.writeln('');
    d.writeln('');
-   d.writeln('function clear_victors_and_scores()');
+   d.writeln('function clear_get_winners_data()');
    d.writeln('{');
    d.writeln('   if (check_for_opener() == false)');
    d.writeln('   {');
@@ -2859,7 +2860,7 @@ function build_regular_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   clear_victors_and_scores();  // Clear information set by "Get Winners".');
+   d.writeln('   clear_get_winners_data();  // Clear information set by "Get Winners".');
    d.writeln('');
    d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
    d.writeln('   {');
@@ -2929,7 +2930,7 @@ function build_regular_season_form()
    d.writeln('   picks           = all_picks[week-1];');
    d.writeln('   weights         = all_weights[week-1];');
    d.writeln('');
-   d.writeln('   clear_victors_and_scores();  // Clear information set by "Get Winners".');
+   d.writeln('   clear_get_winners_data();  // Clear information set by "Get Winners".');
    d.writeln('');
    d.writeln('   // Get selected winners from preliminary form.');
    d.writeln('');
@@ -3249,7 +3250,7 @@ function build_regular_season_form()
    d.writeln('      command = "Get Winners";');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   clear_victors_and_scores();  // Clear information set by previous call to "Get Winners".');
+   d.writeln('   clear_get_winners_data();  // Clear information set by previous call to "Get Winners".');
    d.writeln('');
    d.writeln('   home_teams     = window.top.gv.all_home_teams[week-1];');
    d.writeln('   visiting_teams = window.top.gv.all_visiting_teams[week-1];');
@@ -3379,6 +3380,19 @@ function build_regular_season_form()
    d.writeln('      else');
    d.writeln('      {');
    d.writeln('         game_status = "game_in_progress";');
+   d.writeln('');
+   d.writeln('         // Determine what quarter the game is in, or if it is at halftime or in overtime.');
+   d.writeln('');
+   d.writeln('         window.top.gv.prelim_game_states[i] = nfl_games_array[i].substring(nfl_games_array[i].indexOf("q=")+2,nfl_games_array[i].indexOf("q=")+3);');
+   d.writeln('');
+   d.writeln('         if ( (window.top.gv.prelim_game_states[i] > 0) && (window.top.gv.prelim_game_states[i] < 5) )');
+   d.writeln('         {');
+   d.writeln('            window.top.gv.prelim_game_states[i] = window.top.gv.prelim_game_states[i] + "Q";');
+   d.writeln('         }');
+   d.writeln('');
+   d.writeln('         // Reduce the font size of the game state.');
+   d.writeln('');
+   d.writeln('         window.top.gv.prelim_game_states[i] = "<font size=-1>"+window.top.gv.prelim_game_states[i]+"</font>";');
    d.writeln('      }');
    d.writeln('');
    d.writeln('      // Split the nfl_games_array game into multiple parts so that the game information can easily be extracted.');
@@ -3752,7 +3766,7 @@ function build_regular_season_form()
 
                home_team_possession_flag = "<span style='font-weight:bold; color:"+bullet_color+"'>\u2022&nbsp;</span>";
 
-               // Reset possession team and red zone flag
+               // Reset possession team and red zone flag.
 
                prelim_possession_teams[j-1] = "";
                prelim_red_zone_flags[j-1]   = false;
@@ -3760,6 +3774,14 @@ function build_regular_season_form()
                break;
             }
          }
+
+         // Set the game state flag (quarter, halftime, or overtime) if the game is in progress.
+
+         game_state = window.top.gv.prelim_game_states[i-1];
+
+         // Reset the game state flag.
+
+         window.top.gv.prelim_game_states[i-1] = "at";
       }
 
       d.writeln('<tr align=center height=18px>');
@@ -3787,11 +3809,11 @@ function build_regular_season_form()
       }
       if (i == number_of_games)
       {
-         d.writeln('<td class="gr1_bb1_border"><font style="font-size: 12pt">at</font></td>');
+         d.writeln('<td class="gr1_bb1_border"><font style="font-size: 12pt">'+game_state+'</font></td>');
       }
       else
       {
-         d.writeln('<td><font style="font-size: 12pt">at</font></td>');
+         d.writeln('<td><font style="font-size: 12pt">'+game_state+'</font></td>');
       }
       if (winners[i-1] == "H")
       {
