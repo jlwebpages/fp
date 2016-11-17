@@ -12,6 +12,7 @@ function build_post_season_form()
    var color_black                   = "black";
    var color_red                     = "red";
    var document_heading              = "";
+   var game_state                    = "at";
    var home_team_possession_flag     = "";
    var input_field_size              = 1;
    var input_tag_style               = "";
@@ -1210,7 +1211,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   for (var i = 0; i < number_of_games; i++)');
    d.writeln('   {');
-   d.writeln('      // Determine status of current nfl_games_array game.');
+   d.writeln('      // Determine the status and state of the current nfl_games_array game.');
    d.writeln('');
    d.writeln('      if (nfl_games_array[i].indexOf("q=F") > -1)');
    d.writeln('      {');
@@ -1223,6 +1224,39 @@ function build_post_season_form()
    d.writeln('      else');
    d.writeln('      {');
    d.writeln('         game_status = "game_in_progress";');
+   d.writeln('');
+   d.writeln('         // Set the game state to the game quarter, halftime, or overtime.');
+   d.writeln('');
+   d.writeln('         window.top.gv.post_season_game_states[i] = nfl_games_array[i].substring(nfl_games_array[i].indexOf("q=")+2,nfl_games_array[i].indexOf("q=")+3);');
+   d.writeln('');
+   d.writeln('         if ( (window.top.gv.post_season_game_states[i] > 0) && (window.top.gv.post_season_game_states[i] < 5) )');
+   d.writeln('         {');
+   d.writeln('            window.top.gv.post_season_game_states[i] = window.top.gv.post_season_game_states[i] + "Q";');
+   d.writeln('         }');
+   d.writeln('');
+   d.writeln('         // Determine if there are two minutes or less to play in the 2nd quarter, 4th quarter, or overtime.');
+   d.writeln('');
+   d.writeln('         if (window.top.gv.post_season_game_states[i]=="2Q" || window.top.gv.post_season_game_states[i]=="4Q" || window.top.gv.post_season_game_states[i]=="OT")');
+   d.writeln('         {');
+   d.writeln('            if (nfl_games_array[i].indexOf("k=") > -1)  // Make sure the game time exists in nfl_games_array[i].');
+   d.writeln('            {');
+   d.writeln('               var game_time = nfl_games_array[i].substring(nfl_games_array[i].indexOf("k=")+2,nfl_games_array[i].indexOf("k=")+7);');
+   d.writeln('');
+   d.writeln('               game_time = game_time.replace(/:/g,"");  // Remove the ":" from game_time.');
+   d.writeln('               game_time = game_time - 0;               // Make sure game_time is an integer.');
+   d.writeln('');
+   d.writeln('               if (game_time <= 200)');
+   d.writeln('               {');
+   d.writeln('                  // Set the color of the game state to red to indicate two minutes or less to go.');
+   d.writeln('');
+   d.writeln('                  window.top.gv.post_season_game_states[i] = "<font color=red>"+window.top.gv.post_season_game_states[i]+"</font>";');
+   d.writeln('               }');
+   d.writeln('            }');
+   d.writeln('         }');
+   d.writeln('');
+   d.writeln('         // Reduce the font size of the game state.');
+   d.writeln('');
+   d.writeln('         window.top.gv.post_season_game_states[i] = "<font size=-1>"+window.top.gv.post_season_game_states[i]+"</font>";');
    d.writeln('      }');
    d.writeln('');
    d.writeln('      // Split the nfl_games_array game into multiple parts so that the game information can easily be extracted.');
@@ -1523,7 +1557,7 @@ function build_post_season_form()
 
                visiting_team_possession_flag = "<span style='font-weight:bold; color:"+bullet_color+"'>\u2022&nbsp;</span>";
 
-               // Reset possession team and red zone flag
+               // Reset possession team and red zone flag.
 
                post_season_possession_teams[j-1] = "";
                post_season_red_zone_flags[j-1]   = false;
@@ -1538,7 +1572,7 @@ function build_post_season_form()
 
                home_team_possession_flag = "<span style='font-weight:bold; color:"+bullet_color+"'>\u2022&nbsp;</span>";
 
-               // Reset possession team and red zone flag
+               // Reset possession team and red zone flag.
 
                post_season_possession_teams[j-1] = "";
                post_season_red_zone_flags[j-1]   = false;
@@ -1546,6 +1580,14 @@ function build_post_season_form()
                break;
             }
          }
+
+         // Set the game state flag (quarter, halftime, or overtime) if the game is in progress.
+
+         game_state = window.top.gv.post_season_game_states[gi-1];
+
+         // Reset the game state flag.
+
+         window.top.gv.post_season_game_states[gi-1] = "at";
 
          if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
          {
@@ -1609,11 +1651,11 @@ function build_post_season_form()
 
          if (use_player_points == false) border_style = "bb1_border";
 
-         d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">at</font></td>');
+         d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">'+game_state+'</font></td>');
       }
       else
       {
-         d.writeln('<td><font style="font-size: 10pt">at</font></td>');
+         d.writeln('<td><font style="font-size: 10pt">'+game_state+'</font></td>');
       }
 
       border_style = "gr1_gb1_border";
@@ -3394,7 +3436,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('         if (window.top.gv.prelim_game_states[i]=="2Q" || window.top.gv.prelim_game_states[i]=="4Q" || window.top.gv.prelim_game_states[i]=="OT")');
    d.writeln('         {');
-   d.writeln('            if (nfl_games_array[i].indexOf("k=") != -1)  // Make sure the game time exists in nfl_games_array[i].');
+   d.writeln('            if (nfl_games_array[i].indexOf("k=") > -1)  // Make sure the game time exists in nfl_games_array[i].');
    d.writeln('            {');
    d.writeln('               var game_time = nfl_games_array[i].substring(nfl_games_array[i].indexOf("k=")+2,nfl_games_array[i].indexOf("k=")+7);');
    d.writeln('');
@@ -3771,7 +3813,7 @@ function build_regular_season_form()
 
                visiting_team_possession_flag = "<span style='font-weight:bold; color:"+bullet_color+"'>\u2022&nbsp;</span>";
 
-               // Reset possession team and red zone flag
+               // Reset possession team and red zone flag.
 
                prelim_possession_teams[j-1] = "";
                prelim_red_zone_flags[j-1]   = false;
