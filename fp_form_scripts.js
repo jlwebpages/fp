@@ -1223,7 +1223,7 @@ function build_post_season_form()
    d.writeln('      else if (nfl_games_array[i].indexOf("q=F") > -1)');
    d.writeln('      {');
    d.writeln('         game_status = "game_over";');
-   d.writeln('         game_state  = "<font size=-1>F</font>";');
+   d.writeln('         game_state  = "<font size=-1>F</font>";  // Save game state for later assignment to window.top.gv.post_season_game_states.');
    d.writeln('      }');
    d.writeln('      else');
    d.writeln('      {');
@@ -1234,8 +1234,10 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('         game_state = nfl_games_array[i].substring(nfl_games_array[i].indexOf("q=")+2,nfl_games_array[i].indexOf("q=")+3);');
    d.writeln('');
-   d.writeln('         if ( (game_state > 0) && (game_state < 5) ) game_state = game_state + "Q";');
-   d.writeln('');
+   d.writeln('         if (game_state == "1") game_state = "1st";');
+   d.writeln('         if (game_state == "2") game_state = "2nd";');
+   d.writeln('         if (game_state == "3") game_state = "3rd";');
+   d.writeln('         if (game_state == "4") game_state = "4th";');
    d.writeln('         if (game_state == "O") game_state = "OT";');
    d.writeln('');
    d.writeln('         // Set the game clock string if it exists.');
@@ -1247,7 +1249,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('         // Determine if there are two minutes or less to play in the 2nd quarter, 4th quarter, or overtime.');
    d.writeln('');
-   d.writeln('         if ( (game_state.substring(0,2) == "2Q") || (game_state.substring(0,2) == "4Q") || (game_state.substring(0,2) == "OT") )');
+   d.writeln('         if ( (game_state.substring(0,3) == "2nd") || (game_state.substring(0,3) == "4th") || (game_state.substring(0,2) == "OT") )');
    d.writeln('         {');
    d.writeln('            if (game_clock_string != "")');
    d.writeln('            {');
@@ -3437,7 +3439,7 @@ function build_regular_season_form()
    d.writeln('      else if (nfl_games_array[i].indexOf("q=F") > -1)');
    d.writeln('      {');
    d.writeln('         game_status = "game_over";');
-   d.writeln('         game_state  = "<font size=-1>F</font>";');
+   d.writeln('         game_state  = "<font size=-1>F</font>";  // Save game state for later assignment to window.top.gv.prelim_game_states.');
    d.writeln('      }');
    d.writeln('      else');
    d.writeln('      {');
@@ -3448,8 +3450,10 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('         game_state = nfl_games_array[i].substring(nfl_games_array[i].indexOf("q=")+2,nfl_games_array[i].indexOf("q=")+3);');
    d.writeln('');
-   d.writeln('         if ( (game_state > 0) && (game_state < 5) ) game_state = game_state + "Q";');
-   d.writeln('');
+   d.writeln('         if (game_state == "1") game_state = "1st";');
+   d.writeln('         if (game_state == "2") game_state = "2nd";');
+   d.writeln('         if (game_state == "3") game_state = "3rd";');
+   d.writeln('         if (game_state == "4") game_state = "4th";');
    d.writeln('         if (game_state == "O") game_state = "OT";');
    d.writeln('');
    d.writeln('         // Set the game clock string if it exists.');
@@ -3461,7 +3465,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('         // Determine if there are two minutes or less to play in the 2nd quarter, 4th quarter, or overtime.');
    d.writeln('');
-   d.writeln('         if ( (game_state.substring(0,2) == "2Q") || (game_state.substring(0,2) == "4Q") || (game_state.substring(0,2) == "OT") )');
+   d.writeln('         if ( (game_state.substring(0,3) == "2nd") || (game_state.substring(0,3) == "4th") || (game_state.substring(0,2) == "OT") )');
    d.writeln('         {');
    d.writeln('            if (game_clock_string != "")');
    d.writeln('            {');
