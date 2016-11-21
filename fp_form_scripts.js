@@ -1667,11 +1667,11 @@ function build_post_season_form()
 
          if (use_player_points == false) border_style = "bb1_border";
 
-         d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">'+game_state+'</font></td>');
+         d.writeln('<td nowrap class="'+border_style+'"><font style="font-size: 10pt">'+game_state+'</font></td>');
       }
       else
       {
-         d.writeln('<td><font style="font-size: 10pt">'+game_state+'</font></td>');
+         d.writeln('<td nowrap><font style="font-size: 10pt">'+game_state+'</font></td>');
       }
 
       border_style = "gr1_gb1_border";
@@ -3906,11 +3906,11 @@ function build_regular_season_form()
       }
       if (i == number_of_games)
       {
-         d.writeln('<td class="gr1_bb1_border"><font style="font-size: 12pt">'+game_state+'</font></td>');
+         d.writeln('<td nowrap class="gr1_bb1_border"><font style="font-size: 12pt">'+game_state+'</font></td>');
       }
       else
       {
-         d.writeln('<td><font style="font-size: 12pt">'+game_state+'</font></td>');
+         d.writeln('<td nowrap><font style="font-size: 12pt">'+game_state+'</font></td>');
       }
       if (winners[i-1] == "H")
       {
