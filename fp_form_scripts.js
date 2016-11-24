@@ -11,8 +11,8 @@ function build_post_season_form()
    var bullet_color                  = "";
    var color_black                   = "black";
    var color_red                     = "red";
+   var current_prelim_week           = false;
    var document_heading              = "";
-   var game_state                    = "at";
    var home_team_possession_flag     = "";
    var input_field_size              = 1;
    var input_tag_style               = "";
@@ -80,6 +80,7 @@ function build_post_season_form()
    var border_style              = "no_border";
    var current_week_scores       = 0;
    var form_view                 = window.top.gv.form_view;
+   var game_state                = "at";
    var heading_colspan           = 53;
    var high_score_count          = 0;
    var high_score_players        = [null,null,null,null,null,null,null,null,null,null,null,null];
@@ -1372,7 +1373,7 @@ function build_post_season_form()
    d.writeln('               }');
    d.writeln('            }');
    d.writeln('');
-   d.writeln('            window.top.gv.post_season_game_states[j] = "<font size=-1>" + game_state + "</font>";');
+   d.writeln('            window.top.gv.post_season_game_states[j] = "<font style=\\"font-size: 8pt\\">" + game_state + "</font>";');
    d.writeln('         }');
    d.writeln('      }');
    d.writeln('   }');
@@ -1485,6 +1486,18 @@ function build_post_season_form()
 
    for (var gi = 1; gi <= number_of_games; gi++)
    {
+      // Determine if this game falls within the current preliminary week.
+
+      current_prelim_week = false;
+
+      if ( ( (week == 1) && (gi >=  1 && gi <=  4) ) ||
+           ( (week == 2) && (gi >=  5 && gi <=  8) ) ||
+           ( (week == 3) && (gi >=  9 && gi <= 10) ) ||
+           ( (week == 4) && (gi >= 11 && gi <= 11) )    )
+      {
+         if (mode == "prelim") current_prelim_week = true;
+      }
+
       if ( (gi == 1) || (gi == 5) || (gi == 9) || (gi == 11) )
       {
          d.writeln('');
@@ -1536,10 +1549,7 @@ function build_post_season_form()
 
       if (use_player_points == false) border_style = "gr1_bb1_border";
 
-      if ( ( (mode == "prelim") && (week == 1) && (gi>=1  && gi<=4 ) ) ||
-           ( (mode == "prelim") && (week == 2) && (gi>=5  && gi<=8 ) ) ||
-           ( (mode == "prelim") && (week == 3) && (gi>=9  && gi<=10) ) ||
-           ( (mode == "prelim") && (week == 4) && (gi>=11 && gi<=11) )    )
+      if (current_prelim_week == true)
       {
          for (var j = 1; j <= number_of_games; j++)
          {
@@ -1632,45 +1642,25 @@ function build_post_season_form()
          }
       }
 
-      border_style = "gb1_border";
+      border_style = "gb1_border"; if (current_prelim_week == true) border_style = "gr1_gb1_border";
 
-      if (use_player_points == false) border_style = "bb1_border";
+      if (use_player_points == false) {border_style = "bb1_border"; if (current_prelim_week == true) border_style = "gr1_bb1_border";}
+
+      if ( (gi != 4) && (gi != 8) && (gi != 10) && (gi != 11) )
+      {
+         border_style = "no_border"; if (current_prelim_week == true) border_style = "gr1_border";
+      }
 
       if (post_season_winners[gi-1] == "V")
       {
-         if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
-         {
-            d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt; color: blue">'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
-         }
-         else
-         {
-            d.writeln('<td><font style="font-size: 10pt; color: blue" >'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
-         }
+         d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt; color: blue">'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
       }
       else
       {
-         if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
-         {
-            d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
-         }
-         else
-         {
-            d.writeln('<td><font style="font-size: 10pt">'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
-         }
+         d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
       }
 
-      if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
-      {
-         border_style = "gb1_border";
-
-         if (use_player_points == false) border_style = "bb1_border";
-
-         d.writeln('<td nowrap class="'+border_style+'"><font style="font-size: 10pt">'+game_state+'</font></td>');
-      }
-      else
-      {
-         d.writeln('<td nowrap><font style="font-size: 10pt">'+game_state+'</font></td>');
-      }
+      d.writeln('<td nowrap class="'+border_style+'"><font style="font-size: 10pt">'+game_state+'</font></td>');
 
       border_style = "gr1_gb1_border";
 
@@ -1703,10 +1693,7 @@ function build_post_season_form()
 
       if (use_player_points == false) border_style = "br2_bb1_border";
 
-      if ( ( (mode == "prelim") && (week == 1) && (gi>=1  && gi<=4 ) ) ||
-           ( (mode == "prelim") && (week == 2) && (gi>=5  && gi<=8 ) ) ||
-           ( (mode == "prelim") && (week == 3) && (gi>=9  && gi<=10) ) ||
-           ( (mode == "prelim") && (week == 4) && (gi>=11 && gi<=11) )    )
+      if (current_prelim_week == true)
       {
          if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
          {
