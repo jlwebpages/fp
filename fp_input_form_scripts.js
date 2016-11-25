@@ -2373,7 +2373,7 @@ function build_post_season_form()
    d.writeln('   {');
    d.writeln('      mail_msg += escape("\\n\\nThese picks were generated from the NFL Odds.");');
    d.writeln('   }');
-   d.writeln('');
+   d.writeln('if(navigator.platform.indexOf("iOS")>-1)alert("iOS");');
    d.writeln('   temp_window = window.open(mail_msg,"","top=0,left=0,width=100,height=100");');
    d.writeln('');
    d.writeln('   setTimeout(function(){temp_window.close()},100);');
