@@ -937,7 +937,14 @@ function build_post_season_form()
    d.writeln('   }');
    d.writeln('   else');
    d.writeln('   {');
-   d.writeln('      document.location.href = "fp_post_season_form.html";');
+   d.writeln('      if (window.top.gv.get_scores_state == "on")');
+   d.writeln('      {');
+   d.writeln('         get_nfl_scores(document,false,"");');
+   d.writeln('      }');
+   d.writeln('      else');
+   d.writeln('      {');
+   d.writeln('         document.location.href = "fp_post_season_form.html";');
+   d.writeln('      }');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   return true;');
@@ -968,7 +975,14 @@ function build_post_season_form()
    d.writeln('   }');
    d.writeln('   else');
    d.writeln('   {');
-   d.writeln('      document.location.href = "fp_post_season_form.html";');
+   d.writeln('      if (window.top.gv.get_scores_state == "on")');
+   d.writeln('      {');
+   d.writeln('         get_nfl_scores(document,false,"");');
+   d.writeln('      }');
+   d.writeln('      else');
+   d.writeln('      {');
+   d.writeln('         document.location.href = "fp_post_season_form.html";');
+   d.writeln('      }');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   return true;');
@@ -994,7 +1008,7 @@ function build_post_season_form()
    d.writeln('}');
    d.writeln('');
    d.writeln('');
-   d.writeln('function get_nfl_scores(document,mode,command)');
+   d.writeln('function get_nfl_scores(document,display_dialog,command)');
    d.writeln('{');
    d.writeln('   if (check_for_opener() == false)');
    d.writeln('   {');
@@ -1090,7 +1104,7 @@ function build_post_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (mode == "manual")');
+   d.writeln('   if (display_dialog == true)');
    d.writeln('   {');
    d.writeln('      user_message = "\\""+ command + "\\" will do the following:\\n\\n";');
    d.writeln('      user_message = user_message + "   - Clear the scores on the Preliminary Form\\n";');
@@ -1380,10 +1394,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if (games_in_progress == false)');
    d.writeln('   {');
-   d.writeln('      if (mode == "manual")');
-   d.writeln('      {');
-   d.writeln('         alert("There are no Post Season Week " + week + " games in progress yet.");');
-   d.writeln('      }');
+   d.writeln('      alert("There are no Post Season Week " + week + " games in progress yet.");');
    d.writeln('');
    d.writeln('      // Force auto refresh to be off if no games are in progress.');
    d.writeln('');
@@ -2147,13 +2158,13 @@ function build_post_season_form()
       d.writeln('<tr align=center>');
       d.writeln('<td nowrap valign=middle class="no_border">');
       d.writeln('<input style="font-size: 11pt; font-family: Calibri; border: 1px solid black" type=button name="get_scores_button" value="Get Scores"');
-      d.writeln('    onClick=get_nfl_scores(document,"manual","");>');
+      d.writeln('    onClick=get_nfl_scores(document,false,"");>');
       d.writeln('&nbsp;');
       d.writeln('<font face="Calibri" color=black style="font-size: 12pt">Auto Refresh:</font>&nbsp;');
       if (window.top.gv.get_scores_state == "off")
       {
          d.writeln('<input style="font-size: 11pt; font-family: Calibri; border: 1px solid black" type=button name="get_scores_start_button" value="Start"');
-         d.writeln('    onClick=get_scores_auto_refresh(document,"start");get_nfl_scores(document,"manual","Start");>');
+         d.writeln('    onClick=get_scores_auto_refresh(document,"start");get_nfl_scores(document,false,"Start");>');
       }
       else
       {
@@ -2257,7 +2268,7 @@ function build_post_season_form()
 
       if (window.top.gv.get_scores_state == "on")
       {
-         window.top.gv.get_scores_timer = setInterval('get_nfl_scores(document,"auto","");',15000);
+         window.top.gv.get_scores_timer = setInterval('get_nfl_scores(document,false,"");',15000);
       }
    }
    else
@@ -2798,7 +2809,14 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('   else');
    d.writeln('   {');
-   d.writeln('      document.location.href = "fp_regular_season_form.html";');
+   d.writeln('      if (window.top.gv.get_winners_state == "on")');
+   d.writeln('      {');
+   d.writeln('         get_nfl_winners(document,false,"");');
+   d.writeln('      }');
+   d.writeln('      else');
+   d.writeln('      {');
+   d.writeln('         document.location.href = "fp_regular_season_form.html";');
+   d.writeln('      }');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   return true;');
@@ -2829,7 +2847,14 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('   else');
    d.writeln('   {');
-   d.writeln('      document.location.href = "fp_regular_season_form.html";');
+   d.writeln('      if (window.top.gv.get_winners_state == "on")');
+   d.writeln('      {');
+   d.writeln('         get_nfl_winners(document,false,"");');
+   d.writeln('      }');
+   d.writeln('      else');
+   d.writeln('      {');
+   d.writeln('         document.location.href = "fp_regular_season_form.html";');
+   d.writeln('      }');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   return true;');
@@ -3253,7 +3278,7 @@ function build_regular_season_form()
    d.writeln('}');
    d.writeln('');
    d.writeln('');
-   d.writeln('function get_nfl_winners(document,mode,command)');
+   d.writeln('function get_nfl_winners(document,display_dialog,command)');
    d.writeln('{');
    d.writeln('   if (check_for_opener() == false)');
    d.writeln('   {');
@@ -3328,7 +3353,7 @@ function build_regular_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (mode == "manual")');
+   d.writeln('   if (display_dialog == true)');
    d.writeln('   {');
    d.writeln('      user_message = "\\""+ command + "\\" will do the following:\\n\\n";');
    d.writeln('      user_message = user_message + "   - Clear the winners on the Preliminary Form\\n";');
@@ -3589,10 +3614,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (games_in_progress == false)');
    d.writeln('   {');
-   d.writeln('      if (mode == "manual")');
-   d.writeln('      {');
-   d.writeln('         alert("There are no Week " + week + " games in progress yet.");');
-   d.writeln('      }');
+   d.writeln('      alert("There are no Week " + week + " games in progress yet.");');
    d.writeln('');
    d.writeln('      // Force auto refresh to be off if no games are in progress.');
    d.writeln('');
@@ -4278,13 +4300,13 @@ function build_regular_season_form()
       d.writeln('<tr align=center>');
       d.writeln('<td nowrap valign=middle class="no_border">');
       d.writeln('<input style="font-size: 11pt; font-family: Calibri; border: 1px solid black" type=button name="get_winners_button" value="Get Winners"');
-      d.writeln('    onClick=get_nfl_winners(document,"manual","");>');
+      d.writeln('    onClick=get_nfl_winners(document,false,"");>');
       d.writeln('&nbsp;');
       d.writeln('<font style="font-size: 12pt">Auto Refresh:</font>&nbsp;');
       if (window.top.gv.get_winners_state == "off")
       {
          d.writeln('<input style="font-size: 11pt; font-family: Calibri; border: 1px solid black" type=button name="get_winners_start_button" value="Start"');
-         d.writeln('    onClick=get_winners_auto_refresh(document,"start");get_nfl_winners(document,"manual","Start");>');
+         d.writeln('    onClick=get_winners_auto_refresh(document,"start");get_nfl_winners(document,false,"Start");>');
       }
       else
       {
@@ -4427,7 +4449,7 @@ function build_regular_season_form()
 
       if (window.top.gv.get_winners_state == "on")
       {
-         window.top.gv.get_winners_timer = setInterval('get_nfl_winners(document,"auto","");',15000);
+         window.top.gv.get_winners_timer = setInterval('get_nfl_winners(document,false,"");',15000);
       }
    }
    else
