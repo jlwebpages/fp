@@ -97,6 +97,7 @@ function build_forms_page()
    d.writeln("      w.gv.document.writeln('var prelim_red_zone_flags;');");
    d.writeln("      w.gv.document.writeln('var prelim_victors;');");
    d.writeln("      w.gv.document.writeln('var prelim_winners;');");
+   d.writeln("      w.gv.document.writeln('var refresh_winners;');");
    d.writeln("      w.gv.document.writeln('var rs_players;');");
    d.writeln("      w.gv.document.writeln('var rs_players_description;');");
    d.writeln("      w.gv.document.writeln('var selected_week;');");
@@ -181,6 +182,7 @@ function build_forms_page()
    d.writeln('      w.gv.prelim_red_zone_flags   = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];');
    d.writeln('      w.gv.prelim_victors          = ["","","","","","","","","","","","","","","",""];');
    d.writeln('      w.gv.prelim_winners          = ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"];');
+   d.writeln('      w.gv.refresh_winners         = true;');
    d.writeln('      w.gv.rs_players              = top.rs_players;');
    d.writeln('      w.gv.rs_players_description  = top.rs_players_description;');
    d.writeln('      w.gv.selected_week           = 0;');
@@ -342,6 +344,7 @@ function build_forms_page()
    d.writeln("      w.gv.document.writeln('var post_season_victors;');");
    d.writeln("      w.gv.document.writeln('var ps_players;');");
    d.writeln("      w.gv.document.writeln('var ps_players_description;');");
+   d.writeln("      w.gv.document.writeln('var refresh_scores;');");
    d.writeln("      w.gv.document.writeln('var scores_already_assigned;');");
    d.writeln("      w.gv.document.writeln('var visitor_scores;');");
    d.writeln("      w.gv.document.writeln('</'+'script>');");
@@ -364,6 +367,7 @@ function build_forms_page()
    d.writeln('      w.gv.post_season_victors          = ["","","","","","","","","","",""];');
    d.writeln('      w.gv.ps_players                   = top.ps_players;');
    d.writeln('      w.gv.ps_players_description       = top.ps_players_description;');
+   d.writeln('      w.gv.refresh_scores               = true;');
    d.writeln('      w.gv.scores_already_assigned      = false;');
    d.writeln('      w.gv.visitor_scores               = ["0","0","0","0","0","0","0","0","0","0","0"];');
    d.writeln('');

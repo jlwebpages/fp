@@ -826,14 +826,14 @@ function build_post_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
+   d.writeln('   clear_get_scores_data();');
+   d.writeln('');
    d.writeln('   var error_message  = "Invalid input.\\n\\nPlease enter a number between 0 and 99 for the ";');
    d.writeln('   var select_element = "";');
    d.writeln('   var input_score    = 0;');
    d.writeln('   var scores         = document.fp_scores;');
    d.writeln('   var team           = "";');
    d.writeln('');
-   d.writeln('');
-   d.writeln('   clear_get_scores_data();  // Clear any teams previously identified as victors via "Get Scores".');
    d.writeln('');
    d.writeln('   for (var ei = 0; ei < scores.elements.length; ei++)');
    d.writeln('   {');
@@ -937,7 +937,11 @@ function build_post_season_form()
    d.writeln('   }');
    d.writeln('   else');
    d.writeln('   {');
-   d.writeln('      if (window.top.gv.get_scores_state == "on")');
+   d.writeln('      var refresh_scores = window.top.gv.refresh_scores;'); // Need to save refresh_scores because "clear_get_scores_data" will reset it.
+   d.writeln('');
+   d.writeln('      clear_get_scores_data();');
+   d.writeln('');
+   d.writeln('      if (window.top.gv.get_scores_state == "on" && refresh_scores == true)');
    d.writeln('      {');
    d.writeln('         get_nfl_scores(document,false,"");');
    d.writeln('      }');
@@ -975,7 +979,11 @@ function build_post_season_form()
    d.writeln('   }');
    d.writeln('   else');
    d.writeln('   {');
-   d.writeln('      if (window.top.gv.get_scores_state == "on")');
+   d.writeln('      var refresh_scores = window.top.gv.refresh_scores;'); // Need to save refresh_scores because "clear_get_scores_data" will reset it.
+   d.writeln('');
+   d.writeln('      clear_get_scores_data();');
+   d.writeln('');
+   d.writeln('      if (window.top.gv.get_scores_state == "on" && refresh_scores == true)');
    d.writeln('      {');
    d.writeln('         get_nfl_scores(document,false,"");');
    d.writeln('      }');
@@ -1002,8 +1010,13 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
    d.writeln('   {');
-   d.writeln('      window.top.gv.post_season_victors[i] = "";');
+   d.writeln('      window.top.gv.post_season_game_states[i]      = "at";');
+   d.writeln('      window.top.gv.post_season_possession_teams[i] = "";');
+   d.writeln('      window.top.gv.post_season_red_zone_flags[i]   = false;');
+   d.writeln('      window.top.gv.post_season_victors[i]          = "";');
    d.writeln('   }');
+   d.writeln('');
+   d.writeln('   window.top.gv.refresh_scores = false;');
    d.writeln('');
    d.writeln('}');
    d.writeln('');
@@ -1016,6 +1029,10 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
+   d.writeln('');
+   d.writeln('   clear_get_scores_data();');
+   d.writeln('');
+   d.writeln('   window.top.gv.refresh_scores = true;');
    d.writeln('');
    d.writeln('   var adjust_index                       = 0;');
    d.writeln('   var exit_loop                          = false;');
@@ -1074,8 +1091,6 @@ function build_post_season_form()
    d.writeln('      scores_index_start = 10;');
    d.writeln('      scores_index_stop  = 10;');
    d.writeln('   }');
-   d.writeln('');
-   d.writeln('   clear_get_scores_data();');
    d.writeln('');
    d.writeln('   // Attempt to get the NFL scores from the internet.');
    d.writeln('');
@@ -1418,6 +1433,8 @@ function build_post_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
+   d.writeln('   clear_get_scores_data();');
+   d.writeln('');
    d.writeln('   if (command == "start")');
    d.writeln('   {');
    d.writeln('      if (window.top.gv.get_scores_state == "off")');
@@ -1447,7 +1464,7 @@ function build_post_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   clear_get_scores_data();  // Clear any teams previously identified as victors via "Get Scores".');
+   d.writeln('   clear_get_scores_data();');
    d.writeln('');
    d.writeln('   window.top.gv.scores_already_assigned = false;');
    d.writeln('');
@@ -1592,11 +1609,6 @@ function build_post_season_form()
 
                visiting_team_possession_flag = "<span style='font-weight:bold; color:"+bullet_color+"'>\u2022&nbsp;</span>";
 
-               // Reset possession team and red zone flag.
-
-               post_season_possession_teams[j-1] = "";
-               post_season_red_zone_flags[j-1]   = false;
-
                break;
             }
             else if (post_season_possession_teams[j-1] == home_teams[gi-1])
@@ -1607,11 +1619,6 @@ function build_post_season_form()
 
                home_team_possession_flag = "<span style='font-weight:bold; color:"+bullet_color+"'>\u2022&nbsp;</span>";
 
-               // Reset possession team and red zone flag.
-
-               post_season_possession_teams[j-1] = "";
-               post_season_red_zone_flags[j-1]   = false;
-
                break;
             }
          }
@@ -1619,10 +1626,6 @@ function build_post_season_form()
          // Set the game state flag (quarter, halftime, or overtime) if the game is in progress.
 
          game_state = window.top.gv.post_season_game_states[gi-1];
-
-         // Reset the game state flag.
-
-         window.top.gv.post_season_game_states[gi-1] = "at";
 
          if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
          {
@@ -2775,7 +2778,7 @@ function build_regular_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   clear_get_winners_data();  // Clear information set by "Get Winners".');
+   d.writeln('   clear_get_winners_data();');
    d.writeln('');
    d.writeln('   get_selected_winners(document);');
    d.writeln('');
@@ -2809,7 +2812,11 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('   else');
    d.writeln('   {');
-   d.writeln('      if (window.top.gv.get_winners_state == "on")');
+   d.writeln('      var refresh_winners = window.top.gv.refresh_winners;'); // Need to save refresh_winners because "clear_get_winners_data" will reset it.
+   d.writeln('');
+   d.writeln('      clear_get_winners_data();');
+   d.writeln('');
+   d.writeln('      if (window.top.gv.get_winners_state == "on" && refresh_winners == true)');
    d.writeln('      {');
    d.writeln('         get_nfl_winners(document,false,"");');
    d.writeln('      }');
@@ -2847,7 +2854,11 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('   else');
    d.writeln('   {');
-   d.writeln('      if (window.top.gv.get_winners_state == "on")');
+   d.writeln('      var refresh_winners = window.top.gv.refresh_winners;'); // Need to save refresh_winners because "clear_get_winners_data" will reset it.
+   d.writeln('');
+   d.writeln('      clear_get_winners_data();');
+   d.writeln('');
+   d.writeln('      if (window.top.gv.get_winners_state == "on" && refresh_winners == true)');
    d.writeln('      {');
    d.writeln('         get_nfl_winners(document,false,"");');
    d.writeln('      }');
@@ -2911,11 +2922,15 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
    d.writeln('   {');
-   d.writeln('      window.top.gv.home_scores[i]     = "";');
-   d.writeln('      window.top.gv.visiting_scores[i] = "";');
-   d.writeln('      window.top.gv.prelim_victors[i]  = "";');
+   d.writeln('      window.top.gv.home_scores[i]             = "";');
+   d.writeln('      window.top.gv.prelim_game_states[i]      = "at";');
+   d.writeln('      window.top.gv.prelim_possession_teams[i] = "";');
+   d.writeln('      window.top.gv.prelim_red_zone_flags[i]   = false;');
+   d.writeln('      window.top.gv.prelim_victors[i]          = "";');
+   d.writeln('      window.top.gv.visiting_scores[i]         = "";');
    d.writeln('   }');
    d.writeln('');
+   d.writeln('   window.top.gv.refresh_winners = false;');
    d.writeln('}');
    d.writeln('');
    d.writeln('');
@@ -2928,7 +2943,7 @@ function build_regular_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   clear_get_winners_data();  // Clear information set by "Get Winners".');
+   d.writeln('   clear_get_winners_data();');
    d.writeln('');
    d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
    d.writeln('   {');
@@ -2949,6 +2964,8 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
+   d.writeln('');
+   d.writeln('   clear_get_winners_data();');
    d.writeln('');
    d.writeln('   var abort                   = false;');
    d.writeln('   var all_winners_specified   = true;');
@@ -2997,8 +3014,6 @@ function build_regular_season_form()
    d.writeln('   number_of_games = window.top.gv.all_home_teams[week-1].length;');
    d.writeln('   picks           = all_picks[week-1];');
    d.writeln('   weights         = all_weights[week-1];');
-   d.writeln('');
-   d.writeln('   clear_get_winners_data();  // Clear information set by "Get Winners".');
    d.writeln('');
    d.writeln('   // Get selected winners from preliminary form.');
    d.writeln('');
@@ -3287,6 +3302,10 @@ function build_regular_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
+   d.writeln('   clear_get_winners_data();');
+   d.writeln('');
+   d.writeln('   window.top.gv.refresh_winners = true;');
+   d.writeln('');
    d.writeln('   var adjust_index                  = 0;');
    d.writeln('   var exit_loop                     = false;');
    d.writeln('   var game_clock_integer            = "";');
@@ -3320,8 +3339,6 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      command = "Get Winners";');
    d.writeln('   }');
-   d.writeln('');
-   d.writeln('   clear_get_winners_data();  // Clear information set by previous call to "Get Winners".');
    d.writeln('');
    d.writeln('   home_teams     = window.top.gv.all_home_teams[week-1];');
    d.writeln('   visiting_teams = window.top.gv.all_visiting_teams[week-1];');
@@ -3710,6 +3727,8 @@ function build_regular_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
+   d.writeln('   clear_get_winners_data();');
+   d.writeln('');
    d.writeln('   if (command == "start")');
    d.writeln('   {');
    d.writeln('      if (window.top.gv.get_winners_state == "off")');
@@ -3851,11 +3870,6 @@ function build_regular_season_form()
 
                visiting_team_possession_flag = "<span style='font-weight:bold; color:"+bullet_color+"'>\u2022&nbsp;</span>";
 
-               // Reset possession team and red zone flag.
-
-               prelim_possession_teams[j-1] = "";
-               prelim_red_zone_flags[j-1]   = false;
-
                break;
             }
             else if (prelim_possession_teams[j-1] == home_teams[i-1])
@@ -3866,11 +3880,6 @@ function build_regular_season_form()
 
                home_team_possession_flag = "<span style='font-weight:bold; color:"+bullet_color+"'>\u2022&nbsp;</span>";
 
-               // Reset possession team and red zone flag.
-
-               prelim_possession_teams[j-1] = "";
-               prelim_red_zone_flags[j-1]   = false;
-
                break;
             }
          }
@@ -3878,10 +3887,6 @@ function build_regular_season_form()
          // Set the game state flag (quarter, halftime, or overtime) if the game is in progress.
 
          game_state = window.top.gv.prelim_game_states[i-1];
-
-         // Reset the game state flag.
-
-         window.top.gv.prelim_game_states[i-1] = "at";
       }
 
       d.writeln('<tr align=center height=18px>');
