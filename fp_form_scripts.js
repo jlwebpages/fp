@@ -1270,7 +1270,7 @@ function build_post_season_form()
    d.writeln('         if (game_state == 2) game_state = "2nd";');
    d.writeln('         if (game_state == 3) game_state = "3rd";');
    d.writeln('         if (game_state == 4) game_state = "4th";');
-   d.writeln('         if (game_state >= 5) game_state = "OT";');
+   d.writeln('         if (game_state >= 5) game_state = "OT" + (game_state-4);');
    d.writeln('');
    d.writeln('         // Set the game clock string if it exists.');
    d.writeln('');
@@ -1281,7 +1281,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('         // Determine if there are two minutes or less to play in the 2nd quarter, 4th quarter, or overtime.');
    d.writeln('');
-   d.writeln('         if ( (game_state.substring(0,1) == "2") || (game_state.substring(0,1) == "4") || (game_state.substring(0,1) == "O") )');
+   d.writeln('         if ( (game_state.substring(0,1) == "2") || (game_state.substring(0,1) == "4") )');
    d.writeln('         {');
    d.writeln('            if (game_clock_string != "")');
    d.writeln('            {');
