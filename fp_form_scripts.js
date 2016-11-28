@@ -1006,7 +1006,7 @@ function build_post_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   // Clear any teams previously identified as victors via "Get Scores".');
+   d.writeln('   // Clear information set by "Get Scores".');
    d.writeln('');
    d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
    d.writeln('   {');
@@ -1254,6 +1254,8 @@ function build_post_season_form()
    d.writeln('      {');
    d.writeln('         game_status = "game_over";');
    d.writeln('         game_state  = "F";');
+   d.writeln('');
+   d.writeln('         if (nfl_games_array[i].indexOf("q=FO") > -1) game_state = "FO";');
    d.writeln('      }');
    d.writeln('      else');
    d.writeln('      {');
@@ -1264,11 +1266,11 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('         game_state = nfl_games_array[i].substring(nfl_games_array[i].indexOf("q=")+2,nfl_games_array[i].indexOf("q=")+3);');
    d.writeln('');
-   d.writeln('         if (game_state == "1") game_state = "1st";');
-   d.writeln('         if (game_state == "2") game_state = "2nd";');
-   d.writeln('         if (game_state == "3") game_state = "3rd";');
-   d.writeln('         if (game_state == "4") game_state = "4th";');
-   d.writeln('         if (game_state == "O") game_state = "OT";');
+   d.writeln('         if (game_state == 1) game_state = "1st";');
+   d.writeln('         if (game_state == 2) game_state = "2nd";');
+   d.writeln('         if (game_state == 3) game_state = "3rd";');
+   d.writeln('         if (game_state == 4) game_state = "4th";');
+   d.writeln('         if (game_state >= 5) game_state = "OT";');
    d.writeln('');
    d.writeln('         // Set the game clock string if it exists.');
    d.writeln('');
@@ -2965,8 +2967,6 @@ function build_regular_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   clear_get_winners_data();');
-   d.writeln('');
    d.writeln('   var abort                   = false;');
    d.writeln('   var all_winners_specified   = true;');
    d.writeln('   var best_winners            = ["","","","","","","","","","","","","","","",""];');
@@ -3108,6 +3108,8 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      return false;');
    d.writeln('   }');
+   d.writeln('');
+   d.writeln('   clear_get_winners_data();');
    d.writeln('');
    d.writeln('   // Assign selected_player_picks and selected_player_weights.');
    d.writeln('');
@@ -3465,6 +3467,8 @@ function build_regular_season_form()
    d.writeln('      {');
    d.writeln('         game_status = "game_over";');
    d.writeln('         game_state  = "F";');
+   d.writeln('');
+   d.writeln('         if (nfl_games_array[i].indexOf("q=FO") > -1) game_state = "FO";');
    d.writeln('      }');
    d.writeln('      else');
    d.writeln('      {');
@@ -3475,11 +3479,11 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('         game_state = nfl_games_array[i].substring(nfl_games_array[i].indexOf("q=")+2,nfl_games_array[i].indexOf("q=")+3);');
    d.writeln('');
-   d.writeln('         if (game_state == "1") game_state = "1st";');
-   d.writeln('         if (game_state == "2") game_state = "2nd";');
-   d.writeln('         if (game_state == "3") game_state = "3rd";');
-   d.writeln('         if (game_state == "4") game_state = "4th";');
-   d.writeln('         if (game_state == "O") game_state = "OT";');
+   d.writeln('         if (game_state == 1) game_state = "1st";');
+   d.writeln('         if (game_state == 2) game_state = "2nd";');
+   d.writeln('         if (game_state == 3) game_state = "3rd";');
+   d.writeln('         if (game_state == 4) game_state = "4th";');
+   d.writeln('         if (game_state >= 5) game_state = "OT";');
    d.writeln('');
    d.writeln('         // Set the game clock string if it exists.');
    d.writeln('');
