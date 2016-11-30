@@ -3040,7 +3040,7 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      if (selected_player_index >= 0) extended_string = " to see the best outcome for " + build_player_name((selected_player_index+1),true);');
    d.writeln('');
-   d.writeln('      alert("Winners have already been specified for every game.  If scores haven\'t been calculated, click \\"Calculate Scores\\"+extended_string+".");');
+   d.writeln('      alert("Winners have already been specified for every game.  If scores haven\'t been calculated, click \\"Calculate Scores\\""+extended_string+".");');
    d.writeln('');
    d.writeln('      document.fp_results.calculate_scores_button.focus();');
    d.writeln('');
