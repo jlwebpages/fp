@@ -40,16 +40,16 @@ function build_regular_season_form()
    var open_date       = top.all_open_dates[week-1];
    var number_of_games = home_teams.length;
 
-   if (week != current_input_week)
-   {
-      alert("Week " + week +" picks are not due yet.  " +
-            "Week " + current_input_week + " picks are due next.\n\n" +
-            "Please be sure to submit your week " + current_input_week +
-            " picks on time.\n\n" +
-            "You can make your picks for week " + week + " and submit them " +
-            "now if you are going to be unavailable to submit them during week " +
-            week + ".");
-   }
+   //JLif (week != current_input_week)
+   //JL{
+   //JL   alert("Week " + week + " picks are not due yet.  " +
+   //JL         "Week " + current_input_week + " picks are due next.\n\n" +
+   //JL         "Please be sure to submit your week " + current_input_week +
+   //JL         " picks on time.\n\n" +
+   //JL         "You can make your picks for week " + week + " and submit them " +
+   //JL         "now if you are going to be unavailable to submit them during week " +
+   //JL         week + ".");
+   //JL}
 
    document.open();
 
@@ -510,12 +510,8 @@ function build_regular_season_form()
    d.writeln('   var mail_msg  = "";');
    d.writeln('');
    d.writeln('');
-   d.writeln('   alert("An e-mail message containing your Week "+'+week+'+" Picks will "');
-   d.writeln('         +"automatically be generated and displayed.\\n\\n"');
-   d.writeln('         +"Please do not change the body of the message.  Your "');
-   d.writeln('         +"picks have been specially formatted and ordered for submission."');
-   d.writeln('         +"\\n\\nPlease click the send button on the e-mail message "');
-   d.writeln('         +"window to submit your picks.");');
+   d.writeln('   alert("An e-mail message containing your Week ' + week + ' Picks will be displayed.\\n\\n"');
+   d.writeln('         + "Don\'t modify the message.  Click \\"Send\\" to submit your picks.");');
    d.writeln('');
    d.writeln('   mail_msg += "mailto:fp@socal.rr.com?subject=";');
    d.writeln('   mail_msg += escape(name + " - Week "+'+week+'+" Picks");');
@@ -774,7 +770,7 @@ function build_regular_season_form()
    d.writeln('      {');
    d.writeln('         if (i == nfl_odds_url.length-1)');
    d.writeln('         {');
-   d.writeln('            alert("\\"Picks From Odds\\" failed for some unknown reason.");');
+   d.writeln('            alert("\\"Picks From Odds\\" failed.");');
    d.writeln('');
    d.writeln('            return false;');
    d.writeln('         }');
@@ -802,7 +798,7 @@ function build_regular_season_form()
    d.writeln('      {');
    d.writeln('         if (i == nfl_odds_url.length-1)');
    d.writeln('         {');
-   d.writeln('            alert("NFL Odds for Week '+week+' are not available.")');
+   d.writeln('            alert("NFL Odds for Week ' + week + ' are not available.")');
    d.writeln('');
    d.writeln('            return;');
    d.writeln('         }');
@@ -815,7 +811,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            if (index1 != -1)');
    d.writeln('            {');
-   d.writeln('               alert("NFL Odds for Week '+week+' are not available.")');
+   d.writeln('               alert("NFL Odds for Week ' + week + ' are not available.")');
    d.writeln('');
    d.writeln('               return;');
    d.writeln('            }');
@@ -836,11 +832,10 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Display informational message to user.');
    d.writeln('');
-   d.writeln('   user_message = "\\"Picks From Odds\\" will do the following:\\n\\n";');
+   d.writeln('   user_message = "\\"Picks From Odds\\" will:\\n\\n";');
    d.writeln('   user_message = user_message + "   - Clear the picks and weights on the Input Form\\n";');
    d.writeln('   user_message = user_message + "   - Get the NFL Odds from the internet\\n";');
-   d.writeln('   user_message = user_message + "   - Populate the Input Form based on the NFL Odds\\n";');
-   d.writeln('   user_message = user_message + "\\n\\nNOTE:  NFL Odds from the internet can change from day to day.\\n\\n";');
+   d.writeln('   user_message = user_message + "   - Populate the Input Form based on the NFL Odds";');
    d.writeln('');
    d.writeln('   if (confirm(user_message) == false)');
    d.writeln('   {');
@@ -901,7 +896,7 @@ function build_regular_season_form()
    d.writeln('         nfl_games_array[i] = nfl_odds.substring(index1,index2+5);');
    d.writeln('      }');
    d.writeln('');
-   d.writeln('      //JL alert(":"+nfl_games_array[i]+":");');
+   d.writeln('      //JL alert(":" + nfl_games_array[i] + ":");');
    d.writeln('');
    d.writeln('      // Clean up the information in nfl_games_array.');
    d.writeln('');
@@ -935,7 +930,7 @@ function build_regular_season_form()
    d.writeln('         }');
    d.writeln('      }')
    d.writeln('');
-   d.writeln('      //JL alert(":"+nfl_games_array[i]+":");');
+   d.writeln('      //JL alert(":" + nfl_games_array[i] + ":");');
    d.writeln('');
    d.writeln('      // Remove the opening and closing table record html tags.');
    d.writeln('');
@@ -1040,7 +1035,7 @@ function build_regular_season_form()
    d.writeln('      nfl_odds = nfl_odds.replace(/<tr>/i,"");');
    d.writeln('      nfl_odds = nfl_odds.replace(/<\\/tr>/i,"");');
    d.writeln('');
-   d.writeln('      //JL alert(":"+nfl_games_array[i]+":");');
+   d.writeln('      //JL alert(":" + nfl_games_array[i] + ":");');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   // Convert each element of the nfl_games_array into an array itself and make');
@@ -1181,9 +1176,9 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Display informational message to user.');
    d.writeln('');
-   d.writeln('   user_message = "\\"Random Picks\\" will do the following:\\n\\n";');
+   d.writeln('   user_message = "\\"Random Picks\\" will:\\n\\n";');
    d.writeln('   user_message = user_message + "   - Validate all picks that you\'ve already entered\\n";');
-   d.writeln('   user_message = user_message + "   - Generate random picks only for what you\'ve left blank\\n\\n";');
+   d.writeln('   user_message = user_message + "   - Generate random picks only for what you\'ve left blank";');
    d.writeln('');
    d.writeln('   if (confirm(user_message) == false)');
    d.writeln('   {');
@@ -1329,7 +1324,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (random_picks_generated == "None")');
    d.writeln('   {');
-   d.writeln('      alert("No random picks were generated because the Input Form has already been completely filled out.");');
+   d.writeln('      alert("Random picks weren\'t generated because no picks were left blank.");');
    d.writeln('   }');
    d.writeln('   else');
    d.writeln('   {');
@@ -1403,7 +1398,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if ( (isNaN(monday_night_points) == true) || (monday_night_points < 1) || (monday_night_points > 99) )');
    d.writeln('   {');
-   d.writeln('      if (display_error == true) alert("Please enter a number between 1 and 99 for Monday Night Total Points.");');
+   d.writeln('      if (display_error == true) alert("Enter a number between 1 and 99 for Monday Night Total Points.");');
    d.writeln('');
    d.writeln('      mn_points.value = "";');
    d.writeln('      mn_points.focus();');
@@ -1427,7 +1422,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (top.player_index == 0)');
    d.writeln('   {');
-   d.writeln('      if (display_error == true) alert("Please select your name before accepting your picks.");');
+   d.writeln('      if (display_error == true) alert("Select your name before accepting your picks.");');
    d.writeln('');
    d.writeln('      name_menu.focus();');
    d.writeln('');
@@ -2360,12 +2355,8 @@ function build_post_season_form()
    d.writeln('   var mail_msg = "";');
    d.writeln('');
    d.writeln('');
-   d.writeln('   alert("An e-mail message containing your Post Season Week "+'+week+'+" Picks will "');
-   d.writeln('         +"automatically be generated and displayed.\\n\\n"');
-   d.writeln('         +"Please do not change the body of the message.  Your "');
-   d.writeln('         +"picks have been specially formatted and ordered for submission."');
-   d.writeln('         +"\\n\\nPlease click the send button on the e-mail message "');
-   d.writeln('         +"window to submit your picks.");');
+   d.writeln('   alert("An e-mail message containing your Post Season Week ' + week + ' Picks will be displayed.\\n\\n"');
+   d.writeln('         + "Don\'t modify the message.  Click \\"Send\\" to submit your picks.");');
    d.writeln('');
    d.writeln('   mail_msg += "mailto:fp@socal.rr.com?subject=";');
    d.writeln('   mail_msg += escape(name + " - Post Season Week "+'+week+'+" Picks");');
@@ -2441,7 +2432,7 @@ function build_post_season_form()
    d.writeln('      {');
    d.writeln('         if (i == nfl_odds_url.length-1)');
    d.writeln('         {');
-   d.writeln('            alert("\\"Picks From Odds\\" failed for some unknown reason.");');
+   d.writeln('            alert("\\"Picks From Odds\\" failed.");');
    d.writeln('');
    d.writeln('            return false;');
    d.writeln('         }');
@@ -2472,7 +2463,7 @@ function build_post_season_form()
    d.writeln('      {');
    d.writeln('         if (i == nfl_odds_url.length-1)');
    d.writeln('         {');
-   d.writeln('            alert("NFL Odds for Post Season Week '+week+' are not available.")');
+   d.writeln('            alert("NFL Odds for Post Season Week ' + week + ' are not available.")');
    d.writeln('');
    d.writeln('            return;');
    d.writeln('         }');
@@ -2494,11 +2485,10 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Display informational message to user.');
    d.writeln('');
-   d.writeln('   user_message = "\\"Picks From Odds\\" will do the following:\\n\\n";');
+   d.writeln('   user_message = "\\"Picks From Odds\\" will:\\n\\n";');
    d.writeln('   user_message = user_message + "   - Clear the predictions on the Input Form\\n";');
    d.writeln('   user_message = user_message + "   - Get the NFL Odds from the internet\\n";');
-   d.writeln('   user_message = user_message + "   - Populate the Input Form based on the NFL Odds\\n";');
-   d.writeln('   user_message = user_message + "\\n\\nNOTE:  NFL Odds from the internet can change from day to day.\\n\\n";');
+   d.writeln('   user_message = user_message + "   - Populate the Input Form based on the NFL Odds";');
    d.writeln('');
    d.writeln('   if (confirm(user_message) == false)');
    d.writeln('   {');
@@ -2540,7 +2530,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('      nfl_games_array[i] = nfl_odds.substring(index1,index2+5);');
    d.writeln('');
-   d.writeln('      //JL alert(":"+nfl_games_array[i]+":");');
+   d.writeln('      //JL alert(":" + nfl_games_array[i] + ":");');
    d.writeln('');
    d.writeln('      // If a game is even as indicated by a spread value of "PK", then remove the html span tags that surround "PK".');
    d.writeln('');
@@ -2559,7 +2549,7 @@ function build_post_season_form()
    d.writeln('         }');
    d.writeln('      }')
    d.writeln('');
-   d.writeln('      //JL alert(":"+nfl_games_array[i]+":");');
+   d.writeln('      //JL alert(":" + nfl_games_array[i] + ":");');
    d.writeln('');
    d.writeln('      // Remove the opening and closing table record html tags.');
    d.writeln('');
@@ -2666,7 +2656,7 @@ function build_post_season_form()
    d.writeln('      nfl_odds = nfl_odds.replace(/<tr>/i,"");');
    d.writeln('      nfl_odds = nfl_odds.replace(/<\\/tr>/i,"");');
    d.writeln('');
-   d.writeln('      //JL alert(":"+nfl_games_array[i]+":");');
+   d.writeln('      //JL alert(":" + nfl_games_array[i] + ":");');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   // Convert each element of the nfl_games_array into an array itself and make');
@@ -2798,7 +2788,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if (top.player_index == 0)');
    d.writeln('   {');
-   d.writeln('      if (display_error == true) alert("Please select your name before accepting your picks.");');
+   d.writeln('      if (display_error == true) alert("Select your name before accepting your picks.");');
    d.writeln('');
    d.writeln('      name_menu.focus();');
    d.writeln('');
@@ -2834,9 +2824,8 @@ function build_post_season_form()
    d.writeln('            losing_team  = home_teams['+number_of_games+'-1];');
    d.writeln('         }');
    d.writeln('');
-   d.writeln('         error_message  = "Please enter a number between 1 and 99 ";');
-   d.writeln('         error_message += "for the Total Points Prediction for:\\n\\n";');
-   d.writeln('         error_message += winning_team+" over "+losing_team+" (Game '+number_of_games+').";');
+   d.writeln('         error_message  = "Enter a number between 1 and 99 for the Total Points Prediction for:\\n\\n";');
+   d.writeln('         error_message += winning_team + " over " + losing_team + " (Game ' + number_of_games + ').";');
    d.writeln('');
    d.writeln('         alert(error_message);');
    d.writeln('      }');
@@ -2894,8 +2883,7 @@ function build_post_season_form()
    d.writeln('   {');
    d.writeln('      if (picks[i] == 0)');
    d.writeln('      {');
-   d.writeln('         alert("Please pick a winner (V or H) for "');
-   d.writeln('               +visiting_teams[i]+" at "+home_teams[i]+" (Game "+(i+1)+").");');
+   d.writeln('         alert("Pick a winner (V or H) for " + visiting_teams[i] + " at " + home_teams[i] + " (Game " + (i+1) + ").");');
    d.writeln('');
    d.writeln('         picks_select_array[i].focus();');
    d.writeln('');
@@ -2916,11 +2904,8 @@ function build_post_season_form()
    d.writeln('         losing_team  = home_teams[i];');
    d.writeln('      }');
    d.writeln('');
-   d.writeln('      error_message = "Please enter a number between 1 " +');
-   d.writeln('                      "and 99 for the predicted margin of " +');
-   d.writeln('                      "victory for:\\n\\n" + winning_team +');
-   d.writeln('                      " over " + losing_team +');
-   d.writeln('                      "  (Game " + (i+1) + ").";');
+   d.writeln('      error_message = "Enter a number between 1 and 99 for the predicted margin of victory for:\\n\\n"');
+   d.writeln('                      + winning_team + " over " + losing_team + " (Game " + (i+1) + ").";');
    d.writeln('');
    d.writeln('      spread_values[i] = spread_values[i].replace(/\\./g,"_");');  // Force any value that includes a "." to fail.
    d.writeln('');
@@ -3144,7 +3129,7 @@ function validate_password()
    }
    else
    {
-      alert("Invalid password.  Try again.");
+      alert("Invalid password.");
       password.value = "";
       password.focus();
       return false;
