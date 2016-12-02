@@ -551,9 +551,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (navigator.platform.substring(0,2) == "iP")');
    d.writeln('   {');
-   d.writeln('      temp_window = window.open(mail_msg,"","top=0,left=0,width=100,height=100");');
-   d.writeln('');
-   d.writeln('      setTimeout(function(){temp_window.close()},10000);');
+   d.writeln('      document.location.href = mail_msg;');
    d.writeln('   }');
    d.writeln('   else');
    d.writeln('   {');
@@ -2378,9 +2376,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if (navigator.platform.substring(0,2) == "iP")');
    d.writeln('   {');
-   d.writeln('      temp_window = window.open(mail_msg,"","top=0,left=0,width=100,height=100");');
-   d.writeln('');
-   d.writeln('      setTimeout(function(){temp_window.close()},10000);');
+   d.writeln('      d.location.href = mail_msg;');
    d.writeln('   }');
    d.writeln('   else');
    d.writeln('   {');
