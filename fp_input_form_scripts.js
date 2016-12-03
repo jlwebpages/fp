@@ -551,7 +551,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (navigator.platform.substring(0,2) == "iP")');
    d.writeln('   {');
-   d.writeln('      temp_window = window.open(mail_msg,"_blank","top=0,left=0,width=100,height=100");');
+   d.writeln('      temp_window = window.open(mail_msg,"_top","top=0,left=0,width=100,height=100");');
    d.writeln('');
    d.writeln('      setTimeout(function(){temp_window.close()},1000);');
    d.writeln('   }');
@@ -2378,7 +2378,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if (navigator.platform.substring(0,2) == "iP")');
    d.writeln('   {');
-   d.writeln('      temp_window = window.open(mail_msg,"_blank","top=0,left=0,width=100,height=100");');
+   d.writeln('      temp_window = window.open(mail_msg,"_top","top=0,left=0,width=100,height=100");');
    d.writeln('');
    d.writeln('      setTimeout(function(){temp_window.close()},1000);');
    d.writeln('   }');
