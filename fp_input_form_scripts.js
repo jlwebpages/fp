@@ -2358,27 +2358,27 @@ function build_post_season_form()
    d.writeln('   alert("An e-mail message containing your Post Season Week ' + week + ' Picks will be displayed.\\n\\n"');
    d.writeln('         + "Don\'t modify the message.  Click \\"Send\\" to submit your picks.");');
    d.writeln('');
-   d.writeln('   mail_msg += "mailto:fp@socal.rr.com?subject=";');
-   d.writeln('   mail_msg += escape(name + " - Post Season Week "+'+week+'+" Picks");');
-   d.writeln('   mail_msg += "&body=";');
+   d.writeln('   mail_msg += "mailto:fp@socal.rr.com?subject=" + name + " - Post Season Week ' + week + ' Picks&body=";');
    d.writeln('');
    d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
    d.writeln('   {');
-   d.writeln('      mail_msg += escape(picks[i] + " by " + spread_values[i] + "\\n");');
+   d.writeln('      mail_msg += picks[i] + " by " + spread_values[i] + "\\n";');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   mail_msg += escape("  Points: "+total_points);');  // There must be two spaces included before "Points:"
+   d.writeln('   mail_msg += "  Points: "+total_points;');  // There must be two spaces included before "Points:"
    d.writeln('');
    d.writeln('   if (picks_from_odds_button_pressed == true)');
    d.writeln('   {');
-   d.writeln('      mail_msg += escape("\\n\\nThese picks were generated from the NFL Odds.");');
+   d.writeln('      mail_msg += "\\n\\nThese picks were generated from the NFL Odds.";');
    d.writeln('   }');
+   d.writeln('');
+   d.writeln('   mail_msg = encodeURI(mail_msg);');
    d.writeln('');
    d.writeln('   // If we are running on an iPad or iPhone create the mail message using a new temporary window.');
    d.writeln('');
    d.writeln('   if (navigator.platform.substring(0,2) == "iP")');
    d.writeln('   {');
-   d.writeln('      temp_window = window.open(mail_msg,"","top=0,left=0,width=100,height=100");');
+   d.writeln('      temp_window = window.open(mail_msg,"_blank","top=0,left=0,width=100,height=100");');
    d.writeln('');
    d.writeln('      setTimeout(function(){temp_window.close()},1000);');
    d.writeln('   }');
