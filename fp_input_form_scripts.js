@@ -545,9 +545,7 @@ function build_regular_season_form()
    d.writeln('      mail_msg += "\\n\\n"+random_picks_generated+" of these picks were randomly generated.";');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   mail_msg = encodeURI(mail_msg);');
-   d.writeln('');
-   d.writeln('   window.open(mail_msg,"_top","top=0,left=0,width=100,height=100");');
+   d.writeln('   window.open(encodeURI(mail_msg),"_top");');
    d.writeln('');
    d.writeln('   return true;');
    d.writeln('}');
@@ -2361,9 +2359,7 @@ function build_post_season_form()
    d.writeln('      mail_msg += "\\n\\nThese picks were generated from the NFL Odds.";');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   mail_msg = encodeURI(mail_msg);');
-   d.writeln('');
-   d.writeln('   window.open(mail_msg,"_top","top=0,left=0,width=100,height=100");');
+   d.writeln('   window.open(encodeURI(mail_msg),"_top");');
    d.writeln('');
    d.writeln('   return true;');
    d.writeln('}');
