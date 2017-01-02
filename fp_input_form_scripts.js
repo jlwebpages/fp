@@ -2412,24 +2412,30 @@ function build_post_season_form()
    d.writeln('         }');
    d.writeln('      }');
    d.writeln('');
-   d.writeln('      // Strip off as much of the ending of the nfl_odds html string as possible.');
+   d.writeln('      // Remove comments from the nfl_odds html string.');
    d.writeln('');
-   d.writeln('      index = nfl_odds.indexOf("View This Season");');
+   d.writeln('      exit_loop = false');
    d.writeln('');
-   d.writeln('      if (index != -1) nfl_odds = nfl_odds.substring(0,index);');
+   d.writeln('      while (exit_loop == false)');
+   d.writeln('      {');
+   d.writeln('         index1 = nfl_odds.indexOf("<!--");');
+   d.writeln('         index2 = nfl_odds.indexOf("-->");');
    d.writeln('');
-   d.writeln('      // Remove unneeded information from the nfl_odds html string.');
+   d.writeln('         if ( ((index1 != -1) && (index2 != -1)) && (index2 > index1) )');
+   d.writeln('         {');
+   d.writeln('            //JL alert (nfl_odds.substring(index1,index2+3));');
    d.writeln('');
-   d.writeln('      nfl_odds = nfl_odds.replace(/(At |NY )/gi,"");');         // Get rid of all "At " and "NY".
-   d.writeln('      nfl_odds = nfl_odds.replace(/( |\xA0)/gi,"");');          // Get rid of all blank spaces and "&nbsp" (hex code = A0).
-   d.writeln('      nfl_odds = nfl_odds.replace(/(\\r\\n|\\r|\\n)/gi,"");');  // Get rid of all line feeds.
-   d.writeln('      nfl_odds = nfl_odds.replace(/(<p>|<\\/p>)/gi,"");');      // Get rid of all "<p>" and "</p>".
-   d.writeln('      nfl_odds = nfl_odds.replace(/(<br>|<br\\/>)/gi,"");');    // Get rid of all "<br>" and "<br/>".
+   d.writeln('            nfl_odds = nfl_odds.replace(nfl_odds.substring(index1,index2+3),"");');
+   d.writeln('         }');
+   d.writeln('         else');
+   d.writeln('         {');
+   d.writeln('            exit_loop = true;');
+   d.writeln('         }');
+   d.writeln('      }');
    d.writeln('');
    d.writeln('      // Determine if the NFL Odds for this input week are available.');
    d.writeln('');
    d.writeln('      nfl_playoff_round = nfl_playoff_rounds['+week+'-1];');
-   d.writeln('      nfl_playoff_round = nfl_playoff_round.replace(/( |\xA0)/gi,"");');  // Get rid of all blank spaces and "&nbsp" (hex code = A0).
    d.writeln('');
    d.writeln('      index = nfl_odds.indexOf(nfl_playoff_round);');
    d.writeln('');
@@ -2444,6 +2450,16 @@ function build_post_season_form()
    d.writeln('      }');
    d.writeln('      else');
    d.writeln('      {');
+   d.writeln('         // Strip off as much of the beginning of the nfl_odds html string as possible.');
+   d.writeln('');
+   d.writeln('         nfl_odds = nfl_odds.substring(index,nfl_odds.length);');
+   d.writeln('');
+   d.writeln('         // Strip off as much of the ending of the nfl_odds html string as possible.');
+   d.writeln('');
+   d.writeln('         index = nfl_odds.indexOf("View This Season");');
+   d.writeln('');
+   d.writeln('         if (index != -1) nfl_odds = nfl_odds.substring(0,index);');
+   d.writeln('');
    d.writeln('         break;  // Break out of this loop and continue since we found the NFL Odds.');
    d.writeln('      }');
    d.writeln('   }');
@@ -2469,6 +2485,14 @@ function build_post_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
+   d.writeln('   // Remove unneeded information from the nfl_odds html string.');
+   d.writeln('');
+   d.writeln('   nfl_odds = nfl_odds.replace(/(At |NY )/gi,"");');         // Get rid of all "At " and "NY".
+   d.writeln('   nfl_odds = nfl_odds.replace(/( |\xA0)/gi,"");');          // Get rid of all blank spaces and "&nbsp" (hex code = A0).
+   d.writeln('   nfl_odds = nfl_odds.replace(/(\\r\\n|\\r|\\n)/gi,"");');  // Get rid of all line feeds.
+   d.writeln('   nfl_odds = nfl_odds.replace(/(<p>|<\\/p>)/gi,"");');      // Get rid of all "<p>" and "</p>".
+   d.writeln('   nfl_odds = nfl_odds.replace(/(<br>|<br\\/>)/gi,"");');    // Get rid of all "<br>" and "<br/>".
+   d.writeln('');
    d.writeln('   // Set the picks_from_odds_button_pressed flag.');
    d.writeln('');
    d.writeln('   picks_from_odds_button_pressed = true;');
@@ -2483,10 +2507,6 @@ function build_post_season_form()
    d.writeln('      document.fp_inputs.elements["pick"  +(i+1)].value = 0;');
    d.writeln('      document.fp_inputs.elements["spread"+(i+1)].value = 0;');
    d.writeln('   }');
-   d.writeln('');
-   d.writeln('   // Strip off as much of the beginning of the nfl_odds html string as possible.');
-   d.writeln('');
-   d.writeln('   nfl_odds = nfl_odds.substring(index,nfl_odds.length);');
    d.writeln('');
    d.writeln('   // Remove the first occurrence of a table record in the nfl_odds html string which does not contain any game information.');
    d.writeln('');
