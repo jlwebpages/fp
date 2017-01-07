@@ -1252,6 +1252,7 @@ function build_post_season_form()
    d.writeln('      if (nfl_games_array[i].indexOf("q=P") > -1)');
    d.writeln('      {');
    d.writeln('         game_status = "game_not_started";');
+   d.writeln('         game_state  = "";');
    d.writeln('      }');
    d.writeln('      else if (nfl_games_array[i].indexOf("q=F") > -1)');
    d.writeln('      {');
@@ -1385,8 +1386,9 @@ function build_post_season_form()
    d.writeln('            {');
    d.writeln('               games_in_progress = true;');
    d.writeln('');
-   d.writeln('               window.top.gv.visitor_scores[j] = visiting_score;');
-   d.writeln('               window.top.gv.home_scores[j]    = home_score;');
+   d.writeln('               window.top.gv.visitor_scores[j]          = visiting_score;');
+   d.writeln('               window.top.gv.home_scores[j]             = home_score;');
+   d.writeln('               window.top.gv.post_season_game_states[j] = "<font style=\\"font-size: 8pt\\">" + game_state + "</font>";');
    d.writeln('            }');
    d.writeln('');
    d.writeln('            // If this game is over remember the winner.');
@@ -1406,8 +1408,6 @@ function build_post_season_form()
    d.writeln('                  post_season_victors_index++;');
    d.writeln('               }');
    d.writeln('            }');
-   d.writeln('');
-   d.writeln('            window.top.gv.post_season_game_states[j] = "<font style=\\"font-size: 8pt\\">" + game_state + "</font>";');
    d.writeln('         }');
    d.writeln('      }');
    d.writeln('   }');
@@ -3452,6 +3452,7 @@ function build_regular_season_form()
    d.writeln('      if (nfl_games_array[i].indexOf("q=P") > -1)');
    d.writeln('      {');
    d.writeln('         game_status = "game_not_started";');
+   d.writeln('         game_state  = "";');
    d.writeln('      }');
    d.writeln('      else if (nfl_games_array[i].indexOf("q=F") > -1)');
    d.writeln('      {');
