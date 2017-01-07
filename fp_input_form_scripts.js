@@ -2228,7 +2228,7 @@ function build_post_season_form()
    d.writeln('         picks_message += picks[i] + " by " + spread_values[i] + "<br>";');
    d.writeln('      }');
    d.writeln('');
-   d.writeln('      picks_message +="  Points: "+total_points;');  // There must be two spaces included before "Points:"
+   d.writeln('      picks_message +="Points: "+total_points;');
    d.writeln('');
    d.writeln('      if (picks_from_odds_button_pressed == true)');
    d.writeln('      {');
@@ -2361,7 +2361,7 @@ function build_post_season_form()
    d.writeln('      mail_msg += picks[i] + " by " + spread_values[i] + "\\n";');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   mail_msg += "  Points: "+total_points;');  // There must be two spaces included before "Points:"
+   d.writeln('   mail_msg += "Points: "+total_points;');
    d.writeln('');
    d.writeln('   if (picks_from_odds_button_pressed == true)');
    d.writeln('   {');
