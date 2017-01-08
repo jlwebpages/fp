@@ -1628,10 +1628,6 @@ function build_post_season_form()
             }
          }
 
-         // Set the game state flag (quarter, halftime, or overtime) if the game is in progress.
-
-         game_state = window.top.gv.post_season_game_states[gi-1];
-
          if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
          {
             d.writeln('<td style="padding: 0px" class="'+border_style+'">');
@@ -1678,6 +1674,10 @@ function build_post_season_form()
       {
          d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
       }
+
+      // Set the game state flag (quarter, halftime, or overtime) if the game is in progress.
+
+      game_state = window.top.gv.post_season_game_states[gi-1];
 
       d.writeln('<td nowrap class="'+border_style+'"><font style="font-size: 10pt">'+game_state+'</font></td>');
 
