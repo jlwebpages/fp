@@ -2210,7 +2210,7 @@ function build_post_season_form()
    {
       if (order_by == "week_"+wi+"_scores")
       {
-         d.writeln('   <option value="week_'+wi+'_scores">Order By Week '+wi+' Score');
+         d.writeln('   <option selected value="week_'+wi+'_scores">Order By Week '+wi+' Score');
       }
       else
       {
