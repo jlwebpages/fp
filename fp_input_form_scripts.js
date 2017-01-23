@@ -2385,7 +2385,7 @@ function build_post_season_form()
    d.writeln('   var nfl_odds           = null;');
    d.writeln('   var nfl_odds_url       = ["\\"http://www.footballlocks.com/nfl_lines.shtml\\""];');
    d.writeln('   var nfl_playoff_round  = "not_assigned_yet";');
-   d.writeln('   var nfl_playoff_rounds = ["Wild Card Weekend Playoff Games","Divisional Playoff Games","Conference Championship Playoffs","The Super Bowl"];');
+   d.writeln('   var nfl_playoff_rounds = ["Wild Card Weekend Playoff Games","Divisional Playoff Games","Conference Championship Playoffs","NFL Line for Super Bowl"];');
    d.writeln('   var nfl_team_cities    = ["Arizona",  "Atlanta","Baltimore","Buffalo","Carolina","Chicago","Cincinnati","Cleveland","Dallas", "Denver", "Detroit","Giants","Green Bay","Houston","Indianapolis","Jacksonville","Jets","Kansas City","Miami",   "Minnesota","New England","New Orleans","Oakland","Philadelphia","Philadephia","Pittsburgh","San Diego","San Francisco","Seattle", "Los Angeles","Tampa Bay", "Tennessee","Washington"];');
    d.writeln('   var nfl_team_names     = ["Cardinals","Falcons","Ravens",   "Bills",  "Panthers","Bears",  "Bengals",   "Browns",   "Cowboys","Broncos","Lions",  "Giants","Packers",  "Texans", "Colts",       "Jaguars",     "Jets","Chiefs",     "Dolphins","Vikings",  "Patriots",   "Saints",     "Raiders","Eagles",      "Eagles",     "Steelers",  "Chargers", "49ers",        "Seahawks","Rams",       "Buccaneers","Titans",   "Redskins"  ];');
    d.writeln('   var prompt_message     = "";');
