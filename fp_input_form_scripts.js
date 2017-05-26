@@ -726,8 +726,8 @@ function build_regular_season_form()
    d.writeln('   var nfl_odds               = null;');
    d.writeln('   var nfl_odds_search_string = ["NFL Lines For Week '+week+' - N","NFL Lines For Week '+week+' - E"];');
    d.writeln('   var nfl_odds_url           = ["\\"http://www.footballlocks.com/nfl_lines.shtml\\"","\\"http://www.footballlocks.com/early_nfl_lines.shtml\\""];');
-   d.writeln('   var nfl_team_cities        = ["Arizona",  "Atlanta","Baltimore","Buffalo","Carolina","Chicago","Cincinnati","Cleveland","Dallas", "Denver", "Detroit","Giants","Green Bay","Houston","Indianapolis","Jacksonville","Jets","Kansas City","Miami",   "Minnesota","New England","New Orleans","Oakland","Philadelphia","Philadephia","Pittsburgh","San Diego","San Francisco","Seattle", "Los Angeles","Tampa Bay", "Tennessee","Washington"];');
-   d.writeln('   var nfl_team_names         = ["Cardinals","Falcons","Ravens",   "Bills",  "Panthers","Bears",  "Bengals",   "Browns",   "Cowboys","Broncos","Lions",  "Giants","Packers",  "Texans", "Colts",       "Jaguars",     "Jets","Chiefs",     "Dolphins","Vikings",  "Patriots",   "Saints",     "Raiders","Eagles",      "Eagles",     "Steelers",  "Chargers", "49ers",        "Seahawks","Rams",       "Buccaneers","Titans",   "Redskins"  ];');
+   d.writeln('   var nfl_team_cities        = ["Arizona",  "Atlanta","Baltimore","Buffalo","Carolina","Chicago","Cincinnati","Cleveland","Dallas", "Denver", "Detroit","Giants","Green Bay","Houston","Indianapolis","Jacksonville","Jets","Kansas City","Miami",   "Minnesota","New England","New Orleans","Oakland","Philadelphia","Philadephia","Pittsburgh","Chargers","San Francisco","Seattle", "Rams","Tampa Bay", "Tennessee","Washington"];');
+   d.writeln('   var nfl_team_names         = ["Cardinals","Falcons","Ravens",   "Bills",  "Panthers","Bears",  "Bengals",   "Browns",   "Cowboys","Broncos","Lions",  "Giants","Packers",  "Texans", "Colts",       "Jaguars",     "Jets","Chiefs",     "Dolphins","Vikings",  "Patriots",   "Saints",     "Raiders","Eagles",      "Eagles",     "Steelers",  "Chargers","49ers",        "Seahawks","Rams","Buccaneers","Titans",   "Redskins"  ];');
    d.writeln('   var prompt_message         = "";');
    d.writeln('   var user_message           = "";');
    d.writeln('   var suffix                 = "";');
@@ -836,7 +836,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Remove unneeded information from the nfl_odds html string.');
    d.writeln('');
-   d.writeln('   nfl_odds = nfl_odds.replace(/(At |NY )/gi,"");');         // Get rid of all "At " and "NY".
+   d.writeln('   nfl_odds = nfl_odds.replace(/(At |NY |LA )/gi,"");');     // Get rid of all "At " and "NY " and "LA ".
    d.writeln('   nfl_odds = nfl_odds.replace(/( |\xA0)/gi,"");');          // Get rid of all blank spaces and "&nbsp" (hex code = A0).
    d.writeln('   nfl_odds = nfl_odds.replace(/(\\r\\n|\\r|\\n)/gi,"");');  // Get rid of all line feeds.
    d.writeln('   nfl_odds = nfl_odds.replace(/(<p>|<\\/p>)/gi,"");');      // Get rid of all "<p>" and "</p>".
@@ -2386,8 +2386,8 @@ function build_post_season_form()
    d.writeln('   var nfl_odds_url       = ["\\"http://www.footballlocks.com/nfl_lines.shtml\\""];');
    d.writeln('   var nfl_playoff_round  = "not_assigned_yet";');
    d.writeln('   var nfl_playoff_rounds = ["Wild Card Weekend Playoff Games","Divisional Playoff Games","Conference Championship Playoffs","NFL Line for Super Bowl"];');
-   d.writeln('   var nfl_team_cities    = ["Arizona",  "Atlanta","Baltimore","Buffalo","Carolina","Chicago","Cincinnati","Cleveland","Dallas", "Denver", "Detroit","Giants","Green Bay","Houston","Indianapolis","Jacksonville","Jets","Kansas City","Miami",   "Minnesota","New England","New Orleans","Oakland","Philadelphia","Philadephia","Pittsburgh","San Diego","San Francisco","Seattle", "Los Angeles","Tampa Bay", "Tennessee","Washington"];');
-   d.writeln('   var nfl_team_names     = ["Cardinals","Falcons","Ravens",   "Bills",  "Panthers","Bears",  "Bengals",   "Browns",   "Cowboys","Broncos","Lions",  "Giants","Packers",  "Texans", "Colts",       "Jaguars",     "Jets","Chiefs",     "Dolphins","Vikings",  "Patriots",   "Saints",     "Raiders","Eagles",      "Eagles",     "Steelers",  "Chargers", "49ers",        "Seahawks","Rams",       "Buccaneers","Titans",   "Redskins"  ];');
+   d.writeln('   var nfl_team_cities    = ["Arizona",  "Atlanta","Baltimore","Buffalo","Carolina","Chicago","Cincinnati","Cleveland","Dallas", "Denver", "Detroit","Giants","Green Bay","Houston","Indianapolis","Jacksonville","Jets","Kansas City","Miami",   "Minnesota","New England","New Orleans","Oakland","Philadelphia","Philadephia","Pittsburgh","Chargers","San Francisco","Seattle", "Rams","Tampa Bay", "Tennessee","Washington"];');
+   d.writeln('   var nfl_team_names     = ["Cardinals","Falcons","Ravens",   "Bills",  "Panthers","Bears",  "Bengals",   "Browns",   "Cowboys","Broncos","Lions",  "Giants","Packers",  "Texans", "Colts",       "Jaguars",     "Jets","Chiefs",     "Dolphins","Vikings",  "Patriots",   "Saints",     "Raiders","Eagles",      "Eagles",     "Steelers",  "Chargers","49ers",        "Seahawks","Rams","Buccaneers","Titans",   "Redskins"  ];');
    d.writeln('   var prompt_message     = "";');
    d.writeln('   var user_message       = "";');
    d.writeln('   var temp_string        = "";');
@@ -2496,7 +2496,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Remove unneeded information from the nfl_odds html string.');
    d.writeln('');
-   d.writeln('   nfl_odds = nfl_odds.replace(/(At |NY )/gi,"");');         // Get rid of all "At " and "NY".
+   d.writeln('   nfl_odds = nfl_odds.replace(/(At |NY |LA )/gi,"");');     // Get rid of all "At " and "NY " and "LA ".
    d.writeln('   nfl_odds = nfl_odds.replace(/( |\xA0)/gi,"");');          // Get rid of all blank spaces and "&nbsp" (hex code = A0).
    d.writeln('   nfl_odds = nfl_odds.replace(/(\\r\\n|\\r|\\n)/gi,"");');  // Get rid of all line feeds.
    d.writeln('   nfl_odds = nfl_odds.replace(/(<p>|<\\/p>)/gi,"");');      // Get rid of all "<p>" and "</p>".
