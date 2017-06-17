@@ -40,17 +40,6 @@ function build_regular_season_form()
    var open_date       = top.all_open_dates[week-1];
    var number_of_games = home_teams.length;
 
-   //JLif (week != current_input_week)
-   //JL{
-   //JL   alert("Week " + week + " picks are not due yet.  " +
-   //JL         "Week " + current_input_week + " picks are due next.\n\n" +
-   //JL         "Please be sure to submit your week " + current_input_week +
-   //JL         " picks on time.\n\n" +
-   //JL         "You can make your picks for week " + week + " and submit them " +
-   //JL         "now if you are going to be unavailable to submit them during week " +
-   //JL         week + ".");
-   //JL}
-
    document.open();
 
    var d = document;
@@ -745,7 +734,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      try');
    d.writeln('      {');
-   d.writeln('         nfl_connection.open("GET",encodeURI("https://query.yahooapis.com/v1/public/yql?q=select * from html where url="+nfl_odds_url[i])+" and compat=\\"html5\\"",false);');
+   d.writeln('         nfl_connection.open("GET",encodeURI("https://query.yahooapis.com/v1/public/yql?q=select * from htmlstring where url="+nfl_odds_url[i])+"&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",false);');
    d.writeln('         nfl_connection.send(null);');
    d.writeln('');
    d.writeln('         if (nfl_connection.readyState == 4)');
@@ -836,11 +825,11 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Remove unneeded information from the nfl_odds html string.');
    d.writeln('');
-   d.writeln('   nfl_odds = nfl_odds.replace(/(At |NY |LA )/gi,"");');     // Get rid of all "At " and "NY " and "LA ".
-   d.writeln('   nfl_odds = nfl_odds.replace(/( |\xA0)/gi,"");');          // Get rid of all blank spaces and "&nbsp" (hex code = A0).
-   d.writeln('   nfl_odds = nfl_odds.replace(/(\\r\\n|\\r|\\n)/gi,"");');  // Get rid of all line feeds.
-   d.writeln('   nfl_odds = nfl_odds.replace(/(<p>|<\\/p>)/gi,"");');      // Get rid of all "<p>" and "</p>".
-   d.writeln('   nfl_odds = nfl_odds.replace(/(<br>|<br\\/>)/gi,"");');    // Get rid of all "<br>" and "<br/>".
+   d.writeln('   nfl_odds = nfl_odds.replace(/(At |NY |LA )/gi,"");');                 // Get rid of all "At " and "NY " and "LA ".
+   d.writeln('   nfl_odds = nfl_odds.replace(/( |\xA0)/gi,"");');                      // Get rid of all blank spaces and "&nbsp" (hex code = A0).
+   d.writeln('   nfl_odds = nfl_odds.replace(/(\\x5Cr\\x5Cn|\\x5Cr|\\x5Cn)/gi,"");');  // Get rid of all line feeds ("\" hex code = 5C, hence the expression "\\x5C").
+   d.writeln('   nfl_odds = nfl_odds.replace(/(<p>|<\\/p>)/gi,"");');                  // Get rid of all "<p>" and "</p>".
+   d.writeln('   nfl_odds = nfl_odds.replace(/(<br>|<br\\/>)/gi,"");');                // Get rid of all "<br>" and "<br/>".
    d.writeln('');
    d.writeln('   // Set the picks_from_odds_button_pressed flag.');
    d.writeln('');
@@ -2403,7 +2392,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('      try');
    d.writeln('      {');
-   d.writeln('         nfl_connection.open("GET",encodeURI("https://query.yahooapis.com/v1/public/yql?q=select * from html where url="+nfl_odds_url[i])+" and compat=\\"html5\\"",false);');
+   d.writeln('         nfl_connection.open("GET",encodeURI("https://query.yahooapis.com/v1/public/yql?q=select * from htmlstring where url="+nfl_odds_url[i])+"&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",false);');
    d.writeln('         nfl_connection.send(null);');
    d.writeln('');
    d.writeln('         if (nfl_connection.readyState == 4)');
@@ -2496,11 +2485,11 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Remove unneeded information from the nfl_odds html string.');
    d.writeln('');
-   d.writeln('   nfl_odds = nfl_odds.replace(/(At |NY |LA )/gi,"");');     // Get rid of all "At " and "NY " and "LA ".
-   d.writeln('   nfl_odds = nfl_odds.replace(/( |\xA0)/gi,"");');          // Get rid of all blank spaces and "&nbsp" (hex code = A0).
-   d.writeln('   nfl_odds = nfl_odds.replace(/(\\r\\n|\\r|\\n)/gi,"");');  // Get rid of all line feeds.
-   d.writeln('   nfl_odds = nfl_odds.replace(/(<p>|<\\/p>)/gi,"");');      // Get rid of all "<p>" and "</p>".
-   d.writeln('   nfl_odds = nfl_odds.replace(/(<br>|<br\\/>)/gi,"");');    // Get rid of all "<br>" and "<br/>".
+   d.writeln('   nfl_odds = nfl_odds.replace(/(At |NY |LA )/gi,"");');                 // Get rid of all "At " and "NY " and "LA ".
+   d.writeln('   nfl_odds = nfl_odds.replace(/( |\xA0)/gi,"");');                      // Get rid of all blank spaces and "&nbsp" (hex code = A0).
+   d.writeln('   nfl_odds = nfl_odds.replace(/(\\x5Cr\\x5Cn|\\x5Cr|\\x5Cn)/gi,"");');  // Get rid of all line feeds ("\" hex code = 5C, hence the expression "\\x5C").
+   d.writeln('   nfl_odds = nfl_odds.replace(/(<p>|<\\/p>)/gi,"");');                  // Get rid of all "<p>" and "</p>".
+   d.writeln('   nfl_odds = nfl_odds.replace(/(<br>|<br\\/>)/gi,"");');                // Get rid of all "<br>" and "<br/>".
    d.writeln('');
    d.writeln('   // Set the picks_from_odds_button_pressed flag.');
    d.writeln('');
