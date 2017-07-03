@@ -604,7 +604,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            for (var k = (lowest_game-1); k <= (highest_game-1); k++)');
    d.writeln('            {');
-   d.writeln('               if (nfl_odds_array[k].length >= noa_team_index + 1)');
+   d.writeln('               if (nfl_odds_array[k].length > 0)');
    d.writeln('               {');
    d.writeln('                  if (winning_team == nfl_odds_array[k][noa_team_index])');
    d.writeln('                  {');
@@ -2286,7 +2286,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('      for (var j = 0; j < nfl_odds_array.length; j++)');
    d.writeln('      {');
-   d.writeln('         if (nfl_odds_array[j].length >= noa_team_index + 1)');
+   d.writeln('         if (nfl_odds_array[j].length > 0)');
    d.writeln('         {');
    d.writeln('            if (winning_team == nfl_odds_array[j][noa_team_index])');
    d.writeln('            {');
