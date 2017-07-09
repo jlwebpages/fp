@@ -1502,6 +1502,12 @@ function build_regular_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
+   d.writeln('   // JL - Delete the next two lines if display_spreads_from_odds is initialized to true.');
+   d.writeln('');
+   d.writeln('   display_spreads_from_odds = false;  //JL');
+   d.writeln('');
+   d.writeln('   if (build_player_name(top.player_index).indexOf("JL") != -1) display_spreads_from_odds = true;  //JL');
+   d.writeln('');
    d.writeln('   return true;');
    d.writeln('}');
    d.writeln('');
@@ -2954,6 +2960,12 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
+   d.writeln('');
+   d.writeln('   // JL - Delete the next two lines if display_spreads_from_odds is initialized to true.');
+   d.writeln('');
+   d.writeln('   display_spreads_from_odds = false;  //JL');
+   d.writeln('');
+   d.writeln('   if (build_player_name(top.player_index).indexOf("JL") != -1) display_spreads_from_odds = true;  //JL');
    d.writeln('');
    d.writeln('   return true;');
    d.writeln('}');
