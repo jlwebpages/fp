@@ -289,7 +289,7 @@ function build_regular_season_form()
    d.writeln('   var button_2             = "";');
    d.writeln('   var button_3             = "";');
    d.writeln('   var dialog_frame         = null;');
-   d.writeln('   var font_style           = " style=\\"font-size: 14px; font-family: Consolas\\"";');
+   d.writeln('   var font_style           = " style=\\"font-size: 14px\\"";');
    d.writeln('   var green_color          = "#C4D79B";');
    d.writeln('   var random_picks_message = "";');
    d.writeln('   var red_color            = "#FFCCCC";');
@@ -300,7 +300,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (top.mobile == true)');
    d.writeln('   {');
-   d.writeln('      font_style = " style=\\"font-size: 13px; font-family: Consolas\\"";');
+   d.writeln('      font_style = " style=\\"font-size: 13px\\"";');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   background_color = red_color;');
@@ -2421,7 +2421,7 @@ function build_post_season_form()
    d.writeln('   var button_2         = "Submit";');
    d.writeln('   var button_3         = "Copy";');
    d.writeln('   var dialog_frame     = null;');
-   d.writeln('   var font_style       = " style=\\"font-size: 14px; font-family: Consolas\\"";');
+   d.writeln('   var font_style       = " style=\\"font-size: 14px\\"";');
    d.writeln('   var green_color      = "#C4D79B";');
    d.writeln('   var white_color      = "white";');
    d.writeln('');
@@ -2430,7 +2430,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if (top.mobile == true)');
    d.writeln('   {');
-   d.writeln('      font_style = " style=\\"font-size: 13px; font-family: Consolas\\"";');
+   d.writeln('      font_style = " style=\\"font-size: 13px\\"";');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   background_color = green_color;');
