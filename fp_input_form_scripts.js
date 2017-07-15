@@ -162,7 +162,7 @@ function build_regular_season_form()
    d.writeln('var noa_total_points_index         = 2;');
    d.writeln('var noa_sort_key_index             = 3;');
    d.writeln('var picks_from_odds_button_pressed = false;');
-   d.writeln('var upset_message                  = "";');
+   d.writeln('var upset_note                     = "";');
    d.writeln('');
    d.writeln('clear_nfl_odds_array();');
    d.writeln('');
@@ -260,19 +260,23 @@ function build_regular_season_form()
    d.writeln('function display_confirmation_dialog(document)');
    d.writeln('{');
    d.writeln('   var confirmation_message = "";');
+   d.writeln('   var html_hr_tag          = "<hr style=\\"border: 1px solid black\\">";');
    d.writeln('   var inputs               = document.fp_inputs;');
    d.writeln('   var mn_points            = inputs.mn_points.value;');
    d.writeln('   var player_name          = build_player_name(-1);');
    d.writeln('');
    d.writeln('');
-   d.writeln('   confirmation_message  = "Week " + '+week+' + " Picks\\n\\n\\n";');
-   d.writeln('   confirmation_message += "Name: " + player_name + "\\n\\n";');
+   d.writeln('   confirmation_message  = "<center><b>Week " + '+week+' + " Picks</b></center>\\n";');
+   d.writeln('   confirmation_message += html_hr_tag + "\\n";');
+   d.writeln('   confirmation_message += "<b>Name: " + player_name + "</b>\\n\\n";');
    d.writeln('   confirmation_message += format_picks_for_dialog(document,true,0) + "\\n";');
    d.writeln('   confirmation_message += "Monday Night Total Points: " + mn_points + "\\n\\n";');
-   d.writeln('   confirmation_message += upset_message;');
-   d.writeln('   confirmation_message += "\\nSubmit  - Submit your picks via automatic e-mail.\\n\\n";');
-   d.writeln('   confirmation_message += "Copy    - Copy your picks and manually e-mail them.\\n\\n";');
-   d.writeln('   confirmation_message += "Go Back - Return to Input Form.";');
+   d.writeln('   confirmation_message += html_hr_tag + "\\n";');
+   d.writeln('   confirmation_message += "<b>Submit</b>  - Submit your picks via automatic e-mail.\\n";');
+   d.writeln('   confirmation_message += "<span style=\\"line-height: 22px\\">";');
+   d.writeln('   confirmation_message += "<b>Copy</b>    - Copy your picks and manually e-mail them.\\n";');
+   d.writeln('   confirmation_message += "</span>";');
+   d.writeln('   confirmation_message += "<b>Go Back</b> - Return to Input Form.";');
    d.writeln('');
    d.writeln('   display_picks_message(confirmation_message,"confirm_picks");');
    d.writeln('}');
@@ -285,11 +289,19 @@ function build_regular_season_form()
    d.writeln('   var button_2             = "";');
    d.writeln('   var button_3             = "";');
    d.writeln('   var dialog_frame         = null;');
+   d.writeln('   var font_style           = " style=\\"font-size: 14px; font-family: Consolas\\"";');
    d.writeln('   var green_color          = "#C4D79B";');
    d.writeln('   var random_picks_message = "";');
    d.writeln('   var red_color            = "#FFCCCC";');
    d.writeln('   var white_color          = "white";');
    d.writeln('');
+   d.writeln('');
+   d.writeln('   // If we\'re on a mobile device, reduce the font size of the picks confirmation message.');
+   d.writeln('');
+   d.writeln('   if (top.mobile == true)');
+   d.writeln('   {');
+   d.writeln('      font_style = " style=\\"font-size: 13px; font-family: Consolas\\"";');
+   d.writeln('   }');
    d.writeln('');
    d.writeln('   background_color = red_color;');
    d.writeln('');
@@ -416,7 +428,7 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      // Format picks for display.');
    d.writeln('');
-   d.writeln('      picks_message  = "<span style=\\"font-family: Calibri;font-size:11pt\\">";');
+   d.writeln('      picks_message  = "<span style=\\"font-family: Calibri; font-size:11pt\\">";');
    d.writeln('      picks_message += "<b>Manually create an e-mail message and send it to:</b><br><br>";');
    d.writeln('      picks_message += "fp@socal.rr.com<br><br>";');
    d.writeln('      picks_message += "<b>Copy the following into the message subject line:</b><br><br>";');
@@ -456,7 +468,7 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      random_picks_message = "You can\'t use the same weight more than once.\\n\\n\\n";');
    d.writeln('   }');
-   d.writeln('   wd.writeln("<tr><td><pre>"+random_picks_message+picks_message+"</pre></td></tr>");');
+   d.writeln('   wd.writeln("<tr><td><pre"+font_style+">"+random_picks_message+picks_message+"</pre></td></tr>");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<tr align=center><td>");');
    d.writeln('   wd.writeln("");');
@@ -478,6 +490,11 @@ function build_regular_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("</td></tr>");');
    d.writeln('   wd.writeln("");');
+   d.writeln('   if ((button_2 == "Submit") && (upset_note != ""))');
+   d.writeln('   {');
+   d.writeln('      wd.writeln("<tr align=left><td><pre"+font_style+">"+upset_note+"</pre></td></tr>");');
+   d.writeln('      wd.writeln("");');
+   d.writeln('   }');
    d.writeln('   wd.writeln("</table>");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<br>");');
@@ -560,7 +577,7 @@ function build_regular_season_form()
    d.writeln('   var winning_team    = "";');
    d.writeln('');
    d.writeln('');
-   d.writeln('   upset_message = "";');
+   d.writeln('   upset_note = "";');
    d.writeln('');
    d.writeln('   if ((game_to_format > 0) && (game_to_format <= '+number_of_games+'))');
    d.writeln('   {');
@@ -688,7 +705,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            // If this or any other game is an upset pick then build the upset message for the dialog display.');
    d.writeln('');
-   d.writeln('            if (html_tag_start != "") upset_message = html_tag_start + "Note: Games in this color are upset picks." + html_tag_end + "\\n\\n";');
+   d.writeln('            if (html_tag_start != "") upset_note = "\\n" + html_tag_start + "Note: These games are upset picks." + html_tag_end;');
    d.writeln('         }');
    d.writeln('      }');
    d.writeln('   }');
@@ -1932,7 +1949,6 @@ function build_regular_season_form()
    d.writeln('</tr>');
    d.writeln('</table><p>');
    d.writeln('');
-   d.writeln('');
 
    d.writeln('<table   align=center');
    d.writeln('         class="b3_border"');
@@ -2039,7 +2055,7 @@ function build_regular_season_form()
    d.writeln('');
 
    d.writeln('<tr align=center>');
-   d.writeln('<td class="no_border">');
+   d.writeln('<td nowrap class="no_border">');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="submit" value="Accept" onClick="accept_picks(document); return true;">');
    d.writeln('&nbsp;');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="picks_from_odds" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;">');
@@ -2055,10 +2071,10 @@ function build_regular_season_form()
    d.writeln('');
 
    d.writeln('<tr align=center>');
-   d.writeln('<td class="no_border">');
+   d.writeln('<td nowrap class="no_border">');
    d.writeln('<div style="display: none" id="display_spreads_div">');
    d.writeln('<input type=checkbox style="vertical-align: middle" id="display_spreads_checkbox">');
-   d.writeln('<span style="font-size: 11pt; vertical-align: middle">Display Point Spreads from NFL Odds</span>');
+   d.writeln('<span style="font-size: 11pt; vertical-align: middle"><label for="display_spreads_checkbox">Display Point Spreads from NFL Odds</label></span>');
    d.writeln('</div>');
    d.writeln('</td>');
    d.writeln('</tr>');
@@ -2218,6 +2234,7 @@ function build_post_season_form()
    d.writeln('var noa_spread_index               = 1;');
    d.writeln('var noa_total_points_index         = 2;');
    d.writeln('var picks_from_odds_button_pressed = false;');
+   d.writeln('var upset_note                     = "";');
    d.writeln('');
    d.writeln('clear_nfl_odds_array();');
    d.writeln('');
@@ -2285,23 +2302,24 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('function display_confirmation_dialog(document)');
    d.writeln('{');
-   d.writeln('   var confirmation_message = "Post Season Week " + '+week+' + ');
-   d.writeln('                              " Picks\\n\\n\\nName: " +');
-   d.writeln('                              build_player_name(-1) +');
-   d.writeln('                              "\\n\\n";');
+   d.writeln('   var confirmation_message = "";');
+   d.writeln('   var html_hr_tag          = "<hr style=\\"border: 1px solid black\\">";');
    d.writeln('   var html_tag_end         = "";');
    d.writeln('   var html_tag_start       = "";');
    d.writeln('   var inputs               = document.fp_inputs;');
    d.writeln('   var losing_team          = "";');
    d.writeln('   var spread               = 0;');
    d.writeln('   var total_points_game    = "";');
-   d.writeln('   var upset_message        = "";');
    d.writeln('   var winning_team         = "";');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Get the NFL Odds so we can determine which games are upset picks.');
    d.writeln('');
    d.writeln('   get_nfl_odds(document,true);');
+   d.writeln('');
+   d.writeln('   confirmation_message  = "<center><b>Post Season Week " + '+week+' + " Picks</center></b>\\n"');
+   d.writeln('   confirmation_message += html_hr_tag + "\\n";');
+   d.writeln('   confirmation_message += "<b>Name: " + build_player_name(-1) + "</b>\\n\\n";');
    d.writeln('');
    d.writeln('   get_display_spreads_from_form(document);');
    d.writeln('');
@@ -2366,10 +2384,7 @@ function build_post_season_form()
    d.writeln('      winning_team = pad_text_string(winning_team);');
    d.writeln('      losing_team = pad_text_string(losing_team);');
    d.writeln('');
-   d.writeln('      confirmation_message = confirmation_message + html_tag_start + winning_team;');
-   d.writeln('      confirmation_message = confirmation_message + "over   ";');
-   d.writeln('      confirmation_message = confirmation_message + losing_team;');
-   d.writeln('      confirmation_message = confirmation_message + "by   ";');
+   d.writeln('      confirmation_message += html_tag_start + winning_team + "over   " + losing_team + "by   ";');
    d.writeln('');
    d.writeln('      if (spread_values[i] < 10)');
    d.writeln('      {');
@@ -2380,19 +2395,20 @@ function build_post_season_form()
    d.writeln('         spread = spread_values[i];');
    d.writeln('      }');
    d.writeln('');
-   d.writeln('      confirmation_message = confirmation_message + spread + html_tag_end + "\\n";');
+   d.writeln('      confirmation_message += spread + html_tag_end + "\\n";');
    d.writeln('');
    d.writeln('      // If this or any other game is an upset pick then build the upset message for the dialog display.');
    d.writeln('');
-   d.writeln('      if (html_tag_start != "") upset_message = html_tag_start + "Note: Games in this color are upset picks." + html_tag_end + "\\n\\n";');
+   d.writeln('      if (html_tag_start != "") upset_note = "\\n" + html_tag_start + "Note: These games are upset picks." + html_tag_end;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   confirmation_message = confirmation_message + "\\n\\""+total_points_game+"\\" Total Points: "+total_points+"\\n";');
-   d.writeln('');
-   d.writeln('   confirmation_message = confirmation_message + "\\n" + upset_message +');
-   d.writeln('                          "\\nSubmit  - Submit your picks via automatic e-mail.\\n\\n" +');
-   d.writeln('                          "Copy    - Copy your picks and manually e-mail them.\\n\\n" +');
-   d.writeln('                          "Go Back - Return to Input Form.";');
+   d.writeln('   confirmation_message += "\\n\\"" + total_points_game + "\\" Total Points: " + total_points + "\\n\\n";');
+   d.writeln('   confirmation_message += html_hr_tag + "\\n";');
+   d.writeln('   confirmation_message += "<b>Submit</b>  - Submit your picks via automatic e-mail.\\n"');
+   d.writeln('   confirmation_message += "<span style=\\"line-height: 22px\\">";');
+   d.writeln('   confirmation_message += "<b>Copy</b>    - Copy your picks and manually e-mail them.\\n"');
+   d.writeln('   confirmation_message += "</span>";');
+   d.writeln('   confirmation_message += "<b>Go Back</b> - Return to Input Form.";');
    d.writeln('');
    d.writeln('   display_picks_message(confirmation_message,"confirm_picks");');
    d.writeln('}');
@@ -2405,9 +2421,17 @@ function build_post_season_form()
    d.writeln('   var button_2         = "Submit";');
    d.writeln('   var button_3         = "Copy";');
    d.writeln('   var dialog_frame     = null;');
+   d.writeln('   var font_style       = " style=\\"font-size: 14px; font-family: Consolas\\"";');
    d.writeln('   var green_color      = "#C4D79B";');
    d.writeln('   var white_color      = "white";');
    d.writeln('');
+   d.writeln('');
+   d.writeln('   // If we\'re on a mobile device, reduce the font size of the picks confirmation message.');
+   d.writeln('');
+   d.writeln('   if (top.mobile == true)');
+   d.writeln('   {');
+   d.writeln('      font_style = " style=\\"font-size: 13px; font-family: Consolas\\"";');
+   d.writeln('   }');
    d.writeln('');
    d.writeln('   background_color = green_color;');
    d.writeln('');
@@ -2415,7 +2439,7 @@ function build_post_season_form()
    d.writeln('   {');
    d.writeln('      background_color = white_color;');
    d.writeln('');
-   d.writeln('      picks_message  = "<span style=\\"font-family: Calibri;font-size:11pt\\">";');
+   d.writeln('      picks_message  = "<span style=\\"font-family: Calibri; font-size:11pt\\">";');
    d.writeln('      picks_message += "<b>Manually create an e-mail message and send it to:</b><br><br>";');
    d.writeln('      picks_message += "fp@socal.rr.com<br><br>";');
    d.writeln('      picks_message += "<b>Copy the following into the message subject line:</b><br><br>";');
@@ -2512,7 +2536,7 @@ function build_post_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<table cellpadding=10 class=\\"table_style\\">");');
    d.writeln('   wd.writeln("");');
-   d.writeln('   wd.writeln("<tr><td><pre>"+picks_message+"</pre></td></tr>");');
+   d.writeln('   wd.writeln("<tr><td><pre"+font_style+">"+picks_message+"</pre></td></tr>");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<tr align=center><td>");');
    d.writeln('   wd.writeln("");');
@@ -2527,6 +2551,11 @@ function build_post_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("</td></tr>");');
    d.writeln('   wd.writeln("");');
+   d.writeln('   if ((message_mode == "confirm_picks") && (upset_note != ""))');
+   d.writeln('   {');
+   d.writeln('      wd.writeln("<tr align=left><td><pre"+font_style+">"+upset_note+"</pre></td></tr>");');
+   d.writeln('      wd.writeln("");');
+   d.writeln('   }');
    d.writeln('   wd.writeln("</table>");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<br>");');
@@ -3174,7 +3203,15 @@ function build_post_season_form()
    d.writeln('<center>');
    d.writeln('');
 
-   d.writeln('<br><font style="font-size: 18pt">Input Form - Post Season Week '+ week +'</font><br><br>');
+   d.writeln('<br>');
+   d.writeln('');
+
+   d.writeln('<table border=0 cellspacing=0 cellpadding=0>');
+   d.writeln('<tr align=center style="vertical-align: middle">');
+   d.writeln('<td nowrap class="no_border"><font style="font-size: 18pt">Input Form - Post Season Week '+ week +'</font>');
+   d.writeln('</td>');
+   d.writeln('</tr>');
+   d.writeln('</table><p>');
    d.writeln('');
 
    d.writeln('<form name="fp_inputs">');
@@ -3275,7 +3312,7 @@ function build_post_season_form()
    d.writeln('');
 
    d.writeln('<tr align=center>');
-   d.writeln('<td class="no_border">');
+   d.writeln('<td nowrap class="no_border">');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="submit" value="Accept" onClick="accept_picks(document); return true;">');
    d.writeln('&nbsp;');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="picks_from_odds" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;">');
@@ -3289,10 +3326,10 @@ function build_post_season_form()
    d.writeln('');
 
    d.writeln('<tr align=center>');
-   d.writeln('<td class="no_border">');
+   d.writeln('<td nowrap class="no_border">');
    d.writeln('<div style="display: none" id="display_spreads_div">');
    d.writeln('<input type=checkbox style="vertical-align: middle" id="display_spreads_checkbox">');
-   d.writeln('<span style="font-size: 11pt; vertical-align: middle">Display Point Spreads from NFL Odds</span>');
+   d.writeln('<span style="font-size: 11pt; vertical-align: middle"><label for="display_spreads_checkbox">Display Point Spreads from NFL Odds</label></span>');
    d.writeln('</div>');
    d.writeln('</td>');
    d.writeln('</tr>');
