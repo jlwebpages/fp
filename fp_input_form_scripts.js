@@ -289,7 +289,7 @@ function build_regular_season_form()
    d.writeln('   var button_2             = "";');
    d.writeln('   var button_3             = "";');
    d.writeln('   var dialog_frame         = null;');
-   d.writeln('   var font_style           = " style=\\"font-size: 16px\\"";');
+   d.writeln('   var font_style           = " style=\\"font-size: 15px\\"";');
    d.writeln('   var green_color          = "#C4D79B";');
    d.writeln('   var random_picks_message = "";');
    d.writeln('   var red_color            = "#FFCCCC";');
@@ -428,7 +428,7 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      // Format picks for display.');
    d.writeln('');
-   d.writeln('      picks_message  = "<span style=\\"font-family: Calibri; font-size:11pt\\">";');
+   d.writeln('      picks_message  = "<span style=\\"font-family: Calibri; font-size: 11pt\\">";');
    d.writeln('      picks_message += "<b>Manually create an e-mail message and send it to:</b><br><br>";');
    d.writeln('      picks_message += "fp@socal.rr.com<br><br>";');
    d.writeln('      picks_message += "<b>Copy the following into the message subject line:</b><br><br>";');
@@ -2421,7 +2421,7 @@ function build_post_season_form()
    d.writeln('   var button_2         = "Submit";');
    d.writeln('   var button_3         = "Copy";');
    d.writeln('   var dialog_frame     = null;');
-   d.writeln('   var font_style       = " style=\\"font-size: 16px\\"";');
+   d.writeln('   var font_style       = " style=\\"font-size: 15px\\"";');
    d.writeln('   var green_color      = "#C4D79B";');
    d.writeln('   var white_color      = "white";');
    d.writeln('');
@@ -2439,7 +2439,7 @@ function build_post_season_form()
    d.writeln('   {');
    d.writeln('      background_color = white_color;');
    d.writeln('');
-   d.writeln('      picks_message  = "<span style=\\"font-family: Calibri; font-size:11pt\\">";');
+   d.writeln('      picks_message  = "<span style=\\"font-family: Calibri; font-size: 11pt\\">";');
    d.writeln('      picks_message += "<b>Manually create an e-mail message and send it to:</b><br><br>";');
    d.writeln('      picks_message += "fp@socal.rr.com<br><br>";');
    d.writeln('      picks_message += "<b>Copy the following into the message subject line:</b><br><br>";');
@@ -3288,7 +3288,7 @@ function build_post_season_form()
          d.writeln('<td><font style="font-size: 13pt">by</font></td>');
          d.writeln('<td><font style="font-size: 13pt">');
       }
-      d.writeln('    <input type=text style="text-align:center; font-size:12pt; font-family: Calibri; border: 1px solid lightgray" name="spread'+i+'" size="2" maxlength="2">');
+      d.writeln('    <input type=text style="text-align:center; font-size: 12pt; font-family: Calibri; border: 1px solid lightgray" name="spread'+i+'" size="2" maxlength="2">');
       d.writeln('</font></td>'); 
       d.writeln('</tr>');  
       d.writeln('');    
@@ -3298,7 +3298,7 @@ function build_post_season_form()
    d.writeln('<td class="no_border" colspan=1><font>&nbsp;</font></td>');
    d.writeln('<td class="no_border" colspan=5 align=right><font style="font-size: 13pt">Game '+number_of_games+' Total Points:</font></td>');
    d.writeln('<td class="no_border"  colspan=1><font style="font-size: 13pt">');
-   d.writeln('    <input type=text style="text-align:center; font-size:12pt; font-family: Calibri; border: 1px solid gray" name="points" size="2" maxlength="2">');
+   d.writeln('    <input type=text style="text-align:center; font-size: 12pt; font-family: Calibri; border: 1px solid gray" name="points" size="2" maxlength="2">');
    d.writeln('</font></td>'); 
    d.writeln('</tr>');
 
