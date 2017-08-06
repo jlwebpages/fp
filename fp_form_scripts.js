@@ -1047,8 +1047,8 @@ function build_post_season_form()
    d.writeln('   var index                              = 0;');
    d.writeln('   var nfl_connection                     = null;');
    d.writeln('   var nfl_scores                         = null;');
-   d.writeln('   var nfl_team_cities                    = ["ARI",      "ATL",    "BAL",   "BUF",  "CAR",     "CHI",  "CIN",    "CLE",   "DAL",    "DEN",    "DET",  "NYG",   "GB",     "HOU",   "IND",  "JAX",    "NYJ", "KC",    "MIA",     "MIN",    "NE",      "NO",    "OAK",    "PHI",   "PIT",     "LAC",     "SF",   "SEA",     "LA", "TB",        "TEN",   "WAS"     ];');
-   d.writeln('   var nfl_team_names                     = ["Cardinals","Falcons","Ravens","Bills","Panthers","Bears","Bengals","Browns","Cowboys","Broncos","Lions","Giants","Packers","Texans","Colts","Jaguars","Jets","Chiefs","Dolphins","Vikings","Patriots","Saints","Raiders","Eagles","Steelers","Chargers","49ers","Seahawks","Rams","Buccaneers","Titans","Redskins"];');
+   d.writeln('   var nfl_team_cities                    = ["ARI",      "ATL",    "BAL",   "BUF",  "CAR",     "CHI",  "CIN",    "CLE",   "DAL",    "DEN",    "DET",  "GB",     "HOU",   "IND",  "JAX",    "KC",    "LA",  "LAC",     "MIA",     "MIN",    "NE",      "NO",    "NYG",   "NYJ", "OAK",    "PHI",   "PIT",     "SEA",     "SF",   "TB",        "TEN",   "WAS"     ];');
+   d.writeln('   var nfl_team_names                     = ["Cardinals","Falcons","Ravens","Bills","Panthers","Bears","Bengals","Browns","Cowboys","Broncos","Lions","Packers","Texans","Colts","Jaguars","Chiefs","Rams","Chargers","Dolphins","Vikings","Patriots","Saints","Giants","Jets","Raiders","Eagles","Steelers","Seahawks","49ers","Buccaneers","Titans","Redskins"];');
    d.writeln('   var number_of_games                    = '+number_of_games+' + 1;');  // Add 1 to account for the Pro Bowl
    d.writeln('   var nfl_games_array                    = new Array(number_of_games);');
    d.writeln('   var possession_team                    = "";');
@@ -3311,8 +3311,8 @@ function build_regular_season_form()
    d.writeln('   var nfl_connection                = null;');
    d.writeln('   var nfl_games_array               = new Array('+number_of_games+');');
    d.writeln('   var nfl_scores                    = null;');
-   d.writeln('   var nfl_team_cities               = ["ARI",      "ATL",    "BAL",   "BUF",  "CAR",     "CHI",  "CIN",    "CLE",   "DAL",    "DEN",    "DET",  "NYG",   "GB",     "HOU",   "IND",  "JAX",    "NYJ", "KC",    "MIA",     "MIN",    "NE",      "NO",    "OAK",    "PHI",   "PIT",     "LAC",     "SF",   "SEA",     "LA", "TB",        "TEN",   "WAS"     ];');
-   d.writeln('   var nfl_team_names                = ["Cardinals","Falcons","Ravens","Bills","Panthers","Bears","Bengals","Browns","Cowboys","Broncos","Lions","Giants","Packers","Texans","Colts","Jaguars","Jets","Chiefs","Dolphins","Vikings","Patriots","Saints","Raiders","Eagles","Steelers","Chargers","49ers","Seahawks","Rams","Buccaneers","Titans","Redskins"];');
+   d.writeln('   var nfl_team_cities               = ["ARI",      "ATL",    "BAL",   "BUF",  "CAR",     "CHI",  "CIN",    "CLE",   "DAL",    "DEN",    "DET",  "GB",     "HOU",   "IND",  "JAX",    "KC",    "LA",  "LAC",     "MIA",     "MIN",    "NE",      "NO",    "NYG",   "NYJ", "OAK",    "PHI",   "PIT",     "SEA",     "SF",   "TB",        "TEN",   "WAS"     ];');
+   d.writeln('   var nfl_team_names                = ["Cardinals","Falcons","Ravens","Bills","Panthers","Bears","Bengals","Browns","Cowboys","Broncos","Lions","Packers","Texans","Colts","Jaguars","Chiefs","Rams","Chargers","Dolphins","Vikings","Patriots","Saints","Giants","Jets","Raiders","Eagles","Steelers","Seahawks","49ers","Buccaneers","Titans","Redskins"];');
    d.writeln('   var possession_team               = "";');
    d.writeln('   var prelim_possession_teams_index = 0;');
    d.writeln('   var prelim_victors_index          = 0;');
