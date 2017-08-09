@@ -2347,8 +2347,6 @@ function build_post_season_form()
    d.writeln('   confirmation_message += html_hr_tag + "\\n";');
    d.writeln('   confirmation_message += "<b>Name: " + build_player_name(-1) + "</b>\\n\\n";');
    d.writeln('');
-   d.writeln('   get_display_spreads_from_form(document);');
-   d.writeln('');
    d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
    d.writeln('   {');
    d.writeln('      // Identify the winning and losing teams for this game.');
@@ -2802,6 +2800,12 @@ function build_post_season_form()
    d.writeln('{');
    d.writeln('   display_spreads_from_odds = document.getElementById("display_spreads_checkbox").checked;');
    d.writeln('');
+   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   {');
+   d.writeln('      document.getElementById(home_teams[i]).innerHTML     = home_teams[i]     + get_point_spreads_string(home_teams[i]);');
+   d.writeln('      document.getElementById(visiting_teams[i]).innerHTML = visiting_teams[i] + get_point_spreads_string(visiting_teams[i]);');
+   d.writeln('   }');
+   d.writeln('');
    d.writeln('   return;');
    d.writeln('}');
    d.writeln('');
@@ -3032,6 +3036,28 @@ function build_post_season_form()
    d.writeln('   }');
    d.writeln('');
    d.writeln('   return true;');
+   d.writeln('}');
+   d.writeln('');
+   d.writeln('');
+   d.writeln('function get_point_spreads_string(team)');
+   d.writeln('{');
+   d.writeln('   var return_string = "";');
+   d.writeln('');
+   d.writeln('');
+   d.writeln('   if ((display_spreads_from_odds == true) && (nfl_odds_array[0].length > 0))');
+   d.writeln('   {');
+   d.writeln('      for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('      {');
+   d.writeln('         if (team == nfl_odds_array[i][noa_team_index])');
+   d.writeln('         {');
+   d.writeln('            return_string = "&nbsp&nbsp" + "<span style=\\"font-size: 90%\\">" + nfl_odds_array[i][noa_spread_index] + "</span>";');
+   d.writeln('');
+   d.writeln('            break;');
+   d.writeln('         }');
+   d.writeln('      }');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('   return return_string;');
    d.writeln('}');
    d.writeln('');
    d.writeln('');
@@ -3287,17 +3313,17 @@ function build_post_season_form()
       if (i == number_of_games)
       {
          d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt"><b>' + i + '</b></font></td>');
-         d.writeln('<td class="gr1_bb2_border"><font style="font-size: 13pt">' + visiting_teams[i-1] + '</font></td>');
+         d.writeln('<td class="gr1_bb2_border"><font style="font-size: 13pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
          d.writeln('<td class="gr1_bb2_border"><font style="font-size: 13pt">at</font></td>');
-         d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt">' + home_teams[i-1] + '</font></td>');
+         d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
          d.writeln('<td class="gr1_bb2_border"><select style="font-size: 12pt; font-family: Calibri; border: 1px solid lightgray" name="pick'+i+'" size=1>');
       }
       else
       {
          d.writeln('<td class="br2_gb1_border"><font style="font-size: 13pt"><b>' + i + '</b></font></td>');
-         d.writeln('<td><font style="font-size: 13pt">' + visiting_teams[i-1] + '</font></td>');
+         d.writeln('<td><font style="font-size: 13pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
          d.writeln('<td><font style="font-size: 13pt">at</font></td>');
-         d.writeln('<td class="br2_gb1_border"><font style="font-size: 13pt">' + home_teams[i-1] + '</font></td>');
+         d.writeln('<td class="br2_gb1_border"><font style="font-size: 13pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
          d.writeln('<td><select style="font-size: 12pt; font-family: Calibri; border: 1px solid lightgray" name="pick'+i+'" size=1>');
       }
       d.writeln('       <option selected value="0">');
@@ -3343,7 +3369,7 @@ function build_post_season_form()
    d.writeln('&nbsp;');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="picks_from_odds" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;">');
    d.writeln('&nbsp;');
-   d.writeln('<input type=reset style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="reset_button" value="Reset" onClick="document.fp_inputs.pick1.focus(); return true;">');
+   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="reset_button" value="Reset" onClick="document.fp_inputs.reset(); get_display_spreads_from_form(document); document.fp_inputs.pick1.focus(); return true;">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -3354,7 +3380,7 @@ function build_post_season_form()
    d.writeln('<tr align=center>');
    d.writeln('<td nowrap class="no_border">');
    d.writeln('<div style="display: none" id="display_spreads_div">');
-   d.writeln('<input type=checkbox style="vertical-align: middle" id="display_spreads_checkbox">');
+   d.writeln('<input type=checkbox style="vertical-align: middle" id="display_spreads_checkbox" onClick="get_display_spreads_from_form(document);">');
    d.writeln('<span style="font-size: 11pt; vertical-align: middle"><label for="display_spreads_checkbox">Display Point Spreads from NFL Odds</label></span>');
    d.writeln('</div>');
    d.writeln('</td>');
