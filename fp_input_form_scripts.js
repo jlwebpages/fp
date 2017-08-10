@@ -240,7 +240,6 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('');
    d.writeln('   top.global_week  = selected_week;');
-   d.writeln('   top.player_index = document.fp_inputs.player_name_menu.selectedIndex;');
    d.writeln('');
    d.writeln('   document.location.href = "fp_input_form_change.html";');
    d.writeln('');
@@ -1472,6 +1471,14 @@ function build_regular_season_form()
    d.writeln('}');
    d.writeln('');
    d.writeln('');
+   d.writeln('function get_player_index_from_form(document)');
+   d.writeln('{');
+   d.writeln('   top.player_index = document.fp_inputs.player_name_menu.selectedIndex;');
+   d.writeln('');
+   d.writeln('   return;');
+   d.writeln('}');
+   d.writeln('');
+   d.writeln('');
    d.writeln('function get_point_spreads_string(team)');
    d.writeln('{');
    d.writeln('   var return_string = "";');
@@ -1527,6 +1534,24 @@ function build_regular_season_form()
    d.writeln('}');
    d.writeln('');
    d.writeln('');
+   d.writeln('function reset_input_form(document)');
+   d.writeln('{');
+   d.writeln('   document.fp_inputs.reset();');
+   d.writeln('');
+   d.writeln('   // Make sure all point spreads are cleared from the input form because the reset caused the display_spreads_from_odds flag to be false.');
+   d.writeln('');
+   d.writeln('   get_display_spreads_from_form(document); ');
+   d.writeln('');
+   d.writeln('   // Restore the previously selected player name because the reset caused the player name on the input form to be cleared.');
+   d.writeln('');
+   d.writeln('   document.fp_inputs.player_name_menu.selectedIndex = top.player_index;');
+   d.writeln('');
+   d.writeln('   document.fp_inputs.pick1.focus();');
+   d.writeln('');
+   d.writeln('   return true;');
+   d.writeln('}');
+   d.writeln('');
+   d.writeln('');
    d.writeln('function validate_monday_night_points(mn_points,display_error)');
    d.writeln('{');
    d.writeln('   var monday_night_points = 0;');
@@ -1552,17 +1577,11 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('function validate_name(document,display_error)');
    d.writeln('{');
-   d.writeln('   var name_menu  = document.fp_inputs.player_name_menu;');
-   d.writeln('   var name_index = name_menu.selectedIndex;');
-   d.writeln('');
-   d.writeln('');
-   d.writeln('   top.player_index = name_menu.options[name_index].value;');
-   d.writeln('');
    d.writeln('   if (top.player_index == 0)');
    d.writeln('   {');
    d.writeln('      if (display_error == true) alert("Select your name before accepting your picks.");');
    d.writeln('');
-   d.writeln('      name_menu.focus();');
+   d.writeln('      document.fp_inputs.player_name_menu.focus();');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -1987,7 +2006,7 @@ function build_regular_season_form()
    d.writeln('<tr bgcolor=#C4D79B>');
    d.writeln('<td align=right class="bb2_border" colspan=2><font style="font-size: 12pt"><b>NAME:</b></font></td>');
    d.writeln('<td align=left class="bb2_border" colspan=4>');
-   d.writeln('<select style="font-size: 12pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1>');
+   d.writeln('<select style="font-size: 12pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
    for (var i = 0; i <= top.number_of_rs_players; i++)
    {
       switch (i)
@@ -2088,7 +2107,7 @@ function build_regular_season_form()
    d.writeln('&nbsp;');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="random_picks" value="Random Picks" onClick="generate_random_picks(document); return true;">');
    d.writeln('&nbsp;');
-   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="reset_button" value="Reset" onClick="document.fp_inputs.reset(); get_display_spreads_from_form(document); document.fp_inputs.pick1.focus(); return true;">');
+   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="reset_button" value="Reset" onClick="reset_input_form(document); return true;">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -3039,6 +3058,14 @@ function build_post_season_form()
    d.writeln('}');
    d.writeln('');
    d.writeln('');
+   d.writeln('function get_player_index_from_form(document)');
+   d.writeln('{');
+   d.writeln('   top.player_index = document.fp_inputs.player_name_menu.selectedIndex;');
+   d.writeln('');
+   d.writeln('   return;');
+   d.writeln('}');
+   d.writeln('');
+   d.writeln('');
    d.writeln('function get_point_spreads_string(team)');
    d.writeln('{');
    d.writeln('   var return_string = "";');
@@ -3091,19 +3118,31 @@ function build_post_season_form()
    d.writeln('}');
    d.writeln('');
    d.writeln('');
+   d.writeln('function reset_input_form(document)');
+   d.writeln('{');
+   d.writeln('   document.fp_inputs.reset();');
+   d.writeln('');
+   d.writeln('   // Make sure all point spreads are cleared from the input form because the reset caused the display_spreads_from_odds flag to be false.');
+   d.writeln('');
+   d.writeln('   get_display_spreads_from_form(document); ');
+   d.writeln('');
+   d.writeln('   // Restore the previously selected player name because the reset caused the player name on the input form to be cleared.');
+   d.writeln('');
+   d.writeln('   document.fp_inputs.player_name_menu.selectedIndex = top.player_index;');
+   d.writeln('');
+   d.writeln('   document.fp_inputs.pick1.focus();');
+   d.writeln('');
+   d.writeln('   return true;');
+   d.writeln('}');
+   d.writeln('');
+   d.writeln('');
    d.writeln('function validate_name(document,display_error)');
    d.writeln('{');
-   d.writeln('   var name_menu  = document.fp_inputs.player_name_menu;');
-   d.writeln('   var name_index = name_menu.selectedIndex;');
-   d.writeln('');
-   d.writeln('');
-   d.writeln('   top.player_index = name_menu.options[name_index].value;');
-   d.writeln('');
    d.writeln('   if (top.player_index == 0)');
    d.writeln('   {');
    d.writeln('      if (display_error == true) alert("Select your name before accepting your picks.");');
    d.writeln('');
-   d.writeln('      name_menu.focus();');
+   d.writeln('      document.fp_inputs.player_name_menu.focus();');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -3280,7 +3319,7 @@ function build_post_season_form()
    d.writeln('<tr bgcolor=#C4D79B>');
    d.writeln('<td align=right class="bb2_border" colspan=2><b><font style="font-size: 13pt">NAME:</font></b></td>');
    d.writeln('<td align=left class="bb2_border" colspan=5>');
-   d.writeln('<select style="font-size: 13pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1>');
+   d.writeln('<select style="font-size: 13pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
    for (var i = 0; i <= top.number_of_ps_players; i++)
    {
       switch (i)
@@ -3369,7 +3408,7 @@ function build_post_season_form()
    d.writeln('&nbsp;');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="picks_from_odds" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;">');
    d.writeln('&nbsp;');
-   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="reset_button" value="Reset" onClick="document.fp_inputs.reset(); get_display_spreads_from_form(document); document.fp_inputs.pick1.focus(); return true;">');
+   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="reset_button" value="Reset" onClick="reset_input_form(document); return true;">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
