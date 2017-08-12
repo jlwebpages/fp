@@ -420,7 +420,7 @@ function build_regular_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   if (top.mobile == true)');
    d.writeln('   {');
-   d.writeln('      wd.writeln("<span style=\\"font-size: 85%\\">");');
+   d.writeln('      //JLJLwd.writeln("<span style=\\"font-size: 85%\\">");');
    d.writeln('      wd.writeln("");');
    d.writeln('   }');
    d.writeln('   wd.writeln("<table style=\\"padding: 10px\\" class=\\"table_style\\">");');
@@ -431,7 +431,7 @@ function build_regular_season_form()
    d.writeln('      html_tag_start = "<pre style=\\"font-size: 14px\\">";');
    d.writeln('      html_tag_end   = "</pre>";');
    d.writeln('');
-   d.writeln('      if (top.mobile == true) html_tag_start = "<pre style=\\"font-size: 12px\\">";');
+   //JLJLd.writeln('      if (top.mobile == true) html_tag_start = "<pre style=\\"font-size: 12px\\">";');
    d.writeln('');
    d.writeln('      if (random_picks_button_pressed == true)');
    d.writeln('      {');
@@ -527,7 +527,7 @@ function build_regular_season_form()
    d.writeln('   if (top.mobile == true)');
    d.writeln('   {');
    d.writeln('      wd.writeln("");');
-   d.writeln('      wd.writeln("</span>");');
+   d.writeln('      //JLJLwd.writeln("</span>");');
    d.writeln('   }');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<br>");');
