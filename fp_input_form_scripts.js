@@ -35,10 +35,29 @@ function build_regular_season_form()
       week = top.global_week;
    }
 
-   var home_teams      = top.all_home_teams[week-1];
-   var visiting_teams  = top.all_visiting_teams[week-1];
-   var open_date       = top.all_open_dates[week-1];
-   var number_of_games = home_teams.length;
+   var home_teams                = top.all_home_teams[week-1];
+   var visiting_teams            = top.all_visiting_teams[week-1];
+   var open_date                 = top.all_open_dates[week-1];
+   var number_of_games           = home_teams.length;
+
+   var picks_from_odds_tooltip   = "";
+   var random_picks_tooltip      = "";
+   var submit_via_e_mail_tooltip = "";
+
+   // Define tooltips for buttons
+
+   picks_from_odds_tooltip += "&quot;Picks From Odds&quot; will:&#13;&#13;";
+   picks_from_odds_tooltip += "     - Clear the Input Form.&#13;";
+   picks_from_odds_tooltip += "     - Get the NFL Odds from the internet.&#13;";
+   picks_from_odds_tooltip += "     - Populate the Input Form using the Odds.";
+
+   random_picks_tooltip += "&quot;Random Picks&quot; will:&#13;&#13;";
+   random_picks_tooltip += "     - Validate picks and weights that have already been selected.&#13;";
+   random_picks_tooltip += "     - Randomly populate unselected picks and weights.";
+
+   submit_via_e_mail_tooltip += "&quot;Submit via E-Mail&quot; will:&#13;&#13;";
+   submit_via_e_mail_tooltip += "     - Create and display an E-Mail message with your picks.&#13;";
+   submit_via_e_mail_tooltip += "     - Click the &quot;Send&quot; button on the E-Mail to submit your picks.";
 
    document.open();
 
@@ -494,7 +513,7 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('   else if (button_2 == "Submit via E-Mail")');
    d.writeln('   {');
-   d.writeln('      wd.writeln("<input type=button style=\\"font-size: 11pt; font-family: Calibri; border: 1px solid black\\" value=\\""+button_2+"\\" onClick=respond_to_button(\\"submit\\");>");');
+   d.writeln('      wd.writeln("<input type=button style=\\"font-size: 11pt; font-family: Calibri; border: 1px solid black\\" value=\\""+button_2+"\\" onClick=respond_to_button(\\"submit\\"); title=\\"'+submit_via_e_mail_tooltip+'\\">");');
    d.writeln('      wd.writeln("&nbsp&nbsp");');
    d.writeln('      wd.writeln("<input type=button style=\\"font-size: 11pt; font-family: Calibri; border: 1px solid black\\" value=\\""+button_3+"\\" onClick=respond_to_button(\\"copy\\");>");');
    d.writeln('      wd.writeln("&nbsp&nbsp");');
@@ -544,13 +563,8 @@ function build_regular_season_form()
    d.writeln('   var inputs    = document.fp_inputs;');
    d.writeln('   var mn_points = inputs.mn_points.value;');
    d.writeln('   var name      = build_player_name(-1);');
-   d.writeln('   var mail_msg  = "";');
+   d.writeln('   var mail_msg = "mailto:fp@socal.rr.com?subject=" + name + " - Week ' + week + ' Picks&body=";');
    d.writeln('');
-   d.writeln('');
-   d.writeln('   alert("An e-mail message containing your Week ' + week + ' Picks will be displayed.\\n\\n"');
-   d.writeln('         + "Don\'t modify the message.  Click \\"Send\\" to submit your picks.");');
-   d.writeln('');
-   d.writeln('   mail_msg = "mailto:fp@socal.rr.com?subject=" + name + " - Week ' + week + ' Picks&body=";');
    d.writeln('');
    d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
    d.writeln('   {');
@@ -811,18 +825,6 @@ function build_regular_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   // Display informational message to user.');
-   d.writeln('');
-   d.writeln('   user_message = "\\"Picks From Odds\\" will:\\n\\n";');
-   d.writeln('   user_message = user_message + "   - Clear the picks and weights on the Input Form\\n";');
-   d.writeln('   user_message = user_message + "   - Get the NFL Odds from the internet\\n";');
-   d.writeln('   user_message = user_message + "   - Populate the Input Form based on the NFL Odds";');
-   d.writeln('');
-   d.writeln('   if (confirm(user_message) == false)');
-   d.writeln('   {');
-   d.writeln('      return false;');
-   d.writeln('   }');
-   d.writeln('');
    d.writeln('   // Set the picks_from_odds_button_pressed flag.');
    d.writeln('');
    d.writeln('   picks_from_odds_button_pressed = true;');
@@ -958,17 +960,6 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      alert("You must select your name before random picks can be generated.");');
    d.writeln('');
-   d.writeln('      return false;');
-   d.writeln('   }');
-   d.writeln('');
-   d.writeln('   // Display informational message to user.');
-   d.writeln('');
-   d.writeln('   user_message = "\\"Random Picks\\" will:\\n\\n";');
-   d.writeln('   user_message = user_message + "   - Validate all picks that you\'ve already entered\\n";');
-   d.writeln('   user_message = user_message + "   - Generate random picks only for what you\'ve left blank";');
-   d.writeln('');
-   d.writeln('   if (confirm(user_message) == false)');
-   d.writeln('   {');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
@@ -2088,9 +2079,9 @@ function build_regular_season_form()
    d.writeln('<td style="text-align: center; padding-top: 10px" nowrap class="no_border">');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="submit" value="Accept" onClick="accept_picks(document); return true;">');
    d.writeln('&nbsp;');
-   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="picks_from_odds" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;">');
+   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="picks_from_odds" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
    d.writeln('&nbsp;');
-   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="random_picks" value="Random Picks" onClick="generate_random_picks(document); return true;">');
+   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="random_picks" value="Random Picks" onClick="generate_random_picks(document); return true;" title="'+random_picks_tooltip+'">');
    d.writeln('&nbsp;');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="reset_button" value="Reset" onClick="reset_input_form(document); return true;">');
    d.writeln('</td>');
