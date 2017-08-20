@@ -1852,8 +1852,8 @@ function build_regular_season_form()
    d.writeln('         error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Weight \\"" + weight_not_used  + "\\" has not been used.<br><br></td></tr>";');
    d.writeln('         error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Preview of picks so far:<br><br></td></tr>";');
    d.writeln('         error_message += format_picks_for_dialog(document,false,0);');
-   d.writeln('         error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap><br><br>Fix 1:&nbsp&nbspKeep \\"" + duplicate_weight + "\\" assigned to \\"" + winning_team + " over " + losing_team + "\\" (Game " + (duplicate_weight_game_1+1) + ").<br></td></tr>";');
-   d.writeln('         error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Fix 2:&nbsp&nbspKeep \\"" + duplicate_weight + "\\" assigned to \\"" + winning_team2 + " over " + losing_team2 + "\\" (Game " + (duplicate_weight_game_2+1) + ").<br><br></td></tr>";');
+   d.writeln('         error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap><br><br>Fix 1:&nbsp&nbspKeep \\"" + duplicate_weight + "\\" with \\"" + winning_team + " over " + losing_team + "\\" (Game " + (duplicate_weight_game_1+1) + ").<br></td></tr>";');
+   d.writeln('         error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Fix 2:&nbsp&nbspKeep \\"" + duplicate_weight + "\\" with \\"" + winning_team2 + " over " + losing_team2 + "\\" (Game " + (duplicate_weight_game_2+1) + ").<br><br></td></tr>";');
    d.writeln('         error_message += "\\n<tr style=\\"line-height: 100%\\"><td style=\\"text-align: center\\" colspan=7 nowrap>" + weight_shift_message + "</td></tr>";');
    d.writeln('         error_message += "\\n</table>";');
    d.writeln('         error_message += "\\n</center>\\n";');
