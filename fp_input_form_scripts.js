@@ -1084,7 +1084,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (random_picks_generated == "None")');
    d.writeln('   {');
-   d.writeln('      alert("Random picks weren\'t generated because no picks were left blank.");');
+   d.writeln('      alert("Random picks weren\'t generated because no picks or weights were left blank.");');
    d.writeln('   }');
    d.writeln('   else');
    d.writeln('   {');
