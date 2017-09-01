@@ -1606,8 +1606,8 @@ function build_regular_season_form()
    d.writeln('               {');
    d.writeln('                  error_message += "\\n<center>";');
    d.writeln('                  error_message += "\\n<table>";');
-   d.writeln('                  error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Pick a winner (V or H) for:<br><br></td></tr>";');
-   d.writeln('                  error_message += "\\n<tr style=\\"line-height: 100%\\"><td></td><td colspan=6 nowrap>\\""+visiting_teams[j]+" at "+home_teams[j]+"\\" (Game "+(j+1)+")<br><br></td></tr>";');
+   d.writeln('                  error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Pick a winner (V or H) for:<br></td></tr>";');
+   d.writeln('                  error_message += "\\n<tr style=\\"line-height: 100%\\"><td></td><td style=\\"padding-top: 10px\\" colspan=6 nowrap>\\""+visiting_teams[j]+" at "+home_teams[j]+"\\" (Game "+(j+1)+")<br><br></td></tr>";');
    d.writeln('                  error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Preview of picks so far:<br><br></td></tr>";');
    d.writeln('                  error_message += format_picks_for_dialog(document,false,0);');
    d.writeln('                  error_message += "\\n</table>";');
@@ -1633,8 +1633,8 @@ function build_regular_season_form()
    d.writeln('            {');
    d.writeln('               error_message += "\\n<center>";');
    d.writeln('               error_message += "\\n<table>";');
-   d.writeln('               error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Pick a winner (V or H) for:<br><br></td></tr>";');
-   d.writeln('               error_message += "\\n<tr style=\\"line-height: 100%\\"><td></td><td colspan=6 nowrap>\\""+visiting_teams[j]+" at "+home_teams[j]+"\\" (Game "+(j+1)+")<br><br></td></tr>";');
+   d.writeln('               error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Pick a winner (V or H) for:<br></td></tr>";');
+   d.writeln('               error_message += "\\n<tr style=\\"line-height: 100%\\"><td></td><td style=\\"padding-top: 10px\\" colspan=6 nowrap>\\""+visiting_teams[j]+" at "+home_teams[j]+"\\" (Game "+(j+1)+")<br><br></td></tr>";');
    d.writeln('               error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Preview of picks so far:<br><br></td></tr>";');
    d.writeln('               error_message += format_picks_for_dialog(document,false,0);');
    d.writeln('               error_message += "\\n</table>";');
@@ -1668,10 +1668,10 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            error_message += "\\n<center>";');
    d.writeln('            error_message += "\\n<table>";');
-   d.writeln('            error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Assign a weight to:<br><br></td></tr>";');
-   d.writeln('            error_message += "\\n<tr style=\\"line-height: 100%\\"><td></td><td colspan=6 nowrap>\\""+winning_team+" over "+losing_team+"\\" (Game "+(i+1)+")<br><br></td></tr>";');
-   d.writeln('            error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>These weights have not been used:<br><br></td></tr>";');
-   d.writeln('            error_message += "\\n<tr style=\\"line-height: 100%\\"><td></td><td colspan=6 nowrap>"+available_weights+"<br><br></td></tr>";');
+   d.writeln('            error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Assign a weight to:<br></td></tr>";');
+   d.writeln('            error_message += "\\n<tr style=\\"line-height: 100%\\"><td></td><td style=\\"padding-top: 10px\\" colspan=6 nowrap>\\""+winning_team+" over "+losing_team+"\\" (Game "+(i+1)+")<br><br></td></tr>";');
+   d.writeln('            error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>These weights have not been used:<br></td></tr>";');
+   d.writeln('            error_message += "\\n<tr style=\\"line-height: 100%\\"><td></td><td style=\\"padding-top: 10px\\" colspan=6 nowrap>"+available_weights+"<br><br></td></tr>";');
    d.writeln('            error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Preview of picks so far:<br><br></td></tr>";');
    d.writeln('            error_message += format_picks_for_dialog(document,false,0);');
    d.writeln('            error_message += "\\n</table>";');
@@ -1718,7 +1718,7 @@ function build_regular_season_form()
    d.writeln('         }');
    d.writeln('         else');
    d.writeln('         {');
-   d.writeln('            duplicate_weight_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap><br>Weight \\"" + i + "\\" has been used " + specific_duplicate_weight_count + " times:<br><br></td></tr>";');
+   d.writeln('            duplicate_weight_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap><br><br>Weight \\"" + i + "\\" has been used " + specific_duplicate_weight_count + " times:<br><br></td></tr>";');
    d.writeln('         }');
    d.writeln('');
    d.writeln('         duplicate_weight_message += duplicate_weight_games');
@@ -1760,8 +1760,8 @@ function build_regular_season_form()
    d.writeln('         // Alert the user of all duplicate weights.');
    d.writeln('');
    d.writeln('         duplicate_weight_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap><br><br>Each weight can only be used once.<br><br></td></tr>";');
-   d.writeln('         duplicate_weight_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>These weights have not been used:<br><br></td></tr>";');
-   d.writeln('         duplicate_weight_message += "\\n<tr style=\\"line-height: 100%\\"><td></td><td colspan=6 nowrap>" + available_weights + "</td></tr>";');
+   d.writeln('         duplicate_weight_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>These weights have not been used:<br></td></tr>";');
+   d.writeln('         duplicate_weight_message += "\\n<tr style=\\"line-height: 100%\\"><td></td><td style=\\"padding-top: 10px\\" colspan=6 nowrap>" + available_weights + "</td></tr>";');
    d.writeln('         duplicate_weight_message += "\\n</table>";');
    d.writeln('         duplicate_weight_message += "\\n</center>\\n";');
    d.writeln('');
@@ -1852,8 +1852,8 @@ function build_regular_season_form()
    d.writeln('         error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Weight \\"" + weight_not_used  + "\\" has not been used.<br><br></td></tr>";');
    d.writeln('         error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Preview of picks so far:<br><br></td></tr>";');
    d.writeln('         error_message += format_picks_for_dialog(document,false,0);');
-   d.writeln('         error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap><br><br>Fix 1:&nbsp&nbspKeep \\"" + duplicate_weight + "\\" on \\"" + winning_team + " over " + losing_team + "\\" (Game " + (duplicate_weight_game_1+1) + ").<br></td></tr>";');
-   d.writeln('         error_message += "\\n<tr style=\\"line-height: 100%\\"><td colspan=7 nowrap>Fix 2:&nbsp&nbspKeep \\"" + duplicate_weight + "\\" on \\"" + winning_team2 + " over " + losing_team2 + "\\" (Game " + (duplicate_weight_game_2+1) + ").<br><br></td></tr>";');
+   d.writeln('         error_message += "\\n<tr style=\\"line-height: 100%\\"><td style=\\"padding-top: 5px\\" colspan=7 nowrap><br>Fix 1:&nbsp&nbspKeep \\"" + duplicate_weight + "\\" on \\"" + winning_team + " over " + losing_team + "\\" (Game " + (duplicate_weight_game_1+1) + ").<br></td></tr>";');
+   d.writeln('         error_message += "\\n<tr style=\\"line-height: 100%\\"><td style=\\"padding-top: 5px\\" colspan=7 nowrap>Fix 2:&nbsp&nbspKeep \\"" + duplicate_weight + "\\" on \\"" + winning_team2 + " over " + losing_team2 + "\\" (Game " + (duplicate_weight_game_2+1) + ").<br><br></td></tr>";');
    d.writeln('         error_message += "\\n<tr style=\\"line-height: 100%\\"><td style=\\"text-align: center\\" colspan=7 nowrap>" + weight_shift_message + "</td></tr>";');
    d.writeln('         error_message += "\\n</table>";');
    d.writeln('         error_message += "\\n</center>\\n";');
