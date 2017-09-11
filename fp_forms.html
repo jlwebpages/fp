@@ -83,8 +83,8 @@ function build_forms_page()
    d.writeln("      w.gv.document.writeln('var current_input_week;');");
    d.writeln("      w.gv.document.writeln('var form_view;');");
    d.writeln("      w.gv.document.writeln('var games_over;');");
-   d.writeln("      w.gv.document.writeln('var get_winners_state;');");
-   d.writeln("      w.gv.document.writeln('var get_winners_timer;');");
+   d.writeln("      w.gv.document.writeln('var get_scores_state;');");
+   d.writeln("      w.gv.document.writeln('var get_scores_timer;');");
    d.writeln("      w.gv.document.writeln('var home_scores;');");
    d.writeln("      w.gv.document.writeln('var mn_points_entered;');");
    d.writeln("      w.gv.document.writeln('var mobile;');");
@@ -97,7 +97,7 @@ function build_forms_page()
    d.writeln("      w.gv.document.writeln('var prelim_red_zone_flags;');");
    d.writeln("      w.gv.document.writeln('var prelim_victors;');");
    d.writeln("      w.gv.document.writeln('var prelim_winners;');");
-   d.writeln("      w.gv.document.writeln('var refresh_winners;');");
+   d.writeln("      w.gv.document.writeln('var refresh_scores;');");
    d.writeln("      w.gv.document.writeln('var rs_players;');");
    d.writeln("      w.gv.document.writeln('var rs_players_description;');");
    d.writeln("      w.gv.document.writeln('var selected_week;');");
@@ -168,8 +168,8 @@ function build_forms_page()
    d.writeln('      w.gv.current_input_week      = top.current_input_week;');
    d.writeln('      w.gv.form_view               = "expanded";');
    d.writeln('      w.gv.games_over              = top.games_over;');
-   d.writeln('      w.gv.get_winners_state       = "off";');
-   d.writeln('      w.gv.get_winners_timer       = null;');
+   d.writeln('      w.gv.get_scores_state        = "off";');
+   d.writeln('      w.gv.get_scores_timer        = null;');
    d.writeln('      w.gv.home_scores             = ["","","","","","","","","","","","","","","",""];');
    d.writeln('      w.gv.mn_points_entered       = 0;');
    d.writeln('      w.gv.mobile                  = top.mobile;');
@@ -182,7 +182,7 @@ function build_forms_page()
    d.writeln('      w.gv.prelim_red_zone_flags   = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];');
    d.writeln('      w.gv.prelim_victors          = ["","","","","","","","","","","","","","","",""];');
    d.writeln('      w.gv.prelim_winners          = ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"];');
-   d.writeln('      w.gv.refresh_winners         = true;');
+   d.writeln('      w.gv.refresh_scores          = true;');
    d.writeln('      w.gv.rs_players              = top.rs_players;');
    d.writeln('      w.gv.rs_players_description  = top.rs_players_description;');
    d.writeln('      w.gv.selected_week           = 0;');
