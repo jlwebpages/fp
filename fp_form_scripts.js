@@ -1582,15 +1582,15 @@ function build_post_season_form()
          {
             if (form_view == "expanded")
             {
-               d.writeln('<td class="gr1_bb2_border" colspan=3><font style="font-size: 10pt"><b>Pick</b></font></td>');
+               d.writeln('<td class="gr1_bb2_border" colspan=3><font style="font-size: 10.5pt"><b>Pick</b></font></td>');
             }
             if (pi == number_of_ps_players)
             {
-               d.writeln('<td class="bb2_border"><font style="font-size: 10pt" color=blue><b>Score</b></font></td>');
+               d.writeln('<td class="bb2_border"><font style="font-size: 10.5pt" color=blue><b>Score</b></font></td>');
             }
             else
             {
-               d.writeln('<td class="br2_bb2_border"><font style="font-size: 10pt" color=blue><b>Score</b></font></td>');
+               d.writeln('<td class="br2_bb2_border"><font style="font-size: 10.5pt" color=blue><b>Score</b></font></td>');
             }
          }
          d.writeln('</tr>');
@@ -2087,15 +2087,15 @@ function build_post_season_form()
    {
       if (form_view == "expanded")
       {
-         d.writeln('<td class="gr1_bb2_border" colspan=3><font style="font-size: 10pt"><b>Rank</b></font></td>');
+         d.writeln('<td class="gr1_bb2_border" colspan=3><font style="font-size: 10.5pt"><b>Rank</b></font></td>');
       }
       if (pi == number_of_ps_players)
       {
-         d.writeln('<td class="bb2_border"><font style="font-size: 10pt" color=blue><b>Score</b></font></td>');
+         d.writeln('<td class="bb2_border"><font style="font-size: 10.5pt" color=blue><b>Score</b></font></td>');
       }
       else
       {
-         d.writeln('<td class="br2_bb2_border"><font style="font-size: 10pt" color=blue><b>Score</b></font></td>');
+         d.writeln('<td class="br2_bb2_border"><font style="font-size: 10.5pt" color=blue><b>Score</b></font></td>');
       }
    }
    d.writeln('</tr>');
@@ -3855,16 +3855,15 @@ function build_regular_season_form()
    {
       if (form_view == "expanded")
       {
-         d.writeln('<td class="gr1_bb2_border"><font style="font-size: 11pt"><b>pk</b></font></td>');
-         d.writeln('<td class="gr1_bb2_border"><font style="font-size: 11pt"><b>wt</b></font></td>');
+         d.writeln('<td class="gr1_bb2_border" colspan=2><font style="font-size: 11pt"><b>Pick</b></font></td>');
       }
       if (i == number_of_rs_players)
       {
-         d.writeln('<td class="bb2_border"><font style="font-size: 11pt"><b>score</b></font></td>');
+         d.writeln('<td class="bb2_border"><font style="font-size: 11pt"><b>Score</b></font></td>');
       }
       else
       {
-         d.writeln('<td class="br2_bb2_border"><font style="font-size: 11pt"><b>score</b></font></td>');
+         d.writeln('<td class="br2_bb2_border"><font style="font-size: 11pt"><b>Score</b></font></td>');
       }
    }
    d.writeln('</tr>');
@@ -5787,11 +5786,11 @@ function build_season_summary()
    d.writeln('&nbsp;');
    if (form_view == "expanded")
    {
-      d.writeln('<input style="font-size: 11pt; font-family: Calibri; border: 1px solid black" type=button name="view_button" value="Less"');
+      d.writeln('<input style="font-size: 11pt; font-family: Calibri; border: 1px solid black" type=button name="view_button" value="Hide Rank and Games Won"');
    }
    else
    {
-      d.writeln('<input style="font-size: 11pt; font-family: Calibri; border: 1px solid black" type=button name="view_button" value="More"');
+      d.writeln('<input style="font-size: 11pt; font-family: Calibri; border: 1px solid black" type=button name="view_button" value="Show Rank and Games Won"');
    }
    d.writeln('    onClick="change_view(document);return true;">');
    d.writeln('&nbsp;');
