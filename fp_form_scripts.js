@@ -4211,7 +4211,7 @@ function build_regular_season_form()
    {
       if (form_view == "expanded")
       {
-         d.writeln('<td class="bt2_gr1_border" colspan=2 align=right><font style="font-size: 12pt" color=blue>'+ranks[player_index[i-1]]+'&nbsp;&nbsp;</font></td>');
+         d.writeln('<td class="bt2_gr1_border" colspan=2 align=center><font style="font-size: 12pt" color=blue>'+ranks[player_index[i-1]]+'</font></td>');
       }
       if (picks[player_index[i-1]].length > 0)
       {
