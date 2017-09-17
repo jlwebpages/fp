@@ -4285,22 +4285,22 @@ function build_regular_season_form()
          }
          else
          {
-            tie_breaker_message = "Enter actual Monday Night Total Points (1-999) to break the tie:&nbsp;&nbsp;";
+            tie_breaker_message = "Enter actual Monday Night Total Points to break the tie:&nbsp;&nbsp;";
          }
 
          if ( (unable_to_break_tie == true) || (in_progress_mn_points < 1) )
          {
             d.writeln('<table align=center>');
             d.writeln('<tr><td class="no_border" style="font-size: 2pt">&nbsp;</td></tr>');
-            d.writeln('<tr><td class="no_border"><font style="font-size: 14pt">'+tie_breaker_message+'</font>');
+            d.writeln('<tr><td class="no_border"><font style="font-size: 13pt">'+tie_breaker_message+'</font>');
 
             if (unable_to_break_tie == false)
             {
                if (mn_pts_value == 0) mn_pts_value = "";
 
-               d.writeln('<font style="font-size: 12pt"><input type=text style="text-align: center; font-size: 12pt; font-family: Calibri; border: 1px solid black" name="mn_points" size="3" maxlength="3" value="'+mn_pts_value+'"');
-               d.writeln('                     onChange="get_mn_points(document);return true;"');
-               d.writeln('                     onKeyPress="if (window.event.keyCode==13) {window.event.keyCode=0; get_mn_points(document); calculate_prelim_scores(document); return true;}"></font>');
+               d.writeln('<input type=text style="text-align: center; font-size: 11pt; font-family: Calibri; border: 1px solid black" name="mn_points" size="3" maxlength="3" value="'+mn_pts_value+'"');
+               d.writeln('              onChange="get_mn_points(document);return true;"');
+               d.writeln('            onKeyPress="if (window.event.keyCode==13) {window.event.keyCode=0; get_mn_points(document); calculate_prelim_scores(document); return true;}">');
             }
 
             d.writeln('</td></tr></table>');
