@@ -1260,7 +1260,7 @@ function build_post_season_form()
    d.writeln('         game_status = "game_over";');
    d.writeln('         game_state  = "F";');
    d.writeln('');
-   d.writeln('         if (nfl_games_array[i].indexOf("q=FO") > -1) game_state = "FO";');
+   d.writeln('         if (nfl_games_array[i].indexOf("q=FO") > -1) game_state = "F OT";');
    d.writeln('      }');
    d.writeln('      else');
    d.writeln('      {');
@@ -3472,7 +3472,7 @@ function build_regular_season_form()
    d.writeln('         game_status = "game_over";');
    d.writeln('         game_state  = "F";');
    d.writeln('');
-   d.writeln('         if (nfl_games_array[i].indexOf("q=FO") > -1) game_state = "FO";');
+   d.writeln('         if (nfl_games_array[i].indexOf("q=FO") > -1) game_state = "F OT";');
    d.writeln('      }');
    d.writeln('      else');
    d.writeln('      {');
