@@ -2302,6 +2302,9 @@ function build_post_season_form()
 
    d.writeln('</html>');
 
+   d.body.scrollTop = 0;
+   d.body.scrollLeft = 0;
+
    d.close();
 
    return true;
@@ -4485,6 +4488,9 @@ function build_regular_season_form()
 
    d.writeln('</html>');
 
+   d.body.scrollTop = 0;
+   d.body.scrollLeft = 0;
+
    d.close();
 
    return true;
@@ -5795,6 +5801,9 @@ function build_season_summary()
    d.writeln('');
 
    d.writeln('</html>');
+
+   d.body.scrollTop = 0;
+   d.body.scrollLeft = 0;
 
    d.close();
 
