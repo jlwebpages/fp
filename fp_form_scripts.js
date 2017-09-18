@@ -1508,7 +1508,8 @@ function build_post_season_form()
    d.writeln('        border=0');
    d.writeln('       bgcolor=white');
    d.writeln('   cellpadding=2');
-   d.writeln('   cellspacing=0>');
+   d.writeln('   cellspacing=0');
+   d.writeln('            id="post_season_table">');
    d.writeln('');
 
    d.writeln('<tr align=center bgcolor=#C4D79B height=21px>');
@@ -2302,8 +2303,8 @@ function build_post_season_form()
 
    d.writeln('</html>');
 
-   d.body.scrollTop = 0;
-   d.body.scrollLeft = 0;
+   d.body.scrollTop  = d.getElementById("post_season_table").offsetTop;
+   d.body.scrollLeft = d.getElementById("post_season_table").offsetLeft;
 
    d.close();
 
@@ -3788,7 +3789,8 @@ function build_regular_season_form()
    d.writeln('       border=0');
    d.writeln('       bgcolor=white');
    d.writeln('       cellpadding=2');
-   d.writeln('       cellspacing=0>');
+   d.writeln('       cellspacing=0');
+   d.writeln('                id="regular_season_table">');
    d.writeln('');
 
    d.writeln('<tr align=center bgcolor=#C4D79B height=21px>');
@@ -4488,8 +4490,8 @@ function build_regular_season_form()
 
    d.writeln('</html>');
 
-   d.body.scrollTop = 0;
-   d.body.scrollLeft = 0;
+   d.body.scrollTop  = d.getElementById("regular_season_table").offsetTop;
+   d.body.scrollLeft = d.getElementById("regular_season_table").offsetLeft;
 
    d.close();
 
@@ -5148,7 +5150,8 @@ function build_season_summary()
    d.writeln('       border=0');
    d.writeln('       bgcolor=white');
    d.writeln('       cellpadding=2');
-   d.writeln('       cellspacing=0>');
+   d.writeln('       cellspacing=0');
+   d.writeln('                id="season_summary">');
    d.writeln('');
 
    d.writeln('<tr align=center bgcolor='+color_column_header_1+' height=27px>');
@@ -5802,8 +5805,8 @@ function build_season_summary()
 
    d.writeln('</html>');
 
-   d.body.scrollTop = 0;
-   d.body.scrollLeft = 0;
+   d.body.scrollTop  = d.getElementById("season_summary").offsetTop;
+   d.body.scrollLeft = d.getElementById("season_summary").offsetLeft;
 
    d.close();
 
