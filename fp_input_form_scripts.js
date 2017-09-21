@@ -1152,7 +1152,7 @@ function build_regular_season_form()
    d.writeln('         {');
    d.writeln('            if (suppress_alerts == false) alert("\\"Picks From Odds\\" failed.");');
    d.writeln('');
-   d.writeln('            hide_display_spreads_checkbox(document);');
+   d.writeln('            hide_picks_from_odds_button_and_display_spreads_checkbox(document);');
    d.writeln('');
    d.writeln('            return false;');
    d.writeln('         }');
@@ -1189,7 +1189,7 @@ function build_regular_season_form()
    d.writeln('         {');
    d.writeln('            if (suppress_alerts == false) alert("NFL Odds for Week ' + week + ' are not available.")');
    d.writeln('');
-   d.writeln('            hide_display_spreads_checkbox(document);');
+   d.writeln('            hide_picks_from_odds_button_and_display_spreads_checkbox(document);');
    d.writeln('');
    d.writeln('            return false;');
    d.writeln('         }');
@@ -1470,9 +1470,10 @@ function build_regular_season_form()
    d.writeln('}');
    d.writeln('');
    d.writeln('');
-   d.writeln('function hide_display_spreads_checkbox(document)');
+   d.writeln('function hide_picks_from_odds_button_and_display_spreads_checkbox(document)');
    d.writeln('{');
-   d.writeln('   document.getElementById("display_spreads_div").style.display = "none";');
+   d.writeln('   document.getElementById("picks_from_odds_span").style.display = "none";');
+   d.writeln('   document.getElementById("display_spreads_span").style.display = "none";');
    d.writeln('');
    d.writeln('   return;');
    d.writeln('}');
@@ -2066,8 +2067,10 @@ function build_regular_season_form()
    d.writeln('<tr>');
    d.writeln('<td style="text-align: center; padding-top: 10px" nowrap class="no_border">');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="submit" value="Accept" onClick="accept_picks(document); return true;">');
+   d.writeln('<span style="display: none" id="picks_from_odds_span">');
    d.writeln('&nbsp;');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="picks_from_odds" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
+   d.writeln('</span>');
    d.writeln('&nbsp;');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="random_picks" value="Random Picks" onClick="generate_random_picks(document); return true;" title="'+random_picks_tooltip+'">');
    d.writeln('&nbsp;');
@@ -2078,10 +2081,10 @@ function build_regular_season_form()
 
    d.writeln('<tr>');
    d.writeln('<td style="text-align: center; padding-top: 5px" nowrap class="no_border">');
-   d.writeln('<div style="display: none" id="display_spreads_div">');
+   d.writeln('<span style="display: none" id="display_spreads_span">');
    d.writeln('<input type=checkbox style="vertical-align: middle" id="display_spreads_checkbox" onClick="get_display_spreads_from_form(document);">');
    d.writeln('<span style="font-size: 11pt; vertical-align: middle"><label for="display_spreads_checkbox">Display Point Spreads from NFL Odds</label></span>');
-   d.writeln('</div>');
+   d.writeln('</span>');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -2099,9 +2102,10 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('if (nfl_odds_array[0].length > 0)');
    d.writeln('{');
-   d.writeln('   // Un-hide the "Display Point Spreads from NFL Odds" checkbox.');
+   d.writeln('   // Un-hide the "Picks From Odds" button and the "Display Point Spreads from NFL Odds" checkbox.');
    d.writeln('');
-   d.writeln('   document.getElementById("display_spreads_div").style.display = "";');
+   d.writeln('   document.getElementById("picks_from_odds_span").style.display = "";');
+   d.writeln('   document.getElementById("display_spreads_span").style.display = "";');
    d.writeln('}');
    d.writeln('');
    d.writeln('document.fp_inputs.pick1.focus();');
@@ -2829,7 +2833,7 @@ function build_post_season_form()
    d.writeln('         {');
    d.writeln('            if (suppress_alerts == false) alert("\\"Picks From Odds\\" failed.");');
    d.writeln('');
-   d.writeln('            hide_display_spreads_checkbox(document);');
+   d.writeln('            hide_picks_from_odds_button_and_display_spreads_checkbox(document);');
    d.writeln('');
    d.writeln('            return false;');
    d.writeln('         }');
@@ -2868,7 +2872,7 @@ function build_post_season_form()
    d.writeln('         {');
    d.writeln('            if (suppress_alerts == false) alert("NFL Odds for Post Season Week ' + week + ' are not available.")');
    d.writeln('');
-   d.writeln('            hide_display_spreads_checkbox(document);');
+   d.writeln('            hide_picks_from_odds_button_and_display_spreads_checkbox(document);');
    d.writeln('');
    d.writeln('            return false;');
    d.writeln('         }');
@@ -3043,9 +3047,10 @@ function build_post_season_form()
    d.writeln('}');
    d.writeln('');
    d.writeln('');
-   d.writeln('function hide_display_spreads_checkbox(document)');
+   d.writeln('function hide_picks_from_odds_button_and_display_spreads_checkbox(document)');
    d.writeln('{');
-   d.writeln('   document.getElementById("display_spreads_div").style.display = "none";');
+   d.writeln('   document.getElementById("picks_from_odds_span").style.display = "none";');
+   d.writeln('   document.getElementById("display_spreads_span").style.display = "none";');
    d.writeln('');
    d.writeln('   return;');
    d.writeln('}');
@@ -3335,8 +3340,10 @@ function build_post_season_form()
    d.writeln('<tr>');
    d.writeln('<td style="text-align: center; padding-top: 10px" nowrap class="no_border">');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="submit" value="Accept" onClick="accept_picks(document); return true;">');
+   d.writeln('<span style="display: none" id="picks_from_odds_span">');
    d.writeln('&nbsp;');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="picks_from_odds" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
+   d.writeln('</span>');
    d.writeln('&nbsp;');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="reset_button" value="Reset" onClick="reset_input_form(document); return true;">');
    d.writeln('</td>');
@@ -3345,10 +3352,10 @@ function build_post_season_form()
 
    d.writeln('<tr>');
    d.writeln('<td style="text-align: center; padding-top: 5px" nowrap class="no_border">');
-   d.writeln('<div style="display: none" id="display_spreads_div">');
+   d.writeln('<span style="display: none" id="display_spreads_span">');
    d.writeln('<input type=checkbox style="vertical-align: middle" id="display_spreads_checkbox" onClick="get_display_spreads_from_form(document);">');
    d.writeln('<span style="font-size: 11pt; vertical-align: middle"><label for="display_spreads_checkbox">Display Point Spreads from NFL Odds</label></span>');
-   d.writeln('</div>');
+   d.writeln('</span>');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('')
@@ -3366,9 +3373,10 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('if (nfl_odds_array[0].length > 0)');
    d.writeln('{');
-   d.writeln('   // Un-hide the "Display Point Spreads from NFL Odds" checkbox.');
+   d.writeln('   // Un-hide the "Picks From Odds" button and the "Display Point Spreads from NFL Odds" checkbox.');
    d.writeln('');
-   d.writeln('   document.getElementById("display_spreads_div").style.display = "";');
+   d.writeln('   document.getElementById("picks_from_odds_span").style.display = "";');
+   d.writeln('   document.getElementById("display_spreads_span").style.display = "";');
    d.writeln('}');
    d.writeln('');
    d.writeln('document.fp_inputs.pick1.focus();');
