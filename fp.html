@@ -801,9 +801,13 @@
       {
          top.fp_picks.location = "fp_display_main_frame.html";
       }
+      else if (frame_name == "fp_loading_indicator")
+      {
+         document.getElementById("fp_frameset").cols="155px,0,*,0";
+      }
       else if (frame_name == "fp_picks")
       {
-         document.getElementById("fp_frameset").cols="155px,0,*";
+         document.getElementById("fp_frameset").cols="155px,0,0,*";
       }
    }
 
@@ -815,11 +819,12 @@
 
    <frame src="fp_header.html" name="fp_header" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
 
-   <frameset id="fp_frameset" cols="155px,*,0" border="0">
+   <frameset id="fp_frameset" cols="155px,*,0,0" border="0">
 
-      <frame src="fp_content.html"            name="fp_content" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
-      <frame src="fp_main.html"               name="fp_main"    frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
-      <frame src="fp_display_main_frame.html" name="fp_picks"   frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
+      <frame src="fp_content.html"            name="fp_content"           frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
+      <frame src="fp_main.html"               name="fp_main"              frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
+      <frame src="fp_loading_indicator.html"  name="fp_loading_indicator" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
+      <frame src="fp_display_main_frame.html" name="fp_picks"             frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
 
    </frameset>
 
