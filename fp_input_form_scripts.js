@@ -1138,11 +1138,11 @@ function build_regular_season_form()
    d.writeln('      return true;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   // Display loading indicator because sometimes the call to XMLHttpRequest takes a long time.');
+   d.writeln('   // Display loading indicator (only for Firefox) because sometimes the call to XMLHttpRequest takes a long time.');
    d.writeln('');
    d.writeln('   saved_display_frame_name = top.get_display_frame_name();');
    d.writeln('');
-   d.writeln('   top.display_frame("fp_loading_indicator");');
+   d.writeln('   if (navigator.userAgent.toLowerCase().indexOf("firefox") > -1) top.display_frame("fp_loading_indicator");');
    d.writeln('');
    d.writeln('   // Retrieve the NFL Odds from the internet.');
    d.writeln('');
