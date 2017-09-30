@@ -3495,7 +3495,7 @@ function validate_password()
    }
    else
    {
-      alert("Invalid password dude.");
+      alert("Invalid password.");
       password.value = "";
       password.focus();
       return false;
