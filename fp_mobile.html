@@ -802,77 +802,40 @@
    {
       if (frame_name == "fp_main")
       {
-         window.frames["fp_main"].frameElement.style.display              = "";
-         window.frames["fp_picks"].frameElement.style.display             = "none";
-         window.frames["fp_loading_indicator"].frameElement.style.display = "none";
+         document.getElementById("fp_frameset").cols="*,0,0";
       }
       else if (frame_name == "fp_picks")
       {
-         window.frames["fp_picks"].frameElement.style.display             = "";
-         window.frames["fp_main"].frameElement.style.display              = "none";
-         window.frames["fp_loading_indicator"].frameElement.style.display = "none";
+         document.getElementById("fp_frameset").cols="0,*,0";
       }
       else if (frame_name == "fp_loading_indicator")
       {
-         window.frames["fp_loading_indicator"].frameElement.style.display = "";
-         window.frames["fp_main"].frameElement.style.display              = "none";
-         window.frames["fp_picks"].frameElement.style.display             = "none";
+         document.getElementById("fp_frameset").cols="0,0,*";
       }
-   }
-
-   function get_display_frame_name()
-   {
-      if (window.frames["fp_main"].frameElement.style.display != "none")              return "fp_main";
-      if (window.frames["fp_picks"].frameElement.style.display != "none")             return "fp_picks";
-      if (window.frames["fp_loading_indicator"].frameElement.style.display != "none") return "fp_loading_indicator";
    }
 
    </script>
 
 </head>
 
-<body class="light_gray_background" style="border: 0; margin: 0; padding: 0">
+<frameset rows="60px,*" border="0">
 
-<iframe     src="fp_header_mobile.html"
-           name="fp_header"
-          style="width: 100%; height: 60px"
-    frameborder=0 
-    marginwidth=0
-   marginheight=0
-      scrolling="no"
-         align="middle">
-</iframe>
+   <frame src="fp_header_mobile.html" name="fp_header" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
 
-<iframe     src="fp_main_mobile.html"
-           name="fp_main"
-          style="width: 100%; height: calc(100vh - 60px)"
-    frameborder=0 
-    marginwidth=0
-   marginheight=0
-      scrolling="auto"
-          align="left">
-</iframe>
+   <frameset id="fp_frameset" cols="*,0,0" border="0">
 
-<iframe     src="fp_empty.html"
-           name="fp_picks"
-          style="width: 100%; height: calc(100vh - 60px); display: none"
-    frameborder=0 
-    marginwidth=0
-   marginheight=0
-      scrolling="auto"
-          align="left">
-</iframe>
+      <frame src="fp_main_mobile.html"       name="fp_main"              frameborder="0" marginwidth="0" marginheight="0" noresize="noresize" scrolling="auto">
+      <frame src="fp_empty.html"             name="fp_picks"             frameborder="0" marginwidth="0" marginheight="0" noresize="noresize" scrolling="auto">
+      <frame src="fp_loading_indicator.html" name="fp_loading_indicator" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize" scrolling="no">
 
-<iframe     src="fp_loading_indicator.html"
-           name="fp_loading_indicator"
-          style="width: 100%; height: calc(100vh - 60px); display: none"
-    frameborder=0 
-    marginwidth=0
-   marginheight=0
-      scrolling="no"
-          align="left">
-</iframe>
+   </frameset>
 
-</body>
+   <noframes>
+
+      <center><b>Your browser does not support HTML frames. Sorry.</b></center>
+
+   </noframes>
+
+</frameset>
 
 </html>
