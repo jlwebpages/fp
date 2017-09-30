@@ -901,10 +901,6 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      picks_from_odds_button_pressed = false;');
    d.writeln('');
-   d.writeln('      // Clear out the NFL Odds array.');
-   d.writeln('');
-   d.writeln('      clear_nfl_odds_array();');
-   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('}');
@@ -2780,10 +2776,6 @@ function build_post_season_form()
    d.writeln('      // Clear the picks_from_odds_button_pressed flag.');
    d.writeln('');
    d.writeln('      picks_from_odds_button_pressed = false;');
-   d.writeln('');
-   d.writeln('      // Clear out the NFL Odds array.');
-   d.writeln('');
-   d.writeln('      clear_nfl_odds_array();');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
