@@ -39,24 +39,35 @@ function build_regular_season_form()
    var visiting_teams            = top.all_visiting_teams[week-1];
    var open_date                 = top.all_open_dates[week-1];
    var number_of_games           = home_teams.length;
+   var accept_tooltip            = "";
    var picks_from_odds_tooltip   = "";
    var random_picks_tooltip      = "";
+   var reset_tooltip             = "";
    var submit_via_e_mail_tooltip = "";
 
    // Define tooltips for buttons
 
-   picks_from_odds_tooltip += "&quot;Picks From Odds&quot; will:&#13;&#13;";
-   picks_from_odds_tooltip += "     - Clear the Input Form.&#13;";
-   picks_from_odds_tooltip += "     - Get the NFL Odds from the internet.&#13;";
-   picks_from_odds_tooltip += "     - Populate the Input Form using the Odds.";
+   accept_tooltip += "&quot;Accept&quot; will:&#13;";
+   accept_tooltip += "     - Validate picks.&#13;";
+   accept_tooltip += "     - Display picks for review.";
 
-   random_picks_tooltip += "&quot;Random Picks&quot; will:&#13;&#13;";
-   random_picks_tooltip += "     - Validate picks and weights that have already been selected.&#13;";
-   random_picks_tooltip += "     - Randomly populate unselected picks and weights.";
+   picks_from_odds_tooltip += "&quot;Picks From Odds&quot; will:&#13;";
+   picks_from_odds_tooltip += "     - Clear picks from the Input Form.&#13;";
+   picks_from_odds_tooltip += "     - Fill in picks using the NFL Odds.&#13;";
+   picks_from_odds_tooltip += "     - Display picks for review.";
 
-   submit_via_e_mail_tooltip += "&quot;Submit via E-Mail&quot; will:&#13;&#13;";
-   submit_via_e_mail_tooltip += "     - Create and display an E-Mail message with your picks.&#13;";
-   submit_via_e_mail_tooltip += "     - Click the &quot;Send&quot; button on the E-Mail to submit your picks.";
+   random_picks_tooltip += "&quot;Random Picks&quot; will:&#13;";
+   random_picks_tooltip += "     - Validate picks already entered.&#13;";
+   random_picks_tooltip += "     - Fill in blank picks randomly.&#13;";
+   random_picks_tooltip += "     - Display picks for review.";
+
+   reset_tooltip += "&quot;Reset&quot; will:&#13;";
+   reset_tooltip += "     - Clear picks from the Input Form.&#13;";
+   reset_tooltip += "     - Refresh the NFL Odds.";
+
+   submit_via_e_mail_tooltip += "&quot;Submit via E-Mail&quot; will:&#13;";
+   submit_via_e_mail_tooltip += "     - Create an E-Mail message containing your picks.&#13;";
+   submit_via_e_mail_tooltip += "     - Click the E-Mail &quot;Send&quot; button to submit your picks.";
 
    document.open();
 
@@ -270,6 +281,21 @@ function build_regular_season_form()
    d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
    d.writeln('   {');
    d.writeln('      nfl_odds_array[i] = "";');
+   d.writeln('   }');
+   d.writeln('}');
+   d.writeln('');
+   d.writeln('');
+   d.writeln('function clear_picks_from_input_form()');
+   d.writeln('{');
+   d.writeln('   // Clear out the picks and weights arrays and also the picks and weights on the Input Form.');
+   d.writeln('');
+   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   {');
+   d.writeln('      picks  [i] = "";');
+   d.writeln('      weights[i] = "";');
+   d.writeln('');
+   d.writeln('      document.fp_inputs.elements["pick"  +(i+1)].value = 0;');
+   d.writeln('      document.fp_inputs.elements["weight"+(i+1)].value = 0;');
    d.writeln('   }');
    d.writeln('}');
    d.writeln('');
@@ -799,14 +825,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Clear out the picks and weights arrays and also the picks and weights on the Input Form.');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
-   d.writeln('   {');
-   d.writeln('      picks  [i] = "";');
-   d.writeln('      weights[i] = "";');
-   d.writeln('');
-   d.writeln('      document.fp_inputs.elements["pick"  +(i+1)].value = 0;');
-   d.writeln('      document.fp_inputs.elements["weight"+(i+1)].value = 0;');
-   d.writeln('   }');
+   d.writeln('   clear_picks_from_input_form();');
    d.writeln('');
    d.writeln('   // Populate picks and weights from the nfl_odds_array.');
    d.writeln('');
@@ -897,6 +916,10 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('   else');
    d.writeln('   {');
+   d.writeln('      // Clear out the picks and weights arrays and also the picks and weights on the Input Form.');
+   d.writeln('');
+   d.writeln('      clear_picks_from_input_form();');
+   d.writeln('');
    d.writeln('      // Clear the picks_from_odds_button_pressed flag.');
    d.writeln('');
    d.writeln('      picks_from_odds_button_pressed = false;');
@@ -1101,9 +1124,9 @@ function build_regular_season_form()
    d.writeln('   var nfl_odds_url           = ["\\"http://www.footballlocks.com/nfl_lines.shtml\\"","\\"http://www.footballlocks.com/early_nfl_lines.shtml\\"","\\"https://www.footballlocks.com/nfl_lines.shtml\\"","\\"https://www.footballlocks.com/early_nfl_lines.shtml\\""];');
    d.writeln('');
    d.writeln('');
-   d.writeln('   // Don\'t try to retrieve the NFL Odds for future weeks.');
+   d.writeln('   // Don\'t try to retrieve NFL Odds beyond the next two weeks.');
    d.writeln('');
-   d.writeln('   if ('+week+' != '+current_input_week+')');
+   d.writeln('   if ('+week+' > '+current_input_week+' + 1)');
    d.writeln('   {');
    d.writeln('      return;');
    d.writeln('   }');
@@ -1520,7 +1543,11 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   document.fp_inputs.player_name_menu.selectedIndex = top.player_index;');
    d.writeln('');
-   d.writeln('   // Retrieve the NFL Odds if needed.');
+   d.writeln('   // Clear out the NFL Odds.');
+   d.writeln('');
+   d.writeln('   clear_nfl_odds_array();');
+   d.writeln('');
+   d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
    d.writeln('   get_nfl_odds(document,1,"fp_main",true);');
    d.writeln('');
@@ -2095,7 +2122,7 @@ function build_regular_season_form()
 
    d.writeln('<tr>');
    d.writeln('<td style="text-align: center; padding-top: 10px" nowrap class="no_border">');
-   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="submit" value="Accept" onClick="accept_picks(document); return true;">');
+   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="submit" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
    d.writeln('<span style="display: none" id="picks_from_odds_span">');
    d.writeln('&nbsp;');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="picks_from_odds" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
@@ -2103,7 +2130,7 @@ function build_regular_season_form()
    d.writeln('&nbsp;');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="random_picks" value="Random Picks" onClick="generate_random_picks(document); return true;" title="'+random_picks_tooltip+'">');
    d.writeln('&nbsp;');
-   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="reset_button" value="Reset" onClick="reset_input_form(document); return true;">');
+   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="reset_button" value="Reset" onClick="reset_input_form(document); return true;" title="'+reset_tooltip+'">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -2150,22 +2177,32 @@ function build_regular_season_form()
 function build_post_season_form()
 {
    var home_teams                = top.post_season_home_teams;
-   var number_of_games           = home_teams.length;
-   var picks_from_odds_tooltip   = "";
-   var submit_via_e_mail_tooltip = "";
    var visiting_teams            = top.post_season_visiting_teams;
    var week                      = top.current_input_week - 17;   
+   var number_of_games           = home_teams.length;
+   var accept_tooltip            = "";
+   var picks_from_odds_tooltip   = "";
+   var reset_tooltip             = "";
+   var submit_via_e_mail_tooltip = "";
 
    // Define tooltips for buttons
 
-   picks_from_odds_tooltip += "&quot;Picks From Odds&quot; will:&#13;&#13;";
-   picks_from_odds_tooltip += "     - Clear the Input Form.&#13;";
-   picks_from_odds_tooltip += "     - Get the NFL Odds from the internet.&#13;";
-   picks_from_odds_tooltip += "     - Populate the Input Form using the Odds.";
+   accept_tooltip += "&quot;Accept&quot; will:&#13;";
+   accept_tooltip += "     - Validate picks.&#13;";
+   accept_tooltip += "     - Display picks for review.";
 
-   submit_via_e_mail_tooltip += "&quot;Submit via E-Mail&quot; will:&#13;&#13;";
-   submit_via_e_mail_tooltip += "     - Create and display an E-Mail message with your picks.&#13;";
-   submit_via_e_mail_tooltip += "     - Click the &quot;Send&quot; button on the E-Mail to submit your picks.";
+   picks_from_odds_tooltip += "&quot;Picks From Odds&quot; will:&#13;";
+   picks_from_odds_tooltip += "     - Clear picks from the Input Form.&#13;";
+   picks_from_odds_tooltip += "     - Fill in picks using the NFL Odds.&#13;";
+   picks_from_odds_tooltip += "     - Display picks for review.";
+
+   reset_tooltip += "&quot;Reset&quot; will:&#13;";
+   reset_tooltip += "     - Clear picks from the Input Form.&#13;";
+   reset_tooltip += "     - Refresh the NFL Odds.";
+
+   submit_via_e_mail_tooltip += "&quot;Submit via E-Mail&quot; will:&#13;";
+   submit_via_e_mail_tooltip += "     - Create an E-Mail message containing your picks.&#13;";
+   submit_via_e_mail_tooltip += "     - Click the E-Mail &quot;Send&quot; button to submit your picks.";
 
    if (week < 1) week = 1;
 
@@ -2341,6 +2378,21 @@ function build_post_season_form()
    d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
    d.writeln('   {');
    d.writeln('      nfl_odds_array[i] = "";');
+   d.writeln('   }');
+   d.writeln('}');
+   d.writeln('');
+   d.writeln('');
+   d.writeln('function clear_picks_from_input_form()');
+   d.writeln('{');
+   d.writeln('   // Clear out the picks and spread_values arrays and also the picks and spreads on the Input Form.');
+   d.writeln('');
+   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   {');
+   d.writeln('      picks        [i] = "";');
+   d.writeln('      spread_values[i] = "";');
+   d.writeln('');
+   d.writeln('      document.fp_inputs.elements["pick"  +(i+1)].value = 0;');
+   d.writeln('      document.fp_inputs.elements["spread"+(i+1)].value = 0;');
    d.writeln('   }');
    d.writeln('}');
    d.writeln('');
@@ -2662,14 +2714,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Clear out the picks and spread_values arrays and also the picks and spreads on the Input Form.');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
-   d.writeln('   {');
-   d.writeln('      picks        [i] = "";');
-   d.writeln('      spread_values[i] = "";');
-   d.writeln('');
-   d.writeln('      document.fp_inputs.elements["pick"  +(i+1)].value = 0;');
-   d.writeln('      document.fp_inputs.elements["spread"+(i+1)].value = 0;');
-   d.writeln('   }');
+   d.writeln('   clear_picks_from_input_form();');
    d.writeln('');
    d.writeln('   // Populate picks and spread_values from the nfl_odds_array.');
    d.writeln('');
@@ -2773,6 +2818,10 @@ function build_post_season_form()
    d.writeln('   }');
    d.writeln('   else');
    d.writeln('   {');
+   d.writeln('      // Clear out the picks and spread_values arrays and also the picks and spreads on the Input Form.');
+   d.writeln('');
+   d.writeln('      clear_picks_from_input_form();');
+   d.writeln('');
    d.writeln('      // Clear the picks_from_odds_button_pressed flag.');
    d.writeln('');
    d.writeln('      picks_from_odds_button_pressed = false;');
@@ -3113,7 +3162,11 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   document.fp_inputs.player_name_menu.selectedIndex = top.player_index;');
    d.writeln('');
-   d.writeln('   // Retrieve the NFL Odds if needed.');
+   d.writeln('   // Clear out the NFL Odds.');
+   d.writeln('');
+   d.writeln('   clear_nfl_odds_array();');
+   d.writeln('');
+   d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
    d.writeln('   get_nfl_odds(document,1,"fp_main",true);');
    d.writeln('');
@@ -3380,13 +3433,13 @@ function build_post_season_form()
 
    d.writeln('<tr>');
    d.writeln('<td style="text-align: center; padding-top: 10px" nowrap class="no_border">');
-   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="submit" value="Accept" onClick="accept_picks(document); return true;">');
+   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="submit" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
    d.writeln('<span style="display: none" id="picks_from_odds_span">');
    d.writeln('&nbsp;');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="picks_from_odds" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
    d.writeln('</span>');
    d.writeln('&nbsp;');
-   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="reset_button" value="Reset" onClick="reset_input_form(document); return true;">');
+   d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="reset_button" value="Reset" onClick="reset_input_form(document); return true;" title="'+reset_tooltip+'">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
