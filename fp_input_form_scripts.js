@@ -22,7 +22,7 @@ function build_regular_season_form()
    {
       return false;
    }
-
+   alert("Test");
    var current_input_week = top.current_input_week;
    var max_no_of_games    = 16;
    var week               = current_input_week;
@@ -77,7 +77,8 @@ function build_regular_season_form()
    d.writeln('');
 
    d.writeln('<head>');
-   d.writeln('   <title>NFL Football Pool</title>');
+   d.writeln('   <title>NFL Football Pool</title>');//JLJL
+   d.writeln('   <meta name="viewport" content="width=device-width, initial-scale=0.75">');
    d.writeln('   <link href="fp.css" rel="stylesheet" type="text/css">');
    d.writeln('   <style type="text/css">');
    d.writeln('   <!--');
