@@ -2064,9 +2064,9 @@ function build_regular_season_form()
       if (i == number_of_games)
       {
          d.writeln('<td class="br2_border"><font style="font-size: 12pt"><b>' + i + '</b></font></td>');
-         d.writeln('<td class="gr1_border"><font style="font-size: 12pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '&nbsp;&nbsp;-XXXX</font></td>');
+         d.writeln('<td class="gr1_border" nowrap><font style="font-size: 12pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '&nbsp;&nbsp;-XXXX</font></td>');
          d.writeln('<td class="gr1_border"><font style="font-size: 12pt">at</font></td>');
-         d.writeln('<td class="br2_border"><font style="font-size: 12pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '&nbsp;&nbsp;-XXXX</font></td>');
+         d.writeln('<td class="br2_border" nowrap><font style="font-size: 12pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '&nbsp;&nbsp;-XXXX</font></td>');
          d.writeln('<td class="gr1_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="pick'+i+'" size=1>');
       }
       else
