@@ -815,8 +815,12 @@
 
                if (buttons_width > table_width) viewport_width = buttons_width;
 
-               viewport_content = "width=" + viewport_width + "px, initial-scale=1.0";
+               viewport_content = "width=" + viewport_width + "px, initial-scale=0.96";
+alert(window.screen.width);
+alert(viewport_content);
 
+scale=window.screen.width/viewport_width;
+alert(scale);
                top.document.getElementById("viewport").setAttribute("content",viewport_content);
             }
          }
