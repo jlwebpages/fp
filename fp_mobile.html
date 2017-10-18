@@ -798,31 +798,40 @@
                             open_date_16,
                             open_date_17];
 
+   function adjust_mobile_viewport_width()
+   {
+      if (document.getElementById("viewport") != null && mobile == true && navigator.platform != "iPad")
+      {
+         if (window.frames["fp_main"].document.getElementById("input_form_table") != null)
+         {
+            var buttons_width    = 0;
+            var table_width      = window.frames["fp_main"].document.getElementById("input_form_table").offsetWidth;
+            var viewport_content = "width=device-width, initial-scale=1.0";
+            var viewport_scale   = "1.0";
+            var viewport_width   = table_width;
+
+
+            if (window.frames["fp_main"].document.getElementById("input_form_buttons") != null)
+            {
+               buttons_width = window.frames["fp_main"].document.getElementById("input_form_buttons").offsetWidth;
+            }
+
+            if (buttons_width > table_width) viewport_width = buttons_width;
+
+            viewport_scale = window.screen.width/viewport_width;
+
+            viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
+
+            top.document.getElementById("viewport").setAttribute("content",viewport_content);
+         }
+      }
+   }
+
    function display_frame(frame_name)
    {
       if (frame_name == "fp_main")
       {
-         if (document.getElementById("viewport") != null && mobile == true && navigator.platform != "iPad")
-         {
-            if (window.frames["fp_main"].document.getElementById("input_form_table")   != null &&
-                window.frames["fp_main"].document.getElementById("input_form_buttons") != null   )
-            {
-               var buttons_width    = window.frames["fp_main"].document.getElementById("input_form_buttons").offsetWidth;
-               var table_width      = window.frames["fp_main"].document.getElementById("input_form_table").offsetWidth;
-               var viewport_content = "width=device-width, initial-scale=1.0";
-               var viewport_scale   = "1.0";
-               var viewport_width   = table_width;
-
-
-               if (buttons_width > table_width) viewport_width = buttons_width;
-
-               if ( (window.screen.width/viewport_width) < 1 ) viewport_scale = window.screen.width/viewport_width;
-
-               viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
-
-               top.document.getElementById("viewport").setAttribute("content",viewport_content);
-            }
-         }
+         adjust_mobile_viewport_width();
 
          document.getElementById("fp_frameset").cols="*,0,0";
       }
