@@ -5,7 +5,7 @@
 
    <title>NFL Football Pool</title>
 
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0">
 
    <link href="fp.css" rel="stylesheet" type="text/css">
 
@@ -802,10 +802,34 @@
    {
       if (frame_name == "fp_main")
       {
+         if (document.getElementById("viewport") != null && mobile == true && navigator.platform != "iPad")
+         {
+            if (window.frames["fp_main"].document.getElementById("input_form_table")   != null &&
+                window.frames["fp_main"].document.getElementById("input_form_buttons") != null   )
+            {
+               var buttons_width    = window.frames["fp_main"].document.getElementById("input_form_buttons").offsetWidth;
+               var table_width      = window.frames["fp_main"].document.getElementById("input_form_table").offsetWidth;
+               var viewport_content = "width=device-width, initial-scale=1.0";
+               var viewport_width   = table_width;
+
+
+               if (buttons_width > table_width) viewport_width = buttons_width;
+
+               viewport_content = "width=" + viewport_width + "px, initial-scale=1.0";
+
+               top.document.getElementById("viewport").setAttribute("content",viewport_content);
+            }
+         }
+
          document.getElementById("fp_frameset").cols="*,0,0";
       }
       else if (frame_name == "fp_picks")
       {
+         if (document.getElementById("viewport") != null)
+         {
+            document.getElementById("viewport").setAttribute("content","width=device-width, initial-scale=1.0");
+         }
+
          document.getElementById("fp_frameset").cols="0,*,0";
       }
       else if (frame_name == "fp_loading_indicator")

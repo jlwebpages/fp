@@ -498,7 +498,7 @@ function build_regular_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   if (top.mobile == true)');
    d.writeln('   {');
-   d.writeln('      wd.writeln("<span style=\\"font-size: 80%\\">");');
+   d.writeln('      wd.writeln("<span style=\\"font-size: 85%\\">");');
    d.writeln('      wd.writeln("");');
    d.writeln('   }');
    d.writeln('   wd.writeln("<table style=\\"padding: 10px\\" class=\\"table_style\\">");');
@@ -1107,6 +1107,8 @@ function build_regular_season_form()
    d.writeln('      document.getElementById(home_teams[i]).innerHTML     = home_teams[i]     + get_point_spreads_string(home_teams[i],false);');
    d.writeln('      document.getElementById(visiting_teams[i]).innerHTML = visiting_teams[i] + get_point_spreads_string(visiting_teams[i],false);');
    d.writeln('   }');
+   d.writeln('');
+   d.writeln('   top.display_frame("fp_main");');
    d.writeln('');
    d.writeln('   return;');
    d.writeln('}');
@@ -2019,7 +2021,8 @@ function build_regular_season_form()
    d.writeln('</table><p>');
    d.writeln('');
 
-   d.writeln('<table   align=center');
+   d.writeln('<table      id="input_form_table"');
+   d.writeln('         align=center');
    d.writeln('         class="b3_border"');
    d.writeln('        border=0');
    d.writeln('       bgcolor=white');
@@ -2120,7 +2123,7 @@ function build_regular_season_form()
    d.writeln('<table cols=1 align=center>');
    d.writeln('');
 
-   d.writeln('<tr>');
+   d.writeln('<tr id="input_form_buttons">');
    d.writeln('<td style="text-align: center; padding-top: 10px" nowrap class="no_border">');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="submit" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
    d.writeln('<span style="display: none" id="picks_from_odds_span">');
@@ -2604,7 +2607,7 @@ function build_post_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   if (top.mobile == true)');
    d.writeln('   {');
-   d.writeln('      wd.writeln("<span style=\\"font-size: 80%\\">");');
+   d.writeln('      wd.writeln("<span style=\\"font-size: 85%\\">");');
    d.writeln('      wd.writeln("");');
    d.writeln('   }');   
    d.writeln('   wd.writeln("<table style=\\"padding: 10px\\" class=\\"table_style\\">");');
@@ -2840,6 +2843,8 @@ function build_post_season_form()
    d.writeln('      document.getElementById(home_teams[i]).innerHTML     = home_teams[i]     + get_point_spreads_string(home_teams[i],false);');
    d.writeln('      document.getElementById(visiting_teams[i]).innerHTML = visiting_teams[i] + get_point_spreads_string(visiting_teams[i],false);');
    d.writeln('   }');
+   d.writeln('');
+   d.writeln('   top.display_frame("fp_main");');
    d.writeln('');
    d.writeln('   return;');
    d.writeln('}');
@@ -3340,7 +3345,8 @@ function build_post_season_form()
    d.writeln('<form name="fp_inputs">');
    d.writeln('');
 
-   d.writeln('<table align=center');
+   d.writeln('<table      id="input_form_table"');
+   d.writeln('         align=center');
    d.writeln('         class="b3_border"');
    d.writeln('        border=0');
    d.writeln('       bgcolor=white');
@@ -3431,7 +3437,7 @@ function build_post_season_form()
    d.writeln('<table cols=1 align=center>');
    d.writeln('');
 
-   d.writeln('<tr>');
+   d.writeln('<tr id="input_form_buttons">');
    d.writeln('<td style="text-align: center; padding-top: 10px" nowrap class="no_border">');
    d.writeln('<input type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="submit" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
    d.writeln('<span style="display: none" id="picks_from_odds_span">');
