@@ -810,12 +810,15 @@
                var buttons_width    = window.frames["fp_main"].document.getElementById("input_form_buttons").offsetWidth;
                var table_width      = window.frames["fp_main"].document.getElementById("input_form_table").offsetWidth;
                var viewport_content = "width=device-width, initial-scale=1.0";
+               var viewport_scale   = "1.0";
                var viewport_width   = table_width;
 
 
                if (buttons_width > table_width) viewport_width = buttons_width;
 
-               viewport_content = "width=" + viewport_width + "px";
+               if ( (window.screen.width/viewport_width) < 1 ) viewport_scale = window.screen.width/viewport_width;
+
+               viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
 
                top.document.getElementById("viewport").setAttribute("content",viewport_content);
             }
