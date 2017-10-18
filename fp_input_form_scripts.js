@@ -498,7 +498,7 @@ function build_regular_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   if (top.mobile == true)');
    d.writeln('   {');
-   d.writeln('      wd.writeln("<span style=\\"font-size: 85%\\">");');
+   d.writeln('      wd.writeln("<span style=\\"font-size: 80%\\">");');
    d.writeln('      wd.writeln("");');
    d.writeln('   }');
    d.writeln('   wd.writeln("<table style=\\"padding: 10px\\" class=\\"table_style\\">");');
@@ -2607,7 +2607,7 @@ function build_post_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   if (top.mobile == true)');
    d.writeln('   {');
-   d.writeln('      wd.writeln("<span style=\\"font-size: 85%\\">");');
+   d.writeln('      wd.writeln("<span style=\\"font-size: 80%\\">");');
    d.writeln('      wd.writeln("");');
    d.writeln('   }');   
    d.writeln('   wd.writeln("<table style=\\"padding: 10px\\" class=\\"table_style\\">");');
