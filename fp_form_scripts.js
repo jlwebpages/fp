@@ -1494,7 +1494,13 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('<center>');
    d.writeln('');
-   if (top.gv.mobile == false)
+   if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) )
+   {
+      // Do nothing.
+
+      ;
+   }
+   else
    {
       d.writeln('<font style="font-family: Calibri; font-size: 16pt; font-weight: bold; padding: 10px">'+document_heading+'</font><p>');
       d.writeln('');
@@ -3775,7 +3781,13 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('<center>');
    d.writeln('');
-   if (top.gv.mobile == false)
+   if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) )
+   {
+      // Do nothing.
+
+      ;
+   }
+   else
    {
       d.writeln('<font style="font-family: Calibri; font-size: 16pt; font-weight: bold; padding: 10px">'+document_heading+'</font><p>');
       d.writeln('');
@@ -5136,7 +5148,13 @@ function build_season_summary()
    d.writeln('');
    d.writeln('<center>');
    d.writeln('');
-   if (top.gv.mobile == false)
+   if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) )
+   {
+      // Do nothing.
+
+      ;
+   }
+   else
    {
       d.writeln('<font style="font-family: Calibri; font-size: 16pt; font-weight: bold; padding: 10px">'+document_heading+'</font><p>');
       d.writeln('');

@@ -798,31 +798,42 @@
                             open_date_16,
                             open_date_17];
 
-   function adjust_mobile_viewport_width()
+   function adjust_mobile_viewport_width(frame_name)
    {
       if (document.getElementById("viewport") != null && mobile == true && navigator.platform != "iPad")
       {
-         if (window.frames["fp_main"].document.getElementById("input_form_table") != null)
+         // Don't adjust the viewport width if the mobile device is in landscape mode.
+
+         if (window.screen.width > window.screen.height) return;
+
+         if (frame_name == "fp_main")
          {
-            var buttons_width    = 0;
-            var table_width      = window.frames["fp_main"].document.getElementById("input_form_table").offsetWidth;
-            var viewport_content = "width=device-width, initial-scale=1.0";
-            var viewport_scale   = "1.0";
-            var viewport_width   = table_width;
-
-
-            if (window.frames["fp_main"].document.getElementById("input_form_buttons") != null)
+            if (window.frames["fp_main"].document.getElementById("input_form_table") != null)
             {
-               buttons_width = window.frames["fp_main"].document.getElementById("input_form_buttons").offsetWidth;
+               var buttons_width    = 0;
+               var table_width      = window.frames["fp_main"].document.getElementById("input_form_table").offsetWidth;
+               var viewport_content = "width=device-width, initial-scale=1.0";
+               var viewport_scale   = "1.0";
+               var viewport_width   = table_width;
+
+
+               if (window.frames["fp_main"].document.getElementById("input_form_buttons") != null)
+               {
+                  buttons_width = window.frames["fp_main"].document.getElementById("input_form_buttons").offsetWidth;
+               }
+
+               if (buttons_width > table_width) viewport_width = buttons_width;
+
+               viewport_scale = window.screen.width/viewport_width;
+
+               viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
+
+               top.document.getElementById("viewport").setAttribute("content",viewport_content);
             }
-
-            if (buttons_width > table_width) viewport_width = buttons_width;
-
-            viewport_scale = window.screen.width/viewport_width;
-
-            viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
-
-            top.document.getElementById("viewport").setAttribute("content",viewport_content);
+         }
+         else
+         {
+            document.getElementById("viewport").setAttribute("content","width=device-width, initial-scale=1.0");
          }
       }
    }
@@ -831,23 +842,18 @@
    {
       if (frame_name == "fp_main")
       {
-         adjust_mobile_viewport_width();
-
          document.getElementById("fp_frameset").cols="*,0,0";
       }
       else if (frame_name == "fp_picks")
       {
-         if (document.getElementById("viewport") != null)
-         {
-            document.getElementById("viewport").setAttribute("content","width=device-width, initial-scale=1.0");
-         }
-
          document.getElementById("fp_frameset").cols="0,*,0";
       }
       else if (frame_name == "fp_loading_indicator")
       {
          document.getElementById("fp_frameset").cols="0,0,*";
       }
+
+      adjust_mobile_viewport_width(frame_name);
    }
 
    </script>
