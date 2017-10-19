@@ -808,6 +808,23 @@
 
          if (frame_name == "fp_main")
          {
+            // Adjust width of "FORMS" page.
+
+            if (window.frames["fp_main"].document.getElementById("forms_table") != null)
+            {
+               var viewport_content = "width=device-width, initial-scale=1.0";
+               var viewport_scale   = "1.0";
+               var viewport_width   = window.frames["fp_main"].document.getElementById("forms_table").offsetWidth;
+
+               viewport_scale = window.screen.width/viewport_width;
+
+               viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
+
+               top.document.getElementById("viewport").setAttribute("content",viewport_content);
+            }
+
+            // Adjust width of "Input Form" page.
+
             if (window.frames["fp_main"].document.getElementById("input_form_table") != null)
             {
                var buttons_width    = 0;
@@ -815,7 +832,6 @@
                var viewport_content = "width=device-width, initial-scale=1.0";
                var viewport_scale   = "1.0";
                var viewport_width   = table_width;
-
 
                if (window.frames["fp_main"].document.getElementById("input_form_buttons") != null)
                {
