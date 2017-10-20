@@ -31,7 +31,8 @@ function build_forms_page()
       return false;
    }
 
-   var current_input_week = top.current_input_week;
+   var current_input_week   = top.current_input_week;
+   var post_season_order_by = "overall_scores";
 
    document.open("text/html","replace");
 
@@ -166,7 +167,14 @@ function build_forms_page()
    d.writeln('      // Assign values to global variables for this new window.');
    d.writeln('');
    d.writeln('      w.gv.current_input_week      = top.current_input_week;');
-   d.writeln('      w.gv.form_view               = "expanded";');
+   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )
+   {
+      d.writeln('      w.gv.form_view               = "compact";');
+   }
+   else
+   {
+      d.writeln('      w.gv.form_view               = "expanded";');
+   }
    d.writeln('      w.gv.games_over              = top.games_over;');
    d.writeln('      w.gv.get_scores_state        = "off";');
    d.writeln('      w.gv.get_scores_timer        = null;');
@@ -175,7 +183,7 @@ function build_forms_page()
    d.writeln('      w.gv.mobile                  = top.mobile;');
    d.writeln('      w.gv.mode                    = received_mode;');
    d.writeln('      w.gv.opponent_index          = 0;');
-   d.writeln('      w.gv.order_by                = "players";');
+   d.writeln('      w.gv.order_by                = "scores";');
    d.writeln('      w.gv.player_index            = top.player_index;');
    d.writeln('      w.gv.prelim_game_states      = ["at","at","at","at","at","at","at","at","at","at","at","at","at","at","at","at"];');
    d.writeln('      w.gv.prelim_possession_teams = ["","","","","","","","","","","","","","","",""];');
@@ -352,14 +360,22 @@ function build_forms_page()
    d.writeln('      // Assign values to global variables for this new window.');
    d.writeln('');
    d.writeln('      w.gv.current_input_week           = top.current_input_week;');
-   d.writeln('      w.gv.form_view                    = "expanded";');
+   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )
+   {
+      d.writeln('      w.gv.form_view                    = "compact";');
+   }
+   else
+   {
+      d.writeln('      w.gv.form_view                    = "expanded";');
+   }
    d.writeln('      w.gv.games_over                   = top.games_over;');
    d.writeln('      w.gv.get_scores_state             = "off";');
    d.writeln('      w.gv.get_scores_timer             = null;');
    d.writeln('      w.gv.home_scores                  = ["0","0","0","0","0","0","0","0","0","0","0"];');
    d.writeln('      w.gv.mobile                       = top.mobile;');
    d.writeln('      w.gv.mode                         = received_mode;');
-   d.writeln('      w.gv.order_by                     = "players";');
+   if ( (current_input_week-17 >= 2) && (current_input_week-17 <= 5) ) post_season_order_by = "week_" + (current_input_week-17-1) + "_scores";
+   d.writeln('      w.gv.order_by                     = "' + post_season_order_by + '";');
    d.writeln('      w.gv.player_index                 = top.player_index;');
    d.writeln('      w.gv.post_season_game_states      = ["at","at","at","at","at","at","at","at","at","at","at"];');
    d.writeln('      w.gv.post_season_possession_teams = ["","","","","","","","","","","","","","","",""];');

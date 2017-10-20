@@ -100,12 +100,19 @@ function display_archive_page(archive_year)
    d.writeln('      w.gv.archive_mode            = "Post Season";');
    d.writeln('      w.gv.archive_year            = '+archive_year+';');
    d.writeln('      w.gv.current_input_week      = 0;');
-   d.writeln('      w.gv.form_view               = "expanded";');
+   if (local_mobile_flag == true)
+   {
+      d.writeln('      w.gv.form_view               = "compact";');
+   }
+   else
+   {
+      d.writeln('      w.gv.form_view               = "expanded";');
+   }
    d.writeln('      w.gv.games_over              = true;');
    d.writeln('      w.gv.home_scores             = ["0","0","0","0","0","0","0","0","0","0","0"];');
    d.writeln('      w.gv.mobile                  = top.mobile;');
    d.writeln('      w.gv.mode                    = "summary_archive";');
-   d.writeln('      w.gv.order_by                = "players";');
+   d.writeln('      w.gv.order_by                = "overall_scores";');
    d.writeln('      w.gv.player_index            = 0;');
    d.writeln('      w.gv.ps_players              = "";');
    d.writeln('      w.gv.scores_already_assigned = false;');
@@ -185,14 +192,21 @@ function display_archive_page(archive_year)
    d.writeln('      w.gv.archive_mode        = "regular_season";');
    d.writeln('      w.gv.archive_year        = '+archive_year+';');
    d.writeln('      w.gv.current_input_week  = 0;');
-   d.writeln('      w.gv.form_view           = "expanded";');
+   if (local_mobile_flag == true)
+   {
+      d.writeln('      w.gv.form_view           = "compact";');
+   }
+   else
+   {
+      d.writeln('      w.gv.form_view           = "expanded";');
+   }
    d.writeln('      w.gv.games_over          = true;');
    d.writeln('      w.gv.home_scores         = ["","","","","","","","","","","","","","","",""];');
    d.writeln('      w.gv.mn_points_entered   = 0;');
    d.writeln('      w.gv.mobile              = top.mobile;');
    d.writeln('      w.gv.mode                = received_mode;');
    d.writeln('      w.gv.opponent_index      = 0;');
-   d.writeln('      w.gv.order_by            = "players";');
+   d.writeln('      w.gv.order_by            = "scores";');
    d.writeln('      w.gv.player_index        = 0;');
    d.writeln('      w.gv.prelim_winners      = ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"];');
    d.writeln('      w.gv.rs_players          = "";');
