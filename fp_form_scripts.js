@@ -2285,7 +2285,7 @@ function build_post_season_form()
             d.writeln('<script>document.fp_scores.visitor'+gi+'_score.focus();</'+'script>');
             break;
          }
-         d.writeln('<script>document.fp_scores.order_by_menu.focus();</'+'script>');
+         d.writeln('<script>document.fp_scores.view_button.focus();</'+'script>');
       }
 
       if (window.top.gv.get_scores_timer != null)
@@ -2300,7 +2300,7 @@ function build_post_season_form()
    }
    else
    {
-      d.writeln('<script>document.fp_scores.order_by_menu.focus();</'+'script>');
+      d.writeln('<script>document.fp_scores.view_button.focus();</'+'script>');
    }
    d.writeln('');
 
@@ -4478,7 +4478,7 @@ function build_regular_season_form()
             d.writeln('<script>document.fp_results.winner'+i+'.focus();</'+'script>');
             break;
          }
-         d.writeln('<script>document.fp_results.order_by_button.focus();</'+'script>');
+         d.writeln('<script>document.fp_results.view_button.focus();</'+'script>');
       }
 
       if (window.top.gv.get_scores_timer != null)
@@ -4493,7 +4493,7 @@ function build_regular_season_form()
    }
    else
    {
-      d.writeln('<script>document.fp_results.order_by_button.focus();</'+'script>');
+      d.writeln('<script>document.fp_results.view_button.focus();</'+'script>');
    }
    d.writeln('');
 
@@ -5816,6 +5816,7 @@ function build_season_summary()
    d.writeln('</center>');
    d.writeln('');
 
+   d.writeln('<script>document.fp_results.view_button.focus();</'+'script>');
    d.writeln('');
 
    d.writeln('</body>');
