@@ -6,18 +6,18 @@ function adjust_mobile_viewport_height(document)
       if ( (window.screen.height > window.screen.width) && (document.getElementById("viewport") != null) )
       {
          var document_height  = document.body.scrollHeight;
-         var viewport_content = "width=device-width, maximum-scale=5.0, initial-scale=2.0";
+         var viewport_content = "width=device-width, maximum-scale=5.0, initial-scale=0.5";
          var viewport_scale   = "1.0";
 
          //viewport_scale = window.screen.height/document_height;
          viewport_scale = document_height/window.screen.height;
 
          //viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
-         viewport_content = "width=device-width, maximum-scale=5.0, initial-scale=" + viewport_scale;
+         //viewport_content = "width=device-width, maximum-scale=5.0, initial-scale=" + viewport_scale;
 
-         /*JL*/ alert("JL6:  "+viewport_content);
+         /*JL*/ alert("JL7:  "+viewport_content);
 
-         document.getElementById("viewport").setAttribute("content",viewport_content);
+         //document.getElementById("viewport").setAttribute("content",viewport_content);
       }
    }
 
@@ -751,7 +751,7 @@ function build_post_season_form()
 
    d.writeln('<head>');
    d.writeln('   <title>NFL Football Pool</title>');
-   d.writeln('   <meta id="viewport" name="viewport" content="width=device-width, maximum-scale=5.0, initial-scale=2.0">');
+   d.writeln('   <meta id="viewport" name="viewport" content="width=device-width, maximum-scale=5.0, initial-scale=0.5">');
    d.writeln('   <style type="text/css">');
    d.writeln('   <!--');
    d.writeln('      TD              {border-style:        solid;');
@@ -2695,7 +2695,7 @@ function build_regular_season_form()
 
    d.writeln('<head>');
    d.writeln('   <title>NFL Football Pool</title>');
-   d.writeln('   <meta id="viewport" name="viewport" content="width=device-width, maximum-scale=5.0, initial-scale=2.0">');
+   d.writeln('   <meta id="viewport" name="viewport" content="width=device-width, maximum-scale=5.0, initial-scale=0.5">');
    d.writeln('   <style type="text/css">');
    d.writeln('   <!--');
    d.writeln('      TD              {border-style:        solid;');
@@ -5005,7 +5005,7 @@ function build_season_summary()
 
    d.writeln('<head>');
    d.writeln('   <title>NFL Football Pool</title>');
-   d.writeln('   <meta id="viewport" name="viewport" content="width=device-width, maximum-scale=5.0, initial-scale=2.0">');  
+   d.writeln('   <meta id="viewport" name="viewport" content="width=device-width, maximum-scale=5.0, initial-scale=0.5">');  
    d.writeln('   <style type="text/css">');
    d.writeln('   <!--');
    d.writeln('      TD              {border-style:        solid;');
