@@ -1,4 +1,28 @@
 
+function adjust_mobile_viewport_height(document)
+{
+   if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) && (navigator.platform != "iPad") )
+   {
+      if ( (window.screen.height > window.screen.width) && (document.getElementById("viewport") != null) )
+      {
+         var document_height  = document.body.scrollHeight;
+         var viewport_content = "height=device-height, initial-scale=1.0";
+         var viewport_scale   = "1.0";
+
+         viewport_scale = window.screen.height/document_height;
+
+         viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
+
+         /*JL*/ alert(viewport_content);
+
+         document.getElementById("viewport").setAttribute("content",viewport_content);
+      }
+   }
+
+   return;
+}
+
+
 function build_post_season_form()
 {
    if (check_for_opener() == false)
@@ -725,6 +749,7 @@ function build_post_season_form()
 
    d.writeln('<head>');
    d.writeln('   <title>NFL Football Pool</title>');
+   d.writeln('   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0">');
    d.writeln('   <style type="text/css">');
    d.writeln('   <!--');
    d.writeln('      TD              {border-style:        solid;');
@@ -2309,6 +2334,8 @@ function build_post_season_form()
 
    d.writeln('</html>');
 
+   adjust_mobile_viewport_height(d);
+
    d.body.scrollTop  = d.getElementById("post_season_table").offsetTop;
    d.body.scrollLeft = d.getElementById("post_season_table").offsetLeft;
 
@@ -2666,6 +2693,7 @@ function build_regular_season_form()
 
    d.writeln('<head>');
    d.writeln('   <title>NFL Football Pool</title>');
+   d.writeln('   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0">');
    d.writeln('   <style type="text/css">');
    d.writeln('   <!--');
    d.writeln('      TD              {border-style:        solid;');
@@ -4502,6 +4530,8 @@ function build_regular_season_form()
 
    d.writeln('</html>');
 
+   adjust_mobile_viewport_height(d);
+
    d.body.scrollTop  = d.getElementById("regular_season_table").offsetTop;
    d.body.scrollLeft = d.getElementById("regular_season_table").offsetLeft;
 
@@ -4973,6 +5003,7 @@ function build_season_summary()
 
    d.writeln('<head>');
    d.writeln('   <title>NFL Football Pool</title>');
+   d.writeln('   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0">');  
    d.writeln('   <style type="text/css">');
    d.writeln('   <!--');
    d.writeln('      TD              {border-style:        solid;');
@@ -5823,6 +5854,8 @@ function build_season_summary()
    d.writeln('');
 
    d.writeln('</html>');
+
+   adjust_mobile_viewport_height(d);
 
    d.body.scrollTop  = d.getElementById("season_summary").offsetTop;
    d.body.scrollLeft = d.getElementById("season_summary").offsetLeft;
