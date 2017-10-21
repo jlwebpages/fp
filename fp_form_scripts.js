@@ -3,25 +3,15 @@ function adjust_mobile_viewport_height(document)
 {
    if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) && (navigator.platform != "iPad") )
    {
-      //if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
-      if (  (top.document.getElementById("viewport") != null) )
+      if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
       {
          var document_height  = document.body.offsetHeight;
          var viewport_content = "width=device-width, initial-scale=1.0";
-         var viewport_scale   = "1.0";
-
-         /*document_height = Math.max(document.body.offsetHeight,
-                                    document.body.scrollHeight,
-                                    document.documentElement.clientHeight,
-                                    document.documentElement.offsetHeight,
-                                    document.documentElement.scrollHeight );*/
-
-         alert("8: "+window.screen.height+" "+window.screen.availHeight);
-
-         viewport_scale = window.screen.height/document_height;
+         var viewport_height  = Math.min(window.screen.height,window.screen.availHeight,window.innerHeight)
+         var viewport_scale   = viewport_height/document_height;
 
          viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
-         alert(viewport_content);
+
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
       }
    }
