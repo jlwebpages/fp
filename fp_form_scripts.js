@@ -9,9 +9,11 @@ function adjust_mobile_viewport_height(document)
          var viewport_content = "height=device-height, initial-scale=1.0";
          var viewport_scale   = "1.0";
 
-         viewport_scale = window.screen.height/document_height;
+         //viewport_scale = window.screen.height/document_height;
+         viewport_scale = document_height/window.screen.height;
 
-         viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
+         //viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
+         viewport_content = "height=device_height, initial-scale=" + viewport_scale;
 
          /*JL*/ alert(viewport_content);
 
