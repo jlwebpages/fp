@@ -1494,7 +1494,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('<center>');
    d.writeln('');
-   if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) )
+   if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) && (navigator.platform != "iPad") )
    {
       // Do nothing.
 
@@ -3781,7 +3781,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('<center>');
    d.writeln('');
-   if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) )
+   if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) && (navigator.platform != "iPad") )
    {
       // Do nothing.
 
@@ -5148,7 +5148,7 @@ function build_season_summary()
    d.writeln('');
    d.writeln('<center>');
    d.writeln('');
-   if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) )
+   if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) && (navigator.platform != "iPad") )
    {
       // Do nothing.
 

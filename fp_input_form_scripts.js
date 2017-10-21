@@ -496,7 +496,7 @@ function build_regular_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<br>");');
    d.writeln('   wd.writeln("");');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )');
+   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") )');
    d.writeln('   {');
    d.writeln('      wd.writeln("<span style=\\"font-size: 80%\\">");');
    d.writeln('      wd.writeln("");');
@@ -545,7 +545,7 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('');
    d.writeln('   wd.writeln("</table>");');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )');
+   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") )');
    d.writeln('   {');
    d.writeln('      wd.writeln("");');
    d.writeln('      wd.writeln("</span>");');
@@ -1108,7 +1108,7 @@ function build_regular_season_form()
    d.writeln('      document.getElementById(visiting_teams[i]).innerHTML = visiting_teams[i] + get_point_spreads_string(visiting_teams[i],false);');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) ) top.adjust_mobile_viewport_width("fp_main");');
+   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") ) top.adjust_mobile_viewport_width("fp_main");');
    d.writeln('');
    d.writeln('   return;');
    d.writeln('}');
@@ -2159,7 +2159,7 @@ function build_regular_season_form()
 
    d.writeln('<script language="JavaScript" type="text/javascript">');
    d.writeln('');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) ) top.adjust_mobile_viewport_width("fp_main");');
+   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") ) top.adjust_mobile_viewport_width("fp_main");');
    d.writeln('');
    d.writeln('   get_nfl_odds(document,1,"fp_main",true);');
    d.writeln('');
@@ -2607,7 +2607,7 @@ function build_post_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<br>");');
    d.writeln('   wd.writeln("");');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )');
+   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") )');
    d.writeln('   {');
    d.writeln('      wd.writeln("<span style=\\"font-size: 80%\\">");');
    d.writeln('      wd.writeln("");');
@@ -2648,7 +2648,7 @@ function build_post_season_form()
    d.writeln('   }');
    d.writeln('');
    d.writeln('   wd.writeln("</table>");');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )');
+   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") )');
    d.writeln('   {');
    d.writeln('      wd.writeln("");');
    d.writeln('      wd.writeln("</span>");');
@@ -2846,7 +2846,7 @@ function build_post_season_form()
    d.writeln('      document.getElementById(visiting_teams[i]).innerHTML = visiting_teams[i] + get_point_spreads_string(visiting_teams[i],false);');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) ) top.adjust_mobile_viewport_width("fp_main");');
+   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") ) top.adjust_mobile_viewport_width("fp_main");');
    d.writeln('');
    d.writeln('   return;');
    d.writeln('}');
@@ -3473,7 +3473,7 @@ function build_post_season_form()
 
    d.writeln('<script language="JavaScript" type="text/javascript">');
    d.writeln('');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) ) top.adjust_mobile_viewport_width("fp_main");');
+   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") ) top.adjust_mobile_viewport_width("fp_main");');
    d.writeln('');
    d.writeln('   get_nfl_odds(document,1,"fp_main",true);');
    d.writeln('');

@@ -800,57 +800,47 @@
 
    function adjust_mobile_viewport_width(frame_name)
    {
-      if (document.getElementById("viewport") != null && mobile == true && navigator.platform != "iPad")
+      // Don't try to adjust the viewport width if an HTML <meta> tag viewport element doesn't exist.
+
+      if (document.getElementById("viewport") == null) return;
+
+      // Don't adjust the viewport width if the mobile device is in landscape mode.
+
+      if (window.screen.width > window.screen.height) return;
+
+      // Don't adjust the viewport width if the mobile device is an iPad.
+
+      if (navigator.platform == "iPad") return;
+
+      if (frame_name == "fp_main")
       {
-         // Don't adjust the viewport width if the mobile device is in landscape mode.
+         // Adjust width of "Input Form" page.
 
-         if (window.screen.width > window.screen.height) return;
-
-         if (frame_name == "fp_main")
+         if (window.frames["fp_main"].document.getElementById("input_form_table") != null)
          {
-            // Adjust width of "FORMS" page.
+            var buttons_width    = 0;
+            var table_width      = window.frames["fp_main"].document.getElementById("input_form_table").offsetWidth;
+            var viewport_content = "width=device-width, initial-scale=1.0";
+            var viewport_scale   = "1.0";
+            var viewport_width   = table_width;
 
-            if (window.frames["fp_main"].document.getElementById("forms_table") != null)
+            if (window.frames["fp_main"].document.getElementById("input_form_buttons") != null)
             {
-               var viewport_content = "width=device-width, initial-scale=1.0";
-               var viewport_scale   = "1.0";
-               var viewport_width   = window.frames["fp_main"].document.getElementById("forms_table").offsetWidth;
-
-               viewport_scale = window.screen.width/viewport_width;
-
-               viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
-
-               top.document.getElementById("viewport").setAttribute("content",viewport_content);
+               buttons_width = window.frames["fp_main"].document.getElementById("input_form_buttons").offsetWidth;
             }
 
-            // Adjust width of "Input Form" page.
+            if (buttons_width > table_width) viewport_width = buttons_width;
 
-            if (window.frames["fp_main"].document.getElementById("input_form_table") != null)
-            {
-               var buttons_width    = 0;
-               var table_width      = window.frames["fp_main"].document.getElementById("input_form_table").offsetWidth;
-               var viewport_content = "width=device-width, initial-scale=1.0";
-               var viewport_scale   = "1.0";
-               var viewport_width   = table_width;
+            viewport_scale = window.screen.width/viewport_width;
 
-               if (window.frames["fp_main"].document.getElementById("input_form_buttons") != null)
-               {
-                  buttons_width = window.frames["fp_main"].document.getElementById("input_form_buttons").offsetWidth;
-               }
+            viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
 
-               if (buttons_width > table_width) viewport_width = buttons_width;
-
-               viewport_scale = window.screen.width/viewport_width;
-
-               viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
-
-               top.document.getElementById("viewport").setAttribute("content",viewport_content);
-            }
+            top.document.getElementById("viewport").setAttribute("content",viewport_content);
          }
-         else
-         {
-            document.getElementById("viewport").setAttribute("content","width=device-width, initial-scale=1.0");
-         }
+      }
+      else
+      {
+         document.getElementById("viewport").setAttribute("content","width=device-width, initial-scale=1.0");
       }
    }
 
