@@ -66,6 +66,7 @@ function display_archive_page(archive_year)
    d.writeln("      wd.writeln('');");
    d.writeln("      wd.writeln('<head>');");
    d.writeln("      wd.writeln('   <title>'+title+'</title>');");
+   d.writeln("      wd.writeln('   <meta id=\"viewport\" name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">');");
    d.writeln("      wd.writeln('</head>');");
    d.writeln("      wd.writeln('');");
    d.writeln("      wd.writeln('<frameset rows=\"0,*\" border=\"0\" frameborder=\"0\" framespacing=\"0\">');");
@@ -149,6 +150,7 @@ function display_archive_page(archive_year)
    d.writeln("      wd.writeln('');");
    d.writeln("      wd.writeln('<head>');");
    d.writeln("      wd.writeln('   <title>'+title+'</title>');");
+   d.writeln("      wd.writeln('   <meta id=\"viewport\" name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">');");
    d.writeln("      wd.writeln('</head>');");
    d.writeln("      wd.writeln('');");
    d.writeln("      wd.writeln('<frameset rows=\"0,*\" border=\"0\" frameborder=\"0\" framespacing=\"0\">');");
