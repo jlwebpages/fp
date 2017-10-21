@@ -496,7 +496,7 @@ function build_regular_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<br>");');
    d.writeln('   wd.writeln("");');
-   d.writeln('   wd.writeln("<table style=\\"padding: 10px\\" class=\\"table_style\\">");');
+   d.writeln('   wd.writeln("<table id=\\"picks_table\\" style=\\"padding: 10px\\" class=\\"table_style\\">");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<tr>");');
    d.writeln('   wd.writeln("");');
@@ -2597,7 +2597,7 @@ function build_post_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<br>");');
    d.writeln('   wd.writeln("");');
-   d.writeln('   wd.writeln("<table style=\\"padding: 10px\\" class=\\"table_style\\">");');
+   d.writeln('   wd.writeln("<table id=\\"picks_table\\" style=\\"padding: 10px\\" class=\\"table_style\\">");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<tr>");');
    d.writeln('   wd.writeln("");');

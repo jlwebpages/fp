@@ -810,7 +810,7 @@
 
       // Don't adjust the viewport width if the mobile device is in landscape mode.
 
-      //JLif (window.screen.width > window.screen.height) return;
+      if (window.screen.width > window.screen.height) return;
 
       // Don't adjust the viewport width if the mobile device is an iPad.
 
@@ -823,8 +823,7 @@
          if (window.frames["fp_main"].document.getElementById("input_form_table") != null)
          {
             var buttons_width  = 0;
-            var table_width    = window.frames["fp_main"].document.getElementById("input_form_table").offsetWidth;
-            var viewport_width = table_width;
+            var viewport_width = window.frames["fp_main"].document.getElementById("input_form_table").offsetWidth;
 
 
             if (window.frames["fp_main"].document.getElementById("input_form_buttons") != null)
@@ -832,7 +831,7 @@
                buttons_width = window.frames["fp_main"].document.getElementById("input_form_buttons").offsetWidth;
             }
 
-            if (buttons_width > table_width) viewport_width = buttons_width;
+            if (buttons_width > viewport_width) viewport_width = buttons_width;
 
             viewport_scale = window.screen.width/viewport_width;
 
@@ -843,18 +842,19 @@
       }
       else if (frame_name == "fp_picks")
       {
-         var viewport_width = window.innerWidth;
+         // Adjust width of "Picks" page.
+
+         if (window.frames["fp_picks"].document.getElementById("picks_table") != null)
+         {
+            var viewport_width = window.frames["fp_picks"].document.getElementById("picks_table").offsetWidth;
 
 
-         alert(window.screen.width+"  "+window.innerWidth);
+            viewport_scale = window.screen.width/viewport_width;
 
-         viewport_scale = window.screen.width/viewport_width;
-
-         viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
-
-         alert(viewport_scale);
-
-         top.document.getElementById("viewport").setAttribute("content",viewport_content);
+            viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
+alert("sw: "+window.screen.width+" vw: "+viewport_width+" content: "+viewport_content)
+            top.document.getElementById("viewport").setAttribute("content",viewport_content);
+         }
       }
       else
       {
