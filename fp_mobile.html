@@ -800,13 +800,17 @@
 
    function adjust_mobile_viewport_width(frame_name)
    {
+      var viewport_content = "width=device-width, initial-scale=1.0";
+      var viewport_scale   = "1.0";
+
+
       // Don't try to adjust the viewport width if an HTML <meta> tag viewport element doesn't exist.
 
       if (document.getElementById("viewport") == null) return;
 
       // Don't adjust the viewport width if the mobile device is in landscape mode.
 
-      if (window.screen.width > window.screen.height) return;
+      //JLif (window.screen.width > window.screen.height) return;
 
       // Don't adjust the viewport width if the mobile device is an iPad.
 
@@ -818,11 +822,10 @@
 
          if (window.frames["fp_main"].document.getElementById("input_form_table") != null)
          {
-            var buttons_width    = 0;
-            var table_width      = window.frames["fp_main"].document.getElementById("input_form_table").offsetWidth;
-            var viewport_content = "width=device-width, initial-scale=1.0";
-            var viewport_scale   = "1.0";
-            var viewport_width   = table_width;
+            var buttons_width  = 0;
+            var table_width    = window.frames["fp_main"].document.getElementById("input_form_table").offsetWidth;
+            var viewport_width = table_width;
+
 
             if (window.frames["fp_main"].document.getElementById("input_form_buttons") != null)
             {
@@ -837,6 +840,21 @@
 
             top.document.getElementById("viewport").setAttribute("content",viewport_content);
          }
+      }
+      else if (frame_name == "fp_picks")
+      {
+         var viewport_width = window.innerWidth;
+
+
+         alert(window.screen.width+"  "+window.innerWidth);
+
+         viewport_scale = window.screen.width/viewport_width;
+
+         viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
+
+         alert(viewport_scale);
+
+         top.document.getElementById("viewport").setAttribute("content",viewport_content);
       }
       else
       {

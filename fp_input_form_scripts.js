@@ -496,11 +496,6 @@ function build_regular_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<br>");');
    d.writeln('   wd.writeln("");');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") )');
-   d.writeln('   {');
-   d.writeln('      wd.writeln("<span style=\\"font-size: 80%\\">");');
-   d.writeln('      wd.writeln("");');
-   d.writeln('   }');
    d.writeln('   wd.writeln("<table style=\\"padding: 10px\\" class=\\"table_style\\">");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<tr>");');
@@ -545,11 +540,6 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('');
    d.writeln('   wd.writeln("</table>");');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") )');
-   d.writeln('   {');
-   d.writeln('      wd.writeln("");');
-   d.writeln('      wd.writeln("</span>");');
-   d.writeln('   }');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<br>");');
    d.writeln('   wd.writeln("");');
@@ -2607,11 +2597,6 @@ function build_post_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<br>");');
    d.writeln('   wd.writeln("");');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") )');
-   d.writeln('   {');
-   d.writeln('      wd.writeln("<span style=\\"font-size: 80%\\">");');
-   d.writeln('      wd.writeln("");');
-   d.writeln('   }');   
    d.writeln('   wd.writeln("<table style=\\"padding: 10px\\" class=\\"table_style\\">");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<tr>");');
@@ -2648,11 +2633,6 @@ function build_post_season_form()
    d.writeln('   }');
    d.writeln('');
    d.writeln('   wd.writeln("</table>");');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") )');
-   d.writeln('   {');
-   d.writeln('      wd.writeln("");');
-   d.writeln('      wd.writeln("</span>");');
-   d.writeln('   }');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<br>");');
    d.writeln('   wd.writeln("");');
