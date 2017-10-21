@@ -16,7 +16,7 @@ function adjust_mobile_viewport_height(document)
                                     document.documentElement.offsetHeight,
                                     document.documentElement.scrollHeight );*/
 
-         alert("7: "+window.screen.height+" "+document.body.offsetHeight+" "+document.body.scrollHeight+" "+document.documentElement.clientHeight+" "+document.documentElement.offsetHeight+" "+document.documentElement.scrollHeight);
+         alert("8: "+window.screen.height+" "+window.screen.availHeight);
 
          viewport_scale = window.screen.height/document_height;
 
