@@ -9,11 +9,11 @@ function adjust_mobile_viewport_height(document)
          var viewport_content = "width=device-width, initial-scale=1.0";
          var viewport_scale   = "1.0";
 
-         document_height = Math.max(document.body.scrollHeight,
-                                    document.body.offsetHeight,
-                                    document.html.clientHeight,
-                                    document.html.scrollHeight,
-                                    document.html.offsetHeight );
+         document_height = Math.max(document.body.offsetHeight,
+                                    document.body.scrollHeight,
+                                    document.documentElement.clientHeight,
+                                    document.documentElement.offsetHeight,
+                                    document.documentElement.scrollHeight );
 
          alert("3 w:  "+window.screen.width+"     h:  "+window.screen.height+"    d:  "+document.body.scrollHeight);
 
