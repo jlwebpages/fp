@@ -3,21 +3,19 @@ function adjust_mobile_viewport_height(document)
 {
    if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) && (navigator.platform != "iPad") )
    {
-      if ( (window.screen.height > window.screen.width) && (document.getElementById("viewport") != null) )
+      alert("1 w:  "+window.screen.width+"     h:  "+window.screen.height+"    d:  "+document.body.scrollHeight);
+      if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
       {
          var document_height  = document.body.scrollHeight;
          var viewport_content = "width=device-width, initial-scale=1.0";
          var viewport_scale   = "1.0";
 
-         //viewport_scale = window.screen.height/document_height;
-         viewport_scale = document_height/window.screen.height;
+         viewport_scale = window.screen.height/document_height;
+         //viewport_scale = document_height/window.screen.height;
 
-         //viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
-         //viewport_content = "width=100px, maximum-scale=5.0, initial-scale=" + viewport_scale;
-
-         /*JL*/ alert("JL12:  "+document_height);
-
-         //document.getElementById("viewport").setAttribute("content",viewport_content);
+         viewport_content = "width=device-width, initial-scale=" + viewport_scale;
+         alert(viewport_scale);
+         top.document.getElementById("viewport").setAttribute("content",viewport_content);
       }
    }
 
