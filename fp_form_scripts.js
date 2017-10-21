@@ -13,9 +13,9 @@ function adjust_mobile_viewport_height(document)
          viewport_scale = document_height/window.screen.height;
 
          //viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
-         viewport_content = "width=device-width, height=device_height, initial-scale=" + viewport_scale;
+         viewport_content = "height=device-height, initial-scale=" + viewport_scale;
 
-         /*JL*/ alert("JL:  "+viewport_content);
+         /*JL*/ alert("JL2:  "+viewport_content);
 
          document.getElementById("viewport").setAttribute("content",viewport_content);
       }
