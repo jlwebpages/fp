@@ -3,7 +3,7 @@ function adjust_mobile_viewport_height(document)
 {
    if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) && (navigator.platform != "iPad") )
    {
-      alert("1 w:  "+window.screen.width+"     h:  "+window.screen.height+"    d:  "+document.body.scrollHeight);
+      alert("2 w:  "+window.screen.width+"     h:  "+window.screen.height+"    d:  "+document.body.scrollHeight);
       if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
       {
          var document_height  = document.body.scrollHeight;
@@ -13,7 +13,7 @@ function adjust_mobile_viewport_height(document)
          viewport_scale = window.screen.height/document_height;
          //viewport_scale = document_height/window.screen.height;
 
-         viewport_content = "width=device-width, initial-scale=" + viewport_scale;
+         viewport_content = "width=device-width, initial-scale=" + "1.0";
          alert(viewport_scale);
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
       }
