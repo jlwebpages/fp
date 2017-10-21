@@ -3,9 +3,10 @@ function adjust_mobile_viewport_height(document)
 {
    if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) && (navigator.platform != "iPad") )
    {
-      if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
+      //if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
+      if (  (top.document.getElementById("viewport") != null) )
       {
-         var document_height  = document.body.scrollHeight;
+         var document_height  = "";
          var viewport_content = "width=device-width, initial-scale=1.0";
          var viewport_scale   = "1.0";
 
@@ -15,9 +16,9 @@ function adjust_mobile_viewport_height(document)
                                     document.documentElement.offsetHeight,
                                     document.documentElement.scrollHeight );
 
-         alert("3 w:  "+window.screen.width+"     h:  "+window.screen.height+"    d:  "+document.body.scrollHeight);
+         alert("4: "+window.screen.availHeight+" "+document.body.offsetHeight+" "+document.body.scrollHeight+" "+document.documentElement.clientHeight+" "+document.documentElement.offsetHeight+" "+document.documentElement.scrollHeight);
 
-         viewport_scale = window.screen.height/document_height;
+         viewport_scale = window.screen.availHeight/document_height;
 
          viewport_content = "width=device-width, initial-scale=" + viewport_scale;
          alert(viewport_content);
