@@ -6,21 +6,21 @@ function adjust_mobile_viewport_height(document)
       //if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
       if (  (top.document.getElementById("viewport") != null) )
       {
-         var document_height  = "";
+         var document_height  = document.body.offsetHeight;
          var viewport_content = "width=device-width, initial-scale=1.0";
          var viewport_scale   = "1.0";
 
-         document_height = Math.max(document.body.offsetHeight,
+         /*document_height = Math.max(document.body.offsetHeight,
                                     document.body.scrollHeight,
                                     document.documentElement.clientHeight,
                                     document.documentElement.offsetHeight,
-                                    document.documentElement.scrollHeight );
+                                    document.documentElement.scrollHeight );*/
 
-         alert("4: "+window.screen.availHeight+" "+document.body.offsetHeight+" "+document.body.scrollHeight+" "+document.documentElement.clientHeight+" "+document.documentElement.offsetHeight+" "+document.documentElement.scrollHeight);
+         alert("6: "+window.screen.height+" "+document.body.offsetHeight+" "+document.body.scrollHeight+" "+document.documentElement.clientHeight+" "+document.documentElement.offsetHeight+" "+document.documentElement.scrollHeight);
 
-         viewport_scale = window.screen.availHeight/document_height;
+         viewport_scale = window.screen.height/document_height;
 
-         viewport_content = "width=device-width, initial-scale=" + viewport_scale;
+         viewport_content = "height=" + document_height + "px, initial-scale=1.0";
          alert(viewport_content);
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
       }
