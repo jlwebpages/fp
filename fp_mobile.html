@@ -854,6 +854,8 @@
             viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
 
             top.document.getElementById("viewport").setAttribute("content",viewport_content);
+
+            window.frames["fp_picks"].document.body.scrollTop = window.frames["fp_picks"].document.getElementById("picks_table").offsetTop;
          }
       }
       else
