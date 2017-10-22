@@ -812,7 +812,7 @@
 
       // Don't adjust the viewport width if the mobile device is in landscape mode.
 
-      //JLif (window.screen.width > window.screen.height) return;
+      if (window.screen.width > window.screen.height) return;
 
       // Don't adjust the viewport width if the mobile device is an iPad.
 
@@ -830,11 +830,6 @@
             }
 
             if (buttons_width > viewport_width) viewport_width = buttons_width;
-         }
-         else
-         {
-            viewport_width = window.frames["fp_main"].document.body.scrollWidth;
-            alert(viewport_width);
          }
 
          if (viewport_width > 0)
