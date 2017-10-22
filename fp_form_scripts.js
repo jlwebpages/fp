@@ -2332,8 +2332,7 @@ function build_post_season_form()
 
    adjust_mobile_viewport_height(d);
 
-   d.body.scrollTop  = d.getElementById("post_season_table").offsetTop;
-   d.body.scrollLeft = d.getElementById("post_season_table").offsetLeft;
+   d.getElementById("post_season_table").scrollIntoView();
 
    d.close();
 
@@ -4527,8 +4526,7 @@ function build_regular_season_form()
 
    adjust_mobile_viewport_height(d);
 
-   d.body.scrollTop  = d.getElementById("regular_season_table").offsetTop;
-   d.body.scrollLeft = d.getElementById("regular_season_table").offsetLeft;
+   d.getElementById("regular_season_table").scrollIntoView();
 
    d.close();
 
@@ -5851,8 +5849,7 @@ function build_season_summary()
 
    adjust_mobile_viewport_height(d);
 
-   d.body.scrollTop  = d.getElementById("season_summary").offsetTop;
-   d.body.scrollLeft = d.getElementById("season_summary").offsetLeft;
+   d.getElementById("season_summary").scrollIntoView();
 
    d.close();
 

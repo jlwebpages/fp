@@ -855,7 +855,7 @@
 
             top.document.getElementById("viewport").setAttribute("content",viewport_content);
 
-            window.frames["fp_picks"].document.body.scrollTop = window.frames["fp_picks"].document.getElementById("picks_table").offsetTop;
+            window.frames["fp_picks"].document.getElementById("picks_table").scrollIntoView();
          }
       }
       else
