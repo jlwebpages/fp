@@ -802,7 +802,7 @@
    {
       var buttons_width    = 0;
       var viewport_content = "width=device-width, initial-scale=1.0";
-      var viewport_scale   = "1.0";
+      var viewport_scale   = "";
       var viewport_width   = 0;
 
 
@@ -831,33 +831,24 @@
 
             if (buttons_width > viewport_width) viewport_width = buttons_width;
          }
-
-         if (viewport_width > 0)
-         {
-            viewport_scale   = window.screen.width/viewport_width;
-            viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
-
-            top.document.getElementById("viewport").setAttribute("content",viewport_content);
-         }
       }
       else if (frame_name == "fp_picks")
       {
          if (window.frames["fp_picks"].document.getElementById("picks_table") != null)
          {
-            viewport_width   = window.frames["fp_picks"].document.getElementById("picks_table").offsetWidth;
-            viewport_scale   = window.screen.width/viewport_width;
-            viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
-
-            top.document.getElementById("viewport").setAttribute("content",viewport_content);
-
-            window.frames["fp_picks"].document.getElementById("picks_table").scrollIntoView();
+            viewport_width = window.frames["fp_picks"].document.getElementById("picks_table").offsetWidth;
          }
       }
 
-      if (viewport_width = 0)
+      if (viewport_width > 0)
       {
-         document.getElementById("viewport").setAttribute("content","width=device-width, initial-scale=1.0");
+         viewport_scale   = window.screen.width/viewport_width;
+         viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
       }
+
+      top.document.getElementById("viewport").setAttribute("content",viewport_content);
+
+      if (frame_name == "fp_picks") window.frames["fp_picks"].document.getElementById("picks_table").scrollIntoView();
    }
 
    function display_frame(frame_name)
