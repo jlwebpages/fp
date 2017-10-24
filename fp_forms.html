@@ -439,7 +439,7 @@ function build_forms_page()
          if (post_season_prelim_week > 4) post_season_prelim_week = 4;
          if (post_season_final_week  > 4) post_season_final_week  = 4;
 
-         if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )
+         if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") )
          {
             d.writeln('<table align=center CELLSPACING=3 CELLPADDING=3 style="font-size: 14pt">');
          }
@@ -555,7 +555,7 @@ function build_forms_page()
    if (regular_prelim_week > 17) regular_prelim_week = 17;
    if (regular_final_week  > 17) regular_final_week  = 17;
 
-   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )
+   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") )
    {
       d.writeln('<table align=center CELLSPACING=3 CELLPADDING=3 style="font-size: 14pt">');
    }

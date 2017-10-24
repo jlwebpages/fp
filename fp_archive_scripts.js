@@ -121,7 +121,7 @@ function display_archive_page(archive_year)
    d.writeln('');
    d.writeln('      w.archive.location.href="fp_forms_'+archive_year+'.html";');
    d.writeln('');
-   d.writeln('      return;');
+   d.writeln('      return true;');
    d.writeln('   }');
    d.writeln('');
    d.writeln('');
@@ -217,15 +217,15 @@ function display_archive_page(archive_year)
    d.writeln('');
    d.writeln('      w.archive.location.href="fp_forms_'+archive_year+'.html";');
    d.writeln('');
-   d.writeln('      return;');
+   d.writeln('      return true;');
    d.writeln('   }');
    d.writeln('');
    d.writeln('');
    d.writeln('   function open_results_window()');
    d.writeln('   {');
-   d.writeln('      window.open("fp_results_'+archive_year+'.html","fp_picks","");');
-   d.writeln('      top.display_frame("fp_picks");');
-   d.writeln('      return;');
+   d.writeln('      window.open("fp_results_'+archive_year+'.html","fp_main","");');
+   d.writeln('      top.display_frame("fp_main");');
+   d.writeln('      return true;');
    d.writeln('   }');
    d.writeln('');
    d.writeln('');
