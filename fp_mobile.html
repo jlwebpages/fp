@@ -831,6 +831,10 @@
 
             if (buttons_width > viewport_width) viewport_width = buttons_width;
          }
+         else
+         {
+            viewport_width = window.frames["fp_main"].document.body.scrollWidth;
+         }
       }
       else if (frame_name == "fp_picks")
       {

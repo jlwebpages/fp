@@ -22,7 +22,7 @@ function display_archive_page(archive_year)
    d.writeln('   <script language="JavaScript" src=fp_archive_scripts.js></script>');
    d.writeln('</head>');
    d.writeln('');
-   d.writeln('<body>');
+   d.writeln('<body onLoad="if (top.display_frame != undefined) {top.display_frame(\\"fp_main\\"");} return true;">');
    d.writeln('');
    d.writeln('');
    d.writeln('<script language="JavaScript">');
@@ -221,14 +221,6 @@ function display_archive_page(archive_year)
    d.writeln('   }');
    d.writeln('');
    d.writeln('');
-   d.writeln('   function open_results_window()');
-   d.writeln('   {');
-   d.writeln('      window.open("fp_results_'+archive_year+'.html","fp_main","");');
-   d.writeln('      top.display_frame("fp_main");');
-   d.writeln('      return;');
-   d.writeln('   }');
-   d.writeln('');
-   d.writeln('');
    d.writeln('</'+'script>');
    d.writeln('');
    d.writeln('');
@@ -265,7 +257,7 @@ function display_archive_page(archive_year)
    }
    d.writeln('   </select>');
    d.writeln('');
-   d.writeln('   <br><a class="blue_link" name=no_right_click href=javascript:open_results_window();><br>'+archive_year+' Results</a>');
+   d.writeln('   <br><a class="blue_link" name=no_right_click href=javascript:window.open("fp_results_'+archive_year+'.html","fp_main","");><br>'+archive_year+' Results</a>');
    d.writeln('');
    if (archive_year > 2001)
    {

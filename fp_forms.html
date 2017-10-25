@@ -47,7 +47,7 @@ function build_forms_page()
    d.writeln('</head>');
    d.writeln('');
 
-   d.writeln('<body>');
+   d.writeln('<body onLoad="if (top.display_frame != undefined) {top.display_frame(\\"fp_main\\");} return true;">');
    d.writeln('');
    d.writeln('');
 
@@ -439,14 +439,7 @@ function build_forms_page()
          if (post_season_prelim_week > 4) post_season_prelim_week = 4;
          if (post_season_final_week  > 4) post_season_final_week  = 4;
 
-         if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") )
-         {
-            d.writeln('<table align=center CELLSPACING=3 CELLPADDING=3 style="font-size: 14pt">');
-         }
-         else
-         {
-            d.writeln('<table align=center CELLSPACING=3 CELLPADDING=3 style="font-size: 16pt">');
-         }
+         d.writeln('<table align=center CELLSPACING=3 CELLPADDING=3 style="font-size: 16pt">');
          d.writeln('');
          d.writeln('<tr><td align=center colspan=2><b><font class="red_color"><u>Post Season</u></font></b></td></tr>');
          d.writeln('');
@@ -555,14 +548,7 @@ function build_forms_page()
    if (regular_prelim_week > 17) regular_prelim_week = 17;
    if (regular_final_week  > 17) regular_final_week  = 17;
 
-   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") )
-   {
-      d.writeln('<table align=center CELLSPACING=3 CELLPADDING=3 style="font-size: 14pt">');
-   }
-   else
-   {
-      d.writeln('<table align=center CELLSPACING=3 CELLPADDING=3 style="font-size: 16pt">');
-   }
+   d.writeln('<table align=center CELLSPACING=3 CELLPADDING=3 style="font-size: 16pt">');
    d.writeln('');
    d.writeln('<tr><td align=center colspan=2><b><font class="red_color"><u>Regular Season</u></font></b></td></tr>');
    d.writeln('');
