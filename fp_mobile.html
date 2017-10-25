@@ -833,7 +833,10 @@
          }
          else
          {
-            viewport_width = window.frames["fp_main"].document.body.scrollWidth;
+            if (window.frames["fp_main"].document.body != null)
+            {
+               viewport_width = window.frames["fp_main"].document.body.scrollWidth;
+            }
          }
       }
       else if (frame_name == "fp_picks")

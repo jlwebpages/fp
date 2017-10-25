@@ -22,7 +22,7 @@ function display_archive_page(archive_year)
    d.writeln('   <script language="JavaScript" src=fp_archive_scripts.js></script>');
    d.writeln('</head>');
    d.writeln('');
-   d.writeln('<body onLoad="if (top.display_frame != undefined) {top.display_frame(\\"fp_main\\"");} return true;">');
+   d.writeln('<body>');
    d.writeln('');
    d.writeln('');
    d.writeln('<script language="JavaScript">');
