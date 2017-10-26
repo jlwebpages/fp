@@ -5,12 +5,13 @@
    <link href="fp.css" rel="stylesheet" type="text/css">
 </head>
 
-<body onLoad="display_archive_page(-1); if (top.display_frame != undefined) {top.display_frame('fp_main');} return true;">
+<body onLoad="display_archive_page(); if (top.display_frame != undefined) {top.display_frame('fp_main');} return true;">
 
 <script language="JavaScript">
 
-function display_archive_page(archive_year)
+function display_archive_page()
 {
+   var archive_year      = top.archive_year;
    var local_mobile_flag = false;
    var min_archive_year  = 1997;
    var max_archive_year  = top.fp_year - 1;
@@ -36,7 +37,7 @@ function display_archive_page(archive_year)
    d.writeln('');
    d.writeln('<script language="JavaScript">');
    d.writeln('');
-   d.writeln('   function change_year()');
+   d.writeln('   function change_year(document)');
    d.writeln('   {');
    d.writeln('      var selected_year         = -1;');
    d.writeln('      var selected_year_index   = 0;');
@@ -53,9 +54,11 @@ function display_archive_page(archive_year)
    d.writeln('         }');
    d.writeln('      }');
    d.writeln('');
-   d.writeln('      display_archive_page(selected_year);');
+   d.writeln('      top.archive_year = selected_year;');
    d.writeln('');
-   d.writeln('      return true;');
+   d.writeln('      window.open("fp_archive.html","fp_main","");');
+   d.writeln('');
+   d.writeln('      return;');
    d.writeln('   }');
    d.writeln('');
    d.writeln('');
@@ -251,7 +254,7 @@ function display_archive_page(archive_year)
    d.writeln('');
    d.writeln('   <br><font style="font-size: 18pt;"><span style="vertical_align: bottom">Select Year:&nbsp&nbsp</span></font>');
    d.writeln('');
-   d.writeln('   <select class="light_gray_background" style="font-size: 12pt; font-family: Calibri; border: 1px solid black; height: 25px" size=1 name=year_menu onChange="change_year(); return true;">');
+   d.writeln('   <select class="light_gray_background" style="font-size: 12pt; font-family: Calibri; border: 1px solid black; height: 25px" size=1 name=year_menu onChange="change_year(document); return true;">');
 
    for (var i = max_archive_year; i >= min_archive_year; i--)
    {
