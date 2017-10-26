@@ -34,9 +34,7 @@ function build_forms_page()
    var current_input_week   = top.current_input_week;
    var post_season_order_by = "overall_scores";
 
-   document.open("text/html","replace");
-
-   var d = document;
+   var d = document.open("text/html","replace");
 
    d.writeln('<html>');
    d.writeln('');
@@ -399,13 +397,7 @@ function build_forms_page()
    d.writeln('');
    d.writeln('<table class="table">');
    d.writeln('');
-   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )
-   {
-      // Do nothing.
-
-      ;
-   }
-   else
+   if ( (typeof(top.mobile) != "undefined") && (top.mobile == false) )
    {
       // Write table row to document.
 
