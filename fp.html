@@ -796,8 +796,10 @@
                             open_date_16,
                             open_date_17];
 
-   function display_frame(frame_name)
+   function display_frame(frame_name, frame_width)
    {
+      // frame_width is only used in fp_mobile.html
+
       if (frame_name == "fp_main")
       {
          document.getElementById("fp_frameset").cols="155px,*,0,0";

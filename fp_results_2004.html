@@ -1810,7 +1810,8 @@ xmlns="http://www.w3.org/TR/REC-html40">
 --></style>
 </head>
 
-<body>
+<body onLoad="if (top.display_frame != undefined) {top.display_frame('fp_main',document.body.scrollWidth);} return true;"
+    onunload="if (top.reset_mobile_viewport_width != undefined) {top.reset_mobile_viewport_width();} return true;">
 
 <style type="text/css">
    A:active  {text-decoration: none; color: maroon;}

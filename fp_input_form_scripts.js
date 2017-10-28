@@ -221,7 +221,7 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      // Make sure the frame showing the Input Form is visible before returning.');
    d.writeln('');
-   d.writeln('      top.display_frame("fp_main");');
+   d.writeln('      top.display_frame("fp_main",document.getElementById("input_form_table").offsetWidth);');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -230,7 +230,7 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      // Make sure the frame showing the Input Form is visible before returning.');
    d.writeln('');
-   d.writeln('      top.display_frame("fp_main");');
+   d.writeln('      top.display_frame("fp_main",document.getElementById("input_form_table").offsetWidth);');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -446,7 +446,7 @@ function build_regular_season_form()
    d.writeln('   wd.writeln("      }");');
    d.writeln('   wd.writeln("      else");');
    d.writeln('   wd.writeln("      {");');
-   d.writeln('   wd.writeln("         top.display_frame(\\"fp_main\\");");');
+   d.writeln('   wd.writeln("         top.display_frame(\\"fp_main\\",top.fp_main.document.getElementById(\\"input_form_table\\").offsetWidth);");');
    d.writeln('   wd.writeln("      }");');
    d.writeln('   wd.writeln("   }");');
    d.writeln('   wd.writeln("   else if (action == \\"fix_1\\")");');
@@ -463,7 +463,7 @@ function build_regular_season_form()
    d.writeln('   wd.writeln("   }");');
    d.writeln('   wd.writeln("   else  // Should never get here.");');
    d.writeln('   wd.writeln("   {");');
-   d.writeln('   wd.writeln("      top.display_frame(\\"fp_main\\");");');
+   d.writeln('   wd.writeln("      top.display_frame(\\"fp_main\\",top.fp_main.document.getElementById(\\"input_form_table\\").offsetWidth);");');
    d.writeln('   wd.writeln("   }");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("   if (top.fp_main.picks_from_odds_button_pressed == true)");');
@@ -547,13 +547,15 @@ function build_regular_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("</body>")');
    d.writeln('   wd.writeln("");');
+   d.writeln('   wd.writeln("<script>");');
+   d.writeln('   wd.writeln("   // Hide the frame showing the Input Form and show the frame showing the \\"picks message.\\"");');
+   d.writeln('   wd.writeln("");');
+   d.writeln('   wd.writeln("   top.display_frame(\\"fp_picks\\",document.getElementById(\\"picks_table\\").offsetWidth);");');
+   d.writeln('   wd.writeln("<"+"/script>");');
+   d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("</html>");');
    d.writeln('');
    d.writeln('   wd.close();');
-   d.writeln('');
-   d.writeln('   // Hide the frame showing the Input Form and show the frame showing the "picks message."');
-   d.writeln('');
-   d.writeln('   top.display_frame("fp_picks");');
    d.writeln('}');
    d.writeln('');
    d.writeln('');
@@ -1098,7 +1100,7 @@ function build_regular_season_form()
    d.writeln('      document.getElementById(visiting_teams[i]).innerHTML = visiting_teams[i] + get_point_spreads_string(visiting_teams[i],false);');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") ) top.adjust_mobile_viewport_width("fp_main");');
+   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") ) top.set_mobile_viewport_width(document.getElementById("input_form_table").offsetWidth);');
    d.writeln('');
    d.writeln('   return;');
    d.writeln('}');
@@ -1139,7 +1141,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Display loading indicator while call to XMLHttpRequest is working.');
    d.writeln('');
-   d.writeln('   top.display_frame("fp_loading_indicator");');
+   d.writeln('   top.display_frame("fp_loading_indicator",0);');
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
@@ -1188,7 +1190,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('                  // Remove loading indicator.');
    d.writeln('');
-   d.writeln('                  top.display_frame(restore_frame);');
+   d.writeln('                  top.display_frame(restore_frame,0);');
    d.writeln('               }');
    d.writeln('               else');
    d.writeln('               {');
@@ -1213,7 +1215,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('               // Remove loading indicator.');
    d.writeln('');
-   d.writeln('               top.display_frame(restore_frame);');
+   d.writeln('               top.display_frame(restore_frame,0);');
    d.writeln('            }');
    d.writeln('         }')
    d.writeln('         else // XMLHttpRequest was unsuccessful.')
@@ -1222,7 +1224,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            // Remove loading indicator.');
    d.writeln('');
-   d.writeln('            top.display_frame(restore_frame);');
+   d.writeln('            top.display_frame(restore_frame,0);');
    d.writeln('         }')
    d.writeln('      }')
    d.writeln('');
@@ -1235,7 +1237,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      // Remove loading indicator.');
    d.writeln('');
-   d.writeln('      top.display_frame(restore_frame);');
+   d.writeln('      top.display_frame(restore_frame,0);');
    d.writeln('');
    d.writeln('      return;');
    d.writeln('   };')
@@ -2149,7 +2151,7 @@ function build_regular_season_form()
 
    d.writeln('<script language="JavaScript" type="text/javascript">');
    d.writeln('');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") ) top.adjust_mobile_viewport_width("fp_main");');
+   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") ) top.set_mobile_viewport_width(document.getElementById("input_form_table").offsetWidth);');
    d.writeln('');
    d.writeln('   get_nfl_odds(document,1,"fp_main",true);');
    d.writeln('');
@@ -2573,12 +2575,12 @@ function build_post_season_form()
    d.writeln('   wd.writeln("      }");');
    d.writeln('   wd.writeln("      else");');
    d.writeln('   wd.writeln("      {");');
-   d.writeln('   wd.writeln("         top.display_frame(\\"fp_main\\");");');
+   d.writeln('   wd.writeln("         top.display_frame(\\"fp_main\\",top.fp_main.document.getElementById(\\"input_form_table\\").offsetWidth);");');
    d.writeln('   wd.writeln("      }");');
    d.writeln('   wd.writeln("   }");');
    d.writeln('   wd.writeln("   else  // Should never get here.");');
    d.writeln('   wd.writeln("   {");');
-   d.writeln('   wd.writeln("      top.display_frame(\\"fp_main\\");");');
+   d.writeln('   wd.writeln("      top.display_frame(\\"fp_main\\",top.fp_main.document.getElementById(\\"input_form_table\\").offsetWidth);");');
    d.writeln('   wd.writeln("   }");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("   if (top.fp_main.picks_from_odds_button_pressed == true)");');
@@ -2640,13 +2642,15 @@ function build_post_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("</body>")');
    d.writeln('   wd.writeln("");');
+   d.writeln('   wd.writeln("<script>");');
+   d.writeln('   wd.writeln("   // Hide the frame showing the Input Form and show the frame showing the \\"picks message.\\"");');
+   d.writeln('   wd.writeln("");');
+   d.writeln('   wd.writeln("   top.display_frame(\\"fp_picks\\",document.getElementById(\\"picks_table\\").offsetWidth);");');
+   d.writeln('   wd.writeln("<"+"/script>");');
+   d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("</html>");');
    d.writeln('');
    d.writeln('   wd.close();');
-   d.writeln('');
-   d.writeln('   // Hide the frame showing the Input Form and show the frame showing the "picks message."');
-   d.writeln('');
-   d.writeln('   top.display_frame("fp_picks");');
    d.writeln('}');
    d.writeln('');
    d.writeln('');
@@ -2826,7 +2830,7 @@ function build_post_season_form()
    d.writeln('      document.getElementById(visiting_teams[i]).innerHTML = visiting_teams[i] + get_point_spreads_string(visiting_teams[i],false);');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") ) top.adjust_mobile_viewport_width("fp_main");');
+   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") ) top.set_mobile_viewport_width(document.getElementById("input_form_table").offsetWidth);');
    d.writeln('');
    d.writeln('   return;');
    d.writeln('}');
@@ -2860,7 +2864,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Display loading indicator while call to XMLHttpRequest is working.');
    d.writeln('');
-   d.writeln('   top.display_frame("fp_loading_indicator");');
+   d.writeln('   top.display_frame("fp_loading_indicator",0);');
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
@@ -2909,7 +2913,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('                  // Remove loading indicator.');
    d.writeln('');
-   d.writeln('                  top.display_frame(restore_frame);');
+   d.writeln('                  top.display_frame(restore_frame,0);');
    d.writeln('               }');
    d.writeln('               else');
    d.writeln('               {');
@@ -2934,7 +2938,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('               // Remove loading indicator.');
    d.writeln('');
-   d.writeln('               top.display_frame(restore_frame);');
+   d.writeln('               top.display_frame(restore_frame,0);');
    d.writeln('            }');
    d.writeln('         }')
    d.writeln('         else // XMLHttpRequest was unsuccessful.')
@@ -2943,7 +2947,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('            // Remove loading indicator.');
    d.writeln('');
-   d.writeln('            top.display_frame(restore_frame);');
+   d.writeln('            top.display_frame(restore_frame,0);');
    d.writeln('         }')
    d.writeln('      }')
    d.writeln('');
@@ -2956,7 +2960,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('      // Remove loading indicator.');
    d.writeln('');
-   d.writeln('      top.display_frame(restore_frame);');
+   d.writeln('      top.display_frame(restore_frame,0);');
    d.writeln('');
    d.writeln('      return;');
    d.writeln('   };')
@@ -3453,7 +3457,7 @@ function build_post_season_form()
 
    d.writeln('<script language="JavaScript" type="text/javascript">');
    d.writeln('');
-   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") ) top.adjust_mobile_viewport_width("fp_main");');
+   d.writeln('   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) && (navigator.platform != "iPad") ) top.set_mobile_viewport_width(document.getElementById("input_form_table").offsetWidth);');
    d.writeln('');
    d.writeln('   get_nfl_odds(document,1,"fp_main",true);');
    d.writeln('');

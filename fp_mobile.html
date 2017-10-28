@@ -14,9 +14,10 @@
       var t = true;
       var f = false;
 
-      // Define mobile device flag.
+      // Define mobile device flags.
 
-      var mobile = t;
+      var mobile                 = t;
+      var saved_viewport_content = "";
 
       // Manually set the Football Pool year at the beginning of the season.
 
@@ -799,13 +800,52 @@
                             open_date_16,
                             open_date_17];
 
-   function adjust_mobile_viewport_width(frame_name)
+   function display_frame(frame_name, frame_width)
    {
-      var buttons_width    = 0;
+      if (frame_name == "fp_main")
+      {
+         document.getElementById("fp_frameset").cols="*,0,0";
+
+         if (fp_main.document.getElementById("input_form_buttons") != null)
+         {
+            if (fp_main.document.getElementById("input_form_buttons").offsetWidth > frame_width)
+            {
+               frame_width = fp_main.document.getElementById("input_form_buttons").offsetWidth;
+            }
+         }
+      }
+      else if (frame_name == "fp_picks")
+      {
+         document.getElementById("fp_frameset").cols="0,*,0";
+      }
+      else if (frame_name == "fp_loading_indicator")
+      {
+         document.getElementById("fp_frameset").cols="0,0,*";
+      }
+
+      set_mobile_viewport_width(frame_width);
+
+      if (frame_name == "fp_picks") fp_picks.document.getElementById("picks_table").scrollIntoView();
+
+      return true;
+   }
+
+   function reset_mobile_viewport_width()
+   {
+      if (saved_viewport_content != "")
+      {
+         document.getElementById("viewport").setAttribute("content",saved_viewport_content);
+
+         saved_viewport_content = "width=device-width, initial-scale=1.0";
+      }
+
+      return true;
+   }
+
+   function set_mobile_viewport_width(viewport_width)
+   {
       var viewport_content = "width=device-width, initial-scale=1.0";
       var viewport_scale   = "";
-      var viewport_width   = 0;
-
 
       // Don't try to adjust the viewport width if an HTML <meta> tag viewport element doesn't exist.
 
@@ -819,62 +859,17 @@
 
       if (navigator.platform == "iPad") return;
 
-      if (frame_name == "fp_main")
-      {
-         if (window.frames["fp_main"].document.getElementById("input_form_table") != null)
-         {
-            viewport_width = window.frames["fp_main"].document.getElementById("input_form_table").offsetWidth;
-
-            if (window.frames["fp_main"].document.getElementById("input_form_buttons") != null)
-            {
-               buttons_width = window.frames["fp_main"].document.getElementById("input_form_buttons").offsetWidth;
-            }
-
-            if (buttons_width > viewport_width) viewport_width = buttons_width;
-         }
-         else
-         {
-            if (window.frames["fp_main"].document.body != null)
-            {
-               viewport_width = window.frames["fp_main"].document.body.scrollWidth;
-            }
-         }
-      }
-      else if (frame_name == "fp_picks")
-      {
-         if (window.frames["fp_picks"].document.getElementById("picks_table") != null)
-         {
-            viewport_width = window.frames["fp_picks"].document.getElementById("picks_table").offsetWidth;
-         }
-      }
-
       if (viewport_width > 0)
       {
+         saved_viewport_content = document.getElementById("viewport").content;
+
          viewport_scale   = window.screen.width/viewport_width;
          viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
+
+         document.getElementById("viewport").setAttribute("content",viewport_content);
       }
 
-      top.document.getElementById("viewport").setAttribute("content",viewport_content);
-
-      if (frame_name == "fp_picks") window.frames["fp_picks"].document.getElementById("picks_table").scrollIntoView();
-   }
-
-   function display_frame(frame_name)
-   {
-      if (frame_name == "fp_main")
-      {
-         document.getElementById("fp_frameset").cols="*,0,0";
-      }
-      else if (frame_name == "fp_picks")
-      {
-         document.getElementById("fp_frameset").cols="0,*,0";
-      }
-      else if (frame_name == "fp_loading_indicator")
-      {
-         document.getElementById("fp_frameset").cols="0,0,*";
-      }
-
-      adjust_mobile_viewport_width(frame_name);
+      return true;
    }
 
    </script>
