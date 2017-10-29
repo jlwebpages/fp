@@ -3854,10 +3854,10 @@ function build_regular_season_form()
    d.writeln('');
 
    d.writeln('<tr align=center bgcolor=#DCE6F1 height=21px>');
-   d.writeln('<td class="bb2_border"><font style="font-size: 11pt"><b>VISITOR</b></font></td>');
-   d.writeln('<td class="bb2_border"><font style="font-size: 11pt"></td>');
-   d.writeln('<td class="gr1_bb2_border"><font style="font-size: 11pt"><b>HOME</b></font></td>');
-   d.writeln('<td class="br2_bb2_border"><font style="font-size: 11pt"><b>WINNER</b></font></td>');
+   d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><b>Vistor</b></font></td>');
+   d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><b>vs</b></font></td>');
+   d.writeln('<td class="gr1_bb2_border"><font style="font-size: 12pt"><b>Home</b></font></td>');
+   d.writeln('<td class="br2_bb2_border"><font style="font-size: 12pt"><b>Winner</b></font></td>');
    for (var i = 1; i <= number_of_rs_players; i++)
    {
       if (form_view == "expanded")

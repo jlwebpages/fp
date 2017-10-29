@@ -2025,7 +2025,7 @@ function build_regular_season_form()
    d.writeln('');
 
    d.writeln('<tr bgcolor=#C4D79B>');
-   d.writeln('<td align=right class="bb2_border" colspan=2><font style="font-size: 12pt"><b>NAME:</b></font></td>');
+   d.writeln('<td align=right class="bb2_border" colspan=2><font style="font-size: 13pt"><b>Name:</b></font></td>');
    d.writeln('<td align=left class="bb2_border" colspan=4>');
    d.writeln('<select style="font-size: 12pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
    for (var i = 0; i <= top.number_of_rs_players; i++)
@@ -2046,12 +2046,12 @@ function build_regular_season_form()
    d.writeln('');
 
    d.writeln('<tr ALIGN=CENTER bgcolor=#DCE6F1>');
-   d.writeln('<td class="br2_bb2_border"><font style="font-size: 12pt"><b>GAME</b></font></td>');
-   d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><b>VISITOR</b></font></td>');
-   d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><br></font></td>');
-   d.writeln('<td class="br2_bb2_border"><font style="font-size: 12pt"><b>HOME</b></font></td>');
-   d.writeln('<td class="bb2_gr1_border"><font style="font-size: 12pt"><b>PICK</b></font></td>');
-   d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><b>WEIGHT</b></font></td>');
+   d.writeln('<td class="br2_bb2_border"><font style="font-size: 12pt"><b>Game</b></font></td>');
+   d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><b>Visitor</b></font></td>');
+   d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><b>vs</b></font></td>');
+   d.writeln('<td class="br2_bb2_border"><font style="font-size: 12pt"><b>Home</b></font></td>');
+   d.writeln('<td class="bb2_gr1_border"><font style="font-size: 12pt"><b>Pick</b></font></td>');
+   d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><b>Weight</b></font></td>');
    d.writeln('</tr>');
    d.writeln('');
 
@@ -3345,7 +3345,7 @@ function build_post_season_form()
    d.writeln('');
 
    d.writeln('<tr bgcolor=#C4D79B>');
-   d.writeln('<td align=right class="bb2_border" colspan=2><b><font style="font-size: 13pt">NAME:</font></b></td>');
+   d.writeln('<td align=right class="bb2_border" colspan=2><b><font style="font-size: 14pt">Name:</font></b></td>');
    d.writeln('<td align=left class="bb2_border" colspan=5>');
    d.writeln('<select style="font-size: 13pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
    for (var i = 0; i <= top.number_of_ps_players; i++)
@@ -3366,11 +3366,11 @@ function build_post_season_form()
    d.writeln('');
 
    d.writeln('<tr ALIGN=CENTER bgcolor=#DCE6F1>');
-   d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt"><b>GAME</b></font></td>');
-   d.writeln('<td class="bb2_border"><font style="font-size: 13pt"><b>VISITOR</b></font></td>');
-   d.writeln('<td class="bb2_border"><font style="font-size: 13pt"><br></font></td>');
-   d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt"><b>HOME</b></font></td>');
-   d.writeln('<td class="bb2_border" colspan=3><font style="font-size: 13pt"><b>PREDICTION</b></font></td>');
+   d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt"><b>Game</b></font></td>');
+   d.writeln('<td class="bb2_border"><font style="font-size: 13pt"><b>Visitor</b></font></td>');
+   d.writeln('<td class="bb2_border"><font style="font-size: 13pt"><b>vs</b></font></td>');
+   d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt"><b>Home</b></font></td>');
+   d.writeln('<td class="bb2_border" colspan=3><font style="font-size: 13pt"><b>Pick</b></font></td>');
    d.writeln('</tr>');
    d.writeln('');
 
