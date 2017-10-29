@@ -269,15 +269,15 @@ function display_archive_page()
    }
    d.writeln('   </select>');
    d.writeln('');
-   d.writeln('   <br><a class="blue_link" name=no_right_click href=javascript:window.open("fp_results_'+archive_year+'.html","fp_main","");><br>'+archive_year+' Results</a>');
+   d.writeln('   <br><a class="blue_link" href=javascript:window.open("fp_results_'+archive_year+'.html","fp_main","");><br>'+archive_year+' Results</a>');
    d.writeln('');
    if (archive_year > 2001)
    {
-      d.writeln('   <br><br><a class="blue_link" name=no_right_click href=javascript:open_post_season_archive("summary_archive");>'+archive_year+' Post Season Summary</a>');
+      d.writeln('   <br><br><a class="blue_link" href=javascript:open_post_season_archive("summary_archive");>'+archive_year+' Post Season Summary</a>');
       d.writeln('');
-      d.writeln('   <br><br><a class="blue_link" name=no_right_click href=javascript:open_regular_season_archive("summary_archive");>'+archive_year+' Regular Season Summary</a>');
+      d.writeln('   <br><br><a class="blue_link" href=javascript:open_regular_season_archive("summary_archive");>'+archive_year+' Regular Season Summary</a>');
       d.writeln('');
-      d.writeln('   <br><br><a class="blue_link" name=no_right_click href=javascript:open_regular_season_archive("weekly_archive");>'+archive_year+' Regular Season Weekly Results</a>');
+      d.writeln('   <br><br><a class="blue_link" href=javascript:open_regular_season_archive("weekly_archive");>'+archive_year+' Regular Season Weekly Results</a>');
    }
    d.writeln('');
    d.writeln('</form>');
