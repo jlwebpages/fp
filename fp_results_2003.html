@@ -1818,8 +1818,9 @@ x\:* {behavior:url(#default#VML);}
 </style>
 <![endif]--></head>
 
-<body onLoad="if (top.display_frame != undefined) {top.display_frame('fp_main',document.body.scrollWidth);} return true;"
-    onunload="if (top.reset_mobile_viewport_width != undefined) {top.reset_mobile_viewport_width();} return true;">
+<body style="margin: 0"
+     onLoad="if (top.display_frame != undefined) {top.display_frame('fp_main',0);} return true;"
+   onunload="if (top.reset_mobile_viewport_width != undefined) {top.reset_mobile_viewport_width();} return true;">
 
 <style type="text/css">
    A:active  {text-decoration: none; color: maroon;}

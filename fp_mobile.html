@@ -28,8 +28,7 @@
 
       document.title = fp_year + " " + document.title;
 
-      // Manually set season_over to "t" only after
-      // the Super Bowl picks have been received.
+      // Manually set season_over to "t" only after the Super Bowl picks have been received.
 
       var season_over = f;
 
@@ -802,11 +801,20 @@
 
    function display_frame(frame_name, frame_width)
    {
+      // Received frame_width is only used if frame_name = "fp_picks".
+
       if (frame_name == "fp_main")
       {
          document.getElementById("fp_frameset").cols="*,0,0";
 
-         if ( (frame_width != 0) && (fp_main.document.getElementById("input_form_buttons") != null) )
+         frame_width = fp_main.document.body.scrollWidth;
+
+         if (fp_main.document.getElementById("input_form_table") != null)
+         {
+            frame_width = fp_main.document.getElementById("input_form_table").offsetWidth;
+         }
+
+         if (fp_main.document.getElementById("input_form_buttons") != null)
          {
             if (fp_main.document.getElementById("input_form_buttons").offsetWidth > frame_width)
             {
@@ -821,6 +829,8 @@
       else if (frame_name == "fp_loading_indicator")
       {
          document.getElementById("fp_frameset").cols="0,0,*";
+
+         frame_width = 0;
       }
 
       set_mobile_viewport_width(frame_width);
@@ -878,13 +888,13 @@
 
 <frameset rows="60px,*" border="0">
 
-   <frame src="fp_header_mobile.html" name="fp_header" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
+   <frame class="dark_blue_background" src="fp_header_mobile.html" name="fp_header" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
 
    <frameset id="fp_frameset" cols="*,0,0" border="0">
 
-      <frame src="fp_main_mobile.html"       name="fp_main"              frameborder="0" marginwidth="0" marginheight="0" noresize="noresize" scrolling="auto">
-      <frame src="fp_empty.html"             name="fp_picks"             frameborder="0" marginwidth="0" marginheight="0" noresize="noresize" scrolling="auto">
-      <frame src="fp_loading_indicator.html" name="fp_loading_indicator" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize" scrolling="no">
+      <frame class="light_gray_background" src="fp_main_mobile.html"       name="fp_main"              frameborder="0" marginwidth="0" marginheight="0" noresize="noresize" scrolling="auto">
+      <frame class="light_gray_background" src="fp_empty.html"             name="fp_picks"             frameborder="0" marginwidth="0" marginheight="0" noresize="noresize" scrolling="auto">
+      <frame class="light_gray_background" src="fp_loading_indicator.html" name="fp_loading_indicator" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize" scrolling="no">
 
    </frameset>
 

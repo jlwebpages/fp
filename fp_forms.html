@@ -5,7 +5,7 @@
    <link href="fp.css" rel="stylesheet" type="text/css">
 </head>
 
-<body onLoad="build_forms_page(); if (top.display_frame != undefined) {top.display_frame('fp_main',document.body.scrollWidth);} return true;">
+<body onLoad="build_forms_page(); if (top.display_frame != undefined) {top.display_frame('fp_main',0);} return true;">
 
 <script language="JavaScript">
 
@@ -45,7 +45,8 @@ function build_forms_page()
    d.writeln('</head>');
    d.writeln('');
 
-   d.writeln('<body onunload="if (top.reset_mobile_viewport_width != undefined) {top.reset_mobile_viewport_width();} return true;">');
+   d.writeln('<body style="margin: 0"');
+   d.writeln('   onunload="if (top.reset_mobile_viewport_width != undefined) {top.reset_mobile_viewport_width();} return true;">');
    d.writeln('');
    d.writeln('');
 
