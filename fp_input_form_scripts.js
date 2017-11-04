@@ -2109,7 +2109,7 @@ function build_regular_season_form()
    d.writeln('');
 
    d.writeln('<tr align=center bgcolor=#DCE6F1>');
-   d.writeln('<td class="bt2_border" colspan="6"><font style="font-size: 12pt"><b>Open Date:</b>&nbsp;&nbsp;'+open_date+'</font></td>');
+   d.writeln('<td id="open_date" class="bt2_border" style="font-size: 12pt" colspan="6"></td>');
    d.writeln('</tr>');
    d.writeln('');
 
@@ -2154,6 +2154,12 @@ function build_regular_season_form()
    d.writeln('');
 
    d.writeln('<script language="JavaScript" type="text/javascript">');
+   d.writeln('');
+   d.writeln('   // Set the width of the "Open Date" row within the "Input Form" table to be equal to the');
+   d.writeln('   // actual table width, then populate the "Open Date" row with the open date information.');
+   d.writeln('');
+   d.writeln('   document.getElementById("open_date").style.width = document.getElementById("input_form_table").offsetWidth;');
+   d.writeln('   document.getElementById("open_date").innerHTML   = "<b>Open Date:</b>&nbsp;&nbsp;'+open_date+'";');
    d.writeln('');
    d.writeln('   // Call to display_frame will set the mobile viewport width.');
    d.writeln('');
