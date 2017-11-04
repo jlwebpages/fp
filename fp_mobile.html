@@ -801,26 +801,93 @@
 
    function display_frame(frame_name, frame_width)
    {
-      // Received frame_width is only used if frame_name = "fp_picks".
+      // Received frame_width is only used if frame_name equals "fp_picks".
 
       if (frame_name == "fp_main")
       {
-         document.getElementById("fp_frameset").cols="*,0,0";
-
          frame_width = fp_main.document.body.scrollWidth;
 
          if (fp_main.document.getElementById("input_form_table") != null)
          {
-            frame_width = fp_main.document.getElementById("input_form_table").offsetWidth;
-         }
+            // Set frame_width equal to "Input Form" table width;
 
-         if (fp_main.document.getElementById("input_form_buttons") != null)
-         {
-            if (fp_main.document.getElementById("input_form_buttons").offsetWidth > frame_width)
+            frame_width = fp_main.document.getElementById("input_form_table").offsetWidth;
+
+            // If the "Picks From Odds" button exists and is visible and if this isn't an iPad, adjust the font size of
+            // all buttons so that the total width of the buttons row is equal to the width of the "Input Form" table.
+
+            if ( (fp_main.document.getElementById("picks_from_odds_span") != null) &&
+                 (fp_main.document.getElementById("picks_from_odds_span").style.display == "") &&
+                 (navigator.platform != "iPad")                                                   )
             {
-               frame_width = fp_main.document.getElementById("input_form_buttons").offsetWidth;
+               // Get the "Submit" button font size (assume font size of "Picks From Odds", "Random Picks", and "Reset" buttons are the same).
+
+               var button_font_size = fp_main.document.getElementById("submit").style.fontSize;
+
+               // Proceed only if the "Submit" button font size is specified in "pt" units.
+
+               if (button_font_size.indexOf("pt") != -1)
+               {
+                  // Remove "pt" from the button_font_size string.
+
+                  button_font_size = button_font_size.replace("pt","");
+
+                  // Convert button_font_size to a number.
+
+                  button_font_size = Number(button_font_size);
+
+                  if (fp_main.document.getElementById("input_form_buttons").offsetWidth > frame_width)
+                  {
+                     // Decrease the font size of the "Input Form" buttons until the total width of the buttons row is equal to the width of the "Input Form" table.
+
+                     while ( (button_font_size > 0) && (fp_main.document.getElementById("input_form_buttons").offsetWidth > frame_width) )
+                     {
+                        // Decrease button_font_size by 0.1pt.
+
+                        button_font_size = Math.round((button_font_size-0.1)*10)/10;
+
+                        fp_main.document.getElementById("submit").style.fontSize          = button_font_size + "pt";
+                        fp_main.document.getElementById("picks_from_odds").style.fontSize = button_font_size + "pt";
+                        fp_main.document.getElementById("random_picks").style.fontSize    = button_font_size + "pt";
+                        fp_main.document.getElementById("reset_button").style.fontSize    = button_font_size + "pt";
+                     }
+                  }
+                  else if (frame_width > fp_main.document.getElementById("input_form_buttons").offsetWidth)
+                  {
+                     // Increase the font size of the "Input Form" buttons until the total width of the buttons row is equal to the width of the "Input Form" table.
+
+                     while ( (button_font_size < 20) && (frame_width > fp_main.document.getElementById("input_form_buttons").offsetWidth) )
+                     {
+                        // Increase button_font_size by 0.1pt.
+
+                        button_font_size = Math.round((button_font_size+0.1)*10)/10;
+
+                        fp_main.document.getElementById("submit").style.fontSize          = button_font_size + "pt";
+                        fp_main.document.getElementById("picks_from_odds").style.fontSize = button_font_size + "pt";
+                        fp_main.document.getElementById("random_picks").style.fontSize    = button_font_size + "pt";
+                        fp_main.document.getElementById("reset_button").style.fontSize    = button_font_size + "pt";
+                     }
+
+                     // If the previous while loop caused the total width of the buttons row to be slightly greater than
+                     // the width of the "Input Form" table, then decrease the font size of the "Input Form" buttons by .1pt.
+
+                     if (fp_main.document.getElementById("input_form_buttons").offsetWidth > frame_width)
+                     {
+                        // Decrease button_font_size by 0.1pt.
+
+                        button_font_size = Math.round((button_font_size-0.1)*10)/10;
+
+                        fp_main.document.getElementById("submit").style.fontSize          = button_font_size + "pt";
+                        fp_main.document.getElementById("picks_from_odds").style.fontSize = button_font_size + "pt";
+                        fp_main.document.getElementById("random_picks").style.fontSize    = button_font_size + "pt";
+                        fp_main.document.getElementById("reset_button").style.fontSize    = button_font_size + "pt";
+                     }
+                  }
+               }
             }
          }
+
+         document.getElementById("fp_frameset").cols="*,0,0";
       }
       else if (frame_name == "fp_picks")
       {
@@ -828,9 +895,9 @@
       }
       else if (frame_name == "fp_loading_indicator")
       {
-         document.getElementById("fp_frameset").cols="0,0,*";
-
          frame_width = 0;
+
+         document.getElementById("fp_frameset").cols="0,0,*";
       }
 
       set_mobile_viewport_width(frame_width);
