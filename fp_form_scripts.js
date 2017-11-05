@@ -6,15 +6,9 @@ function adjust_mobile_viewport_height(document)
       if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
       {
          var document_height  = document.body.offsetHeight;
-         var document_width   = document.body.offsetWidth;
-
          var viewport_height  = window.innerHeight;
-
          var viewport_scale   = viewport_height/document_height;
-
-         viewport_content = "height=" + document_height + "px, initial-scale=1.0";
-
-         alert("dh:"+document_height+"  vh:"+viewport_height+"  vs:"+viewport_scale+"  vc:"+viewport_content);
+         var viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
 
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
       }
@@ -2328,11 +2322,19 @@ function build_post_season_form()
 
    d.writeln('</html>');
 
-   d.close();
-
-   d.getElementById("post_season_table").scrollIntoView();
-
    adjust_mobile_viewport_height(d);
+
+   if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) && (navigator.platform != "iPad") )
+   {
+      d.body.scrollLeft = 0;
+      d.body.scrollTop  = 0;
+   }
+   else
+   {
+      d.getElementById("post_season_table").scrollIntoView();
+   }
+
+   d.close();
 
    return true;
 }
@@ -4516,11 +4518,19 @@ function build_regular_season_form()
 
    d.writeln('</html>');
 
-   d.close();
-
-   d.getElementById("regular_season_table").scrollIntoView();
-
    adjust_mobile_viewport_height(d);
+
+   if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) && (navigator.platform != "iPad") )
+   {
+      d.body.scrollLeft = 0;
+      d.body.scrollTop  = 0;
+   }
+   else
+   {
+      d.getElementById("regular_season_table").scrollIntoView();
+   }
+
+   d.close();
 
    return true;
 }
@@ -5833,11 +5843,19 @@ function build_season_summary()
 
    d.writeln('</html>');
 
-   d.close();
-
-   d.getElementById("season_summary").scrollIntoView();
-
    adjust_mobile_viewport_height(d);
+
+   if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) && (navigator.platform != "iPad") )
+   {
+      d.body.scrollLeft = 0;
+      d.body.scrollTop  = 0;
+   }
+   else
+   {
+      d.getElementById("season_summary").scrollIntoView();
+   }
+
+   d.close();
 
    return true;
 }
