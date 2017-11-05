@@ -8,8 +8,8 @@ function adjust_mobile_viewport_height(document)
          var document_height  = document.body.offsetHeight;
          var viewport_height  = window.innerHeight;
          var viewport_scale   = viewport_height/document_height;
-         viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
-         alert("dh:"+document_height+"  vh:"+viewport_height+"  vs:"+viewport_scale+"  vc"+viewport_content);
+         viewport_content = "height=" + document_height + "px, initial-scale=1.0";
+         alert("dh:"+document_height+"  vh:"+viewport_height+"  vs:"+viewport_scale+"  vc:"+viewport_content);
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
       }
    }
