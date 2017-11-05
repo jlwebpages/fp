@@ -8,10 +8,11 @@ function adjust_mobile_viewport_height(document)
          var document_height  = document.body.offsetHeight;
          var viewport_content = "width=device-width, initial-scale=1.0";
          var viewport_height  = Math.min(window.screen.height,window.screen.availHeight,window.innerHeight);
-         alert(window.screen.height+"  "+window.screen.availHeight+"  "+window.innerHeight);
+         alert("h:"+window.screen.height+"  ah:"+window.screen.availHeight+"  ih:"+window.innerHeight);
          var viewport_scale   = viewport_height/document_height;
 
-         viewport_content = "width=device-width, height=" + document_height + "px, initial-scale=" + viewport_scale;
+         //viewport_content = "width=device-width, height=" + document_height + "px, initial-scale=" + viewport_scale;
+         viewport_content = "height=" + document_height + "px";
 
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
       }
