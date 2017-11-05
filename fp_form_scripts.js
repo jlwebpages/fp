@@ -7,7 +7,8 @@ function adjust_mobile_viewport_height(document)
       {
          var document_height  = document.body.offsetHeight;
          var viewport_content = "width=device-width, initial-scale=1.0";
-         var viewport_height  = Math.min(window.screen.height,window.screen.availHeight,window.innerHeight)
+         var viewport_height  = Math.min(window.screen.height,window.screen.availHeight,window.innerHeight);
+         alert(window.screen.height+"  "+window.screen.availHeight+"  "+window.innerHeight);
          var viewport_scale   = viewport_height/document_height;
 
          viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
@@ -2329,6 +2330,11 @@ function build_post_season_form()
    d.getElementById("post_season_table").scrollIntoView();
 
    d.close();
+
+   d.body.scrollLeft = 0;
+   d.body.scrollTop = 0;
+   d.documentElement.scrollLeft = 0;
+   d.documentElement.scrollTop = 0;
 
    return true;
 }
