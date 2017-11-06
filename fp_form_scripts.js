@@ -3814,11 +3814,11 @@ function build_regular_season_form()
 
    d.writeln('<table align=center');
    d.writeln('       class="b3_border"');
-   d.writeln('       border=0');
-   d.writeln('       bgcolor=white');
-   d.writeln('       cellpadding=2');
-   d.writeln('       cellspacing=0');
-   d.writeln('                id="regular_season_table">');
+   d.writeln('      border=0');
+   d.writeln('     bgcolor=white');
+   d.writeln(' cellpadding=2');
+   d.writeln(' cellspacing=0');
+   d.writeln('          id="regular_season_table">');
    d.writeln('');
 
    d.writeln('<tr align=center bgcolor=#C4D79B height=21px>');
@@ -5184,11 +5184,11 @@ function build_season_summary()
 
    d.writeln('<table align=center');
    d.writeln('       class="b3_border"');
-   d.writeln('       border=0');
-   d.writeln('       bgcolor=white');
-   d.writeln('       cellpadding=2');
-   d.writeln('       cellspacing=0');
-   d.writeln('                id="season_summary">');
+   d.writeln('      border=0');
+   d.writeln('     bgcolor=white');
+   d.writeln(' cellpadding=2');
+   d.writeln(' cellspacing=0');
+   d.writeln('          id="season_summary">');
    d.writeln('');
 
    d.writeln('<tr align=center bgcolor='+color_column_header_1+' height=27px>');
