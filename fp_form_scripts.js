@@ -25,7 +25,7 @@ function build_post_season_form()
 
       return false;
    }
-alert("2");
+alert("3");
    var bullet_color                  = "";
    var color_black                   = "black";
    var color_red                     = "red";
@@ -2334,7 +2334,7 @@ alert("2");
    {
       d.getElementById("post_season_table").scrollIntoView();
    }
-alert(window.pageXOffset+"  "+window.pageYOffset);
+alert(window.visualViewport.offsetLeft+"  "+window.visualViewport.offsetTop);
    return true;
 }
 
