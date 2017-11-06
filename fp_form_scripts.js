@@ -2333,9 +2333,6 @@ function build_post_season_form()
       d.getElementById("post_season_table").scrollIntoView();
    }
 
-   alert(window.scrollY+"  "+window.scrollX);
-   window.scroll(0,0);
-
    d.close();
 
    return true;
