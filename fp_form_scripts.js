@@ -25,7 +25,7 @@ function build_post_season_form()
 
       return false;
    }
-alert("1");
+alert("2");
    var bullet_color                  = "";
    var color_black                   = "black";
    var color_red                     = "red";
@@ -2321,6 +2321,10 @@ alert("1");
 
    d.writeln('</html>');
 
+   d.close();
+
+   adjust_mobile_viewport_height(d);
+
    if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) && (navigator.platform != "iPad") )
    {
       d.body.scrollLeft = 0;
@@ -2330,11 +2334,7 @@ alert("1");
    {
       d.getElementById("post_season_table").scrollIntoView();
    }
-
-   d.close();
-
-   adjust_mobile_viewport_height(d);
-
+alert(window.pageXOffset+"  "+window.pageYOffset);
    return true;
 }
 
