@@ -25,7 +25,7 @@ function build_post_season_form()
 
       return false;
    }
-
+alert("1");
    var bullet_color                  = "";
    var color_black                   = "black";
    var color_red                     = "red";
@@ -2321,8 +2321,6 @@ function build_post_season_form()
 
    d.writeln('</html>');
 
-   adjust_mobile_viewport_height(d);
-
    if ( (typeof(top.gv.mobile) != "undefined") && (top.gv.mobile == true) && (navigator.platform != "iPad") )
    {
       d.body.scrollLeft = 0;
@@ -2334,6 +2332,8 @@ function build_post_season_form()
    }
 
    d.close();
+
+   adjust_mobile_viewport_height(d);
 
    return true;
 }
