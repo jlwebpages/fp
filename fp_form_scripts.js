@@ -25,7 +25,7 @@ function build_post_season_form()
 
       return false;
    }
-alert("1");
+alert("2");
    var bullet_color                  = "";
    var color_black                   = "black";
    var color_red                     = "red";
