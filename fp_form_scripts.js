@@ -7,7 +7,8 @@ function adjust_mobile_viewport_height(document)
       {
          var document_height  = document.body.scrollHeight;
          var viewport_scale   = window.screen.height/document_height;
-         var viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
+         var viewport_width   = window.screen.width/viewport_scale;
+         var viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
 
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
       }
