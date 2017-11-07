@@ -25,7 +25,7 @@ function build_post_season_form()
 
       return false;
    }
-alert("2");
+
    var bullet_color                  = "";
    var color_black                   = "black";
    var color_red                     = "red";
@@ -743,7 +743,6 @@ alert("2");
 
    d.writeln('<head>');
    d.writeln('   <title>NFL Football Pool</title>');
-   d.writeln('   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0">');
    d.writeln('   <style type="text/css">');
    d.writeln('   <!--');
    d.writeln('      TD              {border-style:        solid;');
@@ -2688,7 +2687,6 @@ function build_regular_season_form()
 
    d.writeln('<head>');
    d.writeln('   <title>NFL Football Pool</title>');
-   d.writeln('   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0">');
    d.writeln('   <style type="text/css">');
    d.writeln('   <!--');
    d.writeln('      TD              {border-style:        solid;');
@@ -4999,7 +4997,6 @@ function build_season_summary()
 
    d.writeln('<head>');
    d.writeln('   <title>NFL Football Pool</title>');
-   d.writeln('   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0">');
    d.writeln('   <style type="text/css">');
    d.writeln('   <!--');
    d.writeln('      TD              {border-style:        solid;');
