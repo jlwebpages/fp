@@ -5,7 +5,7 @@
 
    <title>NFL Football Pool</title>
 
-   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.2">
 
    <link href="fp.css" rel="stylesheet" type="text/css">
 
@@ -913,7 +913,7 @@
       {
          document.getElementById("viewport").setAttribute("content",saved_viewport_content);
 
-         saved_viewport_content = "width=device-width, initial-scale=1.0";
+         saved_viewport_content = "width=device-width, initial-scale=1.0, minimum-scale=0.2";
       }
 
       return true;
@@ -921,7 +921,7 @@
 
    function set_mobile_viewport_width(viewport_width)
    {
-      var viewport_content = "width=device-width, initial-scale=1.0";
+      var viewport_content = "width=device-width, initial-scale=1.0, minimum-scale=0.2";
       var viewport_scale   = "";
 
       // Don't try to adjust the viewport width if an HTML <meta> tag viewport element doesn't exist.
@@ -941,7 +941,7 @@
          saved_viewport_content = document.getElementById("viewport").content;
 
          viewport_scale   = window.screen.width/viewport_width;
-         viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
+         viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale + ", minimum-scale=0.2";
 
          document.getElementById("viewport").setAttribute("content",viewport_content);
       }
