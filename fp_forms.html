@@ -167,7 +167,7 @@ function build_forms_page()
    d.writeln('      // Assign values to global variables for this new window.');
    d.writeln('');
    d.writeln('      w.gv.current_input_week      = top.current_input_week;');
-   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )
+   if (top.mobile == true)
    {
       d.writeln('      w.gv.form_view               = "compact";');
    }
@@ -361,7 +361,7 @@ function build_forms_page()
    d.writeln('      // Assign values to global variables for this new window.');
    d.writeln('');
    d.writeln('      w.gv.current_input_week           = top.current_input_week;');
-   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) )
+   if (top.mobile == true)
    {
       d.writeln('      w.gv.form_view                    = "compact";');
    }
@@ -398,7 +398,7 @@ function build_forms_page()
    d.writeln('');
    d.writeln('<table class="table">');
    d.writeln('');
-   if ( (typeof(top.mobile) != "undefined") && (top.mobile == false) )
+   if (top.mobile != true)
    {
       // Write table row to document.
 

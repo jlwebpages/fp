@@ -13,7 +13,7 @@
 
 <script>
 
-if ( (typeof(top.mobile) != "undefined") && (top.mobile == false) )
+if (top.mobile != true)
 {
    //  Write table row to document.
 
@@ -55,7 +55,7 @@ The Input Form depends on the browser you're using, the version of the browser, 
 
 </table>
 
-<script language="JavaScript">if ( (typeof(top.mobile) != "undefined") && (top.mobile == false) ) {document.password_input.password.focus();}</script>
+<script language="JavaScript">if (top.mobile != true) {document.password_input.password.focus();}</script>
 
 </body>
 

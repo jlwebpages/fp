@@ -1549,7 +1549,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   get_nfl_odds(document,1,"fp_main",true);');
    d.writeln('');
-   d.writeln('   document.fp_inputs.pick1.focus();');
+   d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
    d.writeln('');
    d.writeln('   return true;');
    d.writeln('}');
@@ -1568,7 +1568,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      if (display_error == true)');
    d.writeln('      {');
-   d.writeln('         mn_points.focus();');
+   d.writeln('         if (top.mobile != true) mn_points.focus();');
    d.writeln('');
    d.writeln('         alert("Enter a number between 1 and 99 for Monday Night Total Points.");');
    d.writeln('      }');
@@ -1588,7 +1588,7 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      if (display_error == true) alert("Select your name before accepting your picks.");');
    d.writeln('');
-   d.writeln('      document.fp_inputs.player_name_menu.focus();');
+   d.writeln('      if (top.mobile != true) document.fp_inputs.player_name_menu.focus();');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -2167,7 +2167,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   get_nfl_odds(document,1,"fp_main",true);');
    d.writeln('');
-   d.writeln('   document.fp_inputs.pick1.focus();');
+   d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
    d.writeln('');
    d.writeln('<'+'/script>');
    d.writeln('');
@@ -3177,7 +3177,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   get_nfl_odds(document,1,"fp_main",true);');
    d.writeln('');
-   d.writeln('   document.fp_inputs.pick1.focus();');
+   d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
    d.writeln('');
    d.writeln('   return true;');
    d.writeln('}');
@@ -3189,7 +3189,7 @@ function build_post_season_form()
    d.writeln('   {');
    d.writeln('      if (display_error == true) alert("Select your name before accepting your picks.");');
    d.writeln('');
-   d.writeln('      document.fp_inputs.player_name_menu.focus();');
+   d.writeln('      if (top.mobile != true) document.fp_inputs.player_name_menu.focus();');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -3215,7 +3215,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('      if (display_error == true)');
    d.writeln('      {');
-   d.writeln('         total_points_element.focus();');
+   d.writeln('         if (top.mobile != true) total_points_element.focus();');
    d.writeln('');
    d.writeln('         if (picks['+number_of_games+'-1] == "H")');
    d.writeln('         {');
@@ -3283,7 +3283,7 @@ function build_post_season_form()
    d.writeln('      {');
    d.writeln('         alert("Pick a winner (V or H) for " + visiting_teams[i] + " at " + home_teams[i] + " (Game " + (i+1) + ").");');
    d.writeln('');
-   d.writeln('         picks_select_array[i].focus();');
+   d.writeln('         if (top.mobile != true) picks_select_array[i].focus();');
    d.writeln('');
    d.writeln('         return false;');
    d.writeln('      }');
@@ -3311,7 +3311,7 @@ function build_post_season_form()
    d.writeln('      {');
    d.writeln('         alert(error_message);');
    d.writeln('         spread_elements[i].value = "";');
-   d.writeln('         spread_elements[i].focus();');
+   d.writeln('         if (top.mobile != true) spread_elements[i].focus();');
    d.writeln('         return false;');
    d.writeln('      }');
    d.writeln('      else');
@@ -3479,7 +3479,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   get_nfl_odds(document,1,"fp_main",true);');
    d.writeln('');
-   d.writeln('   document.fp_inputs.pick1.focus();');
+   d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
    d.writeln('');
    d.writeln('<'+'/script>');
    d.writeln('');

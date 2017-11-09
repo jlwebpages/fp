@@ -12,11 +12,9 @@
 function display_archive_page()
 {
    var archive_year      = top.archive_year;
-   var local_mobile_flag = false;
    var min_archive_year  = 1997;
    var max_archive_year  = top.fp_year - 1;
 
-   if ( (typeof(top.mobile) != "undefined") && (top.mobile == true) ) local_mobile_flag = true;
 
    if ( (archive_year < min_archive_year) || (archive_year > max_archive_year) )
    {
@@ -114,7 +112,7 @@ function display_archive_page()
    d.writeln('      w.gv.archive_mode            = "Post Season";');
    d.writeln('      w.gv.archive_year            = '+archive_year+';');
    d.writeln('      w.gv.current_input_week      = 0;');
-   if (local_mobile_flag == true)
+   if (top.mobile == true)
    {
       d.writeln('      w.gv.form_view               = "compact";');
    }
@@ -207,7 +205,7 @@ function display_archive_page()
    d.writeln('      w.gv.archive_mode        = "regular_season";');
    d.writeln('      w.gv.archive_year        = '+archive_year+';');
    d.writeln('      w.gv.current_input_week  = 0;');
-   if (local_mobile_flag == true)
+   if (top.mobile == true)
    {
       d.writeln('      w.gv.form_view           = "compact";');
    }
@@ -239,7 +237,7 @@ function display_archive_page()
    d.writeln('');
    d.writeln('<table class="table">');
    d.writeln('');
-   if (local_mobile_flag == false)
+   if (top.mobile != true)
    {
       // Write table row to document.
 
