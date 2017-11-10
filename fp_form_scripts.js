@@ -2326,17 +2326,16 @@ function build_post_season_form()
 
    adjust_mobile_viewport_height(d);
 
-   //if ( (top.gv.mobile == true) && (navigator.platform != "iPad") )
-   //{
-      //d.body.scrollLeft = 10;
-      //d.body.scrollTop  = 10;
-   //}
-   //else
-   //{
-      //d.getElementById("post_season_table").scrollIntoView();
-   //}
-   alert("Top: " + d.documentElement.getBoundingClientRect().top + "  Left: " + d.documentElement.getBoundingClientRect().left);
-   alert("Top: " + window.scrollY + "  Left: " + window.scrollX);
+   if ( (top.gv.mobile == true) && (navigator.platform != "iPad") )
+   {
+      d.body.scrollLeft = 0;
+      d.body.scrollTop  = 0;
+   }
+   else
+   {
+      d.getElementById("post_season_table").scrollIntoView();
+   }
+
    d.close();
 
    return true;
