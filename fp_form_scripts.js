@@ -9,9 +9,10 @@ function adjust_mobile_viewport_height(document)
          var document_width    = document.body.scrollWidth;
          var ratio             = window.screen.width/document_width;
          var new_screen_height = window.screen.height/ratio;
-         var viewport_scale    = new_screen_height/document_height;
+         //var viewport_scale    = new_screen_height/document_height;
+         var viewport_scale    = document_height/window.screen.height;
 
-         var viewport_content = "width=" + document_width + "px, initial-scale=" + viewport_scale;
+         var viewport_content = "width=device-width, initial-scale=" + viewport_scale;
          alert(viewport_content);
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
       }
