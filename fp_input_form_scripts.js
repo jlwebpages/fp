@@ -179,7 +179,6 @@ function build_regular_season_form()
    d.writeln('var duplicate_weight_game_1        = null;');
    d.writeln('var duplicate_weight_game_2        = null;');
    d.writeln('var game_to_retain_weight          = null;');
-   d.writeln('var input_form_element_to_focus_on = null;');
    d.writeln('');
    d.writeln('');
    d.writeln('// Define variables for NFL Odds.');
@@ -1624,7 +1623,6 @@ function build_regular_season_form()
    d.writeln('      duplicate_weight_game_1        = null;');
    d.writeln('      duplicate_weight_game_2        = null;');
    d.writeln('      game_to_retain_weight          = null;');
-   d.writeln('      input_form_element_to_focus_on = null;');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   get_picks_and_weights_from_form(document);');
@@ -1676,8 +1674,6 @@ function build_regular_season_form()
    d.writeln('                  error_message += "\\n</table>";');
    d.writeln('                  error_message += "\\n</center>\\n";');
    d.writeln('');
-   d.writeln('                  input_form_element_to_focus_on = picks_select_array[j];');
-   d.writeln('');
    d.writeln('                  display_picks_message(error_message,"missing_picks");');
    d.writeln('');
    d.writeln('                  return false;');
@@ -1702,8 +1698,6 @@ function build_regular_season_form()
    d.writeln('               error_message += format_picks_for_dialog(document,false,0);');
    d.writeln('               error_message += "\\n</table>";');
    d.writeln('               error_message += "\\n</center>\\n";');
-   d.writeln('');
-   d.writeln('               input_form_element_to_focus_on = picks_select_array[j];');
    d.writeln('');
    d.writeln('               display_picks_message(error_message,"missing_picks");');
    d.writeln('');
@@ -1739,8 +1733,6 @@ function build_regular_season_form()
    d.writeln('            error_message += format_picks_for_dialog(document,false,0);');
    d.writeln('            error_message += "\\n</table>";');
    d.writeln('            error_message += "\\n</center>\\n";');
-   d.writeln('');
-   d.writeln('            input_form_element_to_focus_on = weights_select_array[i];');
    d.writeln('');
    d.writeln('            display_picks_message(error_message,"missing_weights");');
    d.writeln('');

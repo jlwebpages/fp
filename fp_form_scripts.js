@@ -2335,7 +2335,7 @@ function build_post_season_form()
    {
       d.getElementById("post_season_table").scrollIntoView();
    }
-   alert("Top: " + d.documentElement.getBoundingClientRect().top + "  Left: " + d.documentElement.getBoundingClientRect().left);
+
    d.close();
 
    return true;
