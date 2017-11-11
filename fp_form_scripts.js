@@ -14,7 +14,11 @@ function adjust_mobile_viewport_height(document)
          //viewport_scale   = window.screen.height/viewport_scale;
          viewport_content = "width=" + document_width + ", initial-scale=" + viewport_scale;
 
-         alert("DH: " + document.body.scrollHeight + "  DW: " + document.body.scrollWidth + "  S: " + viewport_scale);
+         alert(  "DH: " + document.body.scrollHeight +
+               "  DW: " + document.body.scrollWidth  +
+               "  SH: " + window.screen.height       +
+               "  SW: " + window.screen.width        +
+               "  SC: " + viewport_scale              );
          alert(viewport_content);
 
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
