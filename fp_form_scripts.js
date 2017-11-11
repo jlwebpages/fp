@@ -6,7 +6,7 @@ function adjust_mobile_viewport_height(document)
       if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
       {
          var document_height   = document.body.scrollHeight;
-         var viewport_scale    = (window.screen.height/document_height) * 1.1;
+         var viewport_scale    = (window.screen.height/document_height) * 0.9;
 
          var viewport_content = "width=device-width, initial-scale=" + viewport_scale;
          alert("DSH: " + document.body.scrollHeight + "  DOH: " + document.body.offsetHeight + "  DEOH: " + document.documentElement.offsetHeight);
