@@ -5,15 +5,10 @@ function adjust_mobile_viewport_height(document)
    {
       if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
       {
-         var document_height   = document.body.scrollHeight;
-         var document_width    = document.body.scrollWidth;
-         var ratio             = window.screen.width/document_width;
-         var new_screen_height = window.screen.height/ratio;
-         //var viewport_scale    = new_screen_height/document_height;
-         var viewport_scale    = window.screen.height/document_height;
+         var document_height  = document.body.scrollHeight;
+         var viewport_scale   = window.screen.height/document_height;
+         var viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
 
-         var viewport_content = "width=device-width, initial-scale=" + viewport_scale;
-         alert("DH: " + document_height + "  DW: " + document_width + "  SH: " + window.screen.height + "  SW: " + window.screen.width);
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
       }
    }
