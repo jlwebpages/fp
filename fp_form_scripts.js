@@ -3,7 +3,7 @@ function adjust_mobile_viewport_height(document)
 {
    if ( (top.gv.mobile == true) && (navigator.platform != "iPad") )
    {
-      if ( (window.screen.height < window.screen.width) && (top.document.getElementById("viewport") != null) )
+      if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
       {
          var document_height  = document.body.scrollHeight;
          var document_width   = document.body.scrollWidth;
