@@ -10,9 +10,9 @@ function adjust_mobile_viewport_height(document)
          var ratio             = window.screen.width/document_width;
          var new_screen_height = window.screen.height/ratio;
          //var viewport_scale    = new_screen_height/document_height;
-         var viewport_scale    = document_height/window.screen.height;
+         var viewport_scale    = window.screen.height/document_height;
 
-         var viewport_content = "width=device-width, initial-scale=1.0";
+         var viewport_content = "width=device-width, initial-scale=" + veiwport_scale";
          alert("DH: " + document_height + "  DW: " + document_width + "  SH: " + window.screen.height + "  SW: " + window.screen.width);
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
       }
