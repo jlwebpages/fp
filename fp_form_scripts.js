@@ -10,7 +10,7 @@ function adjust_mobile_viewport_height(document)
          var viewport_scale    = window.screen.height/document_height;
 
          var viewport_content = "width=device-width, initial-scale=" + viewport_scale;
-         alert("DH: " + document_height + "  DW: " + document_width + "  SH: " + window.screen.height + "  SW: " + window.screen.width);
+         alert("DSH: " + document.body.scrollHeight + "  DOH: " + document.body.offsetHeight);
          alert(viewport_content);
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
       }
