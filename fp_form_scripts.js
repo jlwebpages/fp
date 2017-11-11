@@ -9,7 +9,7 @@ function adjust_mobile_viewport_height(document)
          var viewport_scale    = window.screen.height/document_height;
 
          var viewport_content = "width=device-width, initial-scale=" + viewport_scale;
-         alert("DSH: " + document.body.scrollHeight + "  DOH: " + document.body.offsetHeight + "  DESH: " + document.documentElement.scrollHeight);
+         alert("DSH: " + document.body.scrollHeight + "  DOH: " + document.body.offsetHeight + "  DEOH: " + document.documentElement.offsetHeight);
          alert(viewport_content);
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
       }
