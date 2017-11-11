@@ -8,7 +8,7 @@ function adjust_mobile_viewport_height(document)
          var document_height  = document.body.scrollHeight;
          var document_width   = document.body.scrollWidth;
          var viewport_content = "width=device-width, initial-scale=1.0";
-         var viewport_scale   = window.screen.width/document_width;
+         var viewport_scale   = document_height/window.screen.height;
 
 
          //viewport_scale   = window.screen.height/viewport_scale;
