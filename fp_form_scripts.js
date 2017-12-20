@@ -3013,15 +3013,17 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      window.top.close();');
    d.writeln('');
+   d.writeln('      // Make sure cursor is not set to "wait".');
+   d.writeln('');
+   d.writeln('      document.body.style.cursor = "auto";');
+   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   var abort                   = false;');
    d.writeln('   var all_winners_specified   = true;');
    d.writeln('   var best_winners            = ["","","","","","","","","","","","","","","",""];');
-   d.writeln('   var best_outcome_definition = "";');
    d.writeln('   var binary_winners          = "";');
-   d.writeln('   var extended_string         = "";');
    d.writeln('   var games_won               = 0;');
    d.writeln('   var max_opponent_score      = 0;');
    d.writeln('   var max_score_difference    = -1000;');
@@ -3032,9 +3034,6 @@ function build_regular_season_form()
    d.writeln('   var number_of_rs_players    = window.top.gv.rs_players.length;');
    d.writeln('   var opponent_score          = 0;');
    d.writeln('   var picks                   = "";');
-   d.writeln('   var progress_counter        = 0;');
-   d.writeln('   var progress_percent        = 0;');
-   d.writeln('   var progress_window         = null');
    d.writeln('   var score_difference        = 0;');
    d.writeln('   var selected_opponent_index = window.top.gv.opponent_index-1;');
    d.writeln('   var selected_player_index   = window.top.gv.player_index-1;');
@@ -3086,8 +3085,6 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (all_winners_specified == true)');
    d.writeln('   {');
-   d.writeln('      if (selected_player_index >= 0) extended_string = " to see the best outcome for " + build_player_name((selected_player_index+1),true);');
-   d.writeln('');
    d.writeln('      alert("\\"Best Outcome\\" cannot be performed if winners have already been specified for every game.");');
    d.writeln('');
    d.writeln('      if (window.top.gv.mobile != true) document.fp_results.calculate_scores_button.focus();');
@@ -3118,27 +3115,13 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      abort = true;');
    d.writeln('   }');
-   d.writeln('   else');
-   d.writeln('   {');
-   d.writeln('      if (selected_opponent_index < 0)');
-   d.writeln('      {');
-   d.writeln('         best_outcome_definition = "The best outcome is when "+build_player_name((selected_player_index+1),true)+" ends up first with the biggest margin between his score and the second place score.  If it\'s not possible for "+build_player_name((selected_player_index+1),true)+" to end up first, then the best outcome is when the margin between his score and the first place score is smallest.";');
-   d.writeln('         extended_string         = " ";');
-   d.writeln('      }');
-   d.writeln('      else');
-   d.writeln('      {');
-   d.writeln('         best_outcome_definition = "The best outcome is when "+build_player_name((selected_player_index+1),true)+" scores higher than "+build_player_name((selected_opponent_index+1),true)+" with the biggest margin between their scores.  If it\'s not possible for "+build_player_name((selected_player_index+1),true)+" to score higher than "+build_player_name((selected_opponent_index+1),true)+", then the best outcome is when the margin between their scores is smallest.";');
-   d.writeln('         extended_string         = " against " + build_player_name((selected_opponent_index+1),true) + " ";');
-   d.writeln('      }');
-   d.writeln('');
-   d.writeln('      if (confirm("The best outcome for "+build_player_name((selected_player_index+1),true)+extended_string+"will be determined based on:\\n\\n\\n"+');
-   d.writeln('                  "Games that have winners specified already (\\"H\\", \\"V\\", or \\"Tie\\") will remain unchanged.\\n\\n"+');
-   d.writeln('                  "Each remaining game will be set to \\"H\\" or \\"V\\" depending on what combination yields the best outcome.  \\"Tie\\"s aren\'t taken into account.\\n\\n"+');
-   d.writeln('                  best_outcome_definition) == false) abort = true;;');
-   d.writeln('   };');
    d.writeln('');
    d.writeln('   if (abort == true)');
    d.writeln('   {');
+   d.writeln('      // Make sure cursor is not set to "wait".');
+   d.writeln('');
+   d.writeln('      document.body.style.cursor = "auto";');
+   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
@@ -3155,21 +3138,8 @@ function build_regular_season_form()
    d.writeln('   // Loop through for every possible win/loss combination for those games that do not already have a winner specified.');
    d.writeln('   // Games can end in a "Tie", but were are not going to take a "Tie" into account, unless the user specified a "Tie".');
    d.writeln('');
-   d.writeln('   progress_window = create_progress_window();');
-   d.writeln('');
    d.writeln('   for (var i = 0; i < Math.pow(2,number_of_games); i++)');
    d.writeln('   {');
-   d.writeln('      progress_counter++;');
-   d.writeln('');
-   d.writeln('      if (progress_counter == 500)');
-   d.writeln('      {');
-   d.writeln('         progress_counter = 0;');
-   d.writeln('         progress_percent = (i / Math.pow(2,number_of_games) * 100);');
-   d.writeln('         progress_percent = Math.round(progress_percent);');
-   d.writeln('');
-   d.writeln('         update_progress_window(progress_window,progress_percent);');
-   d.writeln('      }');
-   d.writeln('');
    d.writeln('      // Convert i into a binary string.');
    d.writeln('');
    d.writeln('      binary_winners = i.toString(2);'); 
@@ -3281,11 +3251,13 @@ function build_regular_season_form()
    d.writeln('      window.top.gv.prelim_winners[game_index] = best_winners[game_index];');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   progress_window.close();');
-   d.writeln('');
    d.writeln('   // Re-display the preliminary form with the win/loss combination that reflects the best outcome for the selected player.');
    d.writeln('');
    d.writeln('   document.location.href = "fp_regular_season_form.html";');
+   d.writeln('');
+   d.writeln('   // Make sure cursor is not set to "wait".');
+   d.writeln('');
+   d.writeln('   document.body.style.cursor = "auto";');
    d.writeln('');
    d.writeln('   return true;');
    d.writeln('}');
@@ -3798,6 +3770,20 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('');
    d.writeln('   return true;');
+   d.writeln('}');
+   d.writeln('');
+   d.writeln('');
+   d.writeln('function respond_to_best_outcome_button(document)');
+   d.writeln('{');
+   d.writeln('   // Set cursor to "wait" (busy).');
+   d.writeln('');
+   d.writeln('   document.body.style.cursor = "wait";');
+   d.writeln('');
+   d.writeln('   // Use setTimeout to call determine_best_outcome so busy cursor will be active.');
+   d.writeln('');
+   d.writeln('   // Before every return call in determine_best_outcome there must be a call to:  document.body.style.cursor = "auto";');
+   d.writeln('');
+   d.writeln('   setTimeout("determine_best_outcome(document)",500);');
    d.writeln('}');
    d.writeln('');
    d.writeln('</'+'script>');
@@ -4416,7 +4402,7 @@ function build_regular_season_form()
       d.writeln('<tr align=center>');
       d.writeln('<td nowrap valign=middle class="no_border">');
       d.writeln('<input style="font-size: 11pt; font-family: Calibri; border: 1px solid black" type=button name="best_outcome" value="Best Outcome:"');
-      d.writeln('     onClick="determine_best_outcome(document);return true;">');
+      d.writeln('     onClick="respond_to_best_outcome_button(document);return true;">');
       d.writeln('&nbsp;');
       d.writeln('<font style="font-size: 12pt">Player:</font>&nbsp;');
       d.writeln('<select style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="player_name_menu" size=1');
@@ -5935,23 +5921,6 @@ function check_for_opener()
 }
 
 
-function create_progress_window()
-{
-   var w                     = null;
-   var window_height         = 100;
-   var window_width          = 250;
-   var x_position            = (screen.width-window_width) / 2;
-   var y_position            = 100;
-
-
-   w = window.open("","progress_window","status=0,screenX="+x_position+",screenY="+y_position+",left="+x_position+",top="+y_position+",height="+window_height+",width="+window_width);
-
-   w.resizeTo(window_width,window_height);
-
-   return w;
-}
-
-
 function normalize_float_value(received_float_value)
 {
    var float_value         = received_float_value;
@@ -6020,42 +5989,4 @@ function normalize_float_value(received_float_value)
    }
 
    return float_value;
-}
-
-
-function update_progress_window(progress_window,progress_percent)
-{
-   var wd            = null;
-   var window_height = 100;
-   var window_width  = 250;
-   var x_position    = (screen.width-window_width) / 2;
-   var y_position    = 100;
-
-
-   wd = progress_window.document.open();
-
-   wd.writeln('<html>');
-   wd.writeln('');
-   wd.writeln('<head>');
-   wd.writeln('   <title>Progress</title>');
-   wd.writeln('   <link href="fp.css" rel="stylesheet" type="text/css">');
-   wd.writeln('</head>');
-   wd.writeln('');
-   wd.writeln('<body class="light_gray_background"');
-   wd.writeln('      style="color: black;');
-   wd.writeln('       font-family: Calibri;">');
-   wd.writeln('');
-   wd.writeln('<center><b>Best Outcome Progress:&nbsp;&nbsp;'+progress_percent+' %</b></center>');
-   wd.writeln('');
-   wd.writeln('</body>');
-   wd.writeln('');
-   wd.writeln('</html>');
-
-   wd.close();
-
-   progress_window.moveTo(x_position,y_position);
-
-   progress_window.focus();
-
-   return true;
 }
