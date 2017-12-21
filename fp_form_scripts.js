@@ -2352,6 +2352,7 @@ function build_regular_season_form()
    }
 
    var best_mn_points_delta          = 1000;
+   var best_outcome_tooltip          = "Look under &quot;Preliminary Scores&quot; on the &quot;Help&quot; page for more information on &quot;Best Outcome&quot;";
    var bullet_color                  = "";
    var color_black                   = "black";
    var color_red                     = "red";
@@ -4402,7 +4403,7 @@ function build_regular_season_form()
       d.writeln('<tr align=center>');
       d.writeln('<td nowrap valign=middle class="no_border">');
       d.writeln('<input style="font-size: 11pt; font-family: Calibri; border: 1px solid black" type=button name="best_outcome" value="Best Outcome:"');
-      d.writeln('     onClick="respond_to_best_outcome_button(document);return true;">');
+      d.writeln('     onClick="respond_to_best_outcome_button(document);return true;" title="'+best_outcome_tooltip+'">');
       d.writeln('&nbsp;');
       d.writeln('<font style="font-size: 12pt">Player:</font>&nbsp;');
       d.writeln('<select style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="player_name_menu" size=1');
