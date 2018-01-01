@@ -3433,13 +3433,13 @@ function build_post_season_form()
 
    d.writeln('<tr id="input_form_buttons">');
    d.writeln('<td style="text-align: center; padding-top: 10px" nowrap class="no_border">');
-   d.writeln('<input id="submit"          type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="submit" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
+   d.writeln('<input id="submit"          type=button style="font-size: 12pt; font-family: Calibri; border: 1px solid black" name="submit" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
    d.writeln('<span style="display: none" id="picks_from_odds_span">');
    d.writeln('&nbsp;');
-   d.writeln('<input id="picks_from_odds" type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="picks_from_odds" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
+   d.writeln('<input id="picks_from_odds" type=button style="font-size: 12pt; font-family: Calibri; border: 1px solid black" name="picks_from_odds" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
    d.writeln('</span>');
    d.writeln('&nbsp;');
-   d.writeln('<input id="reset_button"    type=button style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="reset_button" value="Reset" onClick="reset_input_form(document); return true;" title="'+reset_tooltip+'">');
+   d.writeln('<input id="reset_button"    type=button style="font-size: 12pt; font-family: Calibri; border: 1px solid black" name="reset_button" value="Reset" onClick="reset_input_form(document); return true;" title="'+reset_tooltip+'">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
