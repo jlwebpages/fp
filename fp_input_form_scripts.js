@@ -2911,7 +2911,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('            // Determine if the NFL Odds for this input week are available.');
    d.writeln('');
-   d.writeln('            index = nfl_odds.indexOf(nfl_playoff_rounds[attempt_number-1]);');
+   d.writeln('            index = nfl_odds.indexOf(nfl_playoff_rounds['+week+'-1]);');
    d.writeln('');
    d.writeln('            if (index == -1)');
    d.writeln('            {');
