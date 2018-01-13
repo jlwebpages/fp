@@ -1055,6 +1055,7 @@ function build_post_season_form()
    d.writeln('   document.location.href = "fp_post_season_form.html";');
    d.writeln('');
    d.writeln('   return true;');
+   d.writeln('}');
    d.writeln('');
    d.writeln('');
    d.writeln('function get_nfl_scores(document,display_dialog,command)');
@@ -1504,7 +1505,6 @@ function build_post_season_form()
    d.writeln('         window.top.gv.get_scores_timer = null;');
    d.writeln('      }');
    d.writeln('   }');
-   d.writeln('}');
    d.writeln('}');
    d.writeln('');
    d.writeln('</'+'script>');
