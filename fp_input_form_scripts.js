@@ -204,11 +204,6 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('function accept_picks(document)');
    d.writeln('{');
-   d.writeln('   var inputs          = document.fp_inputs;');
-   d.writeln('   var mn_points       = inputs.mn_points;');
-   d.writeln('   var picks_confirmed = false;');
-   d.writeln('');
-   d.writeln('');
    d.writeln('   random_picks_button_pressed = false;');
    d.writeln('');
    d.writeln('   if (validate_picks_and_weights(document,"initial_pass") == false)');
@@ -216,7 +211,7 @@ function build_regular_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (validate_monday_night_points(mn_points,true) == false)');
+   d.writeln('   if (validate_monday_night_points(document.fp_inputs.mn_points,true) == false)');
    d.writeln('   {');
    d.writeln('      // Make sure the frame showing the Input Form is visible before returning.');
    d.writeln('');
@@ -1082,7 +1077,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (random_picks_generated == "No random picks.")');
    d.writeln('   {');
-   d.writeln('      alert("Random picks weren\'t generated because no picks or weights were left blank.");');
+   d.writeln('      alert("Random picks weren\'t generated because no picks were left blank.");');
    d.writeln('   }');
    d.writeln('   else');
    d.writeln('   {');
@@ -2177,14 +2172,18 @@ function build_regular_season_form()
 
 function build_post_season_form()
 {
-   var home_teams                = top.post_season_home_teams;
-   var visiting_teams            = top.post_season_visiting_teams;
-   var week                      = top.current_input_week - 17;   
-   var number_of_games           = home_teams.length;
-   var accept_tooltip            = "";
-   var picks_from_odds_tooltip   = "";
-   var reset_tooltip             = "";
-   var submit_via_e_mail_tooltip = "";
+   var home_teams                  = top.post_season_home_teams;
+   var visiting_teams              = top.post_season_visiting_teams;
+   var week                        = top.current_input_week - 17;   
+   var number_of_games             = home_teams.length;
+   var accept_tooltip              = "";
+   var picks_from_odds_button_name = "Picks From Odds";
+   var picks_from_odds_tooltip     = "";
+   var random_picks_button_name    = "Random Picks";
+   var random_picks_max_spread     = 21;
+   var random_picks_tooltip        = "";
+   var reset_tooltip               = "";
+   var submit_via_e_mail_tooltip   = "";
 
    // Define tooltips for buttons
 
@@ -2197,6 +2196,11 @@ function build_post_season_form()
    picks_from_odds_tooltip += "     - Fill in picks using the NFL Odds.&#13;";
    picks_from_odds_tooltip += "     - Display picks for review.";
 
+   random_picks_tooltip += "&quot;Random Picks&quot; will:&#13;";
+   random_picks_tooltip += "     - Validate picks already entered.&#13;";
+   random_picks_tooltip += "     - Fill in blank picks randomly (max margin of victory " + random_picks_max_spread + ").&#13;";
+   random_picks_tooltip += "     - Display picks for review.";
+
    reset_tooltip += "&quot;Reset&quot; will:&#13;";
    reset_tooltip += "     - Clear picks from the Input Form.&#13;";
    reset_tooltip += "     - Refresh the NFL Odds.";
@@ -2204,6 +2208,12 @@ function build_post_season_form()
    submit_via_e_mail_tooltip += "&quot;Submit via E-Mail&quot; will:&#13;";
    submit_via_e_mail_tooltip += "     - Create an E-Mail message containing your picks.&#13;";
    submit_via_e_mail_tooltip += "     - Click the E-Mail &quot;Send&quot; button to submit your picks.";
+
+   if (week == 4)
+   {
+      picks_from_odds_button_name = "Pick From Odds";
+      random_picks_button_name    = "Random Pick";
+   }
 
    if (week < 1) week = 1;
 
@@ -2322,6 +2332,12 @@ function build_post_season_form()
    d.writeln('clear_nfl_odds_array();');
    d.writeln('');
    d.writeln('');
+   d.writeln('// Define flags for random picks function.');
+   d.writeln('');
+   d.writeln('var random_picks_button_pressed = false;');
+   d.writeln('var random_picks_generated      = "Random picks.";');
+   d.writeln('');
+   d.writeln('');
    d.writeln('// Define a variable for the total points prediction.');
    d.writeln('');
    d.writeln('var total_points = 0;');
@@ -2329,9 +2345,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('function accept_picks(document)');
    d.writeln('{');
-   d.writeln('   var inputs          = document.fp_inputs;');
-   d.writeln('   var picks_confirmed = false;');
-   d.writeln('');
+   d.writeln('   random_picks_button_pressed = false;');
    d.writeln('');
    d.writeln('   if (validate_spreads(document) == false)');
    d.writeln('   {');
@@ -2522,6 +2536,10 @@ function build_post_season_form()
    d.writeln('      {');
    d.writeln('         picks_message += "<br><br>\\nPicks from odds.";');
    d.writeln('      }');
+   d.writeln('      else if (random_picks_button_pressed == true)');
+   d.writeln('      {');
+   d.writeln('         picks_message += "<br><br>\\n"+random_picks_generated;');
+   d.writeln('      }');
    d.writeln('');
    d.writeln('      picks_message += "\\n</td></tr>";');
    d.writeln('      picks_message += "\\n</table>";');
@@ -2594,6 +2612,13 @@ function build_post_season_form()
    d.writeln('   wd.writeln("      // Reset picks_from_odds_button_pressed flag.");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("      top.fp_main.picks_from_odds_button_pressed = false;");');
+   d.writeln('   wd.writeln("   }");');
+   d.writeln('   wd.writeln("");');
+   d.writeln('   wd.writeln("   if (top.fp_main.random_picks_button_pressed == true)");');
+   d.writeln('   wd.writeln("   {");');
+   d.writeln('   wd.writeln("      // Reset random_picks_button_pressed flag.");');
+   d.writeln('   wd.writeln("");');
+   d.writeln('   wd.writeln("      top.fp_main.random_picks_button_pressed = false;");');
    d.writeln('   wd.writeln("   }");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("   return true;");');
@@ -2678,6 +2703,10 @@ function build_post_season_form()
    d.writeln('   if (picks_from_odds_button_pressed == true)');
    d.writeln('   {');
    d.writeln('      mail_msg += "\\n\\nPicks from odds.";');
+   d.writeln('   }');
+   d.writeln('   else if (random_picks_button_pressed == true)');
+   d.writeln('   {');
+   d.writeln('      mail_msg += "\\n\\n"+random_picks_generated;');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   window.open(encodeURI(mail_msg),"_top");');
@@ -2823,6 +2852,116 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
+   d.writeln('}');
+   d.writeln('');
+   d.writeln('');
+   d.writeln('function generate_random_picks(document)');
+   d.writeln('{');
+   d.writeln('   var counter      = 0;');
+   d.writeln('   var inputs       = document.fp_inputs;');
+   d.writeln('   var pick_index   = 0;');
+   d.writeln('   var picks_select = 0;');
+   d.writeln('');
+   d.writeln('');
+   d.writeln('   // Make sure the user name has been selected.');
+   d.writeln('');
+   d.writeln('   if (validate_name(document,false) == false)');
+   d.writeln('   {');
+   d.writeln('      alert("You must select your name before random picks can be generated.");');
+   d.writeln('');
+   d.writeln('      return false;');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('   // Initialize variables.');
+   d.writeln('');
+   d.writeln('   random_picks_button_pressed = true;');
+   d.writeln('   random_picks_generated      = "Random picks.";');
+   d.writeln('');
+   d.writeln('   // Get data from input form.');
+   d.writeln('');
+   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   {');
+   d.writeln('      for (var j = 0; j < inputs.elements.length; j++)');
+   d.writeln('      {');
+   d.writeln('         if (inputs.elements[j].name == "pick"+(i+1))');
+   d.writeln('         {');
+   d.writeln('            picks_select = inputs.elements[j];');
+   d.writeln('            picks_index  = picks_select.selectedIndex;');
+   d.writeln('            picks[i]     = picks_select.options[picks_index].value;');
+   d.writeln('         }');
+   d.writeln('');
+   d.writeln('         if (inputs.elements[j].name == "spread"+(i+1))');
+   d.writeln('         {');
+   d.writeln('            spread_values[i] = inputs.elements[j].value.replace(/\\./g,"_");  // Force any value that includes a "." to fail.');
+   d.writeln('');
+   d.writeln('            if ( (isNaN(spread_values[i]) == true) || (spread_values[i] < 1) || (spread_values[i] > 99) )');
+   d.writeln('            {');
+   d.writeln('               spread_values[i] = "";');
+   d.writeln('            }');
+   d.writeln('            else');
+   d.writeln('            {');
+   d.writeln('               spread_values[i] = parseInt(spread_values[i]);  // Remove any leading zeros.');
+   d.writeln('            }');
+   d.writeln('');
+   d.writeln('            inputs.elements[j].value = spread_values[i];');
+   d.writeln('         }');
+   d.writeln('      }');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('   total_points = document.fp_inputs.points.value.replace(/\\./g,"_");  // Force any value that includes a "." to fail.');
+   d.writeln('');
+   d.writeln('   // Replace invalid data and blanks with random data.');
+   d.writeln('');
+   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   {');
+   d.writeln('      if ( (picks[i] == "H") || (picks[i] == "V") )');
+   d.writeln('      {');
+   d.writeln('         counter++;');
+   d.writeln('      }');
+   d.writeln('      else');
+   d.writeln('      {');
+   d.writeln('         picks[i] = "H";');
+   d.writeln('');
+   d.writeln('         if (Math.floor(Math.random()*2) == 1) picks[i] = "V";  // Math.floor will return either 0 or 1.');
+   d.writeln('      }');
+   d.writeln('');
+   d.writeln('      if (spread_values[i] != "")');
+   d.writeln('      {');
+   d.writeln('         counter++;');
+   d.writeln('      }');
+   d.writeln('      else');
+   d.writeln('      {');
+   d.writeln('         spread_values[i] = Math.floor(Math.random() * ('+random_picks_max_spread+') + 1);');
+   d.writeln('      }');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('   if ( (isNaN(total_points) == true) || (total_points < 1) || (total_points > 99) )');
+   d.writeln('   {');
+   d.writeln('      total_points = Math.floor(Math.random() * (99) + 1);');
+   d.writeln('');
+   d.writeln('      document.fp_inputs.points.value = "";');
+   d.writeln('   }');
+   d.writeln('   else');
+   d.writeln('   {');
+   d.writeln('      total_points = parseInt(total_points);  // Remove any leading zeros.');
+   d.writeln('');
+   d.writeln('      document.fp_inputs.points.value = total_points;');
+   d.writeln('');
+   d.writeln('      counter++;');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('   if (counter == (('+number_of_games+'*2) + 1))');
+   d.writeln('   {');
+   d.writeln('      alert("Random picks weren\'t generated because no picks were left blank.");');
+   d.writeln('');
+   d.writeln('      return false;');
+   d.writeln('   }');
+   d.writeln('   else if (counter > 0)');
+   d.writeln('   {');
+   d.writeln('      random_picks_generated = "Partial random picks.";');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('   display_confirmation_dialog(document);');
    d.writeln('}');
    d.writeln('');
    d.writeln('');
@@ -3436,8 +3575,10 @@ function build_post_season_form()
    d.writeln('<input id="submit"          type=button style="font-size: 12pt; font-family: Calibri; border: 1px solid black" name="submit" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
    d.writeln('<span style="display: none" id="picks_from_odds_span">');
    d.writeln('&nbsp;');
-   d.writeln('<input id="picks_from_odds" type=button style="font-size: 12pt; font-family: Calibri; border: 1px solid black" name="picks_from_odds" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
+   d.writeln('<input id="picks_from_odds" type=button style="font-size: 12pt; font-family: Calibri; border: 1px solid black" name="picks_from_odds" value="'+picks_from_odds_button_name+'" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
    d.writeln('</span>');
+   d.writeln('&nbsp;');
+   d.writeln('<input id="random_picks"    type=button style="font-size: 12pt; font-family: Calibri; border: 1px solid black" name="random_picks" value="'+random_picks_button_name+'" onClick="generate_random_picks(document); return true;" title="'+random_picks_tooltip+'">');
    d.writeln('&nbsp;');
    d.writeln('<input id="reset_button"    type=button style="font-size: 12pt; font-family: Calibri; border: 1px solid black" name="reset_button" value="Reset" onClick="reset_input_form(document); return true;" title="'+reset_tooltip+'">');
    d.writeln('</td>');
