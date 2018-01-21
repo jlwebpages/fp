@@ -1774,7 +1774,7 @@ function build_post_season_form()
 
          if (player_picks[player_index[pi-1]][gi-1] != post_season_winners[gi-1])
          {
-            score_color = "class=red_color";
+            score_color = "class=black_color";
          }
          if (form_view == "expanded")
          {
