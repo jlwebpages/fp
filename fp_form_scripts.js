@@ -1084,6 +1084,7 @@ function build_post_season_form()
    d.writeln('   var index                              = 0;');
    d.writeln('   var nfl_connection                     = null;');
    d.writeln('   var nfl_scores                         = null;');
+   d.writeln('   var nfl_scores_URL                     = escape("\\"https://www.nfl.com/ajax/scorestrip?season=' + window.top.gv.fp_year + '&seasonType=POST&week=' + week + '\\"");');
    d.writeln('   var nfl_team_cities                    = ["ARI",      "ATL",    "BAL",   "BUF",  "CAR",     "CHI",  "CIN",    "CLE",   "DAL",    "DEN",    "DET",  "GB",     "HOU",   "IND",  "JAX",    "KC",    "LA",  "LAC",     "MIA",     "MIN",    "NE",      "NO",    "NYG",   "NYJ", "OAK",    "PHI",   "PIT",     "SEA",     "SF",   "TB",        "TEN",   "WAS"     ];');
    d.writeln('   var nfl_team_names                     = ["Cardinals","Falcons","Ravens","Bills","Panthers","Bears","Bengals","Browns","Cowboys","Broncos","Lions","Packers","Texans","Colts","Jaguars","Chiefs","Rams","Chargers","Dolphins","Vikings","Patriots","Saints","Giants","Jets","Raiders","Eagles","Steelers","Seahawks","49ers","Buccaneers","Titans","Redskins"];');
    d.writeln('   var number_of_games                    = '+number_of_games+' + 1;');  // Add 1 to account for the Pro Bowl
@@ -1099,6 +1100,7 @@ function build_post_season_form()
    d.writeln('   var visiting_score                     = "";');
    d.writeln('   var visiting_team                      = "";');
    d.writeln('   var week                               = window.top.gv.current_input_week-18;');
+   d.writeln('   var yahoo_query_string                 = "";');
    d.writeln('');
    d.writeln('');
    d.writeln('   if (command != "Start")');
@@ -1132,11 +1134,15 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Attempt to get the NFL scores from the internet.');
    d.writeln('');
+   d.writeln('   if (week == 21) nfl_scores_URL = escape("\\"https://www.nfl.com/ajax/scorestrip?season=' + window.top.gv.fp_year + '&seasonType=POST&week=22\\"");  // Week 21 is the Pro Bowl.');
+   d.writeln('');
+   d.writeln('   yahoo_query_string = encodeURI("https://query.yahooapis.com/v1/public/yql?q=select * from xml where url=") + nfl_scores_URL;');
+   d.writeln('');
    d.writeln('   nfl_connection = new XMLHttpRequest();');
    d.writeln('');
    d.writeln('   try');
    d.writeln('   {');
-   d.writeln('      nfl_connection.open("GET",encodeURI("https://query.yahooapis.com/v1/public/yql?q=select * from xml where url=\\"http://www.nfl.com/liveupdate/scorestrip/postseason/ss.xml\\""),false);');
+   d.writeln('      nfl_connection.open("GET",yahoo_query_string,false);');
    d.writeln('      nfl_connection.send(null);');
    d.writeln('');
    d.writeln('      if (nfl_connection.readyState == 4)');
@@ -3327,6 +3333,7 @@ function build_regular_season_form()
    d.writeln('   var nfl_connection                = null;');
    d.writeln('   var nfl_games_array               = new Array('+number_of_games+');');
    d.writeln('   var nfl_scores                    = null;');
+   d.writeln('   var nfl_scores_URL                = escape("\\"https://www.nfl.com/ajax/scorestrip?season=' + window.top.gv.fp_year + '&seasonType=REG&week=' + week + '\\"");');
    d.writeln('   var nfl_team_cities               = ["ARI",      "ATL",    "BAL",   "BUF",  "CAR",     "CHI",  "CIN",    "CLE",   "DAL",    "DEN",    "DET",  "GB",     "HOU",   "IND",  "JAX",    "KC",    "LA",  "LAC",     "MIA",     "MIN",    "NE",      "NO",    "NYG",   "NYJ", "OAK",    "PHI",   "PIT",     "SEA",     "SF",   "TB",        "TEN",   "WAS"     ];');
    d.writeln('   var nfl_team_names                = ["Cardinals","Falcons","Ravens","Bills","Panthers","Bears","Bengals","Browns","Cowboys","Broncos","Lions","Packers","Texans","Colts","Jaguars","Chiefs","Rams","Chargers","Dolphins","Vikings","Patriots","Saints","Giants","Jets","Raiders","Eagles","Steelers","Seahawks","49ers","Buccaneers","Titans","Redskins"];');
    d.writeln('   var possession_team               = "";');
@@ -3340,6 +3347,7 @@ function build_regular_season_form()
    d.writeln('   var week                          = window.top.gv.current_input_week-1;');
    d.writeln('   var winning_teams_index           = 0;');
    d.writeln('   var winning_teams                 = ["","","","","","","","","","","","","","","",""];');
+   d.writeln('   var yahoo_query_string            = encodeURI("https://query.yahooapis.com/v1/public/yql?q=select * from xml where url=") + nfl_scores_URL;');
    d.writeln('');
    d.writeln('');
    d.writeln('   if (command != "Start")');
@@ -3356,7 +3364,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   try');
    d.writeln('   {');
-   d.writeln('      nfl_connection.open("GET",encodeURI("https://query.yahooapis.com/v1/public/yql?q=select * from xml where url=\\"http://www.nfl.com/liveupdate/scorestrip/ss.xml\\""),false);');
+   d.writeln('      nfl_connection.open("GET",yahoo_query_string,false);');
    d.writeln('      nfl_connection.send(null);');
    d.writeln('');
    d.writeln('      if (nfl_connection.readyState == 4)');
