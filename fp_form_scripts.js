@@ -3331,7 +3331,7 @@ function build_regular_season_form()
    d.writeln('   var home_teams                    = "";');
    d.writeln('   var nfl_connection                = null;');
    d.writeln('   var nfl_scores                    = null;');
-   d.writeln('   var nfl_scores_URL                = encodeURI("\\"http://www.nfl.com/liveupdate/scores/scores.json\\"");');
+   d.writeln('   var nfl_scores_URL                = encodeURI("\\"http://www.nfl.com/liveupdate/scores/scores.json?t=1\\"");');
    d.writeln('   var nfl_team_city_abbreviations   = ["ARI",      "ATL",    "BAL",   "BUF",  "CAR",     "CHI",  "CIN",    "CLE",   "DAL",    "DEN",    "DET",  "GB",     "HOU",   "IND",  "JAC",    "KC",    "LA",  "LAC",     "MIA",     "MIN",    "NE",      "NO",    "NYG",   "NYJ", "OAK",    "PHI",   "PIT",     "SEA",     "SF",   "TB",        "TEN",   "WAS"     ];');
    d.writeln('   var nfl_team_names                = ["Cardinals","Falcons","Ravens","Bills","Panthers","Bears","Bengals","Browns","Cowboys","Broncos","Lions","Packers","Texans","Colts","Jaguars","Chiefs","Rams","Chargers","Dolphins","Vikings","Patriots","Saints","Giants","Jets","Raiders","Eagles","Steelers","Seahawks","49ers","Buccaneers","Titans","Redskins"];');
    d.writeln('   var number_of_games               = '+number_of_games+';');
