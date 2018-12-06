@@ -1434,7 +1434,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      for (var j = 0; j < nfl_team_cities.length; j++)');
    d.writeln('      {');
-   d.writeln('         if (temp_string[0] == nfl_team_cities[j].replace(/ /g,""))');
+   d.writeln('         if (temp_string[0].toLowerCase() == nfl_team_cities[j].replace(/ /g,"").toLowerCase())');
    d.writeln('         {');
    d.writeln('            temp_string[0] = nfl_team_names[j];');
    d.writeln('');
@@ -3239,7 +3239,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('      for (var j = 0; j < nfl_team_cities.length; j++)');
    d.writeln('      {');
-   d.writeln('         if (temp_string[0] == nfl_team_cities[j].replace(/ /g,""))');
+   d.writeln('         if (temp_string[0].toLowerCase() == nfl_team_cities[j].replace(/ /g,"").toLowerCase())');
    d.writeln('         {');
    d.writeln('            temp_string[0] = nfl_team_names[j];');
    d.writeln('');
