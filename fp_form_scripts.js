@@ -1081,7 +1081,7 @@ function build_post_season_form()
    d.writeln('      }');
    d.writeln('      catch(error)');
    d.writeln('      {');
-   d.writeln('         user_message = "\\"Get NFL Scores\\" failed.";');
+   d.writeln('         alert(error); user_message = "\\"Get NFL Scores\\" failed.";');
    d.writeln('');
    d.writeln('         if (window.top.gv.get_scores_state == "on") user_message += "  \\"Auto Refresh\\" will be stopped."');
    d.writeln('');
