@@ -1113,7 +1113,7 @@ function build_regular_season_form()
    d.writeln('   var nfl_connection         = null;');
    d.writeln('   var nfl_odds               = null;');
    d.writeln('   var nfl_odds_search_string = ["NFL Lines For Week '+week+' - N","NFL Lines For Week '+week+' - E","NFL Lines For Week '+week+' - N","NFL Lines For Week '+week+' - E"];');
-   d.writeln('   var nfl_odds_url           = ["\\"http://www.footballlocks.com/nfl_lines.shtml?t=1\\"","\\"http://www.footballlocks.com/early_nfl_lines.shtml?t=1\\"","\\"https://www.footballlocks.com/nfl_lines.shtml?t=1\\"","\\"https://www.footballlocks.com/early_nfl_lines.shtml?t=1\\""];');
+   d.writeln('   var nfl_odds_url           = ["http://www.footballlocks.com/nfl_lines.shtml?t=1","http://www.footballlocks.com/early_nfl_lines.shtml?t=1","https://www.footballlocks.com/nfl_lines.shtml?t=1","https://www.footballlocks.com/early_nfl_lines.shtml?t=1"];');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Don\'t try to retrieve NFL Odds beyond the next two weeks.');
@@ -1145,7 +1145,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   nfl_connection = new XMLHttpRequest();');
    d.writeln('');
-   d.writeln('   nfl_connection.open("GET",encodeURI("https://query.yahooapis.com/v1/public/yql?q=select * from htmlstring where url="+nfl_odds_url[attempt_number-1])+"&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",true);');
+   d.writeln('   nfl_connection.open("GET","https://cors-escape.herokuapp.com/"+nfl_odds_url[attempt_number-1],true);');
    d.writeln('');
    d.writeln('   nfl_connection.onload = function(e)');
    d.writeln('   {');
@@ -1321,6 +1321,10 @@ function build_regular_season_form()
    d.writeln('   var suffix          = "";');
    d.writeln('   var temp_string     = "";');
    d.writeln('');
+   d.writeln('');
+   d.writeln('   // Convert the nfl_odds string to lower case.');
+   d.writeln('');
+   d.writeln('   nfl_odds = nfl_odds.toLowerCase();');
    d.writeln('');
    d.writeln('   // Remove unneeded information from the nfl_odds html string.');
    d.writeln('');
@@ -2991,7 +2995,7 @@ function build_post_season_form()
    d.writeln('   var index2             = 0;');
    d.writeln('   var nfl_connection     = null;');
    d.writeln('   var nfl_odds           = null;');
-   d.writeln('   var nfl_odds_url       = ["\\"http://www.footballlocks.com/nfl_lines.shtml?t=1\\"","\\"https://www.footballlocks.com/nfl_lines.shtml?t=1\\""];');
+   d.writeln('   var nfl_odds_url       = ["http://www.footballlocks.com/nfl_lines.shtml?t=1","https://www.footballlocks.com/nfl_lines.shtml?t=1"];');
    d.writeln('   var nfl_playoff_rounds = ["Wild Card Weekend Playoff Games","Divisional Playoff Games","Conference Championship Playoffs","NFL Line for Super Bowl"];');
    d.writeln('');
    d.writeln('');
@@ -3017,7 +3021,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   nfl_connection = new XMLHttpRequest();');
    d.writeln('');
-   d.writeln('   nfl_connection.open("GET",encodeURI("https://query.yahooapis.com/v1/public/yql?q=select * from htmlstring where url="+nfl_odds_url[attempt_number-1])+"&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys",true);');
+   d.writeln('   nfl_connection.open("GET","https://cors-escape.herokuapp.com/"+nfl_odds_url[attempt_number-1],true);');
    d.writeln('');
    d.writeln('   nfl_connection.onload = function(e)');
    d.writeln('   {');
@@ -3158,6 +3162,10 @@ function build_post_season_form()
    d.writeln('   var nfl_team_names            = ["Cardinals","Falcons","Ravens",   "Bills",  "Panthers","Bears",  "Bengals",   "Browns",   "Cowboys","Broncos","Lions",  "Giants","Packers",  "Texans", "Colts",       "Jaguars",     "Jets","Chiefs",     "Dolphins","Vikings",  "Patriots",   "Saints",     "Raiders","Eagles",      "Eagles",     "Steelers",  "Chargers","49ers",        "Seahawks","Rams","Buccaneers","Titans",   "Redskins"  ];');
    d.writeln('   var temp_string               = "";');
    d.writeln('');
+   d.writeln('');
+   d.writeln('   // Convert the nfl_odds string to lower case.');
+   d.writeln('');
+   d.writeln('   nfl_odds = nfl_odds.toLowerCase();');
    d.writeln('');
    d.writeln('   // Remove unneeded information from the nfl_odds html string.');
    d.writeln('');
