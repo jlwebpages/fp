@@ -1069,7 +1069,7 @@ function build_post_season_form()
    d.writeln('      try');
    d.writeln('      {');
    d.writeln('         // Get live NFL scores data from the internet.');
-   d.writeln('alert("Fetch test 3");');
+   d.writeln('');
    d.writeln('         const fetch_response = await fetch("https://cors-anywhere.herokuapp.com/http://www.nfl.com/liveupdate/scores/scores.json")');
    d.writeln('         const fetch_data     = await fetch_response;');
    d.writeln('');
