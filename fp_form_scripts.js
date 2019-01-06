@@ -1069,8 +1069,9 @@ function build_post_season_form()
    d.writeln('      try');
    d.writeln('      {');
    d.writeln('         // Get live NFL scores data from the internet.');
-   d.writeln('');
-   d.writeln('         const fetch_response = await fetch("http://www.nfl.com/liveupdate/scores/scores.json")');
+   d.writeln('alert("fetch test 1");');
+   d.writeln('         const fetch_response = await fetch("http://www.nfl.com/liveupdate/scores/scores.json", { method: "GET", mode: "cors", headers: { "Content-Type": "text/plain" }, credentials: "same-origin" })');
+   d.writeln('         //const fetch_response = await fetch("http://www.nfl.com/liveupdate/scores/scores.json")');
    d.writeln('         const fetch_data     = await fetch_response;');
    d.writeln('');
    d.writeln('         nfl_scores_data = await fetch_data.text();');
