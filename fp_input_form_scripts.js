@@ -1145,7 +1145,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   nfl_connection = new XMLHttpRequest();');
    d.writeln('');
-   d.writeln('   nfl_connection.open("GET","https://cors-escape.herokuapp.com/"+nfl_odds_url[attempt_number-1],true);');
+   d.writeln('   nfl_connection.open("GET","http://cors.scrappintwins.com/"+nfl_odds_url[attempt_number-1],true);'); // "http://cors.scrappintwins.com/" provided by Dan M.
    d.writeln('');
    d.writeln('   nfl_connection.onload = function(e)');
    d.writeln('   {');
@@ -3021,7 +3021,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   nfl_connection = new XMLHttpRequest();');
    d.writeln('');
-   d.writeln('   nfl_connection.open("GET","https://cors-escape.herokuapp.com/"+nfl_odds_url[attempt_number-1],true);');
+   d.writeln('   nfl_connection.open("GET","http://cors.scrappintwins.com/"+nfl_odds_url[attempt_number-1],true);'); // "http://cors.scrappintwins.com/" provided by Dan M.
    d.writeln('');
    d.writeln('   nfl_connection.onload = function(e)');
    d.writeln('   {');
