@@ -1090,7 +1090,7 @@ function build_post_season_form()
    d.writeln('   var number_of_games             = '+number_of_games+';');
    d.writeln('   var possession_teams_index      = 0;');
    d.writeln('   var post_season_victors_index   = 0;');
-   d.writeln('   var request_url                 = "https://cors-escape.herokuapp.com/" + nfl_scores_url;');
+   d.writeln('   var request_url                 = "https://www.scrappintwins.com/cors/" + nfl_scores_url;'); // scrappintwins.com provided by Dan M.
    d.writeln('   var scores_index_start          = null;');
    d.writeln('   var scores_index_stop           = null;');
    d.writeln('   var temp_string                 = "";');
@@ -3220,7 +3220,7 @@ function build_regular_season_form()
    d.writeln('   var number_of_games               = '+number_of_games+';');
    d.writeln('   var possession_teams_index        = 0;');
    d.writeln('   var prelim_victors_index          = 0;');
-   d.writeln('   var request_url                   = "https://cors-escape.herokuapp.com/" + nfl_scores_url;');
+   d.writeln('   var request_url                   = "https://www.scrappintwins.com/cors/" + nfl_scores_url;'); // scrappintwins.com provided by Dan M.
    d.writeln('   var temp_string                   = "";');
    d.writeln('   var user_message                  = "";');
    d.writeln('   var visiting_score                = "";');
