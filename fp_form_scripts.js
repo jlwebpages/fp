@@ -1308,7 +1308,7 @@ function build_post_season_form()
    d.writeln('         if (game.qtr == 2) game_state = "2nd";');
    d.writeln('         if (game.qtr == 3) game_state = "3rd";');
    d.writeln('         if (game.qtr == 4) game_state = "4th";');
-   d.writeln('         if (game.qtr >= 5) game_state = "OT" + (game_state-4);');
+   d.writeln('         if (game.qtr >= 5) game_state = "OT" + (game.qtr-4);');
    d.writeln('');
    d.writeln('         // Set the game clock string.');
    d.writeln('');
