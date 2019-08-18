@@ -1116,13 +1116,6 @@ function build_regular_season_form()
    d.writeln('   var nfl_odds_url           = ["http://www.footballlocks.com/nfl_lines.shtml","http://www.footballlocks.com/early_nfl_lines.shtml","https://www.footballlocks.com/nfl_lines.shtml","https://www.footballlocks.com/early_nfl_lines.shtml"];');
    d.writeln('');
    d.writeln('');
-   d.writeln('   // Don\'t try to retrieve NFL Odds beyond the next two weeks.');
-   d.writeln('');
-   d.writeln('   if ('+week+' > '+current_input_week+' + 1)');
-   d.writeln('   {');
-   d.writeln('      return;');
-   d.writeln('   }');
-   d.writeln('');
    d.writeln('   // If the nfl_odds_array is already populated, don\'t waste time retrieving the NFL Odds from the internet again.');
    d.writeln('');
    d.writeln('   if (nfl_odds_array[0].length > 0)');
