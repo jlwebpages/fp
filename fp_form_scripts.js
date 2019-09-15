@@ -1170,6 +1170,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   window.top.gv.refresh_scores = true;');
    d.writeln('');
+   d.writeln('   var down                        = "";');
    d.writeln('   var game                        = "";');
    d.writeln('   var game_clock_integer          = "";');
    d.writeln('   var game_clock_string           = "";');
@@ -1303,7 +1304,7 @@ function build_post_season_form()
    d.writeln('         game_status = "game_in_progress";');
    d.writeln('');
    d.writeln('         // Set the game state to the game quarter, halftime, or overtime.');
-   d.writeln('');;
+   d.writeln('');
    d.writeln('         if (game.qtr == 1) game_state = "1st";');
    d.writeln('         if (game.qtr == 2) game_state = "2nd";');
    d.writeln('         if (game.qtr == 3) game_state = "3rd";');
@@ -1346,7 +1347,16 @@ function build_post_season_form()
    d.writeln('         // Add the game clock to the game state.');
    d.writeln('');
    d.writeln('         game_state = game_state + " " + game_clock_string;');
-   d.writeln('');;
+   d.writeln('');
+   d.writeln('         // Add the down, yards to go, and yard line to the game state.');
+   d.writeln('');
+   d.writeln('         if (game.down == 1) down = "1st";');
+   d.writeln('         if (game.down == 2) down = "2nd";');
+   d.writeln('         if (game.down == 3) down = "3rd";');
+   d.writeln('         if (game.down == 4) down = "4th";');
+   d.writeln('');
+   d.writeln('         game_state = game_state + "<br><font size=-2>" + down + " & " + game.togo.toString() + " at " + game.yl + "</font>";');
+   d.writeln('');
    d.writeln('         // Determine the actual name of the team that has possession of the ball from its abbreviated city name and save it.');
    d.writeln('')
    d.writeln('         for (var k = 0; k < nfl_team_city_abbreviations.length; k++)');
@@ -3383,6 +3393,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   window.top.gv.refresh_scores = true;');
    d.writeln('');
+   d.writeln('   var down                        = "";');
    d.writeln('   var game                        = "";');
    d.writeln('   var game_clock_integer          = "";');
    d.writeln('   var game_clock_string           = "";');
@@ -3497,7 +3508,7 @@ function build_regular_season_form()
    d.writeln('         game_status = "game_in_progress";');
    d.writeln('');
    d.writeln('         // Set the game state to the game quarter, halftime, or overtime.');
-   d.writeln('');;
+   d.writeln('');
    d.writeln('         if (game.qtr == 1) game_state = "1st";');
    d.writeln('         if (game.qtr == 2) game_state = "2nd";');
    d.writeln('         if (game.qtr == 3) game_state = "3rd";');
@@ -3540,7 +3551,16 @@ function build_regular_season_form()
    d.writeln('         // Add the game clock to the game state.');
    d.writeln('');
    d.writeln('         game_state = game_state + " " + game_clock_string;');
-   d.writeln('');;
+   d.writeln('');
+   d.writeln('         // Add the down, yards to go, and yard line to the game state.');
+   d.writeln('');
+   d.writeln('         if (game.down == 1) down = "1st";');
+   d.writeln('         if (game.down == 2) down = "2nd";');
+   d.writeln('         if (game.down == 3) down = "3rd";');
+   d.writeln('         if (game.down == 4) down = "4th";');
+   d.writeln('');
+   d.writeln('         game_state = game_state + "<br><font size=-2>" + down + " & " + game.togo.toString() + " at " + game.yl + "</font>";');
+   d.writeln('');
    d.writeln('         // Determine the actual name of the team that has possession of the ball from its abbreviated city name and save it.');
    d.writeln('')
    d.writeln('         for (var k = 0; k < nfl_team_city_abbreviations.length; k++)');
