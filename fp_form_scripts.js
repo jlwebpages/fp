@@ -1209,7 +1209,7 @@ function build_post_season_form()
    d.writeln('      user_message = user_message + "   - Populate the Preliminary Form using the scores from the internet";');
    d.writeln('      if (command == "Start")');
    d.writeln('      {');
-   d.writeln('         user_message = user_message + "\\n   - Automatically update the Preliminary Form every 15 seconds\\n";');
+   d.writeln('         user_message = user_message + "\\n   - Automatically update the Preliminary Form every 10 seconds\\n";');
    d.writeln('      }');
    d.writeln('');
    d.writeln('      if (confirm(user_message) == false) return false;');
@@ -2239,7 +2239,7 @@ function build_post_season_form()
 
       if (window.top.gv.get_scores_state == "on")
       {
-         window.top.gv.get_scores_timer = setInterval('get_nfl_scores(document,false,"");',15000);
+         window.top.gv.get_scores_timer = setInterval('get_nfl_scores(document,false,"");',10000);
       }
    }
    else
@@ -3434,7 +3434,7 @@ function build_regular_season_form()
    d.writeln('      user_message = user_message + "   - Populate the Preliminary Form using the scores from the internet";');
    d.writeln('      if (command == "Start")');
    d.writeln('      {');
-   d.writeln('         user_message = user_message + "\\n   - Automatically update the Preliminary Form every 15 seconds\\n";');
+   d.writeln('         user_message = user_message + "\\n   - Automatically update the Preliminary Form every 10 seconds\\n";');
    d.writeln('      }');
    d.writeln('');
    d.writeln('      if (confirm(user_message) == false) return false;');
@@ -4398,7 +4398,7 @@ function build_regular_season_form()
 
       if (window.top.gv.get_scores_state == "on")
       {
-         window.top.gv.get_scores_timer = setInterval('get_nfl_scores(document,false,"");',15000);
+         window.top.gv.get_scores_timer = setInterval('get_nfl_scores(document,false,"");',10000);
       }
    }
    else
