@@ -1112,8 +1112,8 @@ function build_regular_season_form()
    d.writeln('   var index2                 = 0;');
    d.writeln('   var nfl_connection         = null;');
    d.writeln('   var nfl_odds               = null;');
-   d.writeln('   var nfl_odds_search_string = ["NFL Lines For Week '+week+' - N","NFL Lines For Week '+week+' - E","NFL Lines For Week '+week+' - N","NFL Lines For Week '+week+' - E"];');
-   d.writeln('   var nfl_odds_url           = ["www.footballlocks.com/nfl_lines.shtml","www.footballlocks.com/early_nfl_lines.shtml"];');
+   d.writeln('   var nfl_odds_search_string = ["NFL Lines For Week '+week+' - N"  ,"NFL Lines For Week '+week+' - N"      ,"NFL Lines For Week '+week+' - E"        ,"NFL Lines For Week '+week+' - E"            ];');
+   d.writeln('   var nfl_odds_url           = ["footballlocks.com/nfl_lines.shtml","www.footballlocks.com/nfl_lines.shtml","footballlocks.com/early_nfl_lines.shtml","www.footballlocks.com/early_nfl_lines.shtml"];');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Always display alerts if name contains "JL".');
@@ -1137,6 +1137,8 @@ function build_regular_season_form()
    d.writeln('   // Display loading indicator while call to XMLHttpRequest is working.');
    d.writeln('');
    d.writeln('   top.display_frame("fp_loading_indicator",0);');
+   d.writeln('');
+   d.writeln('   //JL alert(attempt_number+":"+nfl_odds_search_string[attempt_number-1]+":"+nfl_odds_url[attempt_number-1]);');
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
@@ -1215,11 +1217,20 @@ function build_regular_season_form()
    d.writeln('         }')
    d.writeln('         else // XMLHttpRequest was unsuccessful.')
    d.writeln('         {')
-   d.writeln('            if (suppress_alerts == false) alert("\\"Picks From Odds\\" failed.");');
+   d.writeln('            if (attempt_number == nfl_odds_url.length)');
+   d.writeln('            {');
+   d.writeln('               if (suppress_alerts == false) alert("\\"Picks From Odds\\" failed.");');
    d.writeln('');
-   d.writeln('            // Remove loading indicator.');
+   d.writeln('               // Remove loading indicator.');
    d.writeln('');
-   d.writeln('            top.display_frame(restore_frame,0);');
+   d.writeln('               top.display_frame(restore_frame,0);');
+   d.writeln('            }');
+   d.writeln('            else');
+   d.writeln('            {');
+   d.writeln('               // Try again.');
+   d.writeln('');
+   d.writeln('               get_nfl_odds(document,attempt_number+1,restore_frame,true);');
+   d.writeln('            }');
    d.writeln('         }')
    d.writeln('      }')
    d.writeln('');
