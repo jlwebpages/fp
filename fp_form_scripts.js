@@ -1063,7 +1063,7 @@ function build_post_season_form()
    d.writeln('   var nfl_connection = null;');
    d.writeln('   var nfl_scores     = null;');
    d.writeln('   var nfl_scores_url = "www.nfl.com/liveupdate/scores/scores.json";');
-   d.writeln('   var request_url    = "https://www.scrappintwins.com/cors/" + nfl_scores_url;'); // scrappintwins.com provided by Dan M.
+   d.writeln('   var request_url    = "https://www.scrappintwins.com/cors/" + nfl_scores_url + "?" + (new Date()).getTime();'); // scrappintwins.com provided by Dan M.
    d.writeln('   var user_message   = "\\"Get NFL Scores\\" failed.";');
    d.writeln('');
    d.writeln('');
@@ -3235,7 +3235,7 @@ function build_regular_season_form()
    d.writeln('   var nfl_connection = null;');
    d.writeln('   var nfl_scores     = null;');
    d.writeln('   var nfl_scores_url = "www.nfl.com/liveupdate/scores/scores.json";');
-   d.writeln('   var request_url    = "https://www.scrappintwins.com/cors/" + nfl_scores_url;'); // scrappintwins.com provided by Dan M.
+   d.writeln('   var request_url    = "https://www.scrappintwins.com/cors/" + nfl_scores_url + "?" + (new Date()).getTime();'); // scrappintwins.com provided by Dan M.
    d.writeln('   var user_message   = "\\"Get NFL Scores\\" failed.";');
    d.writeln('');
    d.writeln('');

@@ -3027,7 +3027,7 @@ function build_post_season_form()
    d.writeln('   var index2             = 0;');
    d.writeln('   var nfl_connection     = null;');
    d.writeln('   var nfl_odds           = null;');
-   d.writeln('   var nfl_odds_url       = ["www.footballlocks.com/nfl_lines.shtml"];');
+   d.writeln('   var nfl_odds_url       = ["footballlocks.com/nfl_lines.shtml","www.footballlocks.com/nfl_lines.shtml"];');
    d.writeln('   var nfl_playoff_rounds = ["Wild Card Weekend Playoff Games","Divisional Playoff Games","Conference Championship Playoffs","NFL Line for Super Bowl"];');
    d.writeln('');
    d.writeln('');
