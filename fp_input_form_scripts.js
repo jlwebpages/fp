@@ -3222,7 +3222,9 @@ function build_post_season_form()
    d.writeln('   {');
    d.writeln('      // Find the next table record in the nfl_odds html string and put it in nfl_odds_array.');
    d.writeln('');
+   d.writeln('      temp_index = nfl_odds.indexOf("</table>");');  //JL Temp Workaround for missing <tr> html tag
    d.writeln('      index1 = nfl_odds.indexOf("<tr>");');
+   d.writeln('      if (index1 > temp_index) index1 = index2-2;');  //JL Temp Workaround for missing <tr> html tag
    d.writeln('      index2 = nfl_odds.indexOf("<\\/tr>");');
    d.writeln('');
    d.writeln('      nfl_odds_array[i] = nfl_odds.substring(index1,index2+5);');
