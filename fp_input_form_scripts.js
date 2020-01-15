@@ -1321,9 +1321,9 @@ function build_regular_season_form()
    d.writeln('function process_nfl_odds(nfl_odds)');
    d.writeln('{');
    d.writeln('   var exit_loop       = false;');
-   d.writeln('   var index           = 0;');
-   d.writeln('   var index1          = 0;');
-   d.writeln('   var index2          = 0;');
+   d.writeln('   var index           = -1;');
+   d.writeln('   var index1          = -1;');
+   d.writeln('   var index2          = -1;');
    d.writeln('   var nfl_team_cities = ["Arizona",  "Atlanta","Baltimore","Buffalo","Carolina","Chicago","Cincinnati","Cleveland","Dallas", "Denver", "Detroit","Giants","Green Bay","Houston","Indianapolis","Jacksonville","Jets","Kansas City","Miami",   "Minnesota","New England","New Orleans","Oakland","Philadelphia","Philadephia","Pittsburgh","Chargers","San Francisco","Seattle", "Rams","Tampa Bay", "Tennessee","Washington"];');
    d.writeln('   var nfl_team_names  = ["Cardinals","Falcons","Ravens",   "Bills",  "Panthers","Bears",  "Bengals",   "Browns",   "Cowboys","Broncos","Lions",  "Giants","Packers",  "Texans", "Colts",       "Jaguars",     "Jets","Chiefs",     "Dolphins","Vikings",  "Patriots",   "Saints",     "Raiders","Eagles",      "Eagles",     "Steelers",  "Chargers","49ers",        "Seahawks","Rams","Buccaneers","Titans",   "Redskins"  ];');
    d.writeln('   var suffix          = "";');
@@ -3190,13 +3190,13 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('function process_nfl_odds(nfl_odds)');
    d.writeln('{');
-   d.writeln('   var index                     = 0;');
-   d.writeln('   var index1                    = 0;');
-   d.writeln('   var index2                    = 0;');
-   d.writeln('   var nfl_playoff_rounds        = ["Wild Card Weekend Playoff Games","Divisional Playoff Games","Conference Championship Playoffs","NFL Line for Super Bowl"];');
-   d.writeln('   var nfl_team_cities           = ["Arizona",  "Atlanta","Baltimore","Buffalo","Carolina","Chicago","Cincinnati","Cleveland","Dallas", "Denver", "Detroit","Giants","Green Bay","Houston","Indianapolis","Jacksonville","Jets","Kansas City","Miami",   "Minnesota","New England","New Orleans","Oakland","Philadelphia","Philadephia","Pittsburgh","Chargers","San Francisco","Seattle", "Rams","Tampa Bay", "Tennessee","Washington"];');
-   d.writeln('   var nfl_team_names            = ["Cardinals","Falcons","Ravens",   "Bills",  "Panthers","Bears",  "Bengals",   "Browns",   "Cowboys","Broncos","Lions",  "Giants","Packers",  "Texans", "Colts",       "Jaguars",     "Jets","Chiefs",     "Dolphins","Vikings",  "Patriots",   "Saints",     "Raiders","Eagles",      "Eagles",     "Steelers",  "Chargers","49ers",        "Seahawks","Rams","Buccaneers","Titans",   "Redskins"  ];');
-   d.writeln('   var temp_string               = "";');
+   d.writeln('   var index              = -1;');
+   d.writeln('   var index1             = -1;');
+   d.writeln('   var index2             = -1;');
+   d.writeln('   var nfl_playoff_rounds = ["Wild Card Weekend Playoff Games","Divisional Playoff Games","Conference Championship Playoffs","NFL Line for Super Bowl"];');
+   d.writeln('   var nfl_team_cities    = ["Arizona",  "Atlanta","Baltimore","Buffalo","Carolina","Chicago","Cincinnati","Cleveland","Dallas", "Denver", "Detroit","Giants","Green Bay","Houston","Indianapolis","Jacksonville","Jets","Kansas City","Miami",   "Minnesota","New England","New Orleans","Oakland","Philadelphia","Philadephia","Pittsburgh","Chargers","San Francisco","Seattle", "Rams","Tampa Bay", "Tennessee","Washington"];');
+   d.writeln('   var nfl_team_names     = ["Cardinals","Falcons","Ravens",   "Bills",  "Panthers","Bears",  "Bengals",   "Browns",   "Cowboys","Broncos","Lions",  "Giants","Packers",  "Texans", "Colts",       "Jaguars",     "Jets","Chiefs",     "Dolphins","Vikings",  "Patriots",   "Saints",     "Raiders","Eagles",      "Eagles",     "Steelers",  "Chargers","49ers",        "Seahawks","Rams","Buccaneers","Titans",   "Redskins"  ];');
+   d.writeln('   var temp_string        = "";');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Convert the nfl_odds string to lower case.');
@@ -3222,9 +3222,13 @@ function build_post_season_form()
    d.writeln('   {');
    d.writeln('      // Find the next table record in the nfl_odds html string and put it in nfl_odds_array.');
    d.writeln('');
-   d.writeln('      temp_index = nfl_odds.indexOf("</table>");');  //JL Temp Workaround for missing <tr> html tag
    d.writeln('      index1 = nfl_odds.indexOf("<tr>");');
-   d.writeln('      if (index1 > temp_index) index1 = index2-2;');  //JL Temp Workaround for missing <tr> html tag
+   d.writeln('');
+   d.writeln('      // In the case where a closing </tr> tag is missing its opening <tr> tag, assign index1 based on the previous value of index2.');
+   d.writeln('');
+   d.writeln('      index = nfl_odds.indexOf("<\\/tr>");');
+   d.writeln('      if ( (index1 > index) && (index2 > -1) ) index1 = index2-2;');
+   d.writeln('');
    d.writeln('      index2 = nfl_odds.indexOf("<\\/tr>");');
    d.writeln('');
    d.writeln('      nfl_odds_array[i] = nfl_odds.substring(index1,index2+5);');
