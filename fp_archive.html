@@ -121,14 +121,14 @@ function display_archive_page()
       d.writeln('      w.gv.form_view               = "expanded";');
    }
    d.writeln('      w.gv.games_over              = true;');
-   d.writeln('      w.gv.home_scores             = ["0","0","0","0","0","0","0","0","0","0","0"];');
+   d.writeln('      w.gv.home_scores             = "";');
    d.writeln('      w.gv.mobile                  = top.mobile;');
    d.writeln('      w.gv.mode                    = "summary_archive";');
    d.writeln('      w.gv.order_by                = "overall_scores";');
    d.writeln('      w.gv.player_index            = 0;');
    d.writeln('      w.gv.ps_players              = "";');
    d.writeln('      w.gv.scores_already_assigned = false;');
-   d.writeln('      w.gv.visitor_scores          = ["0","0","0","0","0","0","0","0","0","0","0"];');
+   d.writeln('      w.gv.visitor_scores          = "";');
    d.writeln('');
    d.writeln('      w.archive.location.href="fp_forms_'+archive_year+'.html";');
    d.writeln('');
@@ -214,17 +214,16 @@ function display_archive_page()
       d.writeln('      w.gv.form_view           = "expanded";');
    }
    d.writeln('      w.gv.games_over          = true;');
-   d.writeln('      w.gv.home_scores         = ["","","","","","","","","","","","","","","",""];');
+   d.writeln('      w.gv.home_scores         = "";');
    d.writeln('      w.gv.mn_points_entered   = 0;');
    d.writeln('      w.gv.mobile              = top.mobile;');
    d.writeln('      w.gv.mode                = received_mode;');
    d.writeln('      w.gv.opponent_index      = 0;');
    d.writeln('      w.gv.order_by            = "scores";');
    d.writeln('      w.gv.player_index        = 0;');
-   d.writeln('      w.gv.prelim_winners      = ["0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"];');
    d.writeln('      w.gv.rs_players          = "";');
    d.writeln('      w.gv.selected_week       = 0;');
-   d.writeln('      w.gv.visiting_scores     = ["","","","","","","","","","","","","","","",""];');
+   d.writeln('      w.gv.visiting_scores     = "";');
    d.writeln('');
    d.writeln('      w.archive.location.href="fp_forms_'+archive_year+'.html";');
    d.writeln('');

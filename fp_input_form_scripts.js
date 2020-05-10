@@ -23,14 +23,15 @@ function build_regular_season_form()
       return false;
    }
 
-   var current_input_week = top.current_input_week;
-   var max_no_of_games    = 16;
-   var week               = current_input_week;
+   var current_input_week     = top.current_input_week;
+   var max_number_of_rs_games = 16;
+   var number_of_rs_weeks     = top.all_home_teams.length;
+   var week                   = current_input_week;
 
-   if (current_input_week > 17) current_input_week = 17;
-   if (week > 17)                             week = 17;
+   if (current_input_week > number_of_rs_weeks) current_input_week = number_of_rs_weeks;
+   if (week > number_of_rs_weeks)                             week = number_of_rs_weeks;
 
-   if (top.global_week > 0 && top.global_week < 18)
+   if (top.global_week >= 1 && top.global_week <= number_of_rs_weeks)
    {
       week = top.global_week;
    }
@@ -38,7 +39,7 @@ function build_regular_season_form()
    var home_teams                = top.all_home_teams[week-1];
    var visiting_teams            = top.all_visiting_teams[week-1];
    var open_date                 = top.all_open_dates[week-1];
-   var number_of_games           = home_teams.length;
+   var number_of_rs_games        = home_teams.length;
    var accept_tooltip            = "";
    var picks_from_odds_tooltip   = "";
    var random_picks_tooltip      = "";
@@ -167,10 +168,10 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('// Define arrays for the selected picks and weights.');
    d.writeln('');
-   d.writeln('var picks                = new Array('+number_of_games+');');
-   d.writeln('var picks_select_array   = new Array('+number_of_games+');');
-   d.writeln('var weights              = new Array('+number_of_games+');');
-   d.writeln('var weights_select_array = new Array('+number_of_games+');');
+   d.writeln('var picks                = new Array('+number_of_rs_games+');');
+   d.writeln('var picks_select_array   = new Array('+number_of_rs_games+');');
+   d.writeln('var weights              = new Array('+number_of_rs_games+');');
+   d.writeln('var weights_select_array = new Array('+number_of_rs_games+');');
    d.writeln('');
    d.writeln('');
    d.writeln('// Define variables to use for automatically fixing player');
@@ -184,7 +185,7 @@ function build_regular_season_form()
    d.writeln('// Define variables for NFL Odds.');
    d.writeln('');
    d.writeln('var display_spreads_from_odds      = false;');
-   d.writeln('var nfl_odds_array                 = new Array('+number_of_games+');');
+   d.writeln('var nfl_odds_array                 = new Array('+number_of_rs_games+');');
    d.writeln('var noa_team_index                 = 0;');
    d.writeln('var noa_spread_index               = 1;');
    d.writeln('var noa_total_points_index         = 2;');
@@ -237,7 +238,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('function build_player_name(player_menu_index)');
    d.writeln('{');
-   d.writeln('   if ( (player_menu_index < 0) || (player_menu_index > top.number_of_rs_players) )');
+   d.writeln('   if ( (player_menu_index < 0) || (player_menu_index > top.rs_players.length) )');
    d.writeln('   {');
    d.writeln('      player_menu_index = top.player_index;');
    d.writeln('   }');
@@ -272,7 +273,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('function clear_nfl_odds_array()');
    d.writeln('{');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
    d.writeln('      nfl_odds_array[i] = "";');
    d.writeln('   }');
@@ -283,7 +284,7 @@ function build_regular_season_form()
    d.writeln('{');
    d.writeln('   // Clear out the picks and weights arrays and also the picks and weights on the Input Form.');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
    d.writeln('      picks  [i] = "";');
    d.writeln('      weights[i] = "";');
@@ -347,14 +348,14 @@ function build_regular_season_form()
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px\\"><b>Copy the following into the message body:</b></td></tr>"');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-left: 10px\\">"');
    d.writeln('');
-   d.writeln('      for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('      for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('      {');
    d.writeln('         // Add blank lines before the Monday Night game if there');
    d.writeln('         // are less than the maximum number of games scheduled.');
    d.writeln('');
-   d.writeln('         if (i+1 == '+number_of_games+')');
+   d.writeln('         if (i+1 == '+number_of_rs_games+')');
    d.writeln('         {');
-   d.writeln('            for (var j = 1; j <= '+max_no_of_games+'-'+number_of_games+'; j++)');
+   d.writeln('            for (var j = 1; j <= '+max_number_of_rs_games+'-'+number_of_rs_games+'; j++)');
    d.writeln('            {');
    d.writeln('               picks_message += "<br>";');
    d.writeln('            }');
@@ -563,14 +564,14 @@ function build_regular_season_form()
    d.writeln('   var mail_msg = "mailto:fp@socal.rr.com?subject=" + name + " - Week ' + week + ' Picks&body=";');
    d.writeln('');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
    d.writeln('      // Add blank lines before the Monday Night game if there');
    d.writeln('      // are less than the maximum number of games scheduled.');
    d.writeln('');
-   d.writeln('      if (i+1 == '+number_of_games+')');
+   d.writeln('      if (i+1 == '+number_of_rs_games+')');
    d.writeln('      {');
-   d.writeln('         for (var j = 1; j <= '+max_no_of_games+'-'+number_of_games+'; j++)');
+   d.writeln('         for (var j = 1; j <= '+max_number_of_rs_games+'-'+number_of_rs_games+'; j++)');
    d.writeln('         {');
    d.writeln('            // Must put one blank before "\\n" so that the blank lines get generated properly.');
    d.writeln('');
@@ -602,7 +603,7 @@ function build_regular_season_form()
    d.writeln('function format_picks_for_dialog(document,picks_already_validated,game_to_format)');
    d.writeln('{');
    d.writeln('   var formatted_picks   = "";');
-   d.writeln('   var highest_game      = '+number_of_games+';');
+   d.writeln('   var highest_game      = '+number_of_rs_games+';');
    d.writeln('   var losing_team       = "";');
    d.writeln('   var lowest_game       = 1;');
    d.writeln('   var pick              = "";');
@@ -613,7 +614,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   upset_note = "";');
    d.writeln('');
-   d.writeln('   if ((game_to_format > 0) && (game_to_format <= '+number_of_games+'))');
+   d.writeln('   if ((game_to_format > 0) && (game_to_format <= '+number_of_rs_games+'))');
    d.writeln('   {');
    d.writeln('      lowest_game  = game_to_format;');
    d.writeln('      highest_game = game_to_format;');
@@ -621,7 +622,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Build lines for all games that have a weight assigned.');
    d.writeln('');
-   d.writeln('   for (var i = '+max_no_of_games+'; i > '+max_no_of_games+'-'+number_of_games+'; i--)');
+   d.writeln('   for (var i = '+max_number_of_rs_games+'; i > '+max_number_of_rs_games+'-'+number_of_rs_games+'; i--)');
    d.writeln('   {');
    d.writeln('      for (var j = (lowest_game-1); j <= (highest_game-1); j++)');
    d.writeln('      {');
@@ -817,13 +818,13 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Populate picks and weights from the nfl_odds_array.');
    d.writeln('');
-   d.writeln('   weight = 16;');
+   d.writeln('   weight = '+max_number_of_rs_games+';');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
    d.writeln('      exit_loop = false;');
    d.writeln('');
-   d.writeln('      for (var j = 0; j < '+number_of_games+'; j++)');
+   d.writeln('      for (var j = 0; j < '+number_of_rs_games+'; j++)');
    d.writeln('      {');
    d.writeln('         if (nfl_odds_array[i][noa_team_index] == home_teams[j])');
    d.writeln('         {');
@@ -844,7 +845,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('         if (exit_loop == true)');
    d.writeln('         {');
-   d.writeln('            if (j == '+number_of_games+'-1)');
+   d.writeln('            if (j == '+number_of_rs_games+'-1)');
    d.writeln('            {');
    d.writeln('               // This is the last game scheduled so use the total points for the Monday Night Points Prediction.');
    d.writeln('');
@@ -860,7 +861,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Put the picks and weights on Input Form.');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
    d.writeln('      document.fp_inputs.elements["pick"  +(i+1)].value = picks[i];');
    d.writeln('      document.fp_inputs.elements["weight"+(i+1)].value = weights[i];');
@@ -870,7 +871,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (validate_monday_night_points(document.fp_inputs.mn_points,false) == false)');
    d.writeln('   {');
-   d.writeln('      prompt_message = "\\"Picks From Odds\\" can\'t find Monday Night Total Points for \\""+visiting_teams['+number_of_games+'-1]+" at "+home_teams['+number_of_games+'-1]+".\\"  Enter a number between 1 and 99.\\n\\n";');
+   d.writeln('      prompt_message = "\\"Picks From Odds\\" can\'t find Monday Night Total Points for \\""+visiting_teams['+number_of_rs_games+'-1]+" at "+home_teams['+number_of_rs_games+'-1]+".\\"  Enter a number between 1 and 99.\\n\\n";');
    d.writeln('');
    d.writeln('      while (user_input != null)');
    d.writeln('      {');
@@ -926,7 +927,7 @@ function build_regular_season_form()
    d.writeln('   var user_messsage    = "";');
    d.writeln('   var weight_index     = 0;');
    d.writeln('   var weights_complete = false;');
-   d.writeln('   var weights_used     = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];');
+   d.writeln('   var weights_used     = Array('+max_number_of_rs_games+').fill(false);');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Make sure the user name has been selected.');
@@ -958,7 +959,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   counter = 0;');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
    d.writeln('      if (weights[i] > 0)');
    d.writeln('      {');
@@ -968,17 +969,17 @@ function build_regular_season_form()
    d.writeln('      }');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (counter == 0)                       random_picks_generated = "Random picks.";');
-   d.writeln('   if (counter  > 0)                       random_picks_generated = "Partial random picks.";');
-   d.writeln('   if (counter  > '+number_of_games+' - 1) random_picks_generated = "No random picks.";');
+   d.writeln('   if (counter == 0)                          random_picks_generated = "Random picks.";');
+   d.writeln('   if (counter  > 0)                          random_picks_generated = "Partial random picks.";');
+   d.writeln('   if (counter  > '+number_of_rs_games+' - 1) random_picks_generated = "No random picks.";');
    d.writeln('');
    d.writeln('   while (weights_complete == false)');
    d.writeln('   {');
    d.writeln('      // Adjust the range to be used for generating a random weight based on which weights have already been saved.');
    d.writeln('');
-   d.writeln('      from = 16 - '+number_of_games+' + 1;');
+   d.writeln('      from = '+max_number_of_rs_games+' - '+number_of_rs_games+' + 1;');
    d.writeln('');
-   d.writeln('      for (var j = (16 - '+number_of_games+' + 1); j <= 16; j++)');
+   d.writeln('      for (var j = ('+max_number_of_rs_games+' - '+number_of_rs_games+' + 1); j <= '+max_number_of_rs_games+'; j++)');
    d.writeln('      {');
    d.writeln('         if (weights_used[j-1] == false)');
    d.writeln('         {');
@@ -986,9 +987,9 @@ function build_regular_season_form()
    d.writeln('         }');
    d.writeln('      }');
    d.writeln('');
-   d.writeln('      to = 16;');
+   d.writeln('      to = '+max_number_of_rs_games+';');
    d.writeln('');
-   d.writeln('      for (var j = 16; j > (16 - '+number_of_games+'); j--)');
+   d.writeln('      for (var j = '+max_number_of_rs_games+'; j > ('+max_number_of_rs_games+' - '+number_of_rs_games+'); j--)');
    d.writeln('      {');
    d.writeln('         if (weights_used[j-1] == false)');
    d.writeln('         {');
@@ -1030,7 +1031,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      // If the weights list is proved to be incomplete, generate another random weight (stay in the while loop).');
    d.writeln('');
-   d.writeln('      for (var i = from; i <= 16; i++)');
+   d.writeln('      for (var i = from; i <= '+max_number_of_rs_games+'; i++)');
    d.writeln('      {');
    d.writeln('         if (weights_used[i-1] == false) weights_complete = false;');
    d.writeln('      }');
@@ -1040,7 +1041,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   counter = 0;');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
    d.writeln('      // Do not overwrite any picks that have been selected already.');
    d.writeln('');
@@ -1056,9 +1057,9 @@ function build_regular_season_form()
    d.writeln('      }');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if ( (counter == 0)                   && (random_picks_generated == "No random picks.") ) random_picks_generated = "Partial random picks.";');
-   d.writeln('   if ( (counter  > 0)                   && (counter < '+number_of_games+') )                random_picks_generated = "Partial random picks.";');
-   d.writeln('   if ( (counter == '+number_of_games+') && (random_picks_generated != "No random picks.") ) random_picks_generated = "Partial random picks.";');
+   d.writeln('   if ( (counter == 0)                      && (random_picks_generated == "No random picks.") ) random_picks_generated = "Partial random picks.";');
+   d.writeln('   if ( (counter  > 0)                      && (counter < '+number_of_rs_games+') )                random_picks_generated = "Partial random picks.";');
+   d.writeln('   if ( (counter == '+number_of_rs_games+') && (random_picks_generated != "No random picks.") ) random_picks_generated = "Partial random picks.";');
    d.writeln('');
    d.writeln('   // If valid Monday Night Total Points not already input, then randomly generate Monday Night Total Points.');
    d.writeln('');
@@ -1090,7 +1091,7 @@ function build_regular_season_form()
    d.writeln('{');
    d.writeln('   display_spreads_from_odds = document.getElementById("display_spreads_checkbox").checked;');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
    d.writeln('      document.getElementById(home_teams[i]).innerHTML     = home_teams[i]     + get_point_spreads_string(home_teams[i],false);');
    d.writeln('      document.getElementById(visiting_teams[i]).innerHTML = visiting_teams[i] + get_point_spreads_string(visiting_teams[i],false);');
@@ -1265,7 +1266,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Assign picks and weights.');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
    d.writeln('      picks  [i] = document.fp_inputs.elements["pick"  +(i+1)].value;');
    d.writeln('      weights[i] = document.fp_inputs.elements["weight"+(i+1)].value;');
@@ -1303,7 +1304,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if ( ((display_spreads_from_odds == true) || (ignore_display_spreads_from_odds == true)) && (nfl_odds_array[0].length > 0) )');
    d.writeln('   {');
-   d.writeln('      for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('      for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('      {');
    d.writeln('         if ((team == nfl_odds_array[i][noa_team_index]) && (nfl_odds_array[i][noa_spread_index] != 0))');
    d.writeln('         {');
@@ -1349,7 +1350,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Extract the game information for each game out of the nfl_odds html string and put into the nfl_odds_array.');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
    d.writeln('      suffix = i + 10;');
    d.writeln('');
@@ -1497,7 +1498,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      exit_loop = false;');
    d.writeln('');
-   d.writeln('      for (var j = 0; j < '+number_of_games+'; j++)');
+   d.writeln('      for (var j = 0; j < '+number_of_rs_games+'; j++)');
    d.writeln('      {');
    d.writeln('         if (temp_string[0] == home_teams[j])');
    d.writeln('         {');
@@ -1530,7 +1531,7 @@ function build_regular_season_form()
    d.writeln('   // Convert each element of the nfl_odds_array into an array itself');
    d.writeln('   // and make sure that the NFL Odds point spread value is of type float.');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
    d.writeln('      nfl_odds_array[i]                   = nfl_odds_array[i].split(" ");');
    d.writeln('      nfl_odds_array[i][noa_spread_index] = parseFloat(nfl_odds_array[i][noa_spread_index]);');
@@ -1640,7 +1641,7 @@ function build_regular_season_form()
    d.writeln('   var last_specific_duplicate_weight_count  = 0;');
    d.writeln('   var losing_team                           = "";');
    d.writeln('   var number_of_different_duplicate_weights = 0;');
-   d.writeln('   var numbers                               = new Array('+number_of_games+');');
+   d.writeln('   var numbers                               = new Array('+number_of_rs_games+');');
    d.writeln('   var okay_to_shift_weights                 = false;');
    d.writeln('   var specific_duplicate_weight_count       = 0;');
    d.writeln('   var weight_not_used                       = 0;');
@@ -1662,7 +1663,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   for (var a = 0; a < numbers.length; a++)');
    d.writeln('   {');
-   d.writeln('      numbers[a] = '+max_no_of_games+'-a;');
+   d.writeln('      numbers[a] = '+max_number_of_rs_games+'-a;');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   for (var b = 0; b < numbers.length; b++)');
@@ -1688,9 +1689,9 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      // Alert the user if a game has been assigned a weight, but a winner has not been picked.');
    d.writeln('');
-   d.writeln('      for (var i = '+max_no_of_games+'; i > '+max_no_of_games+'-'+number_of_games+'; i--)');
+   d.writeln('      for (var i = '+max_number_of_rs_games+'; i > '+max_number_of_rs_games+'-'+number_of_rs_games+'; i--)');
    d.writeln('      {');
-   d.writeln('         for (var j = 0; j < '+number_of_games+'; j++)');
+   d.writeln('         for (var j = 0; j < '+number_of_rs_games+'; j++)');
    d.writeln('         {');
    d.writeln('            if (weights[j] == i)');
    d.writeln('            {');
@@ -1715,7 +1716,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      // Alert the user if a game has not been assigned a weight and a winner has not been picked.');
    d.writeln('');
-   d.writeln('      for (var j = 0; j < '+number_of_games+'; j++)');
+   d.writeln('      for (var j = 0; j < '+number_of_rs_games+'; j++)');
    d.writeln('      {');
    d.writeln('         if (weights[j] == 0)');
    d.writeln('         {');
@@ -1739,7 +1740,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      // Alert the user if a winner has been picked for a game, but a weight has not been assigned.');
    d.writeln('');
-   d.writeln('      for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('      for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('      {');
    d.writeln('         if (weights[i] == 0)');
    d.writeln('         {');
@@ -1774,12 +1775,12 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // If we get here it means there are no blank picks and no blank weights, so determine if there are any duplicate weights.');
    d.writeln('');
-   d.writeln('   for (var i = '+max_no_of_games+'; i > '+max_no_of_games+'-'+number_of_games+'; i--)');
+   d.writeln('   for (var i = '+max_number_of_rs_games+'; i > '+max_number_of_rs_games+'-'+number_of_rs_games+'; i--)');
    d.writeln('   {');
    d.writeln('      duplicate_weight_games          = "";');
    d.writeln('      specific_duplicate_weight_count = 0;');
    d.writeln('');
-   d.writeln('      for (var j = 0; j < '+number_of_games+'; j++)');
+   d.writeln('      for (var j = 0; j < '+number_of_rs_games+'; j++)');
    d.writeln('      {');
    d.writeln('         if (weights[j] == i)');
    d.writeln('         {');
@@ -1891,7 +1892,7 @@ function build_regular_season_form()
    d.writeln('      winning_team2 = "";');
    d.writeln('      losing_team2  = "";');
    d.writeln('');
-   d.writeln('      for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('      for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('      {');
    d.writeln('         if (weights[i] == duplicate_weight)');
    d.writeln('         {');
@@ -1953,7 +1954,7 @@ function build_regular_season_form()
    d.writeln('      {');
    d.writeln('         if (able_to_shift_weights_up == true)');
    d.writeln('         {');
-   d.writeln('            for (var ii = 0; ii < '+number_of_games+'; ii++)');
+   d.writeln('            for (var ii = 0; ii < '+number_of_rs_games+'; ii++)');
    d.writeln('            {');
    d.writeln('               if ( ((weights[ii]-0) >= (duplicate_weight-0)) && ((weights[ii]-0) < (weight_not_used-0)) )');
    d.writeln('               {');
@@ -1976,7 +1977,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('         if (able_to_shift_weights_down == true)');
    d.writeln('         {');
-   d.writeln('            for (var ii = 0; ii < '+number_of_games+'; ii++)');
+   d.writeln('            for (var ii = 0; ii < '+number_of_rs_games+'; ii++)');
    d.writeln('            {');
    d.writeln('               if ( ((weights[ii]-0) <= (duplicate_weight-0)) && ((weights[ii]-0) > (weight_not_used-0)) )');
    d.writeln('               {');
@@ -2024,7 +2025,7 @@ function build_regular_season_form()
    d.writeln('<tr align=center style="vertical-align: middle">');
    d.writeln('<td nowrap class="no_border"><font style="font-size: 18pt">Input Form - Week&nbsp;</font>');
    d.writeln('   <select class="light_gray_background" style="vertical-align: bottom; font-family: Calibri; font-size: 14pt; border: 1px solid gray" name="selected_week_menu" size=1 onChange="change_week(document); return true;">');
-   for (var i = current_input_week; i <= 17; i++)
+   for (var i = current_input_week; i <= number_of_rs_weeks; i++)
    {
       if (i == week)
       {
@@ -2053,7 +2054,7 @@ function build_regular_season_form()
    d.writeln('<td align=right class="bb2_border" colspan=2><font style="font-size: 13pt"><b>Name:</b></font></td>');
    d.writeln('<td align=left class="bb2_border" colspan=4>');
    d.writeln('<select style="font-size: 12pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
-   for (var i = 0; i <= top.number_of_rs_players; i++)
+   for (var i = 0; i <= top.rs_players.length; i++)
    {
       switch (i)
       {
@@ -2080,10 +2081,10 @@ function build_regular_season_form()
    d.writeln('</tr>');
    d.writeln('');
 
-   for (var i = 1; i <= number_of_games; i++)
+   for (var i = 1; i <= number_of_rs_games; i++)
    {
       d.writeln('<tr align=center>');
-      if (i == number_of_games)
+      if (i == number_of_rs_games)
       {
          d.writeln('<td class="br2_border"><font style="font-size: 12pt"><b>' + i + '</b></font></td>');
          d.writeln('<td class="gr1_border"><font style="font-size: 12pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
@@ -2103,7 +2104,7 @@ function build_regular_season_form()
       d.writeln('       <option          value="H">H');
       d.writeln('       <option          value="V">V');
       d.writeln('    </select></td>');
-      if (i == number_of_games)
+      if (i == number_of_rs_games)
       {
          d.writeln('<td class="no_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="weight'+i+'" size=1>');
       }
@@ -2112,9 +2113,9 @@ function build_regular_season_form()
          d.writeln('<td class="gb1_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="weight'+i+'" size=1>');
       }
       d.writeln('       <option selected value="0">');
-      for (var j = 1; j <= number_of_games; j++)
+      for (var j = 1; j <= number_of_rs_games; j++)
       {
-         var current_weight = max_no_of_games-number_of_games+j;
+         var current_weight = max_number_of_rs_games-number_of_rs_games+j;
 
          d.writeln('       <option          value="'+current_weight+'">'+current_weight);
       }
@@ -2208,10 +2209,11 @@ function build_regular_season_form()
 
 function build_post_season_form()
 {
+   var number_of_rs_weeks          = top.all_home_teams.length;
    var home_teams                  = top.post_season_home_teams;
    var visiting_teams              = top.post_season_visiting_teams;
-   var week                        = top.current_input_week - 17;   
-   var number_of_games             = home_teams.length;
+   var week                        = top.current_input_week - number_of_rs_weeks;   
+   var number_of_ps_games          = home_teams.length;
    var accept_tooltip              = "";
    var picks_from_odds_button_name = "Picks From Odds";
    var picks_from_odds_tooltip     = "";
@@ -2346,19 +2348,19 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('// Define an array for the selected picks.');
    d.writeln('');
-   d.writeln('var picks = new Array('+number_of_games+');');
+   d.writeln('var picks = new Array('+number_of_ps_games+');');
    d.writeln('');
    d.writeln('');
    d.writeln('// Define arrays for the predicted margins of victory.');
    d.writeln('');
-   d.writeln('var spread_elements = new Array('+number_of_games+');');
-   d.writeln('var spread_values   = new Array('+number_of_games+');');
+   d.writeln('var spread_elements = new Array('+number_of_ps_games+');');
+   d.writeln('var spread_values   = new Array('+number_of_ps_games+');');
    d.writeln('');
    d.writeln('');
    d.writeln('// Define variables for NFL Odds.');
    d.writeln('');
    d.writeln('var display_spreads_from_odds      = false;');
-   d.writeln('var nfl_odds_array                 = new Array('+number_of_games+');');
+   d.writeln('var nfl_odds_array                 = new Array('+number_of_ps_games+');');
    d.writeln('var noa_team_index                 = 0;');
    d.writeln('var noa_spread_index               = 1;');
    d.writeln('var noa_total_points_index         = 2;');
@@ -2406,7 +2408,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('function build_player_name(player_menu_index)');
    d.writeln('{');
-   d.writeln('   if ( (player_menu_index < 0) || (player_menu_index > top.number_of_ps_players) )');
+   d.writeln('   if ( (player_menu_index < 0) || (player_menu_index > top.ps_players.length) )');
    d.writeln('   {');
    d.writeln('      player_menu_index = top.player_index;');
    d.writeln('   }');
@@ -2426,7 +2428,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('function clear_nfl_odds_array()');
    d.writeln('{');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
    d.writeln('      nfl_odds_array[i] = "";');
    d.writeln('   }');
@@ -2437,7 +2439,7 @@ function build_post_season_form()
    d.writeln('{');
    d.writeln('   // Clear out the picks and spread_values arrays and also the picks and spreads on the Input Form.');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
    d.writeln('      picks        [i] = "";');
    d.writeln('      spread_values[i] = "";');
@@ -2467,7 +2469,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Build lines for all games.');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
    d.writeln('      // Get the winning team, losing team, and spread for this game.');
    d.writeln('');
@@ -2561,7 +2563,7 @@ function build_post_season_form()
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px\\"><b>Copy the following into the message body:</b></td></tr>"');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-left: 10px\\">"');
    d.writeln('');
-   d.writeln('      for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('      for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('      {');
    d.writeln('         picks_message += "\\n" + picks[i] + " by " + spread_values[i] + "<br>";');
    d.writeln('      }');
@@ -2729,7 +2731,7 @@ function build_post_season_form()
    d.writeln('   var mail_msg = "mailto:fp@socal.rr.com?subject=" + name + " - Post Season Week ' + week + ' Picks&body=";');
    d.writeln('');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
    d.writeln('      mail_msg += picks[i] + " by " + spread_values[i] + "\\n";');
    d.writeln('   }');
@@ -2778,11 +2780,11 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Populate picks and spread_values from the nfl_odds_array.');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
    d.writeln('      exit_loop = false;');
    d.writeln('');
-   d.writeln('      for (var j = 0; j < '+number_of_games+'; j++)');
+   d.writeln('      for (var j = 0; j < '+number_of_ps_games+'; j++)');
    d.writeln('      {');
    d.writeln('         if (nfl_odds_array[i][noa_team_index] == home_teams[j])');
    d.writeln('         {');
@@ -2813,7 +2815,7 @@ function build_post_season_form()
    d.writeln('               spread_values[j] = Math.floor(spread_values[j]);            // Round the spread value down to a whole number.');
    d.writeln('            }');
    d.writeln('');
-   d.writeln('            if (j == '+number_of_games+'-1)');
+   d.writeln('            if (j == '+number_of_ps_games+'-1)');
    d.writeln('            {');
    d.writeln('               // This is the last game scheduled so use the total points for the Total Points Prediction.');
    d.writeln('');
@@ -2834,7 +2836,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Put the picks and spread_values on Input Form.');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
    d.writeln('      document.fp_inputs.elements["pick"  +(i+1)].value = picks[i];');
    d.writeln('      document.fp_inputs.elements["spread"+(i+1)].value = spread_values[i];');
@@ -2844,7 +2846,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if (validate_points(document.fp_inputs.points,false) == false)');
    d.writeln('   {');
-   d.writeln('      prompt_message = "\\"Picks From Odds\\" can\'t find Total Points for \\""+visiting_teams['+number_of_games+'-1]+" at "+home_teams['+number_of_games+'-1]+".\\"  Enter a number between 1 and 99.\\n\\n";');
+   d.writeln('      prompt_message = "\\"Picks From Odds\\" can\'t find Total Points for \\""+visiting_teams['+number_of_ps_games+'-1]+" at "+home_teams['+number_of_ps_games+'-1]+".\\"  Enter a number between 1 and 99.\\n\\n";');
    d.writeln('');
    d.writeln('      while (user_input != null)');
    d.writeln('      {');
@@ -2915,7 +2917,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Get data from input form.');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
    d.writeln('      for (var j = 0; j < inputs.elements.length; j++)');
    d.writeln('      {');
@@ -2948,7 +2950,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Replace invalid data and blanks with random data.');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
    d.writeln('      if ( (picks[i] == "H") || (picks[i] == "V") )');
    d.writeln('      {');
@@ -2986,7 +2988,7 @@ function build_post_season_form()
    d.writeln('      counter++;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (counter == (('+number_of_games+'*2) + 1))');
+   d.writeln('   if (counter == (('+number_of_ps_games+'*2) + 1))');
    d.writeln('   {');
    d.writeln('      alert("Random picks weren\'t generated because no picks were left blank.");');
    d.writeln('');
@@ -3005,7 +3007,7 @@ function build_post_season_form()
    d.writeln('{');
    d.writeln('   display_spreads_from_odds = document.getElementById("display_spreads_checkbox").checked;');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
    d.writeln('      document.getElementById(home_teams[i]).innerHTML     = home_teams[i]     + get_point_spreads_string(home_teams[i],false);');
    d.writeln('      document.getElementById(visiting_teams[i]).innerHTML = visiting_teams[i] + get_point_spreads_string(visiting_teams[i],false);');
@@ -3173,7 +3175,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if ( ((display_spreads_from_odds == true) || (ignore_display_spreads_from_odds == true)) && (nfl_odds_array[0].length > 0) )');
    d.writeln('   {');
-   d.writeln('      for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('      for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('      {');
    d.writeln('         if ((team == nfl_odds_array[i][noa_team_index]) && (nfl_odds_array[i][noa_spread_index] != 0))');
    d.writeln('         {');
@@ -3218,7 +3220,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Extract the game information for each game out of the nfl_odds html string and put into the nfl_odds_array.');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
    d.writeln('      // Find the next table record in the nfl_odds html string and put it in nfl_odds_array.');
    d.writeln('');
@@ -3323,7 +3325,7 @@ function build_post_season_form()
    d.writeln('   // Convert each element of the nfl_odds_array into an array itself');
    d.writeln('   // and make sure that the NFL Odds point spread value is of type float.');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
    d.writeln('      nfl_odds_array[i]                   = nfl_odds_array[i].split(" ");');
    d.writeln('      nfl_odds_array[i][noa_spread_index] = parseFloat(nfl_odds_array[i][noa_spread_index]);');
@@ -3398,19 +3400,19 @@ function build_post_season_form()
    d.writeln('      {');
    d.writeln('         if (top.mobile != true) total_points_element.focus();');
    d.writeln('');
-   d.writeln('         if (picks['+number_of_games+'-1] == "H")');
+   d.writeln('         if (picks['+number_of_ps_games+'-1] == "H")');
    d.writeln('         {');
-   d.writeln('            winning_team = home_teams['+number_of_games+'-1];');
-   d.writeln('            losing_team  = visiting_teams['+number_of_games+'-1];');
+   d.writeln('            winning_team = home_teams['+number_of_ps_games+'-1];');
+   d.writeln('            losing_team  = visiting_teams['+number_of_ps_games+'-1];');
    d.writeln('         }');
    d.writeln('         else');
    d.writeln('         {');
-   d.writeln('            winning_team = visiting_teams['+number_of_games+'-1];');
-   d.writeln('            losing_team  = home_teams['+number_of_games+'-1];');
+   d.writeln('            winning_team = visiting_teams['+number_of_ps_games+'-1];');
+   d.writeln('            losing_team  = home_teams['+number_of_ps_games+'-1];');
    d.writeln('         }');
    d.writeln('');
    d.writeln('         error_message  = "Enter a number between 1 and 99 for the Total Points Prediction for:\\n\\n";');
-   d.writeln('         error_message += winning_team + " over " + losing_team + " (Game ' + number_of_games + ').";');
+   d.writeln('         error_message += winning_team + " over " + losing_team + " (Game ' + number_of_ps_games + ').";');
    d.writeln('');
    d.writeln('         alert(error_message);');
    d.writeln('      }');
@@ -3433,11 +3435,11 @@ function build_post_season_form()
    d.writeln('   var losing_team        = "";');
    d.writeln('   var pick_index         = 0;');
    d.writeln('   var picks_select       = 0;');
-   d.writeln('   var picks_select_array = new Array('+number_of_games+');');
+   d.writeln('   var picks_select_array = new Array('+number_of_ps_games+');');
    d.writeln('   var winning_team       = "";');
    d.writeln('');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
    d.writeln('      for (var j = 0; j < inputs.elements.length; j++)');
    d.writeln('      {');
@@ -3458,7 +3460,7 @@ function build_post_season_form()
    d.writeln('      }');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
    d.writeln('      if (picks[i] == 0)');
    d.writeln('      {');
@@ -3470,7 +3472,7 @@ function build_post_season_form()
    d.writeln('      }');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
    d.writeln('      if (picks[i] == "H")');
    d.writeln('      {');
@@ -3541,7 +3543,7 @@ function build_post_season_form()
    d.writeln('<td align=right class="bb2_border" colspan=2><b><font style="font-size: 14pt">Name:</font></b></td>');
    d.writeln('<td align=left class="bb2_border" colspan=5>');
    d.writeln('<select style="font-size: 13pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
-   for (var i = 0; i <= top.number_of_ps_players; i++)
+   for (var i = 0; i <= top.ps_players.length; i++)
    {
       switch (i)
       {
@@ -3567,10 +3569,10 @@ function build_post_season_form()
    d.writeln('</tr>');
    d.writeln('');
 
-   for (var i = 1; i <= number_of_games; i++)
+   for (var i = 1; i <= number_of_ps_games; i++)
    {
       d.writeln('<tr align=center>');
-      if (i == number_of_games)
+      if (i == number_of_ps_games)
       {
          d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt"><b>' + i + '</b></font></td>');
          d.writeln('<td class="gr1_bb2_border"><font style="font-size: 13pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
@@ -3590,7 +3592,7 @@ function build_post_season_form()
       d.writeln('       <option          value="H">H');
       d.writeln('       <option          value="V">V');
       d.writeln('    </select></td>');
-      if (i == number_of_games)
+      if (i == number_of_ps_games)
       {
          d.writeln('<td class="gr1_bb2_border"><font style="font-size: 13pt">by</font></td>');
          d.writeln('<td class="bb2_border"><font style="font-size: 13pt">');
@@ -3601,13 +3603,13 @@ function build_post_season_form()
          d.writeln('<td><font style="font-size: 13pt">');
       }
       d.writeln('    <input type=text style="text-align: center; font-size: 12pt; font-family: Calibri; border: 1px solid lightgray" name="spread'+i+'" size="2" maxlength="2">');
-      d.writeln('</font></td>'); 
-      d.writeln('</tr>');  
-      d.writeln('');    
+      d.writeln('</font></td>');
+      d.writeln('</tr>');
+      d.writeln('');
    }
 
    d.writeln('<tr align=center>');
-   d.writeln('<td class="no_border" colspan=6 align=right><font style="font-size: 13pt">Game '+number_of_games+' Total Points:</font></td>');
+   d.writeln('<td class="no_border" colspan=6 align=right><font style="font-size: 13pt">Game '+number_of_ps_games+' Total Points:</font></td>');
    d.writeln('<td class="no_border"  colspan=1><font style="font-size: 13pt">');
    d.writeln('    <input type=text style="text-align: center; font-size: 12pt; font-family: Calibri; border: 1px solid gray" name="points" size="2" maxlength="2">');
    d.writeln('</font></td>'); 
@@ -3680,11 +3682,12 @@ function build_post_season_form()
 
 function build_player_name(player_menu_index)
 {
+   var number_of_rs_weeks  = top.all_home_teams.length;
    var players             = top.rs_players;
    var players_description = top.rs_players_description;
 
 
-   if (top.current_input_week > 17)
+   if (top.current_input_week > number_of_rs_weeks)
    {
       players             = top.ps_players;
       players_description = top.ps_players_description;

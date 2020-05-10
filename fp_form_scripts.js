@@ -36,9 +36,21 @@ function build_post_season_form()
    var input_tag_style               = "";
    var mode                          = window.top.gv.mode;
    var mode_string                   = "";
+   var number_of_rs_weeks            = window.top.gv.number_of_rs_weeks;
    var victors                       = "";
    var visiting_team_possession_flag = "";
-   var week                          = window.top.gv.current_input_week - 17;
+   var week                          = window.top.gv.current_input_week - number_of_rs_weeks;
+
+   var decimal_count      = window.top.gv.decimal_count;
+   var number_of_ps_games = window.top.gv.number_of_ps_games;
+   var w1_start           = window.top.gv.w1_start;
+   var w1_end             = window.top.gv.w1_end;
+   var w2_start           = window.top.gv.w2_start;
+   var w2_end             = window.top.gv.w2_end;
+   var w3_start           = window.top.gv.w3_start;
+   var w3_end             = window.top.gv.w3_end;
+   var w4_start           = window.top.gv.w4_start;
+   var w4_end             = window.top.gv.w4_end;
 
    if (mode == "prelim")
    {
@@ -64,16 +76,28 @@ function build_post_season_form()
    if (week < 1) week = 1;
    if (week > 4) week = 4;
 
+   if (post_season_winners.length == 11)
+   {
+      decimal_count      = 0;
+      number_of_ps_games = 11;
+      w1_start           = 1;
+      w1_end             = 4;
+      w2_start           = 5;
+      w2_end             = 8;
+      w3_start           = 9;
+      w3_end             = 10;
+      w4_start           = 11;
+      w4_end             = 11;
+   }
+ 
    // Force this week's visitor and home scores to be zero if the mode is preliminary.
 
-   var number_of_games = 11;
-
-   for (var gi = 1; gi <= number_of_games; gi++)
+   for (var gi = 1; gi <= number_of_ps_games; gi++)
    {
-      if ( ( (week == 1) && (mode == "prelim") && (gi >=  1 && gi <=  4) ) ||
-           ( (week == 2) && (mode == "prelim") && (gi >=  5 && gi <=  8) ) ||
-           ( (week == 3) && (mode == "prelim") && (gi >=  9 && gi <= 10) ) ||
-           ( (week == 4) && (mode == "prelim") && (gi >= 11 && gi <= 11) )    )
+      if ( ( (week == 1) && (mode == "prelim") && (gi >= w1_start && gi <= w1_end) ) ||
+           ( (week == 2) && (mode == "prelim") && (gi >= w2_start && gi <= w2_end) ) ||
+           ( (week == 3) && (mode == "prelim") && (gi >= w3_start && gi <= w3_end) ) ||
+           ( (week == 4) && (mode == "prelim") && (gi >= w4_start && gi <= w4_end) )    )
       {
          excel_visitor_scores[gi-1] = "";
          excel_home_scores[gi-1]    = "";
@@ -91,6 +115,8 @@ function build_post_season_form()
 
    // Now define a host of variables and arrays needed to build the form.
 
+   var number_of_ps_players      = window.top.gv.ps_players.length;
+
    var adjusted_score            = 0;
    var best_player_win_count     = 0;
    var best_total_points_count   = 0;
@@ -101,70 +127,69 @@ function build_post_season_form()
    var game_state                = "at";
    var heading_colspan           = 53;
    var high_score_count          = 0;
-   var high_score_players        = [null,null,null,null,null,null,null,null,null,null,null,null];
+   var high_score_players        = Array(number_of_ps_players).fill(null);
    var home_scores               = window.top.gv.home_scores;
    var null_score                = 9999;
-   var number_of_ps_players      = window.top.gv.ps_players.length;
    var order_by                  = window.top.gv.order_by;
-   var overall_ranks             = [1,1,1,1,1,1,1,1,1,1,1,1];
-   var overall_scores            = [null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score];
+   var overall_ranks             = Array(number_of_ps_players).fill(1);
+   var overall_scores            = Array(number_of_ps_players).fill(null_score);
    var percent_wins              = "";
    var player_colspan            = 4;
-   var player_index              = [0,1,2,3,4,5,6,7,8,9,10,11];
+   var player_index              = Array(number_of_ps_players).fill().map((_,i) => i);  // Sets player_index = [0,1,2,3,4,5,6,7,8,9,10,11]
    var player_pick_valid         = true;
-   var player_win_count          = [0,0,0,0,0,0,0,0,0,0,0,0];
+   var player_win_count          = Array(number_of_ps_players).fill(0);
    var points                    = "";
    var possible_win_count        = 0;
    var ps_players                = window.top.gv.ps_players;
-   var sorted_overall_scores     = [null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score];
-   var sorted_week_1_scores      = [null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score];
-   var sorted_week_2_scores      = [null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score];
-   var sorted_week_3_scores      = [null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score];
-   var sorted_week_4_scores      = [null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score];
+   var sorted_overall_scores     = Array(number_of_ps_players).fill(null_score);
+   var sorted_week_1_scores      = Array(number_of_ps_players).fill(null_score);
+   var sorted_week_2_scores      = Array(number_of_ps_players).fill(null_score);
+   var sorted_week_3_scores      = Array(number_of_ps_players).fill(null_score);
+   var sorted_week_4_scores      = Array(number_of_ps_players).fill(null_score);
    var td_background             = "";
    var total_points              = "";
    var total_points_game_index   = -1;
    var total_points_score        = "<br>";
-   var total_points_scores       = [null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score];
+   var total_points_scores       = Array(number_of_ps_players).fill(null_score);
    var use_player_points         = true;
    var visitor_scores            = window.top.gv.visitor_scores;
    var week_1_high_score_count   = 0;
-   var week_1_high_score_players = [null,null,null,null,null,null,null,null,null,null,null,null];
-   var week_1_ranks              = [1,1,1,1,1,1,1,1,1,1,1,1];
-   var week_1_scores             = [null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score];
+   var week_1_high_score_players = Array(number_of_ps_players).fill(null);
+   var week_1_ranks              = Array(number_of_ps_players).fill(1);
+   var week_1_scores             = Array(number_of_ps_players).fill(null_score);
    var week_1_valid_game_cnt     = 4;
    var week_2_high_score_count   = 0;
-   var week_2_high_score_players = [null,null,null,null,null,null,null,null,null,null,null,null];
-   var week_2_ranks              = [1,1,1,1,1,1,1,1,1,1,1,1];
-   var week_2_scores             = [null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score];
+   var week_2_high_score_players = Array(number_of_ps_players).fill(null);
+   var week_2_ranks              = Array(number_of_ps_players).fill(1);
+   var week_2_scores             = Array(number_of_ps_players).fill(null_score);
    var week_2_valid_game_cnt     = 4;
    var week_3_high_score_count   = 0;
-   var week_3_high_score_players = [null,null,null,null,null,null,null,null,null,null,null,null];
-   var week_3_ranks              = [1,1,1,1,1,1,1,1,1,1,1,1];
-   var week_3_scores             = [null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score];
+   var week_3_high_score_players = Array(number_of_ps_players).fill(null);
+   var week_3_ranks              = Array(number_of_ps_players).fill(1);
+   var week_3_scores             = Array(number_of_ps_players).fill(null_score);
    var week_3_valid_game_cnt     = 2;
    var week_4_high_score_count   = 0;
-   var week_4_high_score_players = [null,null,null,null,null,null,null,null,null,null,null,null];
-   var week_4_ranks              = [1,1,1,1,1,1,1,1,1,1,1,1];
-   var week_4_scores             = [null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score];
+   var week_4_high_score_players = Array(number_of_ps_players).fill(null);
+   var week_4_ranks              = Array(number_of_ps_players).fill(1);
+   var week_4_scores             = Array(number_of_ps_players).fill(null_score);
    var week_4_valid_game_cnt     = 1;
 
-   // Only use player points as a tie breaker if the foolball pool year is 2011 or later.
+   // Only use player points as a tie breaker if the player_points array exists.
 
-   if (window.top.gv.archive_year != undefined && window.top.gv.archive_year < 2011) use_player_points = false;
+   if (typeof player_points == "undefined") use_player_points = false;
 
    // Set column spans for expanded or compact view.
 
    if (form_view == "expanded")
    {
-      heading_colspan = 53;
       player_colspan  = 4;
    }
    else
    {
-      heading_colspan = 17;
       player_colspan  = 1;
    }
+
+   heading_colspan = (number_of_ps_players * player_colspan) + 5;
 
    // Build document heading.
 
@@ -183,15 +208,15 @@ function build_post_season_form()
 
    // Calculate the post season winners and margins of victory.
 
-   for (var gi = 1; gi <= number_of_games; gi++)
+   for (var gi = 1; gi <= number_of_ps_games; gi++)
    {
       // Force visiting team names, home team names, player picks,
       // players spreads, and player points to be blank for future weeks.
 
-      if ( ( (week ==  1) && (gi >  4) ) ||
-           ( (week ==  2) && (gi >  8) ) ||
-           ( (week ==  3) && (gi > 10) ) ||
-           ( (week ==  4) && (gi > 11) )    )
+      if ( ( (week ==  1) && (gi > w1_end) ) ||
+           ( (week ==  2) && (gi > w2_end) ) ||
+           ( (week ==  3) && (gi > w3_end) ) ||
+           ( (week ==  4) && (gi > w4_end) )    )
       {
          visiting_teams[gi-1] = "";
          home_teams[gi-1]     = "";
@@ -217,10 +242,10 @@ function build_post_season_form()
          visiting_teams[gi-1] = "<br>";
          home_teams[gi-1]     = "<br>";
 
-         if ( (gi >=  1) && (gi <=  4) ) week_1_valid_game_cnt--;
-         if ( (gi >=  5) && (gi <=  8) ) week_2_valid_game_cnt--;
-         if ( (gi >=  9) && (gi <= 10) ) week_3_valid_game_cnt--;
-         if ( (gi >= 11) && (gi <= 11) ) week_4_valid_game_cnt--;
+         if ( (gi >= w1_start) && (gi <= w1_end) ) week_1_valid_game_cnt--;
+         if ( (gi >= w2_start) && (gi <= w2_end) ) week_2_valid_game_cnt--;
+         if ( (gi >= w3_start) && (gi <= w3_end) ) week_3_valid_game_cnt--;
+         if ( (gi >= w4_start) && (gi <= w4_end) ) week_4_valid_game_cnt--;
       }
       else
       {
@@ -263,7 +288,7 @@ function build_post_season_form()
       week_3_scores[pi-1]  = 0;
       week_4_scores[pi-1]  = 0;
 
-      for (var gi = 1; gi <= number_of_games; gi++)
+      for (var gi = 1; gi <= number_of_ps_games; gi++)
       {
          // Check to see if the player pick (H or V), player spread (margin of victory),
          // and player points (total points prediction for final game of the week) are valid.
@@ -348,7 +373,7 @@ function build_post_season_form()
          // If a player's combined score for a post season week is valid, then multiply it
          // by the post season week multiplier and add it to the player's overall score.
 
-         if (gi ==  4)
+         if (gi == w1_end)
          {
             week_1_scores[pi-1] = current_week_scores;
 
@@ -364,7 +389,7 @@ function build_post_season_form()
             current_week_scores = 0;
          }
 
-         if (gi ==  8)
+         if (gi == w2_end)
          {
             week_2_scores[pi-1] = current_week_scores;
 
@@ -380,7 +405,7 @@ function build_post_season_form()
             current_week_scores = 0;
          }
 
-         if (gi == 10)
+         if (gi == w3_end)
          {
             week_3_scores[pi-1] = current_week_scores;
 
@@ -396,7 +421,7 @@ function build_post_season_form()
             current_week_scores = 0;
          }
 
-         if (gi == 11)
+         if (gi == w4_end)
          {
             week_4_scores[pi-1] = current_week_scores;
 
@@ -565,28 +590,28 @@ function build_post_season_form()
          {
             high_score_count        = week_1_high_score_count;
             high_score_players      = week_1_high_score_players;
-            total_points_game_index = 4-1; // Game 4 of week 1.
+            total_points_game_index = w1_end-1;
          }
 
          if (post_season_week == 2)
          {
             high_score_count        = week_2_high_score_count;
             high_score_players      = week_2_high_score_players;
-            total_points_game_index = 8-1; // Game 4 of week 2.
+            total_points_game_index = w2_end-1;
          }
 
          if (post_season_week == 3)
          {
             high_score_count        = week_3_high_score_count;
             high_score_players      = week_3_high_score_players;
-            total_points_game_index = 10-1; // Game 2 of week 3.
+            total_points_game_index = w3_end-1;
          }
 
          if (post_season_week == 4)
          {
             high_score_count        = week_4_high_score_count;
             high_score_players      = week_4_high_score_players;
-            total_points_game_index = 11-1; // Game 1 of week 4.
+            total_points_game_index = w4_end-1;
          }
 
          // Calcuate the total points of the last game played in this week.
@@ -696,7 +721,7 @@ function build_post_season_form()
 
          // Re-initialize total_points_scores for the next for loop iteration.
 
-         total_points_scores = [null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score,null_score];
+         total_points_scores.fill(null_score);
       }
    }
 
@@ -855,7 +880,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   for (var ei = 0; ei < scores.elements.length; ei++)');
    d.writeln('   {');
-   d.writeln('      for (var gi = 1; gi <= '+number_of_games+'; gi++)');
+   d.writeln('      for (var gi = 1; gi <= '+number_of_ps_games+'; gi++)');
    d.writeln('      {');
    d.writeln('         if (scores.elements[ei].name == "visitor"+gi+"_score")');
    d.writeln('         {');
@@ -1026,7 +1051,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Clear information set by "Get NFL Scores".');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
    d.writeln('      window.top.gv.post_season_game_states[i]      = "at";');
    d.writeln('      window.top.gv.post_season_possession_teams[i] = "";');
@@ -1184,7 +1209,6 @@ function build_post_season_form()
    d.writeln('   var home_team                   = "";');
    d.writeln('   var nfl_team_city_abbreviations = ["ARI",      "ATL",    "BAL",   "BUF",  "CAR",     "CHI",  "CIN",    "CLE",   "DAL",    "DEN",    "DET",  "GB",     "HOU",   "IND",  "JAC",    "KC",    "LA",  "LAC",     "MIA",     "MIN",    "NE",      "NO",    "NYG",   "NYJ", "OAK",    "PHI",   "PIT",     "SEA",     "SF",   "TB",        "TEN",   "WAS"     ];');
    d.writeln('   var nfl_team_names              = ["Cardinals","Falcons","Ravens","Bills","Panthers","Bears","Bengals","Browns","Cowboys","Broncos","Lions","Packers","Texans","Colts","Jaguars","Chiefs","Rams","Chargers","Dolphins","Vikings","Patriots","Saints","Giants","Jets","Raiders","Eagles","Steelers","Seahawks","49ers","Buccaneers","Titans","Redskins"];');
-   d.writeln('   var number_of_games             = '+number_of_games+';');
    d.writeln('   var possession_teams_index      = 0;');
    d.writeln('   var post_season_victors_index   = 0;');
    d.writeln('   var scores_index_start          = null;');
@@ -1193,7 +1217,7 @@ function build_post_season_form()
    d.writeln('   var user_message                = "";');
    d.writeln('   var visiting_score              = "";');
    d.writeln('   var visiting_team               = "";');
-   d.writeln('   var week                        = window.top.gv.current_input_week-18;');
+   d.writeln('   var week                        = window.top.gv.current_input_week-(window.top.gv.number_of_rs_weeks+1);');
    d.writeln('');
    d.writeln('');
    d.writeln('   if (command != "Start")');
@@ -1217,26 +1241,26 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if (week == 1)');
    d.writeln('   {');
-   d.writeln('      scores_index_start = 0;');
-   d.writeln('      scores_index_stop  = 3;');
+   d.writeln('      scores_index_start = '+w1_start+'-1;');
+   d.writeln('      scores_index_stop  = '+w1_end+'-1;');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   if (week == 2)');
    d.writeln('   {');
-   d.writeln('      scores_index_start = 4;');
-   d.writeln('      scores_index_stop  = 7;');
+   d.writeln('      scores_index_start = '+w2_start+'-1;');
+   d.writeln('      scores_index_stop  = '+w2_end+'-1;');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   if (week == 3)');
    d.writeln('   {');
-   d.writeln('      scores_index_start = 8;');
-   d.writeln('      scores_index_stop  = 9;');
+   d.writeln('      scores_index_start = '+w3_start+'-1;');
+   d.writeln('      scores_index_stop  = '+w3_end+'-1;');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   if (week == 4)');
    d.writeln('   {');
-   d.writeln('      scores_index_start = 10;');
-   d.writeln('      scores_index_stop  = 10;');
+   d.writeln('      scores_index_start = '+w4_start+'-1;');
+   d.writeln('      scores_index_stop  = '+w4_end+'-1;');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   // Create a JSON object from nfl_scores.');
@@ -1478,21 +1502,21 @@ function build_post_season_form()
    }
    d.writeln('</tr>');
 
-   for (var gi = 1; gi <= number_of_games; gi++)
+   for (var gi = 1; gi <= number_of_ps_games; gi++)
    {
       // Determine if this game falls within the current preliminary week.
 
       current_prelim_week = false;
 
-      if ( ( (week == 1) && (gi >=  1 && gi <=  4) ) ||
-           ( (week == 2) && (gi >=  5 && gi <=  8) ) ||
-           ( (week == 3) && (gi >=  9 && gi <= 10) ) ||
-           ( (week == 4) && (gi >= 11 && gi <= 11) )    )
+      if ( ( (week == 1) && (gi >= w1_start && gi <= w1_end) ) ||
+           ( (week == 2) && (gi >= w2_start && gi <= w2_end) ) ||
+           ( (week == 3) && (gi >= w3_start && gi <= w3_end) ) ||
+           ( (week == 4) && (gi >= w4_start && gi <= w4_end) )    )
       {
          if (mode == "prelim") current_prelim_week = true;
       }
 
-      if ( (gi == 1) || (gi == 5) || (gi == 9) || (gi == 11) )
+      if ( (gi == w1_start) || (gi == w2_start) || (gi == w3_start) || (gi == w4_start) )
       {
          d.writeln('');
          d.writeln('<tr height=8px>');
@@ -1501,19 +1525,19 @@ function build_post_season_form()
          d.writeln('');
          d.writeln('<tr align=center bgcolor=#DCE6F1 height=18px>');
 
-         if (gi == 1)
+         if (gi == w1_start)
          {
             d.writeln('<td nowrap class="br2_bb2_border" colspan=5><font style="font-size: 11pt"><b>Wild Card Weekend</b></font></td>');
          }
-         else if (gi == 5)
+         else if (gi == w2_start)
          {
             d.writeln('<td nowrap class="br2_bb2_border" colspan=5><font style="font-size: 11pt"><b>Divisional Playoffs</b></font></td>');
          }
-         else if (gi == 9)
+         else if (gi == w3_start)
          {
             d.writeln('<td nowrap class="br2_bb2_border" colspan=5><font style="font-size: 11pt"><b>Conference Championships</b></font></td>');
          }
-         else if (gi == 11)
+         else if (gi == w4_start)
          {
             d.writeln('<td nowrap class="br2_bb2_border" colspan=5><font style="font-size: 11pt"><b>Super Bowl</b></font></td>');
          }
@@ -1545,7 +1569,7 @@ function build_post_season_form()
 
       if (current_prelim_week == true)
       {
-         for (var j = 1; j <= number_of_games; j++)
+         for (var j = 1; j <= number_of_ps_games; j++)
          {
             input_tag_style = "text-align:center; font-size: 10pt; font-family: Calibri; border: 1px solid lightgray";
 
@@ -1565,7 +1589,7 @@ function build_post_season_form()
          home_team_possession_flag     = "";
          visiting_team_possession_flag = "";
 
-         for (var j = 1; j <= number_of_games; j++)
+         for (var j = 1; j <= number_of_ps_games; j++)
          {
             if (post_season_possession_teams[j-1] == visiting_teams[gi-1])
             {
@@ -1593,7 +1617,7 @@ function build_post_season_form()
 
          game_state = window.top.gv.post_season_game_states[gi-1];
 
-         if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
+         if ( (gi == w1_end) || (gi == w2_end) || (gi == w3_end) || (gi == w4_end) )
          {
             d.writeln('<td style="padding: 0px" class="'+border_style+'">');
          }
@@ -1613,7 +1637,7 @@ function build_post_season_form()
          visiting_team_possession_flag = "";
          game_state                    = "at";
 
-         if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
+         if ( (gi == w1_end) || (gi == w2_end) || (gi == w3_end) || (gi == w4_end) )
          {
             d.writeln('<td style="padding:2px 4px 2px 4px" class="'+border_style+'"><font style="font-size: 10pt">'+visitor_scores[gi-1]+'</font></td>');
          }
@@ -1627,7 +1651,7 @@ function build_post_season_form()
 
       if (use_player_points == false) {border_style = "bb1_border"; if (current_prelim_week == true) border_style = "gr1_bb1_border";}
 
-      if ( (gi != 4) && (gi != 8) && (gi != 10) && (gi != 11) )
+      if ( (gi != w1_end) && (gi != w2_end) && (gi != w3_end) && (gi != w4_end) )
       {
          border_style = "no_border"; if (current_prelim_week == true) border_style = "gr1_border";
       }
@@ -1649,7 +1673,7 @@ function build_post_season_form()
 
       if (post_season_winners[gi-1] == "H")
       {
-         if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
+         if ( (gi == w1_end) || (gi == w2_end) || (gi == w3_end) || (gi == w4_end) )
          {
             d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt; color: blue">'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
          }
@@ -1660,7 +1684,7 @@ function build_post_season_form()
       }
       else
       {
-         if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
+         if ( (gi == w1_end) || (gi == w2_end) || (gi == w3_end) || (gi == w4_end) )
          {
             d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
          }
@@ -1676,7 +1700,7 @@ function build_post_season_form()
 
       if (current_prelim_week == true)
       {
-         if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
+         if ( (gi == w1_end) || (gi == w2_end) || (gi == w3_end) || (gi == w4_end) )
          {
             d.writeln('<td style="padding: 0px" class="'+border_style+'">');
          }
@@ -1689,7 +1713,7 @@ function build_post_season_form()
       }
       else
       {
-         if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
+         if ( (gi == w1_end) || (gi == w2_end) || (gi == w3_end) || (gi == w4_end) )
          {
             d.writeln('<td style="padding:2px 4px 2px 4px" class="'+border_style+'"><font style="font-size: 10pt">'+home_scores[gi-1]+'</font></td>');
          }
@@ -1709,7 +1733,7 @@ function build_post_season_form()
          }
          if (form_view == "expanded")
          {
-            if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )             
+            if ( (gi == w1_end) || (gi == w2_end) || (gi == w3_end) || (gi == w4_end) )             
             {
                border_style = "gb1_border";
 
@@ -1734,7 +1758,7 @@ function build_post_season_form()
 
          if (pi == number_of_ps_players)
          {
-            if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
+            if ( (gi == w1_end) || (gi == w2_end) || (gi == w3_end) || (gi == w4_end) )
             {
                border_style = "gb1_border";
 
@@ -1749,7 +1773,7 @@ function build_post_season_form()
          }
          else
          {
-            if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
+            if ( (gi == w1_end) || (gi == w2_end) || (gi == w3_end) || (gi == w4_end) )
             {
                border_style = "br2_gb1_border";
 
@@ -1766,26 +1790,26 @@ function build_post_season_form()
 
       d.writeln('</tr>');  
 
-      if ( (gi == 4) || (gi == 8) || (gi == 10) || (gi == 11) )
+      if ( (gi == w1_end) || (gi == w2_end) || (gi == w3_end) || (gi == w4_end) )
       {
          if (use_player_points == true)
          {
-            if (gi == 4)
+            if (gi == w1_end)
             {
                high_score_count   = week_1_high_score_count;
                high_score_players = week_1_high_score_players;
             }
-            if (gi == 8)
+            if (gi == w2_end)
             {
                high_score_count   = week_2_high_score_count;
                high_score_players = week_2_high_score_players;
             }
-            if (gi == 10)
+            if (gi == w3_end)
             {
                high_score_count   = week_3_high_score_count;
                high_score_players = week_3_high_score_players;
             }
-            if (gi == 11)
+            if (gi == w4_end)
             {
                high_score_count   = week_4_high_score_count;
                high_score_players = week_4_high_score_players;
@@ -1845,19 +1869,19 @@ function build_post_season_form()
          d.writeln('');
          d.writeln('<tr align=center height=18px>');
 
-         if (gi == 4)
+         if (gi == w1_end)
          {
             d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 1 Scores:&nbsp;</b></font></td>');
          }
-         if (gi == 8)
+         if (gi == w2_end)
          {
             d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 2 Scores:&nbsp;</b></font></td>');
          }
-         if (gi == 10)
+         if (gi == w3_end)
          {
             d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 3 Scores:&nbsp;</b></font></td>');
          }
-         if (gi == 11)
+         if (gi == w4_end)
          {
             d.writeln('<td nowrap class="br2_bb2_border" align=right colspan=5><font style="font-size: 11pt"><b>Week 4 Scores:&nbsp;</b></font></td>');
          }
@@ -1890,19 +1914,19 @@ function build_post_season_form()
 
             td_background = "";
 
-            if ( (gi == 4) && (week_1_valid_game_cnt > 0) )
+            if ( (gi == w1_end) && (week_1_valid_game_cnt > 0) )
             {
                if (week_1_ranks[player_index[pi-1]] == 1) td_background = "bgcolor=#DCE6F1";
             }
-            if ( (gi == 8) && (week_2_valid_game_cnt > 0) )
+            if ( (gi == w2_end) && (week_2_valid_game_cnt > 0) )
             {
                if (week_2_ranks[player_index[pi-1]] == 1) td_background = "bgcolor=#DCE6F1";
             }
-            if ( (gi == 10) && (week_3_valid_game_cnt > 0) )
+            if ( (gi == w3_end) && (week_3_valid_game_cnt > 0) )
             {
                if (week_3_ranks[player_index[pi-1]] == 1) td_background = "bgcolor=#DCE6F1";
             }
-            if ( (gi == 11) && (week_4_valid_game_cnt > 0) )
+            if ( (gi == w4_end) && (week_4_valid_game_cnt > 0) )
             {
                if (week_4_ranks[player_index[pi-1]] == 1) td_background = "bgcolor=#DCE6F1";
             }
@@ -1910,7 +1934,7 @@ function build_post_season_form()
             if (form_view == "expanded")
             {
                d.writeln('<td nowrap '+td_background+' class="gr1_bb2_border" colspan=3><font style="font-size: 9pt" color=blue>Rank = ');
-               if (gi == 4)
+               if (gi == w1_end)
                {
                   if (week_1_valid_game_cnt > 0)
                   {
@@ -1921,7 +1945,7 @@ function build_post_season_form()
                      d.writeln('<br>');
                   }
                }
-               else if (gi == 8)
+               else if (gi == w2_end)
                {
                   if (week_2_valid_game_cnt > 0)
                   {
@@ -1932,7 +1956,7 @@ function build_post_season_form()
                      d.writeln('<br>');
                   }
                }
-               else if (gi == 10)
+               else if (gi == w3_end)
                {
                   if (week_3_valid_game_cnt > 0)
                   {
@@ -1943,7 +1967,7 @@ function build_post_season_form()
                      d.writeln('<br>');
                   }
                }
-               else if (gi == 11)
+               else if (gi == w4_end)
                {
                   if (week_4_valid_game_cnt > 0)
                   {
@@ -1964,44 +1988,52 @@ function build_post_season_form()
             {
                d.writeln('<td '+td_background+' class="br2_bb2_border"><font style="font-size:11pt" color=blue><b>');
             }
-            if (gi == 4)
+            if (gi == w1_end)
             {
                if (week_1_valid_game_cnt > 0)
                {
-                  d.writeln(week_1_scores[player_index[pi-1]]);
+                  score = week_1_scores[player_index[pi-1]];
+                  if (isNaN(score) == false) score = week_1_scores[player_index[pi-1]].toFixed(decimal_count);
+                  d.writeln(score);
                }
                else
                {
                   d.writeln('<br>');
                }
             }
-            else if (gi == 8)
+            else if (gi == w2_end)
             {
                if (week_2_valid_game_cnt > 0)
                {
-                  d.writeln(week_2_scores[player_index[pi-1]]);
+                  score = week_2_scores[player_index[pi-1]];
+                  if (isNaN(score) == false) score = week_2_scores[player_index[pi-1]].toFixed(decimal_count);
+                  d.writeln(score);
                }
                else
                {
                   d.writeln('<br>');
                }
             }
-            else if (gi == 10)
+            else if (gi == w3_end)
             {
                if (week_3_valid_game_cnt > 0)
                {
-                  d.writeln(week_3_scores[player_index[pi-1]]);
+                  score = week_3_scores[player_index[pi-1]];
+                  if (isNaN(score) == false) score = week_3_scores[player_index[pi-1]].toFixed(decimal_count);
+                  d.writeln(score);
                }
                else
                {
                   d.writeln('<br>');
                }
             }
-            else if (gi == 11)
+            else if (gi == w4_end)
             {
                if (week_4_valid_game_cnt > 0)
                {
-                  d.writeln(week_4_scores[player_index[pi-1]]);
+                  score = week_4_scores[player_index[pi-1]];
+                  if (isNaN(score) == false) score = week_4_scores[player_index[pi-1]].toFixed(decimal_count);
+                  d.writeln(score);
                }
                else
                {
@@ -2059,11 +2091,15 @@ function build_post_season_form()
       }
       if (pi == number_of_ps_players)
       {
-         d.writeln('<td '+td_background+' class="bb1_border"><font style="font-size: 11pt" color=blue><b>'+overall_scores[player_index[pi-1]]+'</b></font></td>');
+         score = overall_scores[player_index[pi-1]];
+         if (isNaN(score) == false) score = overall_scores[player_index[pi-1]].toFixed(decimal_count);
+         d.writeln('<td '+td_background+' class="bb1_border"><font style="font-size: 11pt" color=blue><b>'+score+'</b></font></td>');
       }
       else
       {
-         d.writeln('<td '+td_background+' class="br2_bb1_border"><font style="font-size: 11pt" color=blue><b>'+overall_scores[player_index[pi-1]]+'</b></font></td>');
+         score = overall_scores[player_index[pi-1]];
+         if (isNaN(score) == false) score = overall_scores[player_index[pi-1]].toFixed(decimal_count);
+         d.writeln('<td '+td_background+' class="br2_bb1_border"><font style="font-size: 11pt" color=blue><b>'+score+'</b></font></td>');
       }
    }
    d.writeln('</tr>');
@@ -2214,12 +2250,15 @@ function build_post_season_form()
    {
       if (window.top.gv.mobile != true)
       {
-         var number_of_valid_games = 11;
+         number_of_w1_games = w1_end - w1_start + 1;
+         number_of_w2_games = w2_end - w2_start + 1;
+         number_of_w3_games = w3_end - w3_start + 1;
+         number_of_w4_games = w4_end - w4_start + 1;
 
-         if (week == 1) number_of_valid_games =  4;
-         if (week == 2) number_of_valid_games =  8;
-         if (week == 3) number_of_valid_games = 10;
-         if (week == 4) number_of_valid_games = 11;
+         if (week == 1) number_of_valid_games = number_of_w1_games;
+         if (week == 2) number_of_valid_games = number_of_w1_games + number_of_w2_games;
+         if (week == 3) number_of_valid_games = number_of_w1_games + number_of_w2_games + number_of_w3_games;
+         if (week == 4) number_of_valid_games = number_of_w1_games + number_of_w2_games + number_of_w3_games + number_of_w4_games;
 
          for (var gi = 1; gi <= number_of_valid_games; gi++)
          {
@@ -2291,6 +2330,7 @@ function build_regular_season_form()
    var game_state                    = "at";
    var input_tag_style               = "";
    var home_team_possession_flag     = "";
+   var max_number_of_rs_games        = window.top.gv.max_number_of_rs_games;
    var mn_points_delta_string        = "";
    var mn_points_string              = " ";
    var mode                          = window.top.gv.mode;
@@ -2298,6 +2338,8 @@ function build_regular_season_form()
    var order_by                      = window.top.gv.order_by;
    var player_colspan                = 3;
    var rs_players                    = window.top.gv.rs_players;
+   var number_of_rs_players          = rs_players.length;
+   var number_of_rs_weeks            = window.top.gv.all_home_teams.length;
    var tie_breaker_needed            = false;
    var unable_to_break_tie           = false;
    var unaltered_week                = 0;
@@ -2305,6 +2347,8 @@ function build_regular_season_form()
    var visiting_team_possession_flag = "";
    var week                          = window.top.gv.current_input_week;
    var winners                       = "";
+
+   if (max_number_of_rs_games == undefined) max_number_of_rs_games = 16;
 
    if ( (mode == "summary") || (mode == "summary_archive") )
    {
@@ -2331,11 +2375,14 @@ function build_regular_season_form()
    else if (mode == "weekly_archive")
    {
       mode_string = "Final";
-      week        = 17;
+      week        = number_of_rs_weeks;
+
+      window.top.gv.home_scores     = Array(max_number_of_rs_games).fill("");
+      window.top.gv.visiting_scores = Array(max_number_of_rs_games).fill("");
    }
 
-   if (week <  1) week =  1;
-   if (week > 17) week = 17;
+   if (week <  1)                 week =  1;
+   if (week > number_of_rs_weeks) week = number_of_rs_weeks;
 
    // Over-ride "week" if user selected "week" from "Final On-Line Form" window.
 
@@ -2361,19 +2408,19 @@ function build_regular_season_form()
       winners = all_winners[week-1];
    }
 
-   var high_score           = 0;
-   var high_score_count     = 0;
-   var number_of_games      = home_teams.length;
-   var number_of_rs_players = rs_players.length;
-   var max_scores           = [16,31,45,58,70,81,91,100,108,115,121,126,130,133,135,136];
-   var max_score            = max_scores[number_of_games-1];
-   var mn_points_delta      = ["N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A"];
-   var player_index         = [0,1,2,3,4,5,6,7,8,9,10,11];
-   var ranks                = [1,1,1,1,1,1,1,1,1,1,1,1];
-   var ranks_adjust         = [0,0,0,0,0,0,0,0,0,0,0,0];
-   var scores               = [max_score,max_score,max_score,max_score,max_score,max_score,max_score,max_score,max_score,max_score,max_score,max_score];
-   var sorted_scores        = [1,1,1,1,1,1,1,1,1,1,1,1];
+   var high_score         = 0;
+   var high_score_count   = 0;
+   var number_of_rs_games = home_teams.length;
+   var max_scores         = Array(max_number_of_rs_games).fill().map((_,i) => (max_number_of_rs_games)*(max_number_of_rs_games+1)/2-(i-max_number_of_rs_games)*(i-max_number_of_rs_games+1)/2, max_number_of_rs_games);
+   var max_score          = max_scores[number_of_rs_games-1];
+   var mn_points_delta    = Array(number_of_rs_players).fill("N/A");
+   var player_index       = Array(number_of_rs_players).fill().map((_,i) => i);  // Sets player_index = [0,1,2,3,4,5,6,7,8,9,10,11]
+   var ranks              = Array(number_of_rs_players).fill(1);
+   var ranks_adjust       = Array(number_of_rs_players).fill(0);
+   var scores             = Array(number_of_rs_players).fill(max_score);
+   var sorted_scores      = Array(number_of_rs_players).fill(1);
 
+   // See above:  Assuming max_number_of_rs_games = 16, max_scores = [16,31,45,58,70,81,91,100,108,115,121,126,130,133,135,136]
 
    if (window.top.gv.mn_points_entered > 0)
    {
@@ -2382,7 +2429,7 @@ function build_regular_season_form()
       actual_mn_points = window.top.gv.mn_points_entered;
    }
 
-   in_progress_mn_points = parseInt(home_scores[number_of_games-1].replace(/&nbsp;/g,"")) + parseInt(visiting_scores[number_of_games-1].replace(/&nbsp;/g,""));
+   in_progress_mn_points = parseInt(home_scores[number_of_rs_games-1].replace(/&nbsp;/g,"")) + parseInt(visiting_scores[number_of_rs_games-1].replace(/&nbsp;/g,""));
 
    if (isNaN(in_progress_mn_points) == true) in_progress_mn_points = 0;
 
@@ -2419,11 +2466,11 @@ function build_regular_season_form()
 
    // Calculate scores.
 
-   for (var i = 1; i <= number_of_games; i++)
+   for (var i = 1; i <= number_of_rs_games; i++)
    {
       // Determine if any game from get_nfl_scores has ended in a tie.
 
-      for (var j = 1; j <= number_of_games; j++)
+      for (var j = 1; j <= number_of_rs_games; j++)
       {
          if ( (visiting_teams[i-1] == victors[j-1]) || (home_teams[i-1] == victors[j-1]) )
          {
@@ -2480,7 +2527,7 @@ function build_regular_season_form()
 
       // If the winner of at least one game is not known, then there's no need for a tie breaker.
 
-      for (var i = 0; i < number_of_games; i++)
+      for (var i = 0; i < number_of_rs_games; i++)
       {
          if ((winners[i] != "H") && (winners[i] != "V") && (winners[i] != "Tie"))
          {
@@ -2725,7 +2772,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('function build_player_name(player_menu_index,long_description)');
    d.writeln('{');
-   d.writeln('   if ( (player_menu_index < 0) || (player_menu_index > window.top.gv.number_of_rs_players) )');
+   d.writeln('   if ( (player_menu_index < 0) || (player_menu_index > window.top.gv.rs_players.length) )');
    d.writeln('   {');
    d.writeln('      player_menu_index = window.top.gv.player_index;');
    d.writeln('   }');
@@ -2901,7 +2948,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Clear information set by "Get NFL Scores".');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
    d.writeln('      window.top.gv.home_scores[i]             = "";');
    d.writeln('      window.top.gv.prelim_game_states[i]      = "at";');
@@ -2926,7 +2973,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   clear_get_scores_data();');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
    d.writeln('      window.top.gv.prelim_winners[i] = "0";');
    d.writeln('   }');
@@ -2952,7 +2999,6 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   var abort                   = false;');
    d.writeln('   var all_winners_specified   = true;');
-   d.writeln('   var best_winners            = ["","","","","","","","","","","","","","","",""];');
    d.writeln('   var binary_winners          = "";');
    d.writeln('   var games_won               = 0;');
    d.writeln('   var max_opponent_score      = 0;');
@@ -2960,36 +3006,39 @@ function build_regular_season_form()
    d.writeln('   var most_games_won          = 0;');
    d.writeln('   var name_index              = 0;');
    d.writeln('   var name_menu               = 0;');
-   d.writeln('   var number_of_games         = 0;');
+   d.writeln('   var number_of_rs_games      = 0;');
    d.writeln('   var number_of_rs_players    = window.top.gv.rs_players.length;');
+   d.writeln('   var number_of_rs_weeks      = window.top.gv.all_home_teams.length;');
    d.writeln('   var opponent_score          = 0;');
    d.writeln('   var picks                   = "";');
    d.writeln('   var score_difference        = 0;');
    d.writeln('   var selected_opponent_index = window.top.gv.opponent_index-1;');
    d.writeln('   var selected_player_index   = window.top.gv.player_index-1;');
-   d.writeln('   var selected_player_picks   = ["","","","","","","","","","","","","","","",""];');
-   d.writeln('   var selected_player_weights = ["","","","","","","","","","","","","","","",""];');
    d.writeln('   var selected_player_score   = 0;');
    d.writeln('   var selected_player_win     = false;');
-   d.writeln('   var selected_winners        = ["","","","","","","","","","","","","","","",""];');
    d.writeln('   var skip_iteration          = false;');
    d.writeln('   var specified_winner_count  = 0;');
    d.writeln('   var temp_name               = "";');
    d.writeln('   var week                    = window.top.gv.current_input_week - 1;');
    d.writeln('   var weights                 = "";');
-   d.writeln('   var winners_iteration       = ["","","","","","","","","","","","","","","",""];');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Adjust week, in case it is invalid for some reason.');
    d.writeln('');
-   d.writeln('   if (week <  1) week = 1;');
-   d.writeln('   if (week > 17) week = 17;');
+   d.writeln('   if (week <  1)                 week = 1;');
+   d.writeln('   if (week > number_of_rs_weeks) week = number_of_rs_weeks;');
    d.writeln('');
-   d.writeln('   // Assign number_of_games, picks, and weights based on week.');
+   d.writeln('   // Assign number_of_rs_games, picks, and weights based on week.  Create arrays based on number_of_rs_games.');
    d.writeln('');
-   d.writeln('   number_of_games = window.top.gv.all_home_teams[week-1].length;');
-   d.writeln('   picks           = all_picks[week-1];');
-   d.writeln('   weights         = all_weights[week-1];');
+   d.writeln('   number_of_rs_games = window.top.gv.all_home_teams[week-1].length;');
+   d.writeln('   picks              = all_picks[week-1];');
+   d.writeln('   weights            = all_weights[week-1];');
+   d.writeln('');
+   d.writeln('   var best_winners            = Array(number_of_rs_games).fill("");');
+   d.writeln('   var selected_player_picks   = Array(number_of_rs_games).fill("");');
+   d.writeln('   var selected_player_weights = Array(number_of_rs_games).fill("");');
+   d.writeln('   var selected_winners        = Array(number_of_rs_games).fill("");');
+   d.writeln('   var winners_iteration       = Array(number_of_rs_games).fill("");');
    d.writeln('');
    d.writeln('   // Get selected winners from preliminary form.');
    d.writeln('');
@@ -2997,7 +3046,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   get_selected_winners(document);');
    d.writeln('');
-   d.writeln('   for (var game_index = 0; game_index < number_of_games; game_index++)');
+   d.writeln('   for (var game_index = 0; game_index < number_of_rs_games; game_index++)');
    d.writeln('   {');
    d.writeln('      selected_winners[game_index] = window.top.gv.prelim_winners[game_index];');
    d.writeln('');
@@ -3059,7 +3108,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Assign selected_player_picks and selected_player_weights.');
    d.writeln('');
-   d.writeln('   for (var game_index = 0; game_index < number_of_games; game_index++)');
+   d.writeln('   for (var game_index = 0; game_index < number_of_rs_games; game_index++)');
    d.writeln('   {');
    d.writeln('      selected_player_picks[game_index]   = picks[selected_player_index][game_index];');
    d.writeln('      selected_player_weights[game_index] = weights[selected_player_index][game_index];');
@@ -3068,7 +3117,7 @@ function build_regular_season_form()
    d.writeln('   // Loop through for every possible win/loss combination for those games that do not already have a winner specified.');
    d.writeln('   // Games can end in a "Tie", but were are not going to take a "Tie" into account, unless the user specified a "Tie".');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < Math.pow(2,number_of_games); i++)');
+   d.writeln('   for (var i = 0; i < Math.pow(2,number_of_rs_games); i++)');
    d.writeln('   {');
    d.writeln('      // Convert i into a binary string.');
    d.writeln('');
@@ -3076,14 +3125,14 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      // Add leading zeros as needed to get the length to equal sixteen.');
    d.writeln('');
-   d.writeln('      for (var j = (number_of_games-binary_winners.length); j > 0; j--)');
+   d.writeln('      for (var j = (number_of_rs_games-binary_winners.length); j > 0; j--)');
    d.writeln('      {');
    d.writeln('         binary_winners = "0" + binary_winners;');
    d.writeln('      }');
    d.writeln('');
    d.writeln('      // Assign the winners for this iteration based on the binary_winners string.');
    d.writeln('');
-   d.writeln('      for (var game_index = 0; game_index < number_of_games; game_index++)');
+   d.writeln('      for (var game_index = 0; game_index < number_of_rs_games; game_index++)');
    d.writeln('      {');
    d.writeln('         if (binary_winners.slice(game_index,game_index+1) == 0)');
    d.writeln('         {');
@@ -3099,7 +3148,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      skip_iteration = false;');
    d.writeln('');
-   d.writeln('      for (var game_index = 0; game_index < number_of_games; game_index++)');
+   d.writeln('      for (var game_index = 0; game_index < number_of_rs_games; game_index++)');
    d.writeln('      {');
    d.writeln('         if ( (selected_winners[game_index] == "H") || (selected_winners[game_index] == "V") )');
    d.writeln('         {');
@@ -3124,7 +3173,7 @@ function build_regular_season_form()
    d.writeln('         games_won          = 0;');
    d.writeln('         score_difference   = -1000;');
    d.writeln('');
-   d.writeln('         selected_player_score = calculate_score(selected_player_picks,selected_player_weights,winners_iteration,number_of_games)');
+   d.writeln('         selected_player_score = calculate_score(selected_player_picks,selected_player_weights,winners_iteration,number_of_rs_games)');
    d.writeln('');
    d.writeln('         for (var opponent_player_index = 0; opponent_player_index < number_of_rs_players; opponent_player_index++)');
    d.writeln('         {');
@@ -3136,7 +3185,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('               if ( (selected_opponent_index < 0) || (selected_opponent_index == opponent_player_index) )');
    d.writeln('               {');
-   d.writeln('                  opponent_score     = calculate_score(picks[opponent_player_index],weights[opponent_player_index],winners_iteration,number_of_games)');
+   d.writeln('                  opponent_score     = calculate_score(picks[opponent_player_index],weights[opponent_player_index],winners_iteration,number_of_rs_games)');
    d.writeln('                  max_opponent_score = Math.max(max_opponent_score,opponent_score);');  
    d.writeln('                  score_difference   = selected_player_score-max_opponent_score;'); 
    d.writeln('               }');
@@ -3146,18 +3195,18 @@ function build_regular_season_form()
    d.writeln('         if (score_difference > max_score_difference)');
    d.writeln('         {');
    d.writeln('            max_score_difference = score_difference;');
-   d.writeln('            most_games_won       = calculate_games_won(selected_player_picks,selected_player_weights,winners_iteration,number_of_games);');
+   d.writeln('            most_games_won       = calculate_games_won(selected_player_picks,selected_player_weights,winners_iteration,number_of_rs_games);');
    d.writeln('');
    d.writeln('            // Set the winners to reflect the best win for the selected player.');
    d.writeln('');
-   d.writeln('            for (var game_index = 0; game_index < number_of_games; game_index++)');
+   d.writeln('            for (var game_index = 0; game_index < number_of_rs_games; game_index++)');
    d.writeln('            {');
    d.writeln('               best_winners[game_index] = winners_iteration[game_index];');
    d.writeln('            }');
    d.writeln('         }');
    d.writeln('         else if (score_difference == max_score_difference)');
    d.writeln('         {');
-   d.writeln('            games_won = calculate_games_won(selected_player_picks,selected_player_weights,winners_iteration,number_of_games);');
+   d.writeln('            games_won = calculate_games_won(selected_player_picks,selected_player_weights,winners_iteration,number_of_rs_games);');
    d.writeln('');
    d.writeln('            if (games_won > most_games_won)');
    d.writeln('            {');   
@@ -3165,7 +3214,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('               // Set the winners to reflect the best win for the selected player.');
    d.writeln('');
-   d.writeln('               for (var game_index = 0; game_index < number_of_games; game_index++)');
+   d.writeln('               for (var game_index = 0; game_index < number_of_rs_games; game_index++)');
    d.writeln('               {');
    d.writeln('                  best_winners[game_index] = winners_iteration[game_index];');
    d.writeln('               }');
@@ -3176,7 +3225,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Assign the preliminary winners to the best winners so when we re-display the preliminary form it will reflect the best outcome for the selected player.');
    d.writeln('');
-   d.writeln('   for (var game_index = 0; game_index < number_of_games; game_index++)');
+   d.writeln('   for (var game_index = 0; game_index < number_of_rs_games; game_index++)');
    d.writeln('   {');
    d.writeln('      window.top.gv.prelim_winners[game_index] = best_winners[game_index];');
    d.writeln('   }');
@@ -3363,7 +3412,7 @@ function build_regular_season_form()
    d.writeln('   var winners_select = 0;');
    d.writeln('');
    d.writeln('');
-   d.writeln('   for (var i = 0; i < '+number_of_games+'; i++)');
+   d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
    d.writeln('      for (var j = 0; j < results.elements.length; j++)');
    d.writeln('      {');
@@ -3408,7 +3457,7 @@ function build_regular_season_form()
    d.writeln('   var home_teams                  = "";');
    d.writeln('   var nfl_team_city_abbreviations = ["ARI",      "ATL",    "BAL",   "BUF",  "CAR",     "CHI",  "CIN",    "CLE",   "DAL",    "DEN",    "DET",  "GB",     "HOU",   "IND",  "JAC",    "KC",    "LA",  "LAC",     "MIA",     "MIN",    "NE",      "NO",    "NYG",   "NYJ", "OAK",    "PHI",   "PIT",     "SEA",     "SF",   "TB",        "TEN",   "WAS"     ];');
    d.writeln('   var nfl_team_names              = ["Cardinals","Falcons","Ravens","Bills","Panthers","Bears","Bengals","Browns","Cowboys","Broncos","Lions","Packers","Texans","Colts","Jaguars","Chiefs","Rams","Chargers","Dolphins","Vikings","Patriots","Saints","Giants","Jets","Raiders","Eagles","Steelers","Seahawks","49ers","Buccaneers","Titans","Redskins"];');
-   d.writeln('   var number_of_games             = '+number_of_games+';');
+   d.writeln('   var number_of_rs_games          = '+number_of_rs_games+';');
    d.writeln('   var possession_teams_index      = 0;');
    d.writeln('   var prelim_victors_index        = 0;');
    d.writeln('   var temp_string                 = "";');
@@ -3418,7 +3467,7 @@ function build_regular_season_form()
    d.writeln('   var visiting_teams              = "";');
    d.writeln('   var week                        = window.top.gv.current_input_week-1;');
    d.writeln('   var winning_teams_index         = 0;');
-   d.writeln('   var winning_teams               = ["","","","","","","","","","","","","","","",""];');
+   d.writeln('   var winning_teams               = Array(number_of_rs_games).fill("");');
    d.writeln('');
    d.writeln('');
    d.writeln('   if (command != "Start")');
@@ -3474,7 +3523,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      game_valid = false;');
    d.writeln('');
-   d.writeln('      for (var j = 0; j < number_of_games; j++)');
+   d.writeln('      for (var j = 0; j < number_of_rs_games; j++)');
    d.writeln('      {');
    d.writeln('         if ( (home_team == home_teams[j]) && (visiting_team == visiting_teams[j]) ) game_valid = true;');
    d.writeln('      }');
@@ -3624,7 +3673,7 @@ function build_regular_season_form()
    d.writeln('            prelim_victors_index++;');
    d.writeln('         }');
    d.writeln('');
-   d.writeln('         for (var j = 0; j < number_of_games; j++)');
+   d.writeln('         for (var j = 0; j < number_of_rs_games; j++)');
    d.writeln('         {');
    d.writeln('            // The visiting_scores array, home_scores array, and game_state are strictly for display purposes only.');
    d.writeln('');
@@ -3650,11 +3699,11 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      // Update window.top.gv.prelim_winners so that the winners will appear on the form when it is redisplayed.');
    d.writeln('');
-   d.writeln('      for (var i = 0; i < number_of_games; i++)');
+   d.writeln('      for (var i = 0; i < number_of_rs_games; i++)');
    d.writeln('      {');
    d.writeln('         window.top.gv.prelim_winners[i] = "0";');
    d.writeln('');
-   d.writeln('         for (var j = 0; j < number_of_games; j++)');
+   d.writeln('         for (var j = 0; j < number_of_rs_games; j++)');
    d.writeln('         {');
    d.writeln('            if (visiting_teams[i] == winning_teams[j])');
    d.writeln('            {');
@@ -3773,11 +3822,11 @@ function build_regular_season_form()
    d.writeln('</tr>');
    d.writeln('');
 
-   for (var i = 1; i <= number_of_games; i++)
+   for (var i = 1; i <= number_of_rs_games; i++)
    {
       if (mode == "prelim")
       {
-         for (var j = 1; j <= number_of_games; j++)
+         for (var j = 1; j <= number_of_rs_games; j++)
          {
             input_tag_style = "font-size:11pt; font-family: Calibri; border: 1px solid lightgray";
 
@@ -3801,7 +3850,7 @@ function build_regular_season_form()
          home_team_possession_flag     = "";
          visiting_team_possession_flag = "";
 
-         for (var j = 1; j <= number_of_games; j++)
+         for (var j = 1; j <= number_of_rs_games; j++)
          {
             if (prelim_possession_teams[j-1] == visiting_teams[i-1])
             {
@@ -3833,7 +3882,7 @@ function build_regular_season_form()
       d.writeln('<tr align=center height=18px>');
       if (winners[i-1] == "V")
       {
-         if (i == number_of_games)
+         if (i == number_of_rs_games)
          {
             d.writeln('<td nowrap class="gr1_bb1_border"><font style="font-size: 12pt" color=blue>'+visiting_team_possession_flag+visiting_teams[i-1]+visiting_scores[i-1]+'</font></td>');
          }
@@ -3844,7 +3893,7 @@ function build_regular_season_form()
       }
       else
       {
-         if (i == number_of_games)
+         if (i == number_of_rs_games)
          {
             d.writeln('<td nowrap class="gr1_bb1_border"><font style="font-size: 12pt">'+visiting_team_possession_flag+visiting_teams[i-1]+visiting_scores[i-1]+'</font></td>');
          }
@@ -3853,7 +3902,7 @@ function build_regular_season_form()
             d.writeln('<td nowrap><font style="font-size: 12pt">'+visiting_team_possession_flag+visiting_teams[i-1]+visiting_scores[i-1]+'</font></td>');
          }
       }
-      if (i == number_of_games)
+      if (i == number_of_rs_games)
       {
          d.writeln('<td nowrap class="gr1_bb1_border"><font style="font-size: 12pt">'+game_state+'</font></td>');
       }
@@ -3863,7 +3912,7 @@ function build_regular_season_form()
       }
       if (winners[i-1] == "H")
       {
-         if (i == number_of_games)
+         if (i == number_of_rs_games)
          {
             d.writeln('<td nowrap class="gr1_bb1_border"><font style="font-size: 12pt" color=blue>'+home_team_possession_flag+home_teams[i-1]+home_scores[i-1]+'</font></td>');
          }
@@ -3874,7 +3923,7 @@ function build_regular_season_form()
       }
       else
       {
-         if (i == number_of_games)
+         if (i == number_of_rs_games)
          {
             d.writeln('<td nowrap class="gr1_bb1_border"><font style="font-size: 12pt">'+home_team_possession_flag+home_teams[i-1]+home_scores[i-1]+'</font></td>');
          }
@@ -3885,7 +3934,7 @@ function build_regular_season_form()
       }
       if (mode == "prelim")
       {
-         if (i == number_of_games)
+         if (i == number_of_rs_games)
          {
             d.writeln('<td class="br2_bb1_border"><select style="'+input_tag_style+'" name="winner'+i+'" size=1>');
          }
@@ -3929,7 +3978,7 @@ function build_regular_season_form()
       }
       else
       {
-         if (i == number_of_games)
+         if (i == number_of_rs_games)
          {
             d.writeln('<td class="br2_bb1_border"><font style="font-size: 12pt">'+winners[i-1]+'</font></td>');
          }
@@ -3944,7 +3993,7 @@ function build_regular_season_form()
          {
             if (picks[player_index[ii-1]].length > 0)
             {
-               if (i == number_of_games)
+               if (i == number_of_rs_games)
                {
                   d.writeln('<td class="gr1_bb1_border"><font style="font-size: 12pt">'+picks[player_index[ii-1]][i-1]+'</font></td>');  
                   d.writeln('<td class="gr1_bb1_border"><font style="font-size: 12pt">'+weights[player_index[ii-1]][i-1]+'</font></td>');
@@ -3957,7 +4006,7 @@ function build_regular_season_form()
             }
             else
             {
-               if (i == number_of_games)
+               if (i == number_of_rs_games)
                {
                   d.writeln('<td class="gr1_bb1_border"><font style="font-size: 12pt"><br></font></td>');
                   d.writeln('<td class="gr1_bb1_border"><font style="font-size: 12pt"><br></font></td>');
@@ -3975,7 +4024,7 @@ function build_regular_season_form()
             {
                if (ii == number_of_rs_players)
                {
-                  if (i == number_of_games)
+                  if (i == number_of_rs_games)
                   {
                      d.writeln('<td class="bb1_border"><font style="font-size: 12pt" color=red>-'+weights[player_index[ii-1]][i-1]+'</font></td>');
                   }
@@ -3986,7 +4035,7 @@ function build_regular_season_form()
                }
                else
                {
-                  if (i == number_of_games)
+                  if (i == number_of_rs_games)
                   {
                      d.writeln('<td class="br2_bb1_border"><font style="font-size: 12pt" color=red>-'+weights[player_index[ii-1]][i-1]+'</font></td>');
                   }
@@ -4000,7 +4049,7 @@ function build_regular_season_form()
             {
                if (ii == number_of_rs_players)
                {
-                  if (i == number_of_games)
+                  if (i == number_of_rs_games)
                   {
                      d.writeln('<td class="bb1_border"><font style="font-size: 12pt"><br></font></td>');
                   }
@@ -4011,7 +4060,7 @@ function build_regular_season_form()
                }
                else
                {
-                  if (i == number_of_games)
+                  if (i == number_of_rs_games)
                   {
                      d.writeln('<td class="br2_bb1_border"><font style="font-size: 12pt"><br></font></td>');
                   }
@@ -4026,7 +4075,7 @@ function build_regular_season_form()
          {
             if (ii == number_of_rs_players)
             {
-               if (i == number_of_games)
+               if (i == number_of_rs_games)
                {
                   d.writeln('<td class="bb1_border"><font style="font-size: 12pt"><br></font></td>');
                }
@@ -4037,7 +4086,7 @@ function build_regular_season_form()
             }
             else
             {
-               if (i == number_of_games)
+               if (i == number_of_rs_games)
                {
                   d.writeln('<td class="br2_bb1_border"><font style="font-size: 12pt"><br></font></td>');
                }
@@ -4173,7 +4222,7 @@ function build_regular_season_form()
          {
             // Determine if the players that are tied have the same Monday Night Total Points prediction.
 
-            for (var i = 1; i <= number_of_games; i++)
+            for (var i = 1; i <= number_of_rs_games; i++)
             {
                if (ranks[i-1] == 1)
                {
@@ -4358,7 +4407,7 @@ function build_regular_season_form()
       d.writeln('</tr>');
       d.writeln('');
    }
-   if (number_of_games < 16)
+   if (number_of_rs_games < max_number_of_rs_games)
    {
       d.writeln('<tr align=center>');
       d.writeln('<td class="no_border">');
@@ -4380,7 +4429,7 @@ function build_regular_season_form()
    {
       if (window.top.gv.mobile != true)
       {
-         for (var i = 1; i <= number_of_games; i++)
+         for (var i = 1; i <= number_of_rs_games; i++)
          {
             if (winners[i-1] == "0")
             {
@@ -4439,58 +4488,14 @@ function build_season_summary()
       return false;
    }
 
+   var rs_players                = window.top.gv.rs_players;
+   var number_of_rs_players      = rs_players.length;
+   var number_of_rs_weeks        = window.top.gv.all_home_teams.length;
+
    var actual_mn_points          = "";
-   var all_games_won             = [[0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0]];
-   var all_ranks                 = [[1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1],
-                                    [1,1,1,1,1,1,1,1,1,1,1,1]];
-   var all_scores                = [[0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                                    [0,0,0,0,0,0,0,0,0,0,0,0],]; 
+   var all_games_won             = Array(number_of_rs_weeks);
+   var all_ranks                 = Array(number_of_rs_weeks);
+   var all_scores                = Array(number_of_rs_weeks);
    var best_mn_points_delta      = 1000;
    var best_total_average_ranks  = 12.0;
    var best_total_games_won      = 0;
@@ -4519,35 +4524,33 @@ function build_season_summary()
    var max_last_places           = 0;
    var max_missed_weeks          = 0;
    var mn_points                 = "";
-   var mn_points_delta           = ["N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A"];
-   var number_of_games           = 0;
-   var number_of_rs_players      = 0;
+   var mn_points_delta           = Array(number_of_rs_players).fill("N/A");
+   var number_of_rs_games        = 0;
    var order_by                  = window.top.gv.order_by;
-   var player_low_scores         = [999,999,999,999,999,999,999,999,999,999,999,999];
+   var player_low_scores         = Array(number_of_rs_players).fill(999);
    var player_total_average_rank = "<br>";
    var player_total_games_won    = 0;
    var player_total_score        = 0;
-   var ranks_adjust              = [0,0,0,0,0,0,0,0,0,0,0,0];
+   var ranks_adjust              = Array(number_of_rs_players).fill(0);
    var ranks_sum                 = 0;
-   var rs_players                = window.top.gv.rs_players;
-   var sort_index                = [0,1,2,3,4,5,6,7,8,9,10,11];
-   var sorted_scores             = [1,1,1,1,1,1,1,1,1,1,1,1];
+   var sort_index                = Array(number_of_rs_players).fill().map((_,i) => i);  // Sets sort_index = [0,1,2,3,4,5,6,7,8,9,10,11]
+   var sorted_scores             = Array(number_of_rs_players).fill(1);
    var summary_title             = "";
    var table_data                = "";
    var td_background             = "";
    var tie_breaker_needed        = false;
-   var total_1st_places          = [0,0,0,0,0,0,0,0,0,0,0,0];
-   var total_2nd_places          = [0,0,0,0,0,0,0,0,0,0,0,0];
-   var total_3rd_places          = [0,0,0,0,0,0,0,0,0,0,0,0];
-   var total_average_ranks       = [12,12,12,12,12,12,12,12,12,12,12,12];
+   var total_1st_places          = Array(number_of_rs_players).fill(0);
+   var total_2nd_places          = Array(number_of_rs_players).fill(0);
+   var total_3rd_places          = Array(number_of_rs_players).fill(0);
+   var total_average_ranks       = Array(number_of_rs_players).fill(12);
    var total_games_played        = 0;
-   var total_games_won           = [0,0,0,0,0,0,0,0,0,0,0,0];
-   var total_last_places         = [0,0,0,0,0,0,0,0,0,0,0,0];
-   var total_missed_weeks        = [0,0,0,0,0,0,0,0,0,0,0,0];
-   var total_ranks               = [1,1,1,1,1,1,1,1,1,1,1,1];
-   var total_scores              = [0,0,0,0,0,0,0,0,0,0,0,0];
+   var total_games_won           = Array(number_of_rs_players).fill(0);
+   var total_last_places         = Array(number_of_rs_players).fill(0);
+   var total_missed_weeks        = Array(number_of_rs_players).fill(0);
+   var total_ranks               = Array(number_of_rs_players).fill(1);
+   var total_scores              = Array(number_of_rs_players).fill(0);
    var week                      = window.top.gv.current_input_week - 1;
-   var weekly_last_place_scores  = [999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999,999];
+   var weekly_last_place_scores  = Array(number_of_rs_weeks).fill(999);
    var weekly_max_games_won      = 0;
    var weekly_max_score          = 0;
    var weekly_picks              = "";
@@ -4558,10 +4561,9 @@ function build_season_summary()
 
    if (window.top.gv.games_over == false)       week--;
    if (week <  1)                               week = 1;
-   if (week > 17)                               week = 17;
-   if (window.top.gv.mode == "summary_archive") week = 17;
+   if (week > number_of_rs_weeks)               week = number_of_rs_weeks;
+   if (window.top.gv.mode == "summary_archive") week = number_of_rs_weeks;
 
-   number_of_rs_players = rs_players.length;
    summary_title     = "Week&nbsp;&nbsp;"+week+"&nbsp;&nbsp;Final";
 
    // Build document header.
@@ -4582,14 +4584,17 @@ function build_season_summary()
 
    for (var week_index = 0; week_index < week; week_index++)
    {
-      actual_mn_points = all_actual_mn_points[week_index];
-      mn_points        = all_mn_points[week_index];
-      number_of_games  = window.top.gv.all_home_teams[week_index].length;
-      ranks_adjust     = [0,0,0,0,0,0,0,0,0,0,0,0];
-      sorted_scores    = [1,1,1,1,1,1,1,1,1,1,1,1];
-      weekly_picks     = all_picks[week_index];
-      weekly_weights   = all_weights[week_index];
-      weekly_winners   = all_winners[week_index];
+      actual_mn_points          = all_actual_mn_points[week_index];
+      all_games_won[week_index] = Array(12).fill(0);
+      all_ranks[week_index]     = Array(12).fill(1);
+      all_scores[week_index]    = Array(12).fill(0);
+      mn_points                 = all_mn_points[week_index];
+      number_of_rs_games        = window.top.gv.all_home_teams[week_index].length;
+      ranks_adjust              = Array(number_of_rs_players).fill(0);
+      sorted_scores             = Array(number_of_rs_players).fill(1);
+      weekly_picks              = all_picks[week_index];
+      weekly_weights            = all_weights[week_index];
+      weekly_winners            = all_winners[week_index];
 
       // Calculate scores for the current week.
 
@@ -4597,7 +4602,7 @@ function build_season_summary()
       {
          if (weekly_picks[player_index].length > 0)
          {
-            for (var game_index = 0; game_index < number_of_games; game_index++)
+            for (var game_index = 0; game_index < number_of_rs_games; game_index++)
             {
                if ( (weekly_winners[game_index] != "0") && (weekly_picks[player_index][game_index] == weekly_winners[game_index]) )
                {
@@ -4658,7 +4663,7 @@ function build_season_summary()
 
          // If the winner of at least one game is not known, then there's no need for a tie breaker.
 
-         for (var game_index = 0; game_index < number_of_games; game_index++)
+         for (var game_index = 0; game_index < number_of_rs_games; game_index++)
          {
             if ((weekly_winners[game_index] != "H") && (weekly_winners[game_index] != "V") && (weekly_winners[game_index] != "Tie"))
             {
@@ -4813,7 +4818,7 @@ function build_season_summary()
 
    // Calculate total ranks.
 
-   sorted_scores = [1,1,1,1,1,1,1,1,1,1,1,1];
+   sorted_scores.fill(1);
 
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
@@ -5131,11 +5136,11 @@ function build_season_summary()
    d.writeln('</tr>');
    d.writeln('');
 
-   for (var week_index = 0; week_index < 17; week_index++)
+   for (var week_index = 0; week_index < number_of_rs_weeks; week_index++)
    {
       weekly_picks = all_picks[week_index];
 
-      if (week_index == (17-1))
+      if (week_index == (number_of_rs_weeks-1))
       {
          border_class_1 = "gr1_bb2_border";
          border_class_2 = "br2_bb2_border";
@@ -5163,7 +5168,7 @@ function build_season_summary()
 
       for (var player_index = 0; player_index < number_of_rs_players; player_index++)
       {
-         if (week_index == (17-1))
+         if (week_index == (number_of_rs_weeks-1))
          {
             if ((player_index + 1) == number_of_rs_players)
             {
@@ -5755,7 +5760,7 @@ function build_season_summary()
 }
 
 
-function calculate_games_won(picks,weights,winners,number_of_games)
+function calculate_games_won(picks,weights,winners,number_of_rs_games)
 {
    var games_won = 0;
 
@@ -5763,7 +5768,7 @@ function calculate_games_won(picks,weights,winners,number_of_games)
 
    if (picks.length > 0)
    {
-      for (var game_index = 0; game_index < number_of_games; game_index++)
+      for (var game_index = 0; game_index < number_of_rs_games; game_index++)
       {
          if ( (winners[game_index] != "0") && (picks[game_index] == winners[game_index]) )
          {
@@ -5780,7 +5785,7 @@ function calculate_games_won(picks,weights,winners,number_of_games)
 }
 
 
-function calculate_score(picks,weights,winners,number_of_games)
+function calculate_score(picks,weights,winners,number_of_rs_games)
 {
    var score = 0;
 
@@ -5788,7 +5793,7 @@ function calculate_score(picks,weights,winners,number_of_games)
 
    if (picks.length > 0)
    {
-      for (var game_index = 0; game_index < number_of_games; game_index++)
+      for (var game_index = 0; game_index < number_of_rs_games; game_index++)
       {
          if ( (winners[game_index] != "0") && (picks[game_index] == winners[game_index]) )
          {
