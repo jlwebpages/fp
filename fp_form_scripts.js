@@ -1207,7 +1207,7 @@ function build_post_season_form()
    d.writeln('   var games_in_progress           = false;');
    d.writeln('   var home_score                  = "";');
    d.writeln('   var home_team                   = "";');
-   d.writeln('   var nfl_team_city_abbreviations = ["ARI",      "ATL",    "BAL",   "BUF",  "CAR",     "CHI",  "CIN",    "CLE",   "DAL",    "DEN",    "DET",  "GB",     "HOU",   "IND",  "JAC",    "KC",    "LA",  "LAC",     "MIA",     "MIN",    "NE",      "NO",    "NYG",   "NYJ", "OAK",    "PHI",   "PIT",     "SEA",     "SF",   "TB",        "TEN",   "WAS"     ];');
+   d.writeln('   var nfl_team_city_abbreviations = ["ARI",      "ATL",    "BAL",   "BUF",  "CAR",     "CHI",  "CIN",    "CLE",   "DAL",    "DEN",    "DET",  "GB",     "HOU",   "IND",  "JAC",    "KC",    "LA",  "LAC",     "MIA",     "MIN",    "NE",      "NO",    "NYG",   "NYJ", "LV",     "PHI",   "PIT",     "SEA",     "SF",   "TB",        "TEN",   "WAS"     ];');
    d.writeln('   var nfl_team_names              = ["Cardinals","Falcons","Ravens","Bills","Panthers","Bears","Bengals","Browns","Cowboys","Broncos","Lions","Packers","Texans","Colts","Jaguars","Chiefs","Rams","Chargers","Dolphins","Vikings","Patriots","Saints","Giants","Jets","Raiders","Eagles","Steelers","Seahawks","49ers","Buccaneers","Titans","Redskins"];');
    d.writeln('   var possession_teams_index      = 0;');
    d.writeln('   var post_season_victors_index   = 0;');
@@ -3455,7 +3455,7 @@ function build_regular_season_form()
    d.writeln('   var home_score                  = "";');
    d.writeln('   var home_team                   = "";');
    d.writeln('   var home_teams                  = "";');
-   d.writeln('   var nfl_team_city_abbreviations = ["ARI",      "ATL",    "BAL",   "BUF",  "CAR",     "CHI",  "CIN",    "CLE",   "DAL",    "DEN",    "DET",  "GB",     "HOU",   "IND",  "JAC",    "KC",    "LA",  "LAC",     "MIA",     "MIN",    "NE",      "NO",    "NYG",   "NYJ", "OAK",    "PHI",   "PIT",     "SEA",     "SF",   "TB",        "TEN",   "WAS"     ];');
+   d.writeln('   var nfl_team_city_abbreviations = ["ARI",      "ATL",    "BAL",   "BUF",  "CAR",     "CHI",  "CIN",    "CLE",   "DAL",    "DEN",    "DET",  "GB",     "HOU",   "IND",  "JAC",    "KC",    "LA",  "LAC",     "MIA",     "MIN",    "NE",      "NO",    "NYG",   "NYJ", "LV",     "PHI",   "PIT",     "SEA",     "SF",   "TB",        "TEN",   "WAS"     ];');
    d.writeln('   var nfl_team_names              = ["Cardinals","Falcons","Ravens","Bills","Panthers","Bears","Bengals","Browns","Cowboys","Broncos","Lions","Packers","Texans","Colts","Jaguars","Chiefs","Rams","Chargers","Dolphins","Vikings","Patriots","Saints","Giants","Jets","Raiders","Eagles","Steelers","Seahawks","49ers","Buccaneers","Titans","Redskins"];');
    d.writeln('   var number_of_rs_games          = '+number_of_rs_games+';');
    d.writeln('   var possession_teams_index      = 0;');
