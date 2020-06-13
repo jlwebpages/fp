@@ -17,7 +17,7 @@
 
       // Manually set the Football Pool year at the beginning of the season.
 
-      var fp_year      = "2020";
+      var fp_year      = 2020;
       var archive_year = -1;
 
       // Update the Football Pool Web Page Title using the Football Pool year.
@@ -35,8 +35,8 @@
 
       // Set the post season teams each week during the playoffs.
 
-      var post_season_visiting_teams = [""];
-      var post_season_home_teams     = [""];
+      var post_season_visiting_teams = [];
+      var post_season_home_teams     = [];
 
       // These variables will be changed by the Java Scripts.
 
@@ -57,7 +57,7 @@
 
       var player_index = 0;
 
-      // Define this year's regular season schedule.
+      // Regular Season Schedule - Start
 
       var visiting_teams_1 = [
       "Texans",
@@ -793,23 +793,25 @@
                             open_date_16,
                             open_date_17];
 
-   function display_frame(frame_name, frame_width)
-   {
-      // frame_width is only used in fp_mobile.html
+      // Regular Season Schedule - End
 
-      if (frame_name == "fp_main")
+      function display_frame(frame_name, frame_width)
       {
-         document.getElementById("fp_frameset").cols="155px,*,0,0";
+         // frame_width is only used in fp_mobile.html
+
+         if (frame_name == "fp_main")
+         {
+            document.getElementById("fp_frameset").cols="155px,*,0,0";
+         }
+         else if (frame_name == "fp_picks")
+         {
+            document.getElementById("fp_frameset").cols="155px,0,*,0";
+         }
+         else if (frame_name == "fp_loading_indicator")
+         {
+            document.getElementById("fp_frameset").cols="155px,0,0,*";
+         }
       }
-      else if (frame_name == "fp_picks")
-      {
-         document.getElementById("fp_frameset").cols="155px,0,*,0";
-      }
-      else if (frame_name == "fp_loading_indicator")
-      {
-         document.getElementById("fp_frameset").cols="155px,0,0,*";
-      }
-   }
 
    </script>
 

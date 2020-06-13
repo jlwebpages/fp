@@ -21,7 +21,7 @@
 
       // Manually set the Football Pool year at the beginning of the season.
 
-      var fp_year      = "2020";
+      var fp_year      = 2020;
       var archive_year = -1;
 
       // Update the Football Pool Web Page Title using the Football Pool year.
@@ -39,8 +39,8 @@
 
       // Set the post season teams each week during the playoffs.
 
-      var post_season_visiting_teams = [""];
-      var post_season_home_teams     = [""];
+      var post_season_visiting_teams = [];
+      var post_season_home_teams     = [];
 
       // These variables will be changed by the Java Scripts.
 
@@ -61,7 +61,7 @@
 
       var player_index = 0;
 
-      // Define this year's regular season schedule.
+      // Regular Season Schedule - Start
 
       var visiting_teams_1 = [
       "Texans",
@@ -743,7 +743,6 @@
 
       var open_date_17 = ["None"];
 
-
       var all_visiting_teams = [visiting_teams_1,
                                 visiting_teams_2,
                                 visiting_teams_3,
@@ -798,155 +797,157 @@
                             open_date_16,
                             open_date_17];
 
-   function display_frame(frame_name, frame_width)
-   {
-      // Received frame_width is only used if frame_name equals "fp_picks".
+      // Regular Season Schedule - End
 
-      if (frame_name == "fp_main")
+      function display_frame(frame_name, frame_width)
       {
-         frame_width = fp_main.document.body.scrollWidth;
+         // Received frame_width is only used if frame_name equals "fp_picks".
 
-         if (fp_main.document.getElementById("input_form_table") != null)
+         if (frame_name == "fp_main")
          {
-            // Set frame_width equal to "Input Form" table width;
+            frame_width = fp_main.document.body.scrollWidth;
 
-            frame_width = fp_main.document.getElementById("input_form_table").offsetWidth;
-
-            // If the "Picks From Odds" button exists and is visible and if this isn't an iPad, adjust the font size of
-            // all buttons so that the total width of the buttons row is equal to the width of the "Input Form" table.
-
-            if ( (fp_main.document.getElementById("picks_from_odds_span") != null) &&
-                 (fp_main.document.getElementById("picks_from_odds_span").style.display == "") &&
-                 (navigator.platform != "iPad")                                                   )
+            if (fp_main.document.getElementById("input_form_table") != null)
             {
-               // Get the "Submit" button font size (assume font size of "Picks From Odds", "Random Picks", and "Reset" buttons are the same).
+               // Set frame_width equal to "Input Form" table width;
 
-               var button_font_size = fp_main.document.getElementById("submit").style.fontSize;
+               frame_width = fp_main.document.getElementById("input_form_table").offsetWidth;
 
-               // Proceed only if the "Submit" button font size is specified in "pt" units.
+               // If the "Picks From Odds" button exists and is visible and if this isn't an iPad, adjust the font size of
+               // all buttons so that the total width of the buttons row is equal to the width of the "Input Form" table.
 
-               if (button_font_size.indexOf("pt") != -1)
+               if ( (fp_main.document.getElementById("picks_from_odds_span") != null) &&
+                    (fp_main.document.getElementById("picks_from_odds_span").style.display == "") &&
+                    (navigator.platform != "iPad")                                                   )
                {
-                  // Remove "pt" from the button_font_size string.
+                  // Get the "Submit" button font size (assume font size of "Picks From Odds", "Random Picks", and "Reset" buttons are the same).
 
-                  button_font_size = button_font_size.replace("pt","");
+                  var button_font_size = fp_main.document.getElementById("submit").style.fontSize;
 
-                  // Convert button_font_size to a number.
+                  // Proceed only if the "Submit" button font size is specified in "pt" units.
 
-                  button_font_size = Number(button_font_size);
-
-                  if (fp_main.document.getElementById("input_form_buttons").offsetWidth > frame_width)
+                  if (button_font_size.indexOf("pt") != -1)
                   {
-                     // Decrease the font size of the "Input Form" buttons until the total width of the buttons row is equal to the width of the "Input Form" table.
+                     // Remove "pt" from the button_font_size string.
 
-                     while ( (button_font_size > 0) && (fp_main.document.getElementById("input_form_buttons").offsetWidth > frame_width) )
-                     {
-                        // Decrease button_font_size by 0.1pt.
+                     button_font_size = button_font_size.replace("pt","");
 
-                        button_font_size = Math.round((button_font_size-0.1)*10)/10;
+                     // Convert button_font_size to a number.
 
-                        fp_main.document.getElementById("submit").style.fontSize          = button_font_size + "pt";
-                        fp_main.document.getElementById("picks_from_odds").style.fontSize = button_font_size + "pt";
-                        fp_main.document.getElementById("random_picks").style.fontSize    = button_font_size + "pt";
-                        fp_main.document.getElementById("reset_button").style.fontSize    = button_font_size + "pt";
-                     }
-                  }
-                  else if (frame_width > fp_main.document.getElementById("input_form_buttons").offsetWidth)
-                  {
-                     // Increase the font size of the "Input Form" buttons until the total width of the buttons row is equal to the width of the "Input Form" table.
-
-                     while ( (button_font_size < 20) && (frame_width > fp_main.document.getElementById("input_form_buttons").offsetWidth) )
-                     {
-                        // Increase button_font_size by 0.1pt.
-
-                        button_font_size = Math.round((button_font_size+0.1)*10)/10;
-
-                        fp_main.document.getElementById("submit").style.fontSize          = button_font_size + "pt";
-                        fp_main.document.getElementById("picks_from_odds").style.fontSize = button_font_size + "pt";
-                        fp_main.document.getElementById("random_picks").style.fontSize    = button_font_size + "pt";
-                        fp_main.document.getElementById("reset_button").style.fontSize    = button_font_size + "pt";
-                     }
-
-                     // If the previous while loop caused the total width of the buttons row to be slightly greater than
-                     // the width of the "Input Form" table, then decrease the font size of the "Input Form" buttons by .1pt.
+                     button_font_size = Number(button_font_size);
 
                      if (fp_main.document.getElementById("input_form_buttons").offsetWidth > frame_width)
                      {
-                        // Decrease button_font_size by 0.1pt.
+                        // Decrease the font size of the "Input Form" buttons until the total width of the buttons row is equal to the width of the "Input Form" table.
 
-                        button_font_size = Math.round((button_font_size-0.1)*10)/10;
+                        while ( (button_font_size > 0) && (fp_main.document.getElementById("input_form_buttons").offsetWidth > frame_width) )
+                        {
+                           // Decrease button_font_size by 0.1pt.
 
-                        fp_main.document.getElementById("submit").style.fontSize          = button_font_size + "pt";
-                        fp_main.document.getElementById("picks_from_odds").style.fontSize = button_font_size + "pt";
-                        fp_main.document.getElementById("random_picks").style.fontSize    = button_font_size + "pt";
-                        fp_main.document.getElementById("reset_button").style.fontSize    = button_font_size + "pt";
+                           button_font_size = Math.round((button_font_size-0.1)*10)/10;
+
+                           fp_main.document.getElementById("submit").style.fontSize          = button_font_size + "pt";
+                           fp_main.document.getElementById("picks_from_odds").style.fontSize = button_font_size + "pt";
+                           fp_main.document.getElementById("random_picks").style.fontSize    = button_font_size + "pt";
+                           fp_main.document.getElementById("reset_button").style.fontSize    = button_font_size + "pt";
+                        }
+                     }
+                     else if (frame_width > fp_main.document.getElementById("input_form_buttons").offsetWidth)
+                     {
+                        // Increase the font size of the "Input Form" buttons until the total width of the buttons row is equal to the width of the "Input Form" table.
+
+                        while ( (button_font_size < 20) && (frame_width > fp_main.document.getElementById("input_form_buttons").offsetWidth) )
+                        {
+                           // Increase button_font_size by 0.1pt.
+
+                           button_font_size = Math.round((button_font_size+0.1)*10)/10;
+
+                           fp_main.document.getElementById("submit").style.fontSize          = button_font_size + "pt";
+                           fp_main.document.getElementById("picks_from_odds").style.fontSize = button_font_size + "pt";
+                           fp_main.document.getElementById("random_picks").style.fontSize    = button_font_size + "pt";
+                           fp_main.document.getElementById("reset_button").style.fontSize    = button_font_size + "pt";
+                        }
+
+                        // If the previous while loop caused the total width of the buttons row to be slightly greater than
+                        // the width of the "Input Form" table, then decrease the font size of the "Input Form" buttons by .1pt.
+
+                        if (fp_main.document.getElementById("input_form_buttons").offsetWidth > frame_width)
+                        {
+                           // Decrease button_font_size by 0.1pt.
+
+                           button_font_size = Math.round((button_font_size-0.1)*10)/10;
+
+                           fp_main.document.getElementById("submit").style.fontSize          = button_font_size + "pt";
+                           fp_main.document.getElementById("picks_from_odds").style.fontSize = button_font_size + "pt";
+                           fp_main.document.getElementById("random_picks").style.fontSize    = button_font_size + "pt";
+                           fp_main.document.getElementById("reset_button").style.fontSize    = button_font_size + "pt";
+                        }
                      }
                   }
                }
             }
+
+            document.getElementById("fp_frameset").cols="*,0,0";
+         }
+         else if (frame_name == "fp_picks")
+         {
+            document.getElementById("fp_frameset").cols="0,*,0";
+         }
+         else if (frame_name == "fp_loading_indicator")
+         {
+            frame_width = 0;
+
+            document.getElementById("fp_frameset").cols="0,0,*";
          }
 
-         document.getElementById("fp_frameset").cols="*,0,0";
+         set_mobile_viewport_width(frame_width);
+
+         if (frame_name == "fp_picks") fp_picks.document.getElementById("picks_table").scrollIntoView();
+
+         return true;
       }
-      else if (frame_name == "fp_picks")
+
+      function reset_mobile_viewport_width()
       {
-         document.getElementById("fp_frameset").cols="0,*,0";
+         if (saved_viewport_content != "")
+         {
+            document.getElementById("viewport").setAttribute("content",saved_viewport_content);
+
+            saved_viewport_content = "width=device-width, initial-scale=1.0";
+         }
+
+         return true;
       }
-      else if (frame_name == "fp_loading_indicator")
+
+      function set_mobile_viewport_width(viewport_width)
       {
-         frame_width = 0;
+         var viewport_content = "width=device-width, initial-scale=1.0";
+         var viewport_scale   = "";
 
-         document.getElementById("fp_frameset").cols="0,0,*";
+         // Don't try to adjust the viewport width if an HTML <meta> tag viewport element doesn't exist.
+
+         if (document.getElementById("viewport") == null) return;
+
+         // Don't adjust the viewport width if the mobile device is in landscape mode.
+
+         if (window.screen.width > window.screen.height) return;
+
+         // Don't adjust the viewport width if the mobile device is an iPad.
+
+         if (navigator.platform == "iPad") return;
+
+         if (viewport_width > 0)
+         {
+            saved_viewport_content = document.getElementById("viewport").content;
+
+            viewport_scale   = window.screen.width/viewport_width;
+            viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
+
+            document.getElementById("viewport").setAttribute("content",viewport_content);
+         }
+
+         return true;
       }
-
-      set_mobile_viewport_width(frame_width);
-
-      if (frame_name == "fp_picks") fp_picks.document.getElementById("picks_table").scrollIntoView();
-
-      return true;
-   }
-
-   function reset_mobile_viewport_width()
-   {
-      if (saved_viewport_content != "")
-      {
-         document.getElementById("viewport").setAttribute("content",saved_viewport_content);
-
-         saved_viewport_content = "width=device-width, initial-scale=1.0";
-      }
-
-      return true;
-   }
-
-   function set_mobile_viewport_width(viewport_width)
-   {
-      var viewport_content = "width=device-width, initial-scale=1.0";
-      var viewport_scale   = "";
-
-      // Don't try to adjust the viewport width if an HTML <meta> tag viewport element doesn't exist.
-
-      if (document.getElementById("viewport") == null) return;
-
-      // Don't adjust the viewport width if the mobile device is in landscape mode.
-
-      if (window.screen.width > window.screen.height) return;
-
-      // Don't adjust the viewport width if the mobile device is an iPad.
-
-      if (navigator.platform == "iPad") return;
-
-      if (viewport_width > 0)
-      {
-         saved_viewport_content = document.getElementById("viewport").content;
-
-         viewport_scale   = window.screen.width/viewport_width;
-         viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
-
-         document.getElementById("viewport").setAttribute("content",viewport_content);
-      }
-
-      return true;
-   }
 
    </script>
 
