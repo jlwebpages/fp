@@ -673,12 +673,12 @@ function build_regular_season_form()
    d.writeln('            {');
    d.writeln('               // Build the line in HTML Table Record (<tr>) format.');
    d.writeln('');
-   d.writeln('               formatted_picks += "\\n<tr" + upset_color_class + " style=\\"line-height: 100% nowrap\\">";');
-   d.writeln('               formatted_picks += "<td style=\\"padding: 0px 30px 0px 0px\\">" + winning_team + "</td>";');
-   d.writeln('               formatted_picks += "<td style=\\"padding: 0px\\">over</td>";');
-   d.writeln('               formatted_picks += "<td style=\\"padding: 0px 30px 0px 30px\\">" + losing_team + "</td>";');
-   d.writeln('               formatted_picks += "<td style=\\"text-align: center; padding: 0px 5px 0px 0px\\">" + pick + "</td>";');
-   d.writeln('               formatted_picks += "<td style=\\"text-align: right; padding: 0px\\">" + weight + "</td>";');
+   d.writeln('               formatted_picks += "\\n<tr" + upset_color_class + " style=\\"line-height: 100%\\">";');
+   d.writeln('               formatted_picks += "<td nowrap style=\\"padding: 0px 30px 0px 0px\\">" + winning_team + "</td>";');
+   d.writeln('               formatted_picks += "<td nowrap style=\\"padding: 0px\\">over</td>";');
+   d.writeln('               formatted_picks += "<td nowrap style=\\"padding: 0px 30px 0px 30px\\">" + losing_team + "</td>";');
+   d.writeln('               formatted_picks += "<td nowrap style=\\"text-align: center; padding: 0px 5px 0px 0px\\">" + pick + "</td>";');
+   d.writeln('               formatted_picks += "<td nowrap style=\\"text-align: right; padding: 0px\\">" + weight + "</td>";');
    d.writeln('               formatted_picks += "</tr>";');
    d.writeln('');
    d.writeln('               // If this or any other game is an upset pick then build the upset message for the dialog display.');
@@ -689,23 +689,23 @@ function build_regular_season_form()
    d.writeln('            {');
    d.writeln('               // Build the line in HTML Table Record (<tr>) format.');
    d.writeln('');
-   d.writeln('               formatted_picks += "\\n<tr style=\\"line-height: 100% nowrap\\">";');
-   d.writeln('               formatted_picks += "<td style=\\"padding: 0px\\">Game&nbsp</td>";');
-   d.writeln('               formatted_picks += "<td style=\\"text-align: right; padding: 0px\\">" + (j+1) + ":</td>";');
-   d.writeln('               formatted_picks += "<td style=\\"padding: 0px 20px 0px 20px\\">" + winning_team + "</td>";');
+   d.writeln('               formatted_picks += "\\n<tr style=\\"line-height: 100%\\">";');
+   d.writeln('               formatted_picks += "<td nowrap style=\\"padding: 0px\\">Game&nbsp</td>";');
+   d.writeln('               formatted_picks += "<td nowrap style=\\"text-align: right; padding: 0px\\">" + (j+1) + ":</td>";');
+   d.writeln('               formatted_picks += "<td nowrap style=\\"padding: 0px 20px 0px 20px\\">" + winning_team + "</td>";');
    d.writeln('');
    d.writeln('               if (picks[j] == 0)');
    d.writeln('               {');
-   d.writeln('                  formatted_picks += "<td style=\\"padding: 0px\\">at</td>";');
+   d.writeln('                  formatted_picks += "<td nowrap style=\\"padding: 0px\\">at</td>";');
    d.writeln('               }');
    d.writeln('               else');
    d.writeln('               {');
-   d.writeln('                  formatted_picks += "<td style=\\"padding: 0px\\">over</td>";');
+   d.writeln('                  formatted_picks += "<td nowrap style=\\"padding: 0px\\">over</td>";');
    d.writeln('               }');
    d.writeln('');
-   d.writeln('               formatted_picks += "<td style=\\"padding: 0px 20px 0px 20px\\">" + losing_team + "</td>";');
-   d.writeln('               formatted_picks += "<td style=\\"text-align: center; padding: 0px 5px 0px 0px\\">" + pick + "</td>";');
-   d.writeln('               formatted_picks += "<td style=\\"text-align: right; padding: 0px\\">" + weight + "</td>";');
+   d.writeln('               formatted_picks += "<td nowrap style=\\"padding: 0px 20px 0px 20px\\">" + losing_team + "</td>";');
+   d.writeln('               formatted_picks += "<td nowrap style=\\"text-align: center; padding: 0px 5px 0px 0px\\">" + pick + "</td>";');
+   d.writeln('               formatted_picks += "<td nowrap style=\\"text-align: right; padding: 0px\\">" + weight + "</td>";');
    d.writeln('               formatted_picks += "</tr>";');
    d.writeln('            }');
    d.writeln('         }');
@@ -743,14 +743,14 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('         // Build the line in HTML Table Record (<tr>) format.');
    d.writeln('');
-   d.writeln('         formatted_picks += "\\n<tr style=\\"line-height: 100% nowrap\\">";');
-   d.writeln('         formatted_picks += "<td style=\\"padding: 0px\\">Game&nbsp</td>";');
-   d.writeln('         formatted_picks += "<td style=\\"text-align: right; padding: 0px\\">" + (j+1) + ":</td>";');
-   d.writeln('         formatted_picks += "<td style=\\"padding: 0px 20px 0px 20px\\">" + winning_team + "</td>";');
-   d.writeln('         formatted_picks += "<td style=\\"padding: 0px\\">over</td>";');
-   d.writeln('         formatted_picks += "<td style=\\"padding: 0px 20px 0px 20px\\">" + losing_team + "</td>";');
-   d.writeln('         formatted_picks += "<td style=\\"text-align: center; padding: 0px 5px 0px 0px\\">" + pick + "</td>";');
-   d.writeln('         formatted_picks += "<td style=\\"text-align: right; padding: 0px\\">" + weight + "</td>";');
+   d.writeln('         formatted_picks += "\\n<tr style=\\"line-height: 100%\\">";');
+   d.writeln('         formatted_picks += "<td nowrap style=\\"padding: 0px\\">Game&nbsp</td>";');
+   d.writeln('         formatted_picks += "<td nowrap style=\\"text-align: right; padding: 0px\\">" + (j+1) + ":</td>";');
+   d.writeln('         formatted_picks += "<td nowrap style=\\"padding: 0px 20px 0px 20px\\">" + winning_team + "</td>";');
+   d.writeln('         formatted_picks += "<td nowrap style=\\"padding: 0px\\">over</td>";');
+   d.writeln('         formatted_picks += "<td nowrap style=\\"padding: 0px 20px 0px 20px\\">" + losing_team + "</td>";');
+   d.writeln('         formatted_picks += "<td nowrap style=\\"text-align: center; padding: 0px 5px 0px 0px\\">" + pick + "</td>";');
+   d.writeln('         formatted_picks += "<td nowrap style=\\"text-align: right; padding: 0px\\">" + weight + "</td>";');
    d.writeln('         formatted_picks += "</tr>";');
    d.writeln('      }');
    d.writeln('   }');
@@ -774,14 +774,14 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('         // Build the line in HTML Table Record (<tr>) format.');
    d.writeln('');
-   d.writeln('         formatted_picks += "\\n<tr style=\\"line-height: 100% nowrap\\">";');
-   d.writeln('         formatted_picks += "<td style=\\"padding: 0px\\">Game&nbsp</td>";');
-   d.writeln('         formatted_picks += "<td style=\\"text-align: right; padding: 0px\\">" + (j+1) + ":</td>";');
-   d.writeln('         formatted_picks += "<td style=\\"padding: 0px 20px 0px 20px\\">" + visiting_teams[j] + "</td>";');
-   d.writeln('         formatted_picks += "<td style=\\"padding: 0px\\">at</td>";');
-   d.writeln('         formatted_picks += "<td style=\\"padding: 0px 20px 0px 20px\\">" + home_teams[j] + "</td>";');
-   d.writeln('         formatted_picks += "<td style=\\"text-align: center; padding: 0px 5px 0px 0px\\">" + pick + "</td>";');
-   d.writeln('         formatted_picks += "<td style=\\"text-align: right; padding: 0px\\">" + weight + "</td>";');
+   d.writeln('         formatted_picks += "\\n<tr style=\\"line-height: 100%\\">";');
+   d.writeln('         formatted_picks += "<td nowrap style=\\"padding: 0px\\">Game&nbsp</td>";');
+   d.writeln('         formatted_picks += "<td nowrap style=\\"text-align: right; padding: 0px\\">" + (j+1) + ":</td>";');
+   d.writeln('         formatted_picks += "<td nowrap style=\\"padding: 0px 20px 0px 20px\\">" + visiting_teams[j] + "</td>";');
+   d.writeln('         formatted_picks += "<td nowrap style=\\"padding: 0px\\">at</td>";');
+   d.writeln('         formatted_picks += "<td nowrap style=\\"padding: 0px 20px 0px 20px\\">" + home_teams[j] + "</td>";');
+   d.writeln('         formatted_picks += "<td nowrap style=\\"text-align: center; padding: 0px 5px 0px 0px\\">" + pick + "</td>";');
+   d.writeln('         formatted_picks += "<td nowrap style=\\"text-align: right; padding: 0px\\">" + weight + "</td>";');
    d.writeln('         formatted_picks += "</tr>";');
    d.writeln('      }');
    d.writeln('   }');
@@ -2083,22 +2083,22 @@ function build_regular_season_form()
 
    for (var i = 1; i <= number_of_rs_games; i++)
    {
-      d.writeln('<tr align=center nowrap>');
+      d.writeln('<tr align=center>');
       if (i == number_of_rs_games)
       {
-         d.writeln('<td class="br2_border"><font style="font-size: 12pt"><b>' + i + '</b></font></td>');
-         d.writeln('<td class="gr1_border"><font style="font-size: 12pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
-         d.writeln('<td class="gr1_border"><font style="font-size: 12pt">at</font></td>');
-         d.writeln('<td class="br2_border"><font style="font-size: 12pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
-         d.writeln('<td class="gr1_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="pick'+i+'" size=1>');
+         d.writeln('<td nowrap class="br2_border"><font style="font-size: 12pt"><b>' + i + '</b></font></td>');
+         d.writeln('<td nowrap class="gr1_border"><font style="font-size: 12pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
+         d.writeln('<td nowrap class="gr1_border"><font style="font-size: 12pt">at</font></td>');
+         d.writeln('<td nowrap class="br2_border"><font style="font-size: 12pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
+         d.writeln('<td nowrap class="gr1_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="pick'+i+'" size=1>');
       }
       else
       {
-         d.writeln('<td class="br2_gb1_border"><font style="font-size: 12pt"><b>' + i + '</b></font></td>');
-         d.writeln('<td><font style="font-size: 12pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
-         d.writeln('<td><font style="font-size: 12pt">at</font></td>');
-         d.writeln('<td class="br2_gb1_border"><font style="font-size: 12pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
-         d.writeln('<td><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="pick'+i+'" size=1>');
+         d.writeln('<td nowrap class="br2_gb1_border"><font style="font-size: 12pt"><b>' + i + '</b></font></td>');
+         d.writeln('<td nowrap><font style="font-size: 12pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
+         d.writeln('<td nowrap><font style="font-size: 12pt">at</font></td>');
+         d.writeln('<td nowrap class="br2_gb1_border"><font style="font-size: 12pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
+         d.writeln('<td nowrap><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="pick'+i+'" size=1>');
       }
       d.writeln('       <option selected value="0">');
       d.writeln('       <option          value="H">H');
@@ -2106,11 +2106,11 @@ function build_regular_season_form()
       d.writeln('    </select></td>');
       if (i == number_of_rs_games)
       {
-         d.writeln('<td class="no_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="weight'+i+'" size=1>');
+         d.writeln('<td nowrap class="no_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="weight'+i+'" size=1>');
       }
       else
       {
-         d.writeln('<td class="gb1_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="weight'+i+'" size=1>');
+         d.writeln('<td nowrap class="gb1_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="weight'+i+'" size=1>');
       }
       d.writeln('       <option selected value="0">');
       for (var j = 1; j <= number_of_rs_games; j++)
