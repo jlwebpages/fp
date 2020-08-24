@@ -673,7 +673,7 @@ function build_regular_season_form()
    d.writeln('            {');
    d.writeln('               // Build the line in HTML Table Record (<tr>) format.');
    d.writeln('');
-   d.writeln('               formatted_picks += "\\n<tr" + upset_color_class + " style=\\"line-height: 100%\\">";');
+   d.writeln('               formatted_picks += "\\n<tr" + upset_color_class + " style=\\"line-height: 100% nowrap\\">";');
    d.writeln('               formatted_picks += "<td style=\\"padding: 0px 30px 0px 0px\\">" + winning_team + "</td>";');
    d.writeln('               formatted_picks += "<td style=\\"padding: 0px\\">over</td>";');
    d.writeln('               formatted_picks += "<td style=\\"padding: 0px 30px 0px 30px\\">" + losing_team + "</td>";');
@@ -689,7 +689,7 @@ function build_regular_season_form()
    d.writeln('            {');
    d.writeln('               // Build the line in HTML Table Record (<tr>) format.');
    d.writeln('');
-   d.writeln('               formatted_picks += "\\n<tr style=\\"line-height: 100%\\">";');
+   d.writeln('               formatted_picks += "\\n<tr style=\\"line-height: 100% nowrap\\">";');
    d.writeln('               formatted_picks += "<td style=\\"padding: 0px\\">Game&nbsp</td>";');
    d.writeln('               formatted_picks += "<td style=\\"text-align: right; padding: 0px\\">" + (j+1) + ":</td>";');
    d.writeln('               formatted_picks += "<td style=\\"padding: 0px 20px 0px 20px\\">" + winning_team + "</td>";');
@@ -743,7 +743,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('         // Build the line in HTML Table Record (<tr>) format.');
    d.writeln('');
-   d.writeln('         formatted_picks += "\\n<tr style=\\"line-height: 100%\\">";');
+   d.writeln('         formatted_picks += "\\n<tr style=\\"line-height: 100% nowrap\\">";');
    d.writeln('         formatted_picks += "<td style=\\"padding: 0px\\">Game&nbsp</td>";');
    d.writeln('         formatted_picks += "<td style=\\"text-align: right; padding: 0px\\">" + (j+1) + ":</td>";');
    d.writeln('         formatted_picks += "<td style=\\"padding: 0px 20px 0px 20px\\">" + winning_team + "</td>";');
@@ -774,7 +774,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('         // Build the line in HTML Table Record (<tr>) format.');
    d.writeln('');
-   d.writeln('         formatted_picks += "\\n<tr style=\\"line-height: 100%\\">";');
+   d.writeln('         formatted_picks += "\\n<tr style=\\"line-height: 100% nowrap\\">";');
    d.writeln('         formatted_picks += "<td style=\\"padding: 0px\\">Game&nbsp</td>";');
    d.writeln('         formatted_picks += "<td style=\\"text-align: right; padding: 0px\\">" + (j+1) + ":</td>";');
    d.writeln('         formatted_picks += "<td style=\\"padding: 0px 20px 0px 20px\\">" + visiting_teams[j] + "</td>";');
@@ -2083,7 +2083,7 @@ function build_regular_season_form()
 
    for (var i = 1; i <= number_of_rs_games; i++)
    {
-      d.writeln('<tr align=center>');
+      d.writeln('<tr align=center nowrap>');
       if (i == number_of_rs_games)
       {
          d.writeln('<td class="br2_border"><font style="font-size: 12pt"><b>' + i + '</b></font></td>');
