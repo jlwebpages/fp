@@ -1120,6 +1120,8 @@ function build_regular_season_form()
    d.writeln('   // Always display alerts if name contains "JL".');
    d.writeln('');
    d.writeln('   if (build_player_name(-1).indexOf("JL") != -1) suppress_alerts = false;');
+   d.writeln('   if (build_player_name(-1).indexOf("JL") != -1) nfl_odds_url = ["www.vegasinsider.com/nfl/odds/las-vegas"];');
+   d.writeln('   if (build_player_name(-1).indexOf("JL") != -1) nfl_odds_search_string = ["NFL Week '+week+'"];');
    d.writeln('');
    d.writeln('   // If the nfl_odds_array is already populated, don\'t waste time retrieving the NFL Odds from the internet again.');
    d.writeln('');
@@ -1205,10 +1207,11 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('               // Strip off as much of the ending of the nfl_odds html string as possible.');
    d.writeln('');
-   d.writeln('               index = nfl_odds.indexOf("View This Season");');
+   d.writeln('               index = nfl_odds.indexOf("<h2>");');
    d.writeln('');
    d.writeln('               if (index != -1) nfl_odds = nfl_odds.substring(0,index);');
    d.writeln('');
+   d.writeln('   if (build_player_name(-1).indexOf("JL") != -1) alert(nfl_odds);');
    d.writeln('               process_nfl_odds(nfl_odds);')
    d.writeln('');
    d.writeln('               // Remove loading indicator.');
