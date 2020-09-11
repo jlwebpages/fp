@@ -1109,7 +1109,7 @@ function build_regular_season_form()
    d.writeln('{');
    d.writeln('   var nfl_connection = null;');
    d.writeln('   var nfl_odds       = null;');
-   d.writeln('   var nfl_odds_url   = "bovada.lv/services/sports/event/v2/events/A/description/football/nfl";');
+   d.writeln('   var nfl_odds_url   = "www.bovada.lv:443/services/sports/event/v2/events/A/description/football/nfl";');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Always display alerts if name contains "JL".');
@@ -1125,12 +1125,12 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Display loading indicator while call to XMLHttpRequest is working.');
    d.writeln('');
-   d.writeln('   top.display_frame("fp_loading_indicator",0);');
+   d.writeln('   //JLJL top.display_frame("fp_loading_indicator",0);');
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
    d.writeln('   nfl_connection = new XMLHttpRequest();');
-   d.writeln('');
+   d.writeln('alert("1 - "+"https://www.scrappintwins.com/cors/"+nfl_odds_url);');//JLJL
    d.writeln('   nfl_connection.open("GET","https://www.scrappintwins.com/cors/"+nfl_odds_url,true);'); // scrappintwins.com provided by Dan M.
    d.writeln('');
    d.writeln('   nfl_connection.onload = function(e)');
@@ -1145,7 +1145,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            // Remove loading indicator.');
    d.writeln('');
-   d.writeln('            top.display_frame(restore_frame,0);');
+   d.writeln('            //JLJLtop.display_frame(restore_frame,0);');
    d.writeln('         }')
    d.writeln('         else // XMLHttpRequest was unsuccessful.')
    d.writeln('         {')
@@ -1153,7 +1153,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            // Remove loading indicator.');
    d.writeln('');
-   d.writeln('            top.display_frame(restore_frame,0);');
+   d.writeln('            alert(nfl_connection.status);//JLJLtop.display_frame(restore_frame,0);');
    d.writeln('         }')
    d.writeln('      }')
    d.writeln('');
@@ -1166,7 +1166,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      // Remove loading indicator.');
    d.writeln('');
-   d.writeln('      top.display_frame(restore_frame,0);');
+   d.writeln('      //JLJLtop.display_frame(restore_frame,0);');
    d.writeln('');
    d.writeln('      return;');
    d.writeln('   };')
