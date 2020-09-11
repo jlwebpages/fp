@@ -1109,7 +1109,8 @@ function build_regular_season_form()
    d.writeln('{');
    d.writeln('   var nfl_connection = null;');
    d.writeln('   var nfl_odds       = null;');
-   d.writeln('   var nfl_odds_url   = "www.bovada.lv:443/services/sports/event/v2/events/A/description/football/nfl";');
+   d.writeln('   //JLJLvar nfl_odds_url   = "www.bovada.lv:443/services/sports/event/v2/events/A/description/football/nfl";');
+   d.writeln('   var nfl_odds_url   = "www.vegasinsider.com/nfl/odds/las-vegas";');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Always display alerts if name contains "JL".');
@@ -1130,7 +1131,7 @@ function build_regular_season_form()
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
    d.writeln('   nfl_connection = new XMLHttpRequest();');
-   d.writeln('alert("1 - "+"https://www.scrappintwins.com/cors/"+nfl_odds_url);');//JLJL
+   d.writeln('alert("2 - "+"https://www.scrappintwins.com/cors/"+nfl_odds_url);');//JLJL
    d.writeln('   nfl_connection.open("GET","https://www.scrappintwins.com/cors/"+nfl_odds_url,true);'); // scrappintwins.com provided by Dan M.
    d.writeln('');
    d.writeln('   nfl_connection.onload = function(e)');
@@ -1256,7 +1257,7 @@ function build_regular_season_form()
    d.writeln('   var sort_key      = "";');
    d.writeln('   var total_points  = "";');
    d.writeln('   var visiting_team = "";');
-   d.writeln('');
+   d.writeln('alert("In process_nfl_odds");//JLJL');
    d.writeln('');
    d.writeln('   // Always display alerts if name contains "JL".');
    d.writeln('');
