@@ -1256,7 +1256,7 @@ function build_regular_season_form()
    d.writeln('   var sort_key      = "";');
    d.writeln('   var total_points  = "";');
    d.writeln('   var visiting_team = "";');
-   d.writeln('alert("In process_nfl_odds");//JLJL');
+   d.writeln('alert("In process_nfl_odds:"+nfl_odds.substring(0,10));//JLJL');
    d.writeln('');
    d.writeln('   // Always display alerts if name contains "JL".');
    d.writeln('');
