@@ -1109,7 +1109,7 @@ function build_regular_season_form()
    d.writeln('{');
    d.writeln('   var nfl_connection = null;');
    d.writeln('   var nfl_odds       = null;');
-   d.writeln('   var nfl_odds_url   = "https://www.bovada.lv/services/sports/event/v2/events/A/description/football/nfl";');
+   d.writeln('   var nfl_odds_url   = "bovada.lv/services/sports/event/v2/events/A/description/football/nfl";');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Always display alerts if name contains "JL".');
