@@ -849,7 +849,7 @@ function build_regular_season_form()
    d.writeln('            {');
    d.writeln('               // This is the last game scheduled so use the total points for the Monday Night Points Prediction.');
    d.writeln('');
-   d.writeln('               document.fp_inputs.mn_points.value = Math.floor(nfl_odds_array[i][noa_total_points_index]);');
+   d.writeln('               document.fp_inputs.mn_points.value = nfl_odds_array[i][noa_total_points_index];');
    d.writeln('            }');
    d.writeln('');
    d.writeln('            weights[j] = weight; weight--;');
@@ -1282,7 +1282,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      // If the game week does not match the selected week, then skip over this game.');
    d.writeln('');
-   d.writeln('      if (game_week.indexOf("Week '+week+'") == -1) continue;');
+   d.writeln('      if (game_week.toLowerCase().indexOf(("Week '+week+'").toLowerCase()) == -1) continue;');
    d.writeln('');
    d.writeln('      // Get the home and visiting teams from the game information.');
    d.writeln('');
@@ -1297,7 +1297,7 @@ function build_regular_season_form()
    d.writeln('         // If the home and visiting teams from the game information match one of the games');
    d.writeln('         // in the selected week, then get the Odds information from the game information.');
    d.writeln('');
-   d.writeln('         if ( (home_team.indexOf(home_teams[j]) != -1) && (visiting_team.indexOf(visiting_teams[j]) != -1) ) ');
+   d.writeln('         if ( (home_team.toLowerCase().indexOf(home_teams[j].toLowerCase()) != -1) && (visiting_team.toLowerCase().indexOf(visiting_teams[j].toLowerCase()) != -1) ) ');
    d.writeln('         {');
    d.writeln('            odds_found = true;');
    d.writeln('');
@@ -1318,7 +1318,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            for (var k = 0; k < '+number_of_rs_games+'; k++)');
    d.writeln('            {');
-   d.writeln('               if (favored_team.indexOf(home_teams[k]) != -1)');
+   d.writeln('               if (favored_team.toLowerCase().indexOf(home_teams[k].toLowerCase()) != -1)');
    d.writeln('               {');
    d.writeln('                  favored_team = home_teams[k]');
    d.writeln('');
@@ -1326,7 +1326,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('                  break;');
    d.writeln('               }');
-   d.writeln('               else if (favored_team.indexOf(visiting_teams[k]) != -1)');
+   d.writeln('               else if (favored_team.toLowerCase().indexOf(visiting_teams[k].toLowerCase()) != -1)');
    d.writeln('               {');
    d.writeln('                  favored_team = visiting_teams[k]');
    d.writeln('');
@@ -1345,7 +1345,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            nfl_odds_array[noa_index][noa_team_index]         = favored_team;');
    d.writeln('            nfl_odds_array[noa_index][noa_spread_index]       = point_spread;');
-   d.writeln('            nfl_odds_array[noa_index][noa_total_points_index] = total_points;');
+   d.writeln('            nfl_odds_array[noa_index][noa_total_points_index] = Math.floor(total_points);  // Round the total points value down to a whole number.');
    d.writeln('            nfl_odds_array[noa_index][noa_sort_key_index]     = sort_key;');
    d.writeln('');
    d.writeln('            //JL alert(nfl_odds_array[noa_index]);');
