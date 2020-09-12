@@ -1130,7 +1130,7 @@ function build_regular_season_form()
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
    d.writeln('   nfl_connection = new XMLHttpRequest();');
-   d.writeln('alert("4 - "+"https://www.scrappintwins.com/cors/"+nfl_odds_url);');//JLJL
+   d.writeln('alert("5 - "+"https://www.scrappintwins.com/cors/"+nfl_odds_url);');//JLJL
    d.writeln('   nfl_connection.open("GET","https://www.scrappintwins.com/cors/"+nfl_odds_url,true);'); // scrappintwins.com provided by Dan M.
    d.writeln('');
    d.writeln('   nfl_connection.onload = function(e)');
@@ -1256,7 +1256,7 @@ function build_regular_season_form()
    d.writeln('   var sort_key      = "";');
    d.writeln('   var total_points  = "";');
    d.writeln('   var visiting_team = "";');
-   d.writeln('alert("In process_nfl_odds:"+nfl_odds.substring(0,10));//JLJL');
+   d.writeln('alert("nfl_odds length: "+nfl_odds.length);//JLJL');
    d.writeln('');
    d.writeln('   // Always display alerts if name contains "JL".');
    d.writeln('');
