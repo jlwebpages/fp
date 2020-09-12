@@ -1297,7 +1297,7 @@ function build_regular_season_form()
    d.writeln('         // If the home and visiting teams from the game information match one of the games');
    d.writeln('         // in the selected week, then get the Odds information from the game information.');
    d.writeln('');
-   d.writeln('         if ( (home_team.toLowerCase.indexOf(home_teams[j].toLowerCase) != -1) && (visiting_team.toLowerCase.indexOf(visiting_teams[j].toLowerCase) != -1) ) ');
+   d.writeln('         if ( (home_team.indexOf(home_teams[j]) != -1) && (visiting_team.indexOf(visiting_teams[j]) != -1) ) ');
    d.writeln('         {');
    d.writeln('            odds_found = true;');
    d.writeln('');
@@ -1318,7 +1318,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            for (var k = 0; k < '+number_of_rs_games+'; k++)');
    d.writeln('            {');
-   d.writeln('               if (favored_team.toLowerCase.indexOf(home_teams[k].toLowerCase) != -1)');
+   d.writeln('               if (favored_team.indexOf(home_teams[k]) != -1)');
    d.writeln('               {');
    d.writeln('                  favored_team = home_teams[k]');
    d.writeln('');
@@ -1326,7 +1326,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('                  break;');
    d.writeln('               }');
-   d.writeln('               else if (favored_team.toLowerCase.indexOf(visiting_teams[k].toLowerCase) != -1)');
+   d.writeln('               else if (favored_team.indexOf(visiting_teams[k]) != -1)');
    d.writeln('               {');
    d.writeln('                  favored_team = visiting_teams[k]');
    d.writeln('');
