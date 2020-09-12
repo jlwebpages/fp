@@ -1295,7 +1295,7 @@ function build_regular_season_form()
    d.writeln('      for (var j = 0; j < '+number_of_rs_games+'; j++)');
    d.writeln('      {');
    d.writeln('         // If the home and visiting teams from the game information match one of the games');
-   d.wwriteln('        // in the selected week, then get the Odds information from the game information.');
+   d.writeln('         // in the selected week, then get the Odds information from the game information.');
    d.writeln('');
    d.writeln('         if ( (home_team.toLowerCase.indexOf(home_teams[j].toLowerCase) != -1) && (visiting_team.toLowerCase.indexOf(visiting_teams[j].toLowerCase) != -1) ) ');
    d.writeln('         {');
