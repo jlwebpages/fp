@@ -1125,12 +1125,12 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Display loading indicator while call to XMLHttpRequest is working.');
    d.writeln('');
-   d.writeln('   //JLJL top.display_frame("fp_loading_indicator",0);');
+   d.writeln('   top.display_frame("fp_loading_indicator",0);');
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
    d.writeln('   nfl_connection = new XMLHttpRequest();');
-   d.writeln('alert("6 - "+"https://www.scrappintwins.com/cors/"+nfl_odds_url);');//JLJL
+   d.writeln('');
    d.writeln('   nfl_connection.open("GET","https://www.scrappintwins.com/cors/"+nfl_odds_url,true);'); // scrappintwins.com provided by Dan M.
    d.writeln('');
    d.writeln('   nfl_connection.onload = function(e)');
@@ -1145,7 +1145,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            // Remove loading indicator.');
    d.writeln('');
-   d.writeln('            //JLJLtop.display_frame(restore_frame,0);');
+   d.writeln('            top.display_frame(restore_frame,0);');
    d.writeln('         }')
    d.writeln('         else // XMLHttpRequest was unsuccessful.')
    d.writeln('         {')
@@ -1153,7 +1153,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            // Remove loading indicator.');
    d.writeln('');
-   d.writeln('            alert(nfl_connection.status);//JLJLtop.display_frame(restore_frame,0);');
+   d.writeln('            top.display_frame(restore_frame,0);');
    d.writeln('         }')
    d.writeln('      }')
    d.writeln('');
@@ -1166,7 +1166,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      // Remove loading indicator.');
    d.writeln('');
-   d.writeln('      //JLJLtop.display_frame(restore_frame,0);');
+   d.writeln('      top.display_frame(restore_frame,0);');
    d.writeln('');
    d.writeln('      return;');
    d.writeln('   };')
@@ -1256,15 +1256,13 @@ function build_regular_season_form()
    d.writeln('   var sort_key      = "";');
    d.writeln('   var total_points  = "";');
    d.writeln('   var visiting_team = "";');
-   d.writeln('alert("nfl_odds length: "+nfl_odds.length);//JLJL');
+   d.writeln('');
    d.writeln('');
    d.writeln('   // Always display alerts if name contains "JL".');
    d.writeln('');
    d.writeln('   if (build_player_name(-1).indexOf("JL") != -1) suppress_alerts = false;');
    d.writeln('');
-   d.writeln('   var a = nfl_odds;');
-   d.writeln('');
-   d.writeln('   nfl_odds = JSON.parse(a);alert(nfl_odds.length);');
+   d.writeln('   nfl_odds = JSON.parse(nfl_odds);');
    d.writeln('');
    d.writeln('   game_list = nfl_odds[0].events;');
    d.writeln('');
