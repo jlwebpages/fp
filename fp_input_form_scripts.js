@@ -1336,6 +1336,10 @@ function build_regular_season_form()
    d.writeln('               }');
    d.writeln('            }');
    d.writeln('');
+   d.writeln('            // If the point spread is a whole number, change its format from floating point to whole number.');
+   d.writeln('');
+   d.writeln('            if (point_spread % 1 == 0) point_spread = Math.floor(point_spread);');
+   d.writeln('');
    d.writeln('            // Convert nfl_odds_array[noa_index] to a four element array.');
    d.writeln('');
    d.writeln('            nfl_odds_array[noa_index] = "1 2 3 4";');
