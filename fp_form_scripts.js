@@ -3635,16 +3635,14 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            if (game.situation.downDistanceText != undefined) game_state = game_state + "<br><font size=-2>" + game.situation.downDistanceText + "</font>";');
    d.writeln('');
-
-
-
    d.writeln('            // Determine which team has possession of the ball and if they\'re in the red zone.');
    d.writeln('');
-
-   d.writeln('            if ( (game.situation.possession != undefined) && (game.situation.possession = home_team_id)     ) possession_team = home_team;');
-   d.writeln('            if ( (game.situation.possession != undefined) && (game.situation.possession = visiting_team_id) ) possession_team = visiting_team;');
+   d.writeln('            if (game.situation.possession != undefined)');
+   d.writeln('            {');
+   d.writeln('               if (game.situation.possession == home_team_id    ) possession_team = home_team;');
+   d.writeln('               if (game.situation.possession == visiting_team_id) possession_team = visiting_team;');
+   d.writeln('            }');
    d.writeln('');
-
    d.writeln('            for (var k = 0; k < nfl_team_names.length; k++)');
    d.writeln('            {');
    d.writeln('               if (possession_team == nfl_team_names[k])');
@@ -3653,7 +3651,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('                  if ( (game.situation.isRedZone != undefined) && (game.situation.isRedZone == "true") )');
    d.writeln('                  {');
-   d.writeln('                     //alert("RZ: "+possession_team);window.top.gv.prelim_red_zone_flags[possession_teams_index] = true;');
+   d.writeln('                     window.top.gv.prelim_red_zone_flags[possession_teams_index] = true;');
    d.writeln('                  }');
    d.writeln('');
    d.writeln('                  possession_teams_index++;');
@@ -3661,14 +3659,8 @@ function build_regular_season_form()
    d.writeln('                  break;');
    d.writeln('               }');
    d.writeln('            }');
-
-
-
-
    d.writeln('         }');
    d.writeln('');
-
-
    d.writeln('         //alert(":"+visiting_team+":"+visiting_score+":"+home_team+":"+home_score+":"+game_status+":"+game_state);');//JLJL
    d.writeln('');
    d.writeln('         // If the current game is over or in progress, determine who the winning team is and save it.');
