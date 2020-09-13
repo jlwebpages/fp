@@ -3287,7 +3287,7 @@ function build_regular_season_form()
    d.writeln('   var request_url    = "https://www.scrappintwins.com/cors/" + nfl_scores_url + "?" + (new Date()).getTime();'); // scrappintwins.com provided by Dan M.
    d.writeln('   var user_message   = "\\"Get NFL Scores\\" failed.";');
    d.writeln('');
-   d.writeln('alert(nfl_scores_url);');
+   d.writeln('');
    d.writeln('   //nfl_scores = ;');
    d.writeln('   //nfl_scores = JSON.stringify(nfl_scores);');
    d.writeln('   //process_nfl_scores(document,display_dialog,command,nfl_scores);return;');//JLJL
