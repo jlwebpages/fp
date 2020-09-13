@@ -3649,7 +3649,7 @@ function build_regular_season_form()
    d.writeln('               {');
    d.writeln('                  window.top.gv.prelim_possession_teams[possession_teams_index] = nfl_team_names[k];');
    d.writeln('');
-   d.writeln('                  if ( (game.situation.isRedZone != undefined) && (game.situation.isRedZone == "true") )');
+   d.writeln('                  if ( (game.situation.isRedZone != undefined) && (game.situation.isRedZone == true) )');
    d.writeln('                  {');
    d.writeln('                     window.top.gv.prelim_red_zone_flags[possession_teams_index] = true;');
    d.writeln('                  }');
