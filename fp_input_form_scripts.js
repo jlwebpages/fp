@@ -1313,6 +1313,12 @@ function build_regular_season_form()
    d.writeln('               point_spread = game.displayGroups[0].markets[0].outcomes[1].price.handicap;');
    d.writeln('               total_points = game.displayGroups[0].markets[1].outcomes[1].price.handicap;');
    d.writeln('            }');
+   d.writeln('            else  // The odds are assumed to be even for this game.');
+   d.writeln('            {');
+   d.writeln('               favored_team = home_team;');
+   d.writeln('               point_spread = 0;');
+   d.writeln('               total_points = game.displayGroups[0].markets[1].outcomes[1].price.handicap;');
+   d.writeln('            }');
    d.writeln('');
    d.writeln('            // Remove the city name from the favored team and assign the sort key.');
    d.writeln('');
