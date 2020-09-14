@@ -1246,7 +1246,6 @@ function build_regular_season_form()
    d.writeln('   var favored_team  = "";')
    d.writeln('   var game          = "";');
    d.writeln('   var game_list     = "";');
-   d.writeln('   var game_week     = "";');
    d.writeln('   var home_team     = "";');
    d.writeln('   var index         = -1;');
    d.writeln('   var mn_points     = "";');

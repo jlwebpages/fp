@@ -1115,7 +1115,7 @@ function build_post_season_form()
    d.writeln('         {');
    d.writeln('            nfl_scores = nfl_connection.responseText;');
    d.writeln('');
-   d.writeln('            process_nfl_scores(document,display_dialog,command,nfl_scores);')
+   d.writeln('            process_nfl_scores(document,display_dialog,command,nfl_scores);');
    d.writeln('         }')
    d.writeln('         else // XMLHttpRequest was unsuccessful.')
    d.writeln('         {')
@@ -3311,7 +3311,7 @@ function build_regular_season_form()
    d.writeln('         {');
    d.writeln('            nfl_scores = nfl_connection.responseText;');
    d.writeln('');
-   d.writeln('            process_nfl_scores(document,display_dialog,command,nfl_scores);')
+   d.writeln('            process_nfl_scores(document,display_dialog,command,nfl_scores);');
    d.writeln('         }')
    d.writeln('         else // XMLHttpRequest was unsuccessful.')
    d.writeln('         {')
@@ -3513,28 +3513,28 @@ function build_regular_season_form()
    d.writeln('      {');
    d.writeln('         home_team    = game.competitors[0].team.name;');
    d.writeln('         home_team_id = game.competitors[0].id;');
-   d.writeln('         home_score   = game.competitors[0].score;');
+   d.writeln('         home_score   = game.competitors[0].score - 0;');
    d.writeln('      }');
    d.writeln('');
    d.writeln('      if (game.competitors[1].homeAway == "home")');
    d.writeln('      {');
    d.writeln('         home_team    = game.competitors[1].team.name;');
    d.writeln('         home_team_id = game.competitors[1].id;');
-   d.writeln('         home_score   = game.competitors[1].score;');
+   d.writeln('         home_score   = game.competitors[1].score - 0;');
    d.writeln('      }');
    d.writeln('');
    d.writeln('      if (game.competitors[0].homeAway == "away")');
    d.writeln('      {');
    d.writeln('         visiting_team    = game.competitors[0].team.name;');
    d.writeln('         visiting_team_id = game.competitors[0].id;');
-   d.writeln('         visiting_score   = game.competitors[0].score;');
+   d.writeln('         visiting_score   = game.competitors[0].score - 0;');
    d.writeln('      }');
    d.writeln('');
    d.writeln('      if (game.competitors[1].homeAway == "away")');
    d.writeln('      {');
    d.writeln('         visiting_team    = game.competitors[1].team.name;');
    d.writeln('         visiting_team_id = game.competitors[1].id;');
-   d.writeln('         visiting_score   = game.competitors[1].score;');
+   d.writeln('         visiting_score   = game.competitors[1].score - 0;');
    d.writeln('      }');
    d.writeln('');
    d.writeln('      // If home_team or visiting_team is undefined, set to "Football Team".');
