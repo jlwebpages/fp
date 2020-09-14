@@ -1276,14 +1276,6 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      game = game_list[i];');
    d.writeln('');
-   d.writeln('      // Get the game week from the game information.');
-   d.writeln('');
-   d.writeln('      game_week = game.displayGroups[0].markets[0].notes;');
-   d.writeln('');
-   d.writeln('      // If the game week does not match the selected week, then skip over this game.');
-   d.writeln('');
-   d.writeln('      if (game_week.toLowerCase().indexOf(("Week '+week+'").toLowerCase()) == -1) continue;');
-   d.writeln('');
    d.writeln('      // Get the home and visiting teams from the game information.');
    d.writeln('');
    d.writeln('      if (game.competitors[0].home == true) home_team = game.competitors[0].name;');
