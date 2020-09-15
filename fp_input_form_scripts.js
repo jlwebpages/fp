@@ -1275,6 +1275,15 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      game = game_list[i];');
    d.writeln('');
+   d.writeln('      // If game doesn\'t contain a game event, then skip it.');
+   d.writeln('');
+   d.writeln('      if (game.type != "GAMEEVENT") continue;');
+   d.writeln('');
+   d.writeln('      // If game doesn\'t contain point spreads, then skip it.');
+   d.writeln('');
+   d.writeln('      if (game.displayGroups[0].markets[0].outcomes[0] == undefined) continue;');
+   d.writeln('      if (game.displayGroups[0].markets[0].outcomes[1] == undefined) continue;');
+   d.writeln('');
    d.writeln('      // Get the home and visiting teams from the game information.');
    d.writeln('');
    d.writeln('      if (game.competitors[0].home == true) home_team = game.competitors[0].name;');
@@ -1352,6 +1361,8 @@ function build_regular_season_form()
    d.writeln('            //JL alert(nfl_odds_array[noa_index]);');
    d.writeln('');
    d.writeln('            noa_index++;');
+   d.writeln('');
+   d.writeln('            break;');
    d.writeln('         }');
    d.writeln('      }');
    d.writeln('   }');
