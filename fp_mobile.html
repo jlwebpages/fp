@@ -820,9 +820,16 @@
                     (fp_main.document.getElementById("picks_from_odds_span").style.display == "") &&
                     (navigator.platform != "iPad")                                                   )
                {
-                  // Get the "Submit" button font size (assume font size of "Picks From Odds", "Random Picks", and "Reset" buttons are the same).
+                  var accept_button          = fp_main.document.getElementById("submit");
+                  var home_team_picks_button = fp_main.document.getElementById("home_team_picks");
+                  var input_form_buttons     = fp_main.document.getElementById("input_form_buttons");
+                  var picks_from_odds_button = fp_main.document.getElementById("picks_from_odds");
+                  var random_picks_button    = fp_main.document.getElementById("random_picks");
+                  var reset_button           = fp_main.document.getElementById("reset_button");
 
-                  var button_font_size = fp_main.document.getElementById("submit").style.fontSize;
+                  // Get the "Submit" button font size (assume font size of "Picks From Odds", "Home Team Picks", "Random Picks", and "Reset" buttons are the same).
+
+                  var button_font_size = accept_button.style.fontSize;
 
                   // Proceed only if the "Submit" button font size is specified in "pt" units.
 
@@ -836,51 +843,57 @@
 
                      button_font_size = Number(button_font_size);
 
-                     if (fp_main.document.getElementById("input_form_buttons").offsetWidth > frame_width)
+                     if (input_form_buttons != null)
                      {
-                        // Decrease the font size of the "Input Form" buttons until the total width of the buttons row is equal to the width of the "Input Form" table.
-
-                        while ( (button_font_size > 0) && (fp_main.document.getElementById("input_form_buttons").offsetWidth > frame_width) )
+                        if (input_form_buttons.offsetWidth > frame_width)
                         {
-                           // Decrease button_font_size by 0.1pt.
+                           // Decrease the font size of the "Input Form" buttons until the total width of the buttons row is equal to the width of the "Input Form" table.
 
-                           button_font_size = Math.round((button_font_size-0.1)*10)/10;
+                           while ( (button_font_size > 0) && (input_form_buttons.offsetWidth > frame_width) )
+                           {
+                              // Decrease button_font_size by 0.1pt.
 
-                           fp_main.document.getElementById("submit").style.fontSize          = button_font_size + "pt";
-                           fp_main.document.getElementById("picks_from_odds").style.fontSize = button_font_size + "pt";
-                           fp_main.document.getElementById("random_picks").style.fontSize    = button_font_size + "pt";
-                           fp_main.document.getElementById("reset_button").style.fontSize    = button_font_size + "pt";
+                              button_font_size = Math.round((button_font_size-0.1)*10)/10;
+
+                              if (accept_button != null)          accept_button.style.fontSize          = button_font_size + "pt";
+                              if (home_team_picks_button != null) home_team_picks_button.style.fontSize = button_font_size + "pt";
+                              if (picks_from_odds_button != null) picks_from_odds_button.style.fontSize = button_font_size + "pt";
+                              if (random_picks_button != null)    random_picks_button.style.fontSize    = button_font_size + "pt";
+                              if (reset_button != null)           reset_button.style.fontSize           = button_font_size + "pt";
+                           }
                         }
-                     }
-                     else if (frame_width > fp_main.document.getElementById("input_form_buttons").offsetWidth)
-                     {
-                        // Increase the font size of the "Input Form" buttons until the total width of the buttons row is equal to the width of the "Input Form" table.
-
-                        while ( (button_font_size < 20) && (frame_width > fp_main.document.getElementById("input_form_buttons").offsetWidth) )
+                        else if (frame_width > input_form_buttons.offsetWidth)
                         {
-                           // Increase button_font_size by 0.1pt.
+                           // Increase the font size of the "Input Form" buttons until the total width of the buttons row is equal to the width of the "Input Form" table.
 
-                           button_font_size = Math.round((button_font_size+0.1)*10)/10;
+                           while ( (button_font_size < 20) && (frame_width > input_form_buttons.offsetWidth) )
+                           {
+                              // Increase button_font_size by 0.1pt.
 
-                           fp_main.document.getElementById("submit").style.fontSize          = button_font_size + "pt";
-                           fp_main.document.getElementById("picks_from_odds").style.fontSize = button_font_size + "pt";
-                           fp_main.document.getElementById("random_picks").style.fontSize    = button_font_size + "pt";
-                           fp_main.document.getElementById("reset_button").style.fontSize    = button_font_size + "pt";
-                        }
+                              button_font_size = Math.round((button_font_size+0.1)*10)/10;
 
-                        // If the previous while loop caused the total width of the buttons row to be slightly greater than
-                        // the width of the "Input Form" table, then decrease the font size of the "Input Form" buttons by .1pt.
+                              if (accept_button != null)          accept_button.style.fontSize          = button_font_size + "pt";
+                              if (home_team_picks_button != null) home_team_picks_button.style.fontSize = button_font_size + "pt";
+                              if (picks_from_odds_button != null) picks_from_odds_button.style.fontSize = button_font_size + "pt";
+                              if (random_picks_button != null)    random_picks_button.style.fontSize    = button_font_size + "pt";
+                              if (reset_button != null)           reset_button.style.fontSize           = button_font_size + "pt";
+                           }
 
-                        if (fp_main.document.getElementById("input_form_buttons").offsetWidth > frame_width)
-                        {
-                           // Decrease button_font_size by 0.1pt.
+                           // If the previous while loop caused the total width of the buttons row to be slightly greater than
+                           // the width of the "Input Form" table, then decrease the font size of the "Input Form" buttons by .1pt.
 
-                           button_font_size = Math.round((button_font_size-0.1)*10)/10;
+                           if (input_form_buttons.offsetWidth > frame_width)
+                           {
+                              // Decrease button_font_size by 0.1pt.
 
-                           fp_main.document.getElementById("submit").style.fontSize          = button_font_size + "pt";
-                           fp_main.document.getElementById("picks_from_odds").style.fontSize = button_font_size + "pt";
-                           fp_main.document.getElementById("random_picks").style.fontSize    = button_font_size + "pt";
-                           fp_main.document.getElementById("reset_button").style.fontSize    = button_font_size + "pt";
+                              button_font_size = Math.round((button_font_size-0.1)*10)/10;
+
+                              if (accept_button != null)          accept_button.style.fontSize          = button_font_size + "pt";
+                              if (home_team_picks_button != null) home_team_picks_button.style.fontSize = button_font_size + "pt";
+                              if (picks_from_odds_button != null) picks_from_odds_button.style.fontSize = button_font_size + "pt";
+                              if (random_picks_button != null)    random_picks_button.style.fontSize    = button_font_size + "pt";
+                              if (reset_button != null)           reset_button.style.fontSize           = button_font_size + "pt";
+                           }
                         }
                      }
                   }
