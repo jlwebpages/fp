@@ -1658,11 +1658,11 @@ function build_post_season_form()
 
       if (post_season_winners[gi-1] == "V")
       {
-         d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt; color: blue">'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
+         d.writeln('<td nowrap class="'+border_style+'"><font style="font-size: 10pt; color: blue">'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
       }
       else
       {
-         d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
+         d.writeln('<td nowrap class="'+border_style+'"><font style="font-size: 10pt">'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
       }
 
       d.writeln('<td nowrap class="'+border_style+'"><font style="font-size: 10pt">'+game_state+'</font></td>');
@@ -1675,22 +1675,22 @@ function build_post_season_form()
       {
          if ( (gi == w1_end) || (gi == w2_end) || (gi == w3_end) || (gi == w4_end) )
          {
-            d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt; color: blue">'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
+            d.writeln('<td nowrap class="'+border_style+'"><font style="font-size: 10pt; color: blue">'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
          }
          else
          {
-            d.writeln('<td class="gr1_border"><font style="font-size: 10pt; color: blue">'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
+            d.writeln('<td nowrap class="gr1_border"><font style="font-size: 10pt; color: blue">'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
          }
       }
       else
       {
          if ( (gi == w1_end) || (gi == w2_end) || (gi == w3_end) || (gi == w4_end) )
          {
-            d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
+            d.writeln('<td nowrap class="'+border_style+'"><font style="font-size: 10pt">'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
          }
          else
          {
-            d.writeln('<td class="gr1_border"><font style="font-size: 10pt">'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
+            d.writeln('<td nowrap class="gr1_border"><font style="font-size: 10pt">'+home_team_possession_flag+home_teams[gi-1]+'</font></td>');
          }
       }
 
