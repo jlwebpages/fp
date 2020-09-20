@@ -49,31 +49,31 @@ function build_regular_season_form()
 
    // Define tooltips for buttons
 
-   accept_tooltip += "&quot;Accept&quot; will:&#13;";
-   accept_tooltip += "     - Validate picks.&#13;";
+   accept_tooltip += "&quot;Accept&quot; will:&#10;";
+   accept_tooltip += "     - Validate picks.&#10;";
    accept_tooltip += "     - Display picks for review.";
 
-   picks_from_odds_tooltip += "&quot;Picks From Odds&quot; will:&#13;";
-   picks_from_odds_tooltip += "     - Clear picks from the Input Form.&#13;";
-   picks_from_odds_tooltip += "     - Fill in picks using the NFL Odds.&#13;";
+   picks_from_odds_tooltip += "&quot;Picks From Odds&quot; will:&#10;";
+   picks_from_odds_tooltip += "     - Clear picks from the Input Form.&#10;";
+   picks_from_odds_tooltip += "     - Fill in picks using the NFL Odds.&#10;";
    picks_from_odds_tooltip += "     - Display picks for review.";
 
-   home_team_picks_tooltip += "&quot;Home Team Picks&quot; will:&#13;";
-   home_team_picks_tooltip += "     - Clear picks from the Input Form.&#13;";
-   home_team_picks_tooltip += "     - Pick all home teams taking into account the NFL Odds.&#13;";
+   home_team_picks_tooltip += "&quot;Home Team Picks&quot; will:&#10;";
+   home_team_picks_tooltip += "     - Clear picks from the Input Form.&#10;";
+   home_team_picks_tooltip += "     - Pick all home teams and assign weights based on the NFL Odds.&#10;";
    home_team_picks_tooltip += "     - Display picks for review.";
 
-   random_picks_tooltip += "&quot;Random Picks&quot; will:&#13;";
-   random_picks_tooltip += "     - Validate picks already entered.&#13;";
-   random_picks_tooltip += "     - Fill in blank picks randomly.&#13;";
+   random_picks_tooltip += "&quot;Random Picks&quot; will:&#10;";
+   random_picks_tooltip += "     - Validate picks already entered.&#10;";
+   random_picks_tooltip += "     - Fill in blank picks randomly.&#10;";
    random_picks_tooltip += "     - Display picks for review.";
 
-   reset_tooltip += "&quot;Reset&quot; will:&#13;";
-   reset_tooltip += "     - Clear picks from the Input Form.&#13;";
+   reset_tooltip += "&quot;Reset&quot; will:&#10;";
+   reset_tooltip += "     - Clear picks from the Input Form.&#10;";
    reset_tooltip += "     - Refresh the NFL Odds.";
 
-   submit_via_e_mail_tooltip += "&quot;Submit via E-Mail&quot; will:&#13;";
-   submit_via_e_mail_tooltip += "     - Create an E-Mail message containing your picks.&#13;";
+   submit_via_e_mail_tooltip += "&quot;Submit via E-Mail&quot; will:&#10;";
+   submit_via_e_mail_tooltip += "     - Create an E-Mail message containing your picks.&#10;";
    submit_via_e_mail_tooltip += "     - Click the E-Mail &quot;Send&quot; button to submit your picks.";
 
    document.open();
@@ -2294,26 +2294,26 @@ function build_post_season_form()
 
    // Define tooltips for buttons
 
-   accept_tooltip += "&quot;Accept&quot; will:&#13;";
-   accept_tooltip += "     - Validate picks.&#13;";
+   accept_tooltip += "&quot;Accept&quot; will:&#10;";
+   accept_tooltip += "     - Validate picks.&#10;";
    accept_tooltip += "     - Display picks for review.";
 
-   picks_from_odds_tooltip += "&quot;Picks From Odds&quot; will:&#13;";
-   picks_from_odds_tooltip += "     - Clear picks from the Input Form.&#13;";
-   picks_from_odds_tooltip += "     - Fill in picks using the NFL Odds.&#13;";
+   picks_from_odds_tooltip += "&quot;Picks From Odds&quot; will:&#10;";
+   picks_from_odds_tooltip += "     - Clear picks from the Input Form.&#10;";
+   picks_from_odds_tooltip += "     - Fill in picks using the NFL Odds.&#10;";
    picks_from_odds_tooltip += "     - Display picks for review.";
 
-   random_picks_tooltip += "&quot;Random Picks&quot; will:&#13;";
-   random_picks_tooltip += "     - Validate picks already entered.&#13;";
-   random_picks_tooltip += "     - Fill in blank picks randomly (max margin of victory " + random_picks_max_spread + ").&#13;";
+   random_picks_tooltip += "&quot;Random Picks&quot; will:&#10;";
+   random_picks_tooltip += "     - Validate picks already entered.&#10;";
+   random_picks_tooltip += "     - Fill in blank picks randomly (max margin of victory " + random_picks_max_spread + ").&#10;";
    random_picks_tooltip += "     - Display picks for review.";
 
-   reset_tooltip += "&quot;Reset&quot; will:&#13;";
-   reset_tooltip += "     - Clear picks from the Input Form.&#13;";
+   reset_tooltip += "&quot;Reset&quot; will:&#10;";
+   reset_tooltip += "     - Clear picks from the Input Form.&#10;";
    reset_tooltip += "     - Refresh the NFL Odds.";
 
-   submit_via_e_mail_tooltip += "&quot;Submit via E-Mail&quot; will:&#13;";
-   submit_via_e_mail_tooltip += "     - Create an E-Mail message containing your picks.&#13;";
+   submit_via_e_mail_tooltip += "&quot;Submit via E-Mail&quot; will:&#10;";
+   submit_via_e_mail_tooltip += "     - Create an E-Mail message containing your picks.&#10;";
    submit_via_e_mail_tooltip += "     - Click the E-Mail &quot;Send&quot; button to submit your picks.";
 
    if (week == 4)
