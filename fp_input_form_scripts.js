@@ -1618,6 +1618,10 @@ function build_regular_season_form()
    d.writeln('   if (document.getElementById("display_spreads_span") != null) document.getElementById("display_spreads_span").style.display = "";');
    d.writeln('   if (document.getElementById("accept_reset_buttons") != null) document.getElementById("accept_reset_buttons").style.padding = "7px 0 0 0";');
    d.writeln('');
+   d.writeln('   // Redisplay the Input Form table to make sure the width of the buttons row is less than or equal to the table width.');
+   d.writeln('');
+   d.writeln('   top.display_frame("fp_main",0);');
+   d.writeln('');
    d.writeln('   return true');
    d.writeln('}');
    d.writeln('');
@@ -3403,6 +3407,10 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if (document.getElementById("picks_from_odds_span") != null) document.getElementById("picks_from_odds_span").style.display = "";');
    d.writeln('   if (document.getElementById("display_spreads_span") != null) document.getElementById("display_spreads_span").style.display = "";');
+   d.writeln('');
+   d.writeln('   // Redisplay the Input Form table to make sure the width of the buttons row is less than or equal to the table width.');
+   d.writeln('');
+   d.writeln('   top.display_frame("fp_main",0);');
    d.writeln('');
    d.writeln('   return true;');
    d.writeln('}');
