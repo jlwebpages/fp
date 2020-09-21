@@ -820,7 +820,6 @@ function build_regular_season_form()
    d.writeln('function generate_home_team_picks(document)');
    d.writeln('{');
    d.writeln('   var home_team_picks_array = new Array('+number_of_rs_games+');');
-   d.writeln('   var odds_found            = false;');
    d.writeln('   var prompt_message        = "";');
    d.writeln('   var user_input            = "";');
    d.writeln('   var valid_mn_points       = true;');
@@ -857,7 +856,7 @@ function build_regular_season_form()
    d.writeln('      home_team_picks_array[i][noa_team_index]         = home_teams[i];');
    d.writeln('      home_team_picks_array[i][noa_spread_index]       = 0;');
    d.writeln('      home_team_picks_array[i][noa_total_points_index] = 0;');
-   d.writeln('      home_team_picks_array[i][noa_sort_key_index]     = "H" + (i + 10);');
+   d.writeln('      home_team_picks_array[i][noa_sort_key_index]     = "H" + (('+max_number_of_rs_games+'-i) + 10);');
    d.writeln('');
    d.writeln('      // Update the point spread and total points if they exist in the nfl_odds_array.');
    d.writeln('');
@@ -868,16 +867,12 @@ function build_regular_season_form()
    d.writeln('            home_team_picks_array[i][noa_spread_index]       = nfl_odds_array[j][noa_spread_index];');
    d.writeln('            home_team_picks_array[i][noa_total_points_index] = nfl_odds_array[j][noa_total_points_index];');
    d.writeln('');
-   d.writeln('            odds_found = true;');
-   d.writeln('');
    d.writeln('            break;');
    d.writeln('         }');
    d.writeln('         else if (nfl_odds_array[j][noa_team_index] == visiting_teams[i])');
    d.writeln('         {');
    d.writeln('            home_team_picks_array[i][noa_spread_index]       = -1 * nfl_odds_array[j][noa_spread_index];');
    d.writeln('            home_team_picks_array[i][noa_total_points_index] = nfl_odds_array[j][noa_total_points_index];');
-   d.writeln('');
-   d.writeln('            odds_found = true;');
    d.writeln('');
    d.writeln('            break;');
    d.writeln('         }');
@@ -896,10 +891,6 @@ function build_regular_season_form()
    d.writeln('            return a[noa_spread_index] - b[noa_spread_index];');
    d.writeln('         }');
    d.writeln('      );');
-   d.writeln('');
-   d.writeln('   // If no point spreads were found in the nfl_odds_array then reverse the order of the picks.');
-   d.writeln('');
-   d.writeln('   if (odds_found == false) home_team_picks_array.reverse();');
    d.writeln('');
    d.writeln('   // Populate picks and weights from the home_team_picks_array.');
    d.writeln('');
@@ -1553,7 +1544,7 @@ function build_regular_season_form()
    d.writeln('               {');
    d.writeln('                  favored_team = home_teams[k]');
    d.writeln('');
-   d.writeln('                  sort_key = "H" + (j + 10);');
+   d.writeln('                  sort_key = "H" + (('+max_number_of_rs_games+'-j) + 10);');
    d.writeln('');
    d.writeln('                  break;');
    d.writeln('               }');
@@ -1561,7 +1552,7 @@ function build_regular_season_form()
    d.writeln('               {');
    d.writeln('                  favored_team = visiting_teams[k]');
    d.writeln('');
-   d.writeln('                  sort_key = "V" + (j + 10);');
+   d.writeln('                  sort_key = "V" + (('+max_number_of_rs_games+'-j) + 10);');
    d.writeln('');
    d.writeln('                  break;');
    d.writeln('               }');
