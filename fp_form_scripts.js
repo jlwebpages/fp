@@ -1087,7 +1087,7 @@ function build_post_season_form()
    d.writeln('{');
    d.writeln('   var nfl_connection = null;');
    d.writeln('   var nfl_scores     = null;');
-   d.writeln('   var nfl_scores_url = "www.nfl.com/liveupdate/scores/scores.json";');
+   d.writeln('   var nfl_scores_url = "site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";');
    d.writeln('   var request_url    = "https://www.scrappintwins.com/cors/" + nfl_scores_url + "?" + (new Date()).getTime();'); // scrappintwins.com provided by Dan M.
    d.writeln('   var user_message   = "\\"Get NFL Scores\\" failed.";');
    d.writeln('');
@@ -1101,7 +1101,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if (window.top.gv.get_scores_state == "on") user_message += "  \\"Auto Refresh\\" will be stopped."');
    d.writeln('');
-   d.writeln('   // Attempt to get the NFL scores from the internet.');
+   d.writeln('   // Get the NFL scores from the internet.');
    d.writeln('');
    d.writeln('   nfl_connection = new XMLHttpRequest();');
    d.writeln('');
@@ -1116,9 +1116,9 @@ function build_post_season_form()
    d.writeln('            nfl_scores = nfl_connection.responseText;');
    d.writeln('');
    d.writeln('            process_nfl_scores(document,display_dialog,command,nfl_scores);');
-   d.writeln('         }')
-   d.writeln('         else // XMLHttpRequest was unsuccessful.')
-   d.writeln('         {')
+   d.writeln('         }');
+   d.writeln('         else // XMLHttpRequest was unsuccessful.');
+   d.writeln('         {');
    d.writeln('            alert(user_message);');
    d.writeln('');
    d.writeln('            // Force Auto Refresh to be off and refresh the preliminary form.');
@@ -1126,14 +1126,14 @@ function build_post_season_form()
    d.writeln('            get_scores_auto_refresh(document,"stop");');
    d.writeln('');
    d.writeln('            document.location.href="fp_post_season_form.html";');
-   d.writeln('         }')
-   d.writeln('      }')
+   d.writeln('         }');
+   d.writeln('      }');
    d.writeln('');
    d.writeln('      return;');
-   d.writeln('   }')
+   d.writeln('   }');
    d.writeln('');
-   d.writeln('   nfl_connection.onerror = function(e)')
-   d.writeln('   {')
+   d.writeln('   nfl_connection.onerror = function(e)');
+   d.writeln('   {');
    d.writeln('      alert(user_message);');
    d.writeln('');
    d.writeln('      // Force Auto Refresh to be off and refresh the preliminary form.');
@@ -1143,9 +1143,9 @@ function build_post_season_form()
    d.writeln('      document.location.href="fp_post_season_form.html";');
    d.writeln('');
    d.writeln('      return false;');
-   d.writeln('   };')
-   d.writeln('')
-   d.writeln('   nfl_connection.send(null);')
+   d.writeln('   };');
+   d.writeln('');
+   d.writeln('   nfl_connection.send(null);');
    d.writeln('');
    d.writeln('   return;');
    d.writeln('}');
@@ -3312,9 +3312,9 @@ function build_regular_season_form()
    d.writeln('            nfl_scores = nfl_connection.responseText;');
    d.writeln('');
    d.writeln('            process_nfl_scores(document,display_dialog,command,nfl_scores);');
-   d.writeln('         }')
-   d.writeln('         else // XMLHttpRequest was unsuccessful.')
-   d.writeln('         {')
+   d.writeln('         }');
+   d.writeln('         else // XMLHttpRequest was unsuccessful.');
+   d.writeln('         {');
    d.writeln('            alert(user_message);');
    d.writeln('');
    d.writeln('            // Force Auto Refresh to be off and refresh the preliminary form.');
@@ -3322,14 +3322,14 @@ function build_regular_season_form()
    d.writeln('            get_scores_auto_refresh(document,"stop");');
    d.writeln('');
    d.writeln('            document.location.href="fp_regular_season_form.html";');
-   d.writeln('         }')
-   d.writeln('      }')
+   d.writeln('         }');
+   d.writeln('      }');
    d.writeln('');
    d.writeln('      return;');
-   d.writeln('   }')
+   d.writeln('   }');
    d.writeln('');
-   d.writeln('   nfl_connection.onerror = function(e)')
-   d.writeln('   {')
+   d.writeln('   nfl_connection.onerror = function(e)');
+   d.writeln('   {');
    d.writeln('      alert(user_message);');
    d.writeln('');
    d.writeln('      // Force Auto Refresh to be off and refresh the preliminary form.');
@@ -3339,9 +3339,9 @@ function build_regular_season_form()
    d.writeln('      document.location.href="fp_regular_season_form.html";');
    d.writeln('');
    d.writeln('      return false;');
-   d.writeln('   };')
-   d.writeln('')
-   d.writeln('   nfl_connection.send(null);')
+   d.writeln('   };');
+   d.writeln('');
+   d.writeln('   nfl_connection.send(null);');
    d.writeln('');
    d.writeln('   return;');
    d.writeln('}');
