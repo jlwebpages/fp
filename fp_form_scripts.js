@@ -3557,7 +3557,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('         // Determine the status and state of the current game.');
    d.writeln('');
-   d.writeln('         if (game.status.period < 1)');
+   d.writeln('         if (game.status.type.state == "pre")');
    d.writeln('         {');
    d.writeln('            game_status = "game_not_started";');
    d.writeln('            game_state  = "";');
