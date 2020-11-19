@@ -1419,7 +1419,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (build_player_name(-1).indexOf("JL") == -1) return "";');  //JL
    d.writeln('');
-   d.writeln('   if (top.global_week != top.current_input_week) return "";');
+   d.writeln('   if ( (top.games_over == false) || (top.global_week != top.current_input_week) ) return "";');
    d.writeln('');
    d.writeln('   for (var i = 0; i < '+number_of_nfl_teams+'; i++)');
    d.writeln('   {');
