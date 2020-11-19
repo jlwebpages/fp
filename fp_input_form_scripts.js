@@ -205,9 +205,12 @@ function build_regular_season_form()
    d.writeln('var upset_style                    = " class=upset_pick_color";');
    d.writeln('');
    d.writeln('');
-   d.writeln('// Initialize arrays.');
+   d.writeln('// Clear nfl_odds_array.');
    d.writeln('');
    d.writeln('clear_nfl_odds_array();');
+   d.writeln('');
+   d.writeln('// Initialize team_records_array.');
+   d.writeln('');
    d.writeln('initialize_team_records_array();');
    d.writeln('');
    d.writeln('');
@@ -1416,6 +1419,8 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (build_player_name(-1).indexOf("JL") == -1) return "";');  //JL
    d.writeln('');
+   d.writeln('   if (top.global_week != top.current_input_week) return "";');
+   d.writeln('');
    d.writeln('   for (var i = 0; i < '+number_of_nfl_teams+'; i++)');
    d.writeln('   {');
    d.writeln('      if (team_records_array[i][tra_team_index].indexOf(team) != -1)');
@@ -1653,8 +1658,6 @@ function build_regular_season_form()
    d.writeln('   if (odds_found == false)');
    d.writeln('   {');
    d.writeln('      if (suppress_alerts == false) alert("NFL Odds for Week ' + week + ' are not available.")');
-   d.writeln('');
-   d.writeln('      initialize_team_records_array();');
    d.writeln('');
    d.writeln('      return;');
    d.writeln('   }');
