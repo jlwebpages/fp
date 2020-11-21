@@ -816,8 +816,8 @@
                // If the "Picks From Odds" button exists and is visible and if this isn't an iPad, adjust the font size of
                // all buttons so that the total width of the buttons row is equal to the width of the "Input Form" table.
 
-               if ( (fp_main.document.getElementById("picks_from_odds_span") != null) &&
-                    (fp_main.document.getElementById("picks_from_odds_span").style.display == "") &&
+               if ( (fp_main.document.getElementById("picks_from_odds_button") != null) &&
+                    (fp_main.document.getElementById("picks_from_odds_button").style.display == "") &&
                     (navigator.platform != "iPad")                                                   )
                {
                   var accept_button          = fp_main.document.getElementById("submit");
@@ -864,9 +864,9 @@
                         }
                         else if (frame_width > input_form_buttons.offsetWidth)
                         {
-                           // Increase the font size of the "Input Form" buttons until the total width of the buttons row is equal to the width of the "Input Form" table.
+                           // Increase the font size of the "Input Form" buttons until they are at least 11pt.
 
-                           while ( (button_font_size < 20) && (frame_width > input_form_buttons.offsetWidth) )
+                           while ( (button_font_size < 11) && (frame_width > input_form_buttons.offsetWidth) )
                            {
                               // Increase button_font_size by 0.1pt.
 
