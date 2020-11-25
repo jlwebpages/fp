@@ -2338,7 +2338,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Call to update_input_form will call display_frame to set the mobile viewport width and adjust the font size of the mobile Input Form buttons and checkbox labels.');
    d.writeln('');
-   d.writeln('   update_input_form(document);');
+   d.writeln('   //JLJLupdate_input_form(document);');
    d.writeln('');
    d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
    d.writeln('');
