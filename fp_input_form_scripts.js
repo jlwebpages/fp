@@ -1711,7 +1711,7 @@ function build_regular_season_form()
    d.writeln('      document.getElementById(visiting_teams[i]).innerHTML = visiting_teams[i] + get_point_spread_string(visiting_teams[i],false) + get_team_record_string(visiting_teams[i]) ;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   // Call to display_frame will set the mobile viewport width.');
+   d.writeln('   // Call to display_frame will set the mobile viewport width and adjust the font size of the Input Form buttons and checkbox labels.');
    d.writeln('');
    d.writeln('   top.display_frame("fp_main",0);');
    d.writeln('');
@@ -2328,11 +2328,17 @@ function build_regular_season_form()
    d.writeln('   document.getElementById("open_date").style.width = document.getElementById("input_form_table").offsetWidth;');
    d.writeln('   document.getElementById("open_date").innerHTML   = "<b>Open Date:</b>&nbsp;&nbsp;'+open_date+'";');
    d.writeln('');
-   d.writeln('   // Call to display_frame will set the mobile viewport width.');
+   d.writeln('   // Call to display_frame will set the mobile viewport width and adjust the font size of the Input Form buttons and checkbox labels.');
    d.writeln('');
    d.writeln('   top.display_frame("fp_main",0);');
    d.writeln('');
+   d.writeln('   // Get the NFL Odds from the internet.');
+   d.writeln('');
    d.writeln('   get_nfl_odds(document,"fp_main",true);');
+   d.writeln('');
+   d.writeln('   // Need to call display_frame again because get_nfl_odds may have added the "Picks From Odds" button and the "Display Odds" and "Display Team Records" checkboxes.');
+   d.writeln('');
+   d.writeln('   top.display_frame("fp_main",0);');
    d.writeln('');
    d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
    d.writeln('');
@@ -3735,7 +3741,7 @@ function build_post_season_form()
    d.writeln('      document.getElementById(visiting_teams[i]).innerHTML = visiting_teams[i] + get_point_spread_string(visiting_teams[i],false) + get_team_record_string(visiting_teams[i]) ;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   // Call to display_frame will set the mobile viewport width.');
+   d.writeln('   // Call to display_frame will set the mobile viewport width and adjust the font size of the Input Form buttons and checkbox labels.');
    d.writeln('');
    d.writeln('   top.display_frame("fp_main",0);');
    d.writeln('');
@@ -4045,11 +4051,17 @@ function build_post_season_form()
 
    d.writeln('<script language="JavaScript" type="text/javascript">');
    d.writeln('');
-   d.writeln('   // Call to display_frame will set the mobile viewport width.');
+   d.writeln('   // Call to display_frame will set the mobile viewport width and adjust the font size of the Input Form buttons and checkbox labels.');
    d.writeln('');
    d.writeln('   top.display_frame("fp_main",0);');
    d.writeln('');
+   d.writeln('   // Get the NFL Odds from the internet.');
+   d.writeln('');
    d.writeln('   get_nfl_odds(document,"fp_main",true);');
+   d.writeln('');
+   d.writeln('   // Need to call display_frame again because get_nfl_odds may have added the "Picks From Odds" button and the "Display Odds" and "Display Team Records" checkboxes.');
+   d.writeln('');
+   d.writeln('   top.display_frame("fp_main",0);');
    d.writeln('');
    d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
    d.writeln('');
