@@ -2328,11 +2328,11 @@ function build_regular_season_form()
    d.writeln('   document.getElementById("open_date").style.width = document.getElementById("input_form_table").offsetWidth;');
    d.writeln('   document.getElementById("open_date").innerHTML   = "<b>Open Date:</b>&nbsp;&nbsp;'+open_date+'";');
    d.writeln('');
-   d.writeln('   get_nfl_odds(document,"fp_main",true);');
-   d.writeln('');
    d.writeln('   // Call to display_frame will set the mobile viewport width.');
    d.writeln('');
    d.writeln('   top.display_frame("fp_main",0);');
+   d.writeln('');
+   d.writeln('   get_nfl_odds(document,"fp_main",true);');
    d.writeln('');
    d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
    d.writeln('');
@@ -4045,11 +4045,11 @@ function build_post_season_form()
 
    d.writeln('<script language="JavaScript" type="text/javascript">');
    d.writeln('');
-   d.writeln('   get_nfl_odds(document,"fp_main",true);');
-   d.writeln('');
    d.writeln('   // Call to display_frame will set the mobile viewport width.');
    d.writeln('');
    d.writeln('   top.display_frame("fp_main",0);');
+   d.writeln('');
+   d.writeln('   get_nfl_odds(document,"fp_main",true);');
    d.writeln('');
    d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
    d.writeln('');
