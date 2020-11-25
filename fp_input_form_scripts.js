@@ -2293,10 +2293,10 @@ function build_regular_season_form()
    d.writeln('<td style="text-align: center; padding-top: 5px" nowrap class="no_border">');
    d.writeln('<span style="display: none" id="checkboxes">');
    d.writeln('<input type=checkbox style="vertical-align: middle" id="display_odds_checkbox" onClick="update_input_form(document);">');
-   d.writeln('<span style="font-size: 11pt; vertical-align: middle"><label for="display_odds_checkbox">Display Odds</label></span>');
+   d.writeln('<label for="display_odds_checkbox" style="font-size: 11pt; vertical-align: middle" id="display_odds_checkbox_label">Display Odds</label>');
    d.writeln('&nbsp&nbsp;');
    d.writeln('<input type=checkbox style="vertical-align: middle" id="display_team_records_checkbox" onClick="update_input_form(document);">');
-   d.writeln('<span style="font-size: 11pt; vertical-align: middle"><label for="display_team_records_checkbox">Display Team Records</label></span>');
+   d.writeln('<label for="display_team_records_checkbox" style="font-size: 11pt; vertical-align: middle" id="display_team_records_checkbox_label">Display Odds</label>');
    d.writeln('</span>');
    d.writeln('</td>');
    d.writeln('</tr>');
@@ -4016,10 +4016,10 @@ function build_post_season_form()
    d.writeln('<td style="text-align: center; padding-top: 5px" nowrap class="no_border">');
    d.writeln('<span style="display: none" id="checkboxes">');
    d.writeln('<input type=checkbox style="vertical-align: middle" id="display_odds_checkbox" onClick="update_input_form(document);">');
-   d.writeln('<span style="font-size: 11pt; vertical-align: middle"><label for="display_odds_checkbox">Display Odds</label></span>');
+   d.writeln('<label for="display_odds_checkbox" style="font-size: 11pt; vertical-align: middle" id="display_odds_checkbox_label">Display Odds</label>');
    d.writeln('&nbsp&nbsp;');
    d.writeln('<input type=checkbox style="vertical-align: middle" id="display_team_records_checkbox" onClick="update_input_form(document);">');
-   d.writeln('<span style="font-size: 11pt; vertical-align: middle"><label for="display_team_records_checkbox">Display Team Records</label></span>');
+   d.writeln('<label for="display_team_records_checkbox" style="font-size: 11pt; vertical-align: middle" id="display_team_records_checkbox_label">Display Odds</label>');
    d.writeln('</span>');
    d.writeln('</td>');
    d.writeln('</tr>');
