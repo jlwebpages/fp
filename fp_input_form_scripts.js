@@ -2328,20 +2328,20 @@ function build_regular_season_form()
    d.writeln('   document.getElementById("open_date").style.width = document.getElementById("input_form_table").offsetWidth;');
    d.writeln('   document.getElementById("open_date").innerHTML   = "<b>Open Date:</b>&nbsp;&nbsp;'+open_date+'";');
    d.writeln('');
-   d.writeln('   // Call to display_frame needs to be here otherwise the loading indicator in get_nfl_odds won\'t work - not sure why.');
+   d.writeln('   //JLJL Call to display_frame needs to be here otherwise the loading indicator in get_nfl_odds won\'t work - not sure why.');
    d.writeln('');
-   d.writeln('   //JLtop.display_frame("fp_main",0);');
+   d.writeln('   top.display_frame("fp_main",0);');
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
-   d.writeln('   //JLget_nfl_odds(document,"fp_main",true);');
+   d.writeln('   get_nfl_odds(document,"fp_main",true);');
    d.writeln('');
    d.writeln('   // Call to update_input_form will call display_frame to set the mobile viewport width and adjust the font size of the mobile Input Form buttons and checkbox labels.');
    d.writeln('');
-   d.writeln('   //JLJLupdate_input_form(document);');
+   d.writeln('   //update_input_form(document);  //JLJL this call breaks the loading indicator - not sure why.');
    d.writeln('');
-   d.writeln('   //JLJLif (top.mobile != true) document.fp_inputs.pick1.focus();');
-   d.writeln('   reset_input_form(document);');
+   d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
+   d.writeln('');
    d.writeln('<'+'/script>');
    d.writeln('');
 
@@ -4051,7 +4051,7 @@ function build_post_season_form()
 
    d.writeln('<script language="JavaScript" type="text/javascript">');
    d.writeln('');
-   d.writeln('   // Call to display_frame needs to be here otherwise the loading indicator in get_nfl_odds won\'t work - not sure why.');
+   d.writeln('   //JLJL Call to display_frame needs to be here otherwise the loading indicator in get_nfl_odds won\'t work - not sure why.');
    d.writeln('');
    d.writeln('   top.display_frame("fp_main",0);');
    d.writeln('');
@@ -4061,7 +4061,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Call to update_input_form will call display_frame to set the mobile viewport width and adjust the font size of the mobile Input Form buttons and checkbox labels.');
    d.writeln('');
-   d.writeln('   update_input_form(document);');
+   d.writeln('   //update_input_form(document);  //JLJL this call breaks the loading indicator - not sure why.');
    d.writeln('');
    d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
    d.writeln('');
