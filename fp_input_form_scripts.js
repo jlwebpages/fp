@@ -1280,7 +1280,7 @@ function build_regular_season_form()
    d.writeln('}');
    d.writeln('');
    d.writeln('');
-   d.writeln('function get_nfl_odds(document,restore_frame,suppress_alerts)');
+   d.writeln('function get_nfl_odds(document,suppress_alerts)');
    d.writeln('{');
    d.writeln('   var nfl_connection = null;');
    d.writeln('   var nfl_odds       = null;');
@@ -1320,7 +1320,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            // Remove loading indicator.');
    d.writeln('');
-   d.writeln('            top.display_frame(restore_frame,0);');
+   d.writeln('            top.display_frame("fp_main",0);');
    d.writeln('         }');
    d.writeln('         else // XMLHttpRequest was unsuccessful.');
    d.writeln('         {');
@@ -1328,7 +1328,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            // Remove loading indicator.');
    d.writeln('');
-   d.writeln('            top.display_frame(restore_frame,0);');
+   d.writeln('            top.display_frame("fp_main",0);');
    d.writeln('         }');
    d.writeln('      }');
    d.writeln('');
@@ -1341,7 +1341,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      // Remove loading indicator.');
    d.writeln('');
-   d.writeln('      top.display_frame(restore_frame,0);');
+   d.writeln('      top.display_frame("fp_main",0);');
    d.writeln('');
    d.writeln('      return;');
    d.writeln('   };');
@@ -1690,7 +1690,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
-   d.writeln('   get_nfl_odds(document,"fp_main",true);');
+   d.writeln('   get_nfl_odds(document,true);');
    d.writeln('');
    d.writeln('   // Remove the point spreads and team records from the input form and set the mobile viewport width and adjust the font size of the mobile Input Form buttons and checkbox labels.');
    d.writeln('');
@@ -2330,7 +2330,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
-   d.writeln('   get_nfl_odds(document,"fp_main",true);');
+   d.writeln('   get_nfl_odds(document,true);');
    d.writeln('');
    d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
    d.writeln('');
@@ -3336,7 +3336,7 @@ function build_post_season_form()
    d.writeln('}');
    d.writeln('');
    d.writeln('');
-   d.writeln('function get_nfl_odds(document,restore_frame,suppress_alerts)');
+   d.writeln('function get_nfl_odds(document,suppress_alerts)');
    d.writeln('{');
    d.writeln('   var nfl_connection = null;');
    d.writeln('   var nfl_odds       = null;');
@@ -3376,7 +3376,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('            // Remove loading indicator.');
    d.writeln('');
-   d.writeln('            top.display_frame(restore_frame,0);');
+   d.writeln('            top.display_frame("fp_main",0);');
    d.writeln('         }');
    d.writeln('         else // XMLHttpRequest was unsuccessful.');
    d.writeln('         {');
@@ -3384,7 +3384,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('            // Remove loading indicator.');
    d.writeln('');
-   d.writeln('            top.display_frame(restore_frame,0);');
+   d.writeln('            top.display_frame("fp_main",0);');
    d.writeln('         }');
    d.writeln('      }');
    d.writeln('');
@@ -3397,7 +3397,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('      // Remove loading indicator.');
    d.writeln('');
-   d.writeln('      top.display_frame(restore_frame,0);');
+   d.writeln('      top.display_frame("fp_main",0);');
    d.writeln('');
    d.writeln('      return;');
    d.writeln('   };');
@@ -3712,7 +3712,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
-   d.writeln('   get_nfl_odds(document,"fp_main",true);');
+   d.writeln('   get_nfl_odds(document,true);');
    d.writeln('');
    d.writeln('   // Remove the point spreads and team records from the input form and set the mobile viewport width and adjust the font size of the mobile Input Form buttons and checkbox labels.');
    d.writeln('');
@@ -4043,13 +4043,9 @@ function build_post_season_form()
 
    d.writeln('<script language="JavaScript" type="text/javascript">');
    d.writeln('');
-   d.writeln('   // Call to display_frame needs to be here otherwise the loading indicator in get_nfl_odds won\'t work - not sure why.');
-   d.writeln('');
-   d.writeln('   top.display_frame("fp_main",0);');
-   d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
-   d.writeln('   get_nfl_odds(document,"fp_main",true);');
+   d.writeln('   get_nfl_odds(document,true);');
    d.writeln('');
    d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
    d.writeln('');
