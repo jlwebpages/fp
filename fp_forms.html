@@ -313,7 +313,7 @@ function build_forms_page()
    d.writeln('      var post_season_order_by_week = ' + post_season_final_week + ';');
    d.writeln('');
    d.writeln('');
-   d.writeln('      if (received_mode == "prelim") post_season_order_by_week++;');
+   d.writeln('      if (received_mode == "prelim") post_season_order_by_week = ' + post_season_prelim_week + ';');
    d.writeln('');
    d.writeln('      w = window.open("","post_season_"+received_mode,"status=no,scrollbars=yes,resizable=yes",true);');
    d.writeln('');
