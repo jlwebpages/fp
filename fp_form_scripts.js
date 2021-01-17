@@ -2352,7 +2352,7 @@ function build_regular_season_form()
    var player_colspan                = 3;
    var rs_players                    = window.top.gv.rs_players;
    var number_of_rs_players          = rs_players.length;
-   var number_of_rs_weeks            = window.top.gv.all_home_teams.length;
+   var number_of_rs_weeks            = window.top.gv.number_of_rs_weeks;
    var tie_breaker_needed            = false;
    var unable_to_break_tie           = false;
    var unaltered_week                = 0;
@@ -3021,7 +3021,7 @@ function build_regular_season_form()
    d.writeln('   var name_menu               = 0;');
    d.writeln('   var number_of_rs_games      = 0;');
    d.writeln('   var number_of_rs_players    = window.top.gv.rs_players.length;');
-   d.writeln('   var number_of_rs_weeks      = window.top.gv.all_home_teams.length;');
+   d.writeln('   var number_of_rs_weeks      = window.top.gv.number_of_rs_weeks;');
    d.writeln('   var opponent_score          = 0;');
    d.writeln('   var picks                   = "";');
    d.writeln('   var score_difference        = 0;');
