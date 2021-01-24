@@ -2,12 +2,13 @@
 
 <script>
 
-alert(navigator.platform);
+alert(navigator.userAgent);
 
-if (navigator.platform == "Android"    ||
-    navigator.platform == "BlackBerry" ||
-    navigator.platform == "iPad"       ||
-    navigator.platform == "iPhone"     ||
+if (navigator.platform == "Android"       ||
+    navigator.platform == "Linux aarch64" ||
+    navigator.platform == "BlackBerry"    ||
+    navigator.platform == "iPad"          ||
+    navigator.platform == "iPhone"        ||
     navigator.platform == "Windows Phone")
 {
    document.writeln('<meta http-equiv="Refresh" content="0; URL=https://jlwebpages.github.io/fp/fp_mobile.html">');
