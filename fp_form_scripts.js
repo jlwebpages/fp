@@ -2361,8 +2361,6 @@ function build_regular_season_form()
    var week                          = window.top.gv.current_input_week;
    var winners                       = "";
 
-   if (max_number_of_rs_games == undefined) max_number_of_rs_games = 16;
-
    if ( (mode == "summary") || (mode == "summary_archive") )
    {
       build_season_summary();
@@ -2387,8 +2385,10 @@ function build_regular_season_form()
    }
    else if (mode == "weekly_archive")
    {
-      mode_string = "Final";
-      week        = number_of_rs_weeks;
+      max_number_of_rs_games = 16;
+      mode_string            = "Final";
+      number_of_rs_weeks     = window.top.gv.all_home_teams.length;
+      week                   = number_of_rs_weeks;
 
       window.top.gv.home_scores     = Array(max_number_of_rs_games).fill("");
       window.top.gv.visiting_scores = Array(max_number_of_rs_games).fill("");
