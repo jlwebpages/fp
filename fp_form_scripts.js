@@ -149,6 +149,7 @@ function build_post_season_form()
    var td_background             = "";
    var total_points              = "";
    var total_points_game_index   = -1;
+   var total_points_label        = "";
    var total_points_score        = "<br>";
    var total_points_scores       = Array(number_of_ps_players).fill(null_score);
    var use_player_points         = true;
@@ -1807,25 +1808,35 @@ function build_post_season_form()
       {
          if (use_player_points == true)
          {
+            total_points_label = "Total Points:";
+
             if (gi == w1_end)
             {
                high_score_count   = week_1_high_score_count;
                high_score_players = week_1_high_score_players;
+
+               if (week >= 1) total_points_label = "\"" + visiting_teams[gi-1] + " at " + home_teams[gi-1] + "\" " + total_points_label;
             }
             if (gi == w2_end)
             {
                high_score_count   = week_2_high_score_count;
                high_score_players = week_2_high_score_players;
+
+               if (week >= 2) total_points_label = "\"" + visiting_teams[gi-1] + " at " + home_teams[gi-1] + "\" " + total_points_label;
             }
             if (gi == w3_end)
             {
                high_score_count   = week_3_high_score_count;
                high_score_players = week_3_high_score_players;
+
+               if (week >= 3) total_points_label = "\"" + visiting_teams[gi-1] + " at " + home_teams[gi-1] + "\" " + total_points_label;
             }
             if (gi == w4_end)
             {
                high_score_count   = week_4_high_score_count;
                high_score_players = week_4_high_score_players;
+
+               if (week >= 4) total_points_label = "\"" + visiting_teams[gi-1] + " at " + home_teams[gi-1] + "\" " + total_points_label;
             }
 
             total_points = visitor_scores[gi-1] + home_scores[gi-1];
@@ -1835,7 +1846,7 @@ function build_post_season_form()
             d.writeln('');
             d.writeln('<tr align=center height=12px>');
 
-            d.writeln('<td align=right class="bb1_border" colspan=4 style="padding:0px"><font style="font-size: 8pt">Actual Total Points:&nbsp;</font></td>');
+            d.writeln('<td align=right class="bb1_border" colspan=4 style="padding:0px"><font style="font-size: 8pt">'+total_points_label+'</font></td>');
             d.writeln('<td class="br2_bb1_border" style="padding:0px"><font style="font-size: 8pt">'+total_points+'</font></td>');
 
             for (var pi = 1; pi <= number_of_ps_players; pi++)
@@ -1861,6 +1872,19 @@ function build_post_season_form()
                         if (isNaN(player_points[player_index[pi-1]][gi-1]) == false)
                         {
                            total_points_score = total_points - player_points[player_index[pi-1]][gi-1];
+
+                           if (total_points_score > 0) 
+                           {
+                              total_points_score = Math.abs(total_points_score) + " under";
+                           }
+                           else if (total_points_score < 0) 
+                           {
+                              total_points_score = Math.abs(total_points_score) + " over";
+                           }
+                           else
+                           {
+                              total_points_score = "exact";
+                           }
                         }
                      }
                   }
@@ -1868,11 +1892,11 @@ function build_post_season_form()
 
                if (pi == number_of_ps_players)
                {
-                  d.writeln('<td class="bb1_border" colspan=1 style="padding:0px"><font style="font-size: 8pt" color=blue>'+total_points_score+'</font></td>');
+                  d.writeln('<td class="bb1_border" colspan=1 style="padding:0px"><font style="font-size: 8pt">'+total_points_score+'</font></td>');
                }
                else
                {
-                  d.writeln('<td class="br2_bb1_border" colspan=1 style="padding:0px"><font style="font-size: 8pt" color=blue>'+total_points_score+'</font></td>');
+                  d.writeln('<td class="br2_bb1_border" colspan=1 style="padding:0px"><font style="font-size: 8pt">'+total_points_score+'</font></td>');
                }
             }
 
@@ -2448,7 +2472,7 @@ function build_regular_season_form()
 
    if (in_progress_mn_points > 0)
    {
-      // Override actual_mn_points with actual Monday Night Total Points from get_nfl_scores
+      // Override actual_mn_points with actual Total Points from get_nfl_scores
 
       actual_mn_points = in_progress_mn_points;
    }
@@ -2532,7 +2556,7 @@ function build_regular_season_form()
       }
    }
 
-   // If there's a tie, try to break the tie using the Monday Night Total Points predictions.
+   // If there's a tie, try to break the tie using the Total Points predictions.
 
    if (high_score_count > 1)
    {
@@ -2552,16 +2576,15 @@ function build_regular_season_form()
 
       if (tie_breaker_needed == true)
       {
-         // The tie can only be broken if the actual Monday Night Total Points are known.
+         // The tie can only be broken if the actual Total Points is known.
 
          if (actual_mn_points > 0)
          {
-            // Build the string for dislaying the actual Monday Night Total Points on the webpage.
+            // Build the string for dislaying the actual Total Points on the webpage.
 
-            mn_points_string = " (Actual is " + actual_mn_points + ")";
+            mn_points_string = actual_mn_points + "&nbsp;&nbsp";
 
-            // Determine the best Monday Night Total Points delta.
-            // (difference between best prediction and actual)
+            // Determine the best Total Points delta (difference between best prediction and actual).
 
             best_mn_points_delta = 1000;
 
@@ -2583,7 +2606,7 @@ function build_regular_season_form()
                }
             }
 
-            // Determine if the players that are tied have the same Monday Night Total Points prediction.
+            // Determine if the players that are tied have the same Total Points prediction.
 
             high_score_count = 0;
 
@@ -2595,8 +2618,7 @@ function build_regular_season_form()
                }
             }
 
-            // If the players that are tied have the same Monday Night
-            // Total Points prediction, then we can't break the tie.
+            // If the players that are tied have the same Total Points prediction, then we can't break the tie.
 
             if (high_score_count > 1)
             {
@@ -2604,8 +2626,7 @@ function build_regular_season_form()
 
                for (var i = 1; i <= number_of_rs_players; i++)
                {
-                  // Clear out the Monday Night Total Points delta and adjust
-                  // the rank of those players no longer involved in the tie.
+                  // Clear out the Total Points delta and adjust the rank of those players no longer involved in the tie.
 
                   if ((scores[i-1] == high_score) && (mn_points_delta[i-1] != best_mn_points_delta))
                   {
@@ -4138,7 +4159,7 @@ function build_regular_season_form()
 
    d.writeln('<tr align=center height=15px>');
    d.writeln('<td class="br2_border" align=right colspan=4 nowrap>');
-   d.writeln('<font style="font-size: 10pt">Monday Night Total Points'+mn_points_string+':&nbsp;</font>');
+   d.writeln('<font style="font-size: 10pt">\"'+visiting_teams[number_of_rs_games-1]+' at '+home_teams[number_of_rs_games-1]+'\" Total Points:&nbsp;&nbsp;'+mn_points_string+'</font>');
    d.writeln('</td>');
    for (var i = 1; i <= number_of_rs_players; i++)
    {
@@ -4148,7 +4169,18 @@ function build_regular_season_form()
            (actual_mn_points > 0)       &&
            (mn_points_delta[player_index[i-1]] != "N/A") )
       {
-         mn_points_delta_string = "diff: "+ mn_points_delta[player_index[i-1]];
+         if (mn_points_delta[player_index[i-1]] > 0) 
+         {
+            mn_points_delta_string = Math.abs(mn_points_delta[player_index[i-1]]) + " over";
+         }
+         else if (mn_points_delta[player_index[i-1]] < 0) 
+         {
+            mn_points_delta_string = Math.abs(mn_points_delta[player_index[i-1]]) + " under";
+         }
+         else
+         {
+            mn_points_delta_string = "exact";
+         }
       }
       else
       {
@@ -4159,7 +4191,7 @@ function build_regular_season_form()
       {
          if (picks[player_index[i-1]].length > 0)
          {
-            d.writeln('<td class="gr1_border" align=right><font style="font-size: 9pt">pts:</font></td>');
+            d.writeln('<td class="gr1_border" align=right><font style="font-size: 9pt">Pts:</font></td>');
          }
          else
          {
@@ -4254,7 +4286,7 @@ function build_regular_season_form()
 
          if (unable_to_break_tie == false)
          {
-            // Determine if the players that are tied have the same Monday Night Total Points prediction.
+            // Determine if the players that are tied have the same Total Points prediction.
 
             for (var i = 1; i <= number_of_rs_games; i++)
             {
@@ -4266,7 +4298,7 @@ function build_regular_season_form()
                   }
                   else if (temp_mn_points != mn_points[i-1])
                   {
-                     // Not all players that are tied have the same Monday Night Total Points prediction.
+                     // Not all players that are tied have the same Total Points prediction.
 
                      unable_to_break_tie = false;
 
@@ -4282,17 +4314,16 @@ function build_regular_season_form()
 
          if (unable_to_break_tie == true)
          {
-            // Clear out the Monday Night Total Points entry field on the preliminary form.
+            // Clear out the Total Points entry field on the preliminary form.
 
             window.top.gv.mn_points_entered = 0;
             mn_pts_value                    = "";
 
-            tie_breaker_message  = "Unable to break the tie.&nbsp;&nbsp;";
-            tie_breaker_message += "Players tied have the same Monday Night Total Points prediction.";
+            tie_breaker_message  = "Unable to break the tie.&nbsp;&nbsp;Players tied have the same Total Points prediction.";
          }
          else
          {
-            tie_breaker_message = "Enter actual Monday Night Total Points to break the tie:&nbsp;&nbsp;";
+            tie_breaker_message = "Enter actual \"" + visiting_teams[number_of_rs_games-1] + " at " + home_teams[number_of_rs_games-1] + "\" Total Points to break the tie:&nbsp;&nbsp;";
          }
 
          if ( (unable_to_break_tie == true) || (in_progress_mn_points < 1) )
@@ -4702,7 +4733,7 @@ function build_season_summary()
          }
       }
 
-      // If there's a tie, try to break the tie using the Monday Night Total Points predictions.
+      // If there's a tie, try to break the tie using the Total Points predictions.
 
       if (high_score_count > 1)
       {
@@ -4722,12 +4753,11 @@ function build_season_summary()
 
          if (tie_breaker_needed == true)
          {
-            // The tie can only be broken if the actual Monday Night Total Points are known.
+            // The tie can only be broken if the actual Total Points is known.
 
             if (actual_mn_points > 0)
             {
-               // Determine the best Monday Night Total Points delta
-               // (difference between best prediction and actual).
+               // Determine the best Total Points delta (difference between best prediction and actual).
 
                best_mn_points_delta = 1000;
 
@@ -4749,7 +4779,7 @@ function build_season_summary()
                   }
                }
 
-               // Determine if the players that are tied have the same Monday Night Total Points prediction.
+               // Determine if the players that are tied have the same Total Points prediction.
 
                high_score_count = 0;
 
@@ -4761,15 +4791,13 @@ function build_season_summary()
                   }
                }
 
-               // If the players that are tied have the same Monday Night
-               // Total Points prediction, then we can't break the tie.
+               // If the players that are tied have the same Total Points prediction, then we can't break the tie.
 
                if (high_score_count > 1)
                {
                   for (var player_index = 0; player_index < number_of_rs_players; player_index++)
                   {
-                     // Clear out the Monday Night Total Points delta and adjust
-                     // the rank of those players no longer involved in the tie.
+                     // Clear out the Total Points delta and adjust the rank of those players no longer involved in the tie.
 
                      if ((all_scores[week_index][player_index] == high_score) && (mn_points_delta[player_index] != best_mn_points_delta))
                      {
