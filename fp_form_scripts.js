@@ -1846,7 +1846,7 @@ function build_post_season_form()
             d.writeln('');
             d.writeln('<tr align=center height=12px>');
 
-            d.writeln('<td align=right class="bb1_border" colspan=4 style="padding:0px"><font style="font-size: 8pt">'+total_points_label+'</font></td>');
+            d.writeln('<td align=right class="bb1_border" colspan=4 style="padding:0px" nowrap><font style="font-size: 8pt">'+total_points_label+'</font></td>');
             d.writeln('<td class="br2_bb1_border" style="padding:0px"><font style="font-size: 8pt">'+total_points+'</font></td>');
 
             for (var pi = 1; pi <= number_of_ps_players; pi++)
@@ -1892,11 +1892,11 @@ function build_post_season_form()
 
                if (pi == number_of_ps_players)
                {
-                  d.writeln('<td class="bb1_border" colspan=1 style="padding:0px"><font style="font-size: 8pt">'+total_points_score+'</font></td>');
+                  d.writeln('<td class="bb1_border" colspan=1 style="padding:0px" nowrap><font style="font-size: 8pt">'+total_points_score+'</font></td>');
                }
                else
                {
-                  d.writeln('<td class="br2_bb1_border" colspan=1 style="padding:0px"><font style="font-size: 8pt">'+total_points_score+'</font></td>');
+                  d.writeln('<td class="br2_bb1_border" colspan=1 style="padding:0px" nowrap><font style="font-size: 8pt">'+total_points_score+'</font></td>');
                }
             }
 
