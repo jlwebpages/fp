@@ -1335,6 +1335,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            // Get the NFL Odds Week from nfl_odds string.');
    d.writeln('');
+   d.writeln('            index_start = nfl_odds.indexOf("\\"pageHeading\\":");');
    d.writeln('            index_end = nfl_odds.indexOf("},\\"subType\\"");');
    d.writeln('');
    d.writeln('            if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )');
