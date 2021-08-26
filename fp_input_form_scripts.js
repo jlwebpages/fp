@@ -1335,7 +1335,6 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            // Get the NFL Odds Week from nfl_odds string.');
    d.writeln('');
-   d.writeln('            index_start = nfl_odds.indexOf("\\"pageHeading\\":");');
    d.writeln('            index_end = nfl_odds.indexOf("},\\"subType\\"");');
    d.writeln('');
    d.writeln('            if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )');
@@ -1367,7 +1366,10 @@ function build_regular_season_form()
    d.writeln('            {');
    d.writeln('               nfl_odds_week = nfl_odds_week.pageHeading;');
    d.writeln('');
-   d.writeln('               if (suppress_alerts == false) alert(":"+nfl_odds_week+":");');//JL
+   d.writeln('               //JLif (nfl_odds_week.toLowerCase().indexOf("preseason") != -1)');
+   d.writeln('');
+   d.writeln('               if (suppress_alerts == false) alert(":"+nfl_odds_week+":");');
+   d.writeln('               if (suppress_alerts == false) alert(":"+nfl_odds_week.substring(nfl_odds_week.toLowerCase().indexOf("week"),nfl_odds_week.length)+":");');
    d.writeln('            }');
    d.writeln('');
    d.writeln('            process_nfl_odds(nfl_odds,suppress_alerts);');
