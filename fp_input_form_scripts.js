@@ -1349,8 +1349,6 @@ function build_regular_season_form()
    d.writeln('               nfl_odds_week = nfl_odds.substring(index_start,index_end);');
    d.writeln('               nfl_odds_week = "{" + nfl_odds_week + "}";');
    d.writeln('');
-   d.writeln('               alert(":"+nfl_odds_week+":");');//JL
-   d.writeln('');
    d.writeln('               // Convert the nfl_odds_week string to a JavaScript object.');
    d.writeln('');
    d.writeln('               try');
@@ -1369,7 +1367,7 @@ function build_regular_season_form()
    d.writeln('            {');
    d.writeln('               nfl_odds_week = nfl_odds_week.pageHeading;');
    d.writeln('');
-   d.writeln('               alert(":"+nfl_odds_week+":");');//JL
+   d.writeln('               if (suppress_alerts == false) alert(":"+nfl_odds_week+":");');//JL
    d.writeln('            }');
    d.writeln('');
    d.writeln('            process_nfl_odds(nfl_odds,suppress_alerts);');
