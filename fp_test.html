@@ -1,8 +1,11 @@
+<!DOCTYPE html>
 <html>
 
 <head>
 
    <title>NFL Football Pool</title>
+
+   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0">
 
    <link href="fp.css" rel="stylesheet" type="text/css">
 
@@ -11,9 +14,10 @@
       var t = true;
       var f = false;
 
-      // Define mobile device flag.
+      // Define mobile device flags.
 
-      var mobile = f;
+      var mobile                 = t;
+      var saved_viewport_content = "";
 
       // Manually set the Football Pool year at the beginning of the season.
 
@@ -840,34 +844,186 @@
 
       function display_frame(frame_name, frame_width)
       {
-         // frame_width is only used in fp_mobile.html
+         // Received frame_width is only used if frame_name equals "fp_picks".
 
          if (frame_name == "fp_main")
          {
-            document.getElementById("fp_frameset").cols="155px,*,0,0";
+            document.getElementById("fp_frameset").cols="*,0,0";
+
+            frame_width = fp_main.document.body.scrollWidth;
+
+            if (fp_main.document.getElementById("input_form_table") != null)
+            {
+               // Set frame_width equal to "Input Form" table width;
+
+               frame_width = fp_main.document.getElementById("input_form_table").offsetWidth;
+
+               // If the "Picks From Odds" button exists and is visible and if this isn't an iPad, adjust the font size of all buttons
+               // and checkbox labels so that the total width of the buttons row is equal to the width of the "Input Form" table.
+
+               if ( (fp_main.document.getElementById("picks_from_odds_button") != null) &&
+                    (fp_main.document.getElementById("picks_from_odds_button").style.display == "") &&
+                    (navigator.platform != "iPad")                                                   )
+               {
+                  var accept_button                       = fp_main.document.getElementById("submit");
+                  var display_odds_checkbox_label         = fp_main.document.getElementById("display_odds_checkbox_label");
+                  var display_team_records_checkbox_label = fp_main.document.getElementById("display_team_records_checkbox_label");
+                  var home_team_picks_button              = fp_main.document.getElementById("home_team_picks");
+                  var input_form_buttons                  = fp_main.document.getElementById("input_form_buttons");
+                  var picks_from_odds_button              = fp_main.document.getElementById("picks_from_odds");
+                  var random_picks_button                 = fp_main.document.getElementById("random_picks");
+                  var reset_button                        = fp_main.document.getElementById("reset_button");
+
+                  // Get the "Submit" button font size (assume font size of buttons and checkbox labels are the same).
+
+                  var button_font_size = accept_button.style.fontSize;
+
+                  // Proceed only if the "Submit" button font size is specified in "pt" units.
+
+                  if (button_font_size.indexOf("pt") != -1)
+                  {
+                     // Remove "pt" from the button_font_size string.
+
+                     button_font_size = button_font_size.replace("pt","");
+
+                     // Convert button_font_size to a number.
+
+                     button_font_size = Number(button_font_size);
+
+                     if (input_form_buttons != null)
+                     {
+                        if (input_form_buttons.offsetWidth > frame_width)
+                        {
+                           // Decrease the font size of the "Input Form" buttons until the total width of the buttons row is equal to the width of the "Input Form" table.
+
+                           while ( (button_font_size > 0) && (input_form_buttons.offsetWidth > frame_width) )
+                           {
+                              // Decrease button_font_size by 0.1pt.
+
+                              button_font_size = Math.round((button_font_size-0.1)*10)/10;
+
+                              if (accept_button != null)                       accept_button.style.fontSize                       = button_font_size + "pt";
+                              if (display_odds_checkbox_label != null)         display_odds_checkbox_label.style.fontSize         = button_font_size + "pt";
+                              if (display_team_records_checkbox_label != null) display_team_records_checkbox_label.style.fontSize = button_font_size + "pt";
+                              if (home_team_picks_button != null)              home_team_picks_button.style.fontSize              = button_font_size + "pt";
+                              if (picks_from_odds_button != null)              picks_from_odds_button.style.fontSize              = button_font_size + "pt";
+                              if (random_picks_button != null)                 random_picks_button.style.fontSize                 = button_font_size + "pt";
+                              if (reset_button != null)                        reset_button.style.fontSize                        = button_font_size + "pt";
+                           }
+                        }
+                        else if (frame_width > input_form_buttons.offsetWidth)
+                        {
+                           // Increase the font size of the "Input Form" buttons until they are at least 11pt.
+
+                           while ( (button_font_size < 20) && (frame_width > input_form_buttons.offsetWidth) )
+                           {
+                              // Increase button_font_size by 0.1pt.
+
+                              button_font_size = Math.round((button_font_size+0.1)*10)/10;
+
+                              if (accept_button != null)                       accept_button.style.fontSize                       = button_font_size + "pt";
+                              if (display_odds_checkbox_label != null)         display_odds_checkbox_label.style.fontSize         = button_font_size + "pt";
+                              if (display_team_records_checkbox_label != null) display_team_records_checkbox_label.style.fontSize = button_font_size + "pt";
+                              if (home_team_picks_button != null)              home_team_picks_button.style.fontSize              = button_font_size + "pt";
+                              if (picks_from_odds_button != null)              picks_from_odds_button.style.fontSize              = button_font_size + "pt";
+                              if (random_picks_button != null)                 random_picks_button.style.fontSize                 = button_font_size + "pt";
+                              if (reset_button != null)                        reset_button.style.fontSize                        = button_font_size + "pt";
+                           }
+
+                           // If the previous while loop caused the total width of the buttons row to be slightly greater than
+                           // the width of the "Input Form" table, then decrease the font size of the "Input Form" buttons by .1pt.
+
+                           if (input_form_buttons.offsetWidth > frame_width)
+                           {
+                              // Decrease button_font_size by 0.1pt.
+
+                              button_font_size = Math.round((button_font_size-0.1)*10)/10;
+
+                              if (accept_button != null)                       accept_button.style.fontSize                       = button_font_size + "pt";
+                              if (display_odds_checkbox_label != null)         display_odds_checkbox_label.style.fontSize         = button_font_size + "pt";
+                              if (display_team_records_checkbox_label != null) display_team_records_checkbox_label.style.fontSize = button_font_size + "pt";
+                              if (home_team_picks_button != null)              home_team_picks_button.style.fontSize              = button_font_size + "pt";
+                              if (picks_from_odds_button != null)              picks_from_odds_button.style.fontSize              = button_font_size + "pt";
+                              if (random_picks_button != null)                 random_picks_button.style.fontSize                 = button_font_size + "pt";
+                              if (reset_button != null)                        reset_button.style.fontSize                        = button_font_size + "pt";
+                           }
+                        }
+                     }
+                  }
+               }
+            }
          }
          else if (frame_name == "fp_picks")
          {
-            document.getElementById("fp_frameset").cols="155px,0,*,0";
+            document.getElementById("fp_frameset").cols="0,*,0";
          }
          else if (frame_name == "fp_loading_indicator")
          {
-            document.getElementById("fp_frameset").cols="155px,0,0,*";
+            frame_width = 0;
+
+            document.getElementById("fp_frameset").cols="0,0,*";
          }
+
+         set_mobile_viewport_width(frame_width);
+
+         if (frame_name == "fp_picks") fp_picks.document.getElementById("picks_table").scrollIntoView();
+
+         return true;
+      }
+
+      function reset_mobile_viewport_width()
+      {
+         if (saved_viewport_content != "")
+         {
+            document.getElementById("viewport").setAttribute("content",saved_viewport_content);
+
+            saved_viewport_content = "width=device-width, initial-scale=1.0";
+         }
+
+         return true;
+      }
+
+      function set_mobile_viewport_width(viewport_width)
+      {
+         var viewport_content = "width=device-width, initial-scale=1.0";
+         var viewport_scale   = "";
+
+         // Don't try to adjust the viewport width if an HTML <meta> tag viewport element doesn't exist.
+
+         if (document.getElementById("viewport") == null) return;
+
+         // Don't adjust the viewport width if the mobile device is in landscape mode.
+
+         if (window.screen.width > window.screen.height) return;
+
+         // Don't adjust the viewport width if the mobile device is an iPad.
+
+         if (navigator.platform == "iPad") return;
+
+         if (viewport_width > 0)
+         {
+            saved_viewport_content = document.getElementById("viewport").content;
+
+            viewport_scale   = window.screen.width/viewport_width;
+            viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
+
+            document.getElementById("viewport").setAttribute("content",viewport_content);
+         }
+
+         return true;
       }
 
    </script>
 
 </head>
 
-<frameset rows="70px,*" border="0">
+<frameset rows="60px,*" border="0">
 
-   <frame class="dark_blue_background" src="fp_header.html" name="fp_header" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
+   <frame class="dark_blue_background" src="fp_header_mobile.html" name="fp_header" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize">
 
-   <frameset id="fp_frameset" cols="155px,*,0,0" border="0">
+   <frameset id="fp_frameset" cols="*,0,0" border="0">
 
-      <frame class="dark_blue_background"  src="fp_content.html"           name="fp_content"           frameborder="0" marginwidth="0" marginheight="0" noresize="noresize" scrolling="no">
-      <frame class="light_gray_background" src="fp_main.html"              name="fp_main"              frameborder="0" marginwidth="0" marginheight="0" noresize="noresize" scrolling="auto">
+      <frame class="light_gray_background" src="fp_main_mobile.html"       name="fp_main"              frameborder="0" marginwidth="0" marginheight="0" noresize="noresize" scrolling="auto">
       <frame class="light_gray_background" src="fp_empty.html"             name="fp_picks"             frameborder="0" marginwidth="0" marginheight="0" noresize="noresize" scrolling="auto">
       <frame class="light_gray_background" src="fp_loading_indicator.html" name="fp_loading_indicator" frameborder="0" marginwidth="0" marginheight="0" noresize="noresize" scrolling="no">
 
