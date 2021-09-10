@@ -643,17 +643,17 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (name.indexOf("JL") != -1)');
    d.writeln('   {');
-   d.writeln('      device = navigator.userAgent;');
+   d.writeln('      device = navigator.userAgent.replace("_",".");');
    d.writeln('      alert(":"+device+":");');
    d.writeln('      if ( ( (device.indexOf("iPhone") != -1) || (device.indexOf("iPad") != -1) ) &&');
-   d.writeln('           ( (device.indexOf("14_6")   != -1) || (device.indexOf("14_7") != -1) ) )');
+   d.writeln('           ( (device.indexOf("14.6")   != -1) || (device.indexOf("14.7") != -1) ) )');
    d.writeln('      {');
    d.writeln('         ios_bug = true;');
    d.writeln('         alert (":"+device+":Bug:");');
    d.writeln('      }');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "<html><br><br>";');//JL
+   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "JL<html><br><br>";');//JL
 
    d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
