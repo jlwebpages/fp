@@ -638,23 +638,22 @@ function build_regular_season_form()
    d.writeln('   var mail_msg = "mailto:fp@socal.rr.com?subject=" + name + " - Week ' + week + ' Picks&body=";');
    d.writeln('');
    d.writeln('');
-
+   d.writeln('   // JL - Start work around for iOS bug.');
+   d.writeln('');
    d.writeln('   var ios_bug = false;');
    d.writeln('');
-   d.writeln('   if (name.indexOf("JL") != -1)');
+   d.writeln('   device = navigator.userAgent.replace("_",".");');
+   d.writeln('');
+   d.writeln('   if ( ( (device.indexOf("iPhone") != -1) || (device.indexOf("iPad") != -1) ) &&');
+   d.writeln('        ( (device.indexOf("14.6")   != -1) || (device.indexOf("14.7") != -1) ) )');
    d.writeln('   {');
-   d.writeln('      device = navigator.userAgent.replace("_",".");');
-   d.writeln('      alert(":"+device+":");');
-   d.writeln('      if ( ( (device.indexOf("iPhone") != -1) || (device.indexOf("iPad") != -1) ) &&');
-   d.writeln('           ( (device.indexOf("14.6")   != -1) || (device.indexOf("14.7") != -1) ) )');
-   d.writeln('      {');
-   d.writeln('         ios_bug = true;');
-   d.writeln('         alert (":"+device+":Bug:");');
-   d.writeln('      }');
+   d.writeln('      ios_bug = true;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "<html>\\n\\n";');//JL
-
+   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "<html>\\n\\n";');
+   d.writeln('');
+   d.writeln('   // JL - End work around for iOS bug.');
+   d.writeln('');
    d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
    d.writeln('      // Add blank lines before the last game if there are less than the maximum number of games scheduled.');
@@ -688,9 +687,8 @@ function build_regular_season_form()
    d.writeln('      mail_msg += "\\n\\n"+random_picks_generated;');
    d.writeln('   }');
    d.writeln('');
-
-   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "\\n\\n</html>";');//JL
-
+   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "\\n\\n</html>"; // JL - Work around for iOS bug.');
+   d.writeln('');
    d.writeln('   window.open(encodeURI(mail_msg),"_top");');
    d.writeln('');
    d.writeln('   return true;');
