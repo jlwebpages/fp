@@ -653,7 +653,7 @@ function build_regular_season_form()
    d.writeln('      }');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "JL<html><br><br>";');//JL
+   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "<html>\\n\\n";');//JL
 
    d.writeln('   for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('   {');
@@ -689,7 +689,7 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('');
 
-   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "<br><br></html>";');//JL
+   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "\\n\\n</html>";');//JL
 
    d.writeln('   window.open(encodeURI(mail_msg),"_top");');
    d.writeln('');
