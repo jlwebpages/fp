@@ -642,7 +642,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   var ios_bug = false;');
    d.writeln('');
-   d.writeln('   if ( ((navigator.platform.toLowerCase().indexOf("iPhone") != -1) || (navigator.platform.toLowerCase().indexOf("iPad") != -1)) && (navigator.userAgent.replace("_",".").indexOf("14.") != -1) )');
+   d.writeln('   if ( ((navigator.platform.indexOf("iPhone") != -1) || (navigator.platform.indexOf("iPad") != -1)) && (navigator.userAgent.replace("_",".").indexOf("14.") != -1) )');
    d.writeln('   {');
    d.writeln('      ios_bug = true;');
    d.writeln('   }');
@@ -3021,7 +3021,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   var ios_bug = false;');
    d.writeln('');
-   d.writeln('   if ( ((navigator.platform.toLowerCase().indexOf("iPhone") != -1) || (navigator.platform.toLowerCase().indexOf("iPad") != -1)) && (navigator.userAgent.replace("_",".").indexOf("14.") != -1) )');
+   d.writeln('   if ( ((navigator.platform.indexOf("iPhone") != -1) || (navigator.platform.indexOf("iPad") != -1)) && (navigator.userAgent.replace("_",".").indexOf("14.") != -1) )');
    d.writeln('   {');
    d.writeln('      ios_bug = true;');
    d.writeln('   }');
