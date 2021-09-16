@@ -1333,6 +1333,10 @@ function build_regular_season_form()
    d.writeln('      return;');
    d.writeln('   }');
    d.writeln('');
+   d.writeln('   if (suppress_alerts == false) alert(":"+navigator.platform+":");');
+   d.writeln('');
+   d.writeln('   if (suppress_alerts == false) alert(":"+navigator.userAgent+":");');
+   d.writeln('');
    d.writeln('   // Display loading indicator while call to XMLHttpRequest is working.');
    d.writeln('');
    d.writeln('   top.display_frame("fp_loading_indicator",0);');
