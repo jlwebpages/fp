@@ -642,9 +642,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   var ios_bug = false;');
    d.writeln('');
-   d.writeln('   device = navigator.userAgent.replace("_",".");');
-   d.writeln('');
-   d.writeln('   if ( ((device.indexOf("iPhone") != -1) || (device.indexOf("iPad") != -1)) && (device.indexOf("14.") != -1) )');
+   d.writeln('   if ( ((navigator.platform.toLowerCase() == "iPhone") || (navigator.platform.toLowerCase() == "iPad")) && (navigator.userAgent.replace("_",".").indexOf("14.") != -1) )');
    d.writeln('   {');
    d.writeln('      ios_bug = true;');
    d.writeln('   }');
@@ -1332,10 +1330,6 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      return;');
    d.writeln('   }');
-   d.writeln('');
-   d.writeln('   if (suppress_alerts == false) alert(":"+navigator.platform+":");');
-   d.writeln('');
-   d.writeln('   if (suppress_alerts == false) alert(":"+navigator.userAgent+":");');
    d.writeln('');
    d.writeln('   // Display loading indicator while call to XMLHttpRequest is working.');
    d.writeln('');
@@ -3027,9 +3021,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   var ios_bug = false;');
    d.writeln('');
-   d.writeln('   device = navigator.userAgent.replace("_",".");');
-   d.writeln('');
-   d.writeln('   if ( ((device.indexOf("iPhone") != -1) || (device.indexOf("iPad") != -1)) && (device.indexOf("14.") != -1) )');
+   d.writeln('   if ( ((navigator.platform.toLowerCase() == "iPhone") || (navigator.platform.toLowerCase() == "iPad")) && (navigator.userAgent.replace("_",".").indexOf("14.") != -1) )');
    d.writeln('   {');
    d.writeln('      ios_bug = true;');
    d.writeln('   }');
