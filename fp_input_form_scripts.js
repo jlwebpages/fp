@@ -638,6 +638,9 @@ function build_regular_season_form()
    d.writeln('   var mail_msg = "mailto:fp@socal.rr.com?subject=" + name + " - Week ' + week + ' Picks&body=";');
    d.writeln('');
    d.writeln('');
+   d.writeln('   if (name.indexOf("DC") != -1) alert(":"+navigator.platform+":");');
+   d.writeln('   if (name.indexOf("DC") != -1) alert(":"+navigator.userAgent+":");');
+   d.writeln('');
    d.writeln('   // JL - Start work around for iOS bug.');
    d.writeln('');
    d.writeln('   var ios_bug = false;');
