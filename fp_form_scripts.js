@@ -4561,7 +4561,7 @@ function build_season_summary()
    {
       // number_of_rs_weeks is based on the current year.
 
-      number_of_rs_weeks = window.top.gv.number_of_rs_weeks;
+      number_of_rs_weeks = parseInt(window.top.gv.number_of_rs_weeks);  // JL Not sure why parseInt is needed.
    }
    else
    {
