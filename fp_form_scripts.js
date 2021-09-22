@@ -4555,20 +4555,7 @@ function build_season_summary()
 
    var rs_players           = window.top.gv.rs_players;
    var number_of_rs_players = rs_players.length;
-   var number_of_rs_weeks   = 0;
-
-   if (window.top.gv.mode == "summary")
-   {
-      // number_of_rs_weeks is based on the current year.
-
-      number_of_rs_weeks = parseInt(window.top.gv.number_of_rs_weeks);  // JL Not sure why parseInt is needed.
-   }
-   else
-   {
-      // number_of_rs_weeks is based on the archive year.
-
-      number_of_rs_weeks = window.top.gv.all_home_teams.length;
-   }
+   var number_of_rs_weeks   = window.top.gv.all_home_teams.length;
 
    var actual_mn_points          = "";
    var all_games_won             = Array(number_of_rs_weeks);
