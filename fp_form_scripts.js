@@ -4323,7 +4323,7 @@ function build_regular_season_form()
          }
          else
          {
-            tie_breaker_message = "Enter actual \"" + visiting_teams[number_of_rs_games-1] + " at " + home_teams[number_of_rs_games-1] + "\" Total Points to break the tie:&nbsp;&nbsp;";
+            tie_breaker_message = "Enter \"" + visiting_teams[number_of_rs_games-1] + " at " + home_teams[number_of_rs_games-1] + "\" Total Points to break the tie:&nbsp;&nbsp;";
          }
 
          if ( (unable_to_break_tie == true) || (in_progress_mn_points < 1) )
