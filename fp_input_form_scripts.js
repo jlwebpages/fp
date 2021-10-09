@@ -1561,7 +1561,7 @@ function build_regular_season_form()
    d.writeln('         visiting_team_record = game.matchupBreakdowns[0].awayStats;');
    d.writeln('         home_team            = game.homeCompetitor.nickName;');
    d.writeln('         home_team_record     = game.matchupBreakdowns[0].homeStats;');
-   d.writeln('');
+   d.writeln('alert(visiting_team+" "+visiting_team_record+" "+home_team+" "+home_team_record);');
    d.writeln('         // Populate the team_records_array with the team names and records.');
    d.writeln('');
    d.writeln('         team_records_index++;');
