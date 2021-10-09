@@ -1588,6 +1588,7 @@ function build_regular_season_form()
    d.writeln('               point_spread = -7;');
    d.writeln('               total_points = 99;');
    d.writeln('               game_odds_found = true;');
+   d.writeln('               odds_found = true;');
    d.writeln('');
    d.writeln('            }');
    d.writeln('            else');
