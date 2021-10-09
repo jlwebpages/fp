@@ -1865,7 +1865,7 @@ function build_regular_season_form()
    d.writeln('      {');
    d.writeln('         // If the home and visiting teams from the current game match one of the games in the');
    d.writeln('         // selected week, then get the team records and NFL Odds information from the current game.');
-   d.writeln('');
+   d.writeln('alert("k="+k);');
    d.writeln('         if ( (home_team.toLowerCase().indexOf(home_teams[k].toLowerCase()) != -1) && (visiting_team.toLowerCase().indexOf(visiting_teams[k].toLowerCase()) != -1) ) ');
    d.writeln('         {');
    d.writeln('            // Get the home and visiting team records.');
