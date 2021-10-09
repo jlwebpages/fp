@@ -1336,7 +1336,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Display loading indicator while call to XMLHttpRequest is working.');
    d.writeln('');
-   d.writeln('   //top.display_frame("fp_loading_indicator",0);');
+   d.writeln('   top.display_frame("fp_loading_indicator",0);');
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
@@ -1518,7 +1518,6 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   nfl_odds = nfl_odds.substring(index_start,index_end+1);');
    d.writeln('   nfl_odds = nfl_odds + "}";');
-   d.writeln('   if (suppress_alerts == false) alert(":"+nfl_odds.substring(0,10)+":"+nfl_odds.substring(nfl_odds.length-10,nfl_odds.length)+":");');
    d.writeln('');
    d.writeln('   // Convert the nfl_odds string to a JavaScript object.');
    d.writeln('');
@@ -1540,7 +1539,7 @@ function build_regular_season_form()
    d.writeln('   // Get the NFL Odds information from multiple game lists within the nfl_odds object.');
    d.writeln('');
    d.writeln('      game_list = nfl_odds.competitionOdds;');
-   d.writeln('alert(game_list);');
+   d.writeln('');
    d.writeln('      // Get NFL Odds information from each game in the game_list.');
    d.writeln('');
    d.writeln('      for (var j = 0; j < game_list.length; j++)');
@@ -1561,7 +1560,7 @@ function build_regular_season_form()
    d.writeln('         visiting_team_record = game.matchupBreakdowns[0].awayStats;');
    d.writeln('         home_team            = game.homeCompetitor.nickName;');
    d.writeln('         home_team_record     = game.matchupBreakdowns[0].homeStats;');
-   d.writeln('alert(visiting_team+" "+visiting_team_record+" "+home_team+" "+home_team_record);');
+   d.writeln('');
    d.writeln('         // Populate the team_records_array with the team names and records.');
    d.writeln('');
    d.writeln('         team_records_index++;');
@@ -1608,7 +1607,7 @@ function build_regular_season_form()
    d.writeln('            nfl_odds_array[k][noa_spread_index]       = point_spread;');
    d.writeln('            nfl_odds_array[k][noa_total_points_index] = total_points;');
    d.writeln('');
-   d.writeln('            //JL alert(nfl_odds_array[k]);');
+   d.writeln('            /*JL*/ alert(nfl_odds_array[k]);');
    d.writeln('');
    d.writeln('            break;');
    d.writeln('         }');
