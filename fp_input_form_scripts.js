@@ -1539,7 +1539,7 @@ function build_regular_season_form()
    d.writeln('   // Get the NFL Odds information from multiple game lists within the nfl_odds object.');
    d.writeln('');
    d.writeln('      game_list = nfl_odds.competitionOdds;');
-   d.writeln('');
+   d.writeln('alert(game_list.length);');
    d.writeln('      // Get NFL Odds information from each game in the game_list.');
    d.writeln('');
    d.writeln('      for (var j = 0; j < game_list.length; j++)');
