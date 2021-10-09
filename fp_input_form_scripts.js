@@ -1865,11 +1865,11 @@ function build_regular_season_form()
    d.writeln('      {');
    d.writeln('         // If the home and visiting teams from the current game match one of the games in the');
    d.writeln('         // selected week, then get the team records and NFL Odds information from the current game.');
-   d.writeln('alert("k="+k);');
+   d.writeln('');
    d.writeln('         if ( (home_team.toLowerCase().indexOf(home_teams[k].toLowerCase()) != -1) && (visiting_team.toLowerCase().indexOf(visiting_teams[k].toLowerCase()) != -1) ) ');
    d.writeln('         {');
    d.writeln('            // Get the home and visiting team records.');
-   d.writeln('');
+   d.writeln('alert(visiting_team+" at "+home_team);');
    d.writeln('            if (game.matchupBreakdowns != null)');
    d.writeln('            {');
    d.writeln('               home_team_record     = game.matchupBreakdowns[0].homeStats;');
