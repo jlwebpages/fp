@@ -1614,7 +1614,7 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('');
    d.writeln('   // If an nfl_odds_array element is blank because a game in the selected week wasn\'t found in any of the game lists, initialize the nfl_odds_array element.');
-   d.writeln('');
+   d.writeln('alert("JL1");');
    d.writeln('   for (var j = 0; j < '+number_of_rs_games+'; j++)');
    d.writeln('   {');
    d.writeln('      if (nfl_odds_array[j] == "")');
@@ -1637,7 +1637,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      return;');
    d.writeln('   }');
-   d.writeln('');
+   d.writeln('alert("JL2");');
    d.writeln('   // Un-hide the "Picks From Odds" button and the "Display Odds" and "Display Team Records" checkboxes.');
    d.writeln('');
    d.writeln('   if (document.getElementById("picks_from_odds_button") != null) document.getElementById("picks_from_odds_button").style.display = "";');
