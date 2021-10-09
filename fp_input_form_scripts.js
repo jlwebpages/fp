@@ -1318,7 +1318,7 @@ function build_regular_season_form()
    d.writeln('   var index_start         = -1;');
    d.writeln('   var nfl_connection      = null;');
    d.writeln('   var nfl_odds            = null;');
-   d.writeln('   var nfl_odds_url        = ["www.espn.com/nfl/lines","www.sportsline.com/nfl/odds"];');
+   d.writeln('   var nfl_odds_url        = ["www.eespn.com/nfl/lines","www.sportsline.com/nfl/odds"];');
    d.writeln('   var nfl_odds_valid      = true;');
    d.writeln('   var nfl_odds_week       = "";');
    d.writeln('   var nfl_odds_week_error = false;');
