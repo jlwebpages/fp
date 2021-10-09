@@ -1539,7 +1539,7 @@ function build_regular_season_form()
    d.writeln('   // Get the NFL Odds information from multiple game lists within the nfl_odds object.');
    d.writeln('');
    d.writeln('      game_list = nfl_odds.competitionOdds;');
-   d.writeln('alert(game_list.length);');
+   d.writeln('');
    d.writeln('      // Get NFL Odds information from each game in the game_list.');
    d.writeln('');
    d.writeln('      for (var j = 0; j < game_list.length; j++)');
@@ -1571,7 +1571,7 @@ function build_regular_season_form()
    d.writeln('         team_records_array[team_records_index][tra_team_index]  = home_team;');
    d.writeln('         team_records_array[team_records_index][tra_record_index] = "(" + home_team_record.substring(0,home_team_record.indexOf(" ")) + ")";');
    d.writeln('');
-   d.writeln('         // Loop through each game in the selcted week.');
+   d.writeln('         // Loop through each game in the selected week.');
    d.writeln('');
    d.writeln('         for (var k = 0; k < '+number_of_rs_games+'; k++)');
    d.writeln('         {');
@@ -1608,10 +1608,10 @@ function build_regular_season_form()
    d.writeln('            nfl_odds_array[k][noa_total_points_index] = total_points;');
    d.writeln('');
    d.writeln('            /*JL*/ alert(nfl_odds_array[k]);');
-   d.writeln('');
+   d.writeln('alert("j="+j);');
    d.writeln('            break;');
    d.writeln('         }');
-   d.writeln('   }');
+   d.writeln('      }');
    d.writeln('');
    d.writeln('   // If an nfl_odds_array element is blank because a game in the selected week wasn\'t found in any of the game lists, initialize the nfl_odds_array element.');
    d.writeln('alert("JL1");');
