@@ -1888,14 +1888,14 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            // Get the favored team and the point spread from the current game.');
    d.writeln('');
-   d.writeln('            if ( (isNaN(game.odds.odd.pointSpread.currentHomeHandicap) == false) && (game.odds.odd.pointSpread.currentHomeHandicap < 0) )');
+   d.writeln('            if ( (isNaN(game.odds[0].odd.pointSpread.currentHomeHandicap) == false) && (game.odds[0].odd.pointSpread.currentHomeHandicap < 0) )');
    d.writeln('            {');
-   d.writeln('                 point_spread = game.odds.odd.pointSpread.currentHomeHandicap;');
+   d.writeln('                 point_spread = game.odds[0].odd.pointSpread.currentHomeHandicap;');
    d.writeln('                 favored_team = home_team;');
    d.writeln('            }');
-   d.writeln('            else if ( (isNaN(game.odds.odd.pointSpread.currentAwayHandicap) == false) && (game.odds.odd.pointSpread.currentAwayHandicap < 0) )');
+   d.writeln('            else if ( (isNaN(game.odds[0].odd.pointSpread.currentAwayHandicap) == false) && (game.odds[0].odd.pointSpread.currentAwayHandicap < 0) )');
    d.writeln('            {');
-   d.writeln('                 point_spread = game.odds.odd.pointSpread.currentAwayHandicap;');
+   d.writeln('                 point_spread = game.odds[0].odd.pointSpread.currentAwayHandicap;');
    d.writeln('                 favored_team = visiting_team;');
    d.writeln('            }');
    d.writeln('            else');
@@ -1910,7 +1910,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            // Get the total points from the current game.');
    d.writeln('');
-   d.writeln('            total_points = game.odds.odd.overUnder.currentTotal;');
+   d.writeln('            total_points = game.odds[0].odd.overUnder.currentTotal;');
    d.writeln('');
    d.writeln('            // If total_points is a whole number, change its format from floating point to whole number.');
    d.writeln('');
