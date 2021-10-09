@@ -1318,8 +1318,8 @@ function build_regular_season_form()
    d.writeln('   var index_start         = -1;');
    d.writeln('   var nfl_connection      = null;');
    d.writeln('   var nfl_odds            = null;');
-   //d.writeln('   var nfl_odds_url        = ["JL","www.sportsline.com/nfl/odds"];'); //JLJL
-   d.writeln('   var nfl_odds_url        = ["www.espn.com/nfl/lines","www.sportsline.com/nfl/odds"];');
+   //d.writeln('   var nfl_odds_url        = ["www.espn.com/nfl/lines","www.sportsline.com/nfl/odds"];');
+   d.writeln('   var nfl_odds_url        = ["JL","www.sportsline.com/nfl/odds"];');
    d.writeln('   var nfl_odds_valid      = true;');
    d.writeln('   var nfl_odds_week       = "";');
    d.writeln('   var nfl_odds_week_error = false;');
@@ -1401,15 +1401,15 @@ function build_regular_season_form()
    d.writeln('            }');
    d.writeln('            else if (nfl_odds_valid == true && odds_source == espn)');
    d.writeln('            {');
-   d.writeln('               if (process_nfl_odds_from_espn(document,nfl_odds,suppress_alerts) == false)');
-   d.writeln('               {');
-   d.writeln('                  get_nfl_odds(document,sportsline,true);');
-   d.writeln('               }');
-   d.writeln('               else');
+   d.writeln('               if (process_nfl_odds_from_espn(document,nfl_odds,suppress_alerts) == true)');
    d.writeln('               {');
    d.writeln('                  // Remove loading indicator.');
    d.writeln('');
    d.writeln('                  top.display_frame("fp_main",0);');
+   d.writeln('               }');
+   d.writeln('               else');
+   d.writeln('               {');
+   d.writeln('                  get_nfl_odds(document,sportsline,true);');
    d.writeln('               }');
    d.writeln('            }');
    d.writeln('            else if (nfl_odds_valid == true && odds_source == sportsline)');
