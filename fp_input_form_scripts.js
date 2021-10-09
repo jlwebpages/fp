@@ -23,6 +23,7 @@ function build_regular_season_form()
       return false;
    }
 
+
    var current_input_week     = top.current_input_week;
    var max_number_of_rs_games = 16;
    var number_of_rs_weeks     = top.all_home_teams.length;
@@ -1508,8 +1509,8 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Parse the nfl_odds string.');
    d.writeln('');
-   d.writeln('   index_start = nfl_odds.indexOf("},\\"lines\\":");');
-   d.writeln('   index_end = nfl_odds.indexOf("},\\"headers\\":");');
+   d.writeln('   index_start = nfl_odds.indexOf("{\\"competitionOdds\\":[");');
+   d.writeln('   index_end = nfl_odds.indexOf("],\\"enabledSportsbooks\\"");');
    d.writeln('');
    d.writeln('   if ( (index_start == -1) || (index_end == -1) )');
    d.writeln('   {');
@@ -1518,8 +1519,9 @@ function build_regular_season_form()
    d.writeln('      return;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   nfl_odds = nfl_odds.substring(index_start+2,index_end);');
-   d.writeln('   nfl_odds = "{" + nfl_odds + "}}";');
+   d.writeln('   nfl_odds = nfl_odds.substring(index_start,index_end);');
+   d.writeln('   nfl_odds = nfl_odds + "}";');
+   d.writeln('   if (suppress_alerts == false) alert(":"+nfl_odds.substring(0,10)+":"+nfl_odds.substring(nfl_odds.length-10,nfl_odds.length)+":");');
    d.writeln('');
    d.writeln('   // Convert the nfl_odds string to a JavaScript object.');
    d.writeln('');
