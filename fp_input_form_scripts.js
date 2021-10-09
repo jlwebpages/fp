@@ -1353,8 +1353,6 @@ function build_regular_season_form()
    d.writeln('         {');
    d.writeln('            nfl_odds = nfl_connection.responseText;');
    d.writeln('');
-   d.writeln('            if (suppress_alerts == false) alert(nfl_odds);');
-   d.writeln('');
    d.writeln('            if (nfl_odds_valid == true) process_nfl_odds(nfl_odds,suppress_alerts);');
    d.writeln('');
    d.writeln('            // Remove loading indicator.');
@@ -1519,7 +1517,7 @@ function build_regular_season_form()
    d.writeln('      return;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   nfl_odds = nfl_odds.substring(index_start,index_end);');
+   d.writeln('   nfl_odds = nfl_odds.substring(index_start,index_end+1);');
    d.writeln('   nfl_odds = nfl_odds + "}";');
    d.writeln('   if (suppress_alerts == false) alert(":"+nfl_odds.substring(0,10)+":"+nfl_odds.substring(nfl_odds.length-10,nfl_odds.length)+":");');
    d.writeln('');
