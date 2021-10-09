@@ -1860,7 +1860,8 @@ function build_regular_season_form()
    d.writeln('            if ( (home_team.toLowerCase().indexOf(home_teams[k].toLowerCase()) != -1) && (visiting_team.toLowerCase().indexOf(visiting_teams[k].toLowerCase()) != -1) ) ');
    d.writeln('            {');
    d.writeln('               // Get the home and visiting team records.');
-   d.writeln('alert("JL:  "+game.matchupBreakdowns[0].awayStats);');
+   d.writeln('alert("JL");');
+   d.writeln('if (game.matchupBreakdowns[0].awayStats != undefined) alert("JL:  "+game.matchupBreakdowns[0].awayStats);');
    d.writeln('               //JLJL visiting_team_record = game.matchupBreakdowns[0].awayStats;');
    d.writeln('               //JLJL home_team_record     = game.matchupBreakdowns[0].homeStats;');
    d.writeln('');
