@@ -1565,11 +1565,11 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('         team_records_index++;');
    d.writeln('         team_records_array[team_records_index][tra_team_index]   = visiting_team;');
-   d.writeln('         team_records_array[team_records_index][tra_record_index] = "(" + visiting_team_record.substring(0,visiting_team_record.indexOf(" ")) + ")";');
+   d.writeln('         team_records_array[team_records_index][tra_record_index] = "(" + visiting_team_record + ")";');
    d.writeln('');
    d.writeln('         team_records_index++;');
    d.writeln('         team_records_array[team_records_index][tra_team_index]  = home_team;');
-   d.writeln('         team_records_array[team_records_index][tra_record_index] = "(" + home_team_record.substring(0,home_team_record.indexOf(" ")) + ")";');
+   d.writeln('         team_records_array[team_records_index][tra_record_index] = "(" + home_team_record + ")";');
    d.writeln('');
    d.writeln('         // Loop through each game in the selected week.');
    d.writeln('');
