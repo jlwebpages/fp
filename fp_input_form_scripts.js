@@ -1861,7 +1861,7 @@ function build_regular_season_form()
    d.writeln('            {');
    d.writeln('               // Get the home and visiting team records.');
    d.writeln('alert("JL");');
-   d.writeln('if (game.matchupBreakdowns[0].awayStats != undefined) alert("JL:  "+game.matchupBreakdowns[0].awayStats);');
+   d.writeln('if (game.matchupBreakdowns != null) alert("JL:  "+game.matchupBreakdowns[0].awayStats);');
    d.writeln('               //JLJL visiting_team_record = game.matchupBreakdowns[0].awayStats;');
    d.writeln('               //JLJL home_team_record     = game.matchupBreakdowns[0].homeStats;');
    d.writeln('');
