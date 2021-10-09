@@ -1318,7 +1318,8 @@ function build_regular_season_form()
    d.writeln('   var index_start         = -1;');
    d.writeln('   var nfl_connection      = null;');
    d.writeln('   var nfl_odds            = null;');
-   d.writeln('   var nfl_odds_url        = ["www.espn.com/nfl/lines","www.sportsline.com/nfl/odds"];');
+   //JLJLd.writeln('   var nfl_odds_url        = ["www.espn.com/nfl/lines","www.sportsline.com/nfl/odds"];');
+   d.writeln('   var nfl_odds_url        = ["JL","www.sportsline.com/nfl/odds"];');
    d.writeln('   var nfl_odds_valid      = true;');
    d.writeln('   var nfl_odds_week       = "";');
    d.writeln('   var nfl_odds_week_error = false;');
@@ -1811,7 +1812,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if ( (index_start == -1) || (index_end == -1) )');
    d.writeln('   {');
-   d.writeln('      if (suppress_alerts == false) alert("Error parsing nfl_odds string from Sportsline.")');
+   d.writeln('      if (suppress_alerts == false) alert("Error parsing nfl_odds string.")');
    d.writeln('');
    d.writeln('      return;');
    d.writeln('   }');
@@ -1827,7 +1828,7 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('   catch(e)');
    d.writeln('   {');
-   d.writeln('      if (suppress_alerts == false) alert("Error converting nfl_odds string from Sportsline to a Javascript object.");');
+   d.writeln('      if (suppress_alerts == false) alert("Error converting nfl_odds string to a Javascript object.");');
    d.writeln('');
    d.writeln('      return;');
    d.writeln('   }');
@@ -1955,7 +1956,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (odds_found == false)');
    d.writeln('   {');
-   d.writeln('      if (suppress_alerts == false) alert("NFL Odds for Week ' + week + ' are not available from Sportsline.")');
+   d.writeln('      if (suppress_alerts == false) alert("NFL Odds for Week ' + week + ' are not available.")');
    d.writeln('');
    d.writeln('      return;');
    d.writeln('   }');
