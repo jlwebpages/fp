@@ -1542,7 +1542,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      // Get NFL Odds information from each game in the game_list.');
    d.writeln('');
-   d.writeln('      for (var j = 0; j < game_list.length; j++)');
+   d.writeln('      for (var j = 0; j < game_list.length-1; j++)');
    d.writeln('      {');
    d.writeln('         // Reset NFL Odds variables.');
    d.writeln('');
@@ -1608,7 +1608,7 @@ function build_regular_season_form()
    d.writeln('            nfl_odds_array[k][noa_total_points_index] = total_points;');
    d.writeln('');
    d.writeln('            /*JL*/ alert(nfl_odds_array[k]);');
-   d.writeln('alert("j="+j);');
+   d.writeln('');
    d.writeln('            break;');
    d.writeln('         }');
    d.writeln('      }');
