@@ -1328,18 +1328,14 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // If the nfl_odds_array is already populated, don\'t waste time retrieving the NFL Odds from the internet again.');
    d.writeln('');
-   d.writeln('   if (suppress_alerts == false) alert(nfl_odds_array[0].length);'); //JLJL
    d.writeln('   if (nfl_odds_array[0].length > 0)');
    d.writeln('   {');
-   d.writeln('      if (suppress_alerts == false) alert("returning");'); //JLJL
    d.writeln('      return;');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   // Display loading indicator while call to XMLHttpRequest is working.');
    d.writeln('');
-   d.writeln('   if (suppress_alerts == false) alert("before loading indicator");'); //JLJL
    d.writeln('   top.display_frame("fp_loading_indicator",0);');
-   d.writeln('   if (suppress_alerts == false) alert("after loading indicator");'); //JLJL
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
