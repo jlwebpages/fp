@@ -1313,13 +1313,13 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('function get_nfl_odds(document,odds_source,suppress_alerts)');
    d.writeln('{');
-   d.writeln('   var espn                = 0;');
-   d.writeln('   var index_end           = -1;');
-   d.writeln('   var index_start         = -1;');
-   d.writeln('   var nfl_connection      = null;');
-   d.writeln('   var nfl_odds            = null;');
-   d.writeln('   var nfl_odds_url        = ["www.espn.com/nfl/lines","www.sportsline.com/nfl/odds"];');
-   d.writeln('   var sportsline          = 1;');
+   d.writeln('   var espn           = 0;');
+   d.writeln('   var index_end      = -1;');
+   d.writeln('   var index_start    = -1;');
+   d.writeln('   var nfl_connection = null;');
+   d.writeln('   var nfl_odds       = null;');
+   d.writeln('   var nfl_odds_url   = ["www.espn.com/nfl/lines","www.sportsline.com/nfl/odds"];');
+   d.writeln('   var sportsline     = 1;');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Always display alerts if name contains "JL".');
@@ -1328,6 +1328,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // If the nfl_odds_array is already populated, don\'t waste time retrieving the NFL Odds from the internet again.');
    d.writeln('');
+   d.writeln('   if (suppress_alerts == false) alert(nfl_odds_array[0].length);'); //JLJL
    d.writeln('   if (nfl_odds_array[0].length > 0)');
    d.writeln('   {');
    d.writeln('      return;');
