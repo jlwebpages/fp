@@ -1336,7 +1336,9 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Display loading indicator while call to XMLHttpRequest is working.');
    d.writeln('');
+   d.writeln('   if (suppress_alerts == false) alert("before loading indicator");'); //JLJL
    d.writeln('   top.display_frame("fp_loading_indicator",0);');
+   d.writeln('   if (suppress_alerts == false) alert("after loading indicator");'); //JLJL
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
