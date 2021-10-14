@@ -1331,6 +1331,7 @@ function build_regular_season_form()
    d.writeln('   if (suppress_alerts == false) alert(nfl_odds_array[0].length);'); //JLJL
    d.writeln('   if (nfl_odds_array[0].length > 0)');
    d.writeln('   {');
+   d.writeln('      if (suppress_alerts == false) alert("returning");'); //JLJL
    d.writeln('      return;');
    d.writeln('   }');
    d.writeln('');
