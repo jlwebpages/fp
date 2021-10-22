@@ -846,6 +846,13 @@
       {
          // Received frame_width is only used if frame_name equals "fp_picks".
 
+         var iPad = false;
+
+         if ( (navigator.platform.toLowerCase().indexOf("ipad") != -1) || ((navigator.platform.toLowerCase().indexOf("macintel") != -1) && (navigator.maxTouchPoints > 1)) )
+         {
+            iPad = true;
+         }
+
          if (frame_name == "fp_main")
          {
             document.getElementById("fp_frameset").cols="*,0,0";
@@ -863,7 +870,7 @@
 
                if ( (fp_main.document.getElementById("picks_from_odds_button") != null) &&
                     (fp_main.document.getElementById("picks_from_odds_button").style.display == "") &&
-                    (navigator.platform != "iPad")                                                   )
+                    (iPad == false) )
                {
                   var accept_button                       = fp_main.document.getElementById("submit");
                   var display_odds_checkbox_label         = fp_main.document.getElementById("display_odds_checkbox_label");
@@ -985,8 +992,14 @@
 
       function set_mobile_viewport_width(viewport_width)
       {
+         var iPad             = false;
          var viewport_content = "width=device-width, initial-scale=1.0";
          var viewport_scale   = "";
+
+         if ( (navigator.platform.toLowerCase().indexOf("ipad") != -1) || ((navigator.platform.toLowerCase().indexOf("macintel") != -1) && (navigator.maxTouchPoints > 1)) )
+         {
+            iPad = true;
+         }
 
          // Don't try to adjust the viewport width if an HTML <meta> tag viewport element doesn't exist.
 
@@ -998,7 +1011,7 @@
 
          // Don't adjust the viewport width if the mobile device is an iPad.
 
-         if (navigator.platform == "iPad") return;
+         if (iPad == true) return;
 
          if (viewport_width > 0)
          {
