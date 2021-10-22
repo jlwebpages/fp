@@ -846,14 +846,6 @@
       {
          // Received frame_width is only used if frame_name equals "fp_picks".
 
-         var iPad = false;
-
-
-         if (navigator.platform == "iPad") || ( (navigator.platform.toLowerCase().indexOf("macintel") != -1) && (navigator.maxTouchPoints > 1) )
-         {
-            iPad = true;
-         }
-
          if (frame_name == "fp_main")
          {
             document.getElementById("fp_frameset").cols="*,0,0";
@@ -871,7 +863,7 @@
 
                if ( (fp_main.document.getElementById("picks_from_odds_button") != null) &&
                     (fp_main.document.getElementById("picks_from_odds_button").style.display == "") &&
-                    (iPad == false) )
+                    (navigator.platform != "iPad")                                                   )
                {
                   var accept_button                       = fp_main.document.getElementById("submit");
                   var display_odds_checkbox_label         = fp_main.document.getElementById("display_odds_checkbox_label");
@@ -1006,7 +998,7 @@
 
          // Don't adjust the viewport width if the mobile device is an iPad.
 
-         if (iPad == true) return;
+         if (navigator.platform == "iPad") return;
 
          if (viewport_width > 0)
          {
