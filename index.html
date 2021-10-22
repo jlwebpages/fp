@@ -2,7 +2,11 @@
 
 <script>
 
-if (navigator.userAgent.toLowerCase().indexOf("mobile") != -1)
+if (navigator.userAgent.toLowerCase().indexOf("mobile") != -1)  // Test for mobile device.
+{
+   document.writeln('<meta http-equiv="Refresh" content="0; URL=https://jlwebpages.github.io/fp/fp_mobile.html">');
+}
+else if ( (navigator.platform.toLowerCase().indexOf("macintel") != -1) && (navigator.platform.maxTouchPoints > 1) )  // Test for newer iPad.
 {
    document.writeln('<meta http-equiv="Refresh" content="0; URL=https://jlwebpages.github.io/fp/fp_mobile.html">');
 }
