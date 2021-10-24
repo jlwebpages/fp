@@ -1322,6 +1322,7 @@ function build_regular_season_form()
    d.writeln('   var sportsline     = 1;');
    d.writeln('');
    d.writeln('');
+   d.writeln('   if (build_player_name(-1).indexOf("JL") != -1) alert(navigator.userAgent);');
    d.writeln('   // Always display alerts if name contains "JL".');
    d.writeln('');
    d.writeln('   if (build_player_name(-1).indexOf("JL") != -1) suppress_alerts = false;');
