@@ -643,12 +643,10 @@ function build_regular_season_form()
    d.writeln('   var ios_bug  = false;');
    d.writeln('   var platform = navigator.platform.toLowerCase();');
    d.writeln('');
-   d.writeln('   if ( (platform.indexOf("iphone") != -1) || (platform.indexOf("ipad") != -1) )');
+   d.writeln('   if ( (platform.indexOf("iphone") != -1) || (platform.indexOf("ipad") != -1) || ((platform.indexOf("macintel") != -1) && (navigator.maxTouchPoints > 1)) )');
    d.writeln('   {');
    d.writeln('      if (navigator.userAgent.replace(/_/g,".").indexOf("14.") != -1) ios_bug = true;');
    d.writeln('   }');
-   d.writeln('');
-   d.writeln('   if ( (platform.indexOf("macintel") != -1) && (navigator.maxTouchPoints > 1) ) ios_bug = true;');
    d.writeln('');
    d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "<html>\\n\\n";');
    d.writeln('');
@@ -1322,7 +1320,6 @@ function build_regular_season_form()
    d.writeln('   var sportsline     = 1;');
    d.writeln('');
    d.writeln('');
-   d.writeln('   if (build_player_name(-1).indexOf("JL") != -1) alert(navigator.userAgent);');
    d.writeln('   // Always display alerts if name contains "JL".');
    d.writeln('');
    d.writeln('   if (build_player_name(-1).indexOf("JL") != -1) suppress_alerts = false;');
@@ -3230,12 +3227,10 @@ function build_post_season_form()
    d.writeln('   var ios_bug  = false;');
    d.writeln('   var platform = navigator.platform.toLowerCase();');
    d.writeln('');
-   d.writeln('   if ( (platform.indexOf("iphone") != -1) || (platform.indexOf("ipad") != -1) )');
+   d.writeln('   if ( (platform.indexOf("iphone") != -1) || (platform.indexOf("ipad") != -1) || ((platform.indexOf("macintel") != -1) && (navigator.maxTouchPoints > 1)) )');
    d.writeln('   {');
    d.writeln('      if (navigator.userAgent.replace(/_/g,".").indexOf("14.") != -1) ios_bug = true;');
    d.writeln('   }');
-   d.writeln('');
-   d.writeln('   if ( (platform.indexOf("macintel") != -1) && (navigator.maxTouchPoints > 1) ) ios_bug = true;');
    d.writeln('');
    d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "<html>\\n\\n";');
    d.writeln('');
