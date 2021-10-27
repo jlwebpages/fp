@@ -648,7 +648,7 @@ function build_regular_season_form()
    d.writeln('      if (navigator.userAgent.replace(/_/g,".").indexOf("14.") != -1) ios_bug = true;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "<html>\\n\\n";');
+   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "<html>   <--- Workaround for iPhone/iPad iOS 14 bug.  Upgrade to iOS 15 is available.\\n\\n";');
    d.writeln('');
    d.writeln('   // JL - End work around for iOS bug.');
    d.writeln('');
@@ -685,7 +685,7 @@ function build_regular_season_form()
    d.writeln('      mail_msg += "\\n\\n"+random_picks_generated;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "\\n\\n</html>"; // JL - Work around for iOS bug.');
+   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "\\n\\n</html>   <--- Workaround for iPhone/iPad iOS 14 bug.  Upgrade to iOS 15 is available."; // JL - Work around for iOS bug.');
    d.writeln('');
    d.writeln('   window.open(encodeURI(mail_msg),"_top");');
    d.writeln('');
@@ -3232,7 +3232,7 @@ function build_post_season_form()
    d.writeln('      if (navigator.userAgent.replace(/_/g,".").indexOf("14.") != -1) ios_bug = true;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "<html>\\n\\n";');
+   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "<html>   <--- Workaround for iPhone/iPad iOS 14 bug.  Upgrade to iOS 15 is available.\\n\\n";');
    d.writeln('');
    d.writeln('   // JL - End work around for iOS bug.');
    d.writeln('');
@@ -3256,7 +3256,7 @@ function build_post_season_form()
    d.writeln('      mail_msg += "\\n\\n"+random_picks_generated;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "\\n\\n</html>"; // JL - Work around for iOS bug.');
+   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "\\n\\n</html>   <--- Workaround for iPhone/iPad iOS 14 bug.  Upgrade to iOS 15 is available."; // JL - Work around for iOS bug.');
    d.writeln('');
    d.writeln('   window.open(encodeURI(mail_msg),"_top");');
    d.writeln('');
