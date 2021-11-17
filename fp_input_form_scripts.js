@@ -2497,7 +2497,7 @@ function build_regular_season_form()
          d.writeln('<td nowrap class="gr1_border"><font style="font-size: 12pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
          d.writeln('<td nowrap class="gr1_border"><font style="font-size: 12pt">at</font></td>');
          d.writeln('<td nowrap class="br2_border"><font style="font-size: 12pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
-         d.writeln('<td nowrap class="gr1_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="pick'+i+'" size=1>');
+         d.writeln('<td nowrap class="gr1_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
       }
       else
       {
@@ -2505,7 +2505,7 @@ function build_regular_season_form()
          d.writeln('<td nowrap><font style="font-size: 12pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
          d.writeln('<td nowrap><font style="font-size: 12pt">at</font></td>');
          d.writeln('<td nowrap class="br2_gb1_border"><font style="font-size: 12pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
-         d.writeln('<td nowrap><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="pick'+i+'" size=1>');
+         d.writeln('<td nowrap><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>'); //jljl
       }
       d.writeln('       <option selected value="0">');
       d.writeln('       <option          value="H">H');
@@ -2513,11 +2513,11 @@ function build_regular_season_form()
       d.writeln('    </select></td>');
       if (i == number_of_rs_games)
       {
-         d.writeln('<td nowrap class="no_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="weight'+i+'" size=1>');
+         d.writeln('<td nowrap class="no_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="weight'+i+'" size=1>');
       }
       else
       {
-         d.writeln('<td nowrap class="gb1_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray" name="weight'+i+'" size=1>');
+         d.writeln('<td nowrap class="gb1_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="weight'+i+'" size=1>');
       }
       d.writeln('       <option selected value="0">');
       for (var j = 1; j <= number_of_rs_games; j++)
@@ -4441,7 +4441,7 @@ function build_post_season_form()
          d.writeln('<td nowrap class="gr1_bb2_border"><font style="font-size: 13pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
          d.writeln('<td nowrap class="gr1_bb2_border"><font style="font-size: 13pt">at</font></td>');
          d.writeln('<td nowrap class="br2_bb2_border"><font style="font-size: 13pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
-         d.writeln('<td nowrap class="gr1_bb2_border"><select style="font-size: 12pt; font-family: Calibri; border: 1px solid lightgray" name="pick'+i+'" size=1>');
+         d.writeln('<td nowrap class="gr1_bb2_border"><select style="font-size: 12pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
       }
       else
       {
@@ -4449,7 +4449,7 @@ function build_post_season_form()
          d.writeln('<td nowrap><font style="font-size: 13pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
          d.writeln('<td nowrap><font style="font-size: 13pt">at</font></td>');
          d.writeln('<td nowrap class="br2_gb1_border"><font style="font-size: 13pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
-         d.writeln('<td nowrap><select style="font-size: 12pt; font-family: Calibri; border: 1px solid lightgray" name="pick'+i+'" size=1>');
+         d.writeln('<td nowrap><select style="font-size: 12pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
       }
       d.writeln('       <option selected value="0">');
       d.writeln('       <option          value="H">H');

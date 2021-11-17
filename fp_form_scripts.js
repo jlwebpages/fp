@@ -1585,7 +1585,7 @@ function build_post_season_form()
       {
          for (var j = 1; j <= number_of_ps_games; j++)
          {
-            input_tag_style = "text-align:center; font-size: 10pt; font-family: Calibri; border: 1px solid lightgray; background-color:#FFFFFF";
+            input_tag_style = "text-align:center; font-size: 10pt; font-family: Calibri; border: 1px solid lightgray; background-color:white";
 
             if ( (visiting_teams[gi-1] == victors[j-1]) || (home_teams[gi-1] == victors[j-1]) )
             {
@@ -3883,7 +3883,7 @@ function build_regular_season_form()
       {
          for (var j = 1; j <= number_of_rs_games; j++)
          {
-            input_tag_style = "font-size:11pt; font-family: Calibri; border: 1px solid lightgray; background-color:#FFFFFF";
+            input_tag_style = "font-size:11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white";
 
             if ( (visiting_teams[i-1] == victors[j-1]) || (home_teams[i-1] == victors[j-1]) )
             {
