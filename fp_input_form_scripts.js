@@ -1538,6 +1538,8 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )');
    d.writeln('   {');
+   d.writeln('      if (suppress_alerts == false) alert("Error getting NFL Odds Week from nfl_odds string (ESPN).")');
+   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
@@ -1552,6 +1554,8 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('   catch(e)');
    d.writeln('   {');
+   d.writeln('      if (suppress_alerts == false) alert("Error converting nfl_odds_week string to a JavaScript object (ESPN).")');
+   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
@@ -1570,6 +1574,8 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )');
    d.writeln('   {');
+   d.writeln('      if (suppress_alerts == false) alert("Error getting NFL Odds from nfl_odds string (ESPN).")');
+   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
@@ -1584,6 +1590,8 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('   catch(e)');
    d.writeln('   {');
+   d.writeln('      if (suppress_alerts == false) alert("Error converting nfl_odds string to a JavaScript object (ESPN).")');
+   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
@@ -1776,7 +1784,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )');
    d.writeln('   {');
-   d.writeln('      if (suppress_alerts == false) alert("Error parsing nfl_odds string.")');
+   d.writeln('      if (suppress_alerts == false) alert("Error getting NFL Odds from nfl_odds string (SportsLine).")');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -1792,7 +1800,7 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('   catch(e)');
    d.writeln('   {');
-   d.writeln('      if (suppress_alerts == false) alert("Error converting nfl_odds string to a Javascript object.");');
+   d.writeln('      if (suppress_alerts == false) alert("Error converting nfl_odds string to a JavaScript object (SportsLine).");');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -3820,6 +3828,8 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )');
    d.writeln('   {');
+   d.writeln('      if (suppress_alerts == false) alert("Error getting NFL Odds from nfl_odds string (ESPN).")');
+   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
@@ -3834,6 +3844,8 @@ function build_post_season_form()
    d.writeln('   }');
    d.writeln('   catch(e)');
    d.writeln('   {');
+   d.writeln('      if (suppress_alerts == false) alert("Error converting nfl_odds string to a JavaScript object (ESPN).")');
+   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
@@ -4026,7 +4038,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )');
    d.writeln('   {');
-   d.writeln('      if (suppress_alerts == false) alert("Error parsing nfl_odds string.")');
+   d.writeln('      if (suppress_alerts == false) alert("Error getting NFL Odds from nfl_odds string (SportsLine).")');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -4042,7 +4054,7 @@ function build_post_season_form()
    d.writeln('   }');
    d.writeln('   catch(e)');
    d.writeln('   {');
-   d.writeln('      if (suppress_alerts == false) alert("Error converting nfl_odds string to a Javascript object.");');
+   d.writeln('      if (suppress_alerts == false) alert("Error converting nfl_odds string to a JavaScript object (SportsLine).");');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
