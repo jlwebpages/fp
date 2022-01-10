@@ -493,7 +493,7 @@ function build_forms_page()
             d.writeln('');
          }
 
-         if ( (current_input_week > 19) || (current_input_week == 19 && top.games_over == true) )
+         if ( (current_input_week > number_of_rs_weeks+2) || (current_input_week == number_of_rs_weeks+2 && top.games_over == true) )
          {
             d.writeln('<tr align=center valign=top>');
             d.writeln('');
