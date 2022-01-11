@@ -2515,7 +2515,7 @@ function build_regular_season_form()
          d.writeln('<td nowrap class="br2_gb1_border"><font style="font-size: 12pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
          d.writeln('<td nowrap><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
       }
-      d.writeln('       <option selected value="0">');
+      d.writeln('       <option selected value="">');
       d.writeln('       <option          value="H">H');
       d.writeln('       <option          value="V">V');
       d.writeln('    </select></td>');
@@ -4143,6 +4143,8 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('            if (total_points % 1 == 0) total_points = Math.floor(total_points);');
    d.writeln('');
+   d.writeln('            // If the point_spread is valid, put the Odds information into the nfl_odds_array[k] array.');
+   d.writeln('');
    d.writeln('            if (point_spread != 0)');
    d.writeln('            {');
    d.writeln('               odds_found = true;');
@@ -4466,7 +4468,7 @@ function build_post_season_form()
          d.writeln('<td nowrap class="br2_gb1_border"><font style="font-size: 13pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
          d.writeln('<td nowrap><select style="font-size: 12pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
       }
-      d.writeln('       <option selected value="0">');
+      d.writeln('       <option selected value="">');
       d.writeln('       <option          value="H">H');
       d.writeln('       <option          value="V">V');
       d.writeln('    </select></td>');
