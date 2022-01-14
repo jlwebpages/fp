@@ -2527,7 +2527,7 @@ function build_regular_season_form()
       {
          d.writeln('<td nowrap class="gb1_border"><select style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="weight'+i+'" size=1>');
       }
-      d.writeln('       <option selected value="0">');
+      d.writeln('       <option selected value="">');
       for (var j = 1; j <= number_of_rs_games; j++)
       {
          var current_weight = max_number_of_rs_games-number_of_rs_games+j;
@@ -3810,6 +3810,7 @@ function build_post_season_form()
    d.writeln('   var index_end            = -1;');
    d.writeln('   var index_start          = -1;');
    d.writeln('   var odds_found           = false;');
+   d.writeln('   var playoff_weeks        = ["Wild","Division","Conference","Super"];');
    d.writeln('   var point_spread         = 0;');
    d.writeln('   var team_records_index   = -1;');
    d.writeln('   var total_points         = 0;');
@@ -3821,9 +3822,44 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if (build_player_name(-1).indexOf("JL") != -1) suppress_alerts = false;');
    d.writeln('');
+   d.writeln('   // Get the NFL Odds Week from the nfl_odds string.');
+   d.writeln('');
+   d.writeln('   index_start = nfl_odds.indexOf("\\"pageHeading\\":");');
+   d.writeln('   index_end = nfl_odds.indexOf("},\\"subType\\"");');
+   d.writeln('');
+   d.writeln('   if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )');
+   d.writeln('   {');
+   d.writeln('      if (suppress_alerts == false) alert("Error getting NFL Odds Week from nfl_odds string (ESPN).")');
+   d.writeln('');
+   d.writeln('      return false;');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('   nfl_odds_week = nfl_odds.substring(index_start,index_end-1);');
+   d.writeln('   nfl_odds_week = "{" + nfl_odds_week + "}";');
+   d.writeln('');
+   d.writeln('   // Convert the nfl_odds_week string to a JavaScript object.');
+   d.writeln('');
+   d.writeln('   try');
+   d.writeln('   {');
+   d.writeln('      nfl_odds_week = JSON.parse(nfl_odds_week);');
+   d.writeln('   }');
+   d.writeln('   catch(e)');
+   d.writeln('   {');
+   d.writeln('      if (suppress_alerts == false) alert("Error converting nfl_odds_week string to a JavaScript object (ESPN).")');
+   d.writeln('');
+   d.writeln('      return false;');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('   nfl_odds_week = nfl_odds_week.pageHeading;');
+   d.writeln('');
+   d.writeln('   if (nfl_odds_week.toLowerCase().indexOf(playoff_weeks['+week+'-1].toLowerCase()) == -1)');
+   d.writeln('   {');
+   d.writeln('      return false;');
+   d.writeln('   }');
+   d.writeln('');
    d.writeln('   // Parse the nfl_odds string.');
    d.writeln('');
-   d.writeln('   index_start = nfl_odds.indexOf("},\\"lines\\":");');
+   d.writeln('   index_start = nfl_odds.indexOf("]},\\"lines\\":");');
    d.writeln('   index_end = nfl_odds.indexOf("},\\"headers\\":");');
    d.writeln('');
    d.writeln('   if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )');
@@ -3833,7 +3869,7 @@ function build_post_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   nfl_odds = nfl_odds.substring(index_start+2,index_end);');
+   d.writeln('   nfl_odds = nfl_odds.substring(index_start+3,index_end);');
    d.writeln('   nfl_odds = "{" + nfl_odds + "}}";');
    d.writeln('');
    d.writeln('   // Convert the nfl_odds string to a JavaScript object.');
