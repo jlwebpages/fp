@@ -17,6 +17,929 @@
    // *************** Data Inserted Automatically from Excel Macro ***************
 
    // Post Season Data - Start
+
+   var player1_picks = [
+   "H",
+   "H",
+   "H",
+   "H",
+   "H",
+   "V",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player1_spreads = [
+   "5",
+   "3",
+   "3",
+   "3",
+   "7",
+   "2",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player1_points = [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "50",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player2_picks = [
+   "H",
+   "H",
+   "H",
+   "H",
+   "H",
+   "H",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player2_spreads = [
+   "8",
+   "11",
+   "14",
+   "20",
+   "13",
+   "7",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player2_points = [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "51",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player3_picks = [
+   "H",
+   "H",
+   "H",
+   "H",
+   "H",
+   "H",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player3_spreads = [
+   "6",
+   "4",
+   "9",
+   "3",
+   "13",
+   "5",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player3_points = [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "49",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player4_picks = [
+   "H",
+   "H",
+   "H",
+   "H",
+   "H",
+   "H",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player4_spreads = [
+   "7",
+   "3",
+   "17",
+   "1",
+   "17",
+   "3",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player4_points = [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "42",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player5_picks = [
+   "H",
+   "H",
+   "H",
+   "V",
+   "H",
+   "H",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player5_spreads = [
+   "7",
+   "41",
+   "14",
+   "3",
+   "13",
+   "7",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player5_points = [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "53",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player6_picks = [
+   "H",
+   "H",
+   "H",
+   "V",
+   "V",
+   "H",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player6_spreads = [
+   "7",
+   "3",
+   "7",
+   "7",
+   "3",
+   "7",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player6_points = [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "38",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player7_picks = [
+   "H",
+   "H",
+   "H",
+   "H",
+   "H",
+   "V",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player7_spreads = [
+   "6",
+   "3",
+   "10",
+   "6",
+   "5",
+   "3",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player7_points = [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "32",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player8_picks = [
+   "V",
+   "H",
+   "H",
+   "V",
+   "H",
+   "H",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player8_spreads = [
+   "1",
+   "3",
+   "7",
+   "1",
+   "14",
+   "7",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player8_points = [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "51",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player9_picks = [
+   "H",
+   "H",
+   "H",
+   "H",
+   "H",
+   "H",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player9_spreads = [
+   "6",
+   "4",
+   "8",
+   "3",
+   "13",
+   "4",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player9_points = [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "49",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player10_picks = [
+   "H",
+   "H",
+   "H",
+   "V",
+   "H",
+   "V",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player10_spreads = [
+   "3",
+   "7",
+   "17",
+   "7",
+   "10",
+   "10",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player10_points = [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "52",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player11_picks = [
+   "V",
+   "V",
+   "H",
+   "H",
+   "H",
+   "V",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player11_spreads = [
+   "3",
+   "3",
+   "10",
+   "6",
+   "12",
+   "3",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player11_points = [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "50",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player12_picks = [
+   "H",
+   "H",
+   "H",
+   "H",
+   "H",
+   "H",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player12_spreads = [
+   "7",
+   "7",
+   "10",
+   "10",
+   "7",
+   "3",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var player12_points = [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "43",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var visiting_teams = [
+   "Raiders",
+   "Patriots",
+   "Eagles",
+   "49ers",
+   "Steelers",
+   "Cardinals",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var home_teams = [
+   "Bengals",
+   "Bills",
+   "Buccaneers",
+   "Cowboys",
+   "Chiefs",
+   "Rams",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var excel_visitor_scores = [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var excel_home_scores = [
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   "",
+   ""
+   ];
+
+   var wrong_pick_penalty = 7;
+   var week_1_score_multiplier = 1;
+   var week_2_score_multiplier = 1.5;
+   var week_3_score_multiplier = 3;
+   var week_4_score_multiplier = 6;
+
+   var player1_scores = [
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>"
+   ];
+
+   var player2_scores = [
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>"
+   ];
+
+   var player3_scores = [
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>"
+   ];
+
+   var player4_scores = [
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>"
+   ];
+
+   var player5_scores = [
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>"
+   ];
+
+   var player6_scores = [
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>"
+   ];
+
+   var player7_scores = [
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>"
+   ];
+
+   var player8_scores = [
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>"
+   ];
+
+   var player9_scores = [
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>"
+   ];
+
+   var player10_scores = [
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>"
+   ];
+
+   var player11_scores = [
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>"
+   ];
+
+   var player12_scores = [
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>"
+   ];
+
+   var post_season_winners = [
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>"
+   ];
+
+   var winner_spreads = [
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>",
+   "<br>"
+   ];
+
+   var player_picks = [player1_picks,
+                       player2_picks,
+                       player3_picks,
+                       player4_picks,
+                       player5_picks,
+                       player6_picks,
+                       player7_picks,
+                       player8_picks,
+                       player9_picks,
+                       player10_picks,
+                       player11_picks,
+                       player12_picks];
+
+   var player_spreads = [player1_spreads,
+                         player2_spreads,
+                         player3_spreads,
+                         player4_spreads,
+                         player5_spreads,
+                         player6_spreads,
+                         player7_spreads,
+                         player8_spreads,
+                         player9_spreads,
+                         player10_spreads,
+                         player11_spreads,
+                         player12_spreads];
+
+   var player_points = [player1_points,
+                        player2_points,
+                        player3_points,
+                        player4_points,
+                        player5_points,
+                        player6_points,
+                        player7_points,
+                        player8_points,
+                        player9_points,
+                        player10_points,
+                        player11_points,
+                        player12_points];
+
+   var player_scores = [player1_scores,
+                        player2_scores,
+                        player3_scores,
+                        player4_scores,
+                        player5_scores,
+                        player6_scores,
+                        player7_scores,
+                        player8_scores,
+                        player9_scores,
+                        player10_scores,
+                        player11_scores,
+                        player12_scores];
+
    // Post Season Data - End
 
 
