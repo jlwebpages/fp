@@ -329,8 +329,8 @@ function build_regular_season_form()
    d.writeln('      picks  [i] = "";');
    d.writeln('      weights[i] = "";');
    d.writeln('');
-   d.writeln('      document.fp_inputs.elements["pick"  +(i+1)].value = 0;');
-   d.writeln('      document.fp_inputs.elements["weight"+(i+1)].value = 0;');
+   d.writeln('      document.fp_inputs.elements["pick"  +(i+1)].value = "";');
+   d.writeln('      document.fp_inputs.elements["weight"+(i+1)].value = "";');
    d.writeln('   }');
    d.writeln('}');
    d.writeln('');
@@ -734,7 +734,7 @@ function build_regular_season_form()
    d.writeln('               losing_team  = home_teams[j];');
    d.writeln('            }');
    d.writeln('');
-   d.writeln('            if (picks[j] == 0)');
+   d.writeln('            if (picks[j] == "")');
    d.writeln('            {');
    d.writeln('               pick = " ";');
    d.writeln('            }');
@@ -778,7 +778,7 @@ function build_regular_season_form()
    d.writeln('               formatted_picks += "<td nowrap style=\\"text-align: right; padding: 0px\\">" + (j+1) + ":</td>";');
    d.writeln('               formatted_picks += "<td nowrap style=\\"padding: 0px 20px 0px 20px\\">" + winning_team + "</td>";');
    d.writeln('');
-   d.writeln('               if (picks[j] == 0)');
+   d.writeln('               if (picks[j] == "")');
    d.writeln('               {');
    d.writeln('                  formatted_picks += "<td nowrap style=\\"padding: 0px\\">at</td>";');
    d.writeln('               }');
@@ -800,7 +800,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   for (var j = (lowest_game-1); j <= (highest_game-1); j++)');
    d.writeln('   {');
-   d.writeln('      if ( (weights[j] == 0) && (picks[j] != 0) )');
+   d.writeln('      if ( (weights[j] == "") && (picks[j] != "") )');
    d.writeln('      {');
    d.writeln('         upset_color = "";');
    d.writeln('');
@@ -849,7 +849,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   for (var j = (lowest_game-1); j <= (highest_game-1); j++)');
    d.writeln('   {');
-   d.writeln('      if ( (weights[j] == 0) && (picks[j] == 0) )');
+   d.writeln('      if ( (weights[j] == "") && (picks[j] == "") )');
    d.writeln('      {');
    d.writeln('         pick   = "  ";');
    d.writeln('         weight = "";');
@@ -2070,7 +2070,7 @@ function build_regular_season_form()
    d.writeln('         {');
    d.writeln('            if (weights[j] == i)');
    d.writeln('            {');
-   d.writeln('               if (picks[j] == 0)');
+   d.writeln('               if (picks[j] == "")');
    d.writeln('               {');
    d.writeln('                  error_message += "\\n<center>";');
    d.writeln('                  error_message += "\\n<table>";');
@@ -2093,9 +2093,9 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      for (var j = 0; j < '+number_of_rs_games+'; j++)');
    d.writeln('      {');
-   d.writeln('         if (weights[j] == 0)');
+   d.writeln('         if (weights[j] == "")');
    d.writeln('         {');
-   d.writeln('            if (picks[j] == 0)');
+   d.writeln('            if (picks[j] == "")');
    d.writeln('            {');
    d.writeln('               error_message += "\\n<center>";');
    d.writeln('               error_message += "\\n<table>";');
@@ -2117,7 +2117,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      for (var i = 0; i < '+number_of_rs_games+'; i++)');
    d.writeln('      {');
-   d.writeln('         if (weights[i] == 0)');
+   d.writeln('         if (weights[i] == "")');
    d.writeln('         {');
    d.writeln('            if (picks[i] == "H")');
    d.writeln('            {');
@@ -2909,8 +2909,8 @@ function build_post_season_form()
    d.writeln('      picks        [i] = "";');
    d.writeln('      spread_values[i] = "";');
    d.writeln('');
-   d.writeln('      document.fp_inputs.elements["pick"  +(i+1)].value = 0;');
-   d.writeln('      document.fp_inputs.elements["spread"+(i+1)].value = 0;');
+   d.writeln('      document.fp_inputs.elements["pick"  +(i+1)].value = "";');
+   d.writeln('      document.fp_inputs.elements["spread"+(i+1)].value = "";');
    d.writeln('   }');
    d.writeln('}');
    d.writeln('');
@@ -3449,7 +3449,7 @@ function build_post_season_form()
    d.writeln('            {');
    d.writeln('               // The point spread for this game is invalid, so force no pick for this game.');
    d.writeln('');
-   d.writeln('               picks[j]         = 0;');
+   d.writeln('               picks[j]         = "";');
    d.writeln('               spread_values[j] = "";');
    d.writeln('            }');
    d.writeln('            else');
@@ -3809,6 +3809,7 @@ function build_post_season_form()
    d.writeln('   var home_team_record     = "";');
    d.writeln('   var index_end            = -1;');
    d.writeln('   var index_start          = -1;');
+   d.writeln('   var nfl_odds_week        = "";');
    d.writeln('   var odds_found           = false;');
    d.writeln('   var playoff_weeks        = ["Wild","Division","Conference","Super"];');
    d.writeln('   var point_spread         = 0;');
@@ -4378,7 +4379,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
    d.writeln('   {');
-   d.writeln('      if (picks[i] == 0)');
+   d.writeln('      if (picks[i] == "")');
    d.writeln('      {');
    d.writeln('         alert("Pick a winner (V or H) for " + visiting_teams[i] + " at " + home_teams[i] + " (Game " + (i+1) + ").");');
    d.writeln('');
