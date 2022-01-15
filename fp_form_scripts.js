@@ -1217,7 +1217,7 @@ function build_post_season_form()
    d.writeln('   var visiting_score            = "";');
    d.writeln('   var visiting_team             = "";');
    d.writeln('   var visiting_team_id          = "";');
-   d.writeln('   var week                      = window.top.gv.current_input_week-18;');
+   d.writeln('   var week                      = '+week+'');
    d.writeln('');
    d.writeln('');
    d.writeln('   if (command != "Start")');
