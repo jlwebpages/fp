@@ -1569,7 +1569,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Parse the nfl_odds string.');
    d.writeln('');
-   d.writeln('   index_start = nfl_odds.indexOf("]},\\"lines\\":");');
+   d.writeln('   index_start = nfl_odds.indexOf("\\"lines\\":{\\"2");');
    d.writeln('   index_end = nfl_odds.indexOf("},\\"headers\\":");');
    d.writeln('');
    d.writeln('   if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )');
@@ -1579,7 +1579,7 @@ function build_regular_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   nfl_odds = nfl_odds.substring(index_start+3,index_end);');
+   d.writeln('   nfl_odds = nfl_odds.substring(index_start,index_end);');
    d.writeln('   nfl_odds = "{" + nfl_odds + "}}";');
    d.writeln('');
    d.writeln('   // Convert the nfl_odds string to a JavaScript object.');
@@ -3868,7 +3868,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Parse the nfl_odds string.');
    d.writeln('');
-   d.writeln('   index_start = nfl_odds.indexOf("]},\\"lines\\":");');
+   d.writeln('   index_start = nfl_odds.indexOf("\\"lines\\":{\\"2");');
    d.writeln('   index_end = nfl_odds.indexOf("},\\"headers\\":");');
    d.writeln('');
    d.writeln('   if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )');
@@ -3878,7 +3878,7 @@ function build_post_season_form()
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   nfl_odds = nfl_odds.substring(index_start+3,index_end);');
+   d.writeln('   nfl_odds = nfl_odds.substring(index_start,index_end);');
    d.writeln('   nfl_odds = "{" + nfl_odds + "}}";');
    d.writeln('');
    d.writeln('   // Convert the nfl_odds string to a JavaScript object.');
