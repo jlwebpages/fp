@@ -1838,7 +1838,7 @@ function build_regular_season_form()
    d.writeln('         {');
    d.writeln('            // Get the home and visiting team records.');
    d.writeln('');
-   d.writeln('            if (game.matchupBreakdowns != null)');
+   d.writeln('            if ( (game.matchupBreakdowns != undefined) && (game.matchupBreakdowns.length > 0) )');
    d.writeln('            {');
    d.writeln('               home_team_record     = game.matchupBreakdowns[0].homeStats;');
    d.writeln('               visiting_team_record = game.matchupBreakdowns[0].awayStats;');
@@ -4132,7 +4132,7 @@ function build_post_season_form()
    d.writeln('         {');
    d.writeln('            // Get the home and visiting team records.');
    d.writeln('');
-   d.writeln('            if (game.matchupBreakdowns != null)');
+   d.writeln('            if ( (game.matchupBreakdowns != undefined) && (game.matchupBreakdowns.length > 0) )');
    d.writeln('            {');
    d.writeln('               home_team_record     = game.matchupBreakdowns[0].homeStats;');
    d.writeln('               visiting_team_record = game.matchupBreakdowns[0].awayStats;');
