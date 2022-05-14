@@ -1624,11 +1624,6 @@ function build_regular_season_form()
    d.writeln('         visiting_team = game.rows[0].team.shortDisplayName;');
    d.writeln('         home_team     = game.rows[1].team.shortDisplayName;');
    d.writeln('');
-   d.writeln('         // If home_team or visiting_team is "Washington", set to "Washington Football Team".');
-   d.writeln('');
-   d.writeln('         if (home_team     == "Washington") home_team     = "Football Team";');
-   d.writeln('         if (visiting_team == "Washington") visiting_team = "Football Team";');
-   d.writeln('');
    d.writeln('         // Loop through each game in the selected week.');
    d.writeln('');
    d.writeln('         for (var k = 0; k < '+number_of_rs_games+'; k++)');
@@ -3922,11 +3917,6 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('         visiting_team = game.rows[0].team.shortDisplayName;');
    d.writeln('         home_team     = game.rows[1].team.shortDisplayName;');
-   d.writeln('');
-   d.writeln('         // If home_team or visiting_team is "Washington", set to "Washington Football Team".');
-   d.writeln('');
-   d.writeln('         if (home_team     == "Washington") home_team     = "Football Team";');
-   d.writeln('         if (visiting_team == "Washington") visiting_team = "Football Team";');
    d.writeln('');
    d.writeln('         // Loop through each game in the selected week.');
    d.writeln('');

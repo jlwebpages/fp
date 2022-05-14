@@ -1206,7 +1206,7 @@ function build_post_season_form()
    d.writeln('   var home_score                = "";');
    d.writeln('   var home_team                 = "";');
    d.writeln('   var home_team_id              = "";');
-   d.writeln('   var nfl_team_names            = ["49ers","Bears","Bengals","Bills","Broncos","Browns","Buccaneers","Cardinals","Chargers","Chiefs","Colts","Cowboys","Dolphins","Eagles","Falcons","Football Team","Giants","Jaguars","Jets","Lions","Packers","Panthers","Patriots","Raiders","Rams","Ravens","Saints","Seahawks","Steelers","Texans","Titans","Vikings"];');
+   d.writeln('   var nfl_team_names            = ["49ers","Bears","Bengals","Bills","Broncos","Browns","Buccaneers","Cardinals","Chargers","Chiefs","Colts","Cowboys","Dolphins","Eagles","Falcons","Commanders","Giants","Jaguars","Jets","Lions","Packers","Panthers","Patriots","Raiders","Rams","Ravens","Saints","Seahawks","Steelers","Texans","Titans","Vikings"];');
    d.writeln('   var possession_team           = "";');
    d.writeln('   var possession_teams_index    = 0;');
    d.writeln('   var post_season_victors_index = 0;');
@@ -1308,11 +1308,6 @@ function build_post_season_form()
    d.writeln('         visiting_team_id = game.competitors[1].id;');
    d.writeln('         visiting_score   = game.competitors[1].score - 0;');
    d.writeln('      }');
-   d.writeln('');
-   d.writeln('      // If home_team or visiting_team is undefined, set to "Football Team".');
-   d.writeln('');
-   d.writeln('      if (home_team     == undefined) home_team     = "Football Team";');
-   d.writeln('      if (visiting_team == undefined) visiting_team = "Football Team";');
    d.writeln('');
    d.writeln('      // Loop through this week\'s games.');
    d.writeln('');
@@ -3487,7 +3482,7 @@ function build_regular_season_form()
    d.writeln('   var home_team              = "";');
    d.writeln('   var home_team_id           = "";');
    d.writeln('   var home_teams             = "";');
-   d.writeln('   var nfl_team_names         = ["49ers","Bears","Bengals","Bills","Broncos","Browns","Buccaneers","Cardinals","Chargers","Chiefs","Colts","Cowboys","Dolphins","Eagles","Falcons","Football Team","Giants","Jaguars","Jets","Lions","Packers","Panthers","Patriots","Raiders","Rams","Ravens","Saints","Seahawks","Steelers","Texans","Titans","Vikings"];');
+   d.writeln('   var nfl_team_names         = ["49ers","Bears","Bengals","Bills","Broncos","Browns","Buccaneers","Cardinals","Chargers","Chiefs","Colts","Cowboys","Dolphins","Eagles","Falcons","Commanders","Giants","Jaguars","Jets","Lions","Packers","Panthers","Patriots","Raiders","Rams","Ravens","Saints","Seahawks","Steelers","Texans","Titans","Vikings"];');
    d.writeln('   var number_of_rs_games     = '+number_of_rs_games+';');
    d.writeln('   var possession_team        = "";');
    d.writeln('   var possession_teams_index = 0;');
@@ -3570,11 +3565,6 @@ function build_regular_season_form()
    d.writeln('         visiting_team_id = game.competitors[1].id;');
    d.writeln('         visiting_score   = game.competitors[1].score - 0;');
    d.writeln('      }');
-   d.writeln('');
-   d.writeln('      // If home_team or visiting_team is undefined, set to "Football Team".');
-   d.writeln('');
-   d.writeln('      if (home_team     == undefined) home_team     = "Football Team";');
-   d.writeln('      if (visiting_team == undefined) visiting_team = "Football Team";');
    d.writeln('');
    d.writeln('      // Loop through this week\'s games.');
    d.writeln('');
