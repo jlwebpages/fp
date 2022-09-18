@@ -4520,7 +4520,7 @@ function build_regular_season_form()
 
    if ( (top.gv.mobile == true) && (navigator.platform != "iPad") )
    {
-      d.getElementById("regular_season_table").scrollTo(0,0);
+      window.scrollTo(0,0);
    }
    else
    {
