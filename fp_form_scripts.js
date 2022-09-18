@@ -9,7 +9,17 @@ function adjust_mobile_viewport_height(document)
          var viewport_scale   = window.screen.height/document_height;
          var viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
 
+         if (top.gv.rs_players[top.gv.player_index-1] == "JL") alert("Player is JL");
+         {
+            alert("Document Height: "+document_height+"  Screen Height: "+window.screen.height+" ")
+         }
+
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
+
+         if (top.gv.rs_players[top.gv.player_index-1] == "JL") alert("Player is JL");
+         {
+            alert("Document Height: "+document_height+"  Screen Height: "+window.screen.height+" ")
+         }
       }
    }
 
