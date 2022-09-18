@@ -1,22 +1,26 @@
 
 function adjust_mobile_viewport_height(document)
 {
+   if (top.gv.rs_players[top.gv.player_index-1] == "JL") alert("Hey1");
+
    if ( (top.gv.mobile == true) && (navigator.platform != "iPad") )
    {
       if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
       {
+         if (top.gv.rs_players[top.gv.player_index-1] == "JL") alert("Hey2");
+
          var document_height  = document.body.scrollHeight;
          var viewport_scale   = window.screen.height/document_height;
          var viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
 
-         if (top.gv.rs_players[top.gv.player_index-1] == "JL") alert("Player is JL");
+         if (top.gv.rs_players[top.gv.player_index-1] == "JL")
          {
             alert("Document Height: "+document_height+"  Screen Height: "+window.screen.height+" ")
          }
 
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
 
-         if (top.gv.rs_players[top.gv.player_index-1] == "JL") alert("Player is JL");
+         if (top.gv.rs_players[top.gv.player_index-1] == "JL")
          {
             alert("Document Height: "+document_height+"  Screen Height: "+window.screen.height+" ")
          }
