@@ -4518,11 +4518,11 @@ function build_regular_season_form()
 
    if (top.gv.rs_players[top.gv.player_index-1] == "JL")
    {
-      alert("JL1a");
+      alert("JL1b");
 
-      alert(":"+VisualViewport.offsetLeft+":");
+      alert(":"+visualViewport.offsetLeft+":");
 
-      alert("JL2a");
+      alert("JL2b");
 
       //rect = d.getElementById("regular_season_table").getBoundingClientRect();
 
