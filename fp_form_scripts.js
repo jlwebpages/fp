@@ -4516,6 +4516,19 @@ function build_regular_season_form()
 
    d.writeln('</html>');
 
+   if (top.gv.rs_players[top.gv.player_index-1] == "JL")
+   {
+      alert("JL1a");
+
+      alert(":"+VisualViewport.offsetLeft+":");
+
+      alert("JL2a");
+
+      //rect = d.getElementById("regular_season_table").getBoundingClientRect();
+
+      //alert ("Top: "+rect.top+"  Left: "+rect.left);
+   }
+
    adjust_mobile_viewport_height(d);
 
    if ( (top.gv.mobile == true) && (navigator.platform != "iPad") )
