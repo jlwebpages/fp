@@ -4533,8 +4533,9 @@ function build_regular_season_form()
 
    if ( (top.gv.mobile == true) && (navigator.platform != "iPad") )
    {
-      if (top.gv.rs_players[top.gv.player_index-1] == "JL") alert("Mobile");
-      window.scroll(0,0);
+      if (top.gv.rs_players[top.gv.player_index-1] == "JL") alert("Mobile2");
+      //window.scroll(0,0);
+      top.document.getElementById("viewport").scroll(0,0);
       //d.body.scrollLeft = 0;
       //d.body.scrollTop  = 0;
    }
