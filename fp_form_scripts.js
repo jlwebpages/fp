@@ -4516,12 +4516,27 @@ function build_regular_season_form()
 
    d.writeln('</html>');
 
+   if (top.gv.rs_players[top.gv.player_index-1] == "JL")
+   {
+      alert("JL1c");
+
+      alert(":"+window.visualViewport.pageLeft+":");
+
+      alert("JL2c");
+
+      //rect = d.getElementById("regular_season_table").getBoundingClientRect();
+
+      //alert ("Top: "+rect.top+"  Left: "+rect.left);
+   }
+
    adjust_mobile_viewport_height(d);
 
    if ( (top.gv.mobile == true) && (navigator.platform != "iPad") )
    {
-      d.body.scrollLeft = 0;
-      d.body.scrollTop  = 0;
+      if (top.gv.rs_players[top.gv.player_index-1] == "JL") alert("Mobile");
+      window.scroll(0,0);
+      //d.body.scrollLeft = 0;
+      //d.body.scrollTop  = 0;
    }
    else
    {
