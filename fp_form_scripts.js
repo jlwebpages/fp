@@ -1478,20 +1478,21 @@ function build_post_season_form()
    d.writeln('');
    if ( (top.gv.mobile != true) || (navigator.platform == "iPad") )
    {
-      d.writeln('<font style="font-family: Calibri; font-size: 16pt; font-weight: bold; padding: 10px">'+document_heading+'</font><p>');
+      d.writeln('<div style="margin: 10px 0px 10px 0px"><font style="font-family: Calibri; font-size: 16pt; font-weight: bold">'+document_heading+'</font></div>');
       d.writeln('');
    }
 
    d.writeln('<form name="fp_scores">');
    d.writeln('');
 
-   d.writeln('<table   align=center');
-   d.writeln('         class="b3_border"');
-   d.writeln('        border=0');
-   d.writeln('       bgcolor=white');
-   d.writeln('   cellpadding=2');
-   d.writeln('   cellspacing=0');
-   d.writeln('            id="post_season_table">');
+   d.writeln('<table align=center');
+   d.writeln('       class="b3_border"');
+   d.writeln('      border=0');
+   d.writeln('     bgcolor=white');
+   d.writeln(' cellpadding=2');
+   d.writeln(' cellspacing=0');
+   d.writeln('       style="margin: 5px"');
+   d.writeln('          id="post_season_table">');
    d.writeln('');
 
    d.writeln('<tr align=center bgcolor=#C4D79B height=21px>');
@@ -3790,7 +3791,7 @@ function build_regular_season_form()
    d.writeln('');
    if ( (top.gv.mobile != true) || (navigator.platform == "iPad") )
    {
-      d.writeln('<font style="font-family: Calibri; font-size: 16pt; font-weight: bold; padding: 10px">'+document_heading+'</font><p>');
+      d.writeln('<div style="margin: 10px 0px 10px 0px"><font style="font-family: Calibri; font-size: 16pt; font-weight: bold">'+document_heading+'</font></div>');
       d.writeln('');
    }
 
@@ -3803,6 +3804,7 @@ function build_regular_season_form()
    d.writeln('     bgcolor=white');
    d.writeln(' cellpadding=2');
    d.writeln(' cellspacing=0');
+   d.writeln('       style="margin: 5px"');
    d.writeln('          id="regular_season_table">');
    d.writeln('');
 
@@ -4518,16 +4520,6 @@ function build_regular_season_form()
 
    adjust_mobile_viewport_height(d);
 
-   //if ( (top.gv.mobile == true) && (navigator.platform != "iPad") )
-   //{
-      //d.body.scrollLeft = 0;
-      //d.body.scrollTop  = 0;
-   //}
-   //else
-   //{
-      //d.getElementById("regular_season_table").scrollIntoView();
-   //}
-
    d.getElementById("regular_season_table").scrollIntoView({block: "start", inline: "start"});
 
    d.close();
@@ -5128,7 +5120,7 @@ function build_season_summary()
    d.writeln('');
    if ( (top.gv.mobile != true) || (navigator.platform == "iPad") )
    {
-      d.writeln('<font style="font-family: Calibri; font-size: 16pt; font-weight: bold; padding: 10px">'+document_heading+'</font><p>');
+      d.writeln('<div style="margin: 10px 0px 10px 0px"><font style="font-family: Calibri; font-size: 16pt; font-weight: bold">'+document_heading+'</font></div>');
       d.writeln('');
    }
 
@@ -5141,6 +5133,7 @@ function build_season_summary()
    d.writeln('     bgcolor=white');
    d.writeln(' cellpadding=2');
    d.writeln(' cellspacing=0');
+   d.writeln('       style="margin: 5px"');
    d.writeln('          id="season_summary">');
    d.writeln('');
 
