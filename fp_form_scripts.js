@@ -2327,15 +2327,7 @@ function build_post_season_form()
 
    adjust_mobile_viewport_height(d);
 
-   if ( (top.gv.mobile == true) && (navigator.platform != "iPad") )
-   {
-      d.body.scrollLeft = 0;
-      d.body.scrollTop  = 0;
-   }
-   else
-   {
-      d.getElementById("post_season_table").scrollIntoView();
-   }
+   d.getElementById("regular_season_table").scrollIntoView({block: "start", inline: "start"});
 
    d.close();
 
@@ -5791,15 +5783,7 @@ function build_season_summary()
 
    adjust_mobile_viewport_height(d);
 
-   if ( (top.gv.mobile == true) && (navigator.platform != "iPad") )
-   {
-      d.body.scrollLeft = 0;
-      d.body.scrollTop  = 0;
-   }
-   else
-   {
-      d.getElementById("season_summary").scrollIntoView();
-   }
+   d.getElementById("regular_season_table").scrollIntoView({block: "start", inline: "start"});
 
    d.close();
 
