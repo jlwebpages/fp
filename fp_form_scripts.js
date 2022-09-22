@@ -2327,7 +2327,7 @@ function build_post_season_form()
 
    adjust_mobile_viewport_height(d);
 
-   d.getElementById("regular_season_table").scrollIntoView({block: "start", inline: "start"});
+   d.getElementById("post_season_table").scrollIntoView({block: "start", inline: "start"});
 
    d.close();
 
@@ -5783,7 +5783,7 @@ function build_season_summary()
 
    adjust_mobile_viewport_height(d);
 
-   d.getElementById("regular_season_table").scrollIntoView({block: "start", inline: "start"});
+   d.getElementById("season_summary").scrollIntoView({block: "start", inline: "start"});
 
    d.close();
 
