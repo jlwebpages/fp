@@ -1491,7 +1491,6 @@ function build_post_season_form()
    d.writeln('     bgcolor=white');
    d.writeln(' cellpadding=2');
    d.writeln(' cellspacing=0');
-   d.writeln('       style="margin: 5px"');
    d.writeln('          id="post_season_table">');
    d.writeln('');
 
@@ -3796,7 +3795,6 @@ function build_regular_season_form()
    d.writeln('     bgcolor=white');
    d.writeln(' cellpadding=2');
    d.writeln(' cellspacing=0');
-   d.writeln('       style="margin: 5px"');
    d.writeln('          id="regular_season_table">');
    d.writeln('');
 
@@ -5125,7 +5123,6 @@ function build_season_summary()
    d.writeln('     bgcolor=white');
    d.writeln(' cellpadding=2');
    d.writeln(' cellspacing=0');
-   d.writeln('       style="margin: 5px"');
    d.writeln('          id="season_summary">');
    d.writeln('');
 
