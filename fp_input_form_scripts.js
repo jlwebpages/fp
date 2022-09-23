@@ -82,7 +82,7 @@ function build_regular_season_form()
 
    var d = document;
 
-   d.writeln('<html>');
+   d.writeln('<!DOCTYPE html>');
    d.writeln('');
 
    d.writeln('<head>');
@@ -462,7 +462,6 @@ function build_regular_season_form()
    d.writeln('   wd = dialog_frame.document.open();');
    d.writeln('');
    d.writeln('   wd.writeln("<!DOCTYPE html>");');
-   d.writeln('   wd.writeln("<html>");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<head>");');
    d.writeln('   wd.writeln("");');
@@ -648,7 +647,7 @@ function build_regular_season_form()
    d.writeln('      if (navigator.userAgent.replace(/_/g,".").indexOf("14.") != -1) ios_bug = true;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "<html>   <--- Workaround for iPhone/iPad iOS 14 bug.  Upgrade to iOS 15 is available.\\n\\n";');
+   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "<!DOCTYPE html>   <--- Workaround for iPhone/iPad iOS 14 bug.  Upgrade to iOS 15 is available.\\n\\n";');
    d.writeln('');
    d.writeln('   // JL - End work around for iOS bug.');
    d.writeln('');
@@ -2698,7 +2697,7 @@ function build_post_season_form()
 
    var d = document;
 
-   d.writeln('<html>');
+   d.writeln('<!DOCTYPE html>');
    d.writeln('');
 
    d.writeln('<head>');
@@ -3068,7 +3067,6 @@ function build_post_season_form()
    d.writeln('   wd = dialog_frame.document.open();');
    d.writeln('');
    d.writeln('   wd.writeln("<!DOCTYPE html>");');
-   d.writeln('   wd.writeln("<html>");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<head>");');
    d.writeln('   wd.writeln("");');
@@ -3227,7 +3225,7 @@ function build_post_season_form()
    d.writeln('      if (navigator.userAgent.replace(/_/g,".").indexOf("14.") != -1) ios_bug = true;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "<html>   <--- Workaround for iPhone/iPad iOS 14 bug.  Upgrade to iOS 15 is available.\\n\\n";');
+   d.writeln('   if (ios_bug == true) mail_msg = mail_msg + "<!DOCTYPE html>   <--- Workaround for iPhone/iPad iOS 14 bug.  Upgrade to iOS 15 is available.\\n\\n";');
    d.writeln('');
    d.writeln('   // JL - End work around for iOS bug.');
    d.writeln('');
