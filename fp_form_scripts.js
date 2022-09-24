@@ -4466,7 +4466,7 @@ function build_regular_season_form()
 
    if (number_of_rs_games < max_number_of_rs_games)
    {
-      d.writeln('<div style="margin: 20px 0px 5px 0px"><font style="font-family: Calibri; font-size: 12pt"><b>Open Date:</b>&nbsp;&nbsp;'+open_date+'</font></div>');
+      d.writeln('<div style="margin: 20px 5px 5px 5px"><font style="font-family: Calibri; font-size: 12pt"><b>Open Date:</b>&nbsp;&nbsp;'+open_date+'</font></div>');
    }
 
    d.writeln('</center>');
