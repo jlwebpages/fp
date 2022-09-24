@@ -3780,6 +3780,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('<center>');
    d.writeln('');
+
    if ( (top.gv.mobile != true) || (navigator.platform == "iPad") )
    {
       d.writeln('<div style="margin: 10px 0px 10px 0px"><font style="font-family: Calibri; font-size: 16pt; font-weight: bold">'+document_heading+'</font></div>');
@@ -4424,7 +4425,7 @@ function build_regular_season_form()
             }
          }
       }
-      d.writeln('</select>')
+      d.writeln('</select>');
       d.writeln('&nbsp;');
       d.writeln('<font style="font-size: 12pt">Opponent:</font>&nbsp;');
       d.writeln('<select style="font-size: 11pt; font-family: Calibri; border: 1px solid black" name="opponent_name_menu" size=1');
@@ -4449,25 +4450,22 @@ function build_regular_season_form()
             }
          }
       }
-      d.writeln('</select>')
+      d.writeln('</select>');
       d.writeln('</td>');
       d.writeln('</tr>');
       d.writeln('');
    }
-   if (number_of_rs_games < max_number_of_rs_games)
-   {
-      d.writeln('<tr align=center>');
-      d.writeln('<td class="no_border">');
-      d.writeln('<br><font style="font-size: 12pt"><b>Open Date:</b>&nbsp;&nbsp;'+open_date+'</font>');
-      d.writeln('</td>');
-      d.writeln('</tr>');
-      d.writeln('');
-   }
+
    d.writeln('</table>');
    d.writeln('');
 
    d.writeln('</form>');
    d.writeln('');
+
+   if (number_of_rs_games < max_number_of_rs_games)
+   {
+      d.writeln('<div style="margin: 20px 0px 5px 0px"><font style="font-family: Calibri; font-size: 12pt"><b>Open Date:</b>&nbsp;&nbsp;'+open_date+'</font></div>');
+   }
 
    d.writeln('</center>');
    d.writeln('');
