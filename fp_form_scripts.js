@@ -4466,7 +4466,7 @@ function build_regular_season_form()
 
    if (number_of_rs_games < max_number_of_rs_games)
    {
-      d.writeln('<div style="margin: 20px 5px 5px 5px; max-width: '+(window.screen.width-80)+'px">');
+      d.writeln('<div style="margin: 20px 5px 5px 5px; max-width: '+(window.screen.width-60)+'px">');
       d.writeln('<font style="font-family: Calibri; font-size: 12pt"><b>Open Date:</b>&nbsp;&nbsp;'+open_date+'</font>');
       d.writeln('</div>');
    }
