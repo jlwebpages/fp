@@ -766,7 +766,7 @@ function build_post_season_form()
 
    var d = document;
 
-   d.writeln('<!DOCTYPE html>');
+   d.writeln('<html>');
    d.writeln('');
 
    d.writeln('<head>');
@@ -2685,7 +2685,7 @@ function build_regular_season_form()
 
    var d = document;
 
-   d.writeln('<!DOCTYPE html>');
+   d.writeln('<html>');
    d.writeln('');
 
    d.writeln('<head>');
@@ -3944,11 +3944,11 @@ function build_regular_season_form()
       }
       if (i == number_of_rs_games)
       {
-         d.writeln('<td nowrap class="gr1_bb1_border"><font style="font-size: 12pt">'+game_state+'</font></td>');
+         d.writeln('<td nowrap class="gr1_bb1_border"><div style="line-height: 12.5px"><font style="font-size: 12pt">'+game_state+'</font></div></td>');
       }
       else
       {
-         d.writeln('<td nowrap><div style="line-height: 14px"><font style="font-size: 12pt">'+game_state+'</font></div></td>'); //JLJL
+         d.writeln('<td nowrap><div style="line-height: 12.5px"><font style="font-size: 12pt">'+game_state+'</font></div></td>');
       }
       if (winners[i-1] == "H")
       {
@@ -4148,7 +4148,7 @@ function build_regular_season_form()
    d.writeln('</td>');
    for (var i = 1; i <= number_of_rs_players; i++)
    {
-      if (mn_points[player_index[i-1]].length == 0) mn_points[player_index[i-1]] = "&nbsp;";
+      if (mn_points[player_index[i-1]].length == 0) mn_points[player_index[i-1]] = "<br>";
 
       if ( (tie_breaker_needed == true) &&
            (actual_mn_points > 0)       &&
@@ -4169,7 +4169,7 @@ function build_regular_season_form()
       }
       else
       {
-         mn_points_delta_string = "&nbsp;";
+         mn_points_delta_string = "<br>";
       }
 
       if (form_view == "expanded")
@@ -4930,7 +4930,7 @@ function build_season_summary()
 
    var d = document;
 
-   d.writeln('<!DOCTYPE html>');
+   d.writeln('<html>');
    d.writeln('');
 
    d.writeln('<head>');

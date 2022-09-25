@@ -82,7 +82,7 @@ function build_regular_season_form()
 
    var d = document;
 
-   d.writeln('<!DOCTYPE html>');
+   d.writeln('<html>');
    d.writeln('');
 
    d.writeln('<head>');
@@ -462,6 +462,7 @@ function build_regular_season_form()
    d.writeln('   wd = dialog_frame.document.open();');
    d.writeln('');
    d.writeln('   wd.writeln("<!DOCTYPE html>");');
+   d.writeln('   wd.writeln("<html>");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<head>");');
    d.writeln('   wd.writeln("");');
@@ -2681,7 +2682,7 @@ function build_post_season_form()
 
    var d = document;
 
-   d.writeln('<!DOCTYPE html>');
+   d.writeln('<html>');
    d.writeln('');
 
    d.writeln('<head>');
@@ -3051,6 +3052,7 @@ function build_post_season_form()
    d.writeln('   wd = dialog_frame.document.open();');
    d.writeln('');
    d.writeln('   wd.writeln("<!DOCTYPE html>");');
+   d.writeln('   wd.writeln("<html>");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<head>");');
    d.writeln('   wd.writeln("");');
