@@ -3948,7 +3948,7 @@ function build_regular_season_form()
       }
       else
       {
-         d.writeln('<td nowrap><font style="font-size: 12pt">'+game_state+'</font></td>');
+         d.writeln('<td nowrap><div style="line-height: 14px"><font style="font-size: 12pt">'+game_state+'</font></div></td>'); //JLJL
       }
       if (winners[i-1] == "H")
       {
@@ -4148,7 +4148,7 @@ function build_regular_season_form()
    d.writeln('</td>');
    for (var i = 1; i <= number_of_rs_players; i++)
    {
-      if (mn_points[player_index[i-1]].length == 0) mn_points[player_index[i-1]] = "<br>";
+      if (mn_points[player_index[i-1]].length == 0) mn_points[player_index[i-1]] = "&nbsp;";
 
       if ( (tie_breaker_needed == true) &&
            (actual_mn_points > 0)       &&
@@ -4169,7 +4169,7 @@ function build_regular_season_form()
       }
       else
       {
-         mn_points_delta_string = "<br>";
+         mn_points_delta_string = "&nbsp;";
       }
 
       if (form_view == "expanded")
