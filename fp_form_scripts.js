@@ -5,7 +5,7 @@ function adjust_mobile_viewport_height(document)
    {
       if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
       {
-         var pad = 10;
+         var pad = 20;
 
          var document_height  = document.body.scrollHeight + pad;
          var viewport_scale   = Math.floor((window.screen.height/document_height)*100)/100;
@@ -4510,7 +4510,6 @@ function build_regular_season_form()
 
    d.getElementById("regular_season_table").scrollIntoView({block: "start", inline: "start"});
 
-   adjust_mobile_viewport_height(d);
    adjust_mobile_viewport_height(d);
 
    d.close();
