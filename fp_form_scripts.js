@@ -4508,9 +4508,9 @@ function build_regular_season_form()
 
    d.writeln('</html>');
 
-   adjust_mobile_viewport_height(d);
-
    d.getElementById("regular_season_table").scrollIntoView({block: "start", inline: "start"});
+
+   adjust_mobile_viewport_height(d);
 
    d.close();
 
