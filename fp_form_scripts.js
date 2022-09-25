@@ -5,10 +5,10 @@ function adjust_mobile_viewport_height(document)
    {
       if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
       {
-         var pad = 20;
+         var pad = 10;
 
          var document_height  = document.body.scrollHeight + pad;
-         var viewport_scale   = Math.floor((window.screen.height/document_height)*100)/100;
+         var viewport_scale   = window.screen.height/document_height;
          var viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
 
          top.document.getElementById("viewport").setAttribute("content",viewport_content);
@@ -2326,9 +2326,9 @@ function build_post_season_form()
 
    d.writeln('</html>');
 
-   adjust_mobile_viewport_height(d);
-
    d.getElementById("post_season_table").scrollIntoView({block: "start", inline: "start"});
+
+   adjust_mobile_viewport_height(d);
 
    d.close();
 
@@ -5778,9 +5778,9 @@ function build_season_summary()
 
    d.writeln('</html>');
 
-   adjust_mobile_viewport_height(d);
-
    d.getElementById("season_summary").scrollIntoView({block: "start", inline: "start"});
+
+   adjust_mobile_viewport_height(d);
 
    d.close();
 
