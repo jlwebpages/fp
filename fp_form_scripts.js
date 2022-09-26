@@ -4142,7 +4142,7 @@ function build_regular_season_form()
    }
    d.writeln('');
 
-   d.writeln('<tr align=center height=15px>');
+   d.writeln('<tr align=center style="line-height: 15px">');
    d.writeln('<td class="br2_border" align=right colspan=4 nowrap>');
    d.writeln('<font style="font-size: 10pt">\"'+visiting_teams[number_of_rs_games-1]+' at '+home_teams[number_of_rs_games-1]+'\" Total Points:&nbsp;&nbsp;'+mn_points_string+'</font>');
    d.writeln('</td>');
