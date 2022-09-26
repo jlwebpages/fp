@@ -3944,11 +3944,11 @@ function build_regular_season_form()
       }
       if (i == number_of_rs_games)
       {
-         d.writeln('<td nowrap class="gr1_bb1_border"><div style="line-height: 12.5px"><font style="font-size: 12pt">'+game_state+'</font></div></td>');
+         d.writeln('<td nowrap class="gr1_bb1_border"><div style="line-height: 12px"><font style="font-size: 12pt">'+game_state+'</font></div></td>');
       }
       else
       {
-         d.writeln('<td nowrap><div style="line-height: 12.5px"><font style="font-size: 12pt">'+game_state+'</font></div></td>');
+         d.writeln('<td nowrap><div style="line-height: 12px"><font style="font-size: 12pt">'+game_state+'</font></div></td>');
       }
       if (winners[i-1] == "H")
       {
@@ -5148,7 +5148,7 @@ function build_season_summary()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=center bgcolor='+color_light_blue+' height=27px>');
+   d.writeln('<tr align=center bgcolor='+color_light_blue+' style="line-height: 16px">');
    d.writeln('<td class="gr1_bb2_border"><font style="font-size: 10pt"><b>Week</b></font></td>');
    d.writeln('<td class="gr1_bb2_border"><font style="font-size: 10pt"><b>Games<br>Scheduled</b></font></td>');
    d.writeln('<td class="br2_bb2_border"><font style="font-size: 10pt"><b>Games<br>Played</b></font></td>');
@@ -5189,7 +5189,7 @@ function build_season_summary()
          border_class_2 = "br2_gb1_border";
       }
 
-      d.writeln('<tr align=center height=18px>');
+      d.writeln('<tr align=center style="line-height: 17.5px">');
       d.writeln('<td class='+border_class_1+'><font style="font-size: 11pt"><b>'+(week_index+1)+'</b></font></td>');
       d.writeln('<td class='+border_class_1+'><font style="font-size: 11pt">'+window.top.gv.all_home_teams[week_index].length+'</font></td>');
 
@@ -5331,7 +5331,7 @@ function build_season_summary()
       d.writeln('');    
    }
 
-   d.writeln('<tr align=center height=18px>');
+   d.writeln('<tr align=center style="line-height: 17.5px">');
    d.writeln('<td class="gb1_border" align=center nowrap><font style="font-size: 11pt"><b><br></b></font></td>');
    d.writeln('<td class="gr1_gb1_border" align=right  nowrap><font style="font-size: 11pt"><b>Totals:&nbsp;&nbsp;</b></font></td>');
    d.writeln('<td class="br2_gb1_border" align=center nowrap><font style="font-size: 11pt">'+total_games_played+'</font></td>');
@@ -5398,7 +5398,7 @@ function build_season_summary()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=center height=18px>');
+   d.writeln('<tr align=center style="line-height: 17.5px">');
    d.writeln('<td class="bb2_border" align=center nowrap><font style="font-size: 11pt"><b><br></b></font></td>');
    d.writeln('<td class="br2_bb2_border" align=right colspan=2 nowrap><font style="font-size: 11pt"><b>Averages:&nbsp;&nbsp;</b></font></td>');
 
@@ -5486,7 +5486,7 @@ function build_season_summary()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=right height=15px>');
+   d.writeln('<tr align=right style="line-height: 16px">');
    d.writeln('<td class="br2_gb1_border" colspan=3><font style="font-size: 10pt">1st place count =&nbsp;</font></td>');
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
@@ -5534,7 +5534,7 @@ function build_season_summary()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=right height=15px>');
+   d.writeln('<tr align=right style="line-height: 16px">');
    d.writeln('<td class="br2_gb1_border" colspan=3><font style="font-size: 10pt">2nd place count =&nbsp;</font></td>');
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
@@ -5582,7 +5582,7 @@ function build_season_summary()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=right height=15px>');
+   d.writeln('<tr align=right style="line-height: 16px">');
    d.writeln('<td class="br2_gb1_border" colspan=3><font style="font-size: 10pt">3rd place count =&nbsp;</font></td>');
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
@@ -5630,7 +5630,7 @@ function build_season_summary()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=right height=15px>');
+   d.writeln('<tr align=right style="line-height: 16px">');
    d.writeln('<td class="br2_gb1_border" colspan=3><font style="font-size: 10pt">Last place count =&nbsp;</font></td>');
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
@@ -5678,7 +5678,7 @@ function build_season_summary()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=right height=15px>');
+   d.writeln('<tr align=right style="line-height: 16px">');
    d.writeln('<td class="br2_border" colspan=3><font style="font-size: 10pt">Missed week count =&nbsp;</font></td>');
    for (var player_index = 0; player_index < number_of_rs_players; player_index++)
    {
