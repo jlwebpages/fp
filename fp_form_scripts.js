@@ -1676,7 +1676,7 @@ function build_post_season_form()
          d.writeln('<td nowrap class="'+border_style+'"><font style="font-size: 10pt">'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
       }
 
-      d.writeln('<td nowrap class="'+border_style+'"><font style="font-size: 10pt">'+game_state+'</font></td>');
+      d.writeln('<td nowrap class="'+border_style+'"><div style="line-height: 11px"><font style="font-size: 10pt">'+game_state+'</font></div></td>');
 
       border_style = "gr1_gb1_border";
 
