@@ -5128,7 +5128,7 @@ function build_season_summary()
    d.writeln('          id="season_summary">');
    d.writeln('');
 
-   d.writeln('<tr align=center bgcolor='+color_column_header_1+' height=27px>');
+   d.writeln('<tr align=center bgcolor='+color_column_header_1+' style="line-height: 22px">');
    d.writeln('<td class="br2_bb2_border" colspan=3>');
    d.writeln('<font style="font-size: 13pt"><b>'+summary_title+'</b></font>');
    d.writeln('</td>');
@@ -5148,7 +5148,7 @@ function build_season_summary()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=center bgcolor='+color_light_blue+' style="line-height: 16px">');
+   d.writeln('<tr align=center bgcolor='+color_light_blue+' style="line-height: 14px">');
    d.writeln('<td class="gr1_bb2_border"><font style="font-size: 10pt"><b>Week</b></font></td>');
    d.writeln('<td class="gr1_bb2_border"><font style="font-size: 10pt"><b>Games<br>Scheduled</b></font></td>');
    d.writeln('<td class="br2_bb2_border"><font style="font-size: 10pt"><b>Games<br>Played</b></font></td>');
@@ -5189,7 +5189,7 @@ function build_season_summary()
          border_class_2 = "br2_gb1_border";
       }
 
-      d.writeln('<tr align=center style="line-height: 17.5px">');
+      d.writeln('<tr align=center style="line-height: 18px">');
       d.writeln('<td class='+border_class_1+'><font style="font-size: 11pt"><b>'+(week_index+1)+'</b></font></td>');
       d.writeln('<td class='+border_class_1+'><font style="font-size: 11pt">'+window.top.gv.all_home_teams[week_index].length+'</font></td>');
 
@@ -5331,7 +5331,7 @@ function build_season_summary()
       d.writeln('');    
    }
 
-   d.writeln('<tr align=center style="line-height: 17.5px">');
+   d.writeln('<tr align=center style="line-height: 18px">');
    d.writeln('<td class="gb1_border" align=center nowrap><font style="font-size: 11pt"><b><br></b></font></td>');
    d.writeln('<td class="gr1_gb1_border" align=right  nowrap><font style="font-size: 11pt"><b>Totals:&nbsp;&nbsp;</b></font></td>');
    d.writeln('<td class="br2_gb1_border" align=center nowrap><font style="font-size: 11pt">'+total_games_played+'</font></td>');
@@ -5398,7 +5398,7 @@ function build_season_summary()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=center style="line-height: 17.5px">');
+   d.writeln('<tr align=center style="line-height: 18px">');
    d.writeln('<td class="bb2_border" align=center nowrap><font style="font-size: 11pt"><b><br></b></font></td>');
    d.writeln('<td class="br2_bb2_border" align=right colspan=2 nowrap><font style="font-size: 11pt"><b>Averages:&nbsp;&nbsp;</b></font></td>');
 
