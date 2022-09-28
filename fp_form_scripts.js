@@ -1496,7 +1496,7 @@ function build_post_season_form()
    d.writeln('          id="post_season_table">');
    d.writeln('');
 
-   d.writeln('<tr align=center bgcolor=#C4D79B style="line-height: 21.5px">');
+   d.writeln('<tr align=center bgcolor=#C4D79B style="line-height: 21px">');
    d.writeln('<td nowrap class="br2_bb2_border" colspan=5>');
    d.writeln('<font style="font-size: 14pt"><b>Week '+week+' '+mode_string+'</b></font>');
    d.writeln('</td>');
@@ -1530,11 +1530,11 @@ function build_post_season_form()
       if ( (gi == w1_start) || (gi == w2_start) || (gi == w3_start) || (gi == w4_start) )
       {
          d.writeln('');
-         d.writeln('<tr height=8px>');
-         d.writeln('<td class="bb2_border" colspan='+(5+player_colspan*12)+'></td>');
+         d.writeln('<tr style="line-height: 2px">');
+         d.writeln('<td class="bb2_border" colspan='+(5+player_colspan*12)+'>&nbsp</td>');
          d.writeln('</tr>');
          d.writeln('');
-         d.writeln('<tr align=center bgcolor=#DCE6F1 style="line-height: 17px">');
+         d.writeln('<tr align=center bgcolor=#DCE6F1 style="line-height: 18px">');
 
          if (gi == w1_start)
          {
@@ -1572,7 +1572,7 @@ function build_post_season_form()
       }
 
       d.writeln('');
-      d.writeln('<tr align=center style="line-height: 16px">');
+      d.writeln('<tr align=center style="line-height: 15px">');
 
       border_style = "gr1_gb1_border";
 
@@ -1841,7 +1841,7 @@ function build_post_season_form()
             if (isNaN(total_points) == true) total_points = "<br>";
 
             d.writeln('');
-            d.writeln('<tr align=center style="line-height: 10.8px">');
+            d.writeln('<tr align=center style="line-height: 15px">');
 
             d.writeln('<td align=right class="bb1_border" colspan=4 style="padding:0px" nowrap><font style="font-size: 8pt">'+total_points_label+'</font></td>');
             d.writeln('<td class="br2_bb1_border" style="padding:0px"><font style="font-size: 8pt">'+total_points+'</font></td>');
@@ -2081,11 +2081,11 @@ function build_post_season_form()
    }
 
    d.writeln('');
-   d.writeln('<tr height=8px>');
-   d.writeln('<td class="bb2_border" colspan='+(5+player_colspan*12)+'></td>');
+   d.writeln('<tr style="line-height: 2px">');
+   d.writeln('<td class="bb2_border" colspan='+(5+player_colspan*12)+'>&nbsp</td>');
    d.writeln('</tr>');
    d.writeln('');
-   d.writeln('<tr align=center bgcolor=#DCE6F1 style="line-height: 17px">');
+   d.writeln('<tr align=center bgcolor=#DCE6F1 style="line-height: 18px">');
    d.writeln('<td nowrap class="br2_bb2_border" colspan=5><font style="font-size: 11pt"><b>Cumulative Results</b></font></td>');
    for (var pi = 1; pi <= number_of_ps_players; pi++)
    {
@@ -2105,7 +2105,7 @@ function build_post_season_form()
    d.writeln('</tr>');
 
    d.writeln('');
-   d.writeln('<tr align=center style="line-height: 17px">');
+   d.writeln('<tr align=center style="line-height: 20px">');
    d.writeln('<td nowrap class="br2_bb1_border" align=right colspan=5><font style="font-size: 11pt"><b>Scores:&nbsp;</b></font></td>');
    for (var pi = 1; pi <= number_of_ps_players; pi++)
    {
@@ -2139,7 +2139,7 @@ function build_post_season_form()
    d.writeln('</tr>');
 
    d.writeln('');
-   d.writeln('<tr align=center style="line-height: 17px">');
+   d.writeln('<tr align=center style="line-height: 20px">');
    d.writeln('<td nowrap class="br2_border" align=right colspan=5><font style="font-size: 11pt"><b>Wins:&nbsp;</b></font></td>');
    for (var pi = 1; pi <= number_of_ps_players; pi++)
    {
