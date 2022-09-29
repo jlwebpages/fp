@@ -3801,7 +3801,7 @@ function build_regular_season_form()
    d.writeln('          id="regular_season_table">');
    d.writeln('');
 
-   d.writeln('<tr align=center bgcolor=#C4D79B height=21px>');
+   d.writeln('<tr align=center bgcolor=#C4D79B style="line-height: 22px">');
    d.writeln('<td class="br2_bb2_border" colspan=4>');
    if (mode == "prelim")
    {
@@ -3839,7 +3839,7 @@ function build_regular_season_form()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=center bgcolor=#DCE6F1 height=21px>');
+   d.writeln('<tr align=center bgcolor=#DCE6F1 style="line-height: 22px">');
    d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><b>Visitor</b></font></td>');
    d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><b>vs</b></font></td>');
    d.writeln('<td class="gr1_bb2_border"><font style="font-size: 12pt"><b>Home</b></font></td>');
@@ -3919,7 +3919,7 @@ function build_regular_season_form()
          game_state = window.top.gv.prelim_game_states[i-1];
       }
 
-      d.writeln('<tr align=center height=18px>');
+      d.writeln('<tr align=center style="line-height: 19px">');
       if (winners[i-1] == "V")
       {
          if (i == number_of_rs_games)
@@ -4142,7 +4142,7 @@ function build_regular_season_form()
    }
    d.writeln('');
 
-   d.writeln('<tr align=center style="line-height: 15px">');
+   d.writeln('<tr align=center style="line-height: 17px">');
    d.writeln('<td class="br2_border" align=right colspan=4 nowrap>');
    d.writeln('<font style="font-size: 10pt">\"'+visiting_teams[number_of_rs_games-1]+' at '+home_teams[number_of_rs_games-1]+'\" Total Points:&nbsp;&nbsp;'+mn_points_string+'</font>');
    d.writeln('</td>');
@@ -4207,7 +4207,7 @@ function build_regular_season_form()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=center height=21px>');
+   d.writeln('<tr align=center style="line-height: 21px">');
    d.writeln('<td class="bt2_br2_border" align=right colspan=4>');
    d.writeln('<font style="font-size: 12pt"><b>Scores:&nbsp;</b></font>');
    d.writeln('</td>');
