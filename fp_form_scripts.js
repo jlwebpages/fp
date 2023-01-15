@@ -117,65 +117,73 @@ function build_post_season_form()
 
    // Now define a host of variables and arrays needed to build the form.
 
-   var number_of_ps_players      = window.top.gv.ps_players.length;
+   var number_of_ps_players       = window.top.gv.ps_players.length;
 
-   var adjusted_score            = 0;
-   var best_player_win_count     = 0;
-   var best_total_points_count   = 0;
-   var best_total_points_score   = null_score;
-   var border_style              = "no_border";
-   var current_week_scores       = 0;
-   var form_view                 = window.top.gv.form_view;
-   var game_state                = "at";
-   var heading_colspan           = 53;
-   var high_score_count          = 0;
-   var high_score_players        = Array(number_of_ps_players).fill(null);
-   var home_scores               = window.top.gv.home_scores;
-   var null_score                = 9999;
-   var order_by                  = window.top.gv.order_by;
-   var overall_ranks             = Array(number_of_ps_players).fill(1);
-   var overall_scores            = Array(number_of_ps_players).fill(null_score);
-   var percent_wins              = "";
-   var player_colspan            = 4;
-   var player_index              = Array(number_of_ps_players).fill().map((_,i) => i);  // Sets player_index = [0,1,2,3,4,5,6,7,8,9,10,11]
-   var player_pick_valid         = true;
-   var player_win_count          = Array(number_of_ps_players).fill(0);
-   var points                    = "";
-   var possible_win_count        = 0;
-   var ps_players                = window.top.gv.ps_players;
-   var sorted_overall_scores     = Array(number_of_ps_players).fill(null_score);
-   var sorted_week_1_scores      = Array(number_of_ps_players).fill(null_score);
-   var sorted_week_2_scores      = Array(number_of_ps_players).fill(null_score);
-   var sorted_week_3_scores      = Array(number_of_ps_players).fill(null_score);
-   var sorted_week_4_scores      = Array(number_of_ps_players).fill(null_score);
-   var td_background             = "";
-   var total_points              = "";
-   var total_points_game_index   = -1;
-   var total_points_label        = "";
-   var total_points_score        = "<br>";
-   var total_points_scores       = Array(number_of_ps_players).fill(null_score);
-   var use_player_points         = true;
-   var visitor_scores            = window.top.gv.visitor_scores;
-   var week_1_high_score_count   = 0;
-   var week_1_high_score_players = Array(number_of_ps_players).fill(null);
-   var week_1_ranks              = Array(number_of_ps_players).fill(1);
-   var week_1_scores             = Array(number_of_ps_players).fill(null_score);
-   var week_1_valid_game_cnt     = 4;
-   var week_2_high_score_count   = 0;
-   var week_2_high_score_players = Array(number_of_ps_players).fill(null);
-   var week_2_ranks              = Array(number_of_ps_players).fill(1);
-   var week_2_scores             = Array(number_of_ps_players).fill(null_score);
-   var week_2_valid_game_cnt     = 4;
-   var week_3_high_score_count   = 0;
-   var week_3_high_score_players = Array(number_of_ps_players).fill(null);
-   var week_3_ranks              = Array(number_of_ps_players).fill(1);
-   var week_3_scores             = Array(number_of_ps_players).fill(null_score);
-   var week_3_valid_game_cnt     = 2;
-   var week_4_high_score_count   = 0;
-   var week_4_high_score_players = Array(number_of_ps_players).fill(null);
-   var week_4_ranks              = Array(number_of_ps_players).fill(1);
-   var week_4_scores             = Array(number_of_ps_players).fill(null_score);
-   var week_4_valid_game_cnt     = 1;
+   var adjusted_score             = 0;
+   var best_player_win_count      = 0;
+   var best_total_points_count    = 0;
+   var best_total_points_score    = null_score;
+   var border_style               = "no_border";
+   var current_week_scores        = 0;
+   var form_view                  = window.top.gv.form_view;
+   var game_state                 = "at";
+   var heading_colspan            = 53;
+   var high_score_count           = 0;
+   var high_score_players         = Array(number_of_ps_players).fill(null);
+   var home_scores                = window.top.gv.home_scores;
+   var null_score                 = 9999;
+   var number_of_games_to_display = 0;
+   var order_by                   = window.top.gv.order_by;
+   var overall_ranks              = Array(number_of_ps_players).fill(1);
+   var overall_scores             = Array(number_of_ps_players).fill(null_score);
+   var percent_wins               = "";
+   var player_colspan             = 4;
+   var player_index               = Array(number_of_ps_players).fill().map((_,i) => i);  // Sets player_index = [0,1,2,3,4,5,6,7,8,9,10,11]
+   var player_pick_valid          = true;
+   var player_win_count           = Array(number_of_ps_players).fill(0);
+   var points                     = "";
+   var possible_win_count         = 0;
+   var ps_players                 = window.top.gv.ps_players;
+   var sorted_overall_scores      = Array(number_of_ps_players).fill(null_score);
+   var sorted_week_1_scores       = Array(number_of_ps_players).fill(null_score);
+   var sorted_week_2_scores       = Array(number_of_ps_players).fill(null_score);
+   var sorted_week_3_scores       = Array(number_of_ps_players).fill(null_score);
+   var sorted_week_4_scores       = Array(number_of_ps_players).fill(null_score);
+   var td_background              = "";
+   var total_points               = "";
+   var total_points_game_index    = -1;
+   var total_points_label         = "";
+   var total_points_score         = "<br>";
+   var total_points_scores        = Array(number_of_ps_players).fill(null_score);
+   var use_player_points          = true;
+   var visitor_scores             = window.top.gv.visitor_scores;
+   var week_1_high_score_count    = 0;
+   var week_1_high_score_players  = Array(number_of_ps_players).fill(null);
+   var week_1_ranks               = Array(number_of_ps_players).fill(1);
+   var week_1_scores              = Array(number_of_ps_players).fill(null_score);
+   var week_1_valid_game_cnt      = 4;
+   var week_2_high_score_count    = 0;
+   var week_2_high_score_players  = Array(number_of_ps_players).fill(null);
+   var week_2_ranks               = Array(number_of_ps_players).fill(1);
+   var week_2_scores              = Array(number_of_ps_players).fill(null_score);
+   var week_2_valid_game_cnt      = 4;
+   var week_3_high_score_count    = 0;
+   var week_3_high_score_players  = Array(number_of_ps_players).fill(null);
+   var week_3_ranks               = Array(number_of_ps_players).fill(1);
+   var week_3_scores              = Array(number_of_ps_players).fill(null_score);
+   var week_3_valid_game_cnt      = 2;
+   var week_4_high_score_count    = 0;
+   var week_4_high_score_players  = Array(number_of_ps_players).fill(null);
+   var week_4_ranks               = Array(number_of_ps_players).fill(1);
+   var week_4_scores              = Array(number_of_ps_players).fill(null_score);
+   var week_4_valid_game_cnt      = 1;
+
+   // Set the number of games to display on the form.
+
+   if (week == 1) number_of_games_to_display = w1_end;
+   if (week == 2) number_of_games_to_display = w2_end;
+   if (week == 3) number_of_games_to_display = w3_end;
+   if (week == 4) number_of_games_to_display = w4_end;
 
    // Only use player points as a tie breaker if the player_points array exists.
 
@@ -1513,7 +1521,7 @@ function build_post_season_form()
    }
    d.writeln('</tr>');
 
-   for (var gi = 1; gi <= number_of_ps_games; gi++)
+   for (var gi = 1; gi <= number_of_games_to_display; gi++)
    {
       // Determine if this game falls within the current preliminary week.
 
@@ -2284,17 +2292,7 @@ function build_post_season_form()
    {
       if (window.top.gv.mobile != true)
       {
-         number_of_w1_games = w1_end - w1_start + 1;
-         number_of_w2_games = w2_end - w2_start + 1;
-         number_of_w3_games = w3_end - w3_start + 1;
-         number_of_w4_games = w4_end - w4_start + 1;
-
-         if (week == 1) number_of_valid_games = number_of_w1_games;
-         if (week == 2) number_of_valid_games = number_of_w1_games + number_of_w2_games;
-         if (week == 3) number_of_valid_games = number_of_w1_games + number_of_w2_games + number_of_w3_games;
-         if (week == 4) number_of_valid_games = number_of_w1_games + number_of_w2_games + number_of_w3_games + number_of_w4_games;
-
-         for (var gi = 1; gi <= number_of_valid_games; gi++)
+         for (var gi = 1; gi <= number_of_games_to_display; gi++)
          {
             if ( (post_season_winners[gi-1] != "V") && (post_season_winners[gi-1] != "H") )
             {
