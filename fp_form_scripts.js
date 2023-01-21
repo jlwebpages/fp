@@ -7,7 +7,10 @@ function adjust_mobile_viewport_height(document)
       {
          var pad = 10;
 
-         var document_height  = document.body.scrollHeight + pad;
+         var document_height = document.body.scrollHeight + pad;
+
+         if ( (window.top.gv.current_input_week > 18) && (document_height < 500) ) document_height = 500;
+
          var viewport_scale   = window.screen.height/document_height;
          var viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
 
