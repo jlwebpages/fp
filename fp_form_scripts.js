@@ -632,10 +632,10 @@ function build_post_season_form()
 
          total_points = visitor_scores[total_points_game_index] + home_scores[total_points_game_index];
 
-         // If scores exist for the last game of this week and if more than one
-         // player has the high score for this week, then we need to break the tie.
+         // If visitor and home team scores for the last game of this week are different, and if
+         // more than one player has the high score for this week, then we need to break the tie.
 
-         if ( (total_points > 0) && (high_score_count > 1) )
+         if ( (visitor_scores[total_points_game_index] != home_scores[total_points_game_index]) && (high_score_count > 1) )
          {
             // Calculate the total points score for each player that has a high score this week.
 
