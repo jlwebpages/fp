@@ -1802,6 +1802,7 @@ function build_regular_season_form()
    d.writeln('   var odds_index           = 0;');
    d.writeln('   var point_spread         = 0;');
    d.writeln('   var team_records_index   = -1;');
+   d.writeln('   var temp_string          = "";');
    d.writeln('   var total_points         = 0;');
    d.writeln('   var visiting_team        = "";');
    d.writeln('   var visiting_team_record = "";');
@@ -1810,6 +1811,15 @@ function build_regular_season_form()
    d.writeln('   // Always display alerts if name contains "JL".');
    d.writeln('');
    d.writeln('   if (build_player_name(-1).indexOf("JL") != -1) suppress_alerts = false;');
+   d.writeln('');
+   d.writeln('   // Remove all backslash escape characters from the nfl_odds string.');
+   d.writeln('');
+   d.writeln('   for (var i = 0; i < nfl_odds.length; i++)');
+   d.writeln('   {');
+   d.writeln('      if (nfl_odds.substring(i,i+1) != String.fromCharCode(92)) temp_string += nfl_odds.substring(i,i+1);');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('   nfl_odds = temp_string;');
    d.writeln('');
    d.writeln('   // Parse the nfl_odds string.');
    d.writeln('');
@@ -4151,6 +4161,7 @@ function build_post_season_form()
    d.writeln('   var odds_index           = 0;');
    d.writeln('   var point_spread         = 0;');
    d.writeln('   var team_records_index   = -1;');
+   d.writeln('   var temp_string          = "";');
    d.writeln('   var total_points         = 0;');
    d.writeln('   var visiting_team        = "";');
    d.writeln('   var visiting_team_record = "";');
@@ -4159,6 +4170,15 @@ function build_post_season_form()
    d.writeln('   // Always display alerts if name contains "JL".');
    d.writeln('');
    d.writeln('   if (build_player_name(-1).indexOf("JL") != -1) suppress_alerts = false;');
+   d.writeln('');
+   d.writeln('   // Remove all backslash escape characters from the nfl_odds string.');
+   d.writeln('');
+   d.writeln('   for (var i = 0; i < nfl_odds.length; i++)');
+   d.writeln('   {');
+   d.writeln('      if (nfl_odds.substring(i,i+1) != String.fromCharCode(92)) temp_string += nfl_odds.substring(i,i+1);');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('   nfl_odds = temp_string;');
    d.writeln('');
    d.writeln('   // Parse the nfl_odds string.');
    d.writeln('');
