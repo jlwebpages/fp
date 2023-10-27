@@ -3,16 +3,20 @@ A.blue_link:link   {text-decoration: none     }
 A.blue_link:hover  {text-decoration: underline}
 
 A.green_link       {color: #283E1A            }
+A.green_link       {display: block            }
 A.green_link:link  {text-decoration: none     }
 A.green_link:hover {text-decoration: underline}
 
 A.red_link         {color: maroon             }
+A.red_link         {display: block            }
 A.red_link:link    {text-decoration: none     }
 A.red_link:hover   {text-decoration: underline}
 
-A.white_link       {color: white; padding-left: 20px; line-height: 30px}
-A.white_link:link  {text-decoration: none                              }
-A.white_link:hover {text-decoration: underline                         }
+A.white_link       {color: white              }
+A.white_link       {padding-left: 20px        }
+A.white_link       {line-height: 30px         }
+A.white_link:link  {text-decoration: none     }
+A.white_link:hover {text-decoration: underline}
 
 .black_color           {color: black             }
 .blue_color            {color: blue              }
