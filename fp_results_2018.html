@@ -3188,42 +3188,21 @@ xmlns="http://www.w3.org/TR/REC-html40">
 </head>
 
 <body style="margin: 0"
-     onLoad="if ( (top.mobile == true) && (top.display_frame != undefined) ) {top.display_frame('fp_main',0);}"
-   onunload="if (top.reset_mobile_viewport_width != undefined) {top.reset_mobile_viewport_width();} if (top.mobile == false) {top.display_frame('fp_main',0);}">
+     onLoad="if (top.display_frame != undefined) {top.display_frame('fp_main',0);} return true;"
+   onunload="if (top.reset_mobile_viewport_width != undefined) {top.reset_mobile_viewport_width();} return true;">
 
 <table class="table">
 
 <script>
 
-if (top.mobile == false)
+if (top.mobile != true)
 {
-   // Write to fp_main_header frame.
+   //  Write table row to document.
 
-   top.fp_main_header.document.open();
-   top.fp_main_header.document.write('<html>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('<head>');
-   top.fp_main_header.document.write('   <title>NFL Football Pool</title>');
-   top.fp_main_header.document.write('   <link href="fp.css" rel="stylesheet" type="text/css">');
-   top.fp_main_header.document.write('</head>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('<body style="margin: 0">');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('<table class="table" style="height: 55px">');
-   top.fp_main_header.document.write('   <tr>');
-   top.fp_main_header.document.write('      <td class="dark_gray_cell">RESULTS</td>');
-   top.fp_main_header.document.write('      <td class="dark_gray_cell"><a class="red_link" href="fp.html" target="_top">HOME</a></td>');
-   top.fp_main_header.document.write('   </tr>');
-   top.fp_main_header.document.write('</table>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('</body>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('</html>');
-   top.fp_main_header.document.close();
-
-   // Make both fp_main_header and fp_main frames visible.
-
-   top.fp_frameset.rows="60px,*,0,0";
+   document.writeln('<tr>');
+   document.writeln('<td class="dark_gray_cell">RESULTS</td>');
+   document.writeln('<td class="dark_gray_cell"><a class="red_link" href="fp.html" target="_top">HOME</a></td>');
+   document.writeln('</tr>');
 }
 
 </script>
