@@ -327,10 +327,10 @@ function display_archive_page()
 
    d.close();
 
-   //JLif ( (top.mobile == true) && (top.display_frame != undefined) )
-   //JL{
-   //JL   top.display_frame('fp_main',0);
-   //JL}
+   if ( (top.mobile == true) && (top.display_frame != undefined) )
+   {
+      top.display_frame('fp_main',0);
+   }
 
    return true;
 }
