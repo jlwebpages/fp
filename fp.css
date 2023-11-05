@@ -1,26 +1,22 @@
-A.blue_link          {color:#002060}
-A.blue_link:link     {text-decoration: none; color: #002060;}
-A.blue_link:visited  {text-decoration: none; color: #002060;}
-A.blue_link:hover    {text-decoration: none; color: #002060;}
-A.blue_link:active   {text-decoration: none; color: #002060;}
+A.blue_link        {color: #002060            }
+A.blue_link:link   {text-decoration: none     }
+A.blue_link:hover  {text-decoration: underline}
 
-A.green_link         {color:#283E1A;}
-A.green_link:link    {text-decoration: none; color: #283E1A;}
-A.green_link:visited {text-decoration: none; color: #283E1A;}
-A.green_link:hover   {text-decoration: none; color: #283E1A;}
-A.green_link:active  {text-decoration: none; color: #283E1A;}
+A.green_link       {color: #283E1A            }
+A.green_link       {display: block            }
+A.green_link:link  {text-decoration: none     }
+A.green_link:hover {text-decoration: underline}
 
-A.red_link:          {color:maroon;}
-A.red_link:link      {text-decoration: none; color:  maroon;}
-A.red_link:visited   {text-decoration: none; color:  maroon;}
-A.red_link:hover     {text-decoration: none; color:  maroon;}
-A.red_link:active    {text-decoration: none; color:  maroon;}
+A.red_link         {color: maroon             }
+A.red_link         {display: block            }
+A.red_link:link    {text-decoration: none     }
+A.red_link:hover   {text-decoration: underline}
 
-A.white_link         {color:white;}
-A.white_link:link    {text-decoration: none; color: white;}
-A.white_link:visited {text-decoration: none; color: white;}
-A.white_link:hover   {text-decoration: none; color: white;}
-A.white_link:active  {text-decoration: none; color: white;}
+A.white_link       {color: white              }
+A.white_link       {padding-left: 20px        }
+A.white_link       {line-height: 30px         }
+A.white_link:link  {text-decoration: none     }
+A.white_link:hover {text-decoration: underline}
 
 .black_color           {color: black             }
 .blue_color            {color: blue              }
@@ -29,93 +25,93 @@ A.white_link:active  {text-decoration: none; color: white;}
 .dark_gray_color       {color: #8497B0           }
 .green_color           {color: #283E1A           }
 .light_gray_background {background-color: #ACB9CA}
-.light_gray_color      {color: #ACB9CA           }
 .red_color             {color: maroon            }
 .upset_pick_color      {color: #AA0000           }
 .white_color           {color: white             }
 
+.table
+{
+   color: white;
+   font-family: Calibri;
+   text-align: left;
+   background-color: #ACB9CA;
+   border-spacing: 0px;
+   white-space: nowrap;
+   width: 100%;
+   height: 100%;
+}
+
 .dark_blue_cell
 {
    background-color: #002060;
-   border-left: solid 1px black;
-   border-top: solid 1px black;
-   font-size: 13pt;
-   height: 35px;
-   padding-bottom: 4px;
-   padding-left: 10px;
-   padding-right: 15px;
-   padding-top: 4px;
+   border-top: 5px solid #ACB9CA;
+   border-bottom: 5px solid #ACB9CA;
+   border-left: 5px solid #ACB9CA;
+   border-right: 5px solid #ACB9CA;
+   border-radius: 25px;
 }
 
 .dark_gray_cell
 {
-   background-color: #8497B0;
-   border-bottom: solid 1px black;
-   border-left: solid 1px black;
-   border-top: solid 1px black;
    color: maroon;
    font-size: 18pt;
    font-weight: bold;
-   height: 30px;
+   text-align: center;
+   background-color: #8497B0;
+   border-top: 5px solid #ACB9CA;
+   border-bottom: 5px solid #ACB9CA;
+   border-left: 5px solid #ACB9CA;
+   border-right: 5px solid #ACB9CA;
+   border-radius: 25px;
+   padding-top: 10px;
    padding-bottom: 10px;
    padding-left: 10px;
    padding-right: 10px;
-   padding-top: 10px;
-   text-align: center;
    width: 20%;
 }
 
 .green_cell
 {
-   background-color: #283E1A;
-   border-left: solid 1px black;
-   border-top: solid 1px black;
    font-size: 12pt;
-   height: 30px;
-   padding-bottom: 4px;
-   padding-left: 10px;
-   padding-right: 15px;
-   padding-top: 4px;
-   text-indent: 10px;
+   background-color: #283E1A;
+   border-top: 5px solid #ACB9CA;
+   border-bottom: 5px solid #ACB9CA;
+   border-left: 5px solid #ACB9CA;
+   border-right: 5px solid #ACB9CA;
+   border-radius: 25px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   vertical-align: top;
+   height: 100%;
 }
 
 .light_gray_cell
 {
-   background-color: #ACB9CA;
-   border-left: solid 1px black;
-   border-right: solid 1px black;
    color: maroon;
    font-size: 18pt;
    font-weight: bold;
-   height: 30px;
+   text-align: center;
+   background-color: #ACB9CA;
+   border-top: 5px solid #ACB9CA;
+   border-bottom: 5px solid #ACB9CA;
+   border-left: 5px solid #ACB9CA;
+   border-right: 5px solid #ACB9CA;
+   border-radius: 25px;
+   padding-top: 10px;
    padding-bottom: 10px;
    padding-left: 10px;
    padding-right: 10px;
-   padding-top: 10px;
-   text-align: center;
 }
 
 .red_cell {
-   background-color: maroon;
-   border-left: solid 1px black;
-   border-top: solid 1px black;
    font-size: 12pt;
-   height: 30px;
-   padding-bottom: 4px;
-   padding-left: 10px;
-   padding-right: 15px;
-   padding-top: 4px;
-   text-indent: 10px;
-}
-
-.table
-{
-   background-color: black;
-   border-spacing: 0px;
-   color: white;
-   font-family: Calibri;
-   height: 100%;
-   text-align: left;
-   white-space: nowrap;
-   width: 100%;
+   background-color: maroon;
+   border-top: 5px solid #ACB9CA;
+   border-bottom: 5px solid #ACB9CA;
+   border-left: 5px solid #ACB9CA;
+   border-right: 5px solid #ACB9CA;
+   border-radius: 25px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   vertical-align: top;
 }

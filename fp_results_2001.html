@@ -32,6 +32,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
    <title>NFL Football Pool - 2001 Results</title>
    <link href="button.css" rel="stylesheet" type="text/css">
+   <link href="fp.css" rel="stylesheet" type="text/css">
 <link rel=File-List href="./nfl_results_2001_files/filelist.xml">
 <style id="2001 Football Pool_12601_Styles">
 <!--table
@@ -1309,87 +1310,58 @@ xmlns="http://www.w3.org/TR/REC-html40">
 </head>
 
 <body style="margin: 0"
-     onLoad="if (top.display_frame != undefined) {top.display_frame('fp_main',0);} return true;"
-   onunload="if (top.reset_mobile_viewport_width != undefined) {top.reset_mobile_viewport_width();} return true;">
+     onLoad="if ( (top.mobile == true) && (top.display_frame != undefined) ) {top.display_frame('fp_main',0);}"
+   onunload="if (top.reset_mobile_viewport_width != undefined) {top.reset_mobile_viewport_width();} if (top.mobile == false) {top.display_frame('fp_main',0);}">
 
-<style type="text/css">
-   A:active  {text-decoration: none; color: maroon;}
-   A:hover   {text-decoration: none; color: maroon;}
-   A:link    {text-decoration: none; color: maroon;}
-   A:visited {text-decoration: none; color: maroon;}
-</style>
-
-<table style="
-   background-color: black;
-   border-spacing: 0px;
-   color: maroon;
-   font-family: Calibri;
-   font-size: 18pt;
-   font-weight: bold;
-   height: 100%;
-   text-align:center;
-   white-space: nowrap;       
-   width: 100%;
-">
+<table class="table">
 
 <script>
 
-if (top.mobile != true)
+if (top.mobile == false)
 {
-   //  Write table row to document.
+   // Write to fp_main_header frame.
 
-   document.writeln('<tr>');
-   document.writeln('<td style="');
-   document.writeln('   background-color: #8497B0;');
-   document.writeln('   border-left: solid 1px black;');
-   document.writeln('   border-top: solid 1px black;');
-   document.writeln('   height: 30px;');
-   document.writeln('   padding-bottom: 10px;');
-   document.writeln('   padding-left: 10px;');
-   document.writeln('   padding-right: 10px;');
-   document.writeln('   padding-top: 10px;');
-   document.writeln('   width: 20%;');
-   document.writeln('">');
-   document.writeln('RESULTS');
-   document.writeln('</td>');
-   document.writeln('');
-   document.writeln('<td style="');
-   document.writeln('   background-color: #8497B0;');
-   document.writeln('   border-left: solid 1px black;');
-   document.writeln('   border-right: solid 1px black;');
-   document.writeln('   border-top: solid 1px black;');
-   document.writeln('   height: 30px;');
-   document.writeln('   padding-bottom: 10px;');
-   document.writeln('   padding-left: 10px;');
-   document.writeln('   padding-right: 10px;');
-   document.writeln('   padding-top: 10px;');
-   document.writeln('   width: 20%;');
-   document.writeln('">');
-   document.writeln('<a href="fp.html" target="_top">HOME</a>');
-   document.writeln('</td>');
-   document.writeln('</tr>');
-   document.writeln('');
+   top.fp_main_header.document.open();
+   top.fp_main_header.document.write('<html>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('<head>');
+   top.fp_main_header.document.write('   <title>NFL Football Pool</title>');
+   top.fp_main_header.document.write('   <link href="fp.css" rel="stylesheet" type="text/css">');
+   top.fp_main_header.document.write('</head>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('<body style="margin: 0">');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('<table class="table" style="height: 55px">');
+   top.fp_main_header.document.write('   <tr>');
+   top.fp_main_header.document.write('      <td class="dark_gray_cell">RESULTS</td>');
+   top.fp_main_header.document.write('      <td class="dark_gray_cell"><a class="red_link" href="fp.html" target="_top">HOME</a></td>');
+   top.fp_main_header.document.write('   </tr>');
+   top.fp_main_header.document.write('</table>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('</body>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('</html>');
+   top.fp_main_header.document.close();
+
+   // Make both fp_main_header and fp_main frames visible.
+
+   top.fp_frameset.rows="60px,*,0,0";
 }
 
 </script>
 
-<tr><td colspan=2 style="
-   background-color: #ACB9CA;
-   border-bottom: solid 1px black;
-   border-left: solid 1px black;
-   border-right: solid 1px black;
-   border-top: solid 1px black;
+<tr>
+
+<td colspan=2 style="
+   color: maroon;
    font-size: 16pt;
+   font-weight: bold;
    height: 100%;
    padding-bottom: 10px;
    padding-left: 10px;
    padding-right: 10px;
-   vertical-align: top;
-   width: 20%;
-">
-
-
-<!--REGULAR SEASON RESULTS - START-->
+   padding-top: 10px;
+   vertical-align: top">
 
 <center>
 

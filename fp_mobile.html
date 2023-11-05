@@ -35,7 +35,7 @@
       // Set these variables each week.
 
       var games_over         = f;
-      var current_input_week = 9;
+      var current_input_week = 10;
 
       // Set the post season teams each week during the playoffs.
 
@@ -855,7 +855,7 @@
 
          if (frame_name == "fp_main")
          {
-            document.getElementById("fp_frameset").cols="*,0,0";
+            fp_frameset.cols = "*,0,0";
 
             frame_width = fp_main.document.body.scrollWidth;
 
@@ -962,13 +962,13 @@
          }
          else if (frame_name == "fp_picks")
          {
-            document.getElementById("fp_frameset").cols="0,*,0";
+            fp_frameset.cols = "0,*,0";
          }
          else if (frame_name == "fp_loading_indicator")
          {
             frame_width = 0;
 
-            document.getElementById("fp_frameset").cols="0,0,*";
+            fp_frameset.cols = "0,0,*";
          }
 
          set_mobile_viewport_width(frame_width);

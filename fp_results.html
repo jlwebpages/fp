@@ -4,6 +4,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
 
 <head>
    <title>NFL Football Pool</title>
+   <link href="fp.css" rel="stylesheet" type="text/css">
 <link rel=File-List href="fp_results_files/filelist.xml">
 <style id="Regular_Season_Results_1_Styles">
 <!--table
@@ -1519,86 +1520,58 @@ xmlns="http://www.w3.org/TR/REC-html40">
 </head>
 
 <body style="margin: 0"
-     onLoad="if (top.display_frame != undefined) {top.display_frame('fp_main',0);} return true;"
-   onunload="if (top.reset_mobile_viewport_width != undefined) {top.reset_mobile_viewport_width();} return true;">
+     onLoad="if ( (top.mobile == true) && (top.display_frame != undefined) ) {top.display_frame('fp_main',0);}"
+   onunload="if (top.reset_mobile_viewport_width != undefined) {top.reset_mobile_viewport_width();} if (top.mobile == false) {top.display_frame('fp_main',0);}">
 
-<style type="text/css">
-   A:active  {text-decoration: none; color: #800000;}
-   A:hover   {text-decoration: none; color: #800000;}
-   A:link    {text-decoration: none; color: #800000;}
-   A:visited {text-decoration: none; color: #800000;}
-</style>
-
-<table style="
-   background-color: black;
-   border-spacing: 0px;
-   color: #800000;
-   font-family: Calibri;
-   font-size: 18pt;
-   font-weight: bold;
-   height: 100%;
-   text-align:center;
-   white-space: nowrap;       
-   width: 100%;
-">
+<table class="table">
 
 <script>
 
-if (top.mobile != true)
+if (top.mobile == false)
 {
-   //  Write table row to document.
+   // Write to fp_main_header frame.
 
-   document.writeln('<tr>');
-   document.writeln('<td style="');
-   document.writeln('   background-color: #8497B0;');
-   document.writeln('   border-left: solid 1px black;');
-   document.writeln('   border-top: solid 1px black;');
-   document.writeln('   height: 30px;');
-   document.writeln('   padding-bottom: 10px;');
-   document.writeln('   padding-left: 10px;');
-   document.writeln('   padding-right: 10px;');
-   document.writeln('   padding-top: 10px;');
-   document.writeln('   width: 20%;');
-   document.writeln('">');
-   document.writeln('RESULTS');
-   document.writeln('</td>');
-   document.writeln('');
-   document.writeln('<td style="');
-   document.writeln('   background-color: #8497B0;');
-   document.writeln('   border-left: solid 1px black;');
-   document.writeln('   border-right: solid 1px black;');
-   document.writeln('   border-top: solid 1px black;');
-   document.writeln('   height: 30px;');
-   document.writeln('   padding-bottom: 10px;');
-   document.writeln('   padding-left: 10px;');
-   document.writeln('   padding-right: 10px;');
-   document.writeln('   padding-top: 10px;');
-   document.writeln('   width: 20%;');
-   document.writeln('">');
-   document.writeln('<a href="fp.html" target="_top">HOME</a>');
-   document.writeln('</td>');
-   document.writeln('</tr>');
-   document.writeln('');
+   top.fp_main_header.document.open();
+   top.fp_main_header.document.write('<html>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('<head>');
+   top.fp_main_header.document.write('   <title>NFL Football Pool</title>');
+   top.fp_main_header.document.write('   <link href="fp.css" rel="stylesheet" type="text/css">');
+   top.fp_main_header.document.write('</head>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('<body style="margin: 0">');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('<table class="table" style="height: 55px">');
+   top.fp_main_header.document.write('   <tr>');
+   top.fp_main_header.document.write('      <td class="dark_gray_cell">RESULTS</td>');
+   top.fp_main_header.document.write('      <td class="dark_gray_cell"><a class="red_link" href="fp.html" target="_top">HOME</a></td>');
+   top.fp_main_header.document.write('   </tr>');
+   top.fp_main_header.document.write('</table>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('</body>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('</html>');
+   top.fp_main_header.document.close();
+
+   // Make both fp_main_header and fp_main frames visible.
+
+   top.fp_frameset.rows="60px,*,0,0";
 }
 
 </script>
 
 <tr>
+
 <td colspan=2 style="
-   background-color: #ACB9CA;
-   border-bottom: solid 1px black;
-   border-left: solid 1px black;
-   border-right: solid 1px black;
-   border-top: solid 1px black;
+   color: maroon;
    font-size: 16pt;
+   font-weight: bold;
    height: 100%;
    padding-bottom: 10px;
    padding-left: 10px;
    padding-right: 10px;
    padding-top: 10px;
-   vertical-align: top;
-   width: 20%;
-">
+   vertical-align: top">
 
 <center>
 
@@ -1642,7 +1615,7 @@ Regular Season Results
  mso-width-alt:2218;width:47pt'>
  <tr class=xl6528787 height=24 style='mso-height-source:userset;height:18.0pt'>
   <td colspan=3 height=24 class=xl9328787 width=165 style='border-right:1.5pt solid black;
-  height:18.0pt;width:125pt'>Week 7 Scores</td>
+  height:18.0pt;width:125pt'>Week 8 Scores</td>
   <td class=xl9028787 width=26 style='width:20pt'></td>
   <td colspan=4 class=xl9328787 width=227 style='border-right:1.5pt solid black;
   width:172pt'>Regular Season Average Scores</td>
@@ -1659,123 +1632,123 @@ Regular Season Results
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
   <td height=20 class=xl6628787 style='height:15.0pt;border-top:none'>1</td>
-  <td class=xl8428787 style='border-top:none;border-left:none'>DH</td>
-  <td class=xl8528787 style='border-top:none;border-left:none'>75</td>
+  <td class=xl8428787 style='border-top:none;border-left:none'>DC</td>
+  <td class=xl8528787 style='border-top:none;border-left:none'>111</td>
   <td class=xl9228787></td>
   <td class=xl6928787 style='border-top:none'>1</td>
   <td class=xl7728787 style='border-top:none;border-left:none'>CP</td>
-  <td class=xl7828787 style='border-top:none;border-left:none'>94.67</td>
-  <td class=xl7928787 style='border-top:none;border-left:none'>568</td>
+  <td class=xl7828787 style='border-top:none;border-left:none'>95.86</td>
+  <td class=xl7928787 style='border-top:none;border-left:none'>671</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
   <td height=20 class=xl6728787 style='height:15.0pt;border-top:none'>2</td>
-  <td class=xl8628787 style='border-top:none;border-left:none'>KK</td>
-  <td class=xl8728787 style='border-top:none;border-left:none'>63</td>
+  <td class=xl8628787 style='border-top:none;border-left:none'>RR</td>
+  <td class=xl8728787 style='border-top:none;border-left:none'>108</td>
   <td class=xl9228787></td>
   <td class=xl7028787 style='border-top:none'>2</td>
-  <td class=xl7228787 style='border-top:none;border-left:none'>BM</td>
-  <td class=xl8028787 style='border-top:none;border-left:none'>92.50</td>
-  <td class=xl8128787 style='border-top:none;border-left:none'>555</td>
+  <td class=xl7228787 style='border-top:none;border-left:none'>DC</td>
+  <td class=xl8028787 style='border-top:none;border-left:none'>94.29</td>
+  <td class=xl8128787 style='border-top:none;border-left:none'>660</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
   <td height=20 class=xl6728787 style='height:15.0pt;border-top:none'>3</td>
-  <td class=xl8628787 style='border-top:none;border-left:none'>BM</td>
-  <td class=xl8728787 style='border-top:none;border-left:none'>60</td>
+  <td class=xl8628787 style='border-top:none;border-left:none'>JL</td>
+  <td class=xl8728787 style='border-top:none;border-left:none'>105</td>
   <td class=xl9228787></td>
   <td class=xl7028787 style='border-top:none'>3</td>
-  <td class=xl7228787 style='border-top:none;border-left:none'>DC</td>
-  <td class=xl8028787 style='border-top:none;border-left:none'>91.50</td>
-  <td class=xl8128787 style='border-top:none;border-left:none'>549</td>
+  <td class=xl7228787 style='border-top:none;border-left:none'>BM</td>
+  <td class=xl8028787 style='border-top:none;border-left:none'>94.00</td>
+  <td class=xl8128787 style='border-top:none;border-left:none'>658</td>
+ </tr>
+ <tr height=20 style='mso-height-source:userset;height:15.0pt'>
+  <td height=20 class=xl6728787 style='height:15.0pt;border-top:none'>4</td>
+  <td class=xl8628787 style='border-top:none;border-left:none'>BM</td>
+  <td class=xl8728787 style='border-top:none;border-left:none'>103</td>
+  <td class=xl9228787></td>
+  <td class=xl7028787 style='border-top:none'>4</td>
+  <td class=xl7228787 style='border-top:none;border-left:none'>JL</td>
+  <td class=xl8028787 style='border-top:none;border-left:none'>93.43</td>
+  <td class=xl8128787 style='border-top:none;border-left:none'>654</td>
+ </tr>
+ <tr height=20 style='mso-height-source:userset;height:15.0pt'>
+  <td height=20 class=xl6728787 style='height:15.0pt;border-top:none'>4</td>
+  <td class=xl8628787 style='border-top:none;border-left:none'>CK</td>
+  <td class=xl8728787 style='border-top:none;border-left:none'>103</td>
+  <td class=xl9228787></td>
+  <td class=xl7028787 style='border-top:none'>5</td>
+  <td class=xl7228787 style='border-top:none;border-left:none'>RR</td>
+  <td class=xl8028787 style='border-top:none;border-left:none'>92.43</td>
+  <td class=xl8128787 style='border-top:none;border-left:none'>647</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
   <td height=20 class=xl6728787 style='height:15.0pt;border-top:none'>4</td>
   <td class=xl8628787 style='border-top:none;border-left:none'>CP</td>
-  <td class=xl8728787 style='border-top:none;border-left:none'>59</td>
-  <td class=xl9228787></td>
-  <td class=xl7028787 style='border-top:none'>3</td>
-  <td class=xl7228787 style='border-top:none;border-left:none'>JL</td>
-  <td class=xl8028787 style='border-top:none;border-left:none'>91.50</td>
-  <td class=xl8128787 style='border-top:none;border-left:none'>549</td>
- </tr>
- <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td height=20 class=xl6728787 style='height:15.0pt;border-top:none'>5</td>
-  <td class=xl8628787 style='border-top:none;border-left:none'>DC</td>
-  <td class=xl8728787 style='border-top:none;border-left:none'>54</td>
-  <td class=xl9228787></td>
-  <td class=xl7028787 style='border-top:none'>5</td>
-  <td class=xl7228787 style='border-top:none;border-left:none'>TB</td>
-  <td class=xl8028787 style='border-top:none;border-left:none'>91.33</td>
-  <td class=xl8128787 style='border-top:none;border-left:none'>548</td>
- </tr>
- <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td height=20 class=xl6728787 style='height:15.0pt;border-top:none'>5</td>
-  <td class=xl8628787 style='border-top:none;border-left:none'>RR</td>
-  <td class=xl8728787 style='border-top:none;border-left:none'>54</td>
+  <td class=xl8728787 style='border-top:none;border-left:none'>103</td>
   <td class=xl9228787></td>
   <td class=xl7028787 style='border-top:none'>6</td>
-  <td class=xl7228787 style='border-top:none;border-left:none'>RR</td>
-  <td class=xl8028787 style='border-top:none;border-left:none'>89.83</td>
-  <td class=xl8128787 style='border-top:none;border-left:none'>539</td>
+  <td class=xl7228787 style='border-top:none;border-left:none'>TB</td>
+  <td class=xl8028787 style='border-top:none;border-left:none'>89.86</td>
+  <td class=xl8128787 style='border-top:none;border-left:none'>629</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
   <td height=20 class=xl6728787 style='height:15.0pt;border-top:none'>7</td>
-  <td class=xl8628787 style='border-top:none;border-left:none'>KC</td>
-  <td class=xl8728787 style='border-top:none;border-left:none'>53</td>
+  <td class=xl8628787 style='border-top:none;border-left:none'>DH</td>
+  <td class=xl8728787 style='border-top:none;border-left:none'>98</td>
   <td class=xl9228787></td>
   <td class=xl7028787 style='border-top:none'>7</td>
   <td class=xl7228787 style='border-top:none;border-left:none'>DH</td>
-  <td class=xl8028787 style='border-top:none;border-left:none'>86.00</td>
-  <td class=xl8128787 style='border-top:none;border-left:none'>516</td>
+  <td class=xl8028787 style='border-top:none;border-left:none'>87.71</td>
+  <td class=xl8128787 style='border-top:none;border-left:none'>614</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td height=20 class=xl6728787 style='height:15.0pt;border-top:none'>8</td>
-  <td class=xl8628787 style='border-top:none;border-left:none'>JL</td>
-  <td class=xl8728787 style='border-top:none;border-left:none'>49</td>
+  <td height=20 class=xl6728787 style='height:15.0pt;border-top:none'>7</td>
+  <td class=xl8628787 style='border-top:none;border-left:none'>KK</td>
+  <td class=xl8728787 style='border-top:none;border-left:none'>98</td>
   <td class=xl9228787></td>
   <td class=xl7028787 style='border-top:none'>8</td>
-  <td class=xl7228787 style='border-top:none;border-left:none'>KC</td>
-  <td class=xl8028787 style='border-top:none;border-left:none'>83.67</td>
-  <td class=xl8128787 style='border-top:none;border-left:none'>502</td>
+  <td class=xl7228787 style='border-top:none;border-left:none'>KK</td>
+  <td class=xl8028787 style='border-top:none;border-left:none'>83.71</td>
+  <td class=xl8128787 style='border-top:none;border-left:none'>586</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
   <td height=20 class=xl6728787 style='height:15.0pt;border-top:none'>9</td>
   <td class=xl8628787 style='border-top:none;border-left:none'>JG</td>
-  <td class=xl8728787 style='border-top:none;border-left:none'>47</td>
+  <td class=xl8728787 style='border-top:none;border-left:none'>84</td>
   <td class=xl9228787></td>
   <td class=xl7028787 style='border-top:none'>9</td>
   <td class=xl7228787 style='border-top:none;border-left:none'>MB</td>
-  <td class=xl8028787 style='border-top:none;border-left:none'>82.67</td>
-  <td class=xl8128787 style='border-top:none;border-left:none'>496</td>
+  <td class=xl8028787 style='border-top:none;border-left:none'>81.71</td>
+  <td class=xl8128787 style='border-top:none;border-left:none'>572</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td height=20 class=xl6728787 style='height:15.0pt;border-top:none'>9</td>
+  <td height=20 class=xl6728787 style='height:15.0pt;border-top:none'>10</td>
   <td class=xl8628787 style='border-top:none;border-left:none'>TB</td>
-  <td class=xl8728787 style='border-top:none;border-left:none'>47</td>
+  <td class=xl8728787 style='border-top:none;border-left:none'>81</td>
   <td class=xl9228787></td>
   <td class=xl7028787 style='border-top:none'>10</td>
-  <td class=xl7228787 style='border-top:none;border-left:none'>KK</td>
-  <td class=xl8028787 style='border-top:none;border-left:none'>81.33</td>
-  <td class=xl8128787 style='border-top:none;border-left:none'>488</td>
+  <td class=xl7228787 style='border-top:none;border-left:none'>JG</td>
+  <td class=xl8028787 style='border-top:none;border-left:none'>79.71</td>
+  <td class=xl8128787 style='border-top:none;border-left:none'>558</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
   <td height=20 class=xl6728787 style='height:15.0pt;border-top:none'>11</td>
   <td class=xl8628787 style='border-top:none;border-left:none'>MB</td>
-  <td class=xl8728787 style='border-top:none;border-left:none'>43</td>
+  <td class=xl8728787 style='border-top:none;border-left:none'>76</td>
   <td class=xl9228787></td>
   <td class=xl7028787 style='border-top:none'>11</td>
-  <td class=xl7228787 style='border-top:none;border-left:none'>JG</td>
-  <td class=xl8028787 style='border-top:none;border-left:none'>79.00</td>
-  <td class=xl8128787 style='border-top:none;border-left:none'>474</td>
+  <td class=xl7228787 style='border-top:none;border-left:none'>CK</td>
+  <td class=xl8028787 style='border-top:none;border-left:none'>72.29</td>
+  <td class=xl8128787 style='border-top:none;border-left:none'>506</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
   <td height=20 class=xl6828787 style='height:15.0pt;border-top:none'>12</td>
-  <td class=xl8828787 style='border-top:none;border-left:none'>CK</td>
+  <td class=xl8828787 style='border-top:none;border-left:none'>KC</td>
   <td class=xl8928787 style='border-top:none;border-left:none'>0</td>
   <td class=xl9228787></td>
   <td class=xl7128787 style='border-top:none'>12</td>
-  <td class=xl7328787 style='border-top:none;border-left:none'>CK</td>
-  <td class=xl8228787 style='border-top:none;border-left:none'>67.17</td>
-  <td class=xl8328787 style='border-top:none;border-left:none'>403</td>
+  <td class=xl7328787 style='border-top:none;border-left:none'>KC</td>
+  <td class=xl8228787 style='border-top:none;border-left:none'>71.71</td>
+  <td class=xl8328787 style='border-top:none;border-left:none'>502</td>
  </tr>
  <![if supportMisalignedColumns]>
  <tr height=0 style='display:none'>
@@ -1827,49 +1800,49 @@ Regular Season Results
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
   <td height=20 class=xl6828790 style='height:15.0pt;border-top:none'>1</td>
-  <td class=xl8528790 style='border-top:none;border-left:none'>TB</td>
-  <td class=xl7428790 style='border-top:none;border-left:none'>$41</td>
+  <td class=xl8528790 style='border-top:none;border-left:none'>DC</td>
+  <td class=xl7428790 style='border-top:none;border-left:none'>$54</td>
   <td class=xl7328790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl7928790 style='border-top:none;border-left:none'>2</td>
   <td class=xl8028790 style='border-top:none'>$62</td>
   <td class=xl9028790 style='border-top:none;border-left:none'>&nbsp;</td>
   <td class=xl8028790 style='border-top:none'>&nbsp;</td>
-  <td class=xl9028790 style='border-top:none;border-left:none'>&nbsp;</td>
-  <td class=xl6928790 style='border-top:none'>&nbsp;</td>
+  <td class=xl9028790 style='border-top:none;border-left:none'>&#10003;</td>
+  <td class=xl6928790 style='border-top:none'>$16</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
   <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>2</td>
+  <td class=xl8628790 style='border-top:none;border-left:none'>TB</td>
+  <td class=xl7628790 style='border-top:none;border-left:none'>$38</td>
+  <td class=xl7528790 style='border-top:none;border-left:none'><font
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
+  <td class=xl8128790 style='border-top:none;border-left:none'>2</td>
+  <td class=xl8228790 style='border-top:none'>$62</td>
+  <td class=xl9128790 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl8228790 style='border-top:none'>&nbsp;</td>
+  <td class=xl9128790 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7028790 style='border-top:none'>&nbsp;</td>
+ </tr>
+ <tr height=20 style='mso-height-source:userset;height:15.0pt'>
+  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>3</td>
   <td class=xl8628790 style='border-top:none;border-left:none'>CP</td>
   <td class=xl7628790 style='border-top:none;border-left:none'>$31</td>
   <td class=xl7528790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl8128790 style='border-top:none;border-left:none'>1</td>
   <td class=xl8228790 style='border-top:none'>$31</td>
   <td class=xl9128790 style='border-top:none;border-left:none'>&#10003;</td>
-  <td class=xl8228790 style='border-top:none'>$21</td>
+  <td class=xl8228790 style='border-top:none'>$24</td>
   <td class=xl9128790 style='border-top:none;border-left:none'>&nbsp;</td>
   <td class=xl7028790 style='border-top:none'>&nbsp;</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>3</td>
-  <td class=xl8628790 style='border-top:none;border-left:none'>DC</td>
-  <td class=xl7628790 style='border-top:none;border-left:none'>$10</td>
-  <td class=xl7528790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
-  <td class=xl8128790 style='border-top:none;border-left:none'>1</td>
-  <td class=xl8228790 style='border-top:none'>$31</td>
-  <td class=xl9128790 style='border-top:none;border-left:none'>&nbsp;</td>
-  <td class=xl8228790 style='border-top:none'>&nbsp;</td>
-  <td class=xl9128790 style='border-top:none;border-left:none'>&nbsp;</td>
-  <td class=xl7028790 style='border-top:none'>&nbsp;</td>
- </tr>
- <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>3</td>
+  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>4</td>
   <td class=xl8628790 style='border-top:none;border-left:none'>DH</td>
-  <td class=xl7628790 style='border-top:none;border-left:none'>$10</td>
+  <td class=xl7628790 style='border-top:none;border-left:none'>$7</td>
   <td class=xl7528790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl8128790 style='border-top:none;border-left:none'>1</td>
   <td class=xl8228790 style='border-top:none'>$31</td>
   <td class=xl9128790 style='border-top:none;border-left:none'>&nbsp;</td>
@@ -1878,11 +1851,11 @@ Regular Season Results
   <td class=xl7028790 style='border-top:none'>&nbsp;</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>3</td>
+  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>4</td>
   <td class=xl8628790 style='border-top:none;border-left:none'>JG</td>
-  <td class=xl7628790 style='border-top:none;border-left:none'>$10</td>
+  <td class=xl7628790 style='border-top:none;border-left:none'>$7</td>
   <td class=xl7528790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl8128790 style='border-top:none;border-left:none'>1</td>
   <td class=xl8228790 style='border-top:none'>$31</td>
   <td class=xl9128790 style='border-top:none;border-left:none'>&nbsp;</td>
@@ -1891,11 +1864,11 @@ Regular Season Results
   <td class=xl7028790 style='border-top:none'>&nbsp;</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>3</td>
+  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>4</td>
   <td class=xl8628790 style='border-top:none;border-left:none'>KK</td>
-  <td class=xl7628790 style='border-top:none;border-left:none'>$10</td>
+  <td class=xl7628790 style='border-top:none;border-left:none'>$7</td>
   <td class=xl7528790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl8128790 style='border-top:none;border-left:none'>1</td>
   <td class=xl8228790 style='border-top:none'>$31</td>
   <td class=xl9128790 style='border-top:none;border-left:none'>&nbsp;</td>
@@ -1907,23 +1880,23 @@ Regular Season Results
   <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>7</td>
   <td class=xl8628790 style='border-top:none;border-left:none'>BM</td>
   <td class=xl7628790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$7</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl7528790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl8128790 style='border-top:none;border-left:none'>&nbsp;</td>
   <td class=xl8228790 style='border-top:none'>&nbsp;</td>
   <td class=xl9128790 style='border-top:none;border-left:none'>&nbsp;</td>
   <td class=xl8228790 style='border-top:none'>&nbsp;</td>
-  <td class=xl9128790 style='border-top:none;border-left:none'>&#10003;</td>
-  <td class=xl7028790 style='border-top:none'>$14</td>
+  <td class=xl9128790 style='border-top:none;border-left:none'>&nbsp;</td>
+  <td class=xl7028790 style='border-top:none'>&nbsp;</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>8</td>
+  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>7</td>
   <td class=xl8628790 style='border-top:none;border-left:none'>CK</td>
   <td class=xl7628790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl7528790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl8128790 style='border-top:none;border-left:none'>&nbsp;</td>
   <td class=xl8228790 style='border-top:none'>&nbsp;</td>
   <td class=xl9128790 style='border-top:none;border-left:none'>&nbsp;</td>
@@ -1932,12 +1905,12 @@ Regular Season Results
   <td class=xl7028790 style='border-top:none'>&nbsp;</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>8</td>
+  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>7</td>
   <td class=xl8628790 style='border-top:none;border-left:none'>JL</td>
   <td class=xl7628790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl7528790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl8128790 style='border-top:none;border-left:none'>&nbsp;</td>
   <td class=xl8228790 style='border-top:none'>&nbsp;</td>
   <td class=xl9128790 style='border-top:none;border-left:none'>&nbsp;</td>
@@ -1946,12 +1919,12 @@ Regular Season Results
   <td class=xl7028790 style='border-top:none'>&nbsp;</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>8</td>
+  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>7</td>
   <td class=xl8628790 style='border-top:none;border-left:none'>KC</td>
   <td class=xl7628790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl7528790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl8128790 style='border-top:none;border-left:none'>&nbsp;</td>
   <td class=xl8228790 style='border-top:none'>&nbsp;</td>
   <td class=xl9128790 style='border-top:none;border-left:none'>&nbsp;</td>
@@ -1960,12 +1933,12 @@ Regular Season Results
   <td class=xl7028790 style='border-top:none'>&nbsp;</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>8</td>
+  <td height=20 class=xl6628790 style='height:15.0pt;border-top:none'>7</td>
   <td class=xl8628790 style='border-top:none;border-left:none'>MB</td>
   <td class=xl7628790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl7528790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl8128790 style='border-top:none;border-left:none'>&nbsp;</td>
   <td class=xl8228790 style='border-top:none'>&nbsp;</td>
   <td class=xl9128790 style='border-top:none;border-left:none'>&nbsp;</td>
@@ -1974,12 +1947,12 @@ Regular Season Results
   <td class=xl7028790 style='border-top:none'>&nbsp;</td>
  </tr>
  <tr height=20 style='mso-height-source:userset;height:15.0pt'>
-  <td height=20 class=xl6728790 style='height:15.0pt;border-top:none'>8</td>
+  <td height=20 class=xl6728790 style='height:15.0pt;border-top:none'>7</td>
   <td class=xl8728790 style='border-top:none;border-left:none'>RR</td>
   <td class=xl7828790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl7728790 style='border-top:none;border-left:none'><font
-  color="#FF0000" style='mso-ignore:color'>-$21</font></td>
+  color="#FF0000" style='mso-ignore:color'>-$24</font></td>
   <td class=xl8328790 style='border-top:none;border-left:none'>&nbsp;</td>
   <td class=xl8428790 style='border-top:none'>&nbsp;</td>
   <td class=xl9228790 style='border-top:none;border-left:none'>&nbsp;</td>
@@ -2048,6 +2021,7 @@ END FINAL POST SEASON RESULTS-->
 </center>
 
 </td>
+
 </tr>
 
 </table>

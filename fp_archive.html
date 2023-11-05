@@ -5,9 +5,40 @@
    <link href="fp.css" rel="stylesheet" type="text/css">
 </head>
 
-<body onLoad="display_archive_page(); if (top.display_frame != undefined) {top.display_frame('fp_main',0);} return true;">
+<body onload="display_archive_page()">
 
 <script language="JavaScript">
+
+if (top.mobile == false)
+{
+   // Write to fp_main_header frame.
+
+   top.fp_main_header.document.open();
+   top.fp_main_header.document.write('<html>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('<head>');
+   top.fp_main_header.document.write('   <title>NFL Football Pool</title>');
+   top.fp_main_header.document.write('   <link href="fp.css" rel="stylesheet" type="text/css">');
+   top.fp_main_header.document.write('</head>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('<body style="margin: 0">');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('<table class="table" style="height: 55px">');
+   top.fp_main_header.document.write('   <tr>');
+   top.fp_main_header.document.write('      <td class="dark_gray_cell">ARCHIVE</td>');
+   top.fp_main_header.document.write('      <td class="dark_gray_cell"><a class="red_link" href="fp.html" target="_top">HOME</a></td>');
+   top.fp_main_header.document.write('   </tr>');
+   top.fp_main_header.document.write('</table>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('</body>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('</html>');
+   top.fp_main_header.document.close();
+
+   // Make both fp_main_header and fp_main frames visible.
+
+   top.fp_frameset.rows="60px,*,0,0";
+}
 
 function display_archive_page()
 {
@@ -30,8 +61,7 @@ function display_archive_page()
    d.writeln('   <link href="fp.css" rel="stylesheet" type="text/css">');;
    d.writeln('</head>');
    d.writeln('');
-   d.writeln('<body style="margin: 0"');
-   d.writeln('   onunload="if (top.reset_mobile_viewport_width != undefined) {top.reset_mobile_viewport_width();} return true;">');
+   d.writeln('<body style="margin: 0" onunload="reset_display()">');
    d.writeln('');
    d.writeln('');
    d.writeln('<script language="JavaScript">');
@@ -251,17 +281,8 @@ function display_archive_page()
    d.writeln('');
    d.writeln('<table class="table">');
    d.writeln('');
-   if (top.mobile != true)
-   {
-      // Write table row to document.
-
-      d.writeln('<tr>');
-      d.writeln('<td class="dark_gray_cell">ARCHIVE</td>');
-      d.writeln('<td class="dark_gray_cell" style="border-right: solid 1px black"><a class="red_link" href="fp.html" target="_top">HOME</a></td>');
-      d.writeln('</tr>');
-   }
    d.writeln('');
-   d.writeln('<tr><td class="light_gray_cell" style="font-size: 16pt; vertical-align: top; height:100%; border-right: solid 1px black; border-bottom: solid 1px black" colspan=2>');
+   d.writeln('<tr><td class="light_gray_cell" style="font-size: 16pt; vertical-align: top; height:100%" colspan=2>');
    d.writeln('');
    d.writeln('<form name=year_form>');
    d.writeln('');
@@ -306,7 +327,25 @@ function display_archive_page()
 
    d.close();
 
+   if ( (top.mobile == true) && (top.display_frame != undefined) )
+   {
+      top.display_frame('fp_main',0);
+   }
+
    return true;
+}
+
+function reset_display()
+{
+   if (top.reset_mobile_viewport_width != undefined)
+   {
+      top.reset_mobile_viewport_width();
+   }
+
+   if (top.mobile == false)
+   {
+      top.display_frame("fp_main",0);
+   }
 }
 
 </script>
