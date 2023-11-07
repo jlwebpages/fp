@@ -404,7 +404,7 @@ function build_regular_season_form()
    d.writeln('      // Format picks for display.');
    d.writeln('');
    d.writeln('      picks_message  = "\\n\\n<span style=\\"font-family: Calibri; font-size: 13pt\\">";');
-   d.writeln('      picks_message += "\\n<table style=\\"width: 350px; padding-left: 15px\\">";');
+   d.writeln('      picks_message += "\\n<table style=\\"width: 360px; padding-left: 15px\\">";');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px\\"><b>Create an e-mail message and send it to:</b></td></tr>"');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px; padding-left: 10px\\">fp@socal.rr.com</td></tr>"');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px\\"><b>Copy the following into the subject line:</b></td></tr>"');
