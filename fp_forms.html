@@ -5,7 +5,7 @@
    <link href="fp.css" rel="stylesheet" type="text/css">
 </head>
 
-<body onLoad="build_forms_page()">
+<body style="margin: 0" onLoad="build_forms_page()">
 
 <script language="JavaScript">
 
@@ -21,9 +21,9 @@ if (top.mobile == false)
    top.fp_main_header.document.write('   <link href="fp.css" rel="stylesheet" type="text/css">');
    top.fp_main_header.document.write('</head>');
    top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('<body style="margin: 0">');
+   top.fp_main_header.document.write('<body style="margin: 0; margin-left: -10px">');
    top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('<table class="table" style="height: 55px">');
+   top.fp_main_header.document.write('<table class="table" style="height: 10px; border-spacing: 15px 0px">');
    top.fp_main_header.document.write('   <tr>');
    top.fp_main_header.document.write('      <td class="dark_gray_cell">FORMS</td>');
    top.fp_main_header.document.write('      <td class="dark_gray_cell"><a class="red_link" href="fp.html" target="_top">HOME</a></td>');
@@ -452,9 +452,9 @@ function build_forms_page()
       {
          // Display post season information.
 
-         d.writeln('<table align=center CELLSPACING=3 CELLPADDING=3 style="font-size: 16pt">');
+         d.writeln('<table align=center cellspacing=10 style="font-size: 16pt">');
          d.writeln('');
-         d.writeln('<tr><td align=center colspan=2><b><font class="red_color"><u>Post Season</u></font></b></td></tr>');
+         d.writeln('<tr><td align=center colspan=2 style="padding-bottom: 10px"><b><font class="red_color"><u>Post Season</u></font></b></td></tr>');
          d.writeln('');
 
          if (top.games_over == true && top.season_over == false)
@@ -547,9 +547,9 @@ function build_forms_page()
 
    // Display regular season information.
 
-   d.writeln('<table align=center CELLSPACING=3 CELLPADDING=3 style="font-size: 16pt">');
+   d.writeln('<table align=center cellspacing=10 style="font-size: 16pt">');
    d.writeln('');
-   d.writeln('<tr><td align=center colspan=2><b><font class="red_color"><u>Regular Season</u></font></b></td></tr>');
+   d.writeln('<tr><td align=center colspan=2 style="padding-bottom: 10px"><b><font class="red_color"><u>Regular Season</u></font></b></td></tr>');
    d.writeln('');
 
    if (current_input_week <= number_of_rs_weeks)

@@ -44,11 +44,8 @@ A.white_link:hover {text-decoration: underline}
 .dark_blue_cell
 {
    background-color: #002060;
-   border-top: 5px solid #ACB9CA;
-   border-bottom: 5px solid #ACB9CA;
-   border-left: 5px solid #ACB9CA;
-   border-right: 5px solid #ACB9CA;
    border-radius: 25px;
+   box-shadow: 5px 5px 5px gray;
 }
 
 .dark_gray_cell
@@ -58,31 +55,25 @@ A.white_link:hover {text-decoration: underline}
    font-weight: bold;
    text-align: center;
    background-color: #8497B0;
-   border-top: 5px solid #ACB9CA;
-   border-bottom: 5px solid #ACB9CA;
-   border-left: 5px solid #ACB9CA;
-   border-right: 5px solid #ACB9CA;
    border-radius: 25px;
-   padding-top: 10px;
-   padding-bottom: 10px;
-   padding-left: 10px;
-   padding-right: 10px;
+   padding-top: 8px;
+   padding-bottom: 8px;
+   padding-left: 8px;
+   padding-right: 8px;
    width: 20%;
+   box-shadow: 5px 5px 10px gray;
 }
 
 .green_cell
 {
    font-size: 12pt;
    background-color: #283E1A;
-   border-top: 5px solid #ACB9CA;
-   border-bottom: 5px solid #ACB9CA;
-   border-left: 5px solid #ACB9CA;
-   border-right: 5px solid #ACB9CA;
    border-radius: 25px;
    padding-top: 10px;
    padding-bottom: 10px;
    vertical-align: top;
    height: 100%;
+   box-shadow: 5px 5px 5px gray;
 }
 
 .light_gray_cell
@@ -106,12 +97,9 @@ A.white_link:hover {text-decoration: underline}
 .red_cell {
    font-size: 12pt;
    background-color: maroon;
-   border-top: 5px solid #ACB9CA;
-   border-bottom: 5px solid #ACB9CA;
-   border-left: 5px solid #ACB9CA;
-   border-right: 5px solid #ACB9CA;
    border-radius: 25px;
    padding-top: 10px;
    padding-bottom: 10px;
    vertical-align: top;
+   box-shadow: 5px 5px 5px gray;
 }
