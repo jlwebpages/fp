@@ -9,37 +9,9 @@ function display_last_modified (last_modified_document, display_document)
 
    Last_Modified = new Date(last_modified_document.lastModified);
 
-   Day    = Last_Modified.getDay();
    Hour   = Last_Modified.getHours();
    Minute = Last_Modified.getMinutes();
    Month  = Last_Modified.getMonth();
-
-   switch (Day)
-   {
-      case 0:
-         Day = "Sunday";
-         break;
-      case 1:
-         Day = "Monday";
-         break;
-      case 2:
-         Day = "Tuesday";
-         break;
-      case 3:
-         Day = "Wednesday";
-         break;
-      case 4:
-         Day = "Thursday";
-         break;
-      case 5:
-         Day = "Friday";
-         break;
-      case 6:
-         Day = "Saturday";
-         break;
-      default:
-         break;
-   }
 
    if (Hour > 12)
    {
@@ -56,40 +28,40 @@ function display_last_modified (last_modified_document, display_document)
    switch (Month)
    {
       case 0:
-         Month = "January";
+         Month = "Jan";
          break;
       case 1:
-         Month = "February";
+         Month = "Feb";
          break;
       case 2:
-         Month = "March";
+         Month = "Mar";
          break;
       case 3:
-         Month = "April";
+         Month = "Apr";
          break;
       case 4:
          Month = "May";
          break;
       case 5:
-         Month = "June";
+         Month = "Jun";
          break;
       case 6:
-         Month = "July";
+         Month = "Jul";
          break;
       case 7:
-         Month = "August";
+         Month = "Aug";
          break;
       case 8:
-         Month = "September";
+         Month = "Sep";
          break;
       case 9:
-         Month = "October";
+         Month = "Oct";
          break;
       case 10:
-         Month = "November";
+         Month = "Nov";
          break;
       case 11:
-         Month = "December";
+         Month = "Dec";
          break;
       default:
          break;
