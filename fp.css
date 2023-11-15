@@ -55,10 +55,7 @@ A.white_link:hover {text-decoration: underline}
    text-align: center;
    background-color: #8497B0;
    border-radius: 25px;
-   padding-top: 8px;
-   padding-bottom: 8px;
-   padding-left: 8px;
-   padding-right: 8px;
+   padding: 8px;
    width: 20%;
    box-shadow: 5px 5px 10px gray;
 }
@@ -82,15 +79,9 @@ A.white_link:hover {text-decoration: underline}
    font-weight: bold;
    text-align: center;
    background-color: #B8C2D0;
-   border-top: 5px solid transparent;
-   border-bottom: 5px solid transparent;
-   border-left: 5px solid transparent;
-   border-right: 5px solid transparent;
+   border: 5px solid transparent;
    border-radius: 25px;
-   padding-top: 10px;
-   padding-bottom: 10px;
-   padding-left: 10px;
-   padding-right: 10px;
+   padding: 10px;
 }
 
 .red_cell {
