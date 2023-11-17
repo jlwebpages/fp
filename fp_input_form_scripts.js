@@ -23,33 +23,36 @@ function build_regular_season_form()
       return false;
    }
 
-   // Write to fp_main_header frame.
+   if (top.mobile == false)
+   {
+      // Write to fp_main_header frame.
 
-   top.fp_main_header.document.open();
-   top.fp_main_header.document.write('<html>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('<head>');
-   top.fp_main_header.document.write('   <title>NFL Football Pool</title>');
-   top.fp_main_header.document.write('   <link href="fp.css" rel="stylesheet" type="text/css">');
-   top.fp_main_header.document.write('</head>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('<body class="background_color" style="margin: 0; margin-left: -3px">');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('<table class="table" style="height: 40px; border-spacing: 10px 0px">');
-   top.fp_main_header.document.write('   <tr>');
-   top.fp_main_header.document.write('      <td class="red_cell">INPUT FORM</td>');
-   top.fp_main_header.document.write('      <td class="red_cell"><a class="white_link" href="fp.html" target="_top">HOME</a></td>');
-   top.fp_main_header.document.write('   </tr>');
-   top.fp_main_header.document.write('</table>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('</body>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('</html>');
-   top.fp_main_header.document.close();
+      top.fp_main_header.document.open();
+      top.fp_main_header.document.write('<html>');
+      top.fp_main_header.document.write('');
+      top.fp_main_header.document.write('<head>');
+      top.fp_main_header.document.write('   <title>NFL Football Pool</title>');
+      top.fp_main_header.document.write('   <link href="fp.css" rel="stylesheet" type="text/css">');
+      top.fp_main_header.document.write('</head>');
+      top.fp_main_header.document.write('');
+      top.fp_main_header.document.write('<body class="background_color" style="margin: 0; margin-left: -3px">');
+      top.fp_main_header.document.write('');
+      top.fp_main_header.document.write('<table class="table" style="height: 40px; border-spacing: 10px 0px">');
+      top.fp_main_header.document.write('   <tr>');
+      top.fp_main_header.document.write('      <td class="red_cell">INPUT FORM</td>');
+      top.fp_main_header.document.write('      <td class="red_cell"><a class="white_link" href="fp.html" target="_top">HOME</a></td>');
+      top.fp_main_header.document.write('   </tr>');
+      top.fp_main_header.document.write('</table>');
+      top.fp_main_header.document.write('');
+      top.fp_main_header.document.write('</body>');
+      top.fp_main_header.document.write('');
+      top.fp_main_header.document.write('</html>');
+      top.fp_main_header.document.close();
 
-   // Make both fp_main_header and fp_main frames visible.
+      // Make both fp_main_header and fp_main frames visible.
 
-   top.fp_frameset.rows="60px,*,0,0";
+      top.fp_frameset.rows="60px,*,0,0";
+   }
 
    // Build regular season input form.
 
@@ -2776,33 +2779,36 @@ function build_regular_season_form()
 
 function build_post_season_form()
 {
-   // Write to fp_main_header frame.
+   if (top.mobile == false)
+   {
+      // Writ   e to fp_main_header frame.
 
-   top.fp_main_header.document.open();
-   top.fp_main_header.document.write('<html>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('<head>');
-   top.fp_main_header.document.write('   <title>NFL Football Pool</title>');
-   top.fp_main_header.document.write('   <link href="fp.css" rel="stylesheet" type="text/css">');
-   top.fp_main_header.document.write('</head>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('<body class="background_color" style="margin: 0; margin-left: -3px">');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('<table class="table" style="height: 40px; border-spacing: 10px 0px">');
-   top.fp_main_header.document.write('   <tr>');
-   top.fp_main_header.document.write('      <td class="red_cell">INPUT FORM</td>');
-   top.fp_main_header.document.write('      <td class="red_cell"><a class="white_link" href="fp.html" target="_top">HOME</a></td>');
-   top.fp_main_header.document.write('   </tr>');
-   top.fp_main_header.document.write('</table>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('</body>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('</html>');
-   top.fp_main_header.document.close();
+      top.fp_main_header.document.open();
+      top.fp_main_header.document.write('<html>');
+      top.fp_main_header.document.write('');
+      top.fp_main_header.document.write('<head>');
+      top.fp_main_header.document.write('   <title>NFL Football Pool</title>');
+      top.fp_main_header.document.write('   <link href="fp.css" rel="stylesheet" type="text/css">');
+      top.fp_main_header.document.write('</head>');
+      top.fp_main_header.document.write('');
+      top.fp_main_header.document.write('<body class="background_color" style="margin: 0; margin-left: -3px">');
+      top.fp_main_header.document.write('');
+      top.fp_main_header.document.write('<table class="table" style="height: 40px; border-spacing: 10px 0px">');
+      top.fp_main_header.document.write('   <tr>');
+      top.fp_main_header.document.write('      <td class="red_cell">INPUT FORM</td>');
+      top.fp_main_header.document.write('      <td class="red_cell"><a class="white_link" href="fp.html" target="_top">HOME</a></td>');
+      top.fp_main_header.document.write('   </tr>');
+      top.fp_main_header.document.write('</table>');
+      top.fp_main_header.document.write('');
+      top.fp_main_header.document.write('</body>');
+      top.fp_main_header.document.write('');
+      top.fp_main_header.document.write('</html>');
+      top.fp_main_header.document.close();
 
-   // Make both fp_main_header and fp_main frames visible.
+      // Make both fp_main_header and fp_main frames visible.
 
-   top.fp_frameset.rows="60px,*,0,0";
+      top.fp_frameset.rows="60px,*,0,0";
+   }
 
    // Build post season input form.
 
