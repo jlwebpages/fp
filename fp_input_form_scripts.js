@@ -23,6 +23,36 @@ function build_regular_season_form()
       return false;
    }
 
+   // Write to fp_main_header frame.
+
+   top.fp_main_header.document.open();
+   top.fp_main_header.document.write('<html>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('<head>');
+   top.fp_main_header.document.write('   <title>NFL Football Pool</title>');
+   top.fp_main_header.document.write('   <link href="fp.css" rel="stylesheet" type="text/css">');
+   top.fp_main_header.document.write('</head>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('<body class="background_color" style="margin: 0; margin-left: -3px">');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('<table class="table" style="height: 40px; border-spacing: 10px 0px">');
+   top.fp_main_header.document.write('   <tr>');
+   top.fp_main_header.document.write('      <td class="red_cell">INPUT FORM</td>');
+   top.fp_main_header.document.write('      <td class="red_cell"><a class="white_link" href="fp.html" target="_top">HOME</a></td>');
+   top.fp_main_header.document.write('   </tr>');
+   top.fp_main_header.document.write('</table>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('</body>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('</html>');
+   top.fp_main_header.document.close();
+
+   // Make both fp_main_header and fp_main frames visible.
+
+   top.fp_frameset.rows="60px,*,0,0";
+
+   // Build regular season input form.
+
    var current_input_week     = top.current_input_week;
    var max_number_of_rs_games = 16;
    var number_of_rs_weeks     = top.all_home_teams.length;
@@ -155,7 +185,7 @@ function build_regular_season_form()
    d.writeln('</head>');
    d.writeln('');
 
-   d.writeln('<body class="light_gray_background"');
+   d.writeln('<body class="background_color"');
    d.writeln('      style="border: 0px solid black;  //JL - Should be 1px, but FireFox has a bug.');
    d.writeln('              color: black;');
    d.writeln('        font-family: Calibri;">');
@@ -478,7 +508,7 @@ function build_regular_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("</head>");');
    d.writeln('   wd.writeln("");');
-   d.writeln('   wd.writeln("<body class=\\"light_gray_background\\"");');
+   d.writeln('   wd.writeln("<body class=\\"background_color\\"");');
    d.writeln('   wd.writeln("      style=\\"border: 0px solid black;  //JL - Should be 1px, but FireFox has a bug.");');
    d.writeln('   wd.writeln("              color: black;");');
    d.writeln('   wd.writeln("          font-size: 13pt;");');
@@ -2551,7 +2581,7 @@ function build_regular_season_form()
    d.writeln('<table border=0 cellspacing=0 cellpadding=0>');
    d.writeln('<tr align=center style="vertical-align: middle">');
    d.writeln('<td id="input_form_week" nowrap class="no_border"><font style="font-size: 18pt">Input Form - Week&nbsp;</font>');
-   d.writeln('   <select class="light_gray_background" style="vertical-align: bottom; font-family: Calibri; font-size: 14pt; border: 1px solid gray" name="selected_week_menu" size=1 onChange="change_week(document); return true;">');
+   d.writeln('   <select class="background_color" style="vertical-align: bottom; font-family: Calibri; font-size: 14pt; border: 1px solid gray" name="selected_week_menu" size=1 onChange="change_week(document); return true;">');
    for (var i = current_input_week; i <= number_of_rs_weeks; i++)
    {
       if (i == week)
@@ -2746,6 +2776,36 @@ function build_regular_season_form()
 
 function build_post_season_form()
 {
+   // Write to fp_main_header frame.
+
+   top.fp_main_header.document.open();
+   top.fp_main_header.document.write('<html>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('<head>');
+   top.fp_main_header.document.write('   <title>NFL Football Pool</title>');
+   top.fp_main_header.document.write('   <link href="fp.css" rel="stylesheet" type="text/css">');
+   top.fp_main_header.document.write('</head>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('<body class="background_color" style="margin: 0; margin-left: -3px">');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('<table class="table" style="height: 40px; border-spacing: 10px 0px">');
+   top.fp_main_header.document.write('   <tr>');
+   top.fp_main_header.document.write('      <td class="red_cell">INPUT FORM</td>');
+   top.fp_main_header.document.write('      <td class="red_cell"><a class="white_link" href="fp.html" target="_top">HOME</a></td>');
+   top.fp_main_header.document.write('   </tr>');
+   top.fp_main_header.document.write('</table>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('</body>');
+   top.fp_main_header.document.write('');
+   top.fp_main_header.document.write('</html>');
+   top.fp_main_header.document.close();
+
+   // Make both fp_main_header and fp_main frames visible.
+
+   top.fp_frameset.rows="60px,*,0,0";
+
+   // Build post season input form.
+
    var number_of_rs_weeks          = top.all_home_teams.length;
    var home_teams                  = top.post_season_home_teams;
    var visiting_teams              = top.post_season_visiting_teams;
@@ -2872,7 +2932,7 @@ function build_post_season_form()
    d.writeln('</head>');
    d.writeln('');
 
-   d.writeln('<body class="light_gray_background"');
+   d.writeln('<body class="background_color"');
    d.writeln('      style="border: 0px solid black;  //JL - Should be 1px, but FireFox has a bug.');
    d.writeln('              color: black;');
    d.writeln('        font-family: Calibri;">');
@@ -3191,7 +3251,7 @@ function build_post_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("</head>");');
    d.writeln('   wd.writeln("");');
-   d.writeln('   wd.writeln("<body class=\\"light_gray_background\\"");');
+   d.writeln('   wd.writeln("<body class=\\"background_color\\"");');
    d.writeln('   wd.writeln("      style=\\"border: 0px solid black;  //JL - Should be 1px, but FireFox has a bug.");');
    d.writeln('   wd.writeln("              color: black;");');
    d.writeln('   wd.writeln("          font-size: 13pt;");');

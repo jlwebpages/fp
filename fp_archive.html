@@ -21,12 +21,12 @@ if (top.mobile == false)
    top.fp_main_header.document.write('   <link href="fp.css" rel="stylesheet" type="text/css">');
    top.fp_main_header.document.write('</head>');
    top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('<body class="light_gray_background" style="margin: 0; margin-left: -10px">');
+   top.fp_main_header.document.write('<body class="background_color" style="margin: 0; margin-left: -3px">');
    top.fp_main_header.document.write('');
    top.fp_main_header.document.write('<table class="table" style="height: 40px; border-spacing: 10px 0px">');
    top.fp_main_header.document.write('   <tr>');
-   top.fp_main_header.document.write('      <td class="dark_gray_cell">ARCHIVE</td>');
-   top.fp_main_header.document.write('      <td class="dark_gray_cell"><a class="red_link" href="fp.html" target="_top">HOME</a></td>');
+   top.fp_main_header.document.write('      <td class="red_cell">ARCHIVE</td>');
+   top.fp_main_header.document.write('      <td class="red_cell"><a class="white_link" href="fp.html" target="_top">HOME</a></td>');
    top.fp_main_header.document.write('   </tr>');
    top.fp_main_header.document.write('</table>');
    top.fp_main_header.document.write('');
@@ -282,13 +282,13 @@ function display_archive_page()
    d.writeln('<table class="table">');
    d.writeln('');
    d.writeln('');
-   d.writeln('<tr><td class="light_gray_cell" style="font-size: 16pt; vertical-align: top; height:100%; padding-top: 0px; border-top: 0px">');
+   d.writeln('<tr><td class="light_color_cell" style="font-size: 16pt; vertical-align: top; height:100%; padding-top: 0px; border-top: 0px">');
    d.writeln('');
    d.writeln('<form name=year_form>');
    d.writeln('');
    d.writeln('   <br><font style="font-size: 16pt;">Select Year:&nbsp&nbsp</font>');
    d.writeln('');
-   d.writeln('   <select class="light_gray_background" style="font-size: 12pt; font-family: Calibri; border: 1px solid black; height: 25px" size=1 name=year_menu onChange="change_year(document); return true;">');
+   d.writeln('   <select class="background_color" style="font-size: 12pt; font-family: Calibri; border: 1px solid black; height: 25px" size=1 name=year_menu onChange="change_year(document); return true;">');
 
    for (var i = max_archive_year; i >= min_archive_year; i--)
    {
