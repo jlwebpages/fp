@@ -1017,6 +1017,13 @@
          {
             saved_viewport_content = document.getElementById("viewport").content;
 
+            // JL - Increase viewport_width by 11% to account for Google Chrome bug on mobile devices
+
+            if ( (navigator.userAgent.indexOf("Chrome") != -1) && (navigator.userAgent.indexOf("Samsung") == -1) )
+            {
+               viewport_width = viewport_width * 1.11;
+            }
+
             viewport_scale   = window.screen.width/viewport_width;
             viewport_content = "width=" + viewport_width + "px, initial-scale=" + viewport_scale;
 
