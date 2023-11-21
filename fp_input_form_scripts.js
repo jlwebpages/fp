@@ -1714,6 +1714,8 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('               point_spread = game_odds.substring(game_odds.indexOf("-"));');
    d.writeln('');
+   d.writeln('               if (point_spread.indexOf("-0") != -1) point_spread = point_spread.replace("-0","-");');   
+   d.writeln('');
    d.writeln('               if (point_spread.indexOf(" ") != -1) point_spread = point_spread.substring(point_spread.indexOf("-"),point_spread.indexOf(" ")-point_spread.indexOf("-"));');
    d.writeln('');
    d.writeln('               // If point_spread is a whole number, change its format from floating point to whole number.');
@@ -4153,6 +4155,8 @@ function build_post_season_form()
    d.writeln('               // Get the point spread.');
    d.writeln('');
    d.writeln('               point_spread = game_odds.substring(game_odds.indexOf("-"));');
+   d.writeln('');
+   d.writeln('               if (point_spread.indexOf("-0") != -1) point_spread = point_spread.replace("-0","-");');   
    d.writeln('');
    d.writeln('               if (point_spread.indexOf(" ") != -1) point_spread = point_spread.substring(point_spread.indexOf("-"),point_spread.indexOf(" ")-point_spread.indexOf("-"));');
    d.writeln('');
