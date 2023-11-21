@@ -6,12 +6,186 @@
    <script language="JavaScript" src=display_last_modified.js></script>
 </head>
 
-<body class="background_color"
-      style="     border: 0px;
-                   color: black;
-             font-family: Calibri;
-                  margin: 0;
-             margin-left: -3px">
+<body onload="get_nfl_playoff_teams()"
+       class="background_color"
+       style="     border: 0px;
+                    color: black;
+              font-family: Calibri;
+                   margin: 0;
+              margin-left: -3px">
+
+
+<script language="JavaScript" type="text/javascript">
+
+function get_nfl_playoff_teams()
+{
+   var nfl_connection        = null;
+   var nfl_playoff_teams     = "";
+   var nfl_playoff_teams_url = "www.espn.com/nfl/standings/_/view/playoff";
+
+   // Display loading indicator while call to XMLHttpRequest is working.
+
+   top.fp_frameset.rows = "0,0,0,*";
+
+   // Get the NFL playoff teams from the internet.
+
+   nfl_connection = new XMLHttpRequest();
+
+   nfl_connection.open("GET","https://www.scrappintwins.com/cors/"+nfl_playoff_teams_url,true); // scrappintwins.com provided by Dan M.
+
+   nfl_connection.onload = function(e)
+   {
+      if (nfl_connection.readyState === 4) // Is XMLHttpRequest complete?
+      {
+         if (nfl_connection.status === 200) // Was the XMLHttpRequest successful?
+         {
+            nfl_playoff_teams = nfl_connection.responseText;
+
+            process_nfl_playoff_teams(nfl_playoff_teams);
+         }
+         else // XMLHttpRequest was unsuccessful.
+         {
+            //JL alert("\"get_nfl_playoff_teams\" failed.");
+         }
+
+         // Remove loading indicator.
+
+         top.fp_frameset.rows = "0,*,0,0";
+      }
+
+      return;
+   }
+
+   nfl_connection.onerror = function(e)
+   {
+      //JL alert("\"get_nfl_playoff_teams\" failed.");
+
+      // Remove loading indicator.
+
+      top.fp_frameset.rows = "0,*,0,0";
+
+      return;
+   };
+
+   nfl_connection.send(null);
+
+   return;
+}
+
+function process_nfl_playoff_teams(nfl_playoff_teams)
+{
+   var AFC_teams   = null;
+   var index_end   = -1;
+   var index_start = -1;
+   var NFC_teams   = null;
+
+
+   // Parse the nfl_playoff_teams string.
+
+   index_start = nfl_playoff_teams.indexOf("\"groups\":[");
+   index_end   = nfl_playoff_teams.indexOf(",\"notes\":[]}]}");
+
+   if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )
+   {
+      //JL alert("Error getting NFL playoff teams from nfl_playoff_teams string.");
+
+      return false;
+   }
+
+   nfl_playoff_teams = nfl_playoff_teams.substring(index_start,index_end);
+   nfl_playoff_teams = "{" + nfl_playoff_teams + "}]}";
+
+   // Convert the nfl_playoff_teams string to a JavaScript object.
+
+   try
+   {
+      nfl_playoff_teams = JSON.parse(nfl_playoff_teams);
+   }
+   catch(e)
+   {
+      //JL alert("Error converting nfl_playoff_teams string to a JavaScript object.");
+
+      return false;
+   }
+
+   if (nfl_playoff_teams.groups == undefined)
+   {
+      //JL alert("nfl_playoff_teams object (groups) is undefined.");
+
+      return false;
+   }
+   else
+   {
+      AFC_teams = nfl_playoff_teams.groups[0];
+      NFC_teams = nfl_playoff_teams.groups[1];
+   }
+
+   // Populate the src attribute of the webpage HTML img tags based on the top seven seeds from nfl_playoff_teams.
+
+   for (var i = 0; i < 7; i++)
+   {
+      if ( (AFC_teams.standings == undefined) || (NFC_teams.standings == null) )
+      {
+         //JL alert("nfl_playoff_teams object (standings) is undefined.");
+
+         return false;
+      }
+
+      if ( (AFC_teams.standings[i].team == undefined) || (NFC_teams.standings[i].team == undefined) )
+      {
+         //JL alert("nfl_playoff_teams object (team) is undefined.");
+
+         return false;
+      }
+
+      if ( (AFC_teams.standings[i].team.shortDisplayName == undefined) || (NFC_teams.standings[i].team.shortDisplayName == undefined) )
+      {
+         //JL alert("nfl_playoff_teams object (shortDisplayName) is undefined.");
+
+         return false;
+      }
+
+      if ( (validate_team_name(AFC_teams.standings[i].team.shortDisplayName) == false) || (validate_team_name(NFC_teams.standings[i].team.shortDisplayName) == false) )
+      {
+         //JL alert("Error validating team name");
+
+         return false;
+      }
+
+      // Update HTML img tags with paths to AFC and NFC team logos.
+
+      document.getElementById("AFC_"+(i+1)).src="Team Logos/"+AFC_teams.standings[i].team.shortDisplayName+".gif";
+      document.getElementById("NFC_"+(i+1)).src="Team Logos/"+NFC_teams.standings[i].team.shortDisplayName+".gif";
+   }
+
+   // Make AFC Playoff Teams and NFC Playoff Teams visible.
+
+   document.getElementById("AFC_Playoff_Teams").style.visibility="visible";
+   document.getElementById("NFC_Playoff_Teams").style.visibility="visible";
+
+   return true;
+}
+
+function validate_team_name(team_name)
+{
+   var team_names = ["49ers","Bears","Bengals","Bills","Broncos","Browns","Buccaneers","Cardinals",
+                     "Chargers","Chiefs","Colts","Commanders","Cowboys","Dolphins","Eagles","Falcons",
+                     "Giants","Jaguars","Jets","Lions","Packers","Panthers","Patriots","Raiders",
+                     "Rams","Ravens","Saints","Seahawks","Steelers","Texans","Titans","Vikings"];
+
+
+   for (var i = 0; i < team_names.length; i++)
+   {
+      if (team_name == team_names[i]) return true;
+   }
+
+   return false;
+}
+
+</script>
+
+
+<style> img {height: 65px; width: 65px}</style>
 
 
 <table class="table" style="border-bottom: 10px solid transparent; border-spacing: 10px 0px">
@@ -39,15 +213,65 @@
 </tr>
 
 <tr>
-   <td class="light_color_cell" style="padding: 0px; padding-bottom: 30px; border: 0px solid transparent; height: 40%" colspan="5">
-      <a href="fp_rules.html" onMouseOver="document.rules.src='referee_2.gif';" onMouseOut="document.rules.src='referee_1.gif';"><img src="referee_1.gif" name=rules height=125></a>
+   <td id="AFC_Playoff_Teams" style="visibility: hidden" colspan="2" rowspan="2">
+      <center>  
+         <table class="table" style="border-spacing: 10px">
+            <tr class="red_color" style="font-size: 16pt; font-weight: bold; text-align: center">
+               <td colspan="4">AFC Playoff Teams</td>
+            </tr>
+         </table>
+         <table class="table" style="border-spacing: 10px; width: 75%">
+            <tr style="text-align: center">
+               <td><img id="AFC_1"></td>
+               <td><img id="AFC_2"></td>
+               <td><img id="AFC_3"></td>
+               <td><img id="AFC_4"></td>
+            </tr>
+         </table>
+         <table class="table" style="border-spacing: 10px; width: 75%">
+            <tr style="text-align: center">
+               <td style="text-align: right"> <img id="AFC_5"></td>
+               <td style="text-align: center"><img id="AFC_6"></td>
+               <td style="text-align: left">  <img id="AFC_7"></td>
+            </tr>
+         </table>
+      </center>    
+   </td>
+   <td class="light_color_cell" style="padding: 0px; padding-bottom: 30px; border: 0px solid transparent; height: 40%" colspan="1">
+      <a href="fp_rules.html" onMouseOver="document.rules.src='referee_2.gif';" onMouseOut="document.rules.src='referee_1.gif';">
+         <img src="referee_1.gif" name=rules style="height: 125px; width: 45px">
+      </a>
       <br><br>
       <a class="white_link" style="display: inline; color: maroon" href="fp_rules.html" target="fp_main">RULES</a>
+   </td>
+   <td id="NFC_Playoff_Teams" style="visibility: hidden" colspan="2" rowspan="2">
+      <center>  
+         <table class="table" style="border-spacing: 10px">
+            <tr class="dark_blue_color" style="font-size: 16pt; font-weight: bold; text-align: center">
+               <td colspan="4">NFC Playoff Teams</td>
+            </tr>
+         </table>
+         <table class="table" style="border-spacing: 10px; width: 75%">
+            <tr style="text-align: center">
+               <td><img id="NFC_1"></td>
+               <td><img id="NFC_2"></td>
+               <td><img id="NFC_3"></td>
+               <td><img id="NFC_4"></td>
+            </tr>
+         </table>
+         <table class="table" style="border-spacing: 10px; width: 75%">
+            <tr style="text-align: center">
+               <td style="text-align: right"> <img id="NFC_5"></td>
+               <td style="text-align: center"><img id="NFC_6"></td>
+               <td style="text-align: left">  <img id="NFC_7"></td>
+            </tr>
+         </table>
+      </center>    
    </td>
 </tr>
 
 <tr>
-   <td class="light_color_cell" style="padding: 0px; border: 0px solid transparent; height: 15%" colspan="5">
+   <td class="light_color_cell" style="padding: 0px; border: 0px solid transparent; height: 15%" colspan="1">
       <span class="dark_blue_color" style="font-size: 13pt">Last Updated:&nbsp&nbsp<script language="JavaScript">display_last_modified(top.document,document);</script></span>
    </td>
 </tr>

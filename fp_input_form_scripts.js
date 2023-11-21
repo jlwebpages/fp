@@ -1592,7 +1592,7 @@ function build_regular_season_form()
    d.writeln('   var point_spread         = 0;');
    d.writeln('   var team_abbreviations   = ["SF",   "CHI",  "CIN",    "BUF",  "DEN",    "CLE",   "TB",        "ARI",      "LAC",     "KC",    "IND",  "WSH",       "DAL",    "MIA",     "PHI",   "ATL",    "NYG",   "JAX",    "NYJ", "DET",  "GB",     "CAR",     "NE",      "LV",     "LAR", "BAL",   "NO",    "SEA",     "PIT",     "HOU",   "TEN",   "MIN"    ];');
    d.writeln('   var team_names           = ["49ers","Bears","Bengals","Bills","Broncos","Browns","Buccaneers","Cardinals","Chargers","Chiefs","Colts","Commanders","Cowboys","Dolphins","Eagles","Falcons","Giants","Jaguars","Jets","Lions","Packers","Panthers","Patriots","Raiders","Rams","Ravens","Saints","Seahawks","Steelers","Texans","Titans","Vikings"];');
-   d.writeln('   var team_records_index   = -1;')
+   d.writeln('   var team_records_index   = -1;');
    d.writeln('   var total_points         = 0;');
    d.writeln('   var visiting_team        = "";');
    d.writeln('   var visiting_team_record = "";');
@@ -1610,7 +1610,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )');
    d.writeln('   {');
-   d.writeln('      if (suppress_alerts == false) alert("Error getting NFL Odds from nfl_odds string (ESPN Scoreboard).")');
+   d.writeln('      if (suppress_alerts == false) alert("Error getting NFL Odds from nfl_odds string (ESPN Scoreboard).");');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -1626,7 +1626,7 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('   catch(e)');
    d.writeln('   {');
-   d.writeln('      if (suppress_alerts == false) alert("Error converting nfl_odds string to a JavaScript object (ESPN Scoreboard).")');
+   d.writeln('      if (suppress_alerts == false) alert("Error converting nfl_odds string to a JavaScript object (ESPN Scoreboard).");');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -1703,9 +1703,9 @@ function build_regular_season_form()
    d.writeln('            team_records_array[team_records_index][tra_team_index] = visiting_team;');
    d.writeln('            team_records_array[team_records_index][tra_record_index] = "(" + visiting_team_record + ")";');
    d.writeln('            if (team_records_array[team_records_index][tra_record_index] == "()") team_records_array[team_records_index][tra_team_index] = "";');
-   d.writeln('')
+   d.writeln('');
    d.writeln('            // If game odds exist, get the point spread, favored team, and total points.')
-   d.writeln('')
+   d.writeln('');
    d.writeln('            if (game.odds.details != undefined)');
    d.writeln('            {');
    d.writeln('               game_odds = game.odds.details;');
@@ -1865,7 +1865,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )');
    d.writeln('   {');
-   d.writeln('      if (suppress_alerts == false) alert("Error getting NFL Odds from nfl_odds string (SportsLine).")');
+   d.writeln('      if (suppress_alerts == false) alert("Error getting NFL Odds from nfl_odds string (SportsLine).");');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -4032,7 +4032,7 @@ function build_post_season_form()
    d.writeln('   var point_spread         = 0;');
    d.writeln('   var team_abbreviations   = ["SF",   "CHI",  "CIN",    "BUF",  "DEN",    "CLE",   "TB",        "ARI",      "LAC",     "KC",    "IND",  "WSH",       "DAL",    "MIA",     "PHI",   "ATL",    "NYG",   "JAX",    "NYJ", "DET",  "GB",     "CAR",     "NE",      "LV",     "LAR", "BAL",   "NO",    "SEA",     "PIT",     "HOU",   "TEN",   "MIN"    ];');
    d.writeln('   var team_names           = ["49ers","Bears","Bengals","Bills","Broncos","Browns","Buccaneers","Cardinals","Chargers","Chiefs","Colts","Commanders","Cowboys","Dolphins","Eagles","Falcons","Giants","Jaguars","Jets","Lions","Packers","Panthers","Patriots","Raiders","Rams","Ravens","Saints","Seahawks","Steelers","Texans","Titans","Vikings"];');
-   d.writeln('   var team_records_index   = -1;')
+   d.writeln('   var team_records_index   = -1;');
    d.writeln('   var total_points         = 0;');
    d.writeln('   var visiting_team        = "";');
    d.writeln('   var visiting_team_record = "";');
@@ -4050,7 +4050,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )');
    d.writeln('   {');
-   d.writeln('      if (suppress_alerts == false) alert("Error getting NFL Odds from nfl_odds string (ESPN Scoreboard).")');
+   d.writeln('      if (suppress_alerts == false) alert("Error getting NFL Odds from nfl_odds string (ESPN Scoreboard).");');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -4066,7 +4066,7 @@ function build_post_season_form()
    d.writeln('   }');
    d.writeln('   catch(e)');
    d.writeln('   {');
-   d.writeln('      if (suppress_alerts == false) alert("Error converting nfl_odds string to a JavaScript object (ESPN Scoreboard).")');
+   d.writeln('      if (suppress_alerts == false) alert("Error converting nfl_odds string to a JavaScript object (ESPN Scoreboard).");');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -4143,9 +4143,9 @@ function build_post_season_form()
    d.writeln('            team_records_array[team_records_index][tra_team_index] = visiting_team;');
    d.writeln('            team_records_array[team_records_index][tra_record_index] = "(" + visiting_team_record + ")";');
    d.writeln('            if (team_records_array[team_records_index][tra_record_index] == "()") team_records_array[team_records_index][tra_team_index] = "";');
-   d.writeln('')
+   d.writeln('');
    d.writeln('            // If game odds exist, get the point spread, favored team, and total points.')
-   d.writeln('')
+   d.writeln('');
    d.writeln('            if (game.odds.details != undefined)');
    d.writeln('            {');
    d.writeln('               game_odds = game.odds.details;');
@@ -4271,7 +4271,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )');
    d.writeln('   {');
-   d.writeln('      if (suppress_alerts == false) alert("Error getting NFL Odds from nfl_odds string (SportsLine).")');
+   d.writeln('      if (suppress_alerts == false) alert("Error getting NFL Odds from nfl_odds string (SportsLine).");');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
