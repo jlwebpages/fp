@@ -865,8 +865,8 @@
 
                frame_width = fp_main.document.getElementById("input_form_table").offsetWidth;
 
-               // If the "Picks From Odds" button exists and is visible and if this isn't an iPad, adjust the font size of all buttons
-               // and checkbox labels so that the total width of the buttons row is equal to the width of the "Input Form" table.
+               // If the "Picks From Odds" button exists and is visible and if this isn't an iPad, adjust the font size of all buttons and
+               // checkbox labels so that the total width of the buttons row plus margin is equal to the width of the "Input Form" table.
 
                if ( (fp_main.document.getElementById("picks_from_odds_button") != null) &&
                     (fp_main.document.getElementById("picks_from_odds_button").style.display == "") &&
@@ -877,6 +877,7 @@
                   var display_team_records_checkbox_label = fp_main.document.getElementById("display_team_records_checkbox_label");
                   var home_team_picks_button              = fp_main.document.getElementById("home_team_picks");
                   var input_form_buttons                  = fp_main.document.getElementById("input_form_buttons");
+                  var margin                              = 5;
                   var picks_from_odds_button              = fp_main.document.getElementById("picks_from_odds");
                   var random_picks_button                 = fp_main.document.getElementById("random_picks");
                   var reset_button                        = fp_main.document.getElementById("reset_button");
@@ -899,11 +900,11 @@
 
                      if (input_form_buttons != null)
                      {
-                        if (input_form_buttons.offsetWidth > frame_width)
+                        if (input_form_buttons.offsetWidth+margin > frame_width)
                         {
-                           // Decrease the font size of the "Input Form" buttons until the total width of the buttons row is equal to the width of the "Input Form" table.
+                           // Decrease the font size of the "Input Form" buttons until the total width of the buttons row plus margin is equal to the width of the "Input Form" table.
 
-                           while ( (button_font_size > 0) && (input_form_buttons.offsetWidth > frame_width) )
+                           while ( (button_font_size > 0) && (input_form_buttons.offsetWidth+margin > frame_width) )
                            {
                               // Decrease button_font_size by 0.1pt.
 
@@ -918,11 +919,11 @@
                               if (reset_button != null)                        reset_button.style.fontSize                        = button_font_size + "pt";
                            }
                         }
-                        else if (frame_width > input_form_buttons.offsetWidth)
+                        else if (frame_width > input_form_buttons.offsetWidth+margin)
                         {
                            // Increase the font size of the "Input Form" buttons until they are at least 11pt.
 
-                           while ( (button_font_size < 20) && (frame_width > input_form_buttons.offsetWidth) )
+                           while ( (button_font_size < 20) && (frame_width > input_form_buttons.offsetWidth+margin) )
                            {
                               // Increase button_font_size by 0.1pt.
 
@@ -937,10 +938,10 @@
                               if (reset_button != null)                        reset_button.style.fontSize                        = button_font_size + "pt";
                            }
 
-                           // If the previous while loop caused the total width of the buttons row to be slightly greater than
-                           // the width of the "Input Form" table, then decrease the font size of the "Input Form" buttons by .1pt.
+                           // If the previous while loop caused the total width of the buttons row plus margin to be slightly greater
+                           // than the width of the "Input Form" table, then decrease the font size of the "Input Form" buttons by .1pt.
 
-                           if (input_form_buttons.offsetWidth > frame_width)
+                           if (input_form_buttons.offsetWidth+margin > frame_width)
                            {
                               // Decrease button_font_size by 0.1pt.
 
