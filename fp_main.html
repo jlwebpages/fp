@@ -138,6 +138,13 @@ function process_nfl_playoff_teams(nfl_playoff_teams)
          return false;
       }
 
+      if ( (AFC_teams.standings[i].stats == undefined) || (NFC_teams.standings[i].stats == undefined) )
+      {
+         //JL alert("nfl_playoff_teams object (stats) is undefined.");
+
+         return false;
+      }
+
       if ( (AFC_teams.standings[i].team.shortDisplayName == undefined) || (NFC_teams.standings[i].team.shortDisplayName == undefined) )
       {
          //JL alert("nfl_playoff_teams object (shortDisplayName) is undefined.");
@@ -152,10 +159,17 @@ function process_nfl_playoff_teams(nfl_playoff_teams)
          return false;
       }
 
-      // Update HTML img tags with paths to AFC and NFC team logos.
+      // Update HTML table cells with team logos and team records.
 
-      document.getElementById("AFC_"+(i+1)).src="Team Logos/"+AFC_teams.standings[i].team.shortDisplayName+".gif";
-      document.getElementById("NFC_"+(i+1)).src="Team Logos/"+NFC_teams.standings[i].team.shortDisplayName+".gif";
+      document.getElementById("AFC_"+(i+1)).innerHTML="<img src=\"Team Logos/"+
+                                                      AFC_teams.standings[i].team.shortDisplayName+
+                                                      ".gif\"><br><span style=\"text-align: center\">"+
+                                                      AFC_teams.standings[i].stats[36];
+
+      document.getElementById("NFC_"+(i+1)).innerHTML="<img src=\"Team Logos/"+
+                                                      NFC_teams.standings[i].team.shortDisplayName+
+                                                      ".gif\"><br><span style=\"text-align: center\">"+
+                                                      NFC_teams.standings[i].stats[36];
    }
 
    // Make AFC Playoff Teams and NFC Playoff Teams visible.
@@ -185,12 +199,12 @@ function validate_team_name(team_name)
 </script>
 
 
-<style> img {height: 65px; width: 65px}</style>
+<style>img {height: 65px; width: 65px}</style>
 
 
 <table class="table" style="border-bottom: 10px solid transparent; border-spacing: 10px 0px">
 
-<tr style=" height: 40px">
+<tr style="height: 40px">
    <td class="red_cell">
       <a class="white_link" href="fp_rules.html" target="fp_main">RULES</a>
    </td>
@@ -220,18 +234,18 @@ function validate_team_name(team_name)
          </tr>
       </table>
       <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 75%; margin-left: auto; margin-right: auto">
-         <tr>
-            <td><img id="AFC_1"></td>
-            <td><img id="AFC_2"></td>
-            <td><img id="AFC_3"></td>
-            <td><img id="AFC_4"></td>
+         <tr class="red_color" style="font-size: 10pt; font-weight: bold">
+            <td id="AFC_1"></td>
+            <td id="AFC_2"></td>
+            <td id="AFC_3"></td>
+            <td id="AFC_4"></td>
          </tr>
       </table>
-      <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 75%; margin-left: auto; margin-right: auto">
-         <tr>
-            <td style="text-align: right"> <img id="AFC_5"></td>
-            <td style="text-align: center"><img id="AFC_6"></td>
-            <td style="text-align: left">  <img id="AFC_7"></td>
+      <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 55%; margin-left: auto; margin-right: auto">
+         <tr class="red_color" style="font-size: 10pt; font-weight: bold">
+            <td id="AFC_5"></td>
+            <td id="AFC_6"></td>
+            <td id="AFC_7"></td>
          </tr>
       </table>
    </td>
@@ -249,18 +263,18 @@ function validate_team_name(team_name)
          </tr>
       </table>
       <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 75%; margin-left: auto; margin-right: auto">
-         <tr>
-            <td><img id="NFC_1"></td>
-            <td><img id="NFC_2"></td>
-            <td><img id="NFC_3"></td>
-            <td><img id="NFC_4"></td>
+         <tr class="dark_blue_color" style="font-size: 10pt; font-weight: bold">
+            <td id="NFC_1"></td>
+            <td id="NFC_2"></td>
+            <td id="NFC_3"></td>
+            <td id="NFC_4"></td>
          </tr>
       </table>
-      <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 75%; margin-left: auto; margin-right: auto">
-         <tr>
-            <td style="text-align: right"> <img id="NFC_5"></td>
-            <td style="text-align: center"><img id="NFC_6"></td>
-            <td style="text-align: left">  <img id="NFC_7"></td>
+      <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 55%; margin-left: auto; margin-right: auto">
+         <tr class="dark_blue_color" style="font-size: 10pt; font-weight: bold">
+            <td id="NFC_5"></td>
+            <td id="NFC_6"></td>
+            <td id="NFC_7"></td>
          </tr>
       </table>
    </td>
@@ -278,7 +292,7 @@ function validate_team_name(team_name)
    </td>
 </tr>
 
-<tr style=" height: 40px">
+<tr style="height: 40px">
    <td class="green_cell">
       <a class="white_link" href="http://www.nfl.com" target="_top">NFL.COM</a>
    </td>
