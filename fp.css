@@ -14,6 +14,19 @@ A.white_link:hover {text-decoration: underline}
 .red_color         {color: maroon             }
 .upset_pick_color  {color: #AA0000            }
 
+.default_button
+{
+   font-size: 11pt;
+   font-family: Calibri;
+   border: 1px solid black;
+   color: black;
+}
+
+.square_border
+{
+   border-radius: 0px;
+}
+
 .table
 {
    color: white;
