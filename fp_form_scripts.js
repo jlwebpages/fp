@@ -2206,18 +2206,18 @@ function build_post_season_form()
    {
       d.writeln('<tr align=center>');
       d.writeln('<td nowrap valign=middle class="no_border">');
-      d.writeln('<input type=button class="default_button" name="get_scores_button" value="Get NFL Scores"');
+      d.writeln('<input type="button" class="default_button" name="get_scores_button" value="Get NFL Scores"');
       d.writeln('    onClick=get_nfl_scores(document,false,"");>');
       d.writeln('&nbsp;');
       d.writeln('<font face="Calibri" color=black style="font-size: 12pt">Auto Refresh:</font>&nbsp;');
       if (window.top.gv.get_scores_state == "off")
       {
-         d.writeln('<input type=button class="default_button" name="get_scores_start_button" value="Start"');
+         d.writeln('<input type="button" class="default_button" name="get_scores_start_button" value="Start"');
          d.writeln('    onClick=get_scores_auto_refresh(document,"start");get_nfl_scores(document,false,"Start");>');
       }
       else
       {
-         d.writeln('<input type=button class="default_button" name="get_scores_stop_button" value="Stop"');
+         d.writeln('<input type="button" class="default_button" name="get_scores_stop_button" value="Stop"');
          d.writeln('    onClick=get_scores_auto_refresh(document,"stop");document.location.href="fp_post_season_form.html";>');
       }
       d.writeln('</td>');
@@ -2228,10 +2228,10 @@ function build_post_season_form()
    d.writeln('<td nowrap class="no_border">');
    if (mode == "prelim")
    {
-      d.writeln('<input type=button class="default_button" name="calculate_scores_button" value="Calculate Player Scores"');
+      d.writeln('<input type="button" class="default_button" name="calculate_scores_button" value="Calculate Player Scores"');
       d.writeln('    onClick="calculate_post_season_scores(document);return true;">');
       d.writeln('&nbsp;');
-      d.writeln('<input type=button class="default_button" name="clear_scores_button" value="Clear Scores"');
+      d.writeln('<input type="button" class="default_button" name="clear_scores_button" value="Clear Scores"');
       d.writeln('    onClick="clear_scores(document);return true;">');
       d.writeln('&nbsp;');
    }
@@ -2268,15 +2268,15 @@ function build_post_season_form()
    d.writeln('&nbsp;');
    if (form_view == "expanded")
    {
-      d.writeln('<input type=button class="default_button" name="view_button" value="Hide Picks"');
+      d.writeln('<input type="button" class="default_button" name="view_button" value="Hide Picks"');
    }
    else
    {
-      d.writeln('<input type=button class="default_button" name="view_button" value="Show Picks"');
+      d.writeln('<input type="button" class="default_button" name="view_button" value="Show Picks"');
    }
    d.writeln('    onClick="change_view(document);return true;">');
    d.writeln('&nbsp;');
-   d.writeln('<input type=button class="default_button" name="close_button" value="Close"');
+   d.writeln('<input type="button" class="default_button" name="close_button" value="Close"');
    d.writeln('    onClick="javascript:window.top.close();">');
    d.writeln('</td>');
    d.writeln('</tr>');
@@ -4345,18 +4345,18 @@ function build_regular_season_form()
    {
       d.writeln('<tr align=center>');
       d.writeln('<td nowrap valign=middle class="no_border">');
-      d.writeln('<input type=button class="default_button" name="get_scores_button" value="Get NFL Scores"');
+      d.writeln('<input type="button" class="default_button" name="get_scores_button" value="Get NFL Scores"');
       d.writeln('    onClick=get_nfl_scores(document,false,"");>');
       d.writeln('&nbsp;');
       d.writeln('<font style="font-size: 12pt">Auto Refresh:</font>&nbsp;');
       if (window.top.gv.get_scores_state == "off")
       {
-         d.writeln('<input type=button class="default_button" name="get_scores_start_button" value="Start"');
+         d.writeln('<input type="button" class="default_button" name="get_scores_start_button" value="Start"');
          d.writeln('    onClick=get_scores_auto_refresh(document,"start");get_nfl_scores(document,false,"Start");>');
       }
       else
       {
-         d.writeln('<input type=button class="default_button" name="get_scores_stop_button" value="Stop"');
+         d.writeln('<input type="button" class="default_button" name="get_scores_stop_button" value="Stop"');
          d.writeln('    onClick=get_scores_auto_refresh(document,"stop");document.location.href="fp_regular_season_form.html";>');
       }
       d.writeln('</td>');
@@ -4367,34 +4367,34 @@ function build_regular_season_form()
    d.writeln('<td nowrap valign=middle class="no_border">');
    if (mode == "prelim")
    {
-      d.writeln('<input type=button class="default_button" name="calculate_scores_button" value="Calculate Player Scores"');
+      d.writeln('<input type="button" class="default_button" name="calculate_scores_button" value="Calculate Player Scores"');
       d.writeln('    onClick="calculate_prelim_scores(document);return true;">');
       d.writeln('&nbsp;');
-      d.writeln('<input type=button class="default_button" name="clear_winners_button" value="Clear Winners"');
+      d.writeln('<input type="button" class="default_button" name="clear_winners_button" value="Clear Winners"');
       d.writeln('    onClick="clear_winners(document);return true;">');
       d.writeln('&nbsp;');
    }
    if (order_by == "players")
    {
-      d.writeln('<input type=button class="default_button" name="order_by_button" value="Order By Score"');
+      d.writeln('<input type="button" class="default_button" name="order_by_button" value="Order By Score"');
    }
    else
    {
-      d.writeln('<input type=button class="default_button" name="order_by_button" value="Order By Player"');
+      d.writeln('<input type="button" class="default_button" name="order_by_button" value="Order By Player"');
    }
    d.writeln('    onClick="change_order(document);return true;">');
    d.writeln('&nbsp;');
    if (form_view == "expanded")
    {
-      d.writeln('<input type=button class="default_button" name="view_button" value="Hide Picks"');
+      d.writeln('<input type="button" class="default_button" name="view_button" value="Hide Picks"');
    }
    else
    {
-      d.writeln('<input type=button class="default_button" name="view_button" value="Show Picks"');
+      d.writeln('<input type="button" class="default_button" name="view_button" value="Show Picks"');
    }
    d.writeln('    onClick="change_view(document);return true;">');
    d.writeln('&nbsp;');
-   d.writeln('<input type=button class="default_button" name="close_button" value="Close"');
+   d.writeln('<input type="button" class="default_button" name="close_button" value="Close"');
    d.writeln('    onClick="javascript:window.top.close();">');
    d.writeln('</td>');
    d.writeln('</tr>');
@@ -4404,7 +4404,7 @@ function build_regular_season_form()
       d.writeln('<tr><td class="no_border" style="font-size: 2pt">&nbsp;</td></tr>');
       d.writeln('<tr align=center>');
       d.writeln('<td nowrap valign=middle class="no_border">');
-      d.writeln('<input type=button class="default_button" name="best_outcome" value="Best Outcome:"');
+      d.writeln('<input type="button" class="default_button" name="best_outcome" value="Best Outcome:"');
       d.writeln('     onClick="respond_to_best_outcome_button(document);return true;" title="'+best_outcome_tooltip+'">');
       d.writeln('&nbsp;');
       d.writeln('<font style="font-size: 12pt">Player:</font>&nbsp;');
@@ -5740,25 +5740,25 @@ function build_season_summary()
    d.writeln('<td nowrap class="no_border">');
    if (order_by == "players")
    {
-      d.writeln('<input type=button class="default_button" name="order_by_button" value="Order By Score"');
+      d.writeln('<input type="button" class="default_button" name="order_by_button" value="Order By Score"');
    }
    else
    {
-      d.writeln('<input type=button class="default_button" name="order_by_button" value="Order By Player"');
+      d.writeln('<input type="button" class="default_button" name="order_by_button" value="Order By Player"');
    }
    d.writeln('    onClick="change_order(document);return true;">');
    d.writeln('&nbsp;');
    if (form_view == "expanded")
    {
-      d.writeln('<input type=button class="default_button" name="view_button" value="Hide Rank and Games Won"');
+      d.writeln('<input type="button" class="default_button" name="view_button" value="Hide Rank and Games Won"');
    }
    else
    {
-      d.writeln('<input type=button class="default_button" name="view_button" value="Show Rank and Games Won"');
+      d.writeln('<input type="button" class="default_button" name="view_button" value="Show Rank and Games Won"');
    }
    d.writeln('    onClick="change_view(document);return true;">');
    d.writeln('&nbsp;');
-   d.writeln('<input type=button class="default_button" name="close_button" value="Close"');
+   d.writeln('<input type="button" class="default_button" name="close_button" value="Close"');
    d.writeln('    onClick="javascript:window.top.close();">');
    d.writeln('</td>');
    d.writeln('</tr>');
