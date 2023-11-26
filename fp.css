@@ -21,12 +21,12 @@ A.white_link:hover {text-decoration: underline}
    font-family: Calibri;
    background-color: #F0F0F0;
    border: 1px solid black;
-   border-radius: 0px;
+   border-radius: 4px;
 }
 
 .square_border
 {
-   border-radius: 0px;
+   border-radius: 4px;
 }
 
 .table
