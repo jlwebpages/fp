@@ -2708,10 +2708,10 @@ function build_regular_season_form()
    d.writeln('<tr id="input_form_buttons">');
    d.writeln('<td style="text-align: center; padding-top: 10px" nowrap class="no_border">');
    d.writeln('<span style="display: none" id="picks_from_odds_button">');
-   d.writeln('<input id="picks_from_odds" type="button" class="default_button" style="margin-right: 12px" name="picks_from_odds" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
+   d.writeln('<input id="picks_from_odds" type="button" class="default_button" style="margin-right: 12px" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
    d.writeln('</span>');
-   d.writeln('<input id="home_team_picks" type="button" class="default_button" style="margin-right: 12px" name="home_team_picks" value="Home Team Picks" onClick="generate_home_team_picks(document); return true;" title="'+home_team_picks_tooltip+'">');
-   d.writeln('<input id="random_picks" type="button" class="default_button" name="random_picks" value="Random Picks" onClick="generate_random_picks(document); return true;" title="'+random_picks_tooltip+'">');
+   d.writeln('<input id="home_team_picks" type="button" class="default_button" style="margin-right: 12px" value="Home Team Picks" onClick="generate_home_team_picks(document); return true;" title="'+home_team_picks_tooltip+'">');
+   d.writeln('<input id="random_picks" type="button" class="default_button" value="Random Picks" onClick="generate_random_picks(document); return true;" title="'+random_picks_tooltip+'">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -2730,8 +2730,8 @@ function build_regular_season_form()
 
    d.writeln('<tr>');
    d.writeln('<td id="accept_reset_buttons" style="text-align: center; padding-top: 2px" nowrap class="no_border">');
-   d.writeln('<input id="submit" type="button" style="font-size: 11pt; font-family: Calibri; border: 1px solid black; color: black; margin-right: 12px" name="submit" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
-   d.writeln('<input id="reset_button" type="button" style="font-size: 11pt; font-family: Calibri; border: 1px solid black; color: black" name="reset_button" value="Reset" onClick="reset_input_form(document); return true;" title="'+reset_tooltip+'">');
+   d.writeln('<input id="submit" type="button" class="default_button" style="margin-right: 12px" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
+   d.writeln('<input id="reset_button" type="button" class="default_button" value="Reset" onClick="reset_input_form(document); return true;" title="'+reset_tooltip+'">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -4760,10 +4760,10 @@ function build_post_season_form()
    d.writeln('<tr id="input_form_buttons">');
    d.writeln('<td style="text-align: center; padding-top: 10px" nowrap class="no_border">');
    d.writeln('<span style="display: none" id="picks_from_odds_button">');
-   d.writeln('<input id="picks_from_odds" type="button" class="default_button" style="margin-right: 12px" name="picks_from_odds" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
+   d.writeln('<input id="picks_from_odds" type="button" class="default_button" style="margin-right: 12px" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
    d.writeln('</span>');
-   d.writeln('<input id="home_team_picks" type="button" class="default_button" style="margin-right: 12px" name="home_team_picks" value="Home Team Picks" onClick="generate_home_team_picks(document); return true;" title="'+home_team_picks_tooltip+'">');
-   d.writeln('<input id="random_picks" type="button" class="default_button" name="random_picks" value="Random Picks" onClick="generate_random_picks(document); return true;" title="'+random_picks_tooltip+'">');
+   d.writeln('<input id="home_team_picks" type="button" class="default_button" style="margin-right: 12px" value="Home Team Picks" onClick="generate_home_team_picks(document); return true;" title="'+home_team_picks_tooltip+'">');
+   d.writeln('<input id="random_picks" type="button" class="default_button" value="Random Picks" onClick="generate_random_picks(document); return true;" title="'+random_picks_tooltip+'">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -4782,8 +4782,8 @@ function build_post_season_form()
 
    d.writeln('<tr>');
    d.writeln('<td id="accept_reset_buttons" style="text-align: center; padding-top: 2px" nowrap class="no_border">');
-   d.writeln('<input id="submit" type="button" style="font-size: 11pt; font-family: Calibri; border: 1px solid black; color: black; margin-right: 12px" name="submit" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
-   d.writeln('<input id="reset_button" type="button" style="font-size: 11pt; font-family: Calibri; border: 1px solid black; color: black" name="reset_button" value="Reset" onClick="reset_input_form(document); return true;" title="'+reset_tooltip+'">');
+   d.writeln('<input id="submit" type="button" class="default_button" style="margin-right: 12px" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
+   d.writeln('<input id="reset_button" type="button" class="default_button" value="Reset" onClick="reset_input_form(document); return true;" title="'+reset_tooltip+'">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
