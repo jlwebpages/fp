@@ -614,20 +614,20 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (button_2 == "Fix 2")');
    d.writeln('   {');
-   d.writeln('      wd.writeln("<input type=\\"button\\" class=\\"default_button\\" value=\\""+button_3+"\\" onClick=respond_to_button(\\"fix_1\\");>");');
+   d.writeln('      wd.writeln("<input type=\\"button\\" class=\\"default_button border_radius\\" value=\\""+button_3+"\\" onClick=respond_to_button(\\"fix_1\\");>");');
    d.writeln('      wd.writeln("&nbsp&nbsp");');
-   d.writeln('      wd.writeln("<input type=\\"button\\" class=\\"default_button\\" value=\\""+button_2+"\\" onClick=respond_to_button(\\"fix_2\\");>");');
+   d.writeln('      wd.writeln("<input type=\\"button\\" class=\\"default_button border_radius\\" value=\\""+button_2+"\\" onClick=respond_to_button(\\"fix_2\\");>");');
    d.writeln('      wd.writeln("&nbsp&nbsp");');
    d.writeln('   }');
    d.writeln('   else if (button_2 == "Submit via E-Mail")');
    d.writeln('   {');
-   d.writeln('      wd.writeln("<input type=\\"button\\" class=\\"default_button\\" value=\\""+button_2+"\\" onClick=respond_to_button(\\"submit\\"); title=\\"'+submit_via_e_mail_tooltip+'\\">");');
+   d.writeln('      wd.writeln("<input type=\\"button\\" class=\\"default_button border_radius\\" value=\\""+button_2+"\\" onClick=respond_to_button(\\"submit\\"); title=\\"'+submit_via_e_mail_tooltip+'\\">");');
    d.writeln('      wd.writeln("&nbsp&nbsp");');
-   d.writeln('      wd.writeln("<input type=\\"button\\" class=\\"default_button\\" value=\\""+button_3+"\\" onClick=respond_to_button(\\"copy\\");>");');
+   d.writeln('      wd.writeln("<input type=\\"button\\" class=\\"default_button border_radius\\" value=\\""+button_3+"\\" onClick=respond_to_button(\\"copy\\");>");');
    d.writeln('      wd.writeln("&nbsp&nbsp");');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   wd.writeln("<input type=\\"button\\" class=\\"default_button\\" value=\\""+button_1+"\\" onClick=respond_to_button(\\"go_back\\");>");');
+   d.writeln('   wd.writeln("<input type=\\"button\\" class=\\"default_button border_radius\\" value=\\""+button_1+"\\" onClick=respond_to_button(\\"go_back\\");>");');
    d.writeln('   wd.writeln("</td>");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("</tr>");');
@@ -2586,7 +2586,7 @@ function build_regular_season_form()
    d.writeln('<table border=0 cellspacing=0 cellpadding=0>');
    d.writeln('<tr align=center style="vertical-align: middle">');
    d.writeln('<td id="input_form_week" nowrap class="no_border"><font style="font-size: 18pt">Input Form - Week&nbsp;</font>');
-   d.writeln('   <select class="background_color black_color square_border" style="vertical-align: bottom; font-family: Calibri; font-size: 14pt; border: 1px solid gray" name="selected_week_menu" size=1 onChange="change_week(document); return true;">');
+   d.writeln('   <select class="background_color black_color border_radius" style="vertical-align: bottom; font-family: Calibri; font-size: 14pt; border: 1px solid gray" name="selected_week_menu" size=1 onChange="change_week(document); return true;">');
    for (var i = current_input_week; i <= number_of_rs_weeks; i++)
    {
       if (i == week)
@@ -2615,7 +2615,7 @@ function build_regular_season_form()
    d.writeln('<tr bgcolor=#C4D79B>');
    d.writeln('<td align=right class="bb2_border" colspan=2><font style="font-size: 13pt"><b>Name:</b></font></td>');
    d.writeln('<td align=left class="bb2_border" colspan=4>');
-   d.writeln('<select class="black_color square_border" style="font-size: 12pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
+   d.writeln('<select class="black_color border_radius" style="font-size: 12pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
    for (var i = 0; i <= top.rs_players.length; i++)
    {
       switch (i)
@@ -2652,7 +2652,7 @@ function build_regular_season_form()
          d.writeln('<td nowrap class="gr1_border"><font style="font-size: 12pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
          d.writeln('<td nowrap class="gr1_border"><font style="font-size: 12pt">at</font></td>');
          d.writeln('<td nowrap class="br2_border"><font style="font-size: 12pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
-         d.writeln('<td nowrap class="gr1_border"><select class="black_color square_border" style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
+         d.writeln('<td nowrap class="gr1_border"><select class="black_color border_radius" style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
       }
       else
       {
@@ -2660,7 +2660,7 @@ function build_regular_season_form()
          d.writeln('<td nowrap><font style="font-size: 12pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
          d.writeln('<td nowrap><font style="font-size: 12pt">at</font></td>');
          d.writeln('<td nowrap class="br2_gb1_border"><font style="font-size: 12pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
-         d.writeln('<td nowrap><select class="black_color square_border" style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
+         d.writeln('<td nowrap><select class="black_color border_radius" style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
       }
       d.writeln('       <option selected value="">');
       d.writeln('       <option          value="H">H');
@@ -2668,11 +2668,11 @@ function build_regular_season_form()
       d.writeln('    </select></td>');
       if (i == number_of_rs_games)
       {
-         d.writeln('<td nowrap class="no_border"><select class="black_color square_border" style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="weight'+i+'" size=1>');
+         d.writeln('<td nowrap class="no_border"><select class="black_color border_radius" style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="weight'+i+'" size=1>');
       }
       else
       {
-         d.writeln('<td nowrap class="gb1_border"><select class="black_color square_border" style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="weight'+i+'" size=1>');
+         d.writeln('<td nowrap class="gb1_border"><select class="black_color border_radius" style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="weight'+i+'" size=1>');
       }
       d.writeln('       <option selected value="">');
       for (var j = 1; j <= number_of_rs_games; j++)
@@ -2689,7 +2689,7 @@ function build_regular_season_form()
    d.writeln('<tr align=center>');
    d.writeln('<td class="bt2_border" align=right colspan="5"><font style="font-size: 12pt">Game '+number_of_rs_games+' Total Points:</font></td>');
    d.writeln('<td class="bt2_border" colspan="1">');
-   d.writeln('<input type=text size="2" style="text-align:center; font-size: 11pt; font-family: Calibri; border: 1px solid gray; border-radius: 4px" maxlength="2" name="mn_points">');
+   d.writeln('<input type=text size="2" class="border_radius" style="text-align:center; font-size: 11pt; font-family: Calibri; border: 1px solid gray" maxlength="2" name="mn_points">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -2708,10 +2708,10 @@ function build_regular_season_form()
    d.writeln('<tr id="input_form_buttons">');
    d.writeln('<td style="text-align: center; padding-top: 10px" nowrap class="no_border">');
    d.writeln('<span style="display: none" id="picks_from_odds_button">');
-   d.writeln('<input id="picks_from_odds" type="button" class="default_button" style="margin-right: 12px" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
+   d.writeln('<input id="picks_from_odds" type="button" class="default_button border_radius" style="margin-right: 12px" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
    d.writeln('</span>');
-   d.writeln('<input id="home_team_picks" type="button" class="default_button" style="margin-right: 12px" value="Home Team Picks" onClick="generate_home_team_picks(document); return true;" title="'+home_team_picks_tooltip+'">');
-   d.writeln('<input id="random_picks" type="button" class="default_button" value="Random Picks" onClick="generate_random_picks(document); return true;" title="'+random_picks_tooltip+'">');
+   d.writeln('<input id="home_team_picks" type="button" class="default_button border_radius" style="margin-right: 12px" value="Home Team Picks" onClick="generate_home_team_picks(document); return true;" title="'+home_team_picks_tooltip+'">');
+   d.writeln('<input id="random_picks" type="button" class="default_button border_radius" value="Random Picks" onClick="generate_random_picks(document); return true;" title="'+random_picks_tooltip+'">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -2730,8 +2730,8 @@ function build_regular_season_form()
 
    d.writeln('<tr>');
    d.writeln('<td id="accept_reset_buttons" style="text-align: center; padding-top: 2px" nowrap class="no_border">');
-   d.writeln('<input id="submit" type="button" class="default_button" style="margin-right: 12px" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
-   d.writeln('<input id="reset_button" type="button" class="default_button" value="Reset" onClick="reset_input_form(document); return true;" title="'+reset_tooltip+'">');
+   d.writeln('<input id="submit" type="button" class="default_button border_radius" style="margin-right: 12px" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
+   d.writeln('<input id="reset_button" type="button" class="default_button border_radius" value="Reset" onClick="reset_input_form(document); return true;" title="'+reset_tooltip+'">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -3339,12 +3339,12 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if (message_mode == "confirm_picks")');
    d.writeln('   {');
-   d.writeln('      wd.writeln("<input type=\\"button\\" class=\\"default_button\\" value=\\""+button_2+"\\" onClick=respond_to_button(\\"submit\\"); title=\\"'+submit_via_e_mail_tooltip+'\\">");');
+   d.writeln('      wd.writeln("<input type=\\"button\\" class=\\"default_button border_radius\\" value=\\""+button_2+"\\" onClick=respond_to_button(\\"submit\\"); title=\\"'+submit_via_e_mail_tooltip+'\\">");');
    d.writeln('      wd.writeln("&nbsp&nbsp");');
-   d.writeln('      wd.writeln("<input type=\\"button\\" class=\\"default_button\\" value=\\""+button_3+"\\" onClick=respond_to_button(\\"copy\\");>");');
+   d.writeln('      wd.writeln("<input type=\\"button\\" class=\\"default_button border_radius\\" value=\\""+button_3+"\\" onClick=respond_to_button(\\"copy\\");>");');
    d.writeln('      wd.writeln("&nbsp&nbsp");');
    d.writeln('   }');
-   d.writeln('   wd.writeln("<input type=\\"button\\" class=\\"default_button\\" value=\\""+button_1+"\\" onClick=respond_to_button(\\"go_back\\");>");');
+   d.writeln('   wd.writeln("<input type=\\"button\\" class=\\"default_button border_radius\\" value=\\""+button_1+"\\" onClick=respond_to_button(\\"go_back\\");>");');
    d.writeln('   wd.writeln("</td>");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("</tr>");');
@@ -4677,7 +4677,7 @@ function build_post_season_form()
    d.writeln('<tr bgcolor=#C4D79B>');
    d.writeln('<td align=right class="bb2_border" colspan=2><b><font style="font-size: 14pt">Name:</font></b></td>');
    d.writeln('<td align=left class="bb2_border" colspan=5>');
-   d.writeln('<select class="black_color square_border" style="font-size: 13pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
+   d.writeln('<select class="black_color border_radius" style="font-size: 13pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
    for (var i = 0; i <= top.ps_players.length; i++)
    {
       switch (i)
@@ -4713,7 +4713,7 @@ function build_post_season_form()
          d.writeln('<td nowrap class="gr1_bb2_border"><font style="font-size: 13pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
          d.writeln('<td nowrap class="gr1_bb2_border"><font style="font-size: 13pt">at</font></td>');
          d.writeln('<td nowrap class="br2_bb2_border"><font style="font-size: 13pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
-         d.writeln('<td nowrap class="gr1_bb2_border"><select class="black_color square_border" style="font-size: 12pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
+         d.writeln('<td nowrap class="gr1_bb2_border"><select class="black_color border_radius" style="font-size: 12pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
       }
       else
       {
@@ -4721,7 +4721,7 @@ function build_post_season_form()
          d.writeln('<td nowrap><font style="font-size: 13pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
          d.writeln('<td nowrap><font style="font-size: 13pt">at</font></td>');
          d.writeln('<td nowrap class="br2_gb1_border"><font style="font-size: 13pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
-         d.writeln('<td nowrap><select class="black_color square_border" style="font-size: 12pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
+         d.writeln('<td nowrap><select class="black_color border_radius" style="font-size: 12pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
       }
       d.writeln('       <option selected value="">');
       d.writeln('       <option          value="H">H');
@@ -4737,7 +4737,7 @@ function build_post_season_form()
          d.writeln('<td><font style="font-size: 13pt">by</font></td>');
          d.writeln('<td><font style="font-size: 13pt">');
       }
-      d.writeln('    <input type=text style="text-align: center; font-size: 12pt; font-family: Calibri; border: 1px solid lightgray; border-radius: 4px" name="spread'+i+'" size="2" maxlength="2">');
+      d.writeln('    <input type=text class="border_radius" style="text-align: center; font-size: 12pt; font-family: Calibri; border: 1px solid lightgray" name="spread'+i+'" size="2" maxlength="2">');
       d.writeln('</font></td>');
       d.writeln('</tr>');
       d.writeln('');
@@ -4746,7 +4746,7 @@ function build_post_season_form()
    d.writeln('<tr align=center>');
    d.writeln('<td class="no_border" colspan=6 align=right><font style="font-size: 13pt">Game '+number_of_ps_games+' Total Points:</font></td>');
    d.writeln('<td class="no_border"  colspan=1><font style="font-size: 13pt">');
-   d.writeln('    <input type=text style="text-align: center; font-size: 12pt; font-family: Calibri; border: 1px solid gray; border-radius: 4px" name="points" size="2" maxlength="2">');
+   d.writeln('    <input type=text class="border_radius" style="text-align: center; font-size: 12pt; font-family: Calibri; border: 1px solid gray" name="points" size="2" maxlength="2">');
    d.writeln('</font></td>'); 
    d.writeln('</tr>');
    d.writeln('');    
@@ -4760,10 +4760,10 @@ function build_post_season_form()
    d.writeln('<tr id="input_form_buttons">');
    d.writeln('<td style="text-align: center; padding-top: 10px" nowrap class="no_border">');
    d.writeln('<span style="display: none" id="picks_from_odds_button">');
-   d.writeln('<input id="picks_from_odds" type="button" class="default_button" style="margin-right: 12px" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
+   d.writeln('<input id="picks_from_odds" type="button" class="default_button border_radius" style="margin-right: 12px" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
    d.writeln('</span>');
-   d.writeln('<input id="home_team_picks" type="button" class="default_button" style="margin-right: 12px" value="Home Team Picks" onClick="generate_home_team_picks(document); return true;" title="'+home_team_picks_tooltip+'">');
-   d.writeln('<input id="random_picks" type="button" class="default_button" value="Random Picks" onClick="generate_random_picks(document); return true;" title="'+random_picks_tooltip+'">');
+   d.writeln('<input id="home_team_picks" type="button" class="default_button border_radius" style="margin-right: 12px" value="Home Team Picks" onClick="generate_home_team_picks(document); return true;" title="'+home_team_picks_tooltip+'">');
+   d.writeln('<input id="random_picks" type="button" class="default_button border_radius" value="Random Picks" onClick="generate_random_picks(document); return true;" title="'+random_picks_tooltip+'">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -4782,8 +4782,8 @@ function build_post_season_form()
 
    d.writeln('<tr>');
    d.writeln('<td id="accept_reset_buttons" style="text-align: center; padding-top: 2px" nowrap class="no_border">');
-   d.writeln('<input id="submit" type="button" class="default_button" style="margin-right: 12px" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
-   d.writeln('<input id="reset_button" type="button" class="default_button" value="Reset" onClick="reset_input_form(document); return true;" title="'+reset_tooltip+'">');
+   d.writeln('<input id="submit" type="button" class="default_button border_radius" style="margin-right: 12px" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
+   d.writeln('<input id="reset_button" type="button" class="default_button border_radius" value="Reset" onClick="reset_input_form(document); return true;" title="'+reset_tooltip+'">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');

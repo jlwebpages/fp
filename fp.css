@@ -14,6 +14,11 @@ A.white_link:hover {text-decoration: underline}
 .red_color         {color: maroon             }
 .upset_pick_color  {color: #AA0000            }
 
+.border_radius
+{
+   border-radius: 4px;
+}
+
 .default_button
 {
    color: black;
@@ -21,12 +26,6 @@ A.white_link:hover {text-decoration: underline}
    font-family: Calibri;
    background-color: #F0F0F0;
    border: 1px solid black;
-   border-radius: 4px;
-}
-
-.square_border
-{
-   border-radius: 4px;
 }
 
 .table
