@@ -74,10 +74,11 @@ function get_nfl_playoff_teams()
 
 function process_nfl_playoff_teams(nfl_playoff_teams)
 {
-   var AFC_teams   = null;
-   var index_end   = -1;
-   var index_start = -1;
-   var NFC_teams   = null;
+   var AFC_teams         = null;
+   var index_end         = -1;
+   var index_start       = -1;
+   var NFC_teams         = null;
+   var team_record_index = null;  
 
 
    // Parse the nfl_playoff_teams string.
@@ -159,17 +160,30 @@ function process_nfl_playoff_teams(nfl_playoff_teams)
          return false;
       }
 
+      // Identify which stats array element has the team record.
+
+      if ( (AFC_teams.standings[i].stats[36] != undefined) && (AFC_teams.standings[i].stats[36].indexOf("-") != -1) && (AFC_teams.standings[i].stats[36].length <= 6) ) team_record_index = 36;
+      if ( (AFC_teams.standings[i].stats[47] != undefined) && (AFC_teams.standings[i].stats[47].indexOf("-") != -1) && (AFC_teams.standings[i].stats[47].length <= 6) ) team_record_index = 47;
+      if ( (AFC_teams.standings[i].stats[48] != undefined) && (AFC_teams.standings[i].stats[48].indexOf("-") != -1) && (AFC_teams.standings[i].stats[48].length <= 6) ) team_record_index = 48;
+
+      if (team_record_index == null)
+      {
+         //JL alert("Unable to identify which stats array element has the team record");
+
+         return false;
+      }
+
       // Update HTML table cells with team logos and team records.
 
       document.getElementById("AFC_"+(i+1)).innerHTML="<img src=\"Team Logos/"+
                                                       AFC_teams.standings[i].team.shortDisplayName+
                                                       ".png\"><br><span style=\"text-align: center\">"+
-                                                      AFC_teams.standings[i].stats[47];
+                                                      AFC_teams.standings[i].stats[team_record_index];
 
       document.getElementById("NFC_"+(i+1)).innerHTML="<img src=\"Team Logos/"+
                                                       NFC_teams.standings[i].team.shortDisplayName+
                                                       ".png\"><br><span style=\"text-align: center\">"+
-                                                      NFC_teams.standings[i].stats[47];
+                                                      NFC_teams.standings[i].stats[team_record_index];
    }
 
    // Make AFC Playoff Teams and NFC Playoff Teams visible.
