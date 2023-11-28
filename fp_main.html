@@ -74,11 +74,12 @@ function get_nfl_playoff_teams()
 
 function process_nfl_playoff_teams(nfl_playoff_teams)
 {
-   var AFC_teams         = null;
-   var index_end         = -1;
-   var index_start       = -1;
-   var NFC_teams         = null;
-   var team_record_index = null;  
+   var AFC_teams                    = null;
+   var index_end                    = -1;
+   var index_start                  = -1;
+   var NFC_teams                    = null;
+   var possible_team_record_indexes = [36,47,48];
+   var team_record_index            = null;  
 
 
    // Parse the nfl_playoff_teams string.
@@ -162,9 +163,17 @@ function process_nfl_playoff_teams(nfl_playoff_teams)
 
       // Identify which stats array element has the team record.
 
-      if ( (AFC_teams.standings[i].stats[36] != undefined) && (AFC_teams.standings[i].stats[36].indexOf("-") != -1) && (AFC_teams.standings[i].stats[36].length <= 6) ) team_record_index = 36;
-      if ( (AFC_teams.standings[i].stats[47] != undefined) && (AFC_teams.standings[i].stats[47].indexOf("-") != -1) && (AFC_teams.standings[i].stats[47].length <= 6) ) team_record_index = 47;
-      if ( (AFC_teams.standings[i].stats[48] != undefined) && (AFC_teams.standings[i].stats[48].indexOf("-") != -1) && (AFC_teams.standings[i].stats[48].length <= 6) ) team_record_index = 48;
+      for (var j = 0; j < possible_team_record_indexes.length; j++)
+      {
+         if ( (AFC_teams.standings[i].stats[possible_team_record_indexes[j]] != undefined) &&
+              (AFC_teams.standings[i].stats[possible_team_record_indexes[j]].indexOf("-") != -1) &&
+              (AFC_teams.standings[i].stats[possible_team_record_indexes[j]].length <= 6) )
+         {
+            team_record_index = possible_team_record_indexes[j];
+
+            break;
+         }
+      }
 
       if (team_record_index == null)
       {
