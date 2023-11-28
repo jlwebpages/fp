@@ -1,25 +1,13 @@
-A.blue_link        {color: #002060            }
-A.blue_link:link   {text-decoration: none     }
-A.blue_link:hover  {text-decoration: underline}
-
-A.white_link       {color: white              }
-A.white_link       {display: block            }
-A.white_link:link  {text-decoration: none     }
-A.white_link:hover {text-decoration: underline}
-
-.black_color       {color: black              }
-.dark_blue_color   {color: #002060            }
-.green_color       {color: #283E1A            }
-.background_color  {background-color: #B8C2D0 }
-.red_color         {color: maroon             }
-.upset_pick_color  {color: #AA0000            }
-
-.border_radius
+.default_button
 {
-   border-radius: 4px;
+   color: black;
+   font-size: 11pt;
+   font-family: Calibri;
+   background-color: #F0F0F0;
+   border: 1px solid black;
 }
 
-.default_button
+.default_select
 {
    color: black;
    font-size: 11pt;
@@ -80,3 +68,20 @@ A.white_link:hover {text-decoration: underline}
    width: 20%;
    box-shadow: 5px 5px 10px gray;
 }
+
+.background_color  {background-color: #B8C2D0 }
+.black_color       {color: black              }
+.border_radius     {border-radius: 4px        }
+.dark_blue_color   {color: #002060            }
+.green_color       {color: #283E1A            }
+.red_color         {color: maroon             }
+.upset_pick_color  {color: #AA0000            }
+
+A.blue_link        {color: #002060            }
+A.blue_link:link   {text-decoration: none     }
+A.blue_link:hover  {text-decoration: underline}
+
+A.white_link       {color: white              }
+A.white_link       {display: block            }
+A.white_link:link  {text-decoration: none     }
+A.white_link:hover {text-decoration: underline}
