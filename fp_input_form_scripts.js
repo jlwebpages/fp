@@ -2586,7 +2586,7 @@ function build_regular_season_form()
    d.writeln('<table border=0 cellspacing=0 cellpadding=0>');
    d.writeln('<tr align=center style="vertical-align: middle">');
    d.writeln('<td id="input_form_week" nowrap class="no_border"><font style="font-size: 18pt">Input Form - Week&nbsp;</font>');
-   d.writeln('   <select class="background_color black_color border_radius" style="vertical-align: bottom; font-family: Calibri; font-size: 14pt; border: 1px solid gray" name="selected_week_menu" size=1 onChange="change_week(document); return true;">');
+   d.writeln('   <select class="default_select background_color border_radius" style="vertical-align: bottom; font-size: 14pt; border: 1px solid gray" name="selected_week_menu" size=1 onChange="change_week(document); return true;">');
    for (var i = current_input_week; i <= number_of_rs_weeks; i++)
    {
       if (i == week)
@@ -2615,7 +2615,7 @@ function build_regular_season_form()
    d.writeln('<tr bgcolor=#C4D79B>');
    d.writeln('<td align=right class="bb2_border" colspan=2><font style="font-size: 13pt"><b>Name:</b></font></td>');
    d.writeln('<td align=left class="bb2_border" colspan=4>');
-   d.writeln('<select class="black_color border_radius" style="font-size: 12pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
+   d.writeln('<select class="default_select border_radius" style="font-size: 12pt; background-color: #C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
    for (var i = 0; i <= top.rs_players.length; i++)
    {
       switch (i)
@@ -2652,7 +2652,7 @@ function build_regular_season_form()
          d.writeln('<td nowrap class="gr1_border"><font style="font-size: 12pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
          d.writeln('<td nowrap class="gr1_border"><font style="font-size: 12pt">at</font></td>');
          d.writeln('<td nowrap class="br2_border"><font style="font-size: 12pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
-         d.writeln('<td nowrap class="gr1_border"><select class="black_color border_radius" style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
+         d.writeln('<td nowrap class="gr1_border"><select class="default_select border_radius" style="background-color: white; border: 1px solid lightgray" name="pick'+i+'" size=1>');
       }
       else
       {
@@ -2660,7 +2660,7 @@ function build_regular_season_form()
          d.writeln('<td nowrap><font style="font-size: 12pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
          d.writeln('<td nowrap><font style="font-size: 12pt">at</font></td>');
          d.writeln('<td nowrap class="br2_gb1_border"><font style="font-size: 12pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
-         d.writeln('<td nowrap><select class="black_color border_radius" style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
+         d.writeln('<td nowrap><select class="default_select border_radius" style="background-color: white; border: 1px solid lightgray" name="pick'+i+'" size=1>');
       }
       d.writeln('       <option selected value="">');
       d.writeln('       <option          value="H">H');
@@ -2668,11 +2668,11 @@ function build_regular_season_form()
       d.writeln('    </select></td>');
       if (i == number_of_rs_games)
       {
-         d.writeln('<td nowrap class="no_border"><select class="black_color border_radius" style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="weight'+i+'" size=1>');
+         d.writeln('<td nowrap class="no_border"><select class="default_select border_radius" style="background-color: white; border: 1px solid lightgray" name="weight'+i+'" size=1>');
       }
       else
       {
-         d.writeln('<td nowrap class="gb1_border"><select class="black_color border_radius" style="font-size: 11pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="weight'+i+'" size=1>');
+         d.writeln('<td nowrap class="gb1_border"><select class="default_select border_radius" style="background-color: white; border: 1px solid lightgray" name="weight'+i+'" size=1>');
       }
       d.writeln('       <option selected value="">');
       for (var j = 1; j <= number_of_rs_games; j++)
@@ -4677,7 +4677,7 @@ function build_post_season_form()
    d.writeln('<tr bgcolor=#C4D79B>');
    d.writeln('<td align=right class="bb2_border" colspan=2><b><font style="font-size: 14pt">Name:</font></b></td>');
    d.writeln('<td align=left class="bb2_border" colspan=5>');
-   d.writeln('<select class="black_color border_radius" style="font-size: 13pt; font-family: Calibri; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
+   d.writeln('<select class="default_select border_radius" style="font-size: 13pt; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
    for (var i = 0; i <= top.ps_players.length; i++)
    {
       switch (i)
@@ -4713,7 +4713,7 @@ function build_post_season_form()
          d.writeln('<td nowrap class="gr1_bb2_border"><font style="font-size: 13pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
          d.writeln('<td nowrap class="gr1_bb2_border"><font style="font-size: 13pt">at</font></td>');
          d.writeln('<td nowrap class="br2_bb2_border"><font style="font-size: 13pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
-         d.writeln('<td nowrap class="gr1_bb2_border"><select class="black_color border_radius" style="font-size: 12pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
+         d.writeln('<td nowrap class="gr1_bb2_border"><select class="default_select border_radius" style="font-size: 12pt; background-color: white; border: 1px solid lightgray" name="pick'+i+'" size=1>');
       }
       else
       {
@@ -4721,7 +4721,7 @@ function build_post_season_form()
          d.writeln('<td nowrap><font style="font-size: 13pt" id="'+visiting_teams[i-1]+'">' + visiting_teams[i-1] + '</font></td>');
          d.writeln('<td nowrap><font style="font-size: 13pt">at</font></td>');
          d.writeln('<td nowrap class="br2_gb1_border"><font style="font-size: 13pt" id="'+home_teams[i-1]+'">' + home_teams[i-1] + '</font></td>');
-         d.writeln('<td nowrap><select class="black_color border_radius" style="font-size: 12pt; font-family: Calibri; border: 1px solid lightgray; background-color:white" name="pick'+i+'" size=1>');
+         d.writeln('<td nowrap><select class="default_select border_radius" style="font-size: 12pt; background-color: white; border: 1px solid lightgray" name="pick'+i+'" size=1>');
       }
       d.writeln('       <option selected value="">');
       d.writeln('       <option          value="H">H');
