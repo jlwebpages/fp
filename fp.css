@@ -1,8 +1,8 @@
-/* Order of the style rules in this cascading style sheet (CSS) file is important.     */
-/* If multiple class names are put on an HTML object and a specific rule is included   */
-/* in more than one of those classes, then the class that's defined later in this CSS  */
-/* file takes precedence.  The order of the class names on the object doesn't matter.  */
-/* It's the order of the rules in this file that matters.                              */
+/* Order of the style rules in this cascading style sheet (CSS) file is important.    */
+/* If multiple class names are put on an HTML tag and a specific rule is included in  */
+/* more than one of those classes, then the class that's defined later in this CSS    */
+/* file takes precedence.  The order of the class names on the object doesn't matter. */
+/* It's the order of the rules in this file that matters.                             */
 
 
 .default_button
@@ -27,6 +27,16 @@
    font-family: Calibri;
    background-color: #F0F0F0;
    border: 1px solid black;
+}
+
+.default_text
+{
+   color: black;
+   font-size: 11pt;
+   font-family: Calibri;
+   text-align: center;
+   background-color: white;
+   border: 1px solid lightgray;
 }
 
 .table

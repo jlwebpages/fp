@@ -1593,13 +1593,13 @@ function build_post_season_form()
       {
          for (var j = 1; j <= number_of_ps_games; j++)
          {
-            input_tag_style = "text-align:center; font-size: 10pt; font-family: Calibri; border: 1px solid lightgray; background-color:white; color: black";
+            input_tag_style = "font-size: 10pt";
 
             if ( (visiting_teams[gi-1] == victors[j-1]) || (home_teams[gi-1] == victors[j-1]) )
             {
                // Highlight the background of the scores to signify that the game has concluded.
 
-               input_tag_style = "text-align:center; font-size: 10pt; font-family: Calibri; border: 1px solid lightgray; background-color: #DCE6F1; color: black";
+               input_tag_style = "font-size: 10pt; background-color: #DCE6F1";
 
                break;
             }
@@ -1648,7 +1648,7 @@ function build_post_season_form()
             d.writeln('<td style="padding: 0px" class="gr1_border">');
          }
 
-         d.writeln('<input type=text class="border_radius" style="'+input_tag_style+'" value='+visitor_scores[gi-1]+' size="'+input_field_size+'" maxlength="2" name="visitor'+gi+'_score">');
+         d.writeln('<input type=text class="default_text border_radius" style="'+input_tag_style+'" value='+visitor_scores[gi-1]+' size="'+input_field_size+'" maxlength="2" name="visitor'+gi+'_score">');
          d.writeln('</td>');
       }
       else
@@ -1730,7 +1730,7 @@ function build_post_season_form()
          {
             d.writeln('<td style="padding: 0px" class="br2_border">');
          }
-         d.writeln('<input type=text class="border_radius" style="'+input_tag_style+'" value='+home_scores[gi-1]+' size="'+input_field_size+'" maxlength="2" name="home'+gi+'_score">');
+         d.writeln('<input type=text class="default_text border_radius" style="'+input_tag_style+'" value='+home_scores[gi-1]+' size="'+input_field_size+'" maxlength="2" name="home'+gi+'_score">');
          d.writeln('</td>');
       }
       else
@@ -4322,7 +4322,7 @@ function build_regular_season_form()
             {
                if (mn_pts_value == 0) mn_pts_value = "";
 
-               d.writeln('<input type=text class="border_radius" style="text-align: center; font-size: 11pt; font-family: Calibri; border: 1px solid black" name="mn_points" size="3" maxlength="3" value="'+mn_pts_value+'"');
+               d.writeln('<input type=text class="default_text border_radius" style="1px solid black" name="mn_points" size="3" maxlength="3" value="'+mn_pts_value+'"');
                d.writeln('              onChange="get_mn_points(document);return true;"');
                d.writeln('            onKeyPress="if (window.event.keyCode==13) {window.event.keyCode=0; get_mn_points(document); calculate_prelim_scores(document); return true;}">');
             }
