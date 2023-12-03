@@ -58,11 +58,22 @@
    box-shadow: 5px 5px 5px gray;
 }
 
-.green_cell
+.ext_button_cell
 {
    font-size: 18pt;
    text-align: center;
    background-color: #283E1A;
+   border-radius: 25px;
+   padding: 8px;
+   width: 20%;
+   box-shadow: 5px 5px 10px gray;
+}
+
+.fp_button_cell
+{
+   font-size: 18pt;
+   text-align: center;
+   background-color: maroon;
    border-radius: 25px;
    padding: 8px;
    width: 20%;
@@ -79,17 +90,6 @@
    border: 5px solid transparent;
    border-radius: 25px;
    padding: 10px;
-}
-
-.red_cell
-{
-   font-size: 18pt;
-   text-align: center;
-   background-color: maroon;
-   border-radius: 25px;
-   padding: 8px;
-   width: 20%;
-   box-shadow: 5px 5px 10px gray;
 }
 
 .background_color  {background-color: #B8C2D0 }

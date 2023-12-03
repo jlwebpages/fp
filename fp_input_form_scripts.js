@@ -39,8 +39,8 @@ function build_regular_season_form()
       top.fp_main_header.document.write('');
       top.fp_main_header.document.write('<table class="table" style="height: 40px; border-spacing: 10px 0px">');
       top.fp_main_header.document.write('   <tr>');
-      top.fp_main_header.document.write('      <td class="red_cell">INPUT FORM</td>');
-      top.fp_main_header.document.write('      <td class="red_cell"><a class="white_link" href="fp.html" target="_top">HOME</a></td>');
+      top.fp_main_header.document.write('      <td class="fp_button_cell">INPUT FORM</td>');
+      top.fp_main_header.document.write('      <td class="fp_button_cell"><a class="white_link" href="fp.html" target="_top">HOME</a></td>');
       top.fp_main_header.document.write('   </tr>');
       top.fp_main_header.document.write('</table>');
       top.fp_main_header.document.write('');
@@ -2794,8 +2794,8 @@ function build_post_season_form()
       top.fp_main_header.document.write('');
       top.fp_main_header.document.write('<table class="table" style="height: 40px; border-spacing: 10px 0px">');
       top.fp_main_header.document.write('   <tr>');
-      top.fp_main_header.document.write('      <td class="red_cell">INPUT FORM</td>');
-      top.fp_main_header.document.write('      <td class="red_cell"><a class="white_link" href="fp.html" target="_top">HOME</a></td>');
+      top.fp_main_header.document.write('      <td class="fp_button_cell">INPUT FORM</td>');
+      top.fp_main_header.document.write('      <td class="fp_button_cell"><a class="white_link" href="fp.html" target="_top">HOME</a></td>');
       top.fp_main_header.document.write('   </tr>');
       top.fp_main_header.document.write('</table>');
       top.fp_main_header.document.write('');
