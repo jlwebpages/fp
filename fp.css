@@ -18,7 +18,7 @@
 {
   accent-color: #595959;
   vertical-align: middle;
-} 
+}
 
 .default_select
 {
@@ -37,6 +37,26 @@
    text-align: center;
    background-color: white;
    border: 1px solid lightgray;
+}
+
+.header_one
+{
+   color: black;
+   font-size: 12pt;
+   font-weight: bold;
+   text-align: center;
+   white-space: nowrap;
+   background-color: #C4D79B;
+}
+
+.header_two
+{
+   color: black;
+   font-size: 12pt;
+   font-weight: bold;
+   text-align: center;
+   white-space: nowrap;
+   background-color: #DCE6F1;
 }
 
 .table
@@ -92,13 +112,18 @@
    padding: 10px;
 }
 
-.background_color  {background-color: #B8C2D0 }
-.black_color       {color: black              }
-.border_radius     {border-radius: 4px        }
-.dark_blue_color   {color: #002060            }
-.green_color       {color: #283E1A            }
-.red_color         {color: maroon             }
-.upset_pick_color  {color: #AA0000            }
+.background_color         {background-color: #B8C2D0}
+.black_color              {color: black             }
+.border_radius            {border-radius: 4px       }
+.dark_blue_color          {color: #002060           }
+.green_color              {color: #283E1A           }
+.header_one_background    {background-color: #C4D79B}
+.header_two_background    {background-color: #DCE6F1}
+.low_score_background     {background-color: #FFFFE1}
+.perfect_score_background {background-color: #B7DEE8}
+.red_color                {color: maroon            }
+.upset_pick_color         {color: #AA0000           }
+.white_background         {background-color: white  }
 
 A.blue_link        {color: #002060            }
 A.blue_link:link   {text-decoration: none     }

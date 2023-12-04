@@ -2612,10 +2612,10 @@ function build_regular_season_form()
    d.writeln('   cellpadding=3>');
    d.writeln('');
 
-   d.writeln('<tr bgcolor=#C4D79B>');
-   d.writeln('<td align=right class="bb2_border" colspan=2><font style="font-size: 13pt"><b>Name:</b></font></td>');
+   d.writeln('<tr class="header_one">');
+   d.writeln('<td align=right class="bb2_border" colspan=2><font style="font-size: 13pt">Name:</font></td>');
    d.writeln('<td align=left class="bb2_border" colspan=4>');
-   d.writeln('<select class="default_select border_radius" style="font-size: 12pt; background-color: #C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
+   d.writeln('<select class="default_select header_one_background border_radius" style="font-size: 12pt; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
    for (var i = 0; i <= top.rs_players.length; i++)
    {
       switch (i)
@@ -2633,13 +2633,13 @@ function build_regular_season_form()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr ALIGN=CENTER bgcolor=#DCE6F1>');
-   d.writeln('<td class="br2_bb2_border"><font style="font-size: 12pt"><b>Game</b></font></td>');
-   d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><b>Visitor</b></font></td>');
-   d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><b>vs</b></font></td>');
-   d.writeln('<td class="br2_bb2_border"><font style="font-size: 12pt"><b>Home</b></font></td>');
-   d.writeln('<td class="bb2_gr1_border"><font style="font-size: 12pt"><b>Pick</b></font></td>');
-   d.writeln('<td class="bb2_border"><font style="font-size: 12pt"><b>Weight</b></font></td>');
+   d.writeln('<tr class="header_two">');
+   d.writeln('<td class="br2_bb2_border">Game</td>');
+   d.writeln('<td class="bb2_border">Visitor</td>');
+   d.writeln('<td class="bb2_border">vs</td>');
+   d.writeln('<td class="br2_bb2_border">Home</td>');
+   d.writeln('<td class="bb2_gr1_border">Pick</td>');
+   d.writeln('<td class="bb2_border">Weight</td>');
    d.writeln('</tr>');
    d.writeln('');
 
@@ -2693,8 +2693,8 @@ function build_regular_season_form()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr align=center bgcolor=#DCE6F1>');
-   d.writeln('<td id="open_date" class="bt2_border" style="font-size: 12pt" colspan="6"></td>');
+   d.writeln('<tr class="header_two">');
+   d.writeln('<td id="open_date" class="bt2_border" colspan="6"></td>');
    d.writeln('</tr>');
    d.writeln('');
 
@@ -2750,7 +2750,7 @@ function build_regular_season_form()
    d.writeln('   // actual table width, then populate the "Open Date" row with the open date information.');
    d.writeln('');
    d.writeln('   document.getElementById("open_date").style.width = document.getElementById("input_form_table").offsetWidth;');
-   d.writeln('   document.getElementById("open_date").innerHTML   = "<b>Open Date:</b>&nbsp;&nbsp;'+open_date+'";');
+   d.writeln('   document.getElementById("open_date").innerHTML   = "Open Date:&nbsp;&nbsp;<span style=\\"font-weight: normal\\">'+open_date+'</span>";');
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
@@ -4673,10 +4673,10 @@ function build_post_season_form()
    d.writeln('   cellpadding=5>');
    d.writeln('');
 
-   d.writeln('<tr bgcolor=#C4D79B>');
-   d.writeln('<td align=right class="bb2_border" colspan=2><b><font style="font-size: 14pt">Name:</font></b></td>');
+   d.writeln('<tr class="header_one');
+   d.writeln('<td align=right class="bb2_border" colspan=2><font style="font-size: 14pt">Name:</font></td>');
    d.writeln('<td align=left class="bb2_border" colspan=5>');
-   d.writeln('<select class="default_select border_radius" style="font-size: 13pt; background-color:#C4D79B; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
+   d.writeln('<select class="default_select header_one_background border_radius" style="font-size: 13pt; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
    for (var i = 0; i <= top.ps_players.length; i++)
    {
       switch (i)
@@ -4694,12 +4694,12 @@ function build_post_season_form()
    d.writeln('</tr>');
    d.writeln('');
 
-   d.writeln('<tr ALIGN=CENTER bgcolor=#DCE6F1>');
-   d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt"><b>Game</b></font></td>');
-   d.writeln('<td class="bb2_border"><font style="font-size: 13pt"><b>Visitor</b></font></td>');
-   d.writeln('<td class="bb2_border"><font style="font-size: 13pt"><b>vs</b></font></td>');
-   d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt"><b>Home</b></font></td>');
-   d.writeln('<td class="bb2_border" colspan=3><font style="font-size: 13pt"><b>Pick</b></font></td>');
+   d.writeln('<tr class="header_two">');
+   d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt">Game</font></td>');
+   d.writeln('<td class="bb2_border"><font style="font-size: 13pt">Visitor</font></td>');
+   d.writeln('<td class="bb2_border"><font style="font-size: 13pt">vs</font></td>');
+   d.writeln('<td class="br2_bb2_border"><font style="font-size: 13pt">Home</font></td>');
+   d.writeln('<td class="bb2_border" colspan=3><font style="font-size: 13pt">Pick</font></td>');
    d.writeln('</tr>');
    d.writeln('');
 
