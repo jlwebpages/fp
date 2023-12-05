@@ -121,6 +121,9 @@
 .header_two_background    {background-color: #DCE6F1}
 .low_score_background     {background-color: #FFFFE1}
 .perfect_score_background {background-color: #B7DEE8}
+.picks_confirm_background {background-color: #C4D79B}
+.picks_copy_background    {background-color: white  }
+.picks_error_background   {background-color: #FFFF99}
 .red_color                {color: maroon            }
 .upset_pick_color         {color: #AA0000           }
 .white_background         {background-color: white  }
@@ -128,7 +131,6 @@
 A.blue_link        {color: #002060            }
 A.blue_link:link   {text-decoration: none     }
 A.blue_link:hover  {text-decoration: underline}
-
 A.white_link       {color: white              }
 A.white_link       {display: block            }
 A.white_link:link  {text-decoration: none     }
