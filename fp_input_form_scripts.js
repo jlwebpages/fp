@@ -2573,7 +2573,7 @@ function build_regular_season_form()
 
    d.writeln('<table border=0 cellspacing=0 cellpadding=0>');
    d.writeln('<tr align=center style="vertical-align: middle">');
-   d.writeln('<td id="input_form_week" class="no_border" style="font-size: 18pt; white-space: nowrap">Input Form - Week&nbsp;');
+   d.writeln('<td id="input_form_week" class="no_border" style="font-size: 18pt; padding-top: 5px padding-bottom: 10px; white-space: nowrap">Input Form - Week&nbsp;');
    d.writeln('   <select class="default_select background_color border_radius" style="vertical-align: bottom; font-size: 14pt; border: 1px solid gray" name="selected_week_menu" size=1 onChange="change_week(document); return true;">');
    for (var i = current_input_week; i <= number_of_rs_weeks; i++)
    {
@@ -2586,9 +2586,10 @@ function build_regular_season_form()
          d.writeln('      <option          value="'+i+'">'+i+'');
       }
    }
-   d.writeln('</select></td>');
+   d.writeln('   </select>');
+   d.writeln('</td>');
    d.writeln('</tr>');
-   d.writeln('</table><p>');
+   d.writeln('</table>');
    d.writeln('');
 
    d.writeln('<table      id="input_form_table"');
@@ -4632,10 +4633,10 @@ function build_post_season_form()
 
    d.writeln('<table border=0 cellspacing=0 cellpadding=0>');
    d.writeln('<tr align=center style="vertical-align: middle">');
-   d.writeln('<td id="input_form_week" class="no_border" style="font-size: 18pt; white-space: nowrap">Input Form - Post Season Week '+ week +'');
+   d.writeln('<td id="input_form_week" class="no_border" style="font-size: 18pt; padding-top: 5px; padding-bottom: 10px; white-space: nowrap">Input Form - Post Season Week '+ week +'');
    d.writeln('</td>');
    d.writeln('</tr>');
-   d.writeln('</table><p>');
+   d.writeln('</table>');
    d.writeln('');
 
    d.writeln('<form name="fp_inputs">');
