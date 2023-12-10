@@ -1158,6 +1158,10 @@ function build_regular_season_form()
    d.writeln('   var weights_used        = Array('+max_number_of_rs_games+').fill(false);');
    d.writeln('');
    d.writeln('');
+   d.writeln('   // Scroll to top of Input Form.');
+   d.writeln('');
+   d.writeln('   document.getElementById("input_form_week").scrollIntoView(true);');
+   d.writeln('');
    d.writeln('   // Make sure the user name has been selected.');
    d.writeln('');
    d.writeln('   if (validate_name(document,validate_name_error) == false)');
@@ -2606,8 +2610,8 @@ function build_regular_season_form()
 
    d.writeln('<table border=0 cellspacing=0 cellpadding=0>');
    d.writeln('<tr align=center style="vertical-align: middle">');
-   d.writeln('<td id="input_form_week" class="no_border" style="font-size: 16pt; font-weight: bold; padding-top: 5px; padding-bottom: 10px; white-space: nowrap">Input Form - Week&nbsp;');
-   d.writeln('   <select class="default_select background_color border_radius" style="vertical-align: bottom; font-size: 14pt; font-weight: bold; border: 1px solid gray" name="selected_week_menu" size=1 onChange="change_week(document)">');
+   d.writeln('<td id="input_form_week" class="no_border" style="font-size: 16pt; font-weight: bold; padding-top: 5px; padding-bottom: 10px; white-space: nowrap">Input Form - Week');
+   d.writeln('   <select class="default_select background_color border_radius" style="vertical-align: top; font-size: 14pt; font-weight: bold; border: 1px solid gray; margin-left: 1px" name="selected_week_menu" size=1 onChange="change_week(document)">');
    for (var i = current_input_week; i <= number_of_rs_weeks; i++)
    {
       if (i == week)
@@ -2780,7 +2784,17 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Set Input Form focus.');
    d.writeln('');
-   d.writeln('   if (top.mobile == false) document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('   if (top.mobile == false)');
+   d.writeln('   {');
+   d.writeln('      if (top.player_index == 0)');
+   d.writeln('      {');
+   d.writeln('         document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('      }');
+   d.writeln('      else');
+   d.writeln('      {');
+   d.writeln('         document.fp_inputs.pick1.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('      }');
+   d.writeln('   }');
    d.writeln('');
    d.writeln('   // Scroll to top of Input Form.');
    d.writeln('');
@@ -3716,6 +3730,10 @@ function build_post_season_form()
    d.writeln('   var picks_select        = 0;');
    d.writeln('   var validate_name_error = "You must select your name before random picks can be generated.";');
    d.writeln('');
+   d.writeln('');
+   d.writeln('   // Scroll to top of Input Form.');
+   d.writeln('');
+   d.writeln('   document.getElementById("input_form_week").scrollIntoView(true);');
    d.writeln('');
    d.writeln('   // Make sure the user name has been selected.');
    d.writeln('');
@@ -4855,7 +4873,17 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Set Input Form focus.');
    d.writeln('');
-   d.writeln('   if (top.mobile == false) document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('   if (top.mobile == false)');
+   d.writeln('   {');
+   d.writeln('      if (top.player_index == 0)');
+   d.writeln('      {');
+   d.writeln('         document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('      }');
+   d.writeln('      else');
+   d.writeln('      {');
+   d.writeln('         document.fp_inputs.pick1.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('      }');
+   d.writeln('   }');
    d.writeln('');
    d.writeln('   // Scroll to top of Input Form.');
    d.writeln('');
