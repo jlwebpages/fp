@@ -263,8 +263,13 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('function accept_picks(document)');
    d.writeln('{');
-   d.writeln('   var picks_from_odds = false;');
+   d.writeln('   var picks_from_odds     = false;');
+   d.writeln('   var validate_name_error = "Select your name before accepting your picks.";');
    d.writeln('');
+   d.writeln('');
+   d.writeln('   // Scroll to top of Input Form.');
+   d.writeln('');
+   d.writeln('   document.getElementById("input_form_week").scrollIntoView(true);');
    d.writeln('');
    d.writeln('   // Remember the state of the picks_from_odds_button_pressed flag.');
    d.writeln('');
@@ -276,6 +281,11 @@ function build_regular_season_form()
    d.writeln('   picks_from_odds_button_pressed = false;');
    d.writeln('   random_picks_button_pressed    = false;');
    d.writeln('');
+   d.writeln('   if (validate_name(document,validate_name_error) == false)');
+   d.writeln('   {');
+   d.writeln('      return false;');
+   d.writeln('   }');
+   d.writeln('');
    d.writeln('   if (validate_picks_and_weights(document,"initial_pass") == false)');
    d.writeln('   {');
    d.writeln('      return false;');
@@ -283,19 +293,6 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (validate_total_points(document.fp_inputs.mn_points,true) == false)');
    d.writeln('   {');
-   d.writeln('      // Make sure the frame showing the Input Form is visible before returning.');
-   d.writeln('');
-   d.writeln('      top.display_frame("fp_main",0);');
-   d.writeln('');
-   d.writeln('      return false;');
-   d.writeln('   }');
-   d.writeln('');
-   d.writeln('   if (validate_name(document,true) == false)');
-   d.writeln('   {');
-   d.writeln('      // Make sure the frame showing the Input Form is visible before returning.');
-   d.writeln('');
-   d.writeln('      top.display_frame("fp_main",0);');
-   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
@@ -512,6 +509,10 @@ function build_regular_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("function respond_to_button(action)");');
    d.writeln('   wd.writeln("{");');
+   d.writeln('   wd.writeln("   // Scroll to top of Input Form.");');
+   d.writeln('   wd.writeln("");');
+   d.writeln('   wd.writeln("   top.fp_main.document.getElementById(\\"input_form_week\\").scrollIntoView(true);");');
+   d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("   if (action == \\"submit\\")");');
    d.writeln('   wd.writeln("   {");');
    d.writeln('   wd.writeln("      top.fp_main.e_mail_picks(top.fp_main.document);");');
@@ -889,15 +890,14 @@ function build_regular_season_form()
    d.writeln('   var home_team_picks_array = new Array('+number_of_rs_games+');');
    d.writeln('   var random_index          = 0;');
    d.writeln('   var total_points          = 0;');
+   d.writeln('   var validate_name_error   = "You must select your name before home team picks can be generated.";');
    d.writeln('   var weight                = 0;');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Make sure the user name has been selected.');
    d.writeln('');
-   d.writeln('   if (validate_name(document,false) == false)');
+   d.writeln('   if (validate_name(document,validate_name_error) == false)');
    d.writeln('   {');
-   d.writeln('      alert("You must select your name before home team picks can be generated.");');
-   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
@@ -1028,19 +1028,18 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('function generate_picks_from_odds(document)');
    d.writeln('{');
-   d.writeln('   var exit_loop     = false;');
-   d.writeln('   var nfl_odds_pick = "";');
-   d.writeln('   var random_index  = 0;');
-   d.writeln('   var total_points  = 0;');
-   d.writeln('   var weight        = 0;');
+   d.writeln('   var exit_loop           = false;');
+   d.writeln('   var nfl_odds_pick       = "";');
+   d.writeln('   var random_index        = 0;');
+   d.writeln('   var total_points        = 0;');
+   d.writeln('   var validate_name_error = "You must select your name before picks from odds can be generated.";');
+   d.writeln('   var weight              = 0;');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Make sure the user name has been selected.');
    d.writeln('');
-   d.writeln('   if (validate_name(document,false) == false)');
+   d.writeln('   if (validate_name(document,validate_name_error) == false)');
    d.writeln('   {');
-   d.writeln('      alert("You must select your name before picks from odds can be generated.");');
-   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
@@ -1148,22 +1147,21 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('function generate_random_picks(document)');
    d.writeln('{');
-   d.writeln('   var counter          = 0;');
-   d.writeln('   var from             = 0;');
-   d.writeln('   var to               = 0;');
-   d.writeln('   var random_weight    = 0;');
-   d.writeln('   var user_messsage    = "";');
-   d.writeln('   var weight_index     = 0;');
-   d.writeln('   var weights_complete = false;');
-   d.writeln('   var weights_used     = Array('+max_number_of_rs_games+').fill(false);');
+   d.writeln('   var counter             = 0;');
+   d.writeln('   var from                = 0;');
+   d.writeln('   var to                  = 0;');
+   d.writeln('   var random_weight       = 0;');
+   d.writeln('   var user_messsage       = "";');
+   d.writeln('   var validate_name_error = "You must select your name before random picks can be generated.";');
+   d.writeln('   var weight_index        = 0;');
+   d.writeln('   var weights_complete    = false;');
+   d.writeln('   var weights_used        = Array('+max_number_of_rs_games+').fill(false);');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Make sure the user name has been selected.');
    d.writeln('');
-   d.writeln('   if (validate_name(document,false) == false)');
+   d.writeln('   if (validate_name(document,validate_name_error) == false)');
    d.writeln('   {');
-   d.writeln('      alert("You must select your name before random picks can be generated.");');
-   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
@@ -2085,8 +2083,6 @@ function build_regular_season_form()
    d.writeln('{');
    d.writeln('   document.fp_inputs.reset();');
    d.writeln('');
-   d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
-   d.writeln('');
    d.writeln('   // Restore the previously selected player name because the reset caused the player name on the input form to be cleared.');
    d.writeln('');
    d.writeln('   document.fp_inputs.player_name_menu.selectedIndex = top.player_index;');
@@ -2102,6 +2098,24 @@ function build_regular_season_form()
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
    d.writeln('   get_nfl_odds(document,0,true);');
+   d.writeln('');
+   d.writeln('   // Set Input Form focus.');
+   d.writeln('');
+   d.writeln('   if (top.mobile == false)');
+   d.writeln('   {');
+   d.writeln('      if (top.player_index == 0)');
+   d.writeln('      {');
+   d.writeln('         document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('      }');
+   d.writeln('      else');
+   d.writeln('      {');
+   d.writeln('         document.fp_inputs.pick1.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('      }');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('   // Scroll to top of Input Form.');
+   d.writeln('');
+   d.writeln('   document.getElementById("input_form_week").scrollIntoView(true);');
    d.writeln('');
    d.writeln('   return true;');
    d.writeln('}');
@@ -2126,13 +2140,19 @@ function build_regular_season_form()
    d.writeln('}');
    d.writeln('');
    d.writeln('');
-   d.writeln('function validate_name(document,display_error)');
+   d.writeln('function validate_name(document,error_message)');
    d.writeln('{');
    d.writeln('   if (top.player_index == 0)');
    d.writeln('   {');
-   d.writeln('      if (display_error == true) alert("Select your name before accepting your picks.");');
+   d.writeln('      alert(error_message);');
    d.writeln('');
-   d.writeln('      if (top.mobile != true) document.fp_inputs.player_name_menu.focus();');
+   d.writeln('      // Set Input Form focus.');
+   d.writeln('');
+   d.writeln('      if (top.mobile == false) document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('');
+   d.writeln('      // Scroll to top of Input Form.');
+   d.writeln('');
+   d.writeln('      document.getElementById("input_form_week").scrollIntoView(true);');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -2523,6 +2543,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('function validate_total_points(mn_points,display_error)');
    d.writeln('{');
+   d.writeln('   var error_message           = "";');
    d.writeln('   var losing_team             = "";');
    d.writeln('   var total_points_prediction = 0;');
    d.writeln('   var winning_team            = "";');
@@ -2536,8 +2557,6 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      if (display_error == true)');
    d.writeln('      {');
-   d.writeln('         if (top.mobile != true) mn_points.focus();');
-   d.writeln('');
    d.writeln('         if (picks['+number_of_rs_games+'-1] == "H")');
    d.writeln('         {');
    d.writeln('            winning_team = home_teams['+number_of_rs_games+'-1];');
@@ -2549,7 +2568,21 @@ function build_regular_season_form()
    d.writeln('            losing_team  = home_teams['+number_of_rs_games+'-1];');
    d.writeln('         }');
    d.writeln('');
-   d.writeln('         alert("Enter your Total Points Prediction for \\"" + winning_team + " over " + losing_team + "\\" (Game '+number_of_rs_games+').");');
+   d.writeln('         error_message = "Enter your Total Points Prediction for \\"" + winning_team + " over " + losing_team + "\\" (Game '+number_of_rs_games+')."');
+   d.writeln('');
+   d.writeln('         alert(error_message);');
+   d.writeln('');
+   d.writeln('         // Scroll to Total Points input field.');
+   d.writeln('');
+   d.writeln('         document.getElementById("mn_points").scrollIntoView(true);');
+   d.writeln('');
+   d.writeln('         // Set Input Form focus.');
+   d.writeln('');
+   d.writeln('         if (top.mobile == false) mn_points.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('');
+   d.writeln('         // Make sure the frame showing the Input Form is visible before returning.');
+   d.writeln('');
+   d.writeln('         top.display_frame("fp_main",0);');
    d.writeln('      }');
    d.writeln('');
    d.writeln('      return false;');
@@ -2573,8 +2606,8 @@ function build_regular_season_form()
 
    d.writeln('<table border=0 cellspacing=0 cellpadding=0>');
    d.writeln('<tr align=center style="vertical-align: middle">');
-   d.writeln('<td id="input_form_week" class="no_border" style="font-size: 18pt; padding-top: 5px; padding-bottom: 10px; white-space: nowrap">Input Form - Week&nbsp;');
-   d.writeln('   <select class="default_select background_color border_radius" style="vertical-align: bottom; font-size: 14pt; border: 1px solid gray" name="selected_week_menu" size=1 onChange="change_week(document); return true;">');
+   d.writeln('<td id="input_form_week" class="no_border" style="font-size: 16pt; font-weight: bold; padding-top: 5px; padding-bottom: 10px; white-space: nowrap">Input Form - Week&nbsp;');
+   d.writeln('   <select class="default_select background_color border_radius" style="vertical-align: bottom; font-size: 14pt; font-weight: bold; border: 1px solid gray" name="selected_week_menu" size=1 onChange="change_week(document)">');
    for (var i = current_input_week; i <= number_of_rs_weeks; i++)
    {
       if (i == week)
@@ -2604,7 +2637,7 @@ function build_regular_season_form()
    d.writeln('<tr class="header_one">');
    d.writeln('<td align=right class="bb2_border" colspan=2><font style="font-size: 13pt">Name:</font></td>');
    d.writeln('<td align=left class="bb2_border" colspan=4>');
-   d.writeln('<select class="default_select header_one_background border_radius" style="font-size: 12pt; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
+   d.writeln('<select class="default_select header_one_background border_radius" style="font-size: 12pt; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document)">');
    for (var i = 0; i <= top.rs_players.length; i++)
    {
       switch (i)
@@ -2677,7 +2710,7 @@ function build_regular_season_form()
 
    d.writeln('<tr>');
    d.writeln('<td class="bt2_border" style="text-align: right; padding-right: 5px" colspan="4"><font style="font-size: 12pt">Game '+number_of_rs_games+' Total Points:</font></td>');
-   d.writeln('<td class="bt2_border" style="text-align: left;  padding-left:  5px" colspan="1"><input type=text class="default_text border_radius" style="width: 30px" name="mn_points" size="2" maxlength="2"></td>');
+   d.writeln('<td class="bt2_border" style="text-align: left;  padding-left:  5px" colspan="1"><input type=text id="mn_points" class="default_text border_radius" style="width: 30px" name="mn_points" size="2" maxlength="2"></td>');
    d.writeln('<td class="bt2_border" colspan="1"></td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -2696,10 +2729,10 @@ function build_regular_season_form()
    d.writeln('<tr id="input_form_buttons">');
    d.writeln('<td style="text-align: center; padding-top: 10px" nowrap class="no_border">');
    d.writeln('<span style="display: none" id="picks_from_odds_button">');
-   d.writeln('<input id="picks_from_odds" type="button" class="default_button border_radius" style="margin-right: 12px" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
+   d.writeln('<input id="picks_from_odds" type="button" class="default_button border_radius" style="margin-right: 12px" value="Picks From Odds" onClick="generate_picks_from_odds(document)" title="'+picks_from_odds_tooltip+'">');
    d.writeln('</span>');
-   d.writeln('<input id="home_team_picks" type="button" class="default_button border_radius" style="margin-right: 12px" value="Home Team Picks" onClick="generate_home_team_picks(document); return true;" title="'+home_team_picks_tooltip+'">');
-   d.writeln('<input id="random_picks" type="button" class="default_button border_radius" value="Random Picks" onClick="generate_random_picks(document); return true;" title="'+random_picks_tooltip+'">');
+   d.writeln('<input id="home_team_picks" type="button" class="default_button border_radius" style="margin-right: 12px" value="Home Team Picks" onClick="generate_home_team_picks(document)" title="'+home_team_picks_tooltip+'">');
+   d.writeln('<input id="random_picks" type="button" class="default_button border_radius" value="Random Picks" onClick="generate_random_picks(document)" title="'+random_picks_tooltip+'">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -2718,8 +2751,8 @@ function build_regular_season_form()
 
    d.writeln('<tr>');
    d.writeln('<td id="accept_reset_buttons" style="text-align: center; padding-top: 2px" nowrap class="no_border">');
-   d.writeln('<input id="submit" type="button" class="default_button border_radius" style="margin-right: 12px" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
-   d.writeln('<input id="reset_button" type="button" class="default_button border_radius" value="Reset" onClick="reset_input_form(document); return true;" title="'+reset_tooltip+'">');
+   d.writeln('<input id="submit" type="button" class="default_button border_radius" style="margin-right: 12px" value="Accept" onClick="accept_picks(document)" title="'+accept_tooltip+'">');
+   d.writeln('<input id="reset_button" type="button" class="default_button border_radius" value="Reset" onClick="reset_input_form(document)" title="'+reset_tooltip+'">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -2745,7 +2778,13 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   get_nfl_odds(document,0,true);');
    d.writeln('');
-   d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
+   d.writeln('   // Set Input Form focus.');
+   d.writeln('');
+   d.writeln('   if (top.mobile == false) document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('');
+   d.writeln('   // Scroll to top of Input Form.');
+   d.writeln('');
+   d.writeln('   document.getElementById("input_form_week").scrollIntoView(true);');
    d.writeln('');
    d.writeln('<'+'/script>');
    d.writeln('');
@@ -2754,8 +2793,6 @@ function build_regular_season_form()
    d.writeln('');
 
    d.writeln('</html>');
-
-   d.getElementById("input_form_week").scrollIntoView({block: "start", inline: "start"});
 
    d.close();
 
@@ -2999,8 +3036,13 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('function accept_picks(document)');
    d.writeln('{');
-   d.writeln('   var picks_from_odds = false;');
+   d.writeln('   var picks_from_odds     = false;');
+   d.writeln('   var validate_name_error = "Select your name before accepting your picks.";');
    d.writeln('');
+   d.writeln('');
+   d.writeln('   // Scroll to top of Input Form.');
+   d.writeln('');
+   d.writeln('   document.getElementById("input_form_week").scrollIntoView(true);');
    d.writeln('');
    d.writeln('   // Remember the state of the picks_from_odds_button_pressed flag.');
    d.writeln('');
@@ -3012,17 +3054,17 @@ function build_post_season_form()
    d.writeln('   picks_from_odds_button_pressed = false;');
    d.writeln('   random_picks_button_pressed    = false;');
    d.writeln('');
+   d.writeln('   if (validate_name(document,validate_name_error) == false)');
+   d.writeln('   {');
+   d.writeln('      return false;');
+   d.writeln('   }');
+   d.writeln('');
    d.writeln('   if (validate_spreads(document) == false)');
    d.writeln('   {');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   if (validate_points(document.fp_inputs.points,true) == false)');
-   d.writeln('   {');
-   d.writeln('      return false;');
-   d.writeln('   }');
-   d.writeln('');
-   d.writeln('   if (validate_name(document,true) == false)');
    d.writeln('   {');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -3245,6 +3287,10 @@ function build_post_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("function respond_to_button(action)");');
    d.writeln('   wd.writeln("{");');
+   d.writeln('   wd.writeln("   // Scroll to top of Input Form.");');
+   d.writeln('   wd.writeln("");');
+   d.writeln('   wd.writeln("   top.fp_main.document.getElementById(\\"input_form_week\\").scrollIntoView(true);");');
+   d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("   if (action == \\"submit\\")");');
    d.writeln('   wd.writeln("   {");');
    d.writeln('   wd.writeln("      top.fp_main.e_mail_picks(top.fp_main.document);");');
@@ -3396,15 +3442,14 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('function generate_home_team_picks(document)');
    d.writeln('{');
-   d.writeln('   var exit_loop = false;');
+   d.writeln('   var exit_loop           = false;');
+   d.writeln('   var validate_name_error = "You must select your name before home team picks can be generated.";');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Make sure the user name has been selected.');
    d.writeln('');
-   d.writeln('   if (validate_name(document,false) == false)');
+   d.writeln('   if (validate_name(document,validate_name_error) == false)');
    d.writeln('   {');
-   d.writeln('      alert("You must select your name before home team picks can be generated.");');
-   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
@@ -3542,15 +3587,14 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('function generate_picks_from_odds(document)');
    d.writeln('{');
-   d.writeln('   var exit_loop = false;');
+   d.writeln('   var exit_loop           = false;');
+   d.writeln('   var validate_name_error = "You must select your name before picks from odds can be generated.";');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Make sure the user name has been selected.');
    d.writeln('');
-   d.writeln('   if (validate_name(document,false) == false)');
+   d.writeln('   if (validate_name(document,validate_name_error) == false)');
    d.writeln('   {');
-   d.writeln('      alert("You must select your name before picks from odds can be generated.");');
-   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
@@ -3666,18 +3710,17 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('function generate_random_picks(document)');
    d.writeln('{');
-   d.writeln('   var counter      = 0;');
-   d.writeln('   var inputs       = document.fp_inputs;');
-   d.writeln('   var pick_index   = 0;');
-   d.writeln('   var picks_select = 0;');
+   d.writeln('   var counter             = 0;');
+   d.writeln('   var inputs              = document.fp_inputs;');
+   d.writeln('   var pick_index          = 0;');
+   d.writeln('   var picks_select        = 0;');
+   d.writeln('   var validate_name_error = "You must select your name before random picks can be generated.";');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Make sure the user name has been selected.');
    d.writeln('');
-   d.writeln('   if (validate_name(document,false) == false)');
+   d.writeln('   if (validate_name(document,validate_name_error) == false)');
    d.writeln('   {');
-   d.writeln('      alert("You must select your name before random picks can be generated.");');
-   d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
@@ -4441,8 +4484,6 @@ function build_post_season_form()
    d.writeln('{');
    d.writeln('   document.fp_inputs.reset();');
    d.writeln('');
-   d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
-   d.writeln('');
    d.writeln('   // Restore the previously selected player name because the reset caused the player name on the input form to be cleared.');
    d.writeln('');
    d.writeln('   document.fp_inputs.player_name_menu.selectedIndex = top.player_index;');
@@ -4458,6 +4499,24 @@ function build_post_season_form()
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
    d.writeln('   get_nfl_odds(document,0,true);');
+   d.writeln('');
+   d.writeln('   // Set Input Form focus.');
+   d.writeln('');
+   d.writeln('   if (top.mobile == false)');
+   d.writeln('   {');
+   d.writeln('      if (top.player_index == 0)');
+   d.writeln('      {');
+   d.writeln('         document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('      }');
+   d.writeln('      else');
+   d.writeln('      {');
+   d.writeln('         document.fp_inputs.pick1.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('      }');
+   d.writeln('   }');
+   d.writeln('');
+   d.writeln('   // Scroll to top of Input Form.');
+   d.writeln('');
+   d.writeln('   document.getElementById("input_form_week").scrollIntoView(true);');
    d.writeln('');
    d.writeln('   return true;');
    d.writeln('}');
@@ -4482,13 +4541,19 @@ function build_post_season_form()
    d.writeln('}');
    d.writeln('');
    d.writeln('');
-   d.writeln('function validate_name(document,display_error)');
+   d.writeln('function validate_name(document,error_message)');
    d.writeln('{');
    d.writeln('   if (top.player_index == 0)');
    d.writeln('   {');
-   d.writeln('      if (display_error == true) alert("Select your name before accepting your picks.");');
+   d.writeln('      alert(error_message);');
    d.writeln('');
-   d.writeln('      if (top.mobile != true) document.fp_inputs.player_name_menu.focus();');
+   d.writeln('      // Set Input Form focus.');
+   d.writeln('');
+   d.writeln('      if (top.mobile == false) document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('');
+   d.writeln('      // Scroll to top of Input Form.');
+   d.writeln('');
+   d.writeln('      document.getElementById("input_form_week").scrollIntoView(true);');
    d.writeln('');
    d.writeln('      return false;');
    d.writeln('   }');
@@ -4509,13 +4574,10 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if ( (isNaN(total_points_prediction) == true) || (total_points_prediction < 1) || (total_points_prediction > 99) )');
    d.writeln('   {');
-   d.writeln('      total_points               = 0;');
    d.writeln('      total_points_element.value = "";');
    d.writeln('');
    d.writeln('      if (display_error == true)');
    d.writeln('      {');
-   d.writeln('         if (top.mobile != true) total_points_element.focus();');
-   d.writeln('');
    d.writeln('         if (picks['+number_of_ps_games+'-1] == "H")');
    d.writeln('         {');
    d.writeln('            winning_team = home_teams['+number_of_ps_games+'-1];');
@@ -4530,6 +4592,18 @@ function build_post_season_form()
    d.writeln('         error_message  = "Enter your Total Points Prediction for \\"" + winning_team + " over " + losing_team + "\\" (Game ' + number_of_ps_games + ').";');
    d.writeln('');
    d.writeln('         alert(error_message);');
+   d.writeln('');
+   d.writeln('         // Scroll to Total Points input field.');
+   d.writeln('');
+   d.writeln('         document.getElementById("total_points").scrollIntoView(true);');
+   d.writeln('');
+   d.writeln('         // Set Input Form focus.');
+   d.writeln('');
+   d.writeln('         if (top.mobile == false) total_points_element.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('');
+   d.writeln('         // Make sure the frame showing the Input Form is visible before returning.');
+   d.writeln('');
+   d.writeln('         top.display_frame("fp_main",0);');
    d.writeln('      }');
    d.writeln('');
    d.writeln('      return false;');
@@ -4581,7 +4655,7 @@ function build_post_season_form()
    d.writeln('      {');
    d.writeln('         alert("Pick a winner (V or H) for " + visiting_teams[i] + " at " + home_teams[i] + " (Game " + (i+1) + ").");');
    d.writeln('');
-   d.writeln('         if (top.mobile != true) picks_select_array[i].focus();');
+   d.writeln('         if (top.mobile == false) picks_select_array[i].focus({focusVisible: true, preventScroll: true});');
    d.writeln('');
    d.writeln('         return false;');
    d.writeln('      }');
@@ -4609,7 +4683,7 @@ function build_post_season_form()
    d.writeln('      {');
    d.writeln('         alert(error_message);');
    d.writeln('         spread_elements[i].value = "";');
-   d.writeln('         if (top.mobile != true) spread_elements[i].focus();');
+   d.writeln('         if (top.mobile == false) spread_elements[i].focus({focusVisible: true, preventScroll: true});');
    d.writeln('         return false;');
    d.writeln('      }');
    d.writeln('      else');
@@ -4633,7 +4707,7 @@ function build_post_season_form()
 
    d.writeln('<table border=0 cellspacing=0 cellpadding=0>');
    d.writeln('<tr align=center style="vertical-align: middle">');
-   d.writeln('<td id="input_form_week" class="no_border" style="font-size: 18pt; padding-top: 5px; padding-bottom: 10px; white-space: nowrap">Input Form - Post Season Week '+ week +'');
+   d.writeln('<td id="input_form_week" class="no_border" style="font-size: 16pt; font-weight: bold; padding-top: 5px; padding-bottom: 10px; white-space: nowrap">Input Form - Post Season Week '+ week +'');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('</table>');
@@ -4654,7 +4728,7 @@ function build_post_season_form()
    d.writeln('<tr class="header_one">');
    d.writeln('<td align=right class="bb2_border" colspan=2><font style="font-size: 14pt">Name:</font></td>');
    d.writeln('<td align=left class="bb2_border" colspan=5>');
-   d.writeln('<select class="default_select header_one_background border_radius" style="font-size: 13pt; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document); return true;">');
+   d.writeln('<select class="default_select header_one_background border_radius" style="font-size: 13pt; border: 1px solid gray" name="player_name_menu" size=1 onChange="get_player_index_from_form(document)">');
    for (var i = 0; i <= top.ps_players.length; i++)
    {
       switch (i)
@@ -4722,7 +4796,7 @@ function build_post_season_form()
 
    d.writeln('<tr>');
    d.writeln('<td class="no_border" style="text-align: right; padding-right: 5px" colspan="4"><font style="font-size: 13pt">Game '+number_of_ps_games+' Total Points:</font></td>');
-   d.writeln('<td class="no_border" style="text-align: left;  padding-left:  5px" colspan="1"><input type=text class="default_text border_radius" style="font-size: 12pt; width: 35px" name="points" size="2" maxlength="2"></td>');
+   d.writeln('<td class="no_border" style="text-align: left;  padding-left:  5px" colspan="1"><input type=text id="total_points" class="default_text border_radius" style="font-size: 12pt; width: 35px" name="points" size="2" maxlength="2"></td>');
    d.writeln('<td class="no_border" colspan="2"></td>');
    d.writeln('</tr>');
    d.writeln('');    
@@ -4736,10 +4810,10 @@ function build_post_season_form()
    d.writeln('<tr id="input_form_buttons">');
    d.writeln('<td style="text-align: center; padding-top: 10px" nowrap class="no_border">');
    d.writeln('<span style="display: none" id="picks_from_odds_button">');
-   d.writeln('<input id="picks_from_odds" type="button" class="default_button border_radius" style="margin-right: 12px" value="Picks From Odds" onClick="generate_picks_from_odds(document); return true;" title="'+picks_from_odds_tooltip+'">');
+   d.writeln('<input id="picks_from_odds" type="button" class="default_button border_radius" style="margin-right: 12px" value="Picks From Odds" onClick="generate_picks_from_odds(document)" title="'+picks_from_odds_tooltip+'">');
    d.writeln('</span>');
-   d.writeln('<input id="home_team_picks" type="button" class="default_button border_radius" style="margin-right: 12px" value="Home Team Picks" onClick="generate_home_team_picks(document); return true;" title="'+home_team_picks_tooltip+'">');
-   d.writeln('<input id="random_picks" type="button" class="default_button border_radius" value="Random Picks" onClick="generate_random_picks(document); return true;" title="'+random_picks_tooltip+'">');
+   d.writeln('<input id="home_team_picks" type="button" class="default_button border_radius" style="margin-right: 12px" value="Home Team Picks" onClick="generate_home_team_picks(document)" title="'+home_team_picks_tooltip+'">');
+   d.writeln('<input id="random_picks" type="button" class="default_button border_radius" value="Random Picks" onClick="generate_random_picks(document)" title="'+random_picks_tooltip+'">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -4758,8 +4832,8 @@ function build_post_season_form()
 
    d.writeln('<tr>');
    d.writeln('<td id="accept_reset_buttons" style="text-align: center; padding-top: 2px" nowrap class="no_border">');
-   d.writeln('<input id="submit" type="button" class="default_button border_radius" style="margin-right: 12px" value="Accept" onClick="accept_picks(document); return true;" title="'+accept_tooltip+'">');
-   d.writeln('<input id="reset_button" type="button" class="default_button border_radius" value="Reset" onClick="reset_input_form(document); return true;" title="'+reset_tooltip+'">');
+   d.writeln('<input id="submit" type="button" class="default_button border_radius" style="margin-right: 12px" value="Accept" onClick="accept_picks(document)" title="'+accept_tooltip+'">');
+   d.writeln('<input id="reset_button" type="button" class="default_button border_radius" value="Reset" onClick="reset_input_form(document)" title="'+reset_tooltip+'">');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -4779,7 +4853,13 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   get_nfl_odds(document,0,true);');
    d.writeln('');
-   d.writeln('   if (top.mobile != true) document.fp_inputs.pick1.focus();');
+   d.writeln('   // Set Input Form focus.');
+   d.writeln('');
+   d.writeln('   if (top.mobile == false) document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('');
+   d.writeln('   // Scroll to top of Input Form.');
+   d.writeln('');
+   d.writeln('   document.getElementById("input_form_week").scrollIntoView(true);');
    d.writeln('');
    d.writeln('<'+'/script>');
    d.writeln('');
@@ -4788,8 +4868,6 @@ function build_post_season_form()
    d.writeln('');
 
    d.writeln('</html>');
-
-   d.getElementById("input_form_week").scrollIntoView({block: "start", inline: "start"});
 
    d.close();
 
@@ -4859,7 +4937,7 @@ function validate_password()
    {
       alert("Invalid password.");
       password.value = "";
-      password.focus();
+      password.focus({focusVisible: true, preventScroll: true});
       return false;
    }
 }
