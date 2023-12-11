@@ -128,10 +128,12 @@
 .upset_pick_color         {color: #AA0000           }
 .white_background         {background-color: white  }
 
-A.blue_link        {color: #002060            }
-A.blue_link:link   {text-decoration: none     }
-A.blue_link:hover  {text-decoration: underline}
-A.white_link       {color: white              }
-A.white_link       {display: block            }
-A.white_link:link  {text-decoration: none     }
-A.white_link:hover {text-decoration: underline}
+a.blue_link        {color: #002060            }
+a.blue_link:link   {text-decoration: none     }
+a.blue_link:hover  {text-decoration: underline}
+a.white_link       {color: white              }
+a.white_link       {display: block            }
+a.white_link:link  {text-decoration: none     }
+a.white_link:hover {text-decoration: underline}
+
+input {touch-action: none}
