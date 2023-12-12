@@ -596,9 +596,7 @@ function build_regular_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<" + "/script>");');
    d.writeln('   wd.writeln("");');
-   d.writeln('   wd.writeln("<center>");');
-   d.writeln('   wd.writeln("");');
-   d.writeln('   wd.writeln("<table id=\\"picks_table\\" class=\\""+background_class+"\\" style=\\"border: 3px solid black; text-align: left; padding: 10px; margin: 0px; margin-top: 10px; margin-bottom: 10px; "+ min_width_style +"\\">");');
+   d.writeln('   wd.writeln("<table id=\\"picks_table\\" class=\\""+background_class+"\\" style=\\"border: 3px solid black; text-align: left; padding: 10px; margin: 10px auto 0px auto; "+ min_width_style +"\\">");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<tr>");');
    d.writeln('   wd.writeln("");');
@@ -642,8 +640,6 @@ function build_regular_season_form()
    d.writeln('   }');
    d.writeln('');
    d.writeln('   wd.writeln("</table>");');
-   d.writeln('   wd.writeln("");');
-   d.writeln('   wd.writeln("</center>");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("</body>")');
    d.writeln('   wd.writeln("");');
@@ -3375,9 +3371,7 @@ function build_post_season_form()
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<" + "/script>");');
    d.writeln('   wd.writeln("");');
-   d.writeln('   wd.writeln("<center>");');
-   d.writeln('   wd.writeln("");');
-   d.writeln('   wd.writeln("<table id=\\"picks_table\\" class=\\""+background_class+"\\" style=\\"border: 3px solid black; text-align: left; padding: 10px; margin: 0px; margin-top: 10px; margin-bottom: 10px; "+ min_width_style +"\\">");');
+   d.writeln('   wd.writeln("<table id=\\"picks_table\\" class=\\""+background_class+"\\" style=\\"border: 3px solid black; text-align: left; padding: 10px; margin: 10px auto 0px auto; "+ min_width_style +"\\">");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("<tr>");');
    d.writeln('   wd.writeln("");');
@@ -3413,8 +3407,6 @@ function build_post_season_form()
    d.writeln('   }');
    d.writeln('');
    d.writeln('   wd.writeln("</table>");');
-   d.writeln('   wd.writeln("");');
-   d.writeln('   wd.writeln("</center>");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("</body>")');
    d.writeln('   wd.writeln("");');
