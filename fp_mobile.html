@@ -975,6 +975,39 @@
          return true;
       }
 
+      function focus_element(element)
+      {
+         // If we're running in the Safari browser on an iOS mobile device then return.
+
+         if ( (navigator.userAgent.match(/(iPod|iPhone|iPad)/) !== null) &&
+              (navigator.userAgent.match(/AppleWebKit/) !== null)        &&
+              (navigator.userAgent.search('CriOS') < 0)                     )
+         {
+            return;
+         }
+
+         // If we're running on a newer iPad then return.
+
+         if ( (navigator.platform.toLowerCase().indexOf("ipad") != -1) || ((navigator.platform.toLowerCase().indexOf("macintel") != -1) && (navigator.maxTouchPoints > 1)) )
+         {
+            return;
+         }
+
+         // If we're running in the Chrome browser on a mobile device and the element type is "text" then return.
+
+         if ( (navigator.userAgent.toLowerCase().indexOf("mobile") != -1)  &&
+              (navigator.userAgent.toLowerCase().indexOf("chrome") != -1)  &&
+              (navigator.userAgent.toLowerCase().indexOf("samsung") == -1) &&
+              (element.type == "text")                                        )
+         {
+            return;
+         }
+
+         element.readOnly = true;
+         element.focus({focusVisible: true, preventScroll: true});
+         element.readOnly = false;
+      }
+
       function reset_mobile_viewport_width()
       {
          if (saved_viewport_content != "")

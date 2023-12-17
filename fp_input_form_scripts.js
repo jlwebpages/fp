@@ -538,9 +538,9 @@ function build_regular_season_form()
    d.writeln('   wd.writeln("      {");');
    d.writeln('   wd.writeln("         top.display_frame(\\"fp_main\\",0);");');
    d.writeln('   wd.writeln("");');
-   d.writeln('   wd.writeln("         if ( (top.mobile == false) && (top.fp_main.document.input_form_focus_element != \\"\\") )");');
+   d.writeln('   wd.writeln("         if (top.fp_main.document.input_form_focus_element != \\"\\")");');
    d.writeln('   wd.writeln("         {");');
-   d.writeln('   wd.writeln("            eval (\\"top.fp_main.document.fp_inputs."+top.fp_main.document.input_form_focus_element+".focus({focusVisible: true, preventScroll: true});\\");");');
+   d.writeln('   wd.writeln("            eval (top.focus_element(top.fp_main.document.fp_inputs."+top.fp_main.document.input_form_focus_element+"));");');
    d.writeln('   wd.writeln("");');
    d.writeln('   wd.writeln("            top.fp_main.document.input_form_focus_element = \\"\\";");');
    d.writeln('   wd.writeln("         }");');
@@ -2105,16 +2105,13 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Set Input Form focus.');
    d.writeln('');
-   d.writeln('   if (top.mobile == false)');
+   d.writeln('   if (top.player_index == 0)');
    d.writeln('   {');
-   d.writeln('      if (top.player_index == 0)');
-   d.writeln('      {');
-   d.writeln('         document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
-   d.writeln('      }');
-   d.writeln('      else');
-   d.writeln('      {');
-   d.writeln('         document.fp_inputs.pick1.focus({focusVisible: true, preventScroll: true});');
-   d.writeln('      }');
+   d.writeln('      top.focus_element(document.fp_inputs.player_name_menu);');
+   d.writeln('   }');
+   d.writeln('   else');
+   d.writeln('   {');
+   d.writeln('      top.focus_element(document.fp_inputs.pick1);');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   // Scroll to top of Input Form.');
@@ -2152,7 +2149,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      // Set Input Form focus.');
    d.writeln('');
-   d.writeln('      if (top.mobile == false) document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('      top.focus_element(document.fp_inputs.player_name_menu);');
    d.writeln('');
    d.writeln('      // Scroll to top of Input Form.');
    d.writeln('');
@@ -2592,7 +2589,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('         // Set Input Form focus.');
    d.writeln('');
-   d.writeln('         if (top.mobile == false) mn_points.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('         top.focus_element(mn_points);');
    d.writeln('      }');
    d.writeln('');
    d.writeln('      return false;');
@@ -2720,7 +2717,7 @@ function build_regular_season_form()
 
    d.writeln('<tr>');
    d.writeln('<td class="bt2_border" style="text-align: right; padding-right: 5px" colspan="4"><font style="font-size: 12pt">Game '+number_of_rs_games+' Total Points:</font></td>');
-   d.writeln('<td class="bt2_border" style="text-align: left;  padding-left:  5px" colspan="1"><input type=text id="mn_points" class="default_text border_radius" style="width: 30px" name="mn_points" size="2" maxlength="2"></td>');
+   d.writeln('<td class="bt2_border" style="text-align: left;  padding-left:  5px" colspan="1"><input type=text id="mn_points" class="default_text border_radius" style="width: 35px" name="mn_points" size="2" maxlength="2"></td>');
    d.writeln('<td class="bt2_border" colspan="1"></td>');
    d.writeln('</tr>');
    d.writeln('');
@@ -2790,16 +2787,13 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Set Input Form focus.');
    d.writeln('');
-   d.writeln('   if (top.mobile == false)');
+   d.writeln('   if (top.player_index == 0)');
    d.writeln('   {');
-   d.writeln('      if (top.player_index == 0)');
-   d.writeln('      {');
-   d.writeln('         document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
-   d.writeln('      }');
-   d.writeln('      else');
-   d.writeln('      {');
-   d.writeln('         document.fp_inputs.pick1.focus({focusVisible: true, preventScroll: true});');
-   d.writeln('      }');
+   d.writeln('      top.focus_element(document.fp_inputs.player_name_menu);');
+   d.writeln('   }');
+   d.writeln('   else');
+   d.writeln('   {');
+   d.writeln('      top.focus_element(document.fp_inputs.pick1);');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   // Scroll to top of Input Form.');
@@ -4518,16 +4512,13 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Set Input Form focus.');
    d.writeln('');
-   d.writeln('   if (top.mobile == false)');
+   d.writeln('   if (top.player_index == 0)');
    d.writeln('   {');
-   d.writeln('      if (top.player_index == 0)');
-   d.writeln('      {');
-   d.writeln('         document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
-   d.writeln('      }');
-   d.writeln('      else');
-   d.writeln('      {');
-   d.writeln('         document.fp_inputs.pick1.focus({focusVisible: true, preventScroll: true});');
-   d.writeln('      }');
+   d.writeln('      top.focus_element(document.fp_inputs.player_name_menu);');
+   d.writeln('   }');
+   d.writeln('   else');
+   d.writeln('   {');
+   d.writeln('      top.focus_element(document.fp_inputs.pick1);');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   // Scroll to top of Input Form.');
@@ -4565,7 +4556,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('      // Set Input Form focus.');
    d.writeln('');
-   d.writeln('      if (top.mobile == false) document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('      top.focus_element(document.fp_inputs.player_name_menu);');
    d.writeln('');
    d.writeln('      // Scroll to top of Input Form.');
    d.writeln('');
@@ -4615,7 +4606,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('         // Set Input Form focus.');
    d.writeln('');
-   d.writeln('         if (top.mobile == false) total_points_element.focus({focusVisible: true, preventScroll: true});');
+   d.writeln('         top.focus_element(total_points_element);');
    d.writeln('      }');
    d.writeln('');
    d.writeln('      return false;');
@@ -4667,7 +4658,7 @@ function build_post_season_form()
    d.writeln('      {');
    d.writeln('         alert("Pick a winner (V or H) for " + visiting_teams[i] + " at " + home_teams[i] + " (Game " + (i+1) + ").");');
    d.writeln('');
-   d.writeln('         if (top.mobile == false) picks_select_array[i].focus({focusVisible: true, preventScroll: true});');
+   d.writeln('         top.focus_element(picks_select_array[i]);');
    d.writeln('');
    d.writeln('         return false;');
    d.writeln('      }');
@@ -4695,7 +4686,7 @@ function build_post_season_form()
    d.writeln('      {');
    d.writeln('         alert(error_message);');
    d.writeln('         spread_elements[i].value = "";');
-   d.writeln('         if (top.mobile == false) spread_elements[i].focus({focusVisible: true, preventScroll: true});');
+   d.writeln('         top.focus_element(spread_elements[i]);');
    d.writeln('         return false;');
    d.writeln('      }');
    d.writeln('      else');
@@ -4800,7 +4791,7 @@ function build_post_season_form()
          d.writeln('<td><font style="font-size: 13pt">by</font></td>');
          d.writeln('<td><font style="font-size: 13pt">');
       }
-      d.writeln('    <input type=text class="default_text border_radius" style="font-size: 12pt" name="spread'+i+'" size="2" maxlength="2">');
+      d.writeln('    <input type=text class="default_text border_radius" style="font-size: 12pt; width: 40px" name="spread'+i+'" size="2" maxlength="2">');
       d.writeln('</font></td>');
       d.writeln('</tr>');
       d.writeln('');
@@ -4808,7 +4799,7 @@ function build_post_season_form()
 
    d.writeln('<tr>');
    d.writeln('<td class="no_border" style="text-align: right; padding-right: 5px" colspan="4"><font style="font-size: 13pt">Game '+number_of_ps_games+' Total Points:</font></td>');
-   d.writeln('<td class="no_border" style="text-align: left;  padding-left:  5px" colspan="1"><input type=text id="total_points" class="default_text border_radius" style="font-size: 12pt; width: 35px" name="points" size="2" maxlength="2"></td>');
+   d.writeln('<td class="no_border" style="text-align: left;  padding-left:  5px" colspan="1"><input type=text id="total_points" class="default_text border_radius" style="font-size: 12pt; width: 40px" name="points" size="2" maxlength="2"></td>');
    d.writeln('<td class="no_border" colspan="2"></td>');
    d.writeln('</tr>');
    d.writeln('');    
@@ -4867,16 +4858,13 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   // Set Input Form focus.');
    d.writeln('');
-   d.writeln('   if (top.mobile == false)');
+   d.writeln('   if (top.player_index == 0)');
    d.writeln('   {');
-   d.writeln('      if (top.player_index == 0)');
-   d.writeln('      {');
-   d.writeln('         document.fp_inputs.player_name_menu.focus({focusVisible: true, preventScroll: true});');
-   d.writeln('      }');
-   d.writeln('      else');
-   d.writeln('      {');
-   d.writeln('         document.fp_inputs.pick1.focus({focusVisible: true, preventScroll: true});');
-   d.writeln('      }');
+   d.writeln('      top.focus_element(document.fp_inputs.player_name_menu);');
+   d.writeln('   }');
+   d.writeln('   else');
+   d.writeln('   {');
+   d.writeln('      top.focus_element(document.fp_inputs.pick1);');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   // Scroll to top of Input Form.');
@@ -4959,7 +4947,7 @@ function validate_password()
    {
       alert("Invalid password.");
       password.value = "";
-      password.focus({focusVisible: true, preventScroll: true});
+      top.focus_element(password);
       return false;
    }
 }
