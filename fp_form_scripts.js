@@ -1,7 +1,15 @@
 
 function adjust_mobile_viewport_height(document)
 {
-   if ( (top.gv.mobile == true) && (navigator.platform != "iPad") )
+   var iPad = false;
+
+
+   if ( (navigator.platform.toLowerCase().indexOf("ipad") != -1) || ((navigator.platform.toLowerCase().indexOf("macintel") != -1) && (navigator.maxTouchPoints > 1)) )
+   {
+      iPad = true;
+   }
+
+   if ( (top.gv.mobile == true) && (iPad == false) )
    {
       if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
       {
@@ -1489,12 +1497,11 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('<center>');
    d.writeln('');
-   if ( (top.gv.mobile != true) || (navigator.platform == "iPad") )
+   if ( (top.gv.mobile == false) || (navigator.platform.toLowerCase().indexOf("ipad") != -1) || ((navigator.platform.toLowerCase().indexOf("macintel") != -1) && (navigator.maxTouchPoints > 1)) )
    {
       d.writeln('<div style="margin: 10px 0px 10px 0px"><font style="font-family: Calibri; font-size: 16pt; font-weight: bold">'+document_heading+'</font></div>');
       d.writeln('');
    }
-
    d.writeln('<form name="fp_scores">');
    d.writeln('');
 
@@ -2293,7 +2300,7 @@ function build_post_season_form()
 
    if (mode == "prelim")
    {
-      if (window.top.gv.mobile != true)
+      if (window.top.gv.mobile == false)
       {
          for (var gi = 1; gi <= number_of_games_to_display; gi++)
          {
@@ -2318,7 +2325,7 @@ function build_post_season_form()
    }
    else
    {
-      if (window.top.gv.mobile != true) d.writeln('<script>document.fp_scores.view_button.focus();</'+'script>');
+      if (window.top.gv.mobile == false) d.writeln('<script>document.fp_scores.view_button.focus();</'+'script>');
    }
    d.writeln('');
 
@@ -3090,7 +3097,7 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      alert("\\"Best Outcome\\" cannot be performed if winners have already been specified for every game.");');
    d.writeln('');
-   d.writeln('      if (window.top.gv.mobile != true) document.fp_results.calculate_scores_button.focus();');
+   d.writeln('      if (window.top.gv.mobile == false) document.fp_results.calculate_scores_button.focus();');
    d.writeln('');
    d.writeln('      abort = true;');
    d.writeln('   }');
@@ -3098,7 +3105,7 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      alert("Select a player for \\"Best Outcome\\".");');
    d.writeln('');
-   d.writeln('      if (window.top.gv.mobile != true) document.fp_results.player_name_menu.focus();');
+   d.writeln('      if (window.top.gv.mobile == false) document.fp_results.player_name_menu.focus();');
    d.writeln('');
    d.writeln('      abort = true;');
    d.writeln('   }');
@@ -3106,7 +3113,7 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      alert("Player and opponent for \\"Best Outcome\\" cannot be the same.");');
    d.writeln('');
-   d.writeln('      if (window.top.gv.mobile != true) document.fp_results.opponent_name_menu.focus();');
+   d.writeln('      if (window.top.gv.mobile == false) document.fp_results.opponent_name_menu.focus();');
    d.writeln('');
    d.writeln('      abort = true;');
    d.writeln('   }');
@@ -3114,7 +3121,7 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      alert("The player selected for \\"Best Outcome\\" did not submit picks this week.");');
    d.writeln('');
-   d.writeln('      if (window.top.gv.mobile != true) document.fp_results.player_name_menu.focus();');
+   d.writeln('      if (window.top.gv.mobile == false) document.fp_results.player_name_menu.focus();');
    d.writeln('');
    d.writeln('      abort = true;');
    d.writeln('   }');
@@ -3783,13 +3790,11 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('<center>');
    d.writeln('');
-
-   if ( (top.gv.mobile != true) || (navigator.platform == "iPad") )
+   if ( (top.gv.mobile == false) || (navigator.platform.toLowerCase().indexOf("ipad") != -1) || ((navigator.platform.toLowerCase().indexOf("macintel") != -1) && (navigator.maxTouchPoints > 1)) )
    {
       d.writeln('<div style="margin: 10px 0px 10px 0px"><font style="font-family: Calibri; font-size: 16pt; font-weight: bold">'+document_heading+'</font></div>');
       d.writeln('');
    }
-
    d.writeln('<form name="fp_results">');
    d.writeln('');
 
@@ -4477,7 +4482,7 @@ function build_regular_season_form()
 
    if (mode == "prelim")
    {
-      if (window.top.gv.mobile != true)
+      if (window.top.gv.mobile == false)
       {
          for (var i = 1; i <= number_of_rs_games; i++)
          {
@@ -4502,7 +4507,7 @@ function build_regular_season_form()
    }
    else
    {
-      if (window.top.gv.mobile != true) d.writeln('<script>document.fp_results.view_button.focus();</'+'script>');
+      if (window.top.gv.mobile == false) d.writeln('<script>document.fp_results.view_button.focus();</'+'script>');
    }
    d.writeln('');
 
@@ -5107,12 +5112,11 @@ function build_season_summary()
    d.writeln('');
    d.writeln('<center>');
    d.writeln('');
-   if ( (top.gv.mobile != true) || (navigator.platform == "iPad") )
+   if ( (top.gv.mobile == false) || (navigator.platform.toLowerCase().indexOf("ipad") != -1) || ((navigator.platform.toLowerCase().indexOf("macintel") != -1) && (navigator.maxTouchPoints > 1)) )
    {
       d.writeln('<div style="margin: 10px 0px 10px 0px"><font style="font-family: Calibri; font-size: 16pt; font-weight: bold">'+document_heading+'</font></div>');
       d.writeln('');
    }
-
    d.writeln('<form name="fp_results">');
    d.writeln('');
 
@@ -5769,7 +5773,7 @@ function build_season_summary()
    d.writeln('</center>');
    d.writeln('');
 
-   if (window.top.gv.mobile != true) d.writeln('<script>document.fp_results.view_button.focus();</'+'script>');
+   if (window.top.gv.mobile == false) d.writeln('<script>document.fp_results.view_button.focus();</'+'script>');
    d.writeln('');
 
    d.writeln('</body>');
