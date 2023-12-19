@@ -2306,10 +2306,9 @@ function build_post_season_form()
          {
             if ( (post_season_winners[gi-1] != "V") && (post_season_winners[gi-1] != "H") )
             {
-               d.writeln('<script>document.fp_scores.visitor'+gi+'_score.focus();</'+'script>');
+               d.writeln('<script>window.top.gv.focus_element(document.fp_scores.visitor'+gi+'_score);</'+'script>');
                break;
             }
-            d.writeln('<script>document.fp_scores.view_button.focus();</'+'script>');
          }
       }
 
@@ -2323,10 +2322,7 @@ function build_post_season_form()
          window.top.gv.get_scores_timer = setInterval('get_nfl_scores(document,false,"");',10000);
       }
    }
-   else
-   {
-      if (window.top.gv.mobile == false) d.writeln('<script>document.fp_scores.view_button.focus();</'+'script>');
-   }
+
    d.writeln('');
 
    d.writeln('</body>');
@@ -3097,15 +3093,13 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      alert("\\"Best Outcome\\" cannot be performed if winners have already been specified for every game.");');
    d.writeln('');
-   d.writeln('      if (window.top.gv.mobile == false) document.fp_results.calculate_scores_button.focus();');
-   d.writeln('');
    d.writeln('      abort = true;');
    d.writeln('   }');
    d.writeln('   else if (selected_player_index < 0)');
    d.writeln('   {');
    d.writeln('      alert("Select a player for \\"Best Outcome\\".");');
    d.writeln('');
-   d.writeln('      if (window.top.gv.mobile == false) document.fp_results.player_name_menu.focus();');
+   d.writeln('      window.top.gv.focus_element(document.fp_results.player_name_menu);');
    d.writeln('');
    d.writeln('      abort = true;');
    d.writeln('   }');
@@ -3113,15 +3107,7 @@ function build_regular_season_form()
    d.writeln('   {');
    d.writeln('      alert("Player and opponent for \\"Best Outcome\\" cannot be the same.");');
    d.writeln('');
-   d.writeln('      if (window.top.gv.mobile == false) document.fp_results.opponent_name_menu.focus();');
-   d.writeln('');
-   d.writeln('      abort = true;');
-   d.writeln('   }');
-   d.writeln('   else if (picks[selected_player_index].length == 0)');
-   d.writeln('   {');
-   d.writeln('      alert("The player selected for \\"Best Outcome\\" did not submit picks this week.");');
-   d.writeln('');
-   d.writeln('      if (window.top.gv.mobile == false) document.fp_results.player_name_menu.focus();');
+   d.writeln('      window.top.gv.focus_element(document.fp_results.opponent_name_menu);');
    d.writeln('');
    d.writeln('      abort = true;');
    d.writeln('   }');
@@ -4488,10 +4474,9 @@ function build_regular_season_form()
          {
             if (winners[i-1] == "0")
             {
-               d.writeln('<script>document.fp_results.winner'+i+'.focus();</'+'script>');
+               d.writeln('<script>top.gv.focus_element(document.fp_results.winner'+i+');</'+'script>');
                break;
             }
-            d.writeln('<script>document.fp_results.view_button.focus();</'+'script>');
          }
       }
 
@@ -4504,10 +4489,6 @@ function build_regular_season_form()
       {
          window.top.gv.get_scores_timer = setInterval('get_nfl_scores(document,false,"");',10000);
       }
-   }
-   else
-   {
-      if (window.top.gv.mobile == false) d.writeln('<script>document.fp_results.view_button.focus();</'+'script>');
    }
    d.writeln('');
 
@@ -5772,8 +5753,6 @@ function build_season_summary()
 
    d.writeln('</center>');
    d.writeln('');
-
-   if (window.top.gv.mobile == false) d.writeln('<script>document.fp_results.view_button.focus();</'+'script>');
    d.writeln('');
 
    d.writeln('</body>');

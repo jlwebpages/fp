@@ -163,6 +163,7 @@ function build_forms_page()
    d.writeln("      w.gv.document.writeln('var visiting_scores         = Array(max_number_of_rs_games);');");
    d.writeln("      w.gv.document.writeln('');");
    d.writeln("      w.gv.document.writeln('var current_input_week;');");
+   d.writeln("      w.gv.document.writeln('var focus_element;');");
    d.writeln("      w.gv.document.writeln('var form_view;');");
    d.writeln("      w.gv.document.writeln('var games_over;');");
    d.writeln("      w.gv.document.writeln('var get_scores_state;');");
@@ -253,6 +254,7 @@ function build_forms_page()
    d.writeln('      w.gv.visiting_scores.fill("");');
    d.writeln('');
    d.writeln('      w.gv.current_input_week     = top.current_input_week;');
+   d.writeln('      w.gv.focus_element          = top.focus_element;');
    d.writeln('      w.gv.form_view              = "' + form_view + '";');
    d.writeln('      w.gv.games_over             = top.games_over;');
    d.writeln('      w.gv.get_scores_state       = "off";');
@@ -391,6 +393,7 @@ function build_forms_page()
    d.writeln("      w.gv.document.writeln('var visitor_scores               = Array(number_of_ps_games);');");
    d.writeln("      w.gv.document.writeln('');");
    d.writeln("      w.gv.document.writeln('var current_input_week;');");
+   d.writeln("      w.gv.document.writeln('var focus_element;');");
    d.writeln("      w.gv.document.writeln('var form_view;');");
    d.writeln("      w.gv.document.writeln('var games_over;');");
    d.writeln("      w.gv.document.writeln('var get_scores_state;');");
@@ -417,6 +420,7 @@ function build_forms_page()
    d.writeln('      w.gv.visitor_scores.fill(0);');
    d.writeln('');
    d.writeln('      w.gv.current_input_week      = top.current_input_week;');
+   d.writeln('      w.gv.focus_element           = top.focus_element;');
    d.writeln('      w.gv.form_view               = "' + form_view + '";');
    d.writeln('      w.gv.games_over              = top.games_over;');
    d.writeln('      w.gv.get_scores_state        = "off";');
