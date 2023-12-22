@@ -2300,15 +2300,12 @@ function build_post_season_form()
 
    if (mode == "prelim")
    {
-      if (window.top.gv.mobile == false)
+      for (var gi = 1; gi <= number_of_games_to_display; gi++)
       {
-         for (var gi = 1; gi <= number_of_games_to_display; gi++)
+         if ( (post_season_winners[gi-1] != "V") && (post_season_winners[gi-1] != "H") )
          {
-            if ( (post_season_winners[gi-1] != "V") && (post_season_winners[gi-1] != "H") )
-            {
-               d.writeln('<script>window.top.gv.focus_element(document.fp_scores.visitor'+gi+'_score);</'+'script>');
-               break;
-            }
+            d.writeln('<script>window.top.gv.focus_element(document.fp_scores.visitor'+gi+'_score);</'+'script>');
+            break;
          }
       }
 
@@ -4468,15 +4465,12 @@ function build_regular_season_form()
 
    if (mode == "prelim")
    {
-      if (window.top.gv.mobile == false)
+      for (var i = 1; i <= number_of_rs_games; i++)
       {
-         for (var i = 1; i <= number_of_rs_games; i++)
+         if (winners[i-1] == "0")
          {
-            if (winners[i-1] == "0")
-            {
-               d.writeln('<script>top.gv.focus_element(document.fp_results.winner'+i+');</'+'script>');
-               break;
-            }
+            d.writeln('<script>top.gv.focus_element(document.fp_results.winner'+i+');</'+'script>');
+            break;
          }
       }
 
