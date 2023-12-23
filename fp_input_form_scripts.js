@@ -3202,7 +3202,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('      // Build the line in HTML Table Record (<tr>) format.');
    d.writeln('');
-   d.writeln('      confirmation_message += "\\n<tr" + upset_color + " style=\\"line-height: 100%\\">";');
+   d.writeln('      confirmation_message += "\\n<tr" + upset_color + " style=\\"line-height: 1.2\\">";');
    d.writeln('      confirmation_message += "<td nowrap style=\\"padding: 0px 30px 0px 0px\\">" + winning_team + "</td>";');
    d.writeln('      confirmation_message += "<td nowrap style=\\"padding: 0px\\">over</td>";');
    d.writeln('      confirmation_message += "<td nowrap style=\\"padding: 0px 30px 0px 30px\\">" + losing_team + "</td>";');
@@ -3249,7 +3249,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('      // Format picks for display.');
    d.writeln('');
-   d.writeln('      picks_message  = "\\n\\n<span style=\\"font-family: Calibri; font-size: 11pt\\">";');
+   d.writeln('      picks_message  = "\\n\\n<span style=\\"font-family: Calibri; font-size: 11pt; line-height: 1.5\\">";');
    d.writeln('      picks_message += "\\n<table style=\\"margin-right: auto; margin-left: auto\\">";');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px\\"><b>Create an e-mail message and send it to:</b></td></tr>"');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px; padding-left: 10px\\">fp@socal.rr.com</td></tr>"');
@@ -3546,11 +3546,16 @@ function build_post_season_form()
    d.writeln('               }');
    d.writeln('            }');
    d.writeln('');
-   d.writeln('            // If this is the last game scheduled and the NFL odds exist, get the total_points from the NFL odds to use as the Total Points Prediction.');
-   d.writeln('');
-   d.writeln('            if ( (i == '+number_of_ps_games+'-1) && (nfl_odds_array[0].length > 0) )');
+   d.writeln('            if (i == '+number_of_ps_games+'-1)');
    d.writeln('            {');
-   d.writeln('               total_points = nfl_odds_array[j][noa_total_points_index];');
+   d.writeln('               // This is the last game scheduled so use the total points for the Total Points Prediction.');
+   d.writeln('');
+   d.writeln('               if (nfl_odds_array[0].length > 0)');
+   d.writeln('               {');
+   d.writeln('                  // Use the total points from the NFL odds for the Total Points Prediction.');
+   d.writeln('');
+   d.writeln('                  total_points = nfl_odds_array[j][noa_total_points_index];');
+   d.writeln('               }');
    d.writeln('');
    d.writeln('               // If total_points is not a whole number, round it up or down randomly.');
    d.writeln('');
