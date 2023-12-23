@@ -4465,12 +4465,19 @@ function build_regular_season_form()
 
    if (mode == "prelim")
    {
-      for (var i = 1; i <= number_of_rs_games; i++)
+      if ( (tie_breaker_needed == true) && (unable_to_break_tie == false) )
       {
-         if (winners[i-1] == "0")
+         window.top.gv.focus_element(d.fp_results.mn_points);
+      }
+      else
+      {
+         for (var i = 1; i <= number_of_rs_games; i++)
          {
-            d.writeln('<script>top.gv.focus_element(document.fp_results.winner'+i+');</'+'script>');
-            break;
+            if (winners[i-1] == "0")
+            {
+               d.writeln('<script>top.gv.focus_element(document.fp_results.winner'+i+');</'+'script>');
+               break;
+            }
          }
       }
 
