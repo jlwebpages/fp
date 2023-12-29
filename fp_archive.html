@@ -286,13 +286,13 @@ function display_archive_page()
    d.writeln('<table class="table">');
    d.writeln('');
    d.writeln('');
-   d.writeln('<tr><td class="light_color_cell" style="font-size: 16pt; vertical-align: top; height:100%; padding-top: 0px; border-top: 0px">');
+   d.writeln('<tr><td class="light_color_cell" style="font-size: 16pt; vertical-align: top; height:100%">');
    d.writeln('');
    d.writeln('<form name=year_form>');
    d.writeln('');
-   d.writeln('   <br><font style="font-size: 16pt;">Select Year:&nbsp&nbsp</font>');
+   d.writeln('   <br><span style="font-size: 18pt; padding-right: 5px">Archive Year:</span>');
    d.writeln('');
-   d.writeln('   <select class="default_select background_color border_radius" style="font-size: 12pt; height: 25px" size=1 name=year_menu onChange="change_year(document); return true;">');
+   d.writeln('   <select class="default_select background_color border_radius" style="font-size: 14pt; height: 25px" size=1 name=year_menu onChange="change_year(document); return true;">');
 
    for (var i = max_archive_year; i >= min_archive_year; i--)
    {
