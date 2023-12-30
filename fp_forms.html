@@ -446,9 +446,9 @@ function build_forms_page()
    d.writeln('<table class="table">');
    d.writeln('');
    d.writeln('<tr>');
+   d.writeln('');
    d.writeln('<td class="light_color_cell" style="vertical-align: top; height:100%">');
    d.writeln('');
-   d.writeln('<span class="dark_blue_color">');
 
    if (current_input_week > number_of_rs_weeks)
    {
@@ -456,224 +456,91 @@ function build_forms_page()
       {
          // Display post season information.
 
-         d.writeln('<table align=center cellspacing=10 style="font-size: 16pt">');
+         d.writeln('<table style="font-size: 16pt; font-weight: bold; line-height: 40px; white-space: nowrap; margin-left: auto; margin-right: auto">');
          d.writeln('');
-         d.writeln('<tr><td align=center colspan=2 style="padding-bottom: 10px"><b><font class="red_color"><u>Post Season</u></font></b></td></tr>');
+         d.writeln('   <tr>');
+         d.writeln('      <td colspan="2" class="red_color" style="font-size: 18pt; text-decoration: underline; text-align: center; padding-top: 20px; padding-bottom: 10px">Post Season</td>');
+         d.writeln('   </tr>');
          d.writeln('');
-
          if (top.games_over == true && top.season_over == false)
          {
             top.post_season = true;
 
-            d.writeln('<tr align=center valign=top>');
-            d.writeln('');
-            d.writeln('<td align=right width="50%" nowrap><b><font class="green_color">');
-            d.writeln('Week ' + post_season_input_week + ':&nbsp;&nbsp;');
-            d.writeln('</font></b></td>');
-            d.writeln('');
-            d.writeln('<td align=left width="50%" nowrap><b><font class="black_color">');
-            d.writeln('<a class="blue_link" href="fp_input_form.html">');
-            d.writeln('');
-            d.writeln('Input Form');
-            d.writeln('');
-            d.writeln('</a>');
-            d.writeln('<br>');
-            d.writeln('<a class="blue_link" href="post_season_inputs.xlsx">');
-            d.writeln('');
-            d.writeln('Input Form (Excel)');
-            d.writeln('');
-            d.writeln('</a>');
-            d.writeln('</font></b></td>');
-            d.writeln('');
-            d.writeln('</tr>');
+            d.writeln('   <tr>');
+            d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + post_season_input_week + ':</td>');
+            d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href="fp_input_form.html">Input Form</a></td>');
+            d.writeln('   </tr>');
             d.writeln('');
          }
-
          if (top.games_over == false && top.season_over == false)
          {
-            d.writeln('<tr align=center valign=top>');
-            d.writeln('');
-            d.writeln('<td align=right width="50%" nowrap><b><font class="green_color">');
-            d.writeln('Week ' + post_season_prelim_week + ':&nbsp;&nbsp;');
-            d.writeln('</font></b></td>');
-            d.writeln('');
-            d.writeln('<td align=left width="50%" nowrap><b><font class="black_color">');
-            d.writeln('<a class="blue_link" href=javascript:open_post_season_form("prelim");>');
-            d.writeln('');
-            d.writeln('Preliminary');
-            d.writeln('');
-            d.writeln('</a>');
-            d.writeln('<br>');
-            d.writeln('<a class="blue_link" href="post_season_prelim.xlsm">');
-            d.writeln('');
-            d.writeln('Preliminary (Excel)');
-            d.writeln('');
-            d.writeln('</a>');
-            d.writeln('</font></b></td>');
-            d.writeln('');
-            d.writeln('</tr>');
+            d.writeln('   <tr>');
+            d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + post_season_prelim_week + ':</td>');
+            d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_post_season_form("prelim")>Preliminary</a></td>');
+            d.writeln('   </tr>');
             d.writeln('');
          }
-
          if ( (current_input_week > number_of_rs_weeks+2) || (current_input_week == number_of_rs_weeks+2 && top.games_over == true) )
          {
-            d.writeln('<tr align=center valign=top>');
-            d.writeln('');
-            d.writeln('<td align=right width="50%" nowrap><b><font class="green_color">');
-            d.writeln('Week ' + post_season_final_week + ':&nbsp;&nbsp;');
-            d.writeln('</font></b></td>');
-            d.writeln('');
-            d.writeln('<td align=left width="50%" nowrap><b><font class="black_color">');
-            d.writeln('<a class="blue_link" href=javascript:open_post_season_form("final");>');
-            d.writeln('');
-            d.writeln('Final');
-            d.writeln('');
-            d.writeln('</a>');
-            d.writeln('<br>');
-            d.writeln('<a class="blue_link" href="post_season_final.xlsm">');
-            d.writeln('');
-            d.writeln('Final (Excel)');
-            d.writeln('');
-            d.writeln('</a>');
-            d.writeln('');
-            d.writeln('</font></b></td>');
-            d.writeln('');
-            d.writeln('</tr>');
+            d.writeln('   <tr>');
+            d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + post_season_final_week + ':</td>');
+            d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_post_season_form("final")>Final</a></td>');
+            d.writeln('   </tr>');
             d.writeln('');
          }
-
          d.writeln('</table>');
-         d.writeln('');
-         d.writeln('<p>');
          d.writeln('');
       }
    }
 
    // Display regular season information.
 
-   d.writeln('<table align=center cellspacing=10 style="font-size: 16pt">');
+   d.writeln('<table style="font-size: 16pt; font-weight: bold; line-height: 40px; white-space: nowrap; margin-left: auto; margin-right: auto">');
    d.writeln('');
-   d.writeln('<tr><td align=center colspan=2 style="padding-bottom: 10px"><b><font class="red_color"><u>Regular Season</u></font></b></td></tr>');
+   d.writeln('   <tr>');
+   d.writeln('      <td colspan="2" class="red_color" style="font-size: 18pt; text-decoration: underline; text-align: center; padding-top: 20px; padding-bottom: 10px">Regular Season</td>');
+   d.writeln('   </tr>');
    d.writeln('');
-
    if (current_input_week <= number_of_rs_weeks)
    {
-      d.writeln('<tr align=center valign=top>');
-      d.writeln('');
-      d.writeln('<td align=right width="50%" nowrap><b><font class="green_color">');
-      d.writeln('Week ' + regular_input_week + ':&nbsp;&nbsp;');
-      d.writeln('</font></b></td>');
-      d.writeln('');
-      d.writeln('<td align=left width="50%" nowrap><b><font class="black_color">');
-      d.writeln('<a class="blue_link" href="fp_input_form.html">');
-      d.writeln('');
-      d.writeln('Input Form');
-      d.writeln('');
-      d.writeln('</a>');
-      d.writeln('<br>');
-      d.writeln('<a class="blue_link" href="regular_season_inputs.xlsx">');
-      d.writeln('');
-      d.writeln('Input Form (Excel)');
-      d.writeln('');
-      d.writeln('</a>');
-      d.writeln('</font></b></td>');
-      d.writeln('');
-      d.writeln('</tr>');
+      d.writeln('   <tr>');
+      d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + regular_input_week + ':</td>');
+      d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href="fp_input_form.html">Input Form</a></td>');
+      d.writeln('   </tr>');
       d.writeln('');
    }
-
    if (current_input_week > 1 && current_input_week <= (number_of_rs_weeks + 1) && top.games_over == false)
    {
-      d.writeln('<tr align=center valign=top>');
-      d.writeln('');
-      d.writeln('<td align=right width="50%" nowrap><b><font class="green_color">');
-      d.writeln('Week ' + regular_prelim_week + ':&nbsp;&nbsp;');
-      d.writeln('</font></b></td>');
-      d.writeln('');
-      d.writeln('<td align=left width="50%" nowrap><b><font class="black_color">');
-      d.writeln('<a class="blue_link" href=javascript:open_regular_season_form("prelim");>');
-      d.writeln('');
-      d.writeln('Preliminary');
-      d.writeln('');
-      d.writeln('</a>');
-      d.writeln('<br>');
-      d.writeln('<a class="blue_link" href="regular_season_prelim.xlsm">');
-      d.writeln('');
-      d.writeln('Preliminary (Excel)');
-      d.writeln('');
-      d.writeln('</a>');
-      d.writeln('</font></b></td>');
-      d.writeln('');
-      d.writeln('</tr>');
+      d.writeln('   <tr>');
+      d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + regular_prelim_week + ':</td>');
+      d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_regular_season_form("prelim")>Preliminary</a></td>');
+      d.writeln('   </tr>');
       d.writeln('');
    }
-
    if ( (current_input_week > 2) || (current_input_week == 2 && top.games_over == true) )
    {
-      d.writeln('<tr align=center valign=top>');
+      d.writeln('   <tr>');
+      d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + regular_final_week + ':</td>');
+      d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_regular_season_form("final")>Final</a></td>');
+      d.writeln('   </tr>');
       d.writeln('');
-      d.writeln('<td align=right width="50%" nowrap><b><font class="green_color">');
-      d.writeln('Week ' + regular_final_week + ':&nbsp;&nbsp;');
-      d.writeln('</font></b></td>');
-      d.writeln('');
-      d.writeln('<td align=left width="50%" nowrap><b><font class="black_color">');
-      d.writeln('<a class="blue_link" href=javascript:open_regular_season_form("final");>');
-      d.writeln('');
-      d.writeln('Final');
-      d.writeln('');
-      d.writeln('</a>');
-      d.writeln('<br>');
-      d.writeln('<a class="blue_link" href="regular_season_final.xlsm">');
-      d.writeln('');
-      d.writeln('Final (Excel)');
-      d.writeln('');
-      d.writeln('</a>');
-      d.writeln('</font></b></td>');
-      d.writeln('');
-      d.writeln('</tr>');
-      d.writeln('');
-
-      d.writeln('<tr align=center valign=top>');
-      d.writeln('');
-      d.writeln('<td align=right width="50%" nowrap><b><font class="green_color">');
-      d.writeln('Season Summary:&nbsp;&nbsp;');
-      d.writeln('</font></b></td>');
-      d.writeln('');
-      d.writeln('<td align=left width="50%" nowrap><b><font class="black_color">');
-      d.writeln('<a class="blue_link" href=javascript:open_regular_season_form("summary");>');
-      d.writeln('');
-
-      if (regular_final_week == 1)
-      {
-         d.writeln('Through Week ' + regular_final_week);
-      }
-      else
-      {
-         d.writeln('Weeks 1 through ' + regular_final_week);
-      }
-
-      d.writeln('');
-      d.writeln('</a>');
-      d.writeln('</font></b></td>');
-      d.writeln('');
-      d.writeln('</tr>');
+      d.writeln('   <tr>');
+      d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Weeks 1 through ' + regular_final_week + ':</td>');
+      d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_regular_season_form("summary")>Season Summary</a></td>');
+      d.writeln('   </tr>');
       d.writeln('');
    }
-
    d.writeln('</table>');
    d.writeln('');
 
-   d.writeln('</span>');
-   d.writeln('');
    d.writeln('</td>');
+   d.writeln('');
    d.writeln('</tr>');
    d.writeln('');
    d.writeln('</table>');
    d.writeln('');
-
    d.writeln('</body>');
    d.writeln('');
-
    d.writeln('</html>');
 
    d.close();
