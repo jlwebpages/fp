@@ -117,7 +117,7 @@ function build_forms_page()
    d.writeln('</head>');
    d.writeln('');
 
-   d.writeln('<body style="margin: 0" onunload="reset_display()">');
+   d.writeln('<body style="margin: 0px" onunload="reset_display()">');
    d.writeln('');
    d.writeln('');
 
@@ -443,12 +443,6 @@ function build_forms_page()
    d.writeln('</' + 'script>');
    d.writeln('');
    d.writeln('');
-   d.writeln('<table class="table">');
-   d.writeln('');
-   d.writeln('<tr>');
-   d.writeln('');
-   d.writeln('<td class="light_color_cell" style="vertical-align: top; height:100%">');
-   d.writeln('');
 
    if (current_input_week > number_of_rs_weeks)
    {
@@ -456,10 +450,10 @@ function build_forms_page()
       {
          // Display post season information.
 
-         d.writeln('<table style="font-size: 16pt; font-weight: bold; line-height: 40px; white-space: nowrap; margin-left: auto; margin-right: auto">');
+         d.writeln('<table class="table" style="height: auto; border-spacing: 2px; font-size: 16pt; font-weight: bold; line-height: 40px; padding-left: 10px; padding-right: 10px; margin-top: 25px; margin-left: auto; margin-right: auto">');
          d.writeln('');
          d.writeln('   <tr>');
-         d.writeln('      <td colspan="2" class="red_color" style="font-size: 18pt; text-decoration: underline; text-align: center; padding-top: 20px; padding-bottom: 10px">Post Season</td>');
+         d.writeln('      <td colspan="2" class="red_color" style="font-size: 18pt; text-decoration: underline; text-align: center; padding-bottom: 10px">Post Season</td>');
          d.writeln('   </tr>');
          d.writeln('');
          if (top.games_over == true && top.season_over == false)
@@ -495,10 +489,10 @@ function build_forms_page()
 
    // Display regular season information.
 
-   d.writeln('<table style="font-size: 16pt; font-weight: bold; line-height: 40px; white-space: nowrap; margin-left: auto; margin-right: auto">');
+   d.writeln('<table class="table" style="height: auto; border-spacing: 2px; font-size: 16pt; font-weight: bold; line-height: 40px; padding-left: 10px; padding-right: 10px; margin-top: 25px; margin-left: auto; margin-right: auto">');
    d.writeln('');
    d.writeln('   <tr>');
-   d.writeln('      <td colspan="2" class="red_color" style="font-size: 18pt; text-decoration: underline; text-align: center; padding-top: 20px; padding-bottom: 10px">Regular Season</td>');
+   d.writeln('      <td colspan="2" class="red_color" style="font-size: 18pt; text-decoration: underline; text-align: center; padding-bottom: 10px">Regular Season</td>');
    d.writeln('   </tr>');
    d.writeln('');
    if (current_input_week <= number_of_rs_weeks)
@@ -534,13 +528,8 @@ function build_forms_page()
       }
    }
    d.writeln('</table>');
-   d.writeln('');
 
-   d.writeln('</td>');
    d.writeln('');
-   d.writeln('</tr>');
-   d.writeln('');
-   d.writeln('</table>');
    d.writeln('');
    d.writeln('</body>');
    d.writeln('');

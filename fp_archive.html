@@ -61,7 +61,7 @@ function display_archive_page()
    d.writeln('   <link href="fp.css" rel="stylesheet" type="text/css">');;
    d.writeln('</head>');
    d.writeln('');
-   d.writeln('<body style="margin: 0" onunload="reset_display()">');
+   d.writeln('<body style="margin: 0px" onunload="reset_display()">');
    d.writeln('');
    d.writeln('');
    d.writeln('<script language="JavaScript">');
@@ -283,45 +283,46 @@ function display_archive_page()
    d.writeln('</'+'script>');
    d.writeln('');
    d.writeln('');
-   d.writeln('<table class="table">');
+   d.writeln('<table class="table" style="height: auto; border-spacing: 2px; text-align: center; font-size: 16pt; font-weight: bold; line-height: 50px; padding-left: 10px; padding-right: 10px; margin-top: 20px; margin-left: auto; margin-right: auto">');
    d.writeln('');
-   d.writeln('');
-   d.writeln('<tr><td class="light_color_cell" style="font-size: 16pt; vertical-align: top; height:100%">');
-   d.writeln('');
-   d.writeln('<form name=year_form>');
-   d.writeln('');
-   d.writeln('   <br><span style="font-size: 18pt; padding-right: 5px">Archive Year:</span>');
-   d.writeln('');
-   d.writeln('   <select class="default_select background_color border_radius" style="font-size: 14pt; height: 25px" size=1 name=year_menu onChange="change_year(document); return true;">');
-
+   d.writeln('   <tr><td>');
+   d.writeln('      <form name=year_form style="margin-bottom: 10px">');
+   d.writeln('         <span class="red_color" style="font-size: 18pt; padding-right: 5px">Archive Year:</span>');
+   d.writeln('         <select class="default_select background_color border_radius" style="font-size: 14pt; height: 25px" size=1 name=year_menu onChange="change_year(document);">');
    for (var i = max_archive_year; i >= min_archive_year; i--)
    {
       if (i == archive_year)
       {
-         d.writeln('      <option selected value="'+i+'">'+i+'');
+         d.writeln('         <option selected value="'+i+'">'+i+'');
       }
       else
       {
-         d.writeln('      <option          value="'+i+'">'+i+'');
+         d.writeln('         <option          value="'+i+'">'+i+'');
       }
    }
-   d.writeln('   </select>');
+   d.writeln('         </select>');
+   d.writeln('      </form>');
+   d.writeln('   </td></tr>');
    d.writeln('');
-   d.writeln('   <br><a class="blue_link" href=javascript:window.open("fp_results_'+archive_year+'.html","fp_main","");><br>'+archive_year+' Results</a>');
+   d.writeln('   <tr><td>');
+   d.writeln('      <a class="blue_link" href=javascript:window.open("fp_results_'+archive_year+'.html","fp_main","");>'+archive_year+' Results</a>');
+   d.writeln('   </td></tr>');
    d.writeln('');
    if (archive_year > 2001)
    {
-      d.writeln('   <br><br><a class="blue_link" href=javascript:open_post_season_archive("summary_archive");>'+archive_year+' Post Season Summary</a>');
+      d.writeln('   <tr><td>');
+      d.writeln('      <a class="blue_link" href=javascript:open_post_season_archive("summary_archive");>'+archive_year+' Post Season Summary</a>');
+      d.writeln('   </td></tr>');
       d.writeln('');
-      d.writeln('   <br><br><a class="blue_link" href=javascript:open_regular_season_archive("summary_archive");>'+archive_year+' Regular Season Summary</a>');
+      d.writeln('   <tr><td>');
+      d.writeln('      <a class="blue_link" href=javascript:open_regular_season_archive("summary_archive");>'+archive_year+' Regular Season Summary</a>');
+      d.writeln('   </td></tr>');
       d.writeln('');
-      d.writeln('   <br><br><a class="blue_link" href=javascript:open_regular_season_archive("weekly_archive");>'+archive_year+' Regular Season Weekly Results</a>');
+      d.writeln('   <tr><td>');
+      d.writeln('      <a class="blue_link" href=javascript:open_regular_season_archive("weekly_archive");>'+archive_year+' Regular Season Weekly Results</a>');
+      d.writeln('   </td></tr>');
+      d.writeln('');
    }
-   d.writeln('');
-   d.writeln('</form>');
-   d.writeln('');
-   d.writeln('</td></tr>');
-   d.writeln('');
    d.writeln('</table>');
    d.writeln('');
    d.writeln('');
