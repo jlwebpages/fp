@@ -518,14 +518,18 @@ function build_forms_page()
       d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_regular_season_form("final")>Final</a></td>');
       d.writeln('   </tr>');
       d.writeln('');
-      if (regular_final_week > 1)
+      d.writeln('   <tr>');
+      if (regular_final_week == 1)
       {
-         d.writeln('   <tr>');
-         d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Weeks 1 through ' + regular_final_week + ':</td>');
-         d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_regular_season_form("summary")>Season Summary</a></td>');
-         d.writeln('   </tr>');
-         d.writeln('');
+         d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week 1:</td>');
       }
+      else
+      {
+         d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Weeks 1 through ' + regular_final_week + ':</td>');
+      }
+      d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_regular_season_form("summary")>Season Summary</a></td>');
+      d.writeln('   </tr>');
+      d.writeln('');
    }
    d.writeln('</table>');
 
