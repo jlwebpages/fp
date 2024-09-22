@@ -80,6 +80,7 @@ function process_nfl_playoff_teams(nfl_playoff_teams)
    var NFC_teams                    = null;
    var number_of_playoff_teams      = 7;
    var number_of_rs_weeks_completed = top.current_input_week - 1;
+   var possible_team_record_indexes = [36,37,47,48,49];
    var team_losses                  = 0;
    var team_record                  = "";
    var team_record_index            = null;
@@ -175,19 +176,21 @@ function process_nfl_playoff_teams(nfl_playoff_teams)
 
       // Identify which stats array element contains the team record.
 
-      for (var j = 0; j < AFC_teams.standings[i].stats.length; j++)
+      for (var j = 0; j < possible_team_record_indexes.length; j++)
       {
          team_record_index = null;
 
          // If the stats array element contains a "-" and is less than or equal to 6 characters, then it potentially contains the team record.
 
-         if ( (AFC_teams.standings[i].stats[j] != undefined) && (AFC_teams.standings[i].stats[j].indexOf("-") != -1) && (AFC_teams.standings[i].stats[j].length <= 6) )
+         if ( (AFC_teams.standings[i].stats[possible_team_record_indexes[j]] != undefined)       &&
+              (AFC_teams.standings[i].stats[possible_team_record_indexes[j]].indexOf("-") != -1) &&
+              (AFC_teams.standings[i].stats[possible_team_record_indexes[j]].length <= 6)           )
          {
             team_wins   = 0;
             team_losses = 0;
             team_ties   = 0;
 
-            team_record = AFC_teams.standings[i].stats[j];
+            team_record = AFC_teams.standings[i].stats[possible_team_record_indexes[j]];
 
             // Set team_wins equal to the number before the first "-" in team_record.
 
@@ -222,7 +225,7 @@ function process_nfl_playoff_teams(nfl_playoff_teams)
 
                if ( total_team_record_games >= number_of_rs_weeks_completed - 1)
                {
-                  team_record_index = j;
+                  team_record_index = possible_team_record_indexes[j];
 
                   break;
                }
