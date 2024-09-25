@@ -2715,7 +2715,7 @@ function build_regular_season_form()
    d.writeln('');
 
    d.writeln('<tr class="header_two">');
-   d.writeln('<td id="open_date" class="bt2_border" colspan="6"></td>');
+   d.writeln('<td id="open_date" class="bt2_border" style="white-space: normal" colspan="6"></td>');
    d.writeln('</tr>');
    d.writeln('');
 
