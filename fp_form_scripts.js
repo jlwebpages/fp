@@ -2359,7 +2359,6 @@ function build_regular_season_form()
    var number_of_rs_players          = rs_players.length;
    var number_of_rs_weeks            = window.top.gv.number_of_rs_weeks;
    var tie_breaker_needed            = false;
-   var unable_to_break_tie           = false;
    var unaltered_week                = 0;
    var victors                       = "";
    var visiting_team_possession_flag = "";
@@ -2522,7 +2521,7 @@ function build_regular_season_form()
    sorted_scores.sort(function(sorted_scores,b){return sorted_scores-b;});
    sorted_scores.reverse();
 
-   // Determine if there's a tie.
+   // Determine how many players have the high score and calculate their Total Points delta.
  
    high_score       = sorted_scores[0];
    high_score_count = 0;
@@ -2537,13 +2536,13 @@ function build_regular_season_form()
       }
    }
 
-   // If there's a tie, try to break the tie using the Total Points predictions.
+   // If more than one player has the high score, try to break the tie using using their Total Points delta.
 
    if (high_score_count > 1)
    {
       tie_breaker_needed = true;
 
-      // If the winner of at least one game is not known, then there's no need for a tie breaker.
+      // If the winner of at least one game is not known, then there's no need to break the tie.
 
       for (var i = 0; i < number_of_rs_games; i++)
       {
@@ -2553,81 +2552,55 @@ function build_regular_season_form()
          }
       }
 
-      // Attempt to break the tie.
+      // If needed, attempt to break the tie if actual Total Points are known.
 
-      if (tie_breaker_needed == true)
+      if ( (tie_breaker_needed == true) && (actual_mn_points > 0) )
       {
-         // The tie can only be broken if the actual Total Points is known.
+         // Build the string for dislaying the actual Total Points on the webpage.
 
-         if (actual_mn_points > 0)
+         mn_points_string = actual_mn_points + "&nbsp;&nbsp";
+
+         // Determine the best Total Points delta (difference between best prediction and actual).
+
+         best_mn_points_delta = 1000;
+
+         for (var i = 1; i <= number_of_rs_players; i++)
          {
-            // Build the string for dislaying the actual Total Points on the webpage.
-
-            mn_points_string = actual_mn_points + "&nbsp;&nbsp";
-
-            // Determine the best Total Points delta (difference between best prediction and actual).
-
-            best_mn_points_delta = 1000;
-
-            for (var i = 1; i <= number_of_rs_players; i++)
+            if (mn_points_delta[i-1] != "N/A")
             {
-               if (mn_points_delta[i-1] != "N/A")
+               if ( Math.abs(mn_points_delta[i-1]) < Math.abs(best_mn_points_delta) )
                {
-                  if ( Math.abs(mn_points_delta[i-1]) < Math.abs(best_mn_points_delta) )
+                  best_mn_points_delta = mn_points_delta[i-1];
+               }
+               else if ( Math.abs(mn_points_delta[i-1]) == Math.abs(best_mn_points_delta) )
+               {
+                  if (mn_points_delta[i-1] < best_mn_points_delta)
                   {
                      best_mn_points_delta = mn_points_delta[i-1];
                   }
-                  else if ( Math.abs(mn_points_delta[i-1]) == Math.abs(best_mn_points_delta) )
-                  {
-                     if (mn_points_delta[i-1] < best_mn_points_delta)
-                     {
-                        best_mn_points_delta = mn_points_delta[i-1];
-                     }
-                  }
                }
             }
+         }
 
-            // Determine if the players that are tied have the same Total Points prediction.
+         // Determine how many players have the high score and the same Total Points delta.
 
-            high_score_count = 0;
+         high_score_count = 0;
 
-            for (var i = 1; i <= number_of_rs_players; i++)
+         for (var i = 1; i <= number_of_rs_players; i++)
+         {
+            if ( (mn_points_delta[i-1] != "N/A") && (mn_points_delta[i-1] == best_mn_points_delta) )
             {
-               if ( (mn_points_delta[i-1] != "N/A") && (mn_points_delta[i-1] == best_mn_points_delta) )
-               {
-                  high_score_count++;
-               }
+               high_score_count++;
             }
+         }
 
-            // If the players that are tied have the same Total Points prediction, then we can't break the tie.
+         // Adjust the ranks of the players who have the high score but don't have the best Total Points delta.
 
-            if (high_score_count > 1)
+         for (var i = 1; i <= number_of_rs_players; i++)
+         {
+            if ((scores[i-1] == high_score) && (mn_points_delta[i-1] != best_mn_points_delta))
             {
-               unable_to_break_tie = true;
-
-               for (var i = 1; i <= number_of_rs_players; i++)
-               {
-                  // Clear out the Total Points delta and adjust the rank of those players no longer involved in the tie.
-
-                  if ((scores[i-1] == high_score) && (mn_points_delta[i-1] != best_mn_points_delta))
-                  {
-                     mn_points_delta[i-1] = "N/A";
-                     ranks_adjust[i-1] = high_score_count; 
-                  }
-               }
-            }
-            else
-            {
-               // The tie can be broken, so adjust the ranks
-               // of the playes who lost the tie breaker.
-
-               for (var i = 1; i <= number_of_rs_players; i++)
-               {
-                  if ((mn_points_delta[i-1] != "N/A") && (mn_points_delta[i-1] != best_mn_points_delta))
-                  {
-                     ranks_adjust[i-1] = 1;
-                  }
-               }
+               ranks_adjust[i-1] = high_score_count; 
             }
          }
       }
@@ -4130,9 +4103,7 @@ function build_regular_season_form()
    {
       if (mn_points[player_index[i-1]].length == 0) mn_points[player_index[i-1]] = "<br>";
 
-      if ( (tie_breaker_needed == true) &&
-           (actual_mn_points > 0)       &&
-           (mn_points_delta[player_index[i-1]] != "N/A") )
+      if ( (tie_breaker_needed == true) && (actual_mn_points > 0) && (mn_points_delta[player_index[i-1]] != "N/A") )
       {
          if (mn_points_delta[player_index[i-1]] > 0) 
          {
@@ -4242,72 +4213,20 @@ function build_regular_season_form()
 
    if (mode == "prelim")
    {
-      if (tie_breaker_needed == true)
+      if ( (tie_breaker_needed == true) && (in_progress_mn_points < 1) )
       {
          var mn_pts_value        = window.top.gv.mn_points_entered;
-         var temp_mn_points      = -1;
-         var tie_breaker_message = "";
+         var tie_breaker_message = "Enter \"" + visiting_teams[number_of_rs_games-1] + " at " + home_teams[number_of_rs_games-1] + "\" Total Points to break the tie:&nbsp;&nbsp;";
 
+         if (mn_pts_value < 1) mn_pts_value = "";
 
-         if (unable_to_break_tie == false)
-         {
-            // Determine if the players that are tied have the same Total Points prediction.
-
-            for (var i = 1; i <= number_of_rs_games; i++)
-            {
-               if (ranks[i-1] == 1)
-               {
-                  if (temp_mn_points == -1)
-                  {
-                     temp_mn_points = mn_points[i-1];
-                  }
-                  else if (temp_mn_points != mn_points[i-1])
-                  {
-                     // Not all players that are tied have the same Total Points prediction.
-
-                     unable_to_break_tie = false;
-
-                     break;
-                  }
-                  else
-                  {
-                     unable_to_break_tie = true;
-                  }
-               }
-            }
-         }
-
-         if (unable_to_break_tie == true)
-         {
-            // Clear out the Total Points entry field on the preliminary form.
-
-            window.top.gv.mn_points_entered = 0;
-            mn_pts_value                    = "";
-
-            tie_breaker_message  = "Unable to break the tie.&nbsp;&nbsp;Players tied have the same Total Points prediction.";
-         }
-         else
-         {
-            tie_breaker_message = "Enter \"" + visiting_teams[number_of_rs_games-1] + " at " + home_teams[number_of_rs_games-1] + "\" Total Points to break the tie:&nbsp;&nbsp;";
-         }
-
-         if ( (unable_to_break_tie == true) || (in_progress_mn_points < 1) )
-         {
-            d.writeln('<table align=center>');
-            d.writeln('<tr><td class="no_border" style="font-size: 2pt">&nbsp;</td></tr>');
-            d.writeln('<tr><td class="no_border" nowrap><font style="font-size: 13pt">'+tie_breaker_message+'</font>');
-
-            if (unable_to_break_tie == false)
-            {
-               if (mn_pts_value == 0) mn_pts_value = "";
-
-               d.writeln('<input type=text class="default_text border_radius" style="border: 1px solid black; width: 35px" name="mn_points" size="3" maxlength="3" value="'+mn_pts_value+'"');
-               d.writeln('              onChange="get_mn_points(document);return true;"');
-               d.writeln('            onKeyPress="if (window.event.keyCode==13) {window.event.keyCode=0; get_mn_points(document); calculate_prelim_scores(document); return true;}">');
-            }
-
-            d.writeln('</td></tr></table>');
-         }
+         d.writeln('<table align=center>');
+         d.writeln('<tr><td class="no_border" style="font-size: 2pt">&nbsp;</td></tr>');
+         d.writeln('<tr><td class="no_border" nowrap><font style="font-size: 13pt">'+tie_breaker_message+'</font>');
+         d.writeln('<input type=text class="default_text border_radius" style="border: 1px solid black; width: 35px" name="mn_points" size="3" maxlength="3" value="'+mn_pts_value+'"');
+         d.writeln('              onChange="get_mn_points(document);return true;"');
+         d.writeln('            onKeyPress="if (window.event.keyCode==13) {window.event.keyCode=0; get_mn_points(document); calculate_prelim_scores(document); return true;}">');
+         d.writeln('</td></tr></table>');
       }
       else
       {
@@ -4456,9 +4375,9 @@ function build_regular_season_form()
 
    if (mode == "prelim")
    {
-      if ( (tie_breaker_needed == true) && (unable_to_break_tie == false) )
+      if ( (tie_breaker_needed == true) && (in_progress_mn_points < 1) )
       {
-         window.top.gv.focus_element(d.fp_results.mn_points);
+         if (d.fp_results.mn_points != undefined) window.top.gv.focus_element(d.fp_results.mn_points);
       }
 
       if (window.top.gv.get_scores_timer != null)
@@ -4543,7 +4462,6 @@ function build_season_summary()
    var sorted_scores             = Array(number_of_rs_players).fill(1);
    var summary_title             = "";
    var table_data                = "";
-   var tie_breaker_needed        = false;
    var total_1st_places          = Array(number_of_rs_players).fill(0);
    var total_2nd_places          = Array(number_of_rs_players).fill(0);
    var total_3rd_places          = Array(number_of_rs_players).fill(0);
@@ -4660,91 +4578,51 @@ function build_season_summary()
          }
       }
 
-      // If there's a tie, try to break the tie using the Total Points predictions.
+      // If there's a tie, try to break the tie.
 
-      if (high_score_count > 1)
+      if ( (high_score_count > 1) && (actual_mn_points > 0) )
       {
-         tie_breaker_needed = true;
+         // Determine the best Total Points delta (difference between best prediction and actual).
 
-         // If the winner of at least one game is not known, then there's no need for a tie breaker.
+         best_mn_points_delta = 1000;
 
-         for (var game_index = 0; game_index < number_of_rs_games; game_index++)
+         for (var player_index = 0; player_index < number_of_rs_players; player_index++)
          {
-            if ((weekly_winners[game_index] != "H") && (weekly_winners[game_index] != "V") && (weekly_winners[game_index] != "Tie"))
+            if (mn_points_delta[player_index] != "N/A")
             {
-               tie_breaker_needed = false;
+               if ( Math.abs(mn_points_delta[player_index]) < Math.abs(best_mn_points_delta) )
+               {
+                  best_mn_points_delta = mn_points_delta[player_index];
+               }
+               else if ( Math.abs(mn_points_delta[player_index]) == Math.abs(best_mn_points_delta) )
+               {
+                  if (mn_points_delta[player_index] < best_mn_points_delta)
+                  {
+                     best_mn_points_delta = mn_points_delta[player_index];
+                  }
+               }
             }
          }
 
-         // Attempt to break the tie.
+         // Determine how many players have the high score and the same Total Points delta.
 
-         if (tie_breaker_needed == true)
+         high_score_count = 0;
+
+         for (var player_index = 0; player_index < number_of_rs_players; player_index++)
          {
-            // The tie can only be broken if the actual Total Points is known.
-
-            if (actual_mn_points > 0)
+            if ( (mn_points_delta[player_index] != "N/A") && (mn_points_delta[player_index] == best_mn_points_delta) )
             {
-               // Determine the best Total Points delta (difference between best prediction and actual).
+               high_score_count++;
+            }
+         }
 
-               best_mn_points_delta = 1000;
+         // Adjust the ranks of the players who have the high score but don't have the best Total Points delta.
 
-               for (var player_index = 0; player_index < number_of_rs_players; player_index++)
-               {
-                  if (mn_points_delta[player_index] != "N/A")
-                  {
-                     if ( Math.abs(mn_points_delta[player_index]) < Math.abs(best_mn_points_delta) )
-                     {
-                        best_mn_points_delta = mn_points_delta[player_index];
-                     }
-                     else if ( Math.abs(mn_points_delta[player_index]) == Math.abs(best_mn_points_delta) )
-                     {
-                        if (mn_points_delta[player_index] < best_mn_points_delta)
-                        {
-                           best_mn_points_delta = mn_points_delta[player_index];
-                        }
-                     }
-                  }
-               }
-
-               // Determine if the players that are tied have the same Total Points prediction.
-
-               high_score_count = 0;
-
-               for (var player_index = 0; player_index < number_of_rs_players; player_index++)
-               {
-                  if ( (mn_points_delta[player_index] != "N/A") && (mn_points_delta[player_index] == best_mn_points_delta) )
-                  {
-                     high_score_count++;
-                  }
-               }
-
-               // If the players that are tied have the same Total Points prediction, then we can't break the tie.
-
-               if (high_score_count > 1)
-               {
-                  for (var player_index = 0; player_index < number_of_rs_players; player_index++)
-                  {
-                     // Clear out the Total Points delta and adjust the rank of those players no longer involved in the tie.
-
-                     if ((all_scores[week_index][player_index] == high_score) && (mn_points_delta[player_index] != best_mn_points_delta))
-                     {
-                        mn_points_delta[player_index] = "N/A";
-                        ranks_adjust[player_index]    = high_score_count; 
-                     }
-                  }
-               }
-               else
-               {
-                  // The tie can be broken, so adjust the ranks of the players who lost the tie breaker.
-
-                  for (var player_index = 0; player_index < number_of_rs_players; player_index++)
-                  {
-                     if ((mn_points_delta[player_index] != "N/A") && (mn_points_delta[player_index] != best_mn_points_delta))
-                     {
-                        ranks_adjust[player_index] = 1;
-                     }
-                  }
-               }
+         for (var player_index = 0; player_index < number_of_rs_players; player_index++)
+         {
+            if ((all_scores[week_index][player_index] == high_score) && (mn_points_delta[player_index] != best_mn_points_delta))
+            {
+               ranks_adjust[player_index] = high_score_count; 
             }
          }
       }
