@@ -21,7 +21,19 @@ function get_nfl_playoff_teams()
 {
    var nfl_connection        = null;
    var nfl_playoff_teams     = "";
-   var nfl_playoff_teams_url = "www.espn.com/nfl/standings/_/season/"+top.fp_year+"/view/playoff";
+   var nfl_playoff_teams_url = "";
+
+
+   // Set nfl_playoff_teams_url
+
+   if (top.season_over == true)
+   {
+      nfl_playoff_teams_url = "www.espn.com/nfl/standings/_/season/"+top.fp_year+"/view/playoff";
+   }
+   else
+   {
+      nfl_playoff_teams_url = "www.espn.com/nfl/standings/_/view/playoff";
+   }
 
    // Display loading indicator while call to XMLHttpRequest is working.
 
@@ -31,7 +43,7 @@ function get_nfl_playoff_teams()
 
    nfl_connection = new XMLHttpRequest();
 
-   nfl_connection.open("GET","https://www.scrappintwins.com/cors/"+nfl_playoff_teams_url,true); // scrappintwins.com provided by Dan M.
+   nfl_connection.open("GET","https://www.scrappintwins.com/cors/"+nfl_playoff_teams_url+"?nocache="+(new Date()).getTime(),true); // scrappintwins.com provided by Dan M.
 
    nfl_connection.onload = function(e)
    {
