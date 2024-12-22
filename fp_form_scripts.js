@@ -3755,13 +3755,15 @@ function build_regular_season_form()
    d.writeln('');
 
    d.writeln('<tr class="header_one" style="line-height: 22px">');
-   d.writeln('<td class="br2_bb2_border" colspan=4>');
    if (mode == "picks")
    {
+      d.writeln('<td class="bb2_border" colspan=3>');
       d.writeln('<font style="font-size: 13pt">Week&nbsp;&nbsp;'+week+'&nbsp;&nbsp;'+mode_string+'</font>');
+      d.writeln('<td class="br2_bb2_border">');
    }
    else
    {
+      d.writeln('<td class="br2_bb2_border" colspan=4>');
       d.writeln('<select class="default_select header_one_background border_radius" style="font-size: 13pt; font-weight: bold; border: 1px solid gray" name="selected_week_menu" size=1');
       d.writeln('  onChange="change_week(document); return true;">');
       for (var i = 1; i <= unaltered_week; i++)
