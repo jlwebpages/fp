@@ -98,6 +98,9 @@ function process_nfl_playoff_teams(nfl_playoff_teams)
    var team_record_index            = null;
    var team_ties                    = 0;
    var team_wins                    = 0;
+   var tooltip                      = "";
+   var tooltip_index_high           = 55;
+   var tooltip_index_low            = 51;
    var total_team_record_games      = 0;
 
 
@@ -254,15 +257,33 @@ function process_nfl_playoff_teams(nfl_playoff_teams)
 
       // Update AFC and NFC HTML table cells with team logos and team records using team_record_index.
 
-      document.getElementById("AFC_"+(i+1)).innerHTML="<img src=\"Team Logos/"+
-                                                      AFC_teams.standings[i].team.shortDisplayName+
-                                                      ".png\"><br><span style=\"text-align: center\">"+
-                                                      AFC_teams.standings[i].stats[team_record_index];
+      tooltip = AFC_teams.standings[i].team.displayName;
 
-      document.getElementById("NFC_"+(i+1)).innerHTML="<img src=\"Team Logos/"+
-                                                      NFC_teams.standings[i].team.shortDisplayName+
-                                                      ".png\"><br><span style=\"text-align: center\">"+
-                                                      NFC_teams.standings[i].stats[team_record_index];
+      for (var j = tooltip_index_high; j >= tooltip_index_low; j--)
+      {
+         if ( (AFC_teams.standings[i].stats[j] != undefined) && (AFC_teams.standings[i].stats[j].length > 1) )
+         {
+            tooltip = tooltip + ":  " + AFC_teams.standings[i].stats[j];
+            break;
+         }
+      }
+
+      document.getElementById("AFC_"+(i+1)).innerHTML = "<img src=\"Team Logos/"+AFC_teams.standings[i].team.shortDisplayName+".png\" title=\""+tooltip+"\"><br><span style=\"text-align: center\">"+
+                                                        AFC_teams.standings[i].stats[team_record_index];
+
+      tooltip = NFC_teams.standings[i].team.displayName;
+
+      for (var j = tooltip_index_high; j >= tooltip_index_low; j--)
+      {
+         if ( (NFC_teams.standings[i].stats[j] != undefined) && (NFC_teams.standings[i].stats[j].length > 1) )
+         {
+            tooltip = tooltip + ":  " + NFC_teams.standings[i].stats[j];
+            break;
+         }
+      }
+
+      document.getElementById("NFC_"+(i+1)).innerHTML = "<img src=\"Team Logos/"+NFC_teams.standings[i].team.shortDisplayName+".png\" title=\""+tooltip+"\"><br><span style=\"text-align: center\">"+
+                                                        NFC_teams.standings[i].stats[team_record_index];
    }
 
    // Make AFC Playoff Teams and NFC Playoff Teams visible.
