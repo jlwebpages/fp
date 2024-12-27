@@ -92,7 +92,7 @@ function process_nfl_playoff_teams(nfl_playoff_teams)
    var NFC_teams                    = null;
    var number_of_playoff_teams      = 7;
    var number_of_rs_weeks_completed = top.current_input_week - 1;
-   var possible_team_record_indexes = [36,37,46,47,48,49];
+   var possible_team_record_indexes = [36,37,46,47,48,49,50];
    var team_losses                  = 0;
    var team_record                  = "";
    var team_record_index            = null;
@@ -259,9 +259,9 @@ function process_nfl_playoff_teams(nfl_playoff_teams)
 
       tooltip = AFC_teams.standings[i].team.displayName;
 
-      for (var j = tooltip_index_high; j >= tooltip_index_low; j--)
+      for (var j = tooltip_index_low; j <= tooltip_index_high; j++)
       {
-         if ( (AFC_teams.standings[i].stats[j] != undefined) && (AFC_teams.standings[i].stats[j].length > 1) )
+         if ( (AFC_teams.standings[i].stats[j] != undefined) && (AFC_teams.standings[i].stats[j].length > 5) )
          {
             tooltip = tooltip + ":  " + AFC_teams.standings[i].stats[j];
             break;
@@ -273,9 +273,9 @@ function process_nfl_playoff_teams(nfl_playoff_teams)
 
       tooltip = NFC_teams.standings[i].team.displayName;
 
-      for (var j = tooltip_index_high; j >= tooltip_index_low; j--)
+      for (var j = tooltip_index_low; j <= tooltip_index_high; j++)
       {
-         if ( (NFC_teams.standings[i].stats[j] != undefined) && (NFC_teams.standings[i].stats[j].length > 1) )
+         if ( (NFC_teams.standings[i].stats[j] != undefined) && (NFC_teams.standings[i].stats[j].length > 5) )
          {
             tooltip = tooltip + ":  " + NFC_teams.standings[i].stats[j];
             break;

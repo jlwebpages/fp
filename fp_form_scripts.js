@@ -2338,7 +2338,7 @@ function build_regular_season_form()
    }
 
    var best_mn_points_delta          = 1000;
-   var best_outcome_tooltip          = "Look under &quot;Picks Form&quot; on the &quot;Help&quot; page for more information on &quot;Best Outcome&quot;";
+   var best_outcome_tooltip          = "&quot;Best Outcome&quot; will figure out the best possible outcome for the selected Player.  Look under &quot;FORMS:  Picks&quot; on the Help page for more information.";
    var bullet_color                  = "";
    var color_black                   = "black";
    var color_red                     = "red";
