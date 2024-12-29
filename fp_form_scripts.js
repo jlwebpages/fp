@@ -5700,6 +5700,80 @@ function check_for_opener()
 }
 
 
+function display_last_modified (last_modified_document, display_document)
+{
+   if (last_modified_document.lastModified == 0)
+   {
+      display_document.write("Unknown");
+      return false;
+   }
+
+   Last_Modified = new Date(last_modified_document.lastModified);
+
+   Hour   = Last_Modified.getHours();
+   Minute = Last_Modified.getMinutes();
+   Month  = Last_Modified.getMonth();
+
+   if (Hour > 12)
+   {
+      Hour = Hour-12;
+      AM_PM = "PM";
+   }
+   else
+   {
+      AM_PM = "AM";
+   }
+
+   if (Minute < 10) Minute = "0" + Minute;
+
+   switch (Month)
+   {
+      case 0:
+         Month = "Jan";
+         break;
+      case 1:
+         Month = "Feb";
+         break;
+      case 2:
+         Month = "Mar";
+         break;
+      case 3:
+         Month = "Apr";
+         break;
+      case 4:
+         Month = "May";
+         break;
+      case 5:
+         Month = "Jun";
+         break;
+      case 6:
+         Month = "Jul";
+         break;
+      case 7:
+         Month = "Aug";
+         break;
+      case 8:
+         Month = "Sep";
+         break;
+      case 9:
+         Month = "Oct";
+         break;
+      case 10:
+         Month = "Nov";
+         break;
+      case 11:
+         Month = "Dec";
+         break;
+      default:
+         break;
+   }
+
+   display_document.write(Month," ",Last_Modified.getDate(),", ",Last_Modified.getFullYear()," at ",Hour,":",Minute," ",AM_PM);
+
+   return true;
+}
+
+
 function get_nfl_playoff_teams(year,archive_flag)
 {
    var nfl_connection        = null;
@@ -5743,7 +5817,15 @@ function get_nfl_playoff_teams(year,archive_flag)
          {
             nfl_playoff_teams = nfl_connection.responseText;
 
-            process_nfl_playoff_teams(nfl_playoff_teams,year);
+            if (process_nfl_playoff_teams(nfl_playoff_teams,year) == false)
+            {
+               if (archive_flag == true)
+               {
+                  alert("Unable to retrieve "+year+" NFL Playoff Teams.");
+
+                  window.open("fp_archive.html","fp_main","");
+               }
+            }
          }
          else // XMLHttpRequest was unsuccessful.
          {
@@ -5875,8 +5957,8 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
    var team_ties                    = 0;
    var team_wins                    = 0;
    var tooltip                      = "";
-   var tooltip_index_high           = 55;
-   var tooltip_index_low            = 51;
+   var tooltip_index_high           = 60;
+   var tooltip_index_low            = 0;
    var total_team_record_games      = 0;
 
 
@@ -5962,6 +6044,8 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
          return false;
       }
 
+      if (NFC_teams.standings[i].team.shortDisplayName == "Washington") NFC_teams.standings[i].team.shortDisplayName = "Redskins";
+
       if ( (validate_team_name(AFC_teams.standings[i].team.shortDisplayName) == false) || (validate_team_name(NFC_teams.standings[i].team.shortDisplayName) == false) )
       {
          //JL alert("Error validating team name");
@@ -6041,7 +6125,7 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
 
       for (var j = tooltip_index_low; j <= tooltip_index_high; j++)
       {
-         if ( (AFC_teams.standings[i].stats[j] != undefined) && (AFC_teams.standings[i].stats[j].length > 5) )
+         if ( (AFC_teams.standings[i].stats[j] != undefined) && (AFC_teams.standings[i].stats[j].toLowerCase().includes("wins tie break") == true) )
          {
             tooltip = tooltip + ":  " + AFC_teams.standings[i].stats[j];
             break;
@@ -6051,11 +6135,13 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
       document.getElementById("AFC_"+(i+1)).innerHTML = "<img src=\"Team Logos/"+AFC_teams.standings[i].team.shortDisplayName+".png\" title=\""+tooltip+"\"><br><span style=\"text-align: center\">"+
                                                         AFC_teams.standings[i].stats[team_record_index];
 
+      if (NFC_teams.standings[i].team.displayName == "Washington") NFC_teams.standings[i].team.displayName = "Washington Redskins";
+
       tooltip = NFC_teams.standings[i].team.displayName;
 
       for (var j = tooltip_index_low; j <= tooltip_index_high; j++)
       {
-         if ( (NFC_teams.standings[i].stats[j] != undefined) && (NFC_teams.standings[i].stats[j].length > 5) )
+         if ( (NFC_teams.standings[i].stats[j] != undefined) && (NFC_teams.standings[i].stats[j].toLowerCase().includes("wins tie break") == true) )
          {
             tooltip = tooltip + ":  " + NFC_teams.standings[i].stats[j];
             break;
