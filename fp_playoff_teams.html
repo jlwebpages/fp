@@ -1,0 +1,103 @@
+<html>
+
+<head>
+   <title>NFL Football Pool</title>
+   <link href="fp.css" rel="stylesheet" type="text/css">
+   <script language="JavaScript" src=fp_form_scripts.js></script>
+</head>
+
+<body class="background_color" style="margin: 0" onload="get_nfl_playoff_teams(top.archive_year,true)">
+
+<script language="JavaScript">
+
+// Write to fp_main_header frame.
+
+top.fp_main_header.document.open();
+top.fp_main_header.document.write('<html>');
+top.fp_main_header.document.write('');
+top.fp_main_header.document.write('<head>');
+top.fp_main_header.document.write('   <title>NFL Football Pool</title>');
+top.fp_main_header.document.write('   <link href="fp.css" rel="stylesheet" type="text/css">');
+top.fp_main_header.document.write('</head>');
+top.fp_main_header.document.write('');
+top.fp_main_header.document.write('<body class="background_color" style="margin: 0; margin-left: -3px">');
+top.fp_main_header.document.write('');
+top.fp_main_header.document.write('<table class="table" style="height: 40px; border-spacing: 10px 0px">');
+top.fp_main_header.document.write('   <tr>');
+top.fp_main_header.document.write('      <td class="fp_button_cell"><a class="white_link" href="fp_archive.html" target="fp_main">ARCHIVE</a></td>');
+top.fp_main_header.document.write('      <td class="fp_button_cell"><a class="white_link" href="fp.html" target="_top">HOME</a></td>');
+top.fp_main_header.document.write('   </tr>');
+top.fp_main_header.document.write('</table>');
+top.fp_main_header.document.write('');
+top.fp_main_header.document.write('</body>');
+top.fp_main_header.document.write('');
+top.fp_main_header.document.write('</html>');
+top.fp_main_header.document.close();
+
+</script>
+
+<style>img {height: 65px; width: 65px}</style>
+
+<table class="table" style="border-bottom: 10px solid transparent; border-spacing: 10px 0px; height: 65%">
+
+   <tr>
+      <td id="AFC_Playoff_Teams" style="visibility: hidden; width: 50%">
+         <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 75%; margin-left: auto; margin-right: auto">
+            <tr class="red_color" style="font-size: 16pt; font-weight: bold">
+               <script>
+                  document.open();
+                  document.write('<td colspan="4">'+top.archive_year+' AFC Playoff Teams</td>');
+                  document.close();
+               </script>
+            </tr>
+         </table>
+         <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 75%; margin-left: auto; margin-right: auto">
+            <tr class="red_color" style="font-size: 10pt; font-weight: bold">
+               <td id="AFC_1"></td>
+               <td id="AFC_2"></td>
+               <td id="AFC_3"></td>
+               <td id="AFC_4"></td>
+            </tr>
+         </table>
+         <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 55%; margin-left: auto; margin-right: auto">
+            <tr class="red_color" style="font-size: 10pt; font-weight: bold">
+               <td id="AFC_5"></td>
+               <td id="AFC_6"></td>
+               <td id="AFC_7"></td>
+            </tr>
+         </table>
+      </td>
+
+      <td id="NFC_Playoff_Teams" style="visibility: hidden; width: 50%">
+         <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 75%; margin-left: auto; margin-right: auto">
+            <tr class="dark_blue_color" style="font-size: 16pt; font-weight: bold">
+               <script>
+                  document.open();
+                  document.write('<td colspan="4">'+top.archive_year+' NFC Playoff Teams</td>');
+                  document.close();
+               </script>
+            </tr>
+         </table>
+         <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 75%; margin-left: auto; margin-right: auto">
+            <tr class="dark_blue_color" style="font-size: 10pt; font-weight: bold">
+               <td id="NFC_1"></td>
+               <td id="NFC_2"></td>
+               <td id="NFC_3"></td>
+               <td id="NFC_4"></td>
+            </tr>
+         </table>
+         <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 55%; margin-left: auto; margin-right: auto">
+            <tr class="dark_blue_color" style="font-size: 10pt; font-weight: bold">
+               <td id="NFC_5"></td>
+               <td id="NFC_6"></td>
+               <td id="NFC_7"></td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+
+</table>
+
+</body>
+
+</html>

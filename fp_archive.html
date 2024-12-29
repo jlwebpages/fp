@@ -322,6 +322,13 @@ function display_archive_page()
       d.writeln('      <a class="blue_link" href=javascript:open_regular_season_archive("weekly_archive");>'+archive_year+' Regular Season Weekly Results</a>');
       d.writeln('   </td></tr>');
       d.writeln('');
+      if ( (top.mobile == false) && (archive_year > 2002) )
+      {
+         d.writeln('   <tr><td>');
+         d.writeln('      <a class="blue_link" href=javascript:window.open("fp_playoff_teams.html","fp_main","");>'+archive_year+' NFL Playoff Teams</a>');
+         d.writeln('   </td></tr>');
+      }
+      d.writeln('');
    }
    d.writeln('</table>');
    d.writeln('');
