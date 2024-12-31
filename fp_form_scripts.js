@@ -80,7 +80,7 @@ function build_post_season_form()
 
       if (window.top.gv.games_over == true) week = week + 1;
    }
-   else if (mode == "summary_archive")
+   else if (mode == "results_archive")
    {
       mode_string = "Results";
       week        = 4;
@@ -223,9 +223,9 @@ function build_post_season_form()
    {
       document_heading = "Post Season - Week " + week + " Results";
    }
-   else if (mode == "summary_archive")
+   else if (mode == "results_archive")
    {
-      document_heading = window.top.gv.archive_year + " Post Season Summary";
+      document_heading = window.top.gv.archive_year + " Post Season Results";
    }
 
    // Calculate the post season winners and margins of victory.
@@ -996,7 +996,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   window.top.gv.order_by = order_by_menu.options[menu_index].value;');
    d.writeln('');
-   d.writeln('   if (window.top.gv.mode == "summary_archive")');
+   d.writeln('   if (window.top.gv.mode == "results_archive")');
    d.writeln('   {');
    d.writeln('      document.location.href = "fp_forms_"+window.top.gv.archive_year+".html";');
    d.writeln('   }');
@@ -1038,7 +1038,7 @@ function build_post_season_form()
    d.writeln('      window.top.gv.form_view = "expanded";');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (window.top.gv.mode == "summary_archive")');
+   d.writeln('   if (window.top.gv.mode == "results_archive")');
    d.writeln('   {');
    d.writeln('      document.location.href = "fp_forms_"+window.top.gv.archive_year+".html";');
    d.writeln('   }');
@@ -2367,7 +2367,7 @@ function build_regular_season_form()
 
    if ( (mode == "summary") || (mode == "summary_archive") )
    {
-      build_season_summary();
+      build_regular_season_summary();
       return true;
    }
 
@@ -2387,7 +2387,7 @@ function build_regular_season_form()
 
       if (window.top.gv.games_over == true) week = week + 1;
    }
-   else if (mode == "weekly_archive")
+   else if (mode == "weekly_results_archive")
    {
       max_number_of_rs_games = 16;
       mode_string            = "Results";
@@ -2420,7 +2420,7 @@ function build_regular_season_form()
    var actual_mn_points      = all_actual_mn_points[week-1];
    var in_progress_mn_points = 0;
 
-   if ( (mode == "results") || (mode == "weekly_archive") )
+   if ( (mode == "results") || (mode == "weekly_results_archive") )
    {
       winners = all_winners[week-1];
    }
@@ -2476,7 +2476,7 @@ function build_regular_season_form()
    {
       document_heading = "Regular Season - Week " + week + " Results";
    }
-   else if (mode == "weekly_archive")
+   else if (mode == "weekly_results_archive")
    {
       document_heading = window.top.gv.archive_year + " Regular Season Weekly Results";
    }
@@ -2822,7 +2822,7 @@ function build_regular_season_form()
    d.writeln('      window.top.gv.order_by = "players";');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (window.top.gv.mode == "weekly_archive")');
+   d.writeln('   if (window.top.gv.mode == "weekly_results_archive")');
    d.writeln('   {');
    d.writeln('      document.location.href = "fp_forms_"+window.top.gv.archive_year+".html";');
    d.writeln('   }');
@@ -2864,7 +2864,7 @@ function build_regular_season_form()
    d.writeln('      window.top.gv.form_view = "expanded";');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (window.top.gv.mode == "weekly_archive")');
+   d.writeln('   if (window.top.gv.mode == "weekly_results_archive")');
    d.writeln('   {');
    d.writeln('      document.location.href = "fp_forms_"+window.top.gv.archive_year+".html";');
    d.writeln('   }');
@@ -2912,7 +2912,7 @@ function build_regular_season_form()
    d.writeln('      }');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   if (window.top.gv.mode == "weekly_archive")');
+   d.writeln('   if (window.top.gv.mode == "weekly_results_archive")');
    d.writeln('   {');
    d.writeln('      document.location.href = "fp_forms_"+window.top.gv.archive_year+".html";');
    d.writeln('   }');
@@ -4409,7 +4409,7 @@ function build_regular_season_form()
 }
 
 
-function build_season_summary()
+function build_regular_season_summary()
 {
    if (check_for_opener() == false)
    {
@@ -6019,6 +6019,13 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
       if ( (AFC_teams.standings == undefined) || (NFC_teams.standings == undefined) )
       {
          //JL alert("nfl_playoff_teams object (standings) is undefined.");
+
+         return false;
+      }
+
+      if ( (AFC_teams.standings[i] == undefined) || (NFC_teams.standings[i] == undefined) )
+      {
+         //JL alert("nfl_playoff_teams object (standings[i]) is undefined.");
 
          return false;
       }

@@ -93,9 +93,9 @@ function display_archive_page()
    d.writeln('');
    d.writeln('   function open_post_season_archive()');
    d.writeln('   {');
-   d.writeln('      var title = "NFL Football Pool Archive - '+archive_year+' Post Season Summary";');
+   d.writeln('      var title = "NFL Football Pool Archive - '+archive_year+' Post Season Results";');
    d.writeln('');
-   d.writeln('      w = window.open("","'+archive_year+'_post_season_summary","status=no,scrollbars=yes,resizable=yes",true);');
+   d.writeln('      w = window.open("","'+archive_year+'_post_season_results","status=no,scrollbars=yes,resizable=yes",true);');
    d.writeln('');
    d.writeln('      w.resizeTo(screen.width,screen.height);');
    d.writeln('');
@@ -171,7 +171,7 @@ function display_archive_page()
    }
    d.writeln('      w.gv.games_over              = true;');
    d.writeln('      w.gv.mobile                  = top.mobile;');
-   d.writeln('      w.gv.mode                    = "summary_archive";');
+   d.writeln('      w.gv.mode                    = "results_archive";');
    d.writeln('      w.gv.order_by                = "overall_scores";');
    d.writeln('      w.gv.player_index            = 0;');
    d.writeln('      w.gv.ps_players              = "";');
@@ -187,11 +187,11 @@ function display_archive_page()
    d.writeln('   {');
    d.writeln('      var title = "NFL Football Pool Archive - '+archive_year+' Regular Season";');
    d.writeln('');
-   d.writeln('      if (received_mode == "weekly_archive")');
+   d.writeln('      if (received_mode == "weekly_results_archive")');
    d.writeln('      {');
    d.writeln('         title = title + " Weekly Results";');
    d.writeln('      }');
-   d.writeln('      else // Must be "Summary"');
+   d.writeln('      else // Must be "summary_archive"');
    d.writeln('      {');
    d.writeln('         title = title + " Summary";');
    d.writeln('      }');
@@ -311,7 +311,7 @@ function display_archive_page()
    if (archive_year > 2001)
    {
       d.writeln('   <tr><td>');
-      d.writeln('      <a class="blue_link" href=javascript:open_post_season_archive("summary_archive");>'+archive_year+' Post Season Summary</a>');
+      d.writeln('      <a class="blue_link" href=javascript:open_regular_season_archive("weekly_results_archive");>'+archive_year+' Regular Season Weekly Results</a>');
       d.writeln('   </td></tr>');
       d.writeln('');
       d.writeln('   <tr><td>');
@@ -319,7 +319,7 @@ function display_archive_page()
       d.writeln('   </td></tr>');
       d.writeln('');
       d.writeln('   <tr><td>');
-      d.writeln('      <a class="blue_link" href=javascript:open_regular_season_archive("weekly_archive");>'+archive_year+' Regular Season Weekly Results</a>');
+      d.writeln('      <a class="blue_link" href=javascript:open_post_season_archive();>'+archive_year+' Post Season Results</a>');
       d.writeln('   </td></tr>');
       d.writeln('');
       if ( (top.mobile == false) && (archive_year > 2002) )
