@@ -6051,7 +6051,17 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
          return false;
       }
 
-      if (NFC_teams.standings[i].team.shortDisplayName == "Washington") NFC_teams.standings[i].team.shortDisplayName = "Redskins";
+      if (NFC_teams.standings[i].team.shortDisplayName == "Washington")
+      {
+         if ( (year == 2020) || (year == 2021) )
+         {
+            NFC_teams.standings[i].team.shortDisplayName = "Football Team";
+         }
+         else
+         {
+            NFC_teams.standings[i].team.shortDisplayName = "Redskins";
+         }
+      }
 
       if ( (validate_team_name(AFC_teams.standings[i].team.shortDisplayName) == false) || (validate_team_name(NFC_teams.standings[i].team.shortDisplayName) == false) )
       {
@@ -6142,7 +6152,17 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
       document.getElementById("AFC_"+(i+1)).innerHTML = "<img src=\"Team Logos/"+AFC_teams.standings[i].team.shortDisplayName+".png\" title=\""+tooltip+"\"><br><span style=\"text-align: center\">"+
                                                         AFC_teams.standings[i].stats[team_record_index];
 
-      if (NFC_teams.standings[i].team.displayName == "Washington") NFC_teams.standings[i].team.displayName = "Washington Redskins";
+      if (NFC_teams.standings[i].team.displayName == "Washington")
+      {
+         if ( (year == 2020) || (year == 2021) )
+         {
+            NFC_teams.standings[i].team.displayName = "Washington Football Team";
+         }
+         else
+         {
+            NFC_teams.standings[i].team.displayName = "Washington Redskins";
+         }
+      }
 
       tooltip = NFC_teams.standings[i].team.displayName;
 
@@ -6170,10 +6190,10 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
 
 function validate_team_name(team_name)
 {
-   var team_names = ["49ers","Bears","Bengals","Bills","Broncos","Browns","Buccaneers","Cardinals",
-                     "Chargers","Chiefs","Colts","Commanders","Cowboys","Dolphins","Eagles","Falcons",
-                     "Giants","Jaguars","Jets","Lions","Packers","Panthers","Patriots","Raiders",
-                     "Rams","Ravens","Redskins","Saints","Seahawks","Steelers","Texans","Titans","Vikings"];
+   var team_names = ["49ers","Bears","Bengals","Bills","Broncos","Browns","Buccaneers","Cardinals","Chargers",
+                     "Chiefs","Colts","Commanders","Cowboys","Dolphins","Eagles","Falcons","Football Team",
+                     "Giants","Jaguars","Jets","Lions","Packers","Panthers","Patriots","Raiders","Rams",
+                     "Ravens","Redskins","Saints","Seahawks","Steelers","Texans","Titans","Vikings"];
 
 
    for (var i = 0; i < team_names.length; i++)
