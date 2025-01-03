@@ -5794,14 +5794,7 @@ function get_nfl_playoff_teams(year,archive_flag)
 
    // Display loading indicator while call to XMLHttpRequest is working.
 
-   if (archive_flag == true)
-   {
-      top.fp_frameset.rows = "60px,0,0,*";
-   }
-   else
-   {
-      top.fp_frameset.rows = "0,0,0,*";
-   }
+   top.display_frame("fp_loading_indicator",0);
 
    // Get the NFL playoff teams from the internet.
 
@@ -5834,14 +5827,7 @@ function get_nfl_playoff_teams(year,archive_flag)
 
          // Remove loading indicator.
 
-         if (archive_flag == true)
-         {
-            top.fp_frameset.rows = "60px,*,0,0";
-         }
-         else
-         {
-            top.fp_frameset.rows = "0,*,0,0";
-         }
+         top.display_frame("fp_main",0);
       }
 
       return;
@@ -5853,17 +5839,10 @@ function get_nfl_playoff_teams(year,archive_flag)
 
       // Remove loading indicator.
 
-      if (archive_flag = true)
-      {
-         top.fp_frameset.rows = "60px,*,0,0";
-      }
-      else
-      {
-         top.fp_frameset.rows = "0,*,0,0";
-      }
+      top.display_frame("fp_main",0);
 
       return;
-   };
+   }
 
    nfl_connection.send(null);
 

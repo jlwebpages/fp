@@ -48,10 +48,6 @@ function build_regular_season_form()
       top.fp_main_header.document.write('');
       top.fp_main_header.document.write('</html>');
       top.fp_main_header.document.close();
-
-      // Make both fp_main_header and fp_main frames visible.
-
-      top.fp_frameset.rows="60px,*,0,0";
    }
 
    // Build regular season input form.
@@ -2810,7 +2806,7 @@ function build_post_season_form()
 {
    if (top.mobile == false)
    {
-      // Writ   e to fp_main_header frame.
+      // Write to fp_main_header frame.
 
       top.fp_main_header.document.open();
       top.fp_main_header.document.write('<html>');
@@ -2833,10 +2829,6 @@ function build_post_season_form()
       top.fp_main_header.document.write('');
       top.fp_main_header.document.write('</html>');
       top.fp_main_header.document.close();
-
-      // Make both fp_main_header and fp_main frames visible.
-
-      top.fp_frameset.rows="60px,*,0,0";
    }
 
    // Build post season input form.

@@ -34,10 +34,6 @@ if (top.mobile == false)
    top.fp_main_header.document.write('');
    top.fp_main_header.document.write('</html>');
    top.fp_main_header.document.close();
-
-   // Make both fp_main_header and fp_main frames visible.
-
-   top.fp_frameset.rows="60px,*,0,0";
 }
 
 function display_archive_page()
@@ -322,7 +318,7 @@ function display_archive_page()
       d.writeln('      <a class="blue_link" href=javascript:open_post_season_archive();>'+archive_year+' Post Season Results</a>');
       d.writeln('   </td></tr>');
       d.writeln('');
-      if ( (top.mobile == false) && (archive_year > 2002) )
+      if (archive_year > 2002)
       {
          d.writeln('   <tr><td>');
          d.writeln('      <a class="blue_link" href=javascript:window.open("fp_playoff_teams.html","fp_main","");>'+archive_year+' NFL Playoff Teams</a>');
