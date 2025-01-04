@@ -321,7 +321,7 @@ function display_archive_page()
       if (archive_year > 2002)
       {
          d.writeln('   <tr><td>');
-         d.writeln('      <a class="blue_link" href=javascript:window.open("fp_playoff_teams.html","fp_main","");>'+archive_year+' NFL Playoff Teams</a>');
+         d.writeln('      <a class="blue_link" href=javascript:window.open("fp_playoff_teams.html?year='+archive_year+'&mode=archive","fp_main","");>'+archive_year+' NFL Playoff Teams</a>');
          d.writeln('   </td></tr>');
       }
       d.writeln('');

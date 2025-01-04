@@ -6,35 +6,62 @@
    <script language="JavaScript" src=fp_form_scripts.js></script>
 </head>
 
-<body class="background_color" style="margin: 0" onload="get_nfl_playoff_teams(top.archive_year,true)">
+<body class="background_color" style="margin: 0">
 
 <script language="JavaScript">
 
-if (top.mobile == false)
-{
-   // Write to fp_main_header frame.
+var mode           = "";
+var URL_string     = window.location.search;;
+var URL_parameters = new URLSearchParams(URL_string);;
+var year           = 0;
 
-   top.fp_main_header.document.open();
-   top.fp_main_header.document.write('<html>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('<head>');
-   top.fp_main_header.document.write('   <title>NFL Football Pool</title>');
-   top.fp_main_header.document.write('   <link href="fp.css" rel="stylesheet" type="text/css">');
-   top.fp_main_header.document.write('</head>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('<body class="background_color" style="margin: 0; margin-left: -3px">');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('<table class="table" style="height: 40px; border-spacing: 10px 0px">');
-   top.fp_main_header.document.write('   <tr>');
-   top.fp_main_header.document.write('      <td class="fp_button_cell"><a class="white_link" href="fp_archive.html" target="fp_main">ARCHIVE</a></td>');
-   top.fp_main_header.document.write('      <td class="fp_button_cell"><a class="white_link" href="fp.html" target="_top">HOME</a></td>');
-   top.fp_main_header.document.write('   </tr>');
-   top.fp_main_header.document.write('</table>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('</body>');
-   top.fp_main_header.document.write('');
-   top.fp_main_header.document.write('</html>');
-   top.fp_main_header.document.close();
+
+year = URL_parameters.get("year");
+mode = URL_parameters.get("mode");
+
+if ( (year == null || mode == null) || (isNaN(year) == true) || (year < 2003 || year > top.fp_year) || (mode != "main" && mode != "playoffs" && mode != "archive") )
+{
+   alert("Error:  Invalid parameters passed to fp_playoff_teams.html");
+
+   history.back();
+}
+else
+{
+   if (top.mobile == false)
+   {
+      // Write to fp_main_header frame.
+
+      top.fp_main_header.document.open();
+      top.fp_main_header.document.write('<html>');
+      top.fp_main_header.document.write('');
+      top.fp_main_header.document.write('<head>');
+      top.fp_main_header.document.write('   <title>NFL Football Pool</title>');
+      top.fp_main_header.document.write('   <link href="fp.css" rel="stylesheet" type="text/css">');
+      top.fp_main_header.document.write('</head>');
+      top.fp_main_header.document.write('');
+      top.fp_main_header.document.write('<body class="background_color" style="margin: 0; margin-left: -3px">');
+      top.fp_main_header.document.write('');
+      top.fp_main_header.document.write('<table class="table" style="height: 40px; border-spacing: 10px 0px">');
+      top.fp_main_header.document.write('   <tr>');
+      if (mode == "playoffs")
+      {
+         top.fp_main_header.document.write('      <td class="fp_button_cell">PLAYOFF TEAMS</td>');    
+      }
+      else
+      {
+         top.fp_main_header.document.write('      <td class="fp_button_cell"><a class="white_link" href="fp_archive.html" target="fp_main">ARCHIVE</a></td>');
+      }
+      top.fp_main_header.document.write('      <td class="fp_button_cell"><a class="white_link" href="fp.html" target="_top">HOME</a></td>');
+      top.fp_main_header.document.write('   </tr>');
+      top.fp_main_header.document.write('</table>');
+      top.fp_main_header.document.write('');
+      top.fp_main_header.document.write('</body>');
+      top.fp_main_header.document.write('');
+      top.fp_main_header.document.write('</html>');
+      top.fp_main_header.document.close();
+   }
+
+   get_nfl_playoff_teams(year,mode);
 }
 
 </script>
@@ -59,7 +86,7 @@ else
       <td id="AFC_Playoff_Teams" style="padding-top: 15px; visibility: hidden">
          <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 65%; margin-left: auto; margin-right: auto">
             <tr class="red_color" style="font-size: 16pt; font-weight: bold">
-               <td colspan="4"><script>document.write(top.archive_year+" AFC Playoff Teams");</script></td>
+               <td colspan="4"><script>document.write(year+" AFC Playoff Teams");</script></td>
             </tr>
          </table>
          <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 65%; margin-left: auto; margin-right: auto">
@@ -95,7 +122,7 @@ else
       <td id="NFC_Playoff_Teams" style="padding-top: 15px; visibility: hidden">
          <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 65%; margin-left: auto; margin-right: auto">
             <tr class="dark_blue_color" style="font-size: 16pt; font-weight: bold">
-               <td colspan="4"><script>document.write(top.archive_year+" NFC Playoff Teams");</script></td>
+               <td colspan="4"><script>document.write(year+" NFC Playoff Teams");</script></td>
             </tr>
          </table>
          <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 65%; margin-left: auto; margin-right: auto">

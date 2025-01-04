@@ -6,7 +6,7 @@
    <script language="JavaScript" src=fp_form_scripts.js></script>
 </head>
 
-<body onload="get_nfl_playoff_teams(top.fp_year,false)"
+<body onload="get_nfl_playoff_teams(top.fp_year,'main')"
        class="background_color"
        style="     border: 0px;
                     color: black;
@@ -152,7 +152,7 @@ if (top.mobile == false)
       </table>
    </td>
    <td class="ext_button_cell">
-      <a class="white_link" href="https://www.espn.com/nfl/standings" target="_top">NFL STANDINGS</a>
+      <script>document.write('<a class="white_link" href="fp_playoff_teams.html?year='+top.fp_year+'&mode=playoffs" target="fp_main">PLAYOFF TEAMS</a>');</script>
    </td>
    <td class="ext_button_cell">
       <a class="white_link" href="http://www.espn.com/nfl/playoffs/machine" target="_top">PLAYOFF MACHINE</a>

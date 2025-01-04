@@ -5774,7 +5774,7 @@ function display_last_modified (last_modified_document, display_document)
 }
 
 
-function get_nfl_playoff_teams(year,archive_flag)
+function get_nfl_playoff_teams(year,mode)
 {
    var nfl_connection        = null;
    var nfl_playoff_teams     = "";
@@ -5812,17 +5812,24 @@ function get_nfl_playoff_teams(year,archive_flag)
 
             if (process_nfl_playoff_teams(nfl_playoff_teams,year) == false)
             {
-               if (archive_flag == true)
+               if (mode != "main")
                {
                   alert("Unable to retrieve "+year+" NFL Playoff Teams.");
 
-                  window.open("fp_archive.html","fp_main","");
+                  history.back();
                }
             }
          }
          else // XMLHttpRequest was unsuccessful.
          {
             //JL alert("\"get_nfl_playoff_teams\" failed.");
+
+            if (mode != "main")
+            {
+               alert("Unable to retrieve "+year+" NFL Playoff Teams.");
+
+               history.back();
+            }
          }
 
          // Remove loading indicator.
@@ -5836,6 +5843,13 @@ function get_nfl_playoff_teams(year,archive_flag)
    nfl_connection.onerror = function(e)
    {
       //JL alert("\"get_nfl_playoff_teams\" failed.");
+
+      if (mode != "main")
+      {
+         alert("Unable to retrieve "+year+" NFL Playoff Teams.");
+
+         history.back();
+      }
 
       // Remove loading indicator.
 
