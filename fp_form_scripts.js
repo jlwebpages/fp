@@ -5941,9 +5941,9 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
    var index_end                    = -1;
    var index_start                  = -1;
    var NFC_teams                    = null;
-   var number_of_playoff_teams      = 7;
-   var number_of_rs_weeks_completed = top.current_input_week - 1;
-   var possible_team_record_indexes = [36,37,46,47,48,49,50];
+   var number_of_playoff_teams      = 0;
+   var number_of_rs_weeks_completed = 0;
+   var possible_team_record_indexes = [36,37,38,46,47,48,49,50];
    var team_losses                  = 0;
    var team_record                  = "";
    var team_record_index            = null;
@@ -5955,15 +5955,28 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
    var total_team_record_games      = 0;
 
 
-   // Adjust number_of_playoff_teams if needed.
+   // Assign number of regular season weeks completed.
 
-   if (year < 2020) number_of_playoff_teams = 6;
+   if (year == top.fp_year)
+   {
+      number_of_rs_weeks_completed = top.current_input_week - 1;
 
-   // Adjust number_of_rs_weeks_completed if needed.
+      if (top.games_over == false) number_of_rs_weeks_completed--;
 
-   if (top.games_over == false) number_of_rs_weeks_completed--;
+      if (number_of_rs_weeks_completed > top.all_home_teams.length) number_of_rs_weeks_completed = top.all_home_teams.length;
+   }
+   else
+   {
+      number_of_rs_weeks_completed = 18
 
-   if (number_of_rs_weeks_completed > top.all_home_teams.length) number_of_rs_weeks_completed = top.all_home_teams.length;
+      if (year <= 2020) number_of_rs_weeks_completed = 17;
+   }
+
+   // Assign number of playoff teams.
+
+   number_of_playoff_teams = 7;
+
+   if (year <= 2019) number_of_playoff_teams = 6;
 
    // Parse the nfl_playoff_teams string.
 
@@ -6112,11 +6125,23 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
             {
                total_team_record_games = parseInt(team_wins) + parseInt(team_losses) + parseInt(team_ties);
 
-               if ( total_team_record_games >= number_of_rs_weeks_completed - 1)
+               if ( (year == 2022) && (AFC_teams.standings[i].team.shortDisplayName == "Bills" || AFC_teams.standings[i].team.shortDisplayName == "Bengals" ) )
                {
-                  team_record_index = possible_team_record_indexes[j];
+                  if ( total_team_record_games >= number_of_rs_weeks_completed - 2)
+                  {
+                     team_record_index = possible_team_record_indexes[j];
 
-                  break;
+                     break;
+                  }
+               }
+               else
+               {
+                  if ( total_team_record_games >= number_of_rs_weeks_completed - 1)
+                  {
+                     team_record_index = possible_team_record_indexes[j];
+
+                     break;
+                  }
                }
             }
          }
