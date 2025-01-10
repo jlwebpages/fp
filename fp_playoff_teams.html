@@ -10,6 +10,7 @@
 
 <script language="JavaScript">
 
+var border_spacing = "10px";
 var mode           = "";
 var URL_string     = window.location.search;;
 var URL_parameters = new URLSearchParams(URL_string);;
@@ -61,6 +62,11 @@ else
       top.fp_main_header.document.close();
    }
 
+   if (year <= 2019)
+   {
+      border_spacing = "0px 10px";
+   }
+
    get_nfl_playoff_teams(year,mode);
 }
 
@@ -97,7 +103,7 @@ else
                <td id="AFC_4"></td>
             </tr>
          </table>
-         <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 45%; margin-left: auto; margin-right: auto">
+         <script>document.write('<table class="table" style="text-align: center; border-spacing: '+border_spacing+'; height: auto; width: 45%; margin-left: auto; margin-right: auto">');</script>
             <tr class="red_color" style="font-size: 10pt; font-weight: bold">
                <td id="AFC_5"></td>
                <td id="AFC_6"></td>
@@ -133,7 +139,7 @@ else
                <td id="NFC_4"></td>
             </tr>
          </table>
-         <table class="table" style="text-align: center; border-spacing: 10px; height: auto; width: 45%; margin-left: auto; margin-right: auto">
+         <script>document.write('<table class="table" style="text-align: center; border-spacing: '+border_spacing+'; height: auto; width: 45%; margin-left: auto; margin-right: auto">');</script>
             <tr class="dark_blue_color" style="font-size: 10pt; font-weight: bold">
                <td id="NFC_5"></td>
                <td id="NFC_6"></td>
