@@ -1694,7 +1694,7 @@ function build_post_season_form()
          d.writeln('<td nowrap class="'+border_style+'"><font style="font-size: 10pt">'+visiting_team_possession_flag+visiting_teams[gi-1]+'</font></td>');
       }
 
-      d.writeln('<td nowrap class="'+border_style+'"><div style="line-height: 11px"><font style="font-size: 10pt">'+game_state+'</font></div></td>');
+      d.writeln('<td nowrap class="'+border_style+'" style="min-width: 15px"><div style="line-height: 11px"><font style="font-size: 10pt">'+game_state+'</font></div></td>');
 
       border_style = "gr1_gb1_border";
 
@@ -1768,20 +1768,20 @@ function build_post_season_form()
 
                if (use_player_points == false) border_style = "bb1_border";
 
-               d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">'+player_picks[player_index[pi-1]][gi-1]+'</font></td>');
-               d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">by</font></td>');
+               d.writeln('<td class="'+border_style+'" style="min-width: 15px"><font style="font-size: 10pt">'+player_picks[player_index[pi-1]][gi-1]+'</font></td>');
+               d.writeln('<td class="'+border_style+'" style="min-width: 15px"><font style="font-size: 10pt">by</font></td>');
 
                border_style = "gr1_gb1_border";
 
                if (use_player_points == false) border_style = "gr1_bb1_border";
 
-               d.writeln('<td class="'+border_style+'"><font style="font-size: 10pt">'+player_spreads[player_index[pi-1]][gi-1]+'</font></td>');
+               d.writeln('<td class="'+border_style+'" style="min-width: 15px"><font style="font-size: 10pt">'+player_spreads[player_index[pi-1]][gi-1]+'</font></td>');
             }
             else
             {
-               d.writeln('<td><font style="font-size: 10pt">'+player_picks[player_index[pi-1]][gi-1]+'</font></td>');
-               d.writeln('<td><font style="font-size: 10pt">by</font></td>');  
-               d.writeln('<td class="gr1_border"><font style="font-size: 10pt">'+player_spreads[player_index[pi-1]][gi-1]+'</font></td>');
+               d.writeln('<td style="min-width: 15px"><font style="font-size: 10pt">'+player_picks[player_index[pi-1]][gi-1]+'</font></td>');
+               d.writeln('<td style="min-width: 15px"><font style="font-size: 10pt">by</font></td>');  
+               d.writeln('<td class="gr1_border" style="min-width: 15px"><font style="font-size: 10pt">'+player_spreads[player_index[pi-1]][gi-1]+'</font></td>');
             } 
          }
 
@@ -1872,8 +1872,7 @@ function build_post_season_form()
 
                   if (points == 0) points = "<br>";
 
-                  d.writeln('<td class="bb1_border"     colspan=2 style="padding:0px"><font style="font-size: 8pt">Points:</font></td>');
-                  d.writeln('<td class="gr1_bb1_border" colspan=1 style="padding:0px"><font style="font-size: 8pt">'+points+'</font></td>');
+                  d.writeln('<td class="gr1_bb1_border" colspan=3 style="padding:0px"><font style="font-size: 8pt">Points:&nbsp;&nbsp'+points+'</font></td>');
                }
 
                total_points_score = "<br>";
