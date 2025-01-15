@@ -1,5 +1,5 @@
 
-function adjust_mobile_viewport_height(document)
+function adjust_mobile_viewport_height(document,form)
 {
    var iPad = false;
 
@@ -17,7 +17,7 @@ function adjust_mobile_viewport_height(document)
 
          var document_height = document.body.scrollHeight + pad;
 
-         if ( (document.title.toLowerCase().indexOf("post") != -1) && (document_height < 600) ) document_height = 600;
+         if ( (form == "post_season") && (document_height < 600) ) document_height = 600;
 
          var viewport_scale   = window.screen.height/document_height;
          var viewport_content = "height=" + document_height + "px, initial-scale=" + viewport_scale;
@@ -2319,7 +2319,7 @@ function build_post_season_form()
 
    d.getElementById("post_season_table").scrollIntoView({block: "start", inline: "start"});
 
-   adjust_mobile_viewport_height(d);
+   adjust_mobile_viewport_height(d,"post_season");
 
    d.close();
 
@@ -4400,7 +4400,7 @@ function build_regular_season_form()
 
    d.getElementById("regular_season_table").scrollIntoView({block: "start", inline: "start"});
 
-   adjust_mobile_viewport_height(d);
+   adjust_mobile_viewport_height(d,"regular_season");
 
    d.close();
 
@@ -5622,7 +5622,7 @@ function build_regular_season_summary()
 
    d.getElementById("season_summary").scrollIntoView({block: "start", inline: "start"});
 
-   adjust_mobile_viewport_height(d);
+   adjust_mobile_viewport_height(d,"summary");
 
    d.close();
 
