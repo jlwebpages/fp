@@ -58,10 +58,9 @@ function build_forms_page()
    var current_input_week          = top.current_input_week;
    var form_view                   = "expanded";
    var number_of_rs_weeks          = top.all_home_teams.length;
-   var post_season_input_week      = 0;
-   var post_season_order_by        = "overall_scores";
-   var post_season_picks_week      = 0;
-   var post_season_results_week    = 0;
+   var postseason_input_week       = 0;
+   var postseason_picks_week       = 0;
+   var postseason_results_week     = 0;
    var regular_season_input_week   = 0;
    var regular_season_picks_week   = 0;
    var regular_season_results_week = 0;
@@ -82,21 +81,21 @@ function build_forms_page()
    if (regular_season_picks_week   > number_of_rs_weeks) regular_season_picks_week   = number_of_rs_weeks;
    if (regular_season_results_week > number_of_rs_weeks) regular_season_results_week = number_of_rs_weeks;
 
-   // Assign post season week numbers.
+   // Assign postseason week numbers.
 
-   post_season_input_week   = current_input_week - number_of_rs_weeks;
-   post_season_picks_week   = post_season_input_week - 1;
-   post_season_results_week = post_season_picks_week - 1;
+   postseason_input_week   = current_input_week - number_of_rs_weeks;
+   postseason_picks_week   = postseason_input_week - 1;
+   postseason_results_week = postseason_picks_week - 1;
 
-   if (top.games_over == true) post_season_results_week++;
+   if (top.games_over == true) postseason_results_week++;
 
-   if (post_season_input_week   < 1) post_season_input_week   = 1;
-   if (post_season_picks_week   < 1) post_season_picks_week   = 1;
-   if (post_season_results_week < 1) post_season_results_week = 1;
+   if (postseason_input_week   < 1) postseason_input_week   = 1;
+   if (postseason_picks_week   < 1) postseason_picks_week   = 1;
+   if (postseason_results_week < 1) postseason_results_week = 1;
 
-   if (post_season_input_week   > 4) post_season_input_week   = 4;
-   if (post_season_picks_week   > 4) post_season_picks_week   = 4;
-   if (post_season_results_week > 4) post_season_results_week = 4;
+   if (postseason_input_week   > 4) postseason_input_week   = 4;
+   if (postseason_picks_week   > 4) postseason_picks_week   = 4;
+   if (postseason_results_week > 4) postseason_results_week = 4;
 
    // If mobile flag is true, set form_view to "compact".
 
@@ -336,14 +335,14 @@ function build_forms_page()
    d.writeln('      return;');
    d.writeln('   }');
    d.writeln('');
-   d.writeln('   function open_post_season_form(received_mode)');
+   d.writeln('   function open_postseason_form(received_mode)');
    d.writeln('   {');
-   d.writeln('      var post_season_order_by_week = ' + post_season_results_week + ';');
+   d.writeln('      var postseason_order_by_week = ' + postseason_results_week + ';');
    d.writeln('');
    d.writeln('');
-   d.writeln('      if (received_mode == "picks") post_season_order_by_week = ' + post_season_picks_week + ';');
+   d.writeln('      if (received_mode == "picks") postseason_order_by_week = ' + postseason_picks_week + ';');
    d.writeln('');
-   d.writeln('      w = window.open("","post_season_"+received_mode,"status=no,scrollbars=yes,resizable=yes",true);');
+   d.writeln('      w = window.open("","postseason_"+received_mode,"status=no,scrollbars=yes,resizable=yes",true);');
    d.writeln('');
    d.writeln('      w.resizeTo(screen.width,screen.height);');
    d.writeln('      w.moveTo(0,0);');
@@ -381,12 +380,12 @@ function build_forms_page()
    d.writeln("      w.gv.document.writeln('var w4_start           = 13;');");
    d.writeln("      w.gv.document.writeln('var w4_end             = 13;');");
    d.writeln("      w.gv.document.writeln('');");
-   d.writeln("      w.gv.document.writeln('var home_scores                  = Array(number_of_ps_games);');");
-   d.writeln("      w.gv.document.writeln('var post_season_game_states      = Array(number_of_ps_games);');");
-   d.writeln("      w.gv.document.writeln('var post_season_possession_teams = Array(number_of_ps_games);');");
-   d.writeln("      w.gv.document.writeln('var post_season_red_zone_flags   = Array(number_of_ps_games);');");
-   d.writeln("      w.gv.document.writeln('var post_season_victors          = Array(number_of_ps_games);');");
-   d.writeln("      w.gv.document.writeln('var visitor_scores               = Array(number_of_ps_games);');");
+   d.writeln("      w.gv.document.writeln('var home_scores                 = Array(number_of_ps_games);');");
+   d.writeln("      w.gv.document.writeln('var postseason_game_states      = Array(number_of_ps_games);');");
+   d.writeln("      w.gv.document.writeln('var postseason_possession_teams = Array(number_of_ps_games);');");
+   d.writeln("      w.gv.document.writeln('var postseason_red_zone_flags   = Array(number_of_ps_games);');");
+   d.writeln("      w.gv.document.writeln('var postseason_victors          = Array(number_of_ps_games);');");
+   d.writeln("      w.gv.document.writeln('var visitor_scores              = Array(number_of_ps_games);');");
    d.writeln("      w.gv.document.writeln('');");
    d.writeln("      w.gv.document.writeln('var current_input_week;');");
    d.writeln("      w.gv.document.writeln('var focus_element;');");
@@ -409,10 +408,10 @@ function build_forms_page()
    d.writeln('      // Assign values to global variables for this new window.');
    d.writeln('');
    d.writeln('      w.gv.home_scores.fill(0);');
-   d.writeln('      w.gv.post_season_game_states.fill("at");');
-   d.writeln('      w.gv.post_season_possession_teams.fill("");');
-   d.writeln('      w.gv.post_season_red_zone_flags.fill(false);');
-   d.writeln('      w.gv.post_season_victors.fill("");');
+   d.writeln('      w.gv.postseason_game_states.fill("at");');
+   d.writeln('      w.gv.postseason_possession_teams.fill("");');
+   d.writeln('      w.gv.postseason_red_zone_flags.fill(false);');
+   d.writeln('      w.gv.postseason_victors.fill("");');
    d.writeln('      w.gv.visitor_scores.fill(0);');
    d.writeln('');
    d.writeln('      w.gv.current_input_week      = top.current_input_week;');
@@ -424,14 +423,14 @@ function build_forms_page()
    d.writeln('      w.gv.mobile                  = top.mobile;');
    d.writeln('      w.gv.mode                    = received_mode;');
    d.writeln('      w.gv.number_of_rs_weeks      = top.all_home_teams.length;');
-   d.writeln('      w.gv.order_by                = "week_" + post_season_order_by_week + "_scores";');
+   d.writeln('      w.gv.order_by                = "week_" + postseason_order_by_week + "_scores";');
    d.writeln('      w.gv.player_index            = top.player_index;');
    d.writeln('      w.gv.ps_players              = top.ps_players;');
    d.writeln('      w.gv.ps_players_description  = top.ps_players_description;');
    d.writeln('      w.gv.refresh_scores          = true;');
    d.writeln('      w.gv.scores_already_assigned = false;');
    d.writeln('');
-   d.writeln('      w.form.location.href="fp_post_season_form.html";');
+   d.writeln('      w.form.location.href="fp_postseason_form.html";');
    d.writeln('');
    d.writeln('      return;');
    d.writeln('   }');
@@ -444,20 +443,20 @@ function build_forms_page()
    {
       if (current_input_week > (number_of_rs_weeks + 1) || top.games_over == true)
       {
-         // Display post season information.
+         // Display postseason information.
 
          d.writeln('<table class="table" style="height: auto; border-spacing: 2px; font-size: 16pt; font-weight: bold; line-height: 40px; padding-left: 10px; padding-right: 10px; margin-top: 25px; margin-left: auto; margin-right: auto">');
          d.writeln('');
          d.writeln('   <tr>');
-         d.writeln('      <td colspan="2" class="red_color" style="font-size: 18pt; text-decoration: underline; text-align: center; padding-bottom: 10px">Post Season</td>');
+         d.writeln('      <td colspan="2" class="red_color" style="font-size: 18pt; text-decoration: underline; text-align: center; padding-bottom: 10px">Postseason</td>');
          d.writeln('   </tr>');
          d.writeln('');
          if (top.games_over == true && top.season_over == false)
          {
-            top.post_season = true;
+            top.postseason = true;
 
             d.writeln('   <tr>');
-            d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + post_season_input_week + ':</td>');
+            d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + postseason_input_week + ':</td>');
             d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href="fp_input_form.html">Input Form</a></td>');
             d.writeln('   </tr>');
             d.writeln('');
@@ -465,16 +464,16 @@ function build_forms_page()
          if (top.games_over == false && top.season_over == false)
          {
             d.writeln('   <tr>');
-            d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + post_season_picks_week + ':</td>');
-            d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_post_season_form("picks")>Picks</a></td>');
+            d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + postseason_picks_week + ':</td>');
+            d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_postseason_form("picks")>Picks</a></td>');
             d.writeln('   </tr>');
             d.writeln('');
          }
          if ( (current_input_week > number_of_rs_weeks+2) || (current_input_week == number_of_rs_weeks+2 && top.games_over == true) )
          {
             d.writeln('   <tr>');
-            d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + post_season_results_week + ':</td>');
-            d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_post_season_form("results")>Results</a></td>');
+            d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + postseason_results_week + ':</td>');
+            d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_postseason_form("results")>Results</a></td>');
             d.writeln('   </tr>');
             d.writeln('');
          }

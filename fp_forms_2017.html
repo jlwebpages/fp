@@ -15,15 +15,6 @@
 
 <script>
 
-   // Paste in regular season schedule from fp.html
-
-   // Paste in regular season information from fp_regular_season_form.html
-
-   // Paste in post season information from fp_post_season_form.html
-
-   // Paste in player information from fp.html
-
-
    function check_for_parent_window()
    {
       if (window.top.gv == null)
@@ -1784,7 +1775,7 @@
                                w17_actual_mn_points];
 
 
-   // Post Season Information
+   // Postseason Information
 
    var player1_picks = [
    "H",
@@ -2522,7 +2513,7 @@
    "<br>"
    ];
 
-   var post_season_winners = [
+   var postseason_winners = [
    "<br>",
    "<br>",
    "<br>",
@@ -2618,11 +2609,11 @@
 
       build_regular_season_form();
    }
-   else  // window.top.gv.archive_mode == "post_season"
+   else  // window.top.gv.archive_mode == "postseason"
    {
       window.top.gv.ps_players = ["BM","CK","CP","DC","DH","GP","JG","JH","JL","KC","KK","RR"];
 
-      build_post_season_form();
+      build_postseason_form();
    }
 
 </script>

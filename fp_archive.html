@@ -87,11 +87,11 @@ function display_archive_page()
    d.writeln('   }');
    d.writeln('');
    d.writeln('');
-   d.writeln('   function open_post_season_archive()');
+   d.writeln('   function open_postseason_archive()');
    d.writeln('   {');
-   d.writeln('      var title = "NFL Football Pool Archive - '+archive_year+' Post Season Results";');
+   d.writeln('      var title = "NFL Football Pool Archive - '+archive_year+' Postseason Results";');
    d.writeln('');
-   d.writeln('      w = window.open("","'+archive_year+'_post_season_results","status=no,scrollbars=yes,resizable=yes",true);');
+   d.writeln('      w = window.open("","'+archive_year+'_postseason_results","status=no,scrollbars=yes,resizable=yes",true);');
    d.writeln('');
    d.writeln('      w.resizeTo(screen.width,screen.height);');
    d.writeln('');
@@ -153,7 +153,7 @@ function display_archive_page()
    d.writeln('      w.gv.home_scores.fill(0);');
    d.writeln('      w.gv.visitor_scores.fill(0);');
    d.writeln('');
-   d.writeln('      w.gv.archive_mode            = "Post Season";');
+   d.writeln('      w.gv.archive_mode            = "Postseason";');
    d.writeln('      w.gv.archive_year            = '+archive_year+';');
    d.writeln('      w.gv.current_input_week      = 0;');
    d.writeln('      w.gv.focus_element           = top.focus_element;');
@@ -315,7 +315,7 @@ function display_archive_page()
       d.writeln('   </td></tr>');
       d.writeln('');
       d.writeln('   <tr><td>');
-      d.writeln('      <a class="blue_link" href=javascript:open_post_season_archive();>'+archive_year+' Post Season Results</a>');
+      d.writeln('      <a class="blue_link" href=javascript:open_postseason_archive();>'+archive_year+' Postseason Results</a>');
       d.writeln('   </td></tr>');
       d.writeln('');
       if (archive_year > 2002)

@@ -1,7 +1,7 @@
 
 function build_input_form()
 {
-   if (top.post_season == false)
+   if (top.postseason == false)
    {
       // Reset Input Form week number to the current week.
 
@@ -11,7 +11,7 @@ function build_input_form()
    }
    else
    {
-      build_post_season_form();
+      build_postseason_form();
    }
 }
 
@@ -2802,7 +2802,7 @@ function build_regular_season_form()
 }
 
 
-function build_post_season_form()
+function build_postseason_form()
 {
    if (top.mobile == false)
    {
@@ -2831,11 +2831,11 @@ function build_post_season_form()
       top.fp_main_header.document.close();
    }
 
-   // Build post season input form.
+   // Build postseason input form.
 
    var number_of_rs_weeks          = top.all_home_teams.length;
-   var home_teams                  = top.post_season_home_teams;
-   var visiting_teams              = top.post_season_visiting_teams;
+   var home_teams                  = top.postseason_home_teams;
+   var visiting_teams              = top.postseason_visiting_teams;
    var week                        = top.current_input_week - number_of_rs_weeks;
    var number_of_nfl_teams         = 32;
    var number_of_ps_games          = home_teams.length;
@@ -2971,12 +2971,12 @@ function build_post_season_form()
 
    d.writeln('// Define current week visiting teams.');
    d.writeln('');
-   d.writeln('var visiting_teams = top.post_season_visiting_teams;');
+   d.writeln('var visiting_teams = top.postseason_visiting_teams;');
    d.writeln('');
    d.writeln('');
    d.writeln('// Define current week home teams.');
    d.writeln('');
-   d.writeln('var home_teams = top.post_season_home_teams;');
+   d.writeln('var home_teams = top.postseason_home_teams;');
    d.writeln('');
    d.writeln('');
    d.writeln('// Define an array for the selected picks.');
@@ -3132,7 +3132,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   confirmation_message  = "\\n<center>";');
    d.writeln('   confirmation_message += "\\n<table>";');
-   d.writeln('   confirmation_message += "\\n<tr><td style=\\"text-align: center\\" colspan=5 nowrap><b>Post Season Week " + '+week+' + " Picks</b></td></tr>";');
+   d.writeln('   confirmation_message += "\\n<tr><td style=\\"text-align: center\\" colspan=5 nowrap><b>Postseason Week " + '+week+' + " Picks</b></td></tr>";');
    d.writeln('   confirmation_message += "\\n<tr><td style=\\"text-align: center\\" colspan=5><hr style=\\"border: 1px solid black\\"></td></tr>";');
    d.writeln('   confirmation_message += "\\n<tr><td style=\\"padding-top: 5px; padding-bottom: 10px\\" colspan=5 nowrap><b>Name:&nbsp&nbsp" + build_player_name(-1) + "</b></td></tr>";');
    d.writeln('');
@@ -3234,7 +3234,7 @@ function build_post_season_form()
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px\\"><b>Create an e-mail message and send it to:</b></td></tr>"');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px; padding-left: 10px\\">fp@socal.rr.com</td></tr>"');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px\\"><b>Copy the following into the subject line:</b></td></tr>"');
-   d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px; padding-left: 10px\\">" + build_player_name(-1) + " - Post Season Week "+'+week+'+" Picks</td></tr>"');
+   d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px; padding-left: 10px\\">" + build_player_name(-1) + " - Postseason Week "+'+week+'+" Picks</td></tr>"');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px\\"><b>Copy the following into the message body:</b></td></tr>"');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-left: 10px\\">"');
    d.writeln('');
@@ -3401,7 +3401,7 @@ function build_post_season_form()
    d.writeln('   var d        = document;');
    d.writeln('   var inputs   = document.fp_inputs;');
    d.writeln('   var name     = build_player_name(-1);');
-   d.writeln('   var mail_msg = "mailto:fp@socal.rr.com?subject=" + name + " - Post Season Week ' + week + ' Picks&body=";');
+   d.writeln('   var mail_msg = "mailto:fp@socal.rr.com?subject=" + name + " - Postseason Week ' + week + ' Picks&body=";');
    d.writeln('');
    d.writeln('');
    d.writeln('   for (var i = 0; i < '+number_of_ps_games+'; i++)');
@@ -4460,7 +4460,7 @@ function build_post_season_form()
    d.writeln('');
    d.writeln('   if (odds_found == false)');
    d.writeln('   {');
-   d.writeln('      if (suppress_alerts == false) alert("NFL Odds for Post Season Week ' + week + ' are not available.")');
+   d.writeln('      if (suppress_alerts == false) alert("NFL Odds for Postseason Week ' + week + ' are not available.")');
    d.writeln('');
    d.writeln('      // Clear nfl_odds_array.');
    d.writeln('');
@@ -4699,7 +4699,7 @@ function build_post_season_form()
 
    d.writeln('<table border=0 cellspacing=0 cellpadding=0>');
    d.writeln('<tr align=center style="vertical-align: middle">');
-   d.writeln('<td id="input_form_week" class="no_border" style="font-size: 16pt; font-weight: bold; padding-top: 5px; padding-bottom: 10px; white-space: nowrap">Input Form - Post Season Week '+ week +'');
+   d.writeln('<td id="input_form_week" class="no_border" style="font-size: 16pt; font-weight: bold; padding-top: 5px; padding-bottom: 10px; white-space: nowrap">Input Form - Postseason Week '+ week +'');
    d.writeln('</td>');
    d.writeln('</tr>');
    d.writeln('</table>');
