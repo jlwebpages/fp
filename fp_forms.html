@@ -456,24 +456,24 @@ function build_forms_page()
             top.postseason = true;
 
             d.writeln('   <tr>');
-            d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + postseason_input_week + ':</td>');
-            d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href="fp_input_form.html">Input Form</a></td>');
+            d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 5px">Week ' + postseason_input_week + ':</td>');
+            d.writeln('      <td style="text-align: left; width: 50%; padding-left: 5px"><a class="blue_link" href="fp_input_form.html">Input Form</a></td>');
             d.writeln('   </tr>');
             d.writeln('');
          }
          if (top.games_over == false && top.season_over == false)
          {
             d.writeln('   <tr>');
-            d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + postseason_picks_week + ':</td>');
-            d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_postseason_form("picks")>Picks</a></td>');
+            d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 5px">Week ' + postseason_picks_week + ':</td>');
+            d.writeln('      <td style="text-align: left; width: 50%; padding-left: 5px"><a class="blue_link" href=javascript:open_postseason_form("picks")>Picks</a></td>');
             d.writeln('   </tr>');
             d.writeln('');
          }
          if ( (current_input_week > number_of_rs_weeks+2) || (current_input_week == number_of_rs_weeks+2 && top.games_over == true) )
          {
             d.writeln('   <tr>');
-            d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + postseason_results_week + ':</td>');
-            d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_postseason_form("results")>Results</a></td>');
+            d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 5px">Week ' + postseason_results_week + ':</td>');
+            d.writeln('      <td style="text-align: left; width: 50%; padding-left: 5px"><a class="blue_link" href=javascript:open_postseason_form("results")>Results</a></td>');
             d.writeln('   </tr>');
             d.writeln('');
          }
@@ -493,36 +493,36 @@ function build_forms_page()
    if (current_input_week <= number_of_rs_weeks)
    {
       d.writeln('   <tr>');
-      d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + regular_season_input_week + ':</td>');
-      d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href="fp_input_form.html">Input Form</a></td>');
+      d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 5px">Week ' + regular_season_input_week + ':</td>');
+      d.writeln('      <td style="text-align: left; width: 50%; padding-left: 5px"><a class="blue_link" href="fp_input_form.html">Input Form</a></td>');
       d.writeln('   </tr>');
       d.writeln('');
    }
    if (current_input_week > 1 && current_input_week <= (number_of_rs_weeks + 1) && top.games_over == false)
    {
       d.writeln('   <tr>');
-      d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + regular_season_picks_week + ':</td>');
-      d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_regular_season_form("picks")>Picks</a></td>');
+      d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 5px">Week ' + regular_season_picks_week + ':</td>');
+      d.writeln('      <td style="text-align: left; width: 50%; padding-left: 5px"><a class="blue_link" href=javascript:open_regular_season_form("picks")>Picks</a></td>');
       d.writeln('   </tr>');
       d.writeln('');
    }
    if ( (current_input_week > 2) || (current_input_week == 2 && top.games_over == true) )
    {
       d.writeln('   <tr>');
-      d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week ' + regular_season_results_week + ':</td>');
-      d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_regular_season_form("results")>Results</a></td>');
+      d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 5px">Week ' + regular_season_results_week + ':</td>');
+      d.writeln('      <td style="text-align: left; width: 50%; padding-left: 5px"><a class="blue_link" href=javascript:open_regular_season_form("results")>Results</a></td>');
       d.writeln('   </tr>');
       d.writeln('');
       d.writeln('   <tr>');
       if (regular_season_results_week == 1)
       {
-         d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Week 1:</td>');
+         d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 5px">Week 1:</td>');
       }
       else
       {
-         d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 10px">Weeks 1 through ' + regular_season_results_week + ':</td>');
+         d.writeln('      <td class="green_color" style="text-align: right; width: 50%; padding-right: 5px">Weeks 1 to ' + regular_season_results_week + ':</td>');
       }
-      d.writeln('      <td style="text-align: left; width: 50%"><a class="blue_link" href=javascript:open_regular_season_form("summary")>Season Summary</a></td>');
+      d.writeln('      <td style="text-align: left; width: 50%; padding-left: 5px"><a class="blue_link" href=javascript:open_regular_season_form("summary")>Season Summary</a></td>');
       d.writeln('   </tr>');
       d.writeln('');
    }
