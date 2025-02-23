@@ -5954,6 +5954,63 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
    var total_team_record_games      = 0;
 
 
+   // Special handling of playoff years 2011 and 2012 since the ESPN website says "No Data Available".
+
+   if ( (year == 2011) || (year == 2012) )
+   {
+      var _2011_AFC_team_names   = ["New England Patriots","Baltimore Ravens","Houston Texans","Denver Broncos","Pittsburgh Steelers","Cincinnati Bengals"];
+      var _2011_AFC_team_records = ["13-3",                "12-4",            "10-6",          "8-8",           "12-4",               "9-7"               ];
+      var _2011_NFC_team_names   = ["Green Bay Packers","San Francisco 49ers","New Orleans Saints","New York Giants","Atlanta Falcons","Detroit Lions"];
+      var _2011_NFC_team_records = ["15-1",             "13-3",               "13-3",              "9-7",            "10-6",           "10-6"         ];
+      var _2012_AFC_team_names   = ["Denver Broncos","New England Patriots","Houston Texans","Baltimore Ravens","Indianapolis Colts","Cincinnati Bengals"];
+      var _2012_AFC_team_records = ["13-3",          "12-4",                "12-4",          "10-6",            "11-5",              "10-6"              ];
+      var _2012_NFC_team_names   = ["Atlanta Falcons","San Francisco 49ers","Green Bay Packers","Washington Redskins","Seattle Seahawks","Minnesota Vikings"];
+      var _2012_NFC_team_records = ["13-3",           "11-4-1",             "11-5",             "10-6",               "11-5",            "10-6"             ];
+      var AFC_team_names         = "";
+      var AFC_team_records       = "";
+      var NFC_team_names         = "";
+      var NFC_team_records       = "";
+      var short_team_name        = "";
+
+
+      if (year == 2011)
+      {
+         AFC_team_names   = _2011_AFC_team_names;
+         AFC_team_records = _2011_AFC_team_records;
+         NFC_team_names   = _2011_NFC_team_names;
+         NFC_team_records = _2011_NFC_team_records;
+      }
+      else
+      {
+         AFC_team_names   = _2012_AFC_team_names;
+         AFC_team_records = _2012_AFC_team_records;
+         NFC_team_names   = _2012_NFC_team_names;
+         NFC_team_records = _2012_NFC_team_records;
+      }
+
+      for (var i = 0; i < AFC_team_names.length; i++)
+      {
+         // Update AFC and NFC HTML table cells with team logos and team records.
+
+         short_team_name = AFC_team_names[i].split(" ").pop();
+         tooltip         = AFC_team_names[i]
+
+         document.getElementById("AFC_"+(i+1)).innerHTML = "<img src=\"Team Logos/"+short_team_name+".png\" title=\""+tooltip+"\"><br><span style=\"text-align: center\">"+AFC_team_records[i];
+
+         short_team_name = NFC_team_names[i].split(" ").pop();
+         tooltip         = NFC_team_names[i];
+
+         document.getElementById("NFC_"+(i+1)).innerHTML = "<img src=\"Team Logos/"+short_team_name+".png\" title=\""+tooltip+"\"><br><span style=\"text-align: center\">"+NFC_team_records[i];
+      }
+
+      // Make AFC Playoff Teams and NFC Playoff Teams visible.
+
+      document.getElementById("AFC_Playoff_Teams").style.visibility="visible";
+      document.getElementById("NFC_Playoff_Teams").style.visibility="visible";
+
+      return true;
+   }
+
    // Assign number of regular season weeks completed.
 
    if (year == top.fp_year)
