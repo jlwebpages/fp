@@ -1705,9 +1705,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('               // Get the point spread.');
    d.writeln('');
-   d.writeln('               point_spread = game_odds.substring(game_odds.indexOf("-"));');
-   d.writeln('');
-   d.writeln('               if (point_spread.indexOf("-0") != -1) point_spread = point_spread.replace("-0","-");');   
+   d.writeln('               point_spread = game_odds.substring(game_odds.indexOf("-"));');  
    d.writeln('');
    d.writeln('               if (point_spread.indexOf(" ") != -1) point_spread = point_spread.substring(point_spread.indexOf("-"),point_spread.indexOf(" ")-point_spread.indexOf("-"));');
    d.writeln('');
@@ -1917,8 +1915,11 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            if ( (game.matchupBreakdowns != undefined) && (game.matchupBreakdowns.length > 0) )');
    d.writeln('            {');
-   d.writeln('               home_team_record     = game.matchupBreakdowns[0].homeStats;');
-   d.writeln('               visiting_team_record = game.matchupBreakdowns[0].awayStats;');
+   d.writeln('               home_team_record     = "";');
+   d.writeln('               visiting_team_record = "";');
+   d.writeln('');
+   d.writeln('               if (game.matchupBreakdowns[0].homeStats != null) home_team_record     = game.matchupBreakdowns[0].homeStats;');
+   d.writeln('               if (game.matchupBreakdowns[0].awayStats != null) visiting_team_record = game.matchupBreakdowns[0].awayStats;');
    d.writeln('');
    d.writeln('               // Populate the team_records_array if needed.');
    d.writeln('');
@@ -4172,9 +4173,7 @@ function build_postseason_form()
    d.writeln('');
    d.writeln('               // Get the point spread.');
    d.writeln('');
-   d.writeln('               point_spread = game_odds.substring(game_odds.indexOf("-"));');
-   d.writeln('');
-   d.writeln('               if (point_spread.indexOf("-0") != -1) point_spread = point_spread.replace("-0","-");');   
+   d.writeln('               point_spread = game_odds.substring(game_odds.indexOf("-"));'); 
    d.writeln('');
    d.writeln('               if (point_spread.indexOf(" ") != -1) point_spread = point_spread.substring(point_spread.indexOf("-"),point_spread.indexOf(" ")-point_spread.indexOf("-"));');
    d.writeln('');
