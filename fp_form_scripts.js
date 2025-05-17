@@ -5780,6 +5780,28 @@ function get_nfl_playoff_teams(year,mode)
    var nfl_playoff_teams_url = "";
 
 
+   // Don't get this year's playoff teams if Week 1 games have not been completed yet because the HttpRequest call might return last year's playoff teams.
+
+   if ( (year == top.fp_year) && (top.current_input_week <= 2) && (top.games_over == false) )
+   {
+      if (mode == "main")
+      {
+         // Redisplay main home page without displaying NFL playoff teams.
+
+         top.display_frame("fp_main",0);
+      }
+      else
+      {
+         alert(year+" NFL Playoff Teams are not known yet.");
+
+         // Return to main home page.
+
+         history.back();
+      }
+
+      return;
+   }
+
    // Set nfl_playoff_teams_url
 
    if ( (year == top.fp_year) && (top.season_over == false) )
