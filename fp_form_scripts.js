@@ -5835,7 +5835,14 @@ function get_nfl_playoff_teams(year,mode)
             {
                if (mode != "main")
                {
-                  alert("Unable to retrieve "+year+" NFL Playoff Teams.");
+                  if (year == top.fp_year)
+                  {
+                     alert(year+" NFL Playoff Teams are not known yet.");
+                  }
+                  else
+                  {
+                     alert("Unable to retrieve "+year+" NFL Playoff Teams.");
+                  }
 
                   history.back();
                }
