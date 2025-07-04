@@ -3188,7 +3188,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
 </head>
 
 <body style="margin: 0"
-     onLoad="if ( (top.mobile == true) && (top.display_frame != undefined) ) {top.display_frame('fp_main',0);}"
+     onLoad="if (top.display_frame != undefined) {top.display_frame('fp_main',0);}"
    onunload="if (top.reset_mobile_viewport_width != undefined) {top.reset_mobile_viewport_width();} if (top.mobile == false) {top.display_frame('fp_main',0);}">
 
 <script>
@@ -3209,7 +3209,7 @@ if (top.mobile == false)
    top.fp_main_header.document.write('');
    top.fp_main_header.document.write('<table class="table" style="height: 40px; border-spacing: 10px 0px">');
    top.fp_main_header.document.write('   <tr>');
-   top.fp_main_header.document.write('      <td class="fp_button_cell"><a class="white_link" href="fp_archive.html" target="fp_main">ARCHIVE</a>');
+   top.fp_main_header.document.write('      <td class="fp_button_cell">STANDINGS</td>');
    top.fp_main_header.document.write('      <td class="fp_button_cell"><a class="white_link" href="fp.html" target="_top">HOME</a></td>');
    top.fp_main_header.document.write('   </tr>');
    top.fp_main_header.document.write('</table>');

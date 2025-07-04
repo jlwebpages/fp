@@ -1226,7 +1226,7 @@ xmlns="http://www.w3.org/TR/REC-html40">
 </head>
 
 <body style="margin: 0; margin-top: -20px"
-     onLoad="if ( (top.mobile == true) && (top.display_frame != undefined) ) {top.display_frame('fp_main',0);}"
+     onLoad="if (top.display_frame != undefined) {top.display_frame('fp_main',0);}"
    onunload="if (top.reset_mobile_viewport_width != undefined) {top.reset_mobile_viewport_width();} if (top.mobile == false) {top.display_frame('fp_main',0);}">
 
 <table class="table">
