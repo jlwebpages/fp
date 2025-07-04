@@ -6,7 +6,7 @@
    <script language="JavaScript" src=fp_input_form_scripts.js></script>
 </head>
 
-<body class="background_color" style="margin: 0" onLoad="input_form_global_variables(); if (top.display_frame != undefined) {top.display_frame('fp_main',0);}">
+<body class="background_color" style="margin: 0" onLoad="input_form_global_variables()">
 
 <script>
 
@@ -35,6 +35,8 @@ if (top.mobile == false)
    top.fp_main_header.document.write('');
    top.fp_main_header.document.write('</html>');
    top.fp_main_header.document.close();
+
+   top.display_frame('fp_main',0);
 }
 
 </script>
