@@ -5,6 +5,26 @@
 /* It's the order of the rules in this file that matters.                             */
 
 
+/* 
+
+@import "Fonts/fonts.css";
+
+CSS specific to iOS devices - start <-- COMMENT
+
+@supports (hanging-punctuation: first) and (font: -apple-system-body) and (-webkit-appearance: none)
+
+@supports (-webkit-touch-callout: none)
+{
+   .dark_blue_cell  {padding-top: 5px; background-color: green;}
+   .default_button  {padding-top: 3px}
+   .ext_button_cell {padding-top: 10px;}
+   .fp_button_cell  {padding-top: 10px;}
+}
+
+CSS specific to iOS devices - end
+
+*/
+
 .default_button
 {
    color: black;
@@ -73,6 +93,8 @@
 
 .dark_blue_cell
 {
+   text-align: center;
+   vertical-align: middle;
    background-color: #002060;
    border-radius: 30px;
    box-shadow: 5px 5px 5px gray;
@@ -82,6 +104,7 @@
 {
    font-size: 18pt;
    text-align: center;
+   vertical-align: middle;
    background-color: #283E1A;
    border-radius: 25px;
    padding: 8px;
@@ -93,6 +116,7 @@
 {
    font-size: 18pt;
    text-align: center;
+   vertical-align: middle;
    background-color: maroon;
    border-radius: 25px;
    padding: 8px;
@@ -112,6 +136,21 @@
    padding: 10px;
 }
 
+.blue_link
+{
+   color: #002060;
+}
+a.blue_link:link  {text-decoration: none}
+a.blue_link:hover {text-decoration: underline}
+
+.white_link
+{
+   color: white;
+   display: block;
+}
+a.white_link:link  {text-decoration: none}
+a.white_link:hover {text-decoration: underline}
+
 .background_color         {background-color: #B8C2D0}
 .black_color              {color: black             }
 .blue_color               {color: blue              }
@@ -128,13 +167,5 @@
 .red_color                {color: maroon            }
 .upset_pick_color         {color: #AA0000           }
 .white_background         {background-color: white  }
-
-a.blue_link        {color: #002060            }
-a.blue_link:link   {text-decoration: none     }
-a.blue_link:hover  {text-decoration: underline}
-a.white_link       {color: white              }
-a.white_link       {display: block            }
-a.white_link:link  {text-decoration: none     }
-a.white_link:hover {text-decoration: underline}
 
 input {touch-action: none}
