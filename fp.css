@@ -5,26 +5,6 @@
 /* It's the order of the rules in this file that matters.                             */
 
 
-/* 
-
-@import "Fonts/fonts.css";
-
-CSS specific to iOS devices - start <-- COMMENT
-
-@supports (hanging-punctuation: first) and (font: -apple-system-body) and (-webkit-appearance: none)
-
-@supports (-webkit-touch-callout: none)
-{
-   .dark_blue_cell  {padding-top: 5px; background-color: green;}
-   .default_button  {padding-top: 3px}
-   .ext_button_cell {padding-top: 10px;}
-   .fp_button_cell  {padding-top: 10px;}
-}
-
-CSS specific to iOS devices - end
-
-*/
-
 .default_button
 {
    color: black;
