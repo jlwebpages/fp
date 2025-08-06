@@ -421,7 +421,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('      // Format picks for display.');
    d.writeln('');
-   d.writeln('      picks_message  = "\\n<table style=\\"font-family: Calibri, sans-serif; font-size: .9em; margin-right: auto; margin-left: auto\\">";');
+   d.writeln('      picks_message  = "\\n\\n<table style=\\"font-family: Calibri, sans-serif; font-size: .9em; margin-right: auto; margin-left: auto\\">";');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px\\"><b>Create an e-mail message and send it to:</b></td></tr>"');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px; padding-left: 10px\\">fp@socal.rr.com</td></tr>"');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px\\"><b>Copy the following into the subject line:</b></td></tr>"');
@@ -2922,7 +2922,7 @@ function build_postseason_form()
    d.writeln('             margin: 0px;');
    d.writeln('            padding: 0px 0px 15px 0px;');
    d.writeln('              color: black;');
-   d.writeln('        font-family: Calibri, sans-serif"');
+   d.writeln('        font-family: Calibri, sans-serif">');
    d.writeln('');
    d.writeln('');
 
@@ -3184,7 +3184,7 @@ function build_postseason_form()
    d.writeln('');
    d.writeln('      // Format picks for display.');
    d.writeln('');
-   d.writeln('      picks_message  = "\\n<table style=\\"font-family: Calibri, sans-serif; font-size: .9em; line-height: 1.5; margin-right: auto; margin-left: auto\\">";');
+   d.writeln('      picks_message  = "\\n\\n<table style=\\"font-family: Calibri, sans-serif; font-size: .9em; line-height: 1.5; margin-right: auto; margin-left: auto\\">";');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px\\"><b>Create an e-mail message and send it to:</b></td></tr>"');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px; padding-left: 10px\\">fp@socal.rr.com</td></tr>"');
    d.writeln('      picks_message += "\\n<tr><td nowrap style=\\"padding-bottom: 5px\\"><b>Copy the following into the subject line:</b></td></tr>"');
