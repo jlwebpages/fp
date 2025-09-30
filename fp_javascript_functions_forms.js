@@ -13,9 +13,7 @@ function adjust_mobile_viewport_height(document,form)
    {
       if ( (window.screen.height > window.screen.width) && (top.document.getElementById("viewport") != null) )
       {
-         var pad = 10;
-
-         var document_height = document.body.scrollHeight + pad;
+         var document_height = document.body.scrollHeight;
 
          if ( (form == "postseason") && (document_height < 600) ) document_height = 600;
 
@@ -2141,7 +2139,7 @@ function build_postseason_form()
    d.writeln('<table style="margin: 0px auto">');
    d.writeln('');
 
-   d.writeln('<tr><td class="no_border" style="font-size: 2pt"><br></td></tr>');
+   d.writeln('<tr><td class="no_border" style="font-size: 2pt">&nbsp;</td></tr>');
    d.writeln('');
    if (mode == "picks")
    {
@@ -2221,6 +2219,8 @@ function build_postseason_form()
    d.writeln('    onClick="javascript:window.top.close();">');
    d.writeln('</td>');
    d.writeln('</tr>');
+   d.writeln('');
+   d.writeln('<tr><td class="no_border" style="font-size: 2pt">&nbsp;</td></tr>');
    d.writeln('');
 
    d.writeln('</table>');
@@ -4194,6 +4194,8 @@ function build_regular_season_form()
       d.writeln('');
    }
 
+   d.writeln('<tr><td class="no_border" style="font-size: 2pt">&nbsp;</td></tr>');
+   d.writeln('');
    d.writeln('</table>');
    d.writeln('');
 
@@ -4202,7 +4204,7 @@ function build_regular_season_form()
 
    if (number_of_rs_games < max_number_of_rs_games)
    {
-      d.writeln('<div style="font-family: Calibri, sans-serif; font-size: 12pt; text-align: center; margin: 20px 5px 5px 5px; display: block"><b>Open Date:</b>&nbsp;&nbsp;'+open_date+'</div>');
+      d.writeln('<div style="font-family: Calibri, sans-serif; font-size: 12pt; text-align: center; margin: 10px 5px 0px 5px; padding-bottom: 10px; display: block"><b>Open Date:</b>&nbsp;&nbsp;'+open_date+'</div>');
    }
 
    if (mode == "picks")
@@ -5411,6 +5413,8 @@ function build_regular_season_summary()
    d.writeln('    onClick="javascript:window.top.close();">');
    d.writeln('</td>');
    d.writeln('</tr>');
+   d.writeln('');
+   d.writeln('<tr><td class="no_border" style="font-size: 2pt">&nbsp;</td></tr>');
    d.writeln('');
 
    d.writeln('</table>');
