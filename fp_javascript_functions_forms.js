@@ -4204,7 +4204,7 @@ function build_regular_season_form()
 
    if (number_of_rs_games < max_number_of_rs_games)
    {
-      d.writeln('<div style="font-family: Calibri, sans-serif; font-size: 12pt; text-align: center; margin: 0px; padding: 10px 5px 10px 5px; display: block"><b>Open Date:</b>&nbsp;&nbsp;'+open_date+'</div>');
+      d.writeln('<div style="font-family: Calibri, sans-serif; font-size: 12pt; text-align: center; margin: 0px auto; padding: 10px 5px 10px 5px; display: block"><b>Open Date:</b>&nbsp;&nbsp;'+open_date+'</div>');
    }
 
    if (mode == "picks")
@@ -4233,7 +4233,8 @@ function build_regular_season_form()
 
    d.getElementById("regular_season_table").scrollIntoView({block: "start", inline: "start"});
 
-   adjust_mobile_viewport_height(d,"regular_season");
+   adjust_mobile_viewport_height(d,"regular_season");  // If there are "open date" teams displayed and they wrap, the wrap height might not be included when calling document.body.scrollHeight.
+   adjust_mobile_viewport_height(d,"regular_season");  // Calling adjust_mobile_viewport_height again will resolve the potential issue stated above.
 
    d.close();
 
