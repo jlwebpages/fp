@@ -4943,9 +4943,9 @@ function build_regular_season_summary()
                d.writeln('<td class="'+border_class_1+background_color_class+'"><font style="font-size: 11pt">'+bold_start+all_games_won[week_index][sort_index[player_index]]+bold_end+'</font></td>');
             }
 
-            if (all_scores[week_index][sort_index[player_index]] == player_low_scores[sort_index[player_index]])
+            if ( (all_scores[week_index][sort_index[player_index]] == weekly_max_score) && (all_scores[week_index][sort_index[player_index]] == player_low_scores[sort_index[player_index]]) )
             {
-               background_color_class = " low_score_background";
+               background_color_class = " high_low_score_background";
                bold_end               = "";
                bold_start             = "";
 
@@ -4958,6 +4958,16 @@ function build_regular_season_summary()
                background_color_class = " header_two_background";
                bold_end               = "";
                bold_start             = "";
+            }
+            else if (all_scores[week_index][sort_index[player_index]] == player_low_scores[sort_index[player_index]])
+            {
+               background_color_class = " low_score_background";
+               bold_end               = "";
+               bold_start             = "";
+
+               // Do this so that we only change the background color on the first occurrence of the low score.
+
+               player_low_scores[sort_index[player_index]] = 999;
             }
             else
             {
