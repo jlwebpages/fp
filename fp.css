@@ -148,26 +148,26 @@ a.blue_link:hover {text-decoration: underline}
 a.white_link:link  {text-decoration: none}
 a.white_link:hover {text-decoration: underline}
 
-.background_color          {background-color: #B8C2D0                                    }
-.black_color               {color: black                                                 }
-.blue_color                {color: blue                                                  }
-.border_radius             {border-radius: 4px                                           }
-.dark_blue_background      {background-color: #002060                                    }
-.dark_blue_color           {color: #002060                                               }
-.green_background          {background-color: #283E1A                                    }
-.green_color               {color: #283E1A                                               }
-.header_one_background     {background-color: #C4D79B                                    }
-.header_two_background     {background-color: #DCE6F1                                    }
-.high_low_score_background {background-image: linear-gradient(to right, #DCE6F1, #FFFFE1)}
-.low_score_background      {background-color: #FFFFE1                                    }
-.perfect_score_background  {background-color: #B7DEE8                                    }
-.picks_confirm_background  {background-color: #C4D79B                                    }
-.picks_copy_background     {background-color: white                                      }
-.picks_error_background    {background-color: #FFFF99                                    }
-.red_background            {background-color: maroon                                     }
-.red_color                 {color: maroon                                                }
-.upset_pick_color          {color: #AA0000                                               }
-.white_background          {background-color: white                                      }
+.background_color          {background-color: #B8C2D0                                            }
+.black_color               {color: black                                                         }
+.blue_color                {color: blue                                                          }
+.border_radius             {border-radius: 4px                                                   }
+.dark_blue_background      {background-color: #002060                                            }
+.dark_blue_color           {color: #002060                                                       }
+.green_background          {background-color: #283E1A                                            }
+.green_color               {color: #283E1A                                                       }
+.header_one_background     {background-color: #C4D79B                                            }
+.header_two_background     {background-color: #DCE6F1                                            }
+.high_low_score_background {background-image: linear-gradient(to right, #DCE6F1 50%, #FFFFE1 50%)}
+.low_score_background      {background-color: #FFFFE1                                            }
+.perfect_score_background  {background-color: #B7DEE8                                            }
+.picks_confirm_background  {background-color: #C4D79B                                            }
+.picks_copy_background     {background-color: white                                              }
+.picks_error_background    {background-color: #FFFF99                                            }
+.red_background            {background-color: maroon                                             }
+.red_color                 {color: maroon                                                        }
+.upset_pick_color          {color: #AA0000                                                       }
+.white_background          {background-color: white                                              }
 
 input {touch-action: none}
 
