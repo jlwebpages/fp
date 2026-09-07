@@ -214,7 +214,7 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
    var NFC_teams                    = null;
    var number_of_playoff_teams      = 0;
    var number_of_rs_weeks_completed = 0;
-   var possible_team_record_indexes = [36,37,38,46,47,48,49,50];
+   var possible_team_record_indexes = [36,37,38,45,46,47,48,49,50];
    var team_losses                  = 0;
    var team_record                  = "";
    var team_record_index            = null;
