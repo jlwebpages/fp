@@ -336,12 +336,12 @@ function display_archive_page()
       d.writeln('      <a class="blue_link" href=javascript:open_postseason_archive();>'+archive_year+' Postseason Results</a>');
       d.writeln('   </td></tr>');
       d.writeln('');
-      if (archive_year > 2002)
-      {
-         d.writeln('   <tr><td>');
-         d.writeln('      <a class="blue_link" href=javascript:window.open("fp_playoff_teams.html?year='+archive_year+'&mode=archive","fp_main","");>'+archive_year+' NFL Playoff Teams</a>');
-         d.writeln('   </td></tr>');
-      }
+   }
+   if (archive_year > 2001)
+   {
+      d.writeln('   <tr><td>');
+      d.writeln('      <a class="blue_link" href=javascript:window.open("fp_playoff_teams.html?year='+archive_year+'&mode=archive","fp_main","");>'+archive_year+' NFL Playoff Teams</a>');
+      d.writeln('   </td></tr>');
       d.writeln('');
    }
    d.writeln('</table>');
