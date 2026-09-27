@@ -1339,6 +1339,8 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   nfl_connection.open("GET","https://www.scrappintwins.com/cors/"+nfl_odds_url[odds_source],true);'); // scrappintwins.com provided by Dan M.
    d.writeln('');
+   d.writeln('   nfl_connection.setRequestHeader("Cache-Control","no-cache, no-store, must-revalidate");');
+   d.writeln('');
    d.writeln('   nfl_connection.onload = function(e)');
    d.writeln('   {');
    d.writeln('      if (nfl_connection.readyState === 4) // Is XMLHttpRequest complete?');
@@ -3811,6 +3813,8 @@ function build_postseason_form()
    d.writeln('   nfl_connection = new XMLHttpRequest();');
    d.writeln('');
    d.writeln('   nfl_connection.open("GET","https://www.scrappintwins.com/cors/"+nfl_odds_url[odds_source],true);'); // scrappintwins.com provided by Dan M.
+   d.writeln('');
+   d.writeln('   nfl_connection.setRequestHeader("Cache-Control","no-cache, no-store, must-revalidate");');
    d.writeln('');
    d.writeln('   nfl_connection.onload = function(e)');
    d.writeln('   {');
