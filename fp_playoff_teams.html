@@ -92,15 +92,16 @@ else
                <td id="AFC_1"></td>
                <td id="AFC_2"></td>
                <td id="AFC_3"></td>
-               <td id="AFC_4"></td>
+               <script>if (year >= 2002) document.write('<td id="AFC_4"></td>');</script>
             </tr>
 
             <tr>
                <td colspan="4">
                   <div style="display: flex; justify-content: space-evenly; width: 85%; margin: 0px auto">
+                     <script>if (year <= 2001) document.write('<div id="AFC_4"></div>');</script>
                      <div id="AFC_5"></div>
                      <div id="AFC_6"></div>
-                     <script>if (year > 2019) document.write('<div id="AFC_7"></div>');</script>
+                     <script>if (year >= 2020) document.write('<div id="AFC_7"></div>');</script>
                   </div>
                </td>
             </tr>
@@ -134,15 +135,16 @@ else
                <td id="NFC_1"></td>
                <td id="NFC_2"></td>
                <td id="NFC_3"></td>
-               <td id="NFC_4"></td>
+               <script>if (year >= 2002) document.write('<td id="NFC_4"></td>');</script>
             </tr>
 
             <tr>
                <td colspan="4">
                   <div style="display: flex; justify-content: space-evenly; width: 85%; margin: 0px auto">
+                     <script>if (year <= 2001) document.write('<div id="NFC_4"></div>');</script>
                      <div id="NFC_5"></div>
                      <div id="NFC_6"></div>
-                     <script>if (year > 2019) document.write('<div id="NFC_7"></div>');</script>
+                     <script>if (year >= 2020) document.write('<div id="NFC_7"></div>');</script>
                   </div>
                </td>
             </tr>

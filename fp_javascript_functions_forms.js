@@ -2319,7 +2319,14 @@ function build_regular_season_form()
    }
    else if (mode == "weekly_results_archive")
    {
-      max_number_of_rs_games = 16;
+      if (window.top.gv.archive_year >= 2002)
+      {
+         max_number_of_rs_games = 16;
+      }
+      else
+      {
+         max_number_of_rs_games = 15;
+      }
       mode_string            = "Results";
       number_of_rs_weeks     = window.top.gv.all_home_teams.length;
       week                   = number_of_rs_weeks;
@@ -4206,7 +4213,7 @@ function build_regular_season_form()
    d.writeln('</form>');
    d.writeln('');
 
-   if (number_of_rs_games < max_number_of_rs_games)
+   if (open_date != "None")
    {
       d.writeln('<div style="font-family: Calibri, sans-serif; font-size: 12pt; text-align: center; margin: 0px auto; padding: 10px 5px 10px 5px; display: block"><b>Open Date:</b>&nbsp;&nbsp;'+open_date+'</div>');
    }
