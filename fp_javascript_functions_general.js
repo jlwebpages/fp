@@ -229,6 +229,117 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
    var total_team_record_games      = 0;
 
 
+   // Special handling of playoff years that are inaccurate on the ESPN website.
+
+   if ( (year >= 1997) && (year <= 2002) )
+   {
+      var _1997_AFC_team_names   = ["Kansas City Chiefs","Pittsburgh Steelers","New England Patriots","Denver Broncos","Jacksonville Jaguars","Miami Dolphins"];
+      var _1997_AFC_team_records = ["13-3",              "11-5",               "10-6",                "12-4",          "11-5",                "9-7"           ];
+      var _1997_NFC_team_names   = ["San Francisco 49ers","Green Bay Packers","New York Giants","Tampa Bay Buccaneers","Detroit Lions","Minnesota Vikings"];
+      var _1997_NFC_team_records = ["13-3",               "13-3",             "10-5-1",         "10-6",                "9-7",          "9-7"              ];
+
+      var _1998_AFC_team_names   = ["Denver Broncos","New York Jets","Jacksonville Jaguars","Miami Dolphins","Buffalo Bills","New England Patriots"];      
+      var _1998_AFC_team_records = ["14-2",          "12-4",         "11-5",                "10-6",          "10-6",         "9-7"                 ];
+      var _1998_NFC_team_names   = ["Minnesota Vikings","Atlanta Falcons","Dallas Cowboys","San Francisco 49ers","Green Bay Packers","Arizona Cardinals"];
+      var _1998_NFC_team_records = ["15-1",             "14-2",           "10-6",          "12-4",               "11-5",             "9-7"              ];
+
+      var _1999_AFC_team_names   = ["Jacksonville Jaguars","Indianapolis Colts","Seattle Seahawks","Tennessee Titans","Buffalo Bills","Miami Dolphins"];
+      var _1999_AFC_team_records = ["14-2",                "13-3",              "9-7",             "13-3",            "11-5",         "9-7"           ];
+      var _1999_NFC_team_names   = ["St. Louis Rams","Tampa Bay Buccaneers","Washington Redskins","Minnesota Vikings","Dallas Cowboys","Detroit Lions"];
+      var _1999_NFC_team_records = ["13-3",          "11-5",                "10-6",               "10-6",             "8-8",           "8-8"          ];
+
+      var _2000_AFC_team_names   = ["Tennessee Titans","Oakland Raiders","Miami Dolphins","Baltimore Ravens","Denver Broncos","Indianapolis Colts"];
+      var _2000_AFC_team_records = ["13-3",            "12-4",           "11-5",          "12-4",            "11-5",          "10-6"              ];
+      var _2000_NFC_team_names   = ["New York Giants","Minnesota Vikings","New Orleans Saints","Philadelphia Eagles","Tampa Bay Buccaneers","St. Louis Rams"];
+      var _2000_NFC_team_records = ["12-4",           "11-5",             "10-6",              "11-5",               "10-6",                "10-6"          ];
+
+      var _2001_AFC_team_names   = ["Pittsburgh Steelers","New England Patriots","Oakland Raiders","Miami Dolphins","Baltimore Ravens","New York Jets"];
+      var _2001_AFC_team_records = ["13-3",               "11-5",                "10-6",           "11-5",          "10-6",            "10-6"         ];
+      var _2001_NFC_team_names   = ["St. Louis Rams","Chicago Bears","Philadelphia Eagles","Green Bay Packers","San Francisco 49ers","Tampa Bay Buccaneers"];
+      var _2001_NFC_team_records = ["14-2",          "13-3",         "11-5",               "12-4",             "12-4",               "9-7"                 ];
+
+      var AFC_team_names         = "";
+      var AFC_team_records       = "";
+      var NFC_team_names         = "";
+      var NFC_team_records       = "";
+      var short_team_name        = "";
+
+
+      if (year == 1997)
+      {
+         AFC_team_names   = _1997_AFC_team_names;
+         AFC_team_records = _1997_AFC_team_records;
+         NFC_team_names   = _1997_NFC_team_names;
+         NFC_team_records = _1997_NFC_team_records;
+      }
+      else if (year == 1998)
+      {
+         AFC_team_names   = _1998_AFC_team_names;
+         AFC_team_records = _1998_AFC_team_records;
+         NFC_team_names   = _1998_NFC_team_names;
+         NFC_team_records = _1998_NFC_team_records;
+      }
+      else if (year == 1999)
+      {
+         AFC_team_names   = _1999_AFC_team_names;
+         AFC_team_records = _1999_AFC_team_records;
+         NFC_team_names   = _1999_NFC_team_names;
+         NFC_team_records = _1999_NFC_team_records;
+      }
+      else if (year == 2000)
+      {
+         AFC_team_names   = _2000_AFC_team_names;
+         AFC_team_records = _2000_AFC_team_records;
+         NFC_team_names   = _2000_NFC_team_names;
+         NFC_team_records = _2000_NFC_team_records;
+      }
+      else if (year == 2001)
+      {
+         AFC_team_names   = _2001_AFC_team_names;
+         AFC_team_records = _2001_AFC_team_records;
+         NFC_team_names   = _2001_NFC_team_names;
+         NFC_team_records = _2001_NFC_team_records;
+      }
+
+      for (var i = 0; i < AFC_team_names.length; i++)
+      {
+         // Update AFC and NFC HTML table cells with team logos and team records.
+
+         short_team_name = AFC_team_names[i].split(" ").pop();
+         team_logo       = short_team_name+".png"
+         tooltip         = AFC_team_names[i]
+
+         if (short_team_name == "Jets")
+         {
+            // Randomly pick 1 of 2 Jets logos.
+
+            if (Math.floor(Math.random()*2)+1 == 2) team_logo = short_team_name+"2.png"
+         }
+
+         document.getElementById("AFC_"+(i+1)).innerHTML = "<img src=\"team_logos/"+team_logo+"\" title=\""+tooltip+"\"><p style=\"margin-top: -3px; margin-bottom: 0px\">"+AFC_team_records[i]+"</p>";
+
+         short_team_name = NFC_team_names[i].split(" ").pop();
+         team_logo       = short_team_name+".png"
+         tooltip         = NFC_team_names[i];
+
+         if ( (short_team_name == "Giants") || (short_team_name == "Rams") )
+         {
+            // Randomly pick 1 of 2 Giants or 1 of 2 Rams logos.
+
+            if (Math.floor(Math.random()*2)+1 == 2) team_logo = short_team_name+"2.png"
+         }
+
+         document.getElementById("NFC_"+(i+1)).innerHTML = "<img src=\"team_logos/"+team_logo+"\" title=\""+tooltip+"\"><p style=\"margin-top: -3px; margin-bottom: 0px\">"+NFC_team_records[i]+"</p>";
+      }
+
+      // Make AFC Playoff Teams and NFC Playoff Teams visible.
+
+      document.getElementById("afc_playoff_teams").style.visibility="visible";
+      document.getElementById("nfc_playoff_teams").style.visibility="visible";
+
+      return true;
+   }
+
    // Assign number of regular season weeks completed.
 
    if (year == top.fp_year)

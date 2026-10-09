@@ -13,14 +13,17 @@
 
 <script language="JavaScript">
 
-var mode           = "";
-var URL_string     = window.location.search;;
-var URL_parameters = new URLSearchParams(URL_string);;
-var year           = 0;
+var number_of_columns = 4;
+var mode              = "";
+var URL_string        = window.location.search;;
+var URL_parameters    = new URLSearchParams(URL_string);;
+var year              = 0;
 
 
 year = URL_parameters.get("year");
 mode = URL_parameters.get("mode");
+
+if (year <= 2001) number_of_columns = 3;
 
 if ( (year == null || mode == null) || (isNaN(year) == true) || (year > top.fp_year) || (mode != "main" && mode != "playoffs" && mode != "archive") )
 {
@@ -85,7 +88,7 @@ else
          <table class="playoff_teams_table red_color">
 
             <tr>
-               <td colspan="4" style="font-size: 16pt"><script>document.write(year+" AFC Playoff Teams");</script></td>
+               <script>document.write('<td colspan="'+number_of_columns+'" style="font-size: 16pt">'+year+' AFC Playoff Teams</td>');</script>
             </tr>
 
             <tr>
@@ -96,7 +99,7 @@ else
             </tr>
 
             <tr>
-               <td colspan="4">
+               <script>document.write('<td colspan="'+number_of_columns+'">');</script>  
                   <div style="display: flex; justify-content: space-evenly; width: 85%; margin: 0px auto">
                      <script>if (year <= 2001) document.write('<div id="AFC_4"></div>');</script>
                      <div id="AFC_5"></div>
@@ -128,7 +131,7 @@ else
          <table class="playoff_teams_table dark_blue_color">
 
             <tr>
-               <td colspan="4" style="font-size: 16pt"><script>document.write(year+" NFC Playoff Teams");</script></td>
+               <script>document.write('<td colspan="'+number_of_columns+'" style="font-size: 16pt">'+year+' NFC Playoff Teams</td>');</script>
             </tr>
 
             <tr>
@@ -139,7 +142,7 @@ else
             </tr>
 
             <tr>
-               <td colspan="4">
+               <script>document.write('<td colspan="'+number_of_columns+'">');</script>  
                   <div style="display: flex; justify-content: space-evenly; width: 85%; margin: 0px auto">
                      <script>if (year <= 2001) document.write('<div id="NFC_4"></div>');</script>
                      <div id="NFC_5"></div>
