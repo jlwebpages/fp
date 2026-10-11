@@ -231,7 +231,7 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
 
    // Special handling of playoff years that are inaccurate on the ESPN website.
 
-   if ( (year >= 1997) && (year <= 2002) )
+   if ( (year >= 1997) && (year <= 2001) )
    {
       var _1997_AFC_team_names   = ["Kansas City Chiefs","Pittsburgh Steelers","New England Patriots","Denver Broncos","Jacksonville Jaguars","Miami Dolphins"];
       var _1997_AFC_team_records = ["13-3",              "11-5",               "10-6",                "12-4",          "11-5",                "9-7"           ];
