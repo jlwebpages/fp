@@ -28,18 +28,36 @@
    .dark_blue_cell {letter-spacing: 1px !important}
 }
 
+:root
+{
+   --background_color:         #B8C2D0;
+   --dark_blue_color:          #002060;
+   --dark_gray_color:          #595959;
+   --dark_green_color:         #283E1A;
+   --dark_red_color:           #AA0000;
+   --light_blue_color:         #DCE6F1;
+   --light_green_color:        #C4D79B;
+   --light_yellow_color:       #FFFFE1;
+   --lighter_background_color: #CAD1DC;
+   --link_color:               #BE0000;
+   --off_white_color:          #F0F0F0;
+   --text_color:               #444444;
+   --turquoise_color:          #B7DEE8;
+   --yellow_color:             #FFFF99;
+}
+
 .default_button
 {
    color: black;
    font-size: 11pt;
    font-family: Calibri, sans-serif;
-   background-color: #F0F0F0;
+   background-color: var(--off_white_color);
    border: 1px solid black;
 }
 
 .default_checkbox
 {
-  accent-color: #595959;
+  accent-color: var(--dark_gray_color);
   vertical-align: middle;
 }
 
@@ -48,7 +66,7 @@
    color: black;
    font-size: 11pt;
    font-family: Calibri, sans-serif;
-   background-color: #F0F0F0;
+   background-color: var(--off_white_color);
    border: 1px solid black;
 }
 
@@ -69,7 +87,7 @@
    font-weight: bold;
    text-align: center;
    white-space: nowrap;
-   background-color: #C4D79B;
+   background-color: var(--light_green_color);
 }
 
 .header_two
@@ -79,7 +97,7 @@
    font-weight: bold;
    text-align: center;
    white-space: nowrap;
-   background-color: #DCE6F1;
+   background-color: var(--light_blue_color);
 }
 
 .table
@@ -87,7 +105,7 @@
    color: white;
    font-family: Calibri, sans-serif;
    text-align: left;
-   background-color: #B8C2D0;
+   background-color: var(--background_color);
    border-spacing: 0px;
    white-space: nowrap;
    width: 100%;
@@ -111,7 +129,7 @@
    text-align: center;
    letter-spacing: normal;
    vertical-align: middle;
-   background-color: #002060;
+   background-color: var(--dark_blue_color);
    border-radius: 30px;
    box-shadow: 5px 5px 5px gray;
 }
@@ -123,7 +141,7 @@
    text-align: center;
    vertical-align: middle;
    white-space: nowrap;
-   background-color: #283E1A;
+   background-color: var(--dark_green_color);
    border-radius: 25px;
    padding: 8px;
    width: 20%;
@@ -150,7 +168,7 @@
    font-size: 24px;
    font-weight: bold;
    text-align: center;
-   background-color: #B8C2D0;
+   background-color: var(--background_color);
    border: 5px solid transparent;
    border-radius: 25px;
    padding: 10px;
@@ -158,7 +176,7 @@
 
 .blue_link
 {
-   color: #002060;
+   color: var(--dark_blue_color);
 }
 a.blue_link:link  {text-decoration: none}
 a.blue_link:hover {text-decoration: underline}
@@ -171,26 +189,26 @@ a.blue_link:hover {text-decoration: underline}
 a.white_link:link  {text-decoration: none}
 a.white_link:hover {text-decoration: underline}
 
-.background_color          {background-color: #B8C2D0                                            }
-.black_color               {color: black                                                         }
-.blue_color                {color: blue                                                          }
-.border_radius             {border-radius: 4px                                                   }
-.dark_blue_background      {background-color: #002060                                            }
-.dark_blue_color           {color: #002060                                                       }
-.green_background          {background-color: #283E1A                                            }
-.green_color               {color: #283E1A                                                       }
-.header_one_background     {background-color: #C4D79B                                            }
-.header_two_background     {background-color: #DCE6F1                                            }
-.high_low_score_background {background-image: linear-gradient(to right, #DCE6F1 50%, #FFFFE1 50%)}
-.low_score_background      {background-color: #FFFFE1                                            }
-.perfect_score_background  {background-color: #B7DEE8                                            }
-.picks_confirm_background  {background-color: #C4D79B                                            }
-.picks_copy_background     {background-color: white                                              }
-.picks_error_background    {background-color: #FFFF99                                            }
-.red_background            {background-color: maroon                                             }
-.red_color                 {color: maroon                                                        }
-.upset_pick_color          {color: #AA0000                                                       }
-.white_background          {background-color: white                                              }
+.background_color          {background-color: var(--background_color)                                                              }
+.black_color               {color:            black                                                                                }
+.blue_color                {color:            blue                                                                                 }
+.border_radius             {border-radius:    4px                                                                                  }
+.dark_blue_background      {background-color: var(--dark_blue_color)                                                               }
+.dark_blue_color           {color:            var(--dark_blue_color)                                                               }
+.green_background          {background-color: var(--dark_green_color)                                                              }
+.green_color               {color:            var(--dark_green_color)                                                              }
+.header_one_background     {background-color: var(--light_green_color)                                                             }
+.header_two_background     {background-color: var(--light_blue_color)                                                              }
+.high_low_score_background {background-image: linear-gradient(to right, var(--light_blue_color) 50%, var(--light_yellow_color) 50%)}
+.low_score_background      {background-color: var(--light_yellow_color)                                                            }
+.perfect_score_background  {background-color: var(--turquoise_color)                                                               }
+.picks_confirm_background  {background-color: var(--light_green_color)                                                             }
+.picks_copy_background     {background-color: white                                                                                }
+.picks_error_background    {background-color: var(--yellow_color)                                                                  }
+.red_background            {background-color: maroon                                                                               }
+.red_color                 {color:            maroon                                                                               }
+.upset_pick_color          {color:            var(--dark_red_color)                                                                }
+.white_background          {background-color: white                                                                                }
 
 input {touch-action: none}
 
@@ -211,7 +229,7 @@ input {touch-action: none}
    position: absolute;
    top: 0px;
    right: 0px;
-   background-color: #CAD1DC;
+   background-color: var(--lighter_background_color);
    border: 0px;
    margin: 0px;
    padding: 0px;
@@ -229,7 +247,7 @@ input {touch-action: none}
    cursor: pointer;
    font-size: 40px;
    font-weight: bold;
-   color: #002060;
+   color: var(--dark_blue_color);
 }
 
 .mobile_menu a
