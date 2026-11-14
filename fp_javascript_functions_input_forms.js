@@ -2733,7 +2733,7 @@ function build_regular_season_form()
    d.writeln('   // Set the width of the "Open Date" row within the "Input Form" table to be equal to the');
    d.writeln('   // actual table width, then populate the "Open Date" row with the open date information.');
    d.writeln('');
-   d.writeln('   document.getElementById("open_date").style.width = document.getElementById("input_form_table").offsetWidth;');
+   d.writeln('   document.getElementById("open_date").style.width = document.getElementById("input_form_table").offsetWidth + "px";');
    d.writeln('   document.getElementById("open_date").innerHTML   = "Open Date:&nbsp;&nbsp;<span style=\\"font-weight: normal\\">'+open_date+'</span>";');
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
