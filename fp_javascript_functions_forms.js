@@ -1072,8 +1072,8 @@ function build_postseason_form()
    d.writeln('{');
    d.writeln('   var nfl_connection = null;');
    d.writeln('   var nfl_scores     = null;');
-   d.writeln('   var nfl_scores_url = "site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";');
-   d.writeln('   var request_url    = "https://www.scrappintwins.com/cors/" + nfl_scores_url + "?" + (new Date()).getTime();'); // scrappintwins.com provided by Dan M.
+   d.writeln('   var nfl_scores_url = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";');
+   d.writeln('   var request_url    = "https://cors-proxy.jlaguna.workers.dev/" + nfl_scores_url + "?" + (new Date()).getTime();'); // cors-proxy is on cloudflare.com
    d.writeln('   var user_message   = "\\"Get NFL Scores\\" failed.";');
    d.writeln('');
    d.writeln('');
@@ -3141,8 +3141,8 @@ function build_regular_season_form()
    d.writeln('{');
    d.writeln('   var nfl_connection = null;');
    d.writeln('   var nfl_scores     = null;');
-   d.writeln('   var nfl_scores_url = "site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";');
-   d.writeln('   var request_url    = "https://www.scrappintwins.com/cors/" + nfl_scores_url + "?" + (new Date()).getTime();'); // scrappintwins.com provided by Dan M.
+   d.writeln('   var nfl_scores_url = "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard";');
+   d.writeln('   var request_url    = "https://cors-proxy.jlaguna.workers.dev/" + nfl_scores_url + "?" + (new Date()).getTime();'); // cors-proxy is on cloudflare.com
    d.writeln('   var user_message   = "\\"Get NFL Scores\\" failed.";');
    d.writeln('');
    d.writeln('');

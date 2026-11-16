@@ -1330,14 +1330,14 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   // Initialize NFL Odds URL array.');
    d.writeln('');
-   d.writeln('   nfl_odds_url[espn_scoreboard] = "www.espn.com/nfl/scoreboard/_/week/"+week+"/year/"+year+"/seasontype/2";');
-   d.writeln('   nfl_odds_url[sportsline]      = "www.sportsline.com/nfl/odds";');
+   d.writeln('   nfl_odds_url[espn_scoreboard] = "https://www.espn.com/nfl/scoreboard/_/week/"+week+"/year/"+year+"/seasontype/2";');
+   d.writeln('   nfl_odds_url[sportsline]      = "https://www.sportsline.com/nfl/odds";');
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
    d.writeln('   nfl_connection = new XMLHttpRequest();');
    d.writeln('');
-   d.writeln('   nfl_connection.open("GET","https://www.scrappintwins.com/cors/"+nfl_odds_url[odds_source],true);'); // scrappintwins.com provided by Dan M.
+   d.writeln('   nfl_connection.open("GET","https://cors-proxy.jlaguna.workers.dev/"+nfl_odds_url[odds_source],true);'); // cors-proxy is on cloudflare.com
    d.writeln('');
    d.writeln('   nfl_connection.setRequestHeader("Cache-Control","no-cache, no-store, must-revalidate");');
    d.writeln('');
@@ -3805,14 +3805,14 @@ function build_postseason_form()
    d.writeln('');
    d.writeln('   if (espn_odds_week == 4) espn_odds_week = 5;  // ESPN odds week 4 is the Pro Bowl.');
    d.writeln('');
-   d.writeln('   nfl_odds_url[espn_scoreboard] = "www.espn.com/nfl/scoreboard/_/week/"+espn_odds_week+"/year/"+year+"/seasontype/3";');
-   d.writeln('   nfl_odds_url[sportsline]      = "www.sportsline.com/nfl/odds";');
+   d.writeln('   nfl_odds_url[espn_scoreboard] = "https://www.espn.com/nfl/scoreboard/_/week/"+espn_odds_week+"/year/"+year+"/seasontype/3";');
+   d.writeln('   nfl_odds_url[sportsline]      = "https://www.sportsline.com/nfl/odds";');
    d.writeln('');
    d.writeln('   // Get the NFL Odds from the internet.');
    d.writeln('');
    d.writeln('   nfl_connection = new XMLHttpRequest();');
    d.writeln('');
-   d.writeln('   nfl_connection.open("GET","https://www.scrappintwins.com/cors/"+nfl_odds_url[odds_source],true);'); // scrappintwins.com provided by Dan M.
+   d.writeln('   nfl_connection.open("GET","https://cors-proxy.jlaguna.workers.dev/"+nfl_odds_url[odds_source],true);'); // cors-proxy is on cloudflare.com
    d.writeln('');
    d.writeln('   nfl_connection.setRequestHeader("Cache-Control","no-cache, no-store, must-revalidate");');
    d.writeln('');

@@ -120,11 +120,11 @@ function get_nfl_playoff_teams(year,mode)
 
    if ( (year == top.fp_year) && (top.season_over == false) )
    {
-      nfl_playoff_teams_url = "www.espn.com/nfl/standings/_/view/playoff";
+      nfl_playoff_teams_url = "https://www.espn.com/nfl/standings/_/view/playoff";
    }
    else
    {
-      nfl_playoff_teams_url = "www.espn.com/nfl/standings/_/season/"+year+"/view/playoff";
+      nfl_playoff_teams_url = "https://www.espn.com/nfl/standings/_/season/"+year+"/view/playoff";
    }
 
    // Display loading indicator while call to XMLHttpRequest is working.
@@ -135,7 +135,7 @@ function get_nfl_playoff_teams(year,mode)
 
    nfl_connection = new XMLHttpRequest();
 
-   nfl_connection.open("GET","https://www.scrappintwins.com/cors/"+nfl_playoff_teams_url,true); // scrappintwins.com provided by Dan M.
+   nfl_connection.open("GET","https://cors-proxy.jlaguna.workers.dev/"+nfl_playoff_teams_url,true); // cors-proxy is on cloudflare.com
 
    nfl_connection.setRequestHeader("Cache-Control","no-cache, no-store, must-revalidate");
 
