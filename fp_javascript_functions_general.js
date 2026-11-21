@@ -89,6 +89,7 @@ function display_last_modified (last_modified_document, display_document)
 
 function get_nfl_playoff_teams(year,mode)
 {
+   var cors_proxy_error      = "";
    var cors_proxy_url        = new URL("https://cors-proxy.jlwebpages.workers.dev/"); // cors-proxy is on cloudflare.com
    var nfl_connection        = null;
    var nfl_playoff_teams     = "";
@@ -169,7 +170,9 @@ function get_nfl_playoff_teams(year,mode)
          }
          else // XMLHttpRequest was unsuccessful.
          {
-            //JL alert("\"get_nfl_playoff_teams\" failed.");
+            cors_proxy_error = nfl_connection.responseText || nfl_connection.statusText || "Unknown error";
+
+            //JL alert("\"get_nfl_playoff_teams\" failed ("+nfl_connection.status+"):\n\n"+cors_proxy_error);
 
             if (mode != "main")
             {

@@ -1310,6 +1310,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('function get_nfl_odds(document,odds_source,suppress_alerts)');
    d.writeln('{');
+   d.writeln('   var cors_proxy_error   = "";');
    d.writeln('   var cors_proxy_url     = new URL("https://cors-proxy.jlwebpages.workers.dev/");'); // cors-proxy is on cloudflare.com
    d.writeln('   var current_input_week = '+window.top.current_input_week+';');
    d.writeln('   var espn_scoreboard    = 0;');
@@ -1388,7 +1389,12 @@ function build_regular_season_form()
    d.writeln('            }');
    d.writeln('            else');
    d.writeln('            {');
-   d.writeln('               if (suppress_alerts == false) alert("\\"get_nfl_odds\\" failed.");');
+   d.writeln('               if (suppress_alerts == false)');
+   d.writeln('               {');
+   d.writeln('                  cors_proxy_error = nfl_connection.responseText || nfl_connection.statusText || "Unknown error";');
+   d.writeln('');
+   d.writeln('                  alert("\\"get_nfl_odds\\" failed ("+nfl_connection.status+"):\\n\\n"+cors_proxy_error);');
+   d.writeln('               }');
    d.writeln('');
    d.writeln('               // Remove loading indicator.');
    d.writeln('');
@@ -3783,6 +3789,7 @@ function build_postseason_form()
    d.writeln('');
    d.writeln('function get_nfl_odds(document,odds_source,suppress_alerts)');
    d.writeln('{');
+   d.writeln('   var cors_proxy_error   = "";');
    d.writeln('   var cors_proxy_url     = new URL("https://cors-proxy.jlwebpages.workers.dev/");'); // cors-proxy is on cloudflare.com
    d.writeln('   var espn_odds_week     = 0;');
    d.writeln('   var espn_scoreboard    = 0;');
@@ -3865,7 +3872,12 @@ function build_postseason_form()
    d.writeln('            }');
    d.writeln('            else');
    d.writeln('            {');
-   d.writeln('               if (suppress_alerts == false) alert("\\"get_nfl_odds\\" failed.");');
+   d.writeln('               if (suppress_alerts == false)');
+   d.writeln('               {');
+   d.writeln('                  cors_proxy_error = nfl_connection.responseText || nfl_connection.statusText || "Unknown error";');
+   d.writeln('');
+   d.writeln('                  alert("\\"get_nfl_odds\\" failed ("+nfl_connection.status+"):\\n\\n"+cors_proxy_error);');
+   d.writeln('               }');
    d.writeln('');
    d.writeln('               // Remove loading indicator.');
    d.writeln('');
