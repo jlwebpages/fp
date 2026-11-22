@@ -1070,17 +1070,13 @@ function build_postseason_form()
    d.writeln('');
    d.writeln('function get_nfl_scores(document,display_dialog,command)');
    d.writeln('{');
-   d.writeln('   var cors_proxy_error = "";');
-   d.writeln('   var cors_proxy_url   = new URL("https://cors-proxy.jlwebpages.workers.dev/");'); // cors-proxy is on cloudflare.com
-   d.writeln('   var nfl_connection   = null;');
-   d.writeln('   var nfl_scores       = null;');
-   d.writeln('   var nfl_scores_url   = new URL("https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard");');
-   d.writeln('   var user_message     = "\\"Get NFL Scores\\" failed.";');
+   d.writeln('   var nfl_connection = null;');
+   d.writeln('   var nfl_scores     = null;');
+   d.writeln('   var nfl_scores_url = new URL("https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard");');
+   d.writeln('   var user_message   = "\\"Get NFL Scores\\" failed.";');
    d.writeln('');
    d.writeln('');
    d.writeln('   nfl_scores_url.searchParams.set("no_cache",Date.now());');
-   d.writeln('');
-   d.writeln('   cors_proxy_url.searchParams.set("url",nfl_scores_url.toString());');
    d.writeln('');
    d.writeln('   if (window.top.gv.get_scores_state == "on") user_message += "  \\"Auto Refresh\\" will be stopped."');
    d.writeln('');
@@ -1088,7 +1084,7 @@ function build_postseason_form()
    d.writeln('');
    d.writeln('   nfl_connection = new XMLHttpRequest();');
    d.writeln('');
-   d.writeln('   nfl_connection.open("GET",cors_proxy_url,true);');
+   d.writeln('   nfl_connection.open("GET",nfl_scores_url,true);');
    d.writeln('');
    d.writeln('   nfl_connection.onload = function(e)');
    d.writeln('   {');
@@ -1102,10 +1098,6 @@ function build_postseason_form()
    d.writeln('         }');
    d.writeln('         else // XMLHttpRequest was unsuccessful.');
    d.writeln('         {');
-   d.writeln('            cors_proxy_error = nfl_connection.responseText || nfl_connection.statusText || "Unknown error";');
-   d.writeln('');
-   d.writeln('            //JL alert("\\"Get NFL Scores\\" failed ("+nfl_connection.status+"):\\n\\n"+cors_proxy_error);');
-   d.writeln('');
    d.writeln('            alert(user_message);');
    d.writeln('');
    d.writeln('            // Force Auto Refresh to be off and refresh the picks form.');
@@ -3146,17 +3138,13 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('function get_nfl_scores(document,display_dialog,command)');
    d.writeln('{');
-   d.writeln('   var cors_proxy_error = "";');
-   d.writeln('   var cors_proxy_url   = new URL("https://cors-proxy.jlwebpages.workers.dev/");'); // cors-proxy is on cloudflare.com
-   d.writeln('   var nfl_connection   = null;');
-   d.writeln('   var nfl_scores       = null;');
-   d.writeln('   var nfl_scores_url   = new URL("https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard");');
-   d.writeln('   var user_message     = "\\"Get NFL Scores\\" failed.";');
+   d.writeln('   var nfl_connection = null;');
+   d.writeln('   var nfl_scores     = null;');
+   d.writeln('   var nfl_scores_url = new URL("https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard");');
+   d.writeln('   var user_message   = "\\"Get NFL Scores\\" failed.";');
    d.writeln('');
    d.writeln('');
    d.writeln('   nfl_scores_url.searchParams.set("no_cache",Date.now());');
-   d.writeln('');
-   d.writeln('   cors_proxy_url.searchParams.set("url",nfl_scores_url.toString());');
    d.writeln('');
    d.writeln('   if (window.top.gv.get_scores_state == "on") user_message += "  \\"Auto Refresh\\" will be stopped."');
    d.writeln('');
@@ -3164,7 +3152,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   nfl_connection = new XMLHttpRequest();');
    d.writeln('');
-   d.writeln('   nfl_connection.open("GET",cors_proxy_url,true);');
+   d.writeln('   nfl_connection.open("GET",nfl_scores_url,true);');
    d.writeln('');
    d.writeln('   nfl_connection.onload = function(e)');
    d.writeln('   {');
@@ -3178,10 +3166,6 @@ function build_regular_season_form()
    d.writeln('         }');
    d.writeln('         else // XMLHttpRequest was unsuccessful.');
    d.writeln('         {');
-   d.writeln('            cors_proxy_error = nfl_connection.responseText || nfl_connection.statusText || "Unknown error";');
-   d.writeln('');
-   d.writeln('            //JL alert("\\"Get NFL Scores\\" failed ("+nfl_connection.status+"):\\n\\n"+cors_proxy_error);');
-   d.writeln('');
    d.writeln('            alert(user_message);');
    d.writeln('');
    d.writeln('            // Force Auto Refresh to be off and refresh the picks form.');

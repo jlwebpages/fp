@@ -1310,17 +1310,17 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('function get_nfl_odds(document,odds_source,suppress_alerts)');
    d.writeln('{');
-   d.writeln('   var cors_proxy_error   = "";');
-   d.writeln('   var cors_proxy_url     = new URL("https://cors-proxy.jlwebpages.workers.dev/");'); // cors-proxy is on cloudflare.com
-   d.writeln('   var current_input_week = '+window.top.current_input_week+';');
-   d.writeln('   var espn_scoreboard    = 0;');
-   d.writeln('   var nfl_connection     = null;');
-   d.writeln('   var nfl_odds           = null;');
-   d.writeln('   var nfl_odds_url       = new URL("https://placeholder.com/");');
-   d.writeln('   var nfl_odds_url_array = new Array(2);');
-   d.writeln('   var sportsline         = 1;');
-   d.writeln('   var week               = '+week+';');
-   d.writeln('   var year               = '+window.top.fp_year+';');
+   d.writeln('   var cors_proxy_url       = new URL("https://cors-proxy.jlwebpages.workers.dev/");'); // cors-proxy is on cloudflare.com
+   d.writeln('   var current_input_week   = '+window.top.current_input_week+';');
+   d.writeln('   var espn_scoreboard      = 0;');
+   d.writeln('   var nfl_connection       = null;');
+   d.writeln('   var nfl_connection_error = "";');
+   d.writeln('   var nfl_odds             = null;');
+   d.writeln('   var nfl_odds_url         = new URL("https://placeholder.com/");');
+   d.writeln('   var nfl_odds_url_array   = new Array(2);');
+   d.writeln('   var sportsline           = 1;');
+   d.writeln('   var week                 = '+week+';');
+   d.writeln('   var year                 = '+window.top.fp_year+';');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Always display alerts if name contains "JL".');
@@ -1391,9 +1391,9 @@ function build_regular_season_form()
    d.writeln('            {');
    d.writeln('               if (suppress_alerts == false)');
    d.writeln('               {');
-   d.writeln('                  cors_proxy_error = nfl_connection.responseText || nfl_connection.statusText || "Unknown error";');
+   d.writeln('                  nfl_connection_error = nfl_connection.responseText || nfl_connection.statusText || "Unknown error";');
    d.writeln('');
-   d.writeln('                  alert("\\"get_nfl_odds\\" failed ("+nfl_connection.status+"):\\n\\n"+cors_proxy_error);');
+   d.writeln('                  alert("\\"get_nfl_odds\\" failed ("+nfl_connection.status+"):\\n\\n"+nfl_connection_error);');
    d.writeln('               }');
    d.writeln('');
    d.writeln('               // Remove loading indicator.');
@@ -3789,17 +3789,17 @@ function build_postseason_form()
    d.writeln('');
    d.writeln('function get_nfl_odds(document,odds_source,suppress_alerts)');
    d.writeln('{');
-   d.writeln('   var cors_proxy_error   = "";');
-   d.writeln('   var cors_proxy_url     = new URL("https://cors-proxy.jlwebpages.workers.dev/");'); // cors-proxy is on cloudflare.com
-   d.writeln('   var espn_odds_week     = 0;');
-   d.writeln('   var espn_scoreboard    = 0;');
-   d.writeln('   var nfl_connection     = null;');
-   d.writeln('   var nfl_odds           = null;');
-   d.writeln('   var nfl_odds_url       = new URL("https://placeholder.com/");');
-   d.writeln('   var nfl_odds_url_array = new Array(2);');
-   d.writeln('   var sportsline         = 1;');
-   d.writeln('   var week               = '+week+';');
-   d.writeln('   var year               = '+window.top.fp_year+';');
+   d.writeln('   var cors_proxy_url       = new URL("https://cors-proxy.jlwebpages.workers.dev/");'); // cors-proxy is on cloudflare.com
+   d.writeln('   var espn_odds_week       = 0;');
+   d.writeln('   var espn_scoreboard      = 0;');
+   d.writeln('   var nfl_connection       = null;');
+   d.writeln('   var nfl_connection_error = "";');
+   d.writeln('   var nfl_odds             = null;');
+   d.writeln('   var nfl_odds_url         = new URL("https://placeholder.com/");');
+   d.writeln('   var nfl_odds_url_array   = new Array(2);');
+   d.writeln('   var sportsline           = 1;');
+   d.writeln('   var week                 = '+week+';');
+   d.writeln('   var year                 = '+window.top.fp_year+';');
    d.writeln('');
    d.writeln('');
    d.writeln('   // Always display alerts if name contains "JL".');
@@ -3874,9 +3874,9 @@ function build_postseason_form()
    d.writeln('            {');
    d.writeln('               if (suppress_alerts == false)');
    d.writeln('               {');
-   d.writeln('                  cors_proxy_error = nfl_connection.responseText || nfl_connection.statusText || "Unknown error";');
+   d.writeln('                  nfl_connection_error = nfl_connection.responseText || nfl_connection.statusText || "Unknown error";');
    d.writeln('');
-   d.writeln('                  alert("\\"get_nfl_odds\\" failed ("+nfl_connection.status+"):\\n\\n"+cors_proxy_error);');
+   d.writeln('                  alert("\\"get_nfl_odds\\" failed ("+nfl_connection.status+"):\\n\\n"+nfl_connection_error);');
    d.writeln('               }');
    d.writeln('');
    d.writeln('               // Remove loading indicator.');
