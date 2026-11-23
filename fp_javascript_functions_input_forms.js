@@ -1360,7 +1360,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('            if (odds_source == espn_scoreboard)');
    d.writeln('            {');
-   d.writeln('               if ( (process_nfl_odds_from_espn_scoreboard(document,nfl_odds,suppress_alerts) == false) && (week == current_input_week) )');
+   d.writeln('               if (process_nfl_odds_from_espn_scoreboard(document,nfl_odds,suppress_alerts) == false)');
    d.writeln('               {');
    d.writeln('                  get_nfl_odds(document,sportsline,true);');
    d.writeln('               }');
@@ -1383,7 +1383,7 @@ function build_regular_season_form()
    d.writeln('         }');
    d.writeln('         else // XMLHttpRequest was unsuccessful.');
    d.writeln('         {');
-   d.writeln('            if ( (odds_source == espn_scoreboard) && (week == current_input_week) )');
+   d.writeln('            if (odds_source == espn_scoreboard)');
    d.writeln('            {');
    d.writeln('               get_nfl_odds(document,sportsline,true);');
    d.writeln('            }');
@@ -1408,7 +1408,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   nfl_connection.onerror = function(e)');
    d.writeln('   {');
-   d.writeln('      if ( (odds_source == espn_scoreboard) && (week == current_input_week) )');
+   d.writeln('      if (odds_source == espn_scoreboard)');
    d.writeln('      {');
    d.writeln('         get_nfl_odds(document,sportsline,true);');
    d.writeln('      }');
@@ -1791,20 +1791,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('   if (odds_found == false)');
    d.writeln('   {');
-   d.writeln('      if (week == current_input_week)');
-   d.writeln('      {');
-   d.writeln('         return false;');
-   d.writeln('      }');
-   d.writeln('      else');
-   d.writeln('      {');
-   d.writeln('         if (suppress_alerts == false) alert("NFL Odds for Week ' + week + ' are not available.")');
-   d.writeln('');
-   d.writeln('         // Clear nfl_odds_array.');
-   d.writeln('');
-   d.writeln('         clear_nfl_odds_array();');
-   d.writeln('');
-   d.writeln('         return false;');
-   d.writeln('      }');
+   d.writeln('      return false;');
    d.writeln('   }');
    d.writeln('');
    d.writeln('   // Un-hide the "Picks From Odds" button and the "Display Odds" and "Display Team Records" checkboxes.');
