@@ -87,16 +87,16 @@ function display_last_modified (last_modified_document, display_document)
 }
 
 
-function get_nfl_playoff_teams(year,mode)
+async function get_nfl_playoff_teams(year,mode)
 {
    var cors_proxy_url        = new URL("https://cors-proxy.jlwebpages.workers.dev/"); // cors-proxy is on cloudflare.com
-   var nfl_connection        = null;
-   var nfl_connection_error  = "";
+   var fetch_error           = "";
+   var fetch_response        = "";
    var nfl_playoff_teams     = "";
    var nfl_playoff_teams_url = new URL("https://www.espn.com/nfl/standings/_/view/playoff");
 
 
-   // Don't get this year's playoff teams if Week 1 games have not been completed yet because the HttpRequest call might return last year's playoff teams.
+   // Don't get this year's playoff teams if Week 1 games have not been completed yet because the fetch call might return last year's playoff teams.
 
    if ( (year == top.fp_year) && (top.current_input_week <= 2) && (top.games_over == false) )
    {
@@ -133,64 +133,56 @@ function get_nfl_playoff_teams(year,mode)
 
    cors_proxy_url.searchParams.set("url",nfl_playoff_teams_url.toString());
 
-   // Display loading indicator while call to XMLHttpRequest is working.
+   // Display loading indicator while fetch call is working.
 
    top.display_frame("fp_loading_indicator",0);
 
    // Get the NFL playoff teams from the internet.
 
-   nfl_connection = new XMLHttpRequest();
-
-   nfl_connection.open("GET",cors_proxy_url,true);
-
-   nfl_connection.onload = function(e)
+   try
    {
-      if (nfl_connection.readyState === 4) // Is XMLHttpRequest complete?
+      fetch_response = await fetch(cors_proxy_url,{signal: AbortSignal.timeout(10000)});
+
+      if (fetch_response.ok == true) // Was the fetch successful?
       {
-         if (nfl_connection.status === 200) // Was the XMLHttpRequest successful?
+         nfl_playoff_teams = await fetch_response.text();
+
+         if (process_nfl_playoff_teams(nfl_playoff_teams,year) == false)
          {
-            nfl_playoff_teams = nfl_connection.responseText;
-
-            if (process_nfl_playoff_teams(nfl_playoff_teams,year) == false)
-            {
-               if (mode != "main")
-               {
-                  if (year == top.fp_year)
-                  {
-                     alert(year+" NFL Playoff Teams are not known yet.");
-                  }
-                  else
-                  {
-                     alert("Unable to retrieve "+year+" NFL Playoff Teams.");
-                  }
-
-                  history.back();
-               }
-            }
-         }
-         else // XMLHttpRequest was unsuccessful.
-         {
-            nfl_connection_error = nfl_connection.responseText || nfl_connection.statusText || "Unknown error";
-
-            //JL alert("\"get_nfl_playoff_teams\" failed ("+nfl_connection.status+"):\n\n"+nfl_connection_error);
-
             if (mode != "main")
             {
-               alert("Unable to retrieve "+year+" NFL Playoff Teams.");
+               if (year == top.fp_year)
+               {
+                  alert(year+" NFL Playoff Teams are not known yet.");
+               }
+               else
+               {
+                  alert("Unable to retrieve "+year+" NFL Playoff Teams.");
+               }
 
                history.back();
             }
          }
+      }
+      else // fetch returned an HTTP error (e.g., 404, 500).
+      {
+         fetch_error = fetch_response.text || fetch_response.statusText || "Unknown error";
 
-         // Remove loading indicator.
+         //JL alert("\"get_nfl_playoff_teams\" failed ("+fetch_response.status+"):\n\n"+fetch_error);
 
-         top.display_frame("fp_main",0);
+         if (mode != "main")
+         {
+            alert("Unable to retrieve "+year+" NFL Playoff Teams.");
+
+            history.back();
+         }
       }
 
-      return;
-   }
+      // Remove loading indicator.
 
-   nfl_connection.onerror = function(e)
+      top.display_frame("fp_main",0);
+   }
+   catch(e)
    {
       //JL alert("\"get_nfl_playoff_teams\" failed.");
 
@@ -204,11 +196,7 @@ function get_nfl_playoff_teams(year,mode)
       // Remove loading indicator.
 
       top.display_frame("fp_main",0);
-
-      return;
    }
-
-   nfl_connection.send(null);
 
    return;
 }
