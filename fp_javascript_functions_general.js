@@ -91,9 +91,10 @@ async function get_nfl_playoff_teams(year,mode)
 {
    var cors_proxy_url        = new URL("https://cors-proxy.jlwebpages.workers.dev/"); // cors-proxy is on cloudflare.com
    var fetch_error           = "";
-   var fetch_response        = "";
+   var fetch_response        = null;
    var nfl_playoff_teams     = "";
    var nfl_playoff_teams_url = new URL("https://www.espn.com/nfl/standings/_/view/playoff");
+   var suppress_alerts       = true;
 
 
    // Don't get this year's playoff teams if Week 1 games have not been completed yet because the fetch call might return last year's playoff teams.
@@ -166,9 +167,9 @@ async function get_nfl_playoff_teams(year,mode)
       }
       else // fetch returned an HTTP error (e.g., 404, 500).
       {
-         fetch_error = fetch_response.text || fetch_response.statusText || "Unknown error";
+         fetch_error = await fetch_response.text() || fetch_response.statusText || "Unknown error";
 
-         //JL alert("\"get_nfl_playoff_teams\" failed ("+fetch_response.status+"):\n\n"+fetch_error);
+         if (suppress_alerts == false) alert("\"get_nfl_playoff_teams\" failed ("+fetch_response.status+"):\n\n"+fetch_error);
 
          if (mode != "main")
          {
@@ -184,7 +185,7 @@ async function get_nfl_playoff_teams(year,mode)
    }
    catch(e)
    {
-      //JL alert("\"get_nfl_playoff_teams\" failed.");
+      if (suppress_alerts == false) alert("\"get_nfl_playoff_teams\" failed.");
 
       if (mode != "main")
       {
@@ -266,6 +267,7 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
    var number_of_playoff_teams      = 0;
    var number_of_rs_weeks_completed = 0;
    var possible_team_record_indexes = [17,18,36,37,38,44,45,46,47,48,49,50];
+   var suppress_alerts              = true;
    var team_logo                    = "";
    var team_losses                  = 0;
    var team_record                  = "";
@@ -419,7 +421,7 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
 
    if ( (index_start == -1) || (index_end == -1) || (index_start > index_end) )
    {
-      //JL alert("Error getting NFL playoff teams from nfl_playoff_teams string.");
+      if (suppress_alerts == false) alert("Error getting NFL playoff teams from nfl_playoff_teams string.");
 
       return false;
    }
@@ -435,14 +437,14 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
    }
    catch(e)
    {
-      //JL alert("Error converting nfl_playoff_teams string to a JavaScript object.");
+      if (suppress_alerts == false) alert("Error converting nfl_playoff_teams string to a JavaScript object.");
 
       return false;
    }
 
    if (nfl_playoff_teams.groups == undefined)
    {
-      //JL alert("nfl_playoff_teams object (groups) is undefined.");
+      if (suppress_alerts == false) alert("nfl_playoff_teams object (groups) is undefined.");
 
       return false;
    }
@@ -458,35 +460,35 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
    {
       if ( (AFC_teams.standings == undefined) || (NFC_teams.standings == undefined) )
       {
-         //JL alert("nfl_playoff_teams object (standings) is undefined.");
+         if (suppress_alerts == false) alert("nfl_playoff_teams object (standings) is undefined.");
 
          return false;
       }
 
       if ( (AFC_teams.standings[i] == undefined) || (NFC_teams.standings[i] == undefined) )
       {
-         //JL alert("nfl_playoff_teams object (standings[i]) is undefined.");
+         if (suppress_alerts == false) alert("nfl_playoff_teams object (standings[i]) is undefined.");
 
          return false;
       }
 
       if ( (AFC_teams.standings[i].team == undefined) || (NFC_teams.standings[i].team == undefined) )
       {
-         //JL alert("nfl_playoff_teams object (team) is undefined.");
+         if (suppress_alerts == false) alert("nfl_playoff_teams object (team) is undefined.");
 
          return false;
       }
 
       if ( (AFC_teams.standings[i].stats == undefined) || (NFC_teams.standings[i].stats == undefined) )
       {
-         //JL alert("nfl_playoff_teams object (stats) is undefined.");
+         if (suppress_alerts == false) alert("nfl_playoff_teams object (stats) is undefined.");
 
          return false;
       }
 
       if ( (AFC_teams.standings[i].team.shortDisplayName == undefined) || (NFC_teams.standings[i].team.shortDisplayName == undefined) )
       {
-         //JL alert("nfl_playoff_teams object (shortDisplayName) is undefined.");
+         if (suppress_alerts == false) alert("nfl_playoff_teams object (shortDisplayName) is undefined.");
 
          return false;
       }
@@ -506,7 +508,7 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
 
       if ( (validate_team_name(AFC_teams.standings[i].team.shortDisplayName) == false) || (validate_team_name(NFC_teams.standings[i].team.shortDisplayName) == false) )
       {
-         //JL alert("Error validating team name");
+         if (suppress_alerts == false) alert("Error validating team name");
 
          return false;
       }
@@ -584,7 +586,7 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
 
       if (team_record_index == null)
       {
-         //JL alert("Unable to identify which stats array element has the team record");
+         if (suppress_alerts == false) alert("Unable to identify which stats array element has the team record");
 
          return false;
       }

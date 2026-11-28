@@ -1070,7 +1070,7 @@ function build_postseason_form()
    d.writeln('');
    d.writeln('async function get_nfl_scores(document,display_dialog,command)');
    d.writeln('{');
-   d.writeln('   var fetch_response = "";');
+   d.writeln('   var fetch_response = null;');
    d.writeln('   var nfl_scores     = null;');
    d.writeln('   var nfl_scores_url = new URL("https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard");');
    d.writeln('   var user_message   = "\\"Get NFL Scores\\" failed.";');
@@ -3129,7 +3129,7 @@ function build_regular_season_form()
    d.writeln('');
    d.writeln('async function get_nfl_scores(document,display_dialog,command)');
    d.writeln('{');
-   d.writeln('   var fetch_response = "";');
+   d.writeln('   var fetch_response = null;');
    d.writeln('   var nfl_scores     = null;');
    d.writeln('   var nfl_scores_url = new URL("https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard");');
    d.writeln('   var user_message   = "\\"Get NFL Scores\\" failed.";');

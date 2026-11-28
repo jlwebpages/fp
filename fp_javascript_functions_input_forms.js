@@ -1325,7 +1325,7 @@ function build_regular_season_form()
    d.writeln('   var cors_proxy_url       = new URL("https://cors-proxy.jlwebpages.workers.dev/");'); // cors-proxy is on cloudflare.com
    d.writeln('   var espn_scoreboard      = 0;');
    d.writeln('   var fetch_error          = "";');
-   d.writeln('   var fetch_response       = "";');
+   d.writeln('   var fetch_response       = null;');
    d.writeln('   var nfl_odds             = null;');
    d.writeln('   var nfl_odds_url         = new URL("https://placeholder.com/");');
    d.writeln('   var nfl_odds_url_array   = new Array(2);');
@@ -1390,7 +1390,7 @@ function build_regular_season_form()
    d.writeln('      }');
    d.writeln('      else // fetch returned an HTTP error (e.g., 404, 500).');
    d.writeln('      {');
-   d.writeln('         fetch_error = fetch_response.text || fetch_response.statusText || "Unknown error";');
+   d.writeln('         fetch_error = await fetch_response.text() || fetch_response.statusText || "Unknown error";');
    d.writeln('');
    d.writeln('         if (odds_source == espn_scoreboard)');
    d.writeln('         {');
@@ -3760,7 +3760,7 @@ function build_postseason_form()
    d.writeln('   var espn_odds_week       = 0;');
    d.writeln('   var espn_scoreboard      = 0;');
    d.writeln('   var fetch_error          = "";');
-   d.writeln('   var fetch_response       = "";');
+   d.writeln('   var fetch_response       = null;');
    d.writeln('   var nfl_odds             = null;');
    d.writeln('   var nfl_odds_url         = new URL("https://placeholder.com/");');
    d.writeln('   var nfl_odds_url_array   = new Array(2);');
@@ -3829,7 +3829,7 @@ function build_postseason_form()
    d.writeln('      }');
    d.writeln('      else // fetch returned an HTTP error (e.g., 404, 500).');
    d.writeln('      {');
-   d.writeln('         fetch_error = fetch_response.text || fetch_response.statusText || "Unknown error";');
+   d.writeln('         fetch_error = await fetch_response.text() || fetch_response.statusText || "Unknown error";');
    d.writeln('');
    d.writeln('         if (odds_source == espn_scoreboard)');
    d.writeln('         {');
