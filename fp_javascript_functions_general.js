@@ -491,15 +491,16 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
          return false;
       }
 
-      if (NFC_teams.standings[i].team.shortDisplayName == "Washington")
+      if (NFC_teams.standings[i].team.displayName.toLowerCase().includes("washington") == true)
       {
+         if (year <= 2019)
+         {
+            NFC_teams.standings[i].team.shortDisplayName = "Redskins";
+         }
+
          if ( (year == 2020) || (year == 2021) )
          {
             NFC_teams.standings[i].team.shortDisplayName = "Football Team";
-         }
-         else
-         {
-            NFC_teams.standings[i].team.shortDisplayName = "Redskins";
          }
       }
 
@@ -612,15 +613,16 @@ function process_nfl_playoff_teams(nfl_playoff_teams,year)
 
       document.getElementById("AFC_"+(i+1)).innerHTML = "<img src=\"team_logos/"+team_logo+"\" title=\""+tooltip+"\"><p style=\"margin-top: -3px; margin-bottom: 0px\">"+AFC_teams.standings[i].stats[team_record_index]+"</p>";
 
-      if (NFC_teams.standings[i].team.displayName == "Washington")
+      if (NFC_teams.standings[i].team.displayName.toLowerCase().includes("washington") == true)
       {
+         if (year <= 2019)
+         {
+            NFC_teams.standings[i].team.displayName = "Washington Redskins";
+         }
+
          if ( (year == 2020) || (year == 2021) )
          {
             NFC_teams.standings[i].team.displayName = "Washington Football Team";
-         }
-         else
-         {
-            NFC_teams.standings[i].team.displayName = "Washington Redskins";
          }
       }
 
